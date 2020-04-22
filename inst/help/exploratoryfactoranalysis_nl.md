@@ -15,9 +15,10 @@ Met Exploratieve Factoranalyse kunt u één of meer onderliggende factoren van d
 - Ingevoegde Variabelen: In dit veld selecteert u de variabelen waarmee u de exploratieve factoranalyse uitvoert. 
 
 #### Aantal Factoren
-- Hier specificeert u het aantal factoren waar de rotatie op wordt toegepast. Diverse methodes bepalen hoe dit aantal gekozen wordt:   
+_NB: eigenwaarden voor EFA zijn anders dan eigenwaarden voor PCA. Meer informatie hierover is te vinden in Dinno (2014)._
+- Hier specificeert u het aantal factoren waar de rotatie op wordt toegepast. Er zijn verschillende methoden om te bepalen hoe dit wordt gedaan:   
   - Parallel Analyse: Factoren worden gekozen op basis van parallel analyse. Met deze methode worden factoren geselecteerd met een eigenwaarde die hoger is dan de parallel gemiddelde willekeurige eigenwaarde. Dit is de standaardoptie. 
-  - Eigenwaardes: Factoren worden gekozen indien zij een bepaalde eigenwaarde hebben. Als standaardoptie worden factoren met een eigenwaarde van 1 of hoger gekozen. Dit wordt het Kaiser criterium genoemd. 
+  - Eigenwaardes: Factoren worden gekozen indien zij een bepaalde eigenwaarde hebben. Als standaardoptie worden factoren met een eigenwaarde van 0 of hoger gekozen. Dit wordt het Kaiser criterium genoemd. 
   - Handmatig: Het aantal factor kan handmatig gespecificeerd worden. De standaardoptie is 1. 
 
 #### Rotatie 

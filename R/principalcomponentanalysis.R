@@ -440,7 +440,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   # Plot:
   label.scale.equal <- c(rep(1, nFactor),rep(2, nIndicator))
 
-  path$plotObject <- .suppressGrDevice(qgraph::qgraph(
+  path$plotObject <- JASP:::.suppressGrDevice(qgraph::qgraph(
     input               = edge_df,
     layout              = layout_mat,
     directed            = TRUE,

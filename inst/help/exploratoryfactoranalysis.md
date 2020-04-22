@@ -15,9 +15,10 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Included Variables: In this box, the variables to perform the exploratory factor analysis on are selected. 
 
 #### Number of Factors 
+_NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014) for more information._
 - Here, the number of factors that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
-  - Parallell Analysis: Factors are selected on the basis of parallell analysis. With this method, factors are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
-  - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 1 or higher. This is called the Kaiser criterion. 
+  - Parallel Analysis: Factors are selected on the basis of parallell analysis. With this method, factors are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
+  - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 0 or higher. This is called the Kaiser criterion. 
   - Manual: The number of factors can be specified manually. By default this is set to 1. 
 
 #### Rotation 
@@ -91,6 +92,7 @@ The scree plot provides information on how much variance in the data, indicated 
 ---
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*.     
     Guilford Publications. 
+- Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. URL: http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf.
 - Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention     
     decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational research methods, 7*(2), 191-205.
 - Hopwood, C. J., & Donnellan, M. B. (2010). How should the internal structure 

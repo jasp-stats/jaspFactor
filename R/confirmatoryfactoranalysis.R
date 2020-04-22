@@ -937,7 +937,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .cfaPlotPath <- function(jaspResults, options, cfaResult) {
   if (is.null(cfaResult) || !options$pathplot || !is.null(jaspResults[["plots"]][["pathplot"]])) return()
 
-  .suppressGrDevice(
+  JASP:::.suppressGrDevice(
     pathplot <- semPlot::semPaths(
       object         = .cfaLavToPlotObj(cfaResult[["lav"]], options),
       DoNotPlot      = TRUE,

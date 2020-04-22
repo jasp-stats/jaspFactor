@@ -396,7 +396,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   plt <-
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Factor"), y = gettext("Eigenvalue"))
+    ggplot2::labs(x = gettext("Factor"), y = gettext("EFA Eigenvalue"))
   
   
   # dynamic function for point size:
@@ -549,7 +549,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # Plot:
   label.scale.equal <- c(rep(1, nFactor),rep(2, nIndicator))
 
-  path$plotObject <- .suppressGrDevice(qgraph::qgraph(
+  path$plotObject <- JASP:::.suppressGrDevice(qgraph::qgraph(
     input               = edge_df,
     layout              = layout_mat,
     directed            = TRUE,

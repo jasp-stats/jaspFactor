@@ -5,7 +5,7 @@ Confirmatieve Factoranalyse (CFA) modelleert geobserveerde variabelen (indicator
 
 Invoerveld
 -------
-In het invoerveld kunt u continue variabelen van uw dataset toewijzen aan verschillende factoren. Er is een minimum van één factor, en elke factor heeft minstens twee indicatoren. U kunt factoren toevoegen door te drukken op de (+) knop en verwijderen door te drukken op de (-) knop. U kunt de factoren hernoemen door de namen boven de invoervelden te wijzigen.
+In het invoerveld kunt u continue variabelen van uw dataset toewijzen aan verschillende factoren. Er is een minimum van één factor, en elke factor heeft minstens twee indicatoren. U kunt factoren toevoegen door te drukken op de (+) knop en verwijderen door te drukken op de (-) knop. U kunt de factoren hernoemen door de namen boven de invoervelden te wijzigen. Variabelen van het type "scale" of "ordinal" zijn toegestaan. In het geval dat "ordinal" variabelen worden gebruikt wordt de "WLS" schatter (estimator) gebruikt.
 
 Tweede-orde factor
 -------
@@ -47,7 +47,7 @@ Geavanceerd
 -------
 - Emulatie: Emuleer resultaten van verschillende software.
 - Foutberekening: Wijzigt de manier waarop de standaardfout wordt berekend.
-- Estimator: Wijzigt de estimator voor de CFA.
+- Estimator: Wijzigt de estimator voor de CFA. (Auto: ML als alleen "scale" variabelen gebruikt worden, anders WLS)
 - Standaardisatie: Toon gestandardiseerde parameters voor verschillende standaardisatieschema's.
 
 Referenties

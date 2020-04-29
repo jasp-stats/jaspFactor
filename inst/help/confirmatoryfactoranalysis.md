@@ -5,7 +5,7 @@ Confirmatory factor analysis (CFA) models observed variables (indicators) as noi
 
 Assignment Box
 -------
-In the assignment box, continuous variables in your dataset can be assigned to different factors. There is a minimum of one factor, and each factor needs to have at least two indicators. You can add factors by pressing the (+) button and remove factors by pressing the (-) button. You may rename factors by changing the name above the assignment boxes.
+In the assignment box, continuous variables in your dataset can be assigned to different factors. There is a minimum of one factor, and each factor needs to have at least two indicators. You can add factors by pressing the (+) button and remove factors by pressing the (-) button. You may rename factors by changing the name above the assignment boxes. Either scale or ordinal variables are allowed. If you use ordinal variables, the chosen estimator will by default be "WLS".
 
 Second-order factor
 -------
@@ -47,7 +47,7 @@ Advanced
 -------
 - Emulation: Emulate results from different software
 - Error calculation: Change how standard errors for the parameters are computed
-- Estimator: change the estimator for the CFA
+- Estimator: change the estimator for the CFA (Auto: ML if only scale variables used, WLS otherwise)
 - Standardization: display standardized parameters for different standardization schemes
 
 References

@@ -89,13 +89,13 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   nVarsPerFactor <- unlist(lapply(options$factors, function(x) setNames(length(x$indicators), x$title)))
   if (all(nVarsPerFactor == 0)) return("No variables")
-  if (any(nVarsPerFactor == 1)) .quitAnalysis(gettext("The model could not be estimated. Ensure that factors have at least 2 observed variables."))
+  if (any(nVarsPerFactor == 1)) JASP:::.quitAnalysis(gettext("The model could not be estimated. Ensure that factors have at least 2 observed variables."))
 
   # TODO (tj), call error handling before all the options get screwed around so we can simply do `for (factor in options[["secondOrder"]])`
   if (length(options[["secondOrder"]]) > 0)
     for (factor in options[["secondOrder"]][[1]][["indicators"]])
       if (!factor %in% names(nVarsPerFactor) || nVarsPerFactor[factor] <= 0)
-       .quitAnalysis(gettext("The model could not be estimated. A factor with less than 2 variables was added in Second-Order."))
+        JASP:::.quitAnalysis(gettext("The model could not be estimated. A factor with less than 2 variables was added in Second-Order."))
 
   vars <- unique(unlist(lapply(options$factors, function(x) x$indicators)))
 
@@ -181,21 +181,21 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # Quit analysis on error
   if (inherits(cfaResult[["lav"]], "try-error")) {
-    .quitAnalysis(gettextf("The model could not be estimated. Error message: \n\n %s", attr(cfaResult[["lav"]], "condition")$message))
+    JASP:::.quitAnalysis(gettextf("The model could not be estimated. Error message: \n\n %s", attr(cfaResult[["lav"]], "condition")$message))
   }
 
   admissible <- .withWarnings(lavaan:::lav_object_post_check(cfaResult[["lav"]]))
 
   if (!admissible$value) {
-    .quitAnalysis(gettextf("The model is not admissible: %s", admissible$warnings[[1]]$message))
+    JASP:::.quitAnalysis(gettextf("The model is not admissible: %s", admissible$warnings[[1]]$message))
   }
 
   if (!cfaResult[["lav"]]@optim$converged) {
-    .quitAnalysis(gettext("The model could not be estimated due to nonconvergence."))
+    JASP:::.quitAnalysis(gettext("The model could not be estimated due to nonconvergence."))
   }
 
   if (cfaResult[["lav"]]@test[[1]]$df < 0) {
-    .quitAnalysis(gettext("The model could not be estimated: No degrees of freedom left."))
+    JASP:::.quitAnalysis(gettext("The model could not be estimated: No degrees of freedom left."))
   }
 
 

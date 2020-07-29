@@ -944,7 +944,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       ask            = FALSE,
       layout         = "tree",
       intercepts     = options$plotmeans,
-      whatLabels     = ifelse(options$plotpars, "par", "name"),
+      whatLabels     = if (!options$plotpars) "name" else if (options$plotstd) "std" else "par",
       mar            = ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)),
       edge.color     = "black",
       color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
@@ -972,7 +972,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                                            width = plotwidth)
   }
 
-  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathplot", "plotmeans", "plotpars"))
+  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathplot", "plotmeans", "plotpars", "plotstd"))
 }
 
 .cfaLavToPlotObj <- function(lavResult, options) {

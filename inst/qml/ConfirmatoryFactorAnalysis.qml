@@ -168,7 +168,11 @@ Form
 			{
 				text: qsTr("Model plot")
 				name: "pathplot"
-				CheckBox { text: qsTr("Show parameters") ; name: "plotpars"  }
+				CheckBox { 
+					text: qsTr("Show parameters") 
+					name: "plotpars"  
+					CheckBox { text: qsTr("Standardized"); name: "plotstd" }
+				}
 				CheckBox { text: qsTr("Show means")      ; name: "plotmeans"; enabled: meanstructure.checked }
 			}
 		}

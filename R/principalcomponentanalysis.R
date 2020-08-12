@@ -313,7 +313,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # theming with special legend thingy
   plt <-
-    JASPgraphs::themeJasp(plt) +
+    jaspGraphs::themeJasp(plt) +
     ggplot2::theme(
       legend.position      = c(0.99, 0.95),
       legend.justification = c(1, 1),
@@ -440,7 +440,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   # Plot:
   label.scale.equal <- c(rep(1, nFactor),rep(2, nIndicator))
 
-  path$plotObject <- JASP:::.suppressGrDevice(qgraph::qgraph(
+  path$plotObject <- jaspBase:::.suppressGrDevice(qgraph::qgraph(
     input               = edge_df,
     layout              = layout_mat,
     directed            = TRUE,

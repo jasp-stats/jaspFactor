@@ -3,7 +3,7 @@ import JASP.Module 	1.0
 
 Description
 {
-	name		: "Factor"
+	name		: "jaspFactor"
 	title		: qsTr("Factor")
 	icon		: "analysis-classical-sem.svg"
 	description	: qsTr("This module offers the Principal Component, Confirmatory and Exploratory Factor analyses")

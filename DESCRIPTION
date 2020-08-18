@@ -8,3 +8,16 @@ Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
 Description: This module offers the Principal Component, Confirmatory and Exploratory Factor analyses
 License: GPL (>= 2)
+Encoding: UTF-8
+Imports:
+  ggplot2,
+  jaspBase,
+  jaspGraphs,
+  lavaan,
+  psych,
+  qgraph,
+  reshape2,
+  semPlot
+Remotes:
+  jasp-stats/jaspBase,
+  jasp-stats/jaspGraphs

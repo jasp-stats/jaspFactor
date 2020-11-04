@@ -22,7 +22,7 @@ import JASP.Controls 1.0
 
 Form
 {
-	usesJaspResults: true
+	
 
 	CheckBox { name: "incl_GoF"; checked: true; visible: false }
 	CheckBox { name: "incl_loadings"; checked: true; visible: false }

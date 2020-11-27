@@ -29,6 +29,7 @@ Form
 		id: factors
 		name: "factors"
 		initNumberFactors: 1
+		allowAll: true
 	}
 
 	Section

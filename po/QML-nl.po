@@ -1,0 +1,547 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Source-Language: American English\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "Description|"
+msgid ""
+"This module offers the Principal Component, Confirmatory and Exploratory "
+"Factor analyses"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Principal Component Analysis"
+msgstr "Principale Componentenanalyse"
+
+msgctxt "Description|"
+msgid "Exploratory Factor Analysis"
+msgstr "Exploratieve Factoranalyse"
+
+msgctxt "Description|"
+msgid "Confirmatory Factor Analysis"
+msgstr "Confirmatieve Factoranalyse"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order Factor"
+msgstr "Tweede-orde factor"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order"
+msgstr "Tweede orde"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model Options"
+msgstr "Modelopties"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Include mean structure"
+msgstr "Neem gemiddelde structuur mee"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Assume factors uncorrelated"
+msgstr "Neem aan dat factoren niet gecorreleerd zijn"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix exogenous covariates"
+msgstr "Fix exogene covariaten"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Factor Scaling"
+msgstr "Factorschalen"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Factor variances"
+msgstr "Factorvarianties"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Marker variable"
+msgstr "Markeervariabele"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Effects coding"
+msgstr "Effecten coderen"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual Covariances"
+msgstr "Residuele covarianties"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional Output"
+msgstr "Aanvullende uitvoer"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional fit measures"
+msgstr "Extra pasmaten"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "R-Squared"
+msgstr "R-kwadraat"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Implied covariance matrix"
+msgstr "Geïmpliceerde covariantiematrix"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual covariance matrix"
+msgstr "Residuele covariantiematrix"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Modification indices"
+msgstr "Modificatie-indices"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Cutoff"
+msgstr "Grens"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show lavaan syntax"
+msgstr "Toon lavaan syntax"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Multigroup CFA"
+msgstr "Meer groepen CFA"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Grouping variable"
+msgstr "Groepeer variabele"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Invariance testing"
+msgstr "Invariantie testen"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Configural"
+msgstr "Configuratie"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Metric"
+msgstr "Metrisch"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Scalar"
+msgstr "Scalaire grootheid"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Strict"
+msgstr "Strikt"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Misfit plot"
+msgstr "Niet-passings grafiek"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model plot"
+msgstr "Modelgrafiek"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameters"
+msgstr "Toon parameters"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardized"
+msgstr "Gestandaardiseerd"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show means"
+msgstr "Toon gemiddelden"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Emulation"
+msgstr "Emulatie"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "None"
+msgstr "Geen"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mplus"
+msgstr "Mplus"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "EQS"
+msgstr "EQS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Error calculation"
+msgstr "Foutberekening"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "CI width"
+msgstr "CI wijdte"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Method"
+msgstr "Methode"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard"
+msgstr "Standaard"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust"
+msgstr "Robuust"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap CI"
+msgstr "Bootstrap BI"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap samples"
+msgstr "Bootstrap steekproeven"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Estimator"
+msgstr "Schatter"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Auto"
+msgstr "Auto"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ML"
+msgstr "ML"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "GLS"
+msgstr "GLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLS"
+msgstr "WLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULS"
+msgstr "ULS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DWLS"
+msgstr "DWLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardization"
+msgstr "Standaardisatie"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Latents"
+msgstr "Latenten"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No X"
+msgstr "Geen X"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Options"
+msgstr "Opties"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix manifest intercepts to zero"
+msgstr "Zet manifeste intercepten vast op 0"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix latent intercepts to zero"
+msgstr "Zet latente intercepten vast op 0"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Omit residual single indicator"
+msgstr "Laat residuele enkele indicator weg"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual variances"
+msgstr "Resterende varianties"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate exogenous latents"
+msgstr "Gecorreleerde exogene latenten"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add thresholds"
+msgstr "Voeg drempelwaarden toe"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add scalings parameters"
+msgstr "Voeg schaalparameters toe"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate dependent variables"
+msgstr "Correleer afhankelijke variabelen"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variables"
+msgstr "Variabelen"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of Factors"
+msgstr "Aantal factoren"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis"
+msgstr "Parallel analyse"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Eigenvalues"
+msgstr "Eigenwaarden"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Eigenvalues above"
+msgstr "Eigenwaarden boven"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Manual"
+msgstr "Handmatig"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of factors"
+msgstr "Aantal factoren"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Estimation method"
+msgstr "Schattingsmethode"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum residual"
+msgstr "Minimum residu"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Maximum likelihood"
+msgstr "Meest aannemelijke schatter"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Principal axis factoring"
+msgstr "Hoofdas factoring"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Ordinary least squares"
+msgstr "Kleinste-kwadratenmethode"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Weighted least squares"
+msgstr "Gewogen kleinste-kwadraten"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Generalized least squares"
+msgstr "Gegeneraliseerde kleinste-kwadraten"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum chi-square"
+msgstr "Minimum chi-kwadraat"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum rank"
+msgstr "Minimum rang"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Rotation"
+msgstr "Rotatie"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Orthogonal"
+msgstr "Orthogonaal"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "none"
+msgstr "geen"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Oblique"
+msgstr "Schuin"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Base analysis on"
+msgstr "Baseer analyse op"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Correlation matrix"
+msgstr "Correlatiematrix"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Covariance matrix"
+msgstr "Covariantiematrix"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Output Options"
+msgstr "Uitvoeropties"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Highlight"
+msgstr "Markeer"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Structure matrix"
+msgstr "Structuurmatrix"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor correlations"
+msgstr "Factorcorrelaties"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Additional fit indices"
+msgstr "Extra pas indices"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Path diagram"
+msgstr "Paddiagram"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Scree plot"
+msgstr "Screeplot"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Assumption checks"
+msgstr "Verificatie van aannames"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "KMO test"
+msgstr "KMO toets"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Bartlett's test"
+msgstr "Bartlett's toets"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Missing Values"
+msgstr "Ontbrekende waarden"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Exclude cases pairwise"
+msgstr "Sluit waarnemingen paarsgewijs uit"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Exclude cases listwise"
+msgstr "Sluit waarnemingen uit per rij"
+
+msgctxt "FactorsForm|"
+msgid "+"
+msgstr "+"
+
+msgctxt "FactorsForm|"
+msgid "-"
+msgstr "-"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variables"
+msgstr "Variabelen"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of Components"
+msgstr "Aantal componenten"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis"
+msgstr "Parallel analyse"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Eigenvalues"
+msgstr "Eigenwaarden"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Eigenvalues above"
+msgstr "Eigenwaarden boven"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Manual"
+msgstr "Handmatig"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of components"
+msgstr "Aantal componenten"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Rotation"
+msgstr "Rotatie"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Orthogonal"
+msgstr "Orthogonaal"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "none"
+msgstr "geen"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Oblique"
+msgstr "Schuin"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Base decomposition on"
+msgstr "Baseer decompositie op"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Correlation matrix"
+msgstr "Correlatiematrix"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Covariance matrix"
+msgstr "Covariantiematrix"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Output Options"
+msgstr "Uitvoeropties"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Highlight"
+msgstr "Markeer"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Table"
+msgstr "Tabel"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Factor correlations"
+msgstr "Factorcorrelaties"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Plots"
+msgstr "Grafieken"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Path diagram"
+msgstr "Paddiagram"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Scree plot"
+msgstr "Screeplot"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Missing Values"
+msgstr "Ontbrekende waarden"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Exclude cases pairwise"
+msgstr "Sluit waarnemingen paarsgewijs uit"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Exclude cases listwise"
+msgstr "Sluit waarnemingen uit per rij"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Add PC scores to data"
+msgstr "Voeg PC scores toe aan data"

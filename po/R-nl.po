@@ -1,0 +1,391 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: R 3.6.1\n"
+"Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
+"POT-Creation-Date: 2020-12-10 16:26\n"
+"PO-Revision-Date: 2020-12-02 21:29+0000\n"
+"Last-Translator: JASP Stats <F.A.M.Meerhoff@uva.nl>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jasp-engine/"
+"nl/>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
+"X-Generator: Weblate 4.4-dev\n"
+
+msgid "Second-Order"
+msgstr "Tweede-Orde"
+
+msgid ""
+"The model could not be estimated. Ensure that factors have at least 2 "
+"observed variables."
+msgstr ""
+"Het model kon niet geschat worden. Zorg dat de factoren minstens 2 "
+"geobserveerde variabelen bevat."
+
+msgid ""
+"The model could not be estimated. A factor with less than 2 variables was "
+"added in Second-Order."
+msgstr ""
+"Het model kon niet geschat worden. Een factor met minder dan 2 variabelen "
+"was toegevoegd in Tweede-Orde."
+
+msgid ""
+"The model could not be estimated. Error message: \n"
+"\n"
+" %s"
+msgstr ""
+"Het model kon niet geschat worden. Foutmelding:\n"
+" \n"
+"%s"
+
+msgid "The model is not admissible: %s"
+msgstr "Het model is niet geoorloofd: %s"
+
+msgid "The model could not be estimated due to nonconvergence."
+msgstr "Het model kon niet worden geschat door niet-convergentie."
+
+msgid "The model could not be estimated: No degrees of freedom left."
+msgstr "Het model kon niet worden geschat: Geen vrijheidsgraden over."
+
+msgid "Model fit"
+msgstr "Model passing"
+
+msgid "Chi-square test"
+msgstr "Chikwadraattoets"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "df"
+msgstr "vg"
+
+msgid "p"
+msgstr "p"
+
+msgid "Baseline model"
+msgstr "Baseline model"
+
+msgid "Factor model"
+msgstr "Factor model"
+
+msgid "Additional fit measures"
+msgstr "Extra pasmaten"
+
+msgid "Fit indices"
+msgstr "Pas indices"
+
+msgid "Index"
+msgstr "Index"
+
+msgid "Value"
+msgstr "Waarde"
+
+msgid "Information criteria"
+msgstr "Informatie criteria"
+
+msgid "Other fit measures"
+msgstr "Andere pasmaten"
+
+msgid "Metric"
+msgstr "Metrisch"
+
+msgid "Comparative Fit Index (CFI)"
+msgstr "Comparatieve Fit Index (CFI)"
+
+msgid "Tucker-Lewis Index (TLI)"
+msgstr "Tucker-Lewis Index (TLI)"
+
+msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
+msgstr "Bentler-Bonett Niet-genormeerde Fit Index (NNFI)"
+
+msgid "Bentler-Bonett Normed Fit Index (NFI)"
+msgstr "Bentler-Bonett Genormeerde Fit Index (NFI)"
+
+msgid "Parsimony Normed Fit Index (PNFI)"
+msgstr "Spaarzaamheid Genormeerde Index (PNFI)"
+
+msgid "Bollen's Relative Fit Index (RFI)"
+msgstr "Bollen's Relatieve Fit index (RFI)"
+
+msgid "Bollen's Incremental Fit Index (IFI)"
+msgstr "Bollen's incrementele Fit Index (IFI)"
+
+msgid "Relative Noncentrality Index (RNI)"
+msgstr "Relatieve Noncentraliteits Index (RNI)"
+
+msgid "Log-likelihood"
+msgstr "Log-likelihood"
+
+msgid "Number of free parameters"
+msgstr "Aantal vrije parameters"
+
+msgid "Akaike (AIC)"
+msgstr "Akaike (AIC)"
+
+msgid "Bayesian (BIC)"
+msgstr "Bayesiaans (BIC)"
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr "Op Steekproef-grootte bijgestelde Bayesiaanse (SSABIC)"
+
+msgid "Root mean square error of approximation (RMSEA)"
+msgstr "Wortel van de gemiddelde fout kwadraat van benadering (RMSEA)"
+
+msgid "RMSEA 90%% CI lower bound"
+msgstr "RMSEA 90%% BI ondergrens"
+
+msgid "RMSEA 90%% CI upper bound"
+msgstr "RMSEA 90%% BI bovengrens"
+
+msgid "RMSEA p-value"
+msgstr "RMSEA P-waarde"
+
+msgid "Standardized root mean square residual (SRMR)"
+msgstr ""
+"Gestandaardiseerde wortel van het gemiddelde kwadraat van residuen (SRMR)"
+
+msgid "Hoelter's critical N (%s = .05)"
+msgstr "Hoelter's kritische N (%s = .05)"
+
+msgid "Hoelter's critical N (%s = .01)"
+msgstr "Hoelter's kritische N (%s = .01)"
+
+msgid "Goodness of fit index (GFI)"
+msgstr "Pasmaat index (GFI)"
+
+msgid "McDonald fit index (MFI)"
+msgstr "McDonald fit index (MFI)"
+
+msgid "Expected cross validation index (ECVI)"
+msgstr "Verwachte kruisvalidatie index (ECVI)"
+
+msgid "Parameter estimates"
+msgstr "Parameterschattingen"
+
+msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
+msgstr ""
+"Niet alle bootstrap steekproeven waren succesvol. Betrouwbaarheidinterval is "
+"gebaseerd op %.0f steekproeven."
+
+msgid "Factor"
+msgstr "Factor"
+
+msgid "Indicator"
+msgstr "Indicator"
+
+msgid "Symbol"
+msgstr "Symbool"
+
+msgid "Estimate"
+msgstr "Schatting"
+
+msgid "Std. Error"
+msgstr "Std. fout"
+
+msgid "z-value"
+msgstr "z-waarde"
+
+msgid "Lower"
+msgstr "Onder"
+
+msgid "%s%% Confidence Interval"
+msgstr "%s%% Betrouwbaarheidsinterval"
+
+msgid "Upper"
+msgstr "Boven"
+
+msgid "Std. Est. (%s)"
+msgstr "Std. Schatting (%s)"
+
+msgid "Second-order factor loadings"
+msgstr "Tweede-graad factor ladingen"
+
+msgid "Factor variances"
+msgstr "Factorvarianties"
+
+msgid "Factor Covariances"
+msgstr "Factorcovarianties"
+
+msgid "Residual variances"
+msgstr "Residu varianties"
+
+msgid "Residual covariances"
+msgstr "Residu covarianties"
+
+msgid "Factor Intercepts"
+msgstr "Factorintercepten"
+
+msgid "Intercepts"
+msgstr "Intercepten"
+
+msgid "Modification Indices"
+msgstr "Modificatie Indices"
+
+msgid "Cross-loadings"
+msgstr "Kruis-ladingen"
+
+msgid "Mod. Ind."
+msgstr "Mod. Ind."
+
+msgid "EPC"
+msgstr "EPC"
+
+msgid "Second-order cross-loadings"
+msgstr "Tweede-rang kruis-ladingen"
+
+msgid "Implied covariance matrices"
+msgstr "Geïmpliceerde covariantie matrices"
+
+msgid "Implied covariance matrix"
+msgstr "Geïmpliceerde covariantie matrices"
+
+msgid "Residual covariance matrices"
+msgstr "Residu covariantie matrices"
+
+msgid "Residual covariance matrix"
+msgstr "Residu covariantie matrices"
+
+msgid "Plots"
+msgstr "Grafieken"
+
+msgid "Model plots"
+msgstr "Modelgrafieken"
+
+msgid "Model plot"
+msgstr "Modelgrafiek"
+
+msgid "Misfit plots"
+msgstr "Misfit grafieken"
+
+msgid "Misfit plot"
+msgstr "Misfit grafiek"
+
+msgid "Model syntax"
+msgstr "Model syntax"
+
+msgid "Too many factors requested (%i) for the amount of included variables"
+msgstr "Teveel factoren gevraagd (%i) voor het aantal meegenomen variabelen"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "Niet genoeg valide waarnemingen (%i) om de analyse uit te voeren"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "Data niet valide: variantie is nul in iedere rij"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
+
+msgid "Data not valid: all variables are collinear"
+msgstr "Data niet valide: alle variabelen zijn collineair"
+
+msgid ""
+"Estimation failed. \n"
+"Internal error message: %s"
+msgstr ""
+"Schatting mislukt. \n"
+"Interne foutmelding: %s"
+
+msgid "No components with an eigenvalue >"
+msgstr "Geen componenten met een eigenwaarde >"
+
+msgid "."
+msgstr "."
+
+msgid "Maximum observed eigenvalue:"
+msgstr "Maximaal geobserveerde eigenwaarde:"
+
+msgid "Kaiser-Meyer-Olkin test"
+msgstr "Kaiser-Meyer-Olkin toets"
+
+msgid "Overall MSA"
+msgstr "Algemene MSA"
+
+msgid "Degrees of freedom below 0, model is unidentified."
+msgstr "Vrijheidsgraden onder 0, model is niet geïdentificeerd."
+
+msgid "<em>Warning:</em>"
+msgstr "<em>Waarschuwing:</em>"
+
+msgid "Factor Loadings"
+msgstr "Factorladingen"
+
+msgid "No rotation method applied."
+msgstr "Geen rotatiemethode toegepast."
+
+msgid "Applied rotation method is %s."
+msgstr "Toegepaste rotatiemethode is %s."
+
+msgid "Factor %i"
+msgstr "Factor %i"
+
+msgid "Uniqueness"
+msgstr "Uniciteit"
+
+msgid "Factor Loadings (Structure Matrix)"
+msgstr "Factorladingen (Structuurmatrix)"
+
+msgid "Factor Characteristics"
+msgstr "Factorkarakteristieken"
+
+msgid "SumSq. Loadings"
+msgstr "Kwadratensom Ladingen"
+
+msgid "Proportion var."
+msgstr "Proportievar."
+
+msgid "Cumulative"
+msgstr "Cumulatief"
+
+msgid "Factor Correlations"
+msgstr "Factorcorrelaties"
+
+msgid "Additional fit indices"
+msgstr "Extra pas indices"
+
+msgid "RMSEA"
+msgstr "RMSEA"
+
+msgid "RMSEA 90%% confidence"
+msgstr "RMSEA 90%% betrouwbaarheid"
+
+msgid "TLI"
+msgstr "TLI"
+
+msgid "BIC"
+msgstr "BIC"
+
+msgid ""
+"Screeplot not available. \n"
+"Internal error message: %s"
+msgstr ""
+"Screeplot niet beschikbaar. \n"
+"Interne foutmelding: %s"
+
+msgid "Data"
+msgstr "Data"
+
+msgid "Simulated (95th quantile)"
+msgstr "Gesimuleerd (95ste kwantiel)"
+
+msgid "EFA Eigenvalue"
+msgstr "EFA Eigenwaarde"
+
+msgid "Path Diagram"
+msgstr "Paddiagram"
+
+msgid "Component Loadings"
+msgstr "Componentladingen"
+
+msgid "Eigenvalue"
+msgstr "Eigenwaarde"
+
+msgid "Component Correlations"
+msgstr "Component correlaties"
+
+msgid "Scree plot"
+msgstr "Scree plot"
+
+msgid "Component"
+msgstr "Component"

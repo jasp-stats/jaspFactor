@@ -103,7 +103,7 @@ Form
 			{
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-				AvailableVariablesList {name: "observedvars";	syncModels: factors.name	}
+				AvailableVariablesList {name: "observedvars";	source: factors.name	}
 				AssignedPairsVariablesList { name: "rescov" }
 			}
 		}
@@ -144,17 +144,17 @@ Form
 			name: "groupvar";
 			showVariableTypeIcon: true;
 			addEmptyValue: true;
-		} // No model or syncModels: it takes all variables per default
+		} // No model: it takes all variables per default
 		DropDown
 		{
 			label: qsTr("Invariance testing")
 			name: "invariance"
-			model: ListModel {
-				ListElement { key: qsTr("Configural") ; value: "configural"  }
-				ListElement { key: qsTr("Metric")     ; value: "metric"  }
-				ListElement { key: qsTr("Scalar")     ; value: "scalar" }
-				ListElement { key: qsTr("Strict")     ; value: "strict" }
-			}
+			values: [
+				 { label: qsTr("Configural") , value: "configural"	},
+				 { label: qsTr("Metric")     , value: "metric"		},
+				 { label: qsTr("Scalar")     , value: "scalar"		},
+				 { label: qsTr("Strict")     , value: "strict"		}
+			]
 		}
 	}
 

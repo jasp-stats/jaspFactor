@@ -6,16 +6,13 @@ import JASP				1.0
 import QtQuick.Layouts  1.3
 import "." as SEM
 
-JASPControl
+FactorsFormBase
 {
     id:					    factorsForm
-	controlType:		    JASPControlBase.FactorsForm
     implicitWidth:	        parent.width
-	preferredHeight:			        jaspTheme.defaultVariablesFormHeight + Math.max((factorsFormRepeater.count - 3), 0) * (factorsForm.factorListHeight + factorsFormColumn.spacing)
+	preferredHeight:		jaspTheme.defaultVariablesFormHeight + Math.max((factorsFormRepeater.count - 3), 0) * (factorsForm.factorListHeight + factorsFormColumn.spacing)
     implicitHeight:         height
-    useControlMouseArea:    false
 
-	property var	model
 	property string availableVariablesListName: "allAvailableVariables"
 	property alias	availableVariablesList: availableVariablesList
     property bool   allowAll: false
@@ -23,15 +20,12 @@ JASPControl
 	property int    listWidth:			parent.width * 2 / 5
     property int    factorListHeight: (jaspTheme.defaultVariablesFormHeight - factorButtons.height) / 3 - factorsFormColumn.spacing 
 
-	signal titleChanged(int index, string title);
-	signal factorAdded(int index, var item);
-
-    VariablesList
+	AvailableVariablesList
 	{
 		id:				availableVariablesList
 		name:			availableVariablesListName
 		width:			listWidth
-		preferredHeight:			parent.height
+		preferredHeight: parent.height
 		anchors.top:	parent.top
 		anchors.left:	parent.left
     }
@@ -43,7 +37,7 @@ JASPControl
         width:          parent.width * 3 / 5
 		anchors.top:	parent.top
 		anchors.right:	parent.right
-        
+
         Repeater 
         {
             id: factorsFormRepeater
@@ -52,9 +46,8 @@ JASPControl
             {
 				property alias	factorList		: factorList
 				property alias	button			: button
-				property bool	hasContextForm	: true
-				property var	form			: form
-				property bool	noDirectSetup	: true
+				property bool	isDynamic		: true
+
                 spacing: 0
 				AssignButton
                 {
@@ -77,6 +70,7 @@ JASPControl
 					id:					factorList
 					name:               factorName
 					editableTitle:      factorTitle
+					dropKeys:			availableVariablesListName
 					dropMode:			JASP.DropReplace
 					suggestedColumns:	allowAll ? [] : ["scale", "ordinal"]
                     allowedColumns:     allowAll ? [] : ["scale", "ordinal"]
@@ -88,6 +82,7 @@ JASPControl
 			}
 			onItemAdded:
 			{
+				availableVariablesList.dropKeys.push(item.factorList.name);
 				item.factorList.activeFocusChanged.connect(item.button.setIconToLeft);
 				availableVariablesList.activeFocusChanged.connect(item.button.setIconToRight);
 				item.factorList.selectedItemsChanged.connect(item.button.setState);
@@ -108,15 +103,15 @@ JASPControl
                 text: qsTr("+")
                 control.width: height 
                 width: control.width
-				onClicked: factorsForm.model.addFactor()
+				onClicked: factorsForm.addFactor()
             }
             Button 
             { 
                 name: "remove"; 
                 text: qsTr("-") 
                 control.width: height 
-                width: control.width
-				onClicked: factorsForm.model.removeFactor()
+				width: control.width
+				onClicked: factorsForm.removeFactor()
                 enabled: factorsFormRepeater.count > 1
             }
         }

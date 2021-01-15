@@ -20,9 +20,6 @@ FactorsFormBase
 	property int    listWidth:			parent.width * 2 / 5
     property int    factorListHeight: (jaspTheme.defaultVariablesFormHeight - factorButtons.height) / 3 - factorsFormColumn.spacing 
 
-	signal titleChanged(int index, string title);
-	signal factorAdded(int index, var item);
-
 	AvailableVariablesList
 	{
 		id:				availableVariablesList

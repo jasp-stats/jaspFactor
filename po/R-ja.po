@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
 "POT-Creation-Date: 2020-12-10 16:26\n"
-"PO-Revision-Date: 2021-02-07 06:50+0000\n"
-"Last-Translator: Yoshihiko Kunisato <ykunisato@psy.senshu-u.ac.jp>\n"
+"PO-Revision-Date: 2021-02-21 04:50+0000\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/ja/>\n"
 "Language: ja\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.5\n"
 
 msgid "Second-Order"
 msgstr "二次"
@@ -26,13 +26,13 @@ msgid "The model could not be estimated. Error message: \n\n %s"
 msgstr ""
 
 msgid "The model is not admissible: %s"
-msgstr ""
+msgstr "モデルは許容されません :%s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr ""
+msgstr "収束しなかったため，モデルは推定できませんでした。"
 
 msgid "The model could not be estimated: No degrees of freedom left."
-msgstr ""
+msgstr "モデルは推定できませんでした: 自由度が残っていません。"
 
 msgid "Model fit"
 msgstr ""
@@ -50,16 +50,16 @@ msgid "p"
 msgstr "p"
 
 msgid "Baseline model"
-msgstr ""
+msgstr "ベースラインモデル"
 
 msgid "Factor model"
-msgstr ""
+msgstr "因子モデル"
 
 msgid "Additional fit measures"
-msgstr ""
+msgstr "追加の適合度指標"
 
 msgid "Fit indices"
-msgstr ""
+msgstr "適合度指標"
 
 msgid "Index"
 msgstr ""
@@ -68,85 +68,85 @@ msgid "Value"
 msgstr "値"
 
 msgid "Information criteria"
-msgstr ""
+msgstr "情報量規準"
 
 msgid "Other fit measures"
-msgstr ""
+msgstr "その他の適合度指標"
 
 msgid "Metric"
-msgstr ""
+msgstr "計量的"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr ""
+msgstr "相対適合度指標(CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr ""
+msgstr "Tucker-Lewisの指標(TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr ""
+msgstr "Bentler-Bonettの非正規化適合度指標(NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr ""
+msgstr "Bentler-Bonettの正規化指標(NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
 msgstr ""
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr ""
+msgstr "Bollenの相対適合度指標(RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
 msgstr ""
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
+msgstr "相対的非中心性指数(RNI)"
 
 msgid "Log-likelihood"
-msgstr ""
+msgstr "対数尤度"
 
 msgid "Number of free parameters"
-msgstr ""
+msgstr "自由パラメーターの数"
 
 msgid "Akaike (AIC)"
-msgstr ""
+msgstr "赤池情報量規準(AIC)"
 
 msgid "Bayesian (BIC)"
-msgstr ""
+msgstr "ベイズ情報量規準(BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr ""
+msgstr "サンプルサイズ調整済みベイジアン情報量規準(SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr ""
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr ""
+msgstr "RMSEA 90% CI 下限"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr ""
+msgstr "RMSEA 90%% CI 上限"
 
 msgid "RMSEA p-value"
-msgstr ""
+msgstr "RMSEA のp 値"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr ""
+msgstr "標準化二乗平均平方差差(SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
 msgstr ""
 
 msgid "Hoelter's critical N (%s = .01)"
-msgstr ""
+msgstr "HoelterのN (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr ""
+msgstr "適合度指標(GFI)"
 
 msgid "McDonald fit index (MFI)"
-msgstr ""
+msgstr "マクドナルドの適合度指標(MFI)"
 
 msgid "Expected cross validation index (ECVI)"
 msgstr ""
 
 msgid "Parameter estimates"
-msgstr ""
+msgstr "パラメータ推定"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
@@ -164,16 +164,16 @@ msgid "Estimate"
 msgstr "推定"
 
 msgid "Std. Error"
-msgstr ""
+msgstr "標準誤差"
 
 msgid "z-value"
-msgstr ""
+msgstr "z値"
 
 msgid "Lower"
 msgstr "下"
 
 msgid "%s%% Confidence Interval"
-msgstr ""
+msgstr "% s%% 信頼区間"
 
 msgid "Upper"
 msgstr "上"
@@ -185,16 +185,16 @@ msgid "Second-order factor loadings"
 msgstr ""
 
 msgid "Factor variances"
-msgstr ""
+msgstr "因子の分散"
 
 msgid "Factor Covariances"
 msgstr ""
 
 msgid "Residual variances"
-msgstr ""
+msgstr "残差分散"
 
 msgid "Residual covariances"
-msgstr ""
+msgstr "残差共分散"
 
 msgid "Factor Intercepts"
 msgstr ""
@@ -203,7 +203,7 @@ msgid "Intercepts"
 msgstr ""
 
 msgid "Modification Indices"
-msgstr ""
+msgstr "修正指数"
 
 msgid "Cross-loadings"
 msgstr ""
@@ -227,7 +227,7 @@ msgid "Residual covariance matrices"
 msgstr ""
 
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "残差共分散行列"
 
 msgid "Plots"
 msgstr ""
@@ -236,16 +236,16 @@ msgid "Model plots"
 msgstr ""
 
 msgid "Model plot"
-msgstr ""
+msgstr "モデルプロット"
 
 msgid "Misfit plots"
 msgstr ""
 
 msgid "Misfit plot"
-msgstr ""
+msgstr "不適合プロット"
 
 msgid "Model syntax"
-msgstr ""
+msgstr "モデルのシンタックス"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr ""
@@ -287,7 +287,7 @@ msgid "<em>Warning:</em>"
 msgstr ""
 
 msgid "Factor Loadings"
-msgstr ""
+msgstr "因子負荷量"
 
 msgid "No rotation method applied."
 msgstr ""
@@ -332,7 +332,7 @@ msgid "TLI"
 msgstr ""
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "Screeplot not available. \nInternal error message: %s"
 msgstr ""
@@ -362,4 +362,4 @@ msgid "Scree plot"
 msgstr ""
 
 msgid "Component"
-msgstr ""
+msgstr "コンポーネント"

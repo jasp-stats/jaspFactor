@@ -16,7 +16,7 @@ options$basedOn <- "correlation"
 options$missingValues <- "pairwise"
 options$incl_screePlot <- TRUE
 
-# set.seed(1)
+set.seed(1)
 results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "PCA.csv", options)
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html

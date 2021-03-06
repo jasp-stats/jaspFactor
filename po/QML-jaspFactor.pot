@@ -435,14 +435,6 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
 msgstr ""
 
-msgctxt "FactorsForm|"
-msgid "+"
-msgstr ""
-
-msgctxt "FactorsForm|"
-msgid "-"
-msgstr ""
-
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
 msgstr ""

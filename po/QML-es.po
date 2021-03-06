@@ -497,14 +497,6 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
 msgstr "Excluir casos según la lista"
 
-msgctxt "FactorsForm|"
-msgid "+"
-msgstr "+"
-
-msgctxt "FactorsForm|"
-msgid "-"
-msgstr "-"
-
 #, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"

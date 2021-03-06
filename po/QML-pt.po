@@ -8,169 +8,146 @@ msgstr ""
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
 
-msgctxt "Description|"
-msgid "Factor"
-msgstr "Faktor"
-
-msgctxt "Description|"
-msgid ""
-"This module offers the Principal Component, Confirmatory and Exploratory "
-"Factor analyses"
-msgstr ""
-"Dieses Modul bietet die Hauptkompenten-, Konfirmatorische und Explorative "
-"Faktoranalysen"
-
-msgctxt "Description|"
-msgid "Principal Component Analysis"
-msgstr "Hauptkomponentenanalyse"
-
-msgctxt "Description|"
-msgid "Exploratory Factor Analysis"
-msgstr "Explorative Faktoranalyse"
-
-msgctxt "Description|"
-msgid "Confirmatory Factor Analysis"
-msgstr "Konfirmatorische Faktoranalyse"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Second-Order Factor"
-msgstr "Zweite-Ordnung-Faktor"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Second-Order"
-msgstr "Zweite Ordnung"
-
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr "Modelloptionen"
+msgstr "Opções do modelo"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr "Mittelwertstruktur einbeziehen"
+msgstr "Incluir estrutura média"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr "Annahme: Unkorrelierte Faktoren"
+msgstr "Assumir fatores não correlacionados"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr "Exogene Kovariaten fixiert"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Factor Scaling"
-msgstr "Faktorskalierung"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Factor variances"
-msgstr "Faktorvarianzen"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Marker variable"
-msgstr "Markiervariable"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Effects coding"
-msgstr "Effektkodierung"
+msgstr "Fixar covariáveis exógenas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr "Residualkovarianzen"
+msgstr "Covariâncias Residuais"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr "Weitere Ausgabe"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Additional fit measures"
-msgstr "Weitere Anpassungsmaße"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "R-Squared"
-msgstr "R-Quadrat"
+msgstr "Saída Adicional"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr "Implizierte Kovarianzmatrix"
+msgstr "Matriz de covariância implícita"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr "Residualkovarianzmatrix"
+msgstr "Matriz de covariância residual"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
-msgstr "Modifizierungsindizes"
+msgstr "Índices de modificação"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr "Cutoff"
+msgstr "Ponto de corte"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
-msgstr "Lavaan-Syntax anzeigen"
+msgstr "Exibir a sintaxe do lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
-msgstr "Multigruppen-CFA"
+msgstr "Análise Fatorial Confirmatória Multigrupo"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr "Gruppierungsvariable"
+msgstr "Variáveis de agrupamento"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr "Invarianztest"
+msgstr "Teste de invariância"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr "Konfiguration"
+msgstr "Configural"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
-msgstr "Metrisch"
+msgstr "Métrica"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Scalar"
-msgstr "Skalar"
+msgstr "Escalar"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Strict"
-msgstr "Strikt"
+msgstr "Estrita"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr "Niet-passings grafiek"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
-msgstr "Modellabbildung"
+msgstr "Gráfico do modelo"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameters"
-msgstr "Parameter anzeigen"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Standardized"
-msgstr "Standardisiert"
+msgstr "Exibir parâmetros"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
-msgstr "Mittelwerte anzeigen"
+msgstr "Exibir médias"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
-msgstr "Weiteres"
+msgstr "Avançado"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Options"
+msgstr "Opções"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix manifest intercepts to zero"
+msgstr "Fixar os interceptos manifestantes em zero"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix latent intercepts to zero"
+msgstr "Fixar os interceptos latentes em zero"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Omit residual single indicator"
+msgstr "Omitir indicador único residual"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual variances"
+msgstr "Variâncias residual"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate exogenous latents"
+msgstr "Correlacionar latentes exógenas"
+
+#| msgid "Add thresholdds"
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add thresholds"
+msgstr "Adicionar limites"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add scalings parameters"
+msgstr "Adicionar parâmetros de escala"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate dependent variables"
+msgstr "Correlacionar variáveis dependentes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Emulation"
-msgstr "Emulation"
+msgstr "Emulação"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
-msgstr "Keine"
+msgstr "Nenhum"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
@@ -181,36 +158,20 @@ msgid "EQS"
 msgstr "EQS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Error calculation"
-msgstr "Fehlerberechnung"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "CI width"
-msgstr "KI-Breite"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Method"
-msgstr "Methode"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
-msgstr "Standard"
+msgstr "Padrão"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr "Robust"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap CI"
-msgstr "Bootstrap KI"
+msgstr "Robusto"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
-msgstr "Bootstrap-Stichprobe"
+msgstr "Amostras de Bootstrap"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr "Schätzer"
+msgstr "Estimador"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
@@ -238,304 +199,350 @@ msgstr "DWLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
-msgstr "Standardisierung"
+msgstr "Padronização"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
-msgstr "Latente Variablen"
+msgstr "Latentes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "Alle"
+msgstr "Todas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No X"
-msgstr "Kein X"
+msgstr "Sem X"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Options"
-msgstr "Optionen"
+msgid "Second-Order Factor"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Fix manifest intercepts to zero"
-msgstr "Manifeste Konstanten auf 0 fixieren"
+msgid "Factor Scaling"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Fix latent intercepts to zero"
-msgstr "Latente Konstanten auf 0 fixieren"
+msgid "Factor variances"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Omit residual single indicator"
-msgstr "Residuellen Einzel-Indikator weglassen"
+msgid "Marker variable"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Residual variances"
-msgstr "Residualvarianz"
+msgid "Effects coding"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Correlate exogenous latents"
-msgstr "Exogene latente Variablen korrelieren"
+msgid "R-Squared"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Add thresholds"
-msgstr "Schwellenwerte hinzufügen"
+msgid "Error calculation"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Add scalings parameters"
-msgstr "Skalenparameter hinzufügen"
+msgid "CI width"
+msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Correlate dependent variables"
-msgstr "Abhängige Variablen korrelieren"
+msgid "Method"
+msgstr ""
 
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap CI"
+msgstr ""
+
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
-msgstr "Variablen"
+msgstr "Variáveis"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors"
-msgstr "Faktorenanzahl"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
-msgstr "Parallel-Analyse"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues"
-msgstr "Eigenwerte"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues above"
-msgstr "Eigenwaarden boven"
+msgstr ""
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
-msgstr "Manuell"
+msgstr "Manual"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr "Faktorenanzahl"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Estimation method"
-msgstr "Schätzmethode"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
-msgstr "Minimum Residuum"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"
-msgstr "Maximum-Likelihood"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
-msgstr "Hauptachsenmethode"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"
-msgstr "Methode der kleinsten Quadrate"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
-msgstr "Gewichtete kleinste Quadrate"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
-msgstr "Generalisierte kleinste Quadrate"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
-msgstr "Minimum Chi-Quadrat"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"
-msgstr "Minimum Rang"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
-msgstr "Rotation"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Orthogonal"
-msgstr "Orthogonal"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "none"
-msgstr "keine"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
-msgstr "Schief"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
-msgstr "Basiere Analyse auf"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Correlation matrix"
-msgstr "Korrelationsmatrix"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Covariance matrix"
-msgstr "Kovarianzmatrix"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
-msgstr "Ausgabeoptionen"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Highlight"
-msgstr "Markieren"
+msgstr ""
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
-msgstr "Tabellen"
+msgstr "Tabelas"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Structure matrix"
-msgstr "Strukturmatrix"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor correlations"
-msgstr "Faktorkorrelationen"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
-msgstr "Extra pas indices"
+msgstr ""
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
-msgstr "Abbildungen"
+msgstr "Diagramas"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
-msgstr "Pfaddiagramm"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Scree plot"
-msgstr "Screeplot"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr "Annahmeprüfungen"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
-msgstr "KMO-Test"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
-msgstr "Bartletts Test"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr "Fehlende Werte"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Fälle paarweise ausschließen"
+msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
-msgstr "Fälle listenweise ausschließen"
+msgstr ""
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
-msgstr "Variablen"
+msgstr "Variáveis"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components"
-msgstr "Anzahl an Komponenten"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
-msgstr "Parallel analyse"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues"
-msgstr "Eigenwerte"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
-msgstr "Eigenwerte darüber"
+msgstr ""
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
-msgstr "Manuell"
+msgstr "Manual"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of components"
-msgstr "Anzahl an Komponenten"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"
-msgstr "Rotation"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Orthogonal"
-msgstr "Orthogonal"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "none"
-msgstr "keine"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
-msgstr "Schief"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"
-msgstr "Basiere Dekomposition auf"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"
-msgstr "Korrelationsmatrix"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Covariance matrix"
-msgstr "Kovarianzmatrix"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
-msgstr "Ausgabeoptionen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Highlight"
-msgstr "Markieren"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Table"
-msgstr "Tabelle"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Factor correlations"
-msgstr "Factorkorrelationen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Plots"
-msgstr "Abbildungen"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Path diagram"
-msgstr "Pfaddiagramm"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Scree plot"
-msgstr "Screeplot"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr "Fehlende Werte"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Fälle paarweise ausschließen"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
-msgstr "Fälle listenweise ausschließen"
+msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr "PC-Scores zu Daten hinzufügen"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Highlight"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order"
+msgstr ""
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional fit measures"
+msgstr "Medidas adicionais de ajuste"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "none"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "none"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Table"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Factor correlations"
+msgstr ""
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Plots"
+msgstr "Diagramas"
+
+msgctxt "Description|"
+msgid "Factor"
+msgstr ""
+
+msgctxt "Description|"
+msgid ""
+"This module offers the Principal Component, Confirmatory and Exploratory "
+"Factor analyses"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Principal Component Analysis"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Exploratory Factor Analysis"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Confirmatory Factor Analysis"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardized"
+msgstr ""

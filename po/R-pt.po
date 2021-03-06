@@ -1,25 +1,39 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspFactor 0.15.0\n"
+"Project-Id-Version: R 3.6.1\n"
+"Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-06 14:09\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2020-12-02 21:29+0000\n"
+"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
+"jaspFactor/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Source-Language: American English\n"
+"X-Qt-Contexts: true\n"
 
-
+#, fuzzy
 msgid "Second-Order"
+msgstr "Fator de segunda ordem"
+
+msgid ""
+"The model could not be estimated. Ensure that factors have at least 2 "
+"observed variables."
 msgstr ""
 
-msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgid ""
+"The model could not be estimated. A factor with less than 2 variables was "
+"added in Second-Order."
 msgstr ""
 
-msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
-msgstr ""
-
-msgid "The model could not be estimated. Error message: \n\n %s"
+msgid ""
+"The model could not be estimated. Error message: \n"
+"\n"
+" %s"
 msgstr ""
 
 msgid "The model is not admissible: %s"
@@ -31,17 +45,20 @@ msgstr ""
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr ""
 
+#, fuzzy
 msgid "Model fit"
-msgstr ""
+msgstr "Gráfico do modelo"
 
 msgid "Chi-square test"
 msgstr ""
 
+#, fuzzy
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
+#, fuzzy
 msgid "df"
-msgstr ""
+msgstr "gl:"
 
 msgid "p"
 msgstr ""
@@ -49,29 +66,35 @@ msgstr ""
 msgid "Baseline model"
 msgstr ""
 
+#, fuzzy
 msgid "Factor model"
-msgstr ""
+msgstr "Fatores"
 
+#, fuzzy
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Medidas adicionais de ajuste"
 
+#, fuzzy
 msgid "Fit indices"
-msgstr ""
+msgstr "Ocultar índices baixos"
 
 msgid "Index"
 msgstr ""
 
+#, fuzzy
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 msgid "Information criteria"
 msgstr ""
 
+#, fuzzy
 msgid "Other fit measures"
-msgstr ""
+msgstr "Medidas adicionais de ajuste"
 
+#, fuzzy
 msgid "Metric"
-msgstr ""
+msgstr "Métrica"
 
 msgid "Comparative Fit Index (CFI)"
 msgstr ""
@@ -142,14 +165,16 @@ msgstr ""
 msgid "Expected cross validation index (ECVI)"
 msgstr ""
 
+#, fuzzy
 msgid "Parameter estimates"
-msgstr ""
+msgstr "Parâmetros"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 
+#, fuzzy
 msgid "Factor"
-msgstr ""
+msgstr "Fatores"
 
 msgid "Indicator"
 msgstr ""
@@ -157,20 +182,24 @@ msgstr ""
 msgid "Symbol"
 msgstr ""
 
+#, fuzzy
 msgid "Estimate"
-msgstr ""
+msgstr "Estimativas"
 
+#, fuzzy
 msgid "Std. Error"
-msgstr ""
+msgstr "Erro padrão"
 
+#, fuzzy
 msgid "z-value"
-msgstr ""
+msgstr "Valor"
 
 msgid "Lower"
 msgstr ""
 
+#, fuzzy
 msgid "%s%% Confidence Interval"
-msgstr ""
+msgstr "Intervalo de Confiança"
 
 msgid "Upper"
 msgstr ""
@@ -178,32 +207,41 @@ msgstr ""
 msgid "Std. Est. (%s)"
 msgstr ""
 
+#, fuzzy
 msgid "Second-order factor loadings"
-msgstr ""
+msgstr "Fator de segunda ordem"
 
+#, fuzzy
 msgid "Factor variances"
-msgstr ""
+msgstr "Variâncias latentes"
 
+#, fuzzy
 msgid "Factor Covariances"
-msgstr ""
+msgstr "Covariâncias latentes"
 
+#, fuzzy
 msgid "Residual variances"
-msgstr ""
+msgstr "Variâncias residual"
 
+#, fuzzy
 msgid "Residual covariances"
-msgstr ""
+msgstr "Covariâncias residual"
 
+#, fuzzy
 msgid "Factor Intercepts"
-msgstr ""
+msgstr "Interceptos"
 
+#, fuzzy
 msgid "Intercepts"
-msgstr ""
+msgstr "Interceptos"
 
+#, fuzzy
 msgid "Modification Indices"
-msgstr ""
+msgstr "Índices de modificação"
 
+#, fuzzy
 msgid "Cross-loadings"
-msgstr ""
+msgstr "Cargas"
 
 msgid "Mod. Ind."
 msgstr ""
@@ -211,29 +249,37 @@ msgstr ""
 msgid "EPC"
 msgstr ""
 
+#, fuzzy
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "Fator de segunda ordem"
 
+#, fuzzy
 msgid "Implied covariance matrices"
-msgstr ""
+msgstr "Matriz de covariância implícita"
 
+#, fuzzy
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Matriz de covariância implícita"
 
+#, fuzzy
 msgid "Residual covariance matrices"
-msgstr ""
+msgstr "Matriz de covariância residual"
 
+#, fuzzy
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Matriz de covariância residual"
 
+#, fuzzy
 msgid "Plots"
-msgstr ""
+msgstr "Diagramas"
 
+#, fuzzy
 msgid "Model plots"
-msgstr ""
+msgstr "Gráfico do modelo"
 
+#, fuzzy
 msgid "Model plot"
-msgstr ""
+msgstr "Gráfico do modelo"
 
 msgid "Misfit plots"
 msgstr ""
@@ -241,14 +287,16 @@ msgstr ""
 msgid "Misfit plot"
 msgstr ""
 
+#, fuzzy
 msgid "Model syntax"
-msgstr ""
+msgstr "Gráfico do modelo"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr ""
 
+#, fuzzy
 msgid "Not enough valid cases (%i) to run this analysis"
-msgstr ""
+msgstr "O sistema travou ao tentar executar esta análise ..."
 
 msgid "Data not valid: variance is zero in each row"
 msgstr ""
@@ -259,7 +307,9 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid "Estimation failed. \nInternal error message: %s"
+msgid ""
+"Estimation failed. \n"
+"Internal error message: %s"
 msgstr ""
 
 msgid "No components with an eigenvalue >"
@@ -283,8 +333,9 @@ msgstr ""
 msgid "<em>Warning:</em>"
 msgstr ""
 
+#, fuzzy
 msgid "Factor Loadings"
-msgstr ""
+msgstr "Cargas"
 
 msgid "No rotation method applied."
 msgstr ""
@@ -292,8 +343,9 @@ msgstr ""
 msgid "Applied rotation method is %s."
 msgstr ""
 
+#, fuzzy
 msgid "Factor %i"
-msgstr ""
+msgstr "Fatores"
 
 msgid "Uniqueness"
 msgstr ""
@@ -304,38 +356,48 @@ msgstr ""
 msgid "Factor Characteristics"
 msgstr ""
 
+#, fuzzy
 msgid "SumSq. Loadings"
-msgstr ""
+msgstr "Cargas"
 
 msgid "Proportion var."
 msgstr ""
 
+#, fuzzy
 msgid "Cumulative"
-msgstr ""
+msgstr "Emulação"
 
+#, fuzzy
 msgid "Factor Correlations"
-msgstr ""
+msgstr "Correção"
 
+#, fuzzy
 msgid "Additional fit indices"
-msgstr ""
+msgstr "Medidas adicionais de ajuste"
 
+#, fuzzy
 msgid "RMSEA"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
 msgstr ""
 
+#, fuzzy
 msgid "TLI"
-msgstr ""
+msgstr "TLI"
 
+#, fuzzy
 msgid "BIC"
+msgstr "BIC"
+
+msgid ""
+"Screeplot not available. \n"
+"Internal error message: %s"
 msgstr ""
 
-msgid "Screeplot not available. \nInternal error message: %s"
-msgstr ""
-
+#, fuzzy
 msgid "Data"
-msgstr ""
+msgstr "Dados"
 
 msgid "Simulated (95th quantile)"
 msgstr ""
@@ -346,17 +408,22 @@ msgstr ""
 msgid "Path Diagram"
 msgstr ""
 
+#, fuzzy
 msgid "Component Loadings"
-msgstr ""
+msgstr "Componentes"
 
 msgid "Eigenvalue"
 msgstr ""
 
+#, fuzzy
 msgid "Component Correlations"
-msgstr ""
+msgstr "Correções de Homogeneidade"
 
+#, fuzzy
 msgid "Scree plot"
-msgstr ""
+msgstr "Diagrama de barra"
 
+#, fuzzy
 msgid "Component"
-msgstr ""
+msgstr "Componentes"
+

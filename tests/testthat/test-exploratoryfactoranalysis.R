@@ -18,6 +18,7 @@ options$incl_structure <- TRUE
 options$numberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
+options$factorLoadingsSort <- "sortByVariables"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon", 
                           "debCollin1", "debEqual1")
 set.seed(1)
@@ -98,3 +99,49 @@ test_that("Missing values works", {
   jaspTools::expect_equal_tables(table, list("Model", 0.491396758561133, 2L, 0.782158104440787), label = "listwise")
 })
 
+
+
+options$factorLoadingsSort <- "sortByVariables"
+
+
+test_that("factorLoadingsSort sort the factor loadings table", {
+
+  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options$orthogonalSelector <- "varimax"
+  options$highlightText <- 0.2
+  options$variables <- paste0("x", 1:9)
+
+  reference <- list(
+    sortByFactorSize = list(
+      0.859092745287366, "", "", 0.246269423771584, "x5", 0.832032514222841,
+      "", "", 0.27206434823954, "x4", 0.798985079015342, 0.213747389751454,
+      "", 0.308644745749111, "x6", 0.279356098904291, 0.612821903382293,
+      "", 0.523245992219826, "x1", "", 0.659769507411633, "", 0.546549851738645,
+      "x3", "", 0.493809804203504, "", 0.744772821204617, "x2", "",
+      0.414642352102081, 0.521227164426046, 0.539538616482869, "x9",
+      "", "", 0.709321543667037, 0.481445404925259, "x7", "", "",
+      0.698776373366381, 0.479827748357628, "x8"
+    ),
+    sortByVariables = list(
+      0.279356098904291, 0.612821903382293, "", 0.523245992219826, "x1",
+      "", 0.493809804203504, "", 0.744772821204617, "x2", "", 0.659769507411633,
+      "", 0.546549851738645, "x3", 0.832032514222841, "", "", 0.27206434823954,
+      "x4", 0.859092745287366, "", "", 0.246269423771584, "x5", 0.798985079015342,
+      0.213747389751454, "", 0.308644745749111, "x6", "", "", 0.709321543667037,
+      0.481445404925259, "x7", "", "", 0.698776373366381, 0.479827748357628,
+      "x8", "", 0.414642352102081, 0.521227164426046, 0.539538616482869,
+      "x9"
+    )
+  )
+
+  for (factorLoadingsSort in c("sortByFactorSize", "sortByVariables")) {
+    options$factorLoadingsSort <- factorLoadingsSort
+
+    set.seed(123)
+    results <- runAnalysis("ExploratoryFactorAnalysis", "holzingerswineford.csv", options)
+
+    table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+    jaspTools::expect_equal_tables(table, reference[[factorLoadingsSort]], label = sprintf("factorLoadingsSort = %s", factorLoadingsSort))
+  }
+
+})

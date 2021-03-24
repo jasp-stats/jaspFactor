@@ -219,39 +219,53 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .efaLoadingsTable <- function(modelContainer, dataset, options, ready) {
-  if (!is.null(modelContainer[["loatab"]])) return()
-  loatab <- createJaspTable(gettext("Factor Loadings"))
-  loatab$dependOn("highlightText")
-  loatab$position <- 2
-  loatab$addColumnInfo(name = "var", title = "", type = "string")
-  modelContainer[["loatab"]] <- loatab
 
-  if (!ready || modelContainer$getError()) return()
+  if (!is.null(modelContainer[["loatab"]]))
+    return()
+
+  loatab <- createJaspTable(gettext("Factor Loadings"))
+  loatab$dependOn(c("highlightText", "factorLoadingsSort"))
+  loatab$position <- 2
+
+  loatab$addColumnInfo(name = "var", title = "", type = "string")
+
+  if (!ready || modelContainer$getError()) {
+    modelContainer[["loatab"]] <- loatab
+    return()
+  }
 
   efaResults <- modelContainer[["model"]][["object"]]
-
-  if (options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none") {
-    loatab$addFootnote(message = gettext("No rotation method applied."))
-  } else {
-    loatab$addFootnote(message = gettextf("Applied rotation method is %s.", ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector)))
-  }
-
   loads <- loadings(efaResults)
-  loatab[["var"]] <- .unv(rownames(loads))
 
-  for (i in 1:ncol(loads)) {
-    # fix weird "all true" issue
-    if (all(abs(loads[, i]) < options$highlightText)) {
-      loatab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "string")
-      loatab[[paste0("c", i)]] <- rep("", nrow(loads))
-    } else {
-      loatab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "number", format = "dp:3")
-      loatab[[paste0("c", i)]] <- ifelse(abs(loads[, i]) < options$highlightText, NA, loads[ ,i])
-    }
-  }
+  for (i in seq_len(ncol(loads)))
+    loatab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "number", format = "dp:3")
 
   loatab$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
-  loatab[["uni"]] <- efaResults$uniquenesses
+
+  if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
+    loatab$addFootnote(message = gettext("No rotation method applied."))
+  } else {
+    loatab$addFootnote(message = gettextf("Applied rotation method is %s.", options[[if(options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]))
+  }
+
+  loadings <- unclass(loads)
+  loadings[abs(loads) < options[["highlightText"]]] <- NA_real_
+
+  df <- cbind.data.frame(
+    var = rownames(loads),
+    as.data.frame(loadings),
+    uni = efaResults[["uniquenesses"]]
+  )
+  rownames(df) <- NULL
+  colnames(df)[2:(1+ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
+
+  # "sortByVariables" is the default output
+  if (options[["factorLoadingsSort"]] == "sortByFactorSize")
+    df <- df[do.call(order, c(abs(df[2:(ncol(df)-1)]), na.last = TRUE, decreasing = TRUE)), ]
+
+  loatab$setData(df)
+  modelContainer[["loatab"]] <- loatab
+
 }
 
 .efaStructureTable <- function(modelContainer, dataset, options, ready) {

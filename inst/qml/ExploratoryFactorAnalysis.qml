@@ -155,8 +155,8 @@ Form
 			{
 				name: "factorLoadingsSort"
 				title: qsTr("Order factor loadings by")
-				RadioButton	{ name: "sortByVariables";	label: qsTr("variables")							}
-				RadioButton	{ name: "sortByVariables";	label: qsTr("factor size");		checked: true		}
+				RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
+				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
 			}
 
 			Group

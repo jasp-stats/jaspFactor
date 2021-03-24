@@ -16,11 +16,6 @@
 #
 
 ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
-  jaspResults[["optionslist"]] <- createJaspHtml(paste(capture.output(str(options)), collapse = "\n"),
-                                                 class = "jasp-code", position = 7, title = "Options")
-}
-
-ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset

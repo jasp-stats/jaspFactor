@@ -6,6 +6,7 @@ context("Principal Component Analysis")
 # - Parallel analysis / manual
 # - slider
 
+
 options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$eigenValuesBox <- 0.95

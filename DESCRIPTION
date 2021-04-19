@@ -6,7 +6,7 @@ Date: 2020-07-29
 Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
-Description: This module offers the Principal Component, Confirmatory and Exploratory Factor analyses
+Description: Explore hidden structure in the data
 License: GPL (>= 2)
 Encoding: UTF-8
 Imports:

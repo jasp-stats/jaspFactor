@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2020-12-10 16:26\n"
 "PO-Revision-Date: 2021-04-23 19:32+0000\n"
-"Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
+"Last-Translator: Pablo Augusto Vailati <pvailati@uade.edu.ar>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/es/>\n"
 "Language: es\n"
@@ -20,35 +20,42 @@ msgid ""
 "The model could not be estimated. Ensure that factors have at least 2 "
 "observed variables."
 msgstr ""
+"No se pudo estimar el modelo. Asegúrese de que los factores tengan al menos "
+"2 variables observadas."
 
 msgid ""
 "The model could not be estimated. A factor with less than 2 variables was "
 "added in Second-Order."
 msgstr ""
+"No se pudo estimar el modelo. Se agregó un factor con menos de 2 variables "
+"en el segundo orden."
 
 msgid ""
 "The model could not be estimated. Error message: \n"
 "\n"
 " %s"
 msgstr ""
+"El modelo no se pudo estimar. Mensaje de error: \n"
+"\n"
+"%s"
 
 msgid "The model is not admissible: %s"
-msgstr ""
+msgstr "El modelo no es admisible:% s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr ""
+msgstr "El modelo no se pudo estimar debido a la no-convergencia."
 
 msgid "The model could not be estimated: No degrees of freedom left."
-msgstr ""
+msgstr "No se pudo estimar el modelo: No quedan grados de libertad."
 
 msgid "Model fit"
-msgstr ""
+msgstr "Ajuste del modelo"
 
 msgid "Chi-square test"
-msgstr ""
+msgstr "Prueba Chi cuadrado"
 
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
 msgid "df"
 msgstr "gl"
@@ -57,85 +64,85 @@ msgid "p"
 msgstr "p"
 
 msgid "Baseline model"
-msgstr ""
+msgstr "Modelo base"
 
 msgid "Factor model"
-msgstr ""
+msgstr "Modelo factorial"
 
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Medidas de ajuste adicionales"
 
 msgid "Fit indices"
-msgstr ""
+msgstr "Índices de ajuste"
 
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 msgid "Information criteria"
-msgstr ""
+msgstr "Criterios de información"
 
 msgid "Other fit measures"
-msgstr ""
+msgstr "Otras medidas de ajuste"
 
 msgid "Metric"
-msgstr ""
+msgstr "Métrica"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr ""
+msgstr "Índice de Ajuste Comparativo (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr ""
+msgstr "Índice de Tucker-Lewis (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr ""
+msgstr "Índice de ajuste no normalizado de Bentler-Bonett (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr ""
+msgstr "Índice de ajuste normalizado de Bentler-Bonett (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr ""
+msgstr "Índice de ajuste normalizado de parsimonia (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr ""
+msgstr "Índice de ajuste relativo de Bollen (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr ""
+msgstr "Índice de ajuste incremental de Bollen (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
+msgstr "Índice de no centralidad relativa (RNI)"
 
 msgid "Log-likelihood"
-msgstr ""
+msgstr "Log-likelihood"
 
 msgid "Number of free parameters"
-msgstr ""
+msgstr "Número de parámetros libres"
 
 msgid "Akaike (AIC)"
-msgstr ""
+msgstr "Akaike (AIC)"
 
 msgid "Bayesian (BIC)"
-msgstr ""
+msgstr "Bayesiano (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr ""
+msgstr "Bayesiano ajustado por tamaño de muestra (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr ""
+msgstr "Error cuadrático medio de aproximación (RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr ""
+msgstr "RMSEA 90 %% IC límite inferior"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr ""
+msgstr "RMSEA 90 %% IC límite superior"
 
 msgid "RMSEA p-value"
-msgstr ""
+msgstr "Valor p de RMSEA"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr ""
+msgstr "Raíz estandarizada residual cuadrada media (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
 msgstr ""

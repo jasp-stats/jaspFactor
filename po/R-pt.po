@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-06 14:09\n"
-"PO-Revision-Date: 2021-04-20 13:29+0000\n"
-"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
+"PO-Revision-Date: 2021-04-26 20:32+0000\n"
+"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/pt/>\n"
 "Language: pt\n"
@@ -194,12 +194,14 @@ msgstr "Erro padrão"
 msgid "z-value"
 msgstr "Valor"
 
+#, fuzzy
 msgid "Lower"
 msgstr "Inferior"
 
 msgid "%s%% Confidence Interval"
 msgstr "Intervalo de Confiança"
 
+#, fuzzy
 msgid "Upper"
 msgstr "Superior"
 

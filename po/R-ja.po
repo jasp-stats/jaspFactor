@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
 "POT-Creation-Date: 2020-12-10 16:26\n"
-"PO-Revision-Date: 2021-02-21 04:50+0000\n"
+"PO-Revision-Date: 2021-04-20 13:29+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/ja/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 msgid "Second-Order"
 msgstr "二次"
@@ -35,7 +35,7 @@ msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "モデルは推定できませんでした: 自由度が残っていません。"
 
 msgid "Model fit"
-msgstr ""
+msgstr "モデル適合"
 
 msgid "Chi-square test"
 msgstr ""
@@ -62,7 +62,7 @@ msgid "Fit indices"
 msgstr "適合度指標"
 
 msgid "Index"
-msgstr ""
+msgstr "指標"
 
 msgid "Value"
 msgstr "値"
@@ -89,13 +89,13 @@ msgid "Bentler-Bonett Normed Fit Index (NFI)"
 msgstr "Bentler-Bonettの正規化指標(NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr ""
+msgstr "倹約正規化適合度指標(PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
 msgstr "Bollenの相対適合度指標(RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr ""
+msgstr "ボレンのインクリメンタルフィット指数(IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "相対的非中心性指数(RNI)"
@@ -116,7 +116,7 @@ msgid "Sample-size adjusted Bayesian (SSABIC)"
 msgstr "サンプルサイズ調整済みベイジアン情報量規準(SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr ""
+msgstr "二乗平均平方根誤差(RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
 msgstr "RMSEA 90% CI 下限"
@@ -131,7 +131,7 @@ msgid "Standardized root mean square residual (SRMR)"
 msgstr "標準化二乗平均平方差差(SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
-msgstr ""
+msgstr "Hoelterの臨界N（％s = .05）"
 
 msgid "Hoelter's critical N (%s = .01)"
 msgstr "HoelterのN (%s = .01)"
@@ -143,7 +143,7 @@ msgid "McDonald fit index (MFI)"
 msgstr "マクドナルドの適合度指標(MFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr ""
+msgstr "期待される交差検証指数（ECVI）"
 
 msgid "Parameter estimates"
 msgstr "パラメータ推定"
@@ -155,7 +155,7 @@ msgid "Factor"
 msgstr "要因"
 
 msgid "Indicator"
-msgstr ""
+msgstr "指標"
 
 msgid "Symbol"
 msgstr ""
@@ -221,7 +221,7 @@ msgid "Implied covariance matrices"
 msgstr ""
 
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "暗黙の共分散行列"
 
 msgid "Residual covariance matrices"
 msgstr ""

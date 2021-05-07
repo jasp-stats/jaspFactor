@@ -1,19 +1,23 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-03-18 03:18+0000\n"
+"Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Factor"
 msgstr "Factor"
 
-#, fuzzy
 msgctxt "Description|"
 msgid ""
 "This module offers the Principal Component, Confirmatory and Exploratory "
@@ -22,27 +26,22 @@ msgstr ""
 "Este módulo ofrece los análisis factoriales exploratorios, confirmatorios y "
 "de componente principal."
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr "Análisis de componentes principales"
+msgstr "Análisis de componente principal"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
 msgstr "Análisis factorial exploratorio"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
 msgstr "Análisis factorial confirmatorio"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
 msgstr "Factor de segundo orden"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
 msgstr "Segundo orden"
@@ -63,22 +62,18 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
 msgstr "Fijar covariables exógenas"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor Scaling"
 msgstr "Escala de factores"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
 msgstr "Variaciones de factores"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr "Variable de marcador"
+msgstr "Marcar variable"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
 msgstr "Codificación de efectos"
@@ -91,12 +86,10 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
 msgstr "Output adicional"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
 msgstr "Medidas de ajuste adicionales"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
 msgstr "R-cuadrado"
@@ -153,10 +146,9 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
 msgstr "Gráficos"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr "Parcela inadaptada"
+msgstr "Cuadro de discrepancias"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
@@ -166,7 +158,6 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameters"
 msgstr "Mostrar parámetros"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
 msgstr "Estandarizado"
@@ -195,17 +186,14 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
 msgstr "EQS"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
 msgstr "Cálculo de error"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI width"
 msgstr "Ancho CI"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Method"
 msgstr "Método"
@@ -218,7 +206,6 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
 msgstr "Robusto"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap CI"
 msgstr "Bootstrap CI"
@@ -307,317 +294,254 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
 msgstr "Correlacionar variables dependientes"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
 msgstr "Variables"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors"
-msgstr "Numero de factores"
+msgstr "Número de factores"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
 msgstr "Análisis paralelo"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues"
 msgstr "Autovalores"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues above"
 msgstr "Autovalores arriba"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
 msgstr "Manual"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr "Numero de factores"
+msgstr "Número de factores"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Estimation method"
 msgstr "Método de estimación"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
 msgstr "Mínimo residual"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"
-msgstr "Máxima verosimilitud"
+msgstr "Probabilidad máxima"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
 msgstr "Factorización del eje principal"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"
 msgstr "Mínimos cuadrados ordinarios"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
 msgstr "Mínimos cuadrados ponderados"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
 msgstr "Mínimos cuadrados generalizados"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
 msgstr "Chi-cuadrado mínimo"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"
 msgstr "Rango mínimo"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
 msgstr "Rotación"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Orthogonal"
 msgstr "Ortogonal"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "none"
-msgstr "ninguna"
+msgstr "ninguno"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
 msgstr "Oblicuo"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
-msgstr "Análisis de base en"
+msgstr "Basar análisis en"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Correlation matrix"
 msgstr "Matriz de correlación"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Covariance matrix"
 msgstr "Matriz de covarianza"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
 msgstr "Opciones de salida"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Highlight"
-msgstr "Realce"
+msgstr "Resaltar"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
-msgstr "Mesas"
+msgstr "Tablas"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Structure matrix"
 msgstr "Matriz de estructura"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor correlations"
 msgstr "Correlaciones de factores"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
 msgstr "Índices de ajuste adicionales"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
-msgstr "Parcelas"
+msgstr "Gráficos"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
 msgstr "Diagrama de ruta"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Scree plot"
 msgstr "Gráfico de sedimentación"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
 msgstr "Verificaciones de supuestos"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
 msgstr "Prueba de KMO"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
 msgstr "Prueba de Bartlett"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr "Valores faltantes"
+msgstr "Valores perdidos"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
 msgstr "Excluir casos por pares"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
 msgstr "Excluir casos según la lista"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
 msgstr "Variables"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components"
 msgstr "Numero de componentes"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
 msgstr "Análisis paralelo"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues"
 msgstr "Autovalores"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
 msgstr "Autovalores arriba"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
 msgstr "Manual"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of components"
 msgstr "Numero de componentes"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"
 msgstr "Rotación"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Orthogonal"
 msgstr "Ortogonal"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "none"
 msgstr "ninguna"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
 msgstr "Oblicuo"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"
-msgstr "Descomposición base en"
+msgstr "Descomposición de la base en"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"
 msgstr "Matriz de correlación"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Covariance matrix"
 msgstr "Matriz de covarianza"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
 msgstr "Opciones de salida"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Highlight"
-msgstr "Realce"
+msgstr "Resaltar"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Table"
-msgstr "Mesa"
+msgstr "Tabla"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Factor correlations"
 msgstr "Correlaciones de factores"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
-msgstr "Parcelas"
+msgstr "Gráficos"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Path diagram"
 msgstr "Diagrama de ruta"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Scree plot"
 msgstr "Gráfico de sedimentación"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr "Valores faltantes"
+msgstr "Valores perdidos"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
 msgstr "Excluir casos por pares"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
 msgstr "Excluir casos según la lista"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
 msgstr "Agregar puntajes de PC a los datos"

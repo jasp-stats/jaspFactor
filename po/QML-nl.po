@@ -13,12 +13,6 @@ msgid "Factor"
 msgstr "Factor"
 
 msgctxt "Description|"
-msgid ""
-"This module offers the Principal Component, Confirmatory and Exploratory "
-"Factor analyses"
-msgstr ""
-
-msgctxt "Description|"
 msgid "Principal Component Analysis"
 msgstr "Principale Componentenanalyse"
 
@@ -537,3 +531,7 @@ msgstr "Sluit waarnemingen uit per rij"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
 msgstr "Voeg PC scores toe aan data"
+
+msgctxt "Description|"
+msgid "Explore hidden structure in the data"
+msgstr ""

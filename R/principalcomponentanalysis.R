@@ -21,7 +21,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   # Read dataset
   dataset <- .pcaReadData(dataset, options)
   ready   <- length(options$variables) > 1
-  
+
   if (ready)
     .pcaCheckErrors(dataset, options)
 
@@ -76,7 +76,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     # Check for correlation anomalies
     function() {
       P <- ncol(dataset)
-      
+
       # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
       error_variables <- .unv(names(Np)[Np < P])
@@ -84,7 +84,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
         return(gettextf("Data not valid: too many missing values in variable(s) %s.",
                         paste(error_variables, collapse = ", ")))
       }
-      
+
       S <- cor(dataset)
       if (all(S == 1)) {
         return(gettext("Data not valid: all variables are collinear"))
@@ -124,7 +124,8 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (inherits(pcaResult, "try-error")) {
     errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(pcaResult, "condition")$message)
-    modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
+    modelContainer$setError(errmsg)
+    # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
 
   modelContainer[["model"]] <- createJaspState(pcaResult)
@@ -180,7 +181,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 .pcaLoadingsTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["loatab"]])) return()
   loatab <- createJaspTable(gettext("Component Loadings"))
-  loatab$dependOn("highlightText")
+  loatab$dependOn(c("highlightText", "componentLoadingsSort"))
   loatab$position <- 2
   loatab$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["loatab"]] <- loatab
@@ -188,32 +189,41 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!ready || modelContainer$getError()) return()
 
   pcaResults <- modelContainer[["model"]][["object"]]
+  loads <- loadings(pcaResults)
 
-  coltitle <- ifelse(options$rotationMethod == "orthogonal", "PC", "RC")
-  if (options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none") {
+  coltitle <- if (options[["rotationMethod"]] == "orthogonal") "PC" else "RC"
+  for (i in seq_len(ncol(loads)))
+    loatab$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "number", format = "dp:3")
+
+  loatab$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
+
+  if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
     loatab$addFootnote(message = gettext("No rotation method applied."))
   } else {
     loatab$addFootnote(
-      message = gettextf("Applied rotation method is %s.", ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector))
+      message = gettextf("Applied rotation method is %s.",
+                         if (options[["rotationMethod"]] == "orthogonal") options[["orthogonalSelector"]] else options[["obliqueSelector"]])
     )
   }
 
-  loads <- loadings(pcaResults)
-  loatab[["var"]] <- .unv(rownames(loads))
+  loadings <- unclass(loads)
+  loadings[abs(loads) < options[["highlightText"]]] <- NA_real_
 
-  for (i in 1:ncol(loads)) {
-    # fix weird "all true" issue
-    if (all(abs(loads[, i]) < options$highlightText)) {
-      loatab$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "string")
-      loatab[[paste0("c", i)]] <- rep("", nrow(loads))
-    } else {
-      loatab$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "number", format = "dp:3")
-      loatab[[paste0("c", i)]] <- ifelse(abs(loads[, i]) < options$highlightText, NA, loads[ ,i])
-    }
-  }
+  df <- cbind.data.frame(
+    var = rownames(loads),
+    as.data.frame(loadings),
+    uni = pcaResults[["uniquenesses"]]
+  )
+  rownames(df) <- NULL
+  colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
-  loatab$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
-  loatab[["uni"]] <- pcaResults$uniquenesses
+  # "sortByVariables" is the default output
+  if (options[["componentLoadingsSort"]] == "sortByComponentSize")
+    df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
+
+  loatab$setData(df)
+  modelContainer[["loatab"]] <- loatab
+
 }
 
 .pcaEigenTable <- function(modelContainer, dataset, options, ready) {
@@ -278,7 +288,8 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   fa <- try(psych::fa.parallel(dataset, plot = FALSE))
   if (inherits(fa, "try-error")) {
     errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pcaResult, "condition")$message)
-    scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
+    scree$setError(errmsg)
+    # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
     return()
   }
 
@@ -294,11 +305,11 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
     ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue"))
-  
- 
+
+
   # dynamic function for point size:
   # the plot looks good with size 3 when there are 10 points (3 + log(10) - log(10) = 3)
-  # with more points, the size will become logarithmically smaller until a minimum of 
+  # with more points, the size will become logarithmically smaller until a minimum of
   # 3 + log(10) - log(200) = 0.004267726
   # with fewer points, they become bigger to a maximum of 3 + log(10) - log(2) = 4.609438
   pointsize <- 3 + log(10) - log(n_col)

@@ -131,6 +131,14 @@ Form
 
 		Group
 		{
+			RadioButtonGroup
+			{
+				name: "componentLoadingsSort"
+				title: qsTr("Order component loadings by")
+				RadioButton	{ name: "sortByComponentSize";	label: qsTr("Component size");	checked: true		}
+				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
+			}
+
 			Group
 			{
 				title: qsTr("Table")

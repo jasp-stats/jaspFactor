@@ -17,7 +17,8 @@ Imports:
   psych,
   qgraph,
   reshape2,
-  semPlot
+  semPlot,
+  GPArotation
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs

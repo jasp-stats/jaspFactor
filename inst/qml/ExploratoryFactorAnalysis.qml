@@ -35,14 +35,14 @@ Form
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		AvailableVariablesList { name: "allVariablesList" }
-        AssignedVariablesList
-        {
-            id: variables
-            name: "variables"
-            title: qsTr("Variables")
-            suggestedColumns: ["scale"]
-            allowedColumns: ["scale"]
-        }
+		AssignedVariablesList
+		{
+			id: variables
+			name: "variables"
+			title: qsTr("Variables")
+			suggestedColumns: ["scale"]
+			allowedColumns: ["scale"]
+		}
 	}
 
 	Group 
@@ -73,14 +73,14 @@ Form
 				indexDefaultValue: 0
 				values: 
 				[
-					{ value: "minres",  label: qsTr("Minimum residual")				},
-					{ value: "ml",      label: qsTr("Maximum likelihood")			},
-					{ value: "pa",      label: qsTr("Principal axis factoring")		},
-					{ value: "ols",     label: qsTr("Ordinary least squares")		},
-					{ value: "wls",     label: qsTr("Weighted least squares") 		},
-					{ value: "gls",     label: qsTr("Generalized least squares")	},
-					{ value: "minchi",  label: qsTr("Minimum chi-square") 			},
-					{ value: "minrank", label: qsTr("Minimum rank")					}
+					{ value: "minres",		label: qsTr("Minimum residual")				},
+					{ value: "ml",			label: qsTr("Maximum likelihood")			},
+					{ value: "pa",			label: qsTr("Principal axis factoring")		},
+					{ value: "ols",			label: qsTr("Ordinary least squares")		},
+					{ value: "wls",			label: qsTr("Weighted least squares") 		},
+					{ value: "gls",			label: qsTr("Generalized least squares")	},
+					{ value: "minchi",		label: qsTr("Minimum chi-square") 			},
+					{ value: "minrank",		label: qsTr("Minimum rank")					}
 				]
 			}
 		}
@@ -90,15 +90,15 @@ Form
 	
 
 	Group
-    {
-        RadioButtonGroup
-        {
-            name: "rotationMethod"
-            title: qsTr("Rotation")
-            RadioButton
-            {
-                value	: "orthogonal"
-                label	: qsTr("Orthogonal")
+	{
+		RadioButtonGroup
+		{
+			name: "rotationMethod"
+			title: qsTr("Rotation")
+			RadioButton
+			{
+				value	: "orthogonal"
+				label	: qsTr("Orthogonal")
 				DropDown
 				{
 					name: "orthogonalSelector"
@@ -112,32 +112,32 @@ Form
 					]
 				}
 			}
-            RadioButton
-            {
-                value	: "oblique"
-                label	: qsTr("Oblique")
-                checked	: true
-                DropDown { name: "obliqueSelector"; values: [ "promax", "oblimin", "simplimax", "bentlerQ", "cluster", "geominQ" ] }
-            }
-        }
+			RadioButton
+			{
+				value	: "oblique"
+				label	: qsTr("Oblique")
+				checked	: true
+				DropDown { name: "obliqueSelector"; values: [ "promax", "oblimin", "simplimax", "bentlerQ", "cluster", "geominQ" ] }
+			}
+		}
 
-        RadioButtonGroup
-        {
-            name: "basedOn"
-            title: qsTr("Base analysis on")
-            RadioButton
-            {
-                value: "correlation"
-                label: qsTr("Correlation matrix")
-                checked: true
-            }
-            RadioButton
-            {
-                value: "covariance"
-                label: qsTr("Covariance matrix")
-            }
-        }
-    }
+		RadioButtonGroup
+		{
+			name: "basedOn"
+			title: qsTr("Base analysis on")
+			RadioButton
+			{
+				value: "correlation"
+				label: qsTr("Correlation matrix")
+				checked: true
+			}
+			RadioButton
+			{
+				value: "covariance"
+				label: qsTr("Covariance matrix")
+			}
+		}
+	}
 
 	Section
 	{
@@ -149,38 +149,46 @@ Form
 			value: 0.4
 		}
 
-        Group
-        {
-            Group
-            {
-                title: qsTr("Tables")
-                CheckBox { name: "incl_structure";		label: qsTr("Structure matrix")			}
-                CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
-                CheckBox { name: "incl_fitIndices";		label: qsTr("Additional fit indices")	}
-            }
-            Group
-            {
-                title: qsTr("Plots")
-                CheckBox { name: "incl_pathDiagram";	label: qsTr("Path diagram")				}
-                CheckBox { name: "incl_screePlot";		label: qsTr("Scree plot")				}
-            }
-        }
+		Group
+		{
+			RadioButtonGroup
+			{
+				name: "factorLoadingsSort"
+				title: qsTr("Order factor loadings by")
+				RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
+				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
+			}
 
-        Group
-        {
-            Group
-            {
-                title: qsTr("Assumption checks")
-                CheckBox { name: "kmotest";     		label: qsTr("KMO test")                 }
-                CheckBox { name: "bartest";     		label: qsTr("Bartlett's test")          }
-            }
-            RadioButtonGroup
-            {
-                name: "missingValues"
-                title: qsTr("Missing Values")
-                RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
-                RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}
-            }
-        }
+			Group
+			{
+				title: qsTr("Tables")
+				CheckBox { name: "incl_structure";		label: qsTr("Structure matrix")			}
+				CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
+				CheckBox { name: "incl_fitIndices";		label: qsTr("Additional fit indices")	}
+			}
+			Group
+			{
+				title: qsTr("Plots")
+				CheckBox { name: "incl_pathDiagram";	label: qsTr("Path diagram")				}
+				CheckBox { name: "incl_screePlot";		label: qsTr("Scree plot")				}
+			}
+		}
+
+		Group
+		{
+			Group
+			{
+				title: qsTr("Assumption checks")
+				CheckBox { name: "kmotest";				label: qsTr("KMO test")					}
+				CheckBox { name: "bartest";				label: qsTr("Bartlett's test")			}
+			}
+			RadioButtonGroup
+			{
+				name: "missingValues"
+				title: qsTr("Missing Values")
+				RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
+				RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}
+			}
+		}
 	}
 }

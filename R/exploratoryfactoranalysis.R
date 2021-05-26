@@ -16,17 +16,12 @@
 #
 
 ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
-  jaspResults[["optionslist"]] <- createJaspHtml(paste(capture.output(str(options)), collapse = "\n"),
-                                                 class = "jasp-code", position = 7, title = "Options")
-}
-
-ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
   dataset <- .efaReadData(dataset, options)
   ready   <- length(options$variables) > 1
-  
+
   if (ready)
     .efaCheckErrors(dataset, options)
 
@@ -85,7 +80,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # Check for correlation anomalies
     function() {
       P <- ncol(dataset)
-      
+
       # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
       error_variables <- .unv(names(Np)[Np < P])
@@ -93,7 +88,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
         return(gettextf("Data not valid: too many missing values in variable(s) %s.",
                         paste(error_variables, collapse = ", ")))
       }
-      
+
       S <- cor(dataset)
       if (all(S == 1)) {
         return(gettext("Data not valid: all variables are collinear"))
@@ -134,7 +129,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (inherits(efaResult, "try-error")) {
     errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(efaResult, "condition")$message)
-    modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
+    modelContainer$setError(errmsg)
+    # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
 
   modelContainer[["model"]] <- createJaspState(efaResult)
@@ -163,24 +159,24 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 # Output functions ----
 .efaKMOtest <- function(modelContainer, dataset, options, ready) {
   if (!options[["kmotest"]] || !is.null(modelContainer[["kmotab"]])) return()
-  
+
   kmotab <- createJaspTable(gettext("Kaiser-Meyer-Olkin test"))
   kmotab$dependOn("kmotest")
   kmotab$addColumnInfo(name = "col", title = "", type = "string")
   kmotab$addColumnInfo(name = "val", title = "MSA", type = "number", format = "dp:3")
   kmotab$position <- -1
   modelContainer[["kmotab"]] <- kmotab
-  
+
   if (!ready) return()
   kmo <- psych::KMO(dataset)
-  
+
   kmotab[["col"]] <- c(gettext("Overall MSA\n"), .unv(names(kmo$MSAi)))
   kmotab[["val"]] <- c(kmo$MSA, kmo$MSAi)
 }
 
 .efaBartlett <- function(modelContainer, dataset, options, ready) {
   if (!options[["bartest"]] || !is.null(modelContainer[["bartab"]])) return()
-  
+
   bartab <- createJaspTable("Bartlett's test")
   bartab$dependOn("bartest")
   bartab$addColumnInfo(name = "chisq", title = "\u03a7\u00b2", type = "number", format = "dp:3")
@@ -188,10 +184,10 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   bartab$addColumnInfo(name = "pval",  title = gettext("p"), type = "number", format = "dp:3;p:.001")
   bartab$position <- 0
   modelContainer[["bartab"]] <- bartab
-  
+
   if (!ready) return()
   bar <- psych::cortest.bartlett(dataset)
-  
+
   bartab[["chisq"]] <- bar[["chisq"]]
   bartab[["df"]]    <- bar[["df"]]
   bartab[["pval"]]  <- bar[["p.value"]]
@@ -224,39 +220,53 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .efaLoadingsTable <- function(modelContainer, dataset, options, ready) {
-  if (!is.null(modelContainer[["loatab"]])) return()
-  loatab <- createJaspTable(gettext("Factor Loadings"))
-  loatab$dependOn("highlightText")
-  loatab$position <- 2
-  loatab$addColumnInfo(name = "var", title = "", type = "string")
-  modelContainer[["loatab"]] <- loatab
 
-  if (!ready || modelContainer$getError()) return()
+  if (!is.null(modelContainer[["loatab"]]))
+    return()
+
+  loatab <- createJaspTable(gettext("Factor Loadings"))
+  loatab$dependOn(c("highlightText", "factorLoadingsSort"))
+  loatab$position <- 2
+
+  loatab$addColumnInfo(name = "var", title = "", type = "string")
+
+  if (!ready || modelContainer$getError()) {
+    modelContainer[["loatab"]] <- loatab
+    return()
+  }
 
   efaResults <- modelContainer[["model"]][["object"]]
-
-  if (options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none") {
-    loatab$addFootnote(message = gettext("No rotation method applied."))
-  } else {
-    loatab$addFootnote(message = gettextf("Applied rotation method is %s.", ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector)))
-  }
-
   loads <- loadings(efaResults)
-  loatab[["var"]] <- .unv(rownames(loads))
 
-  for (i in 1:ncol(loads)) {
-    # fix weird "all true" issue
-    if (all(abs(loads[, i]) < options$highlightText)) {
-      loatab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "string")
-      loatab[[paste0("c", i)]] <- rep("", nrow(loads))
-    } else {
-      loatab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "number", format = "dp:3")
-      loatab[[paste0("c", i)]] <- ifelse(abs(loads[, i]) < options$highlightText, NA, loads[ ,i])
-    }
-  }
+  for (i in seq_len(ncol(loads)))
+    loatab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "number", format = "dp:3")
 
   loatab$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
-  loatab[["uni"]] <- efaResults$uniquenesses
+
+  if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
+    loatab$addFootnote(message = gettext("No rotation method applied."))
+  } else {
+    loatab$addFootnote(message = gettextf("Applied rotation method is %s.", options[[if(options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]))
+  }
+
+  loadings <- unclass(loads)
+  loadings[abs(loads) < options[["highlightText"]]] <- NA_real_
+
+  df <- cbind.data.frame(
+    var = rownames(loads),
+    as.data.frame(loadings),
+    uni = efaResults[["uniquenesses"]]
+  )
+  rownames(df) <- NULL
+  colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
+
+  # "sortByVariables" is the default output
+  if (options[["factorLoadingsSort"]] == "sortByFactorSize")
+    df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
+
+  loatab$setData(df)
+  modelContainer[["loatab"]] <- loatab
+
 }
 
 .efaStructureTable <- function(modelContainer, dataset, options, ready) {
@@ -360,8 +370,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # store in obj
   rmsealo <- if (is.null(efaResults$RMSEA[2])) "." else round(efaResults$RMSEA[2], 3)
   rmseahi <- if (is.null(efaResults$RMSEA[3])) "." else round(efaResults$RMSEA[3], 3)
-  
-  fittab[["RMSEA"]]   <- if (is.null(efaResults$RMSEA[1])) NA  else efaResults$RMSEA[1] 
+
+  fittab[["RMSEA"]]   <- if (is.null(efaResults$RMSEA[1])) NA  else efaResults$RMSEA[1]
   fittab[["RMSEAci"]] <- paste(rmsealo, "-", rmseahi)
   fittab[["TLI"]]     <- if (is.null(efaResults$TLI))      NA  else efaResults$TLI
   fittab[["BIC"]]     <- if (is.null(efaResults$BIC))      NA  else efaResults$BIC
@@ -381,7 +391,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   pa <- try(psych::fa.parallel(dataset, plot = FALSE))
   if (inherits(pa, "try-error")) {
     errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
-    scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
+    scree$setError(errmsg)
+    # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
     return()
   }
 
@@ -397,11 +408,11 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
     ggplot2::labs(x = gettext("Factor"), y = gettext("EFA Eigenvalue"))
-  
-  
+
+
   # dynamic function for point size:
   # the plot looks good with size 3 when there are 10 points (3 + log(10) - log(10) = 3)
-  # with more points, the size will become logarithmically smaller until a minimum of 
+  # with more points, the size will become logarithmically smaller until a minimum of
   # 3 + log(10) - log(200) = 0.004267726
   # with fewer points, they become bigger to a maximum of 3 + log(10) - log(2) = 4.609438
   pointsize <- 3 + log(10) - log(n_col)
@@ -445,7 +456,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   LY <- as.matrix(loadings(efaResult))
   TE <- diag(efaResult$uniqueness)
   PS <- efaResult$r.scores
-  
+
 
   # Variable names
   xName   <- ifelse(options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none", "PC", "RC")
@@ -494,7 +505,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     )
     E_cor <- E_cor[E_cor$from != E_cor$to, ]
   }
-  
+
   # Combine everything:
   edge_df <- rbind(E_loadings, E_resid, E_cor)
 

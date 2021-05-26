@@ -80,6 +80,9 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # Check for correlation anomalies
     function() {
       P <- ncol(dataset)
+      # the checks below also fail when n < p but this provides a more accurate error message
+      if (ncol(dataset) > nrow(dataset))
+        return(gettext("Data not valid: there are more variables than observations"))
 
       # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))

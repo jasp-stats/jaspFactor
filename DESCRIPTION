@@ -13,6 +13,7 @@ Imports:
   ggplot2,
   jaspBase,
   jaspGraphs,
+  jaspSem,
   lavaan,
   psych,
   qgraph,
@@ -21,4 +22,5 @@ Imports:
   GPArotation
 Remotes:
   jasp-stats/jaspBase,
-  jasp-stats/jaspGraphs
+  jasp-stats/jaspGraphs,
+  jasp-stats/jaspSem

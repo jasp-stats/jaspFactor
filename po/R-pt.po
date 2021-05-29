@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-06 14:09\n"
-"PO-Revision-Date: 2021-05-03 19:32+0000\n"
+"PO-Revision-Date: 2021-05-23 12:34+0000\n"
 "Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/pt/>\n"
@@ -61,11 +61,9 @@ msgstr "Teste qui-quadrado"
 msgid "Model"
 msgstr "Modelo"
 
-#, fuzzy
 msgid "df"
 msgstr "gl"
 
-#, fuzzy
 msgid "p"
 msgstr "p"
 
@@ -174,7 +172,6 @@ msgstr "Parâmetros"
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 
-#, fuzzy
 msgid "Factor"
 msgstr "Fator"
 
@@ -184,7 +181,6 @@ msgstr "Indicador"
 msgid "Symbol"
 msgstr "Símbolo"
 
-#, fuzzy
 msgid "Estimate"
 msgstr "Estimativas"
 
@@ -195,14 +191,12 @@ msgstr "Erro padrão"
 msgid "z-value"
 msgstr "Valor"
 
-#, fuzzy
 msgid "Lower"
 msgstr "Inferior"
 
 msgid "%s%% Confidence Interval"
 msgstr "Intervalo de Confiança"
 
-#, fuzzy
 msgid "Upper"
 msgstr "Superior"
 

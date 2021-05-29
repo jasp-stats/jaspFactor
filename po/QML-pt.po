@@ -557,3 +557,19 @@ msgstr "Padronizado"
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
 msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Order factor loadings by"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor size"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Order component loadings by"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component size"
+msgstr ""

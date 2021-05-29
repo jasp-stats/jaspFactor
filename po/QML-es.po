@@ -535,3 +535,19 @@ msgstr "Agregar puntajes de PC a los datos"
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
 msgstr "Explore la estructura oculta en los datos"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Order factor loadings by"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor size"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Order component loadings by"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component size"
+msgstr ""

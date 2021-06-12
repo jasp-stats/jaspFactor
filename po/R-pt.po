@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-06 14:09\n"
-"PO-Revision-Date: 2021-05-23 12:34+0000\n"
+"PO-Revision-Date: 2021-06-13 19:33+0000\n"
 "Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/pt/>\n"
@@ -68,7 +68,7 @@ msgid "p"
 msgstr "p"
 
 msgid "Baseline model"
-msgstr ""
+msgstr "Modelo base"
 
 msgid "Factor model"
 msgstr "Fatores"
@@ -80,7 +80,7 @@ msgid "Fit indices"
 msgstr "Ocultar índices baixos"
 
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 #, fuzzy
 msgid "Value"

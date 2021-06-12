@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-06-13 19:32+0000\n"
+"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.7-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -86,7 +92,7 @@ msgstr "Diagramas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr ""
+msgstr "Diagrama de discrepância"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
@@ -213,39 +219,37 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No X"
 msgstr "Sem X"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
 msgstr "Fator de segunda ordem"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor Scaling"
-msgstr ""
+msgstr "Factor Scaling"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr "Variâncias do fator"
+msgstr "Variâncias latentes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr ""
+msgstr "Variável marcadora"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
-msgstr ""
+msgstr "Codificação dos efeitos"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr ""
+msgstr "R-Quadrado"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
-msgstr ""
+msgstr "Cálculo de erros"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI width"
-msgstr ""
+msgstr "largura IC"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Method"
@@ -253,9 +257,8 @@ msgstr "Método"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap CI"
-msgstr ""
+msgstr "IC Bootstrap"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
 msgstr "Variáveis"
@@ -270,13 +273,12 @@ msgstr "Análise paralela"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues"
-msgstr ""
+msgstr "Autovalores"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Autovalores acima"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
 msgstr "Manual"
@@ -297,34 +299,29 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"
 msgstr "Máxima verossimilhança"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
 msgstr "Fatoração do eixo principal"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"
 msgstr "Mínimos quadrados ordinários"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
-msgstr "Mínimos quadrados ordinários"
+msgstr "Mínimos quadrados ponderados"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
 msgstr "Mínimos quadrados generalizados"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
 msgstr "Qui-quadrado mínimo"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"
-msgstr ""
+msgstr "Classificação mínima"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
@@ -354,12 +351,10 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
 msgstr "Opções de saída"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Highlight"
 msgstr "Destacar"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
 msgstr "Tabelas"
@@ -368,22 +363,18 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Structure matrix"
 msgstr "Matriz de estrutura"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor correlations"
 msgstr "Correlação de fatores"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
 msgstr "Índices de ajuste adicionais"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
 msgstr "Diagramas"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
 msgstr "Diagrama de caminhos"
@@ -394,7 +385,7 @@ msgstr "Gráfico de sedimentação"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr ""
+msgstr "Verificar pressupostos"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
@@ -408,16 +399,14 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
 msgstr "Valores ausentes"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Excluir casos ..."
+msgstr "Excluir casos em pares"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Excluir casos em lista"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
 msgstr "Variáveis"
@@ -432,13 +421,12 @@ msgstr "Análise paralela"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues"
-msgstr ""
+msgstr "Autovalores"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Autovalores acima"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
 msgstr "Manual"
@@ -487,18 +475,17 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
 msgstr "Valores ausentes"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Excluir casos ..."
+msgstr "Excluir casos em pares"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Excluir casos em lista"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr ""
+msgstr "Adicionar pontuações de PC aos dados"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Highlight"
@@ -508,7 +495,6 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
 msgstr "Segunda ordem"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
 msgstr "Medidas adicionais de ajuste"
@@ -529,7 +515,6 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Factor correlations"
 msgstr "Correlação de fatores"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
 msgstr "Diagramas"
@@ -556,20 +541,20 @@ msgstr "Padronizado"
 
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
-msgstr ""
+msgstr "Explorar a estrutura oculta nos dados"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
-msgstr ""
+msgstr "Ordenar as cargas fatoriais por"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
-msgstr ""
+msgstr "Tamanho do fator"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr ""
+msgstr "Ordenar as cargas do componente por"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr ""
+msgstr "Tamanho do componente"

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-06-13 19:32+0000\n"
+"PO-Revision-Date: 2021-06-16 19:34+0000\n"
 "Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/pt/>\n"
@@ -32,7 +32,7 @@ msgstr "Fixar covariáveis exógenas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr "Covariâncias Residuais"
+msgstr "Covariâncias residuais"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
@@ -128,7 +128,7 @@ msgstr "Omitir indicador único residual"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr "Variâncias residual"
+msgstr "Variâncias residuais"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"

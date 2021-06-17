@@ -84,7 +84,7 @@ test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab",
 #   skip("Scree plot check does not work because some data is simulated (non-deterministic).")
 #   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
 #   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-#   jaspTools::expect_equal_plots(testPlot, "scree-plot", dir = "PrincipalComponentAnalysis")
+#   jaspTools::expect_equal_plots(testPlot, "scree-plot")
 # })
 
 options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
@@ -126,12 +126,12 @@ test_that("Component Characteristics table results match", {
 test_that("Path Diagram plot matches", {
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "path-diagram", dir = "PrincipalComponentAnalysis")
+  jaspTools::expect_equal_plots(testPlot, "path-diagram")
 })
 
 test_that("Scree plot matches", {
   skip("Scree plot check does not work because some data is simulated (non-deterministic).")
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scree-plot", dir = "PrincipalComponentAnalysis")
+  jaspTools::expect_equal_plots(testPlot, "scree-plot")
 })

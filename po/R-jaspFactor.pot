@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-03-06 14:09\n"
+"POT-Creation-Date: 2021-06-29 15:53\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -253,6 +253,9 @@ msgstr ""
 msgid "Data not valid: variance is zero in each row"
 msgstr ""
 
+msgid "Data not valid: there are more variables than observations"
+msgstr ""
+
 msgid "Data not valid: too many missing values in variable(s) %s."
 msgstr ""
 
@@ -286,16 +289,16 @@ msgstr ""
 msgid "Factor Loadings"
 msgstr ""
 
-msgid "No rotation method applied."
-msgstr ""
-
-msgid "Applied rotation method is %s."
-msgstr ""
-
 msgid "Factor %i"
 msgstr ""
 
 msgid "Uniqueness"
+msgstr ""
+
+msgid "No rotation method applied."
+msgstr ""
+
+msgid "Applied rotation method is %s."
 msgstr ""
 
 msgid "Factor Loadings (Structure Matrix)"

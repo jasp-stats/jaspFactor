@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2020-12-10 16:26\n"
+"POT-Creation-Date: 2021-06-29 15:53\n"
 "PO-Revision-Date: 2020-12-02 21:29+0000\n"
 "Last-Translator: JASP Stats <F.A.M.Meerhoff@uva.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jasp-engine/"
@@ -274,6 +274,10 @@ msgstr "Niet genoeg valide waarnemingen (%i) om de analyse uit te voeren"
 msgid "Data not valid: variance is zero in each row"
 msgstr "Data niet valide: variantie is nul in iedere rij"
 
+#, fuzzy
+msgid "Data not valid: there are more variables than observations"
+msgstr "Data niet valide: alle variabelen zijn collineair"
+
 msgid "Data not valid: too many missing values in variable(s) %s."
 msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
 
@@ -311,17 +315,17 @@ msgstr "<em>Waarschuwing:</em>"
 msgid "Factor Loadings"
 msgstr "Factorladingen"
 
-msgid "No rotation method applied."
-msgstr "Geen rotatiemethode toegepast."
-
-msgid "Applied rotation method is %s."
-msgstr "Toegepaste rotatiemethode is %s."
-
 msgid "Factor %i"
 msgstr "Factor %i"
 
 msgid "Uniqueness"
 msgstr "Uniciteit"
+
+msgid "No rotation method applied."
+msgstr "Geen rotatiemethode toegepast."
+
+msgid "Applied rotation method is %s."
+msgstr "Toegepaste rotatiemethode is %s."
 
 msgid "Factor Loadings (Structure Matrix)"
 msgstr "Factorladingen (Structuurmatrix)"

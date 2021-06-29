@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2020-12-10 16:26\n"
+"POT-Creation-Date: 2021-06-29 15:53\n"
 "PO-Revision-Date: 2021-05-30 01:35+0000\n"
 "Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
-"jaspfactor-r/es/>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/jaspfactor-"
+"r/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -273,6 +273,10 @@ msgstr "No hay suficientes casos validos (%i) para realizar este análisis"
 msgid "Data not valid: variance is zero in each row"
 msgstr "Datos no válidos: la varianza es cero en cada fila"
 
+#, fuzzy
+msgid "Data not valid: there are more variables than observations"
+msgstr "Datos no válidos: todas las variables son colineales"
+
 msgid "Data not valid: too many missing values in variable(s) %s."
 msgstr "Datos no válidos: demasiados valores perdidos en la variable(s) %s."
 
@@ -310,17 +314,17 @@ msgstr "<em>Advertencia:</em>"
 msgid "Factor Loadings"
 msgstr "Cargas Factoriales"
 
-msgid "No rotation method applied."
-msgstr "No se aplicó ningún método de rotación."
-
-msgid "Applied rotation method is %s."
-msgstr "El método de rotación aplicado es %s."
-
 msgid "Factor %i"
 msgstr "Factor %i"
 
 msgid "Uniqueness"
 msgstr "Unicidad"
+
+msgid "No rotation method applied."
+msgstr "No se aplicó ningún método de rotación."
+
+msgid "Applied rotation method is %s."
+msgstr "El método de rotación aplicado es %s."
 
 msgid "Factor Loadings (Structure Matrix)"
 msgstr "Cargas factoriales (Matriz de Estructura)"

@@ -1,0 +1,636 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: gl_ES\n"
+"X-Source-Language: C\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "CI width"
+msgstr "Largo do IC"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Highlight"
+msgstr "Destacar"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Table"
+msgstr "Táboa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Error calculation"
+msgstr "Cálculo do erro"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Marker variable"
+msgstr "Variable de marca"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Factor variances"
+msgstr "Varianzas dos factores"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order"
+msgstr "Segunda orde"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Effects coding"
+msgstr "Codificación dos efectos"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "R-Squared"
+msgstr "R-cadrado"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order Factor"
+msgstr "Factor de segunda orde"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Factor Scaling"
+msgstr "Escalado dos factores"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap CI"
+msgstr "IC Bootstrap"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional Output"
+msgstr "Saída adicional de resultados"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Path diagram"
+msgstr "Diagrama da ruta"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Covariance matrix"
+msgstr "Matriz de covarianzas"
+
+msgctxt "Description|"
+msgid "Principal Component Analysis"
+msgstr "Análise de Compoñentes Principais"
+
+msgctxt "Description|"
+msgid "Confirmatory Factor Analysis"
+msgstr "Análise factorial confirmatorio"
+
+msgctxt "Description|"
+msgid "Exploratory Factor Analysis"
+msgstr "Análise factorial exploratorio"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Manual"
+msgstr "Manual"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "none"
+msgstr "ningún"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of Factors"
+msgstr "Número de factores"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of factors"
+msgstr "Número de factores"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Eigenvalues above"
+msgstr "Autovalores arriba"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "KMO test"
+msgstr "Proba KMO"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Additional fit indices"
+msgstr "Índices adicionais de axuste"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Eigenvalues"
+msgstr "Autovalores"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Oblique"
+msgstr "Oblicuo"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Weighted least squares"
+msgstr "Mínimos Cadrados Ponderados"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Rotation"
+msgstr "Rotación"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Principal axis factoring"
+msgstr "Factorización do eixe principal"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Estimation method"
+msgstr "Método de estimación"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis"
+msgstr "Análise paralela"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Bartlett's test"
+msgstr "Proba de Bartlett"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Base analysis on"
+msgstr "Análise base sobre"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Factor correlations"
+msgstr "Correlacións dos factores"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Ordinary least squares"
+msgstr "Mínimos Cadrados Ordinarios"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Generalized least squares"
+msgstr "Mínimos Cadrados Xeneralizados"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum chi-square"
+msgstr "Khi-cadrado mínimo"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Output Options"
+msgstr "Opcións de saída de resultados"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Scree plot"
+msgstr "Gráfica de sedimentación"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum residual"
+msgstr "Erro mínimo"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Structure matrix"
+msgstr "Matriz de estrutura"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum rank"
+msgstr "Rango mínimo"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Orthogonal"
+msgstr "Ortogonal"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of Components"
+msgstr "Número de compoñentes"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of components"
+msgstr "Número de compoñentes"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Base decomposition on"
+msgstr "Descomposición base sobre"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Add PC scores to data"
+msgstr "Engadir puntuacións PC aos datos"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Factor"
+msgstr "Factor"
+
+msgctxt "Description|"
+msgid "Explore hidden structure in the data"
+msgstr ""
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model Options"
+msgstr "Opcións do modelo"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Include mean structure"
+msgstr "Incluír a estrutura media"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Assume factors uncorrelated"
+msgstr "Supoñer factores incorrelacionados"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix exogenous covariates"
+msgstr "Fixar as covariantes esóxenas"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual Covariances"
+msgstr "Covarianzas dos erros"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional fit measures"
+msgstr "Medidas adicionais de axuste"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Implied covariance matrix"
+msgstr "Matriz de covarianzas implícitas"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual covariance matrix"
+msgstr "Matriz de covarianzas dos erros"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Modification indices"
+msgstr "Índices de modificación"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Cutoff"
+msgstr "Bloqueo"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show lavaan syntax"
+msgstr "Amosar a sintaxe Lavaan"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Multigroup CFA"
+msgstr "CFA de multigrupos"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Grouping variable"
+msgstr "Variable de agrupación"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Invariance testing"
+msgstr "Comprobación de invariancia"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Configural"
+msgstr "Configuración"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Metric"
+msgstr "Métrico"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Scalar"
+msgstr "Escalar"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Strict"
+msgstr "Estrito"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Misfit plot"
+msgstr "Gráfica desaxustada"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model plot"
+msgstr "Gráfica do modelo"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameters"
+msgstr "Amosar os parámetros"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardized"
+msgstr "Tipificado"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show means"
+msgstr "Amosar as medias"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Advanced"
+msgstr "Avanzado"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Emulation"
+msgstr "Emulación"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "None"
+msgstr "Ningún"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mplus"
+msgstr "Mplus"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "EQS"
+msgstr "EQS"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Method"
+msgstr "Método"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard"
+msgstr "Típico"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust"
+msgstr "Robusto"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap samples"
+msgstr "Mostras de Bootstrap"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Estimator"
+msgstr "Estimador"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Auto"
+msgstr "Auto"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ML"
+msgstr "ML"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "GLS"
+msgstr "MCX"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLS"
+msgstr "MCP (WLS)"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULS"
+msgstr "MCSP"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DWLS"
+msgstr "DWLS"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardization"
+msgstr "Tipificación"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Latents"
+msgstr "Latentes"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "All"
+msgstr "Todo"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No X"
+msgstr "Sen X"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Options"
+msgstr "Opcións"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix manifest intercepts to zero"
+msgstr "Fixar en 0, as ordenadas na orixe declaradas"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix latent intercepts to zero"
+msgstr "Fixar en 0, as ordenadas na orixe latentes"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Omit residual single indicator"
+msgstr "Suprimir o índice único de erro"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual variances"
+msgstr "Varianzas dos erros"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate exogenous latents"
+msgstr "Correlacionar variables latentes esóxenas"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add thresholds"
+msgstr "Engadir valores límite"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add scalings parameters"
+msgstr "Engadir os parámetros de escala"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate dependent variables"
+msgstr "Correlacionar variables dependentes"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variables"
+msgstr "Variables"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis"
+msgstr "Análise paralela"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Eigenvalues"
+msgstr "Autovalores"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Eigenvalues above"
+msgstr "Autovalores arriba"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Manual"
+msgstr "Manual"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Maximum likelihood"
+msgstr "Máxima-Verosimilitude"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Rotation"
+msgstr "Rotación"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Orthogonal"
+msgstr "Ortogonal"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "none"
+msgstr "ningún"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Oblique"
+msgstr "Oblicuo"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Correlation matrix"
+msgstr "Matriz de correlacións"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Covariance matrix"
+msgstr "Matriz de covarianzas"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Output Options"
+msgstr "Opcións de saída de resultados"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Highlight"
+msgstr "Destacar"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Order factor loadings by"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor size"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Tables"
+msgstr "Táboas"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor correlations"
+msgstr "Correlacións dos factores"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Path diagram"
+msgstr "Diagrama da ruta"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Scree plot"
+msgstr "Gráfica de sedimentación"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Assumption checks"
+msgstr "Comprobacións de supostos"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Missing Values"
+msgstr "Valores ausentes"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Exclude cases pairwise"
+msgstr "Excluír casos por parellas"
+
+#, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Exclude cases listwise"
+msgstr "Excluír casos por lista"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variables"
+msgstr "Variables"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Correlation matrix"
+msgstr "Matriz de correlacións"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Order component loadings by"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component size"
+msgstr ""
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Missing Values"
+msgstr "Valores ausentes"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Exclude cases pairwise"
+msgstr "Excluír casos por parellas"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Exclude cases listwise"
+msgstr "Excluír casos por lista"

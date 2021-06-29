@@ -3,8 +3,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -384,6 +382,14 @@ msgid "Highlight"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
+msgid "Order factor loadings by"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor size"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
 msgstr ""
 
@@ -500,6 +506,14 @@ msgid "Highlight"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
+msgid "Order component loadings by"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component size"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
 msgid "Table"
 msgstr ""
 
@@ -533,20 +547,4 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Order factor loadings by"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Factor size"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Order component loadings by"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Component size"
 msgstr ""

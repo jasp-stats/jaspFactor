@@ -7,17 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-06-29 15:53\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: gl_ES\n"
+"PO-Revision-Date: 2021-07-01 19:33+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-r/gl/>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Virgin-Header: remove this line if you change anything in the header.\n"
 "X-Language: gl_ES\n"
 "X-Source-Language: C\n"
-"X-Generator: Poedit 2.3\n"
 
 msgid "Second-Order"
 msgstr "Segunda orde"
@@ -185,9 +187,8 @@ msgstr "Mediadores"
 msgid "Symbol"
 msgstr ""
 
-#, fuzzy
 msgid "Estimate"
-msgstr "Estimado"
+msgstr "Estimar"
 
 #, fuzzy
 msgid "Std. Error"
@@ -200,9 +201,8 @@ msgstr "Valores p"
 msgid "Lower"
 msgstr "Inferior"
 
-#, fuzzy
 msgid "%s%% Confidence Interval"
-msgstr "Intervalo de confianza"
+msgstr "Intervalo co %s%% de confianza"
 
 msgid "Upper"
 msgstr "Superior"
@@ -425,4 +425,3 @@ msgstr "Gráfica de sedimentación"
 #, fuzzy
 msgid "Component"
 msgstr "Compoñentes"
-

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-06-29 15:53\n"
-"PO-Revision-Date: 2021-03-31 13:27+0000\n"
-"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
+"PO-Revision-Date: 2021-07-06 08:34+0000\n"
+"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "de/>\n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.6-dev\n"
+"X-Generator: Weblate 4.8-dev\n"
 
 msgid "Second-Order"
 msgstr "Zweiter-Ordnung"
@@ -92,28 +92,28 @@ msgid "Metric"
 msgstr "Metrisch"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr ""
+msgstr "Comparative Fit Index (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
 msgstr "Tucker-Lewis-Index (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr ""
+msgstr "Bentler-Bonett Non-normed Fit Index (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr ""
+msgstr "Bentler-Bonett Normed Fit Index (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr ""
+msgstr "Parsimony Normed Fit Index (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr ""
+msgstr "Bollen's Relative Fit Index (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr ""
+msgstr "Bollen's Incremental Fit Index (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
+msgstr "Relative Noncentrality Index (RNI)"
 
 msgid "Log-likelihood"
 msgstr "Log-Likelihood"
@@ -128,13 +128,13 @@ msgid "Bayesian (BIC)"
 msgstr "Bayesianisch (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr ""
+msgstr "Sample-size adjusted Bayesian (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr ""
+msgstr "Root mean square error of approximation (RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr "RMSEA 90% KI untere Grenze"
+msgstr "RMSEA 90%% KI untere Grenze"
 
 msgid "RMSEA 90%% CI upper bound"
 msgstr "RMSEA 90% KI obere Grenze"
@@ -143,7 +143,7 @@ msgid "RMSEA p-value"
 msgstr "RMSEA p-Wert"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr ""
+msgstr "Standardized root mean square residual (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
 msgstr "Hoelters kritisches N (%s = .05)"
@@ -152,13 +152,13 @@ msgid "Hoelter's critical N (%s = .01)"
 msgstr "Hoelters kritisches N (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr ""
+msgstr "Goodness of fit index (GFI)"
 
 msgid "McDonald fit index (MFI)"
 msgstr "McDonald-Fit-Index (MFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr ""
+msgstr "Expected cross validation index (ECVI)"
 
 msgid "Parameter estimates"
 msgstr "Parameterschätzungen"
@@ -223,16 +223,16 @@ msgid "Modification Indices"
 msgstr "Modifikations-Indizes"
 
 msgid "Cross-loadings"
-msgstr ""
+msgstr "Querladungen"
 
 msgid "Mod. Ind."
-msgstr ""
+msgstr "Mod. Ind."
 
 msgid "EPC"
 msgstr "EPC"
 
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "Querladungen zweiter Ordnung"
 
 msgid "Implied covariance matrices"
 msgstr "Implizierte Kovarianzmatrizen"
@@ -273,9 +273,8 @@ msgstr "Ungenügend gültige Fälle (%i) zum Ausführen dieser Analyse"
 msgid "Data not valid: variance is zero in each row"
 msgstr "Ungültige Daten: Varianz in jeder Zeile ist Null"
 
-#, fuzzy
 msgid "Data not valid: there are more variables than observations"
-msgstr "Ungültige Daten: Alle Variablen sind kollinear"
+msgstr "Daten nicht gültig: Es gibt mehr Variablen als Beobachtungen"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
 msgstr "Ungültige Daten: Zuviele fehlende Werte in Variable(n) %s."

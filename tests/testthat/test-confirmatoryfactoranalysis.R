@@ -9,8 +9,8 @@ options$se <- "standard"
 options$estimator <- "default"
 options$std <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"), 
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"), 
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
 )
 options$identify <- "factor"
@@ -92,7 +92,7 @@ test_that("[CFA 3-Factor] Chi-square test table results match", {
 })
 
 
-# Second-order factor 
+# Second-order factor
 options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
 options$groupvar <- ""
@@ -102,8 +102,8 @@ options$se <- "standard"
 options$estimator <- "default"
 options$std <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"), 
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"), 
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
 )
 options$identify <- "factor"
@@ -183,4 +183,46 @@ test_that("[CFA Second order] Chi-square test table results match", {
   jaspTools::expect_equal_tables(table,
                       list(918.851589292384, 36, "Baseline model", "", 85.3055217707089,
                            24, "Factor model", 8.50255321704907e-09))
+})
+
+
+test_that("Bootstrapping works", {
+  options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
+  options$groupvar <- ""
+  options$invariance <- "configural"
+  options$mimic <- "lavaan"
+  options$se <- "bootstrap"
+  options$bootstrapNumber <- 100
+  options$estimator <- "default"
+  options$std <- "none"
+  options$factors <- list(
+    list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
+    list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
+    list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
+  )
+  options$identify <- "factor"
+  options$missing <- "FIML"
+  set.seed(1)
+  results <- jaspTools::runAnalysis("ConfirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_fl1"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.666421502844803, 1.1045952519343, 0.899620313867488, "<unicode>11",
+                                      "Factor 1", 0, "x1", 0.0808465333987386, 11.1275063512064, 0.306848270271249,
+                                      0.694310421172917, 0.49794051110941, "<unicode>12", "Factor 1",
+                                      1.28623778294923e-10, "x2", 0.0774547818506273, 6.42878979466621,
+                                      0.447794742651565, 0.843599366253584, 0.656156092628451, "<unicode>13",
+                                      "Factor 1", 0, "x3", 0.0744212256974568, 8.81678696472846, 0.873492258837535,
+                                      1.10676572310526, 0.989693449094392, "<unicode>21", "Factor 2",
+                                      0, "x4", 0.0566367179185465, 17.4744138690689, 1.00613400355279,
+                                      1.20780120009224, 1.10160465003145, "<unicode>22", "Factor 2",
+                                      0, "x5", 0.0626757561168699, 17.5762482701815, 0.77535379539272,
+                                      1.02320525947239, 0.916600977759373, "<unicode>23", "Factor 2",
+                                      0, "x6", 0.0536584940344529, 17.0821226769958, 0.399620351789006,
+                                      0.750536983553589, 0.619475433557926, "<unicode>31", "Factor 3",
+                                      0, "x7", 0.0695825769015842, 8.90273774186456, 0.502036743546884,
+                                      0.899496144160653, 0.730948802915075, "<unicode>32", "Factor 3",
+                                      0, "x8", 0.0659093164600047, 11.0902197469857, 0.496246268381106,
+                                      0.859593369706291, 0.669980108781259, "<unicode>33", "Factor 3",
+                                      0, "x9", 0.0650169734598685, 10.3046954222623))
 })

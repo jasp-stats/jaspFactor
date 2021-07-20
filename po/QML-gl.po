@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-07-19 17:58+0000\n"
+"PO-Revision-Date: 2021-07-20 19:07+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/gl/>\n"
@@ -264,7 +264,7 @@ msgstr "Análise Factorial Confirmatoria Multigrupo"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr "Variable de agrupación"
+msgstr "Variable de agrupamento"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"

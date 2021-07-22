@@ -133,12 +133,22 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 }
 
+.cfaIsReady <- function(options) {
+  # are all residual covariances pairs fully specified?
+  for (rescov in options[["rescov"]]) {
+    if ("" %in% rescov) return(FALSE)
+  }
+
+  return(TRUE)
+}
+
 
 # Results functions ----
 .cfaComputeResults <- function(jaspResults, dataset, options, errors) {
-  if (!is.null(errors) && errors == "No variables") return()
+  if (!is.null(errors) && errors == "No variables" || !.cfaIsReady(options)) return()
 
   if (!is.null(jaspResults[["stateCFAResult"]])) return(jaspResults[["stateCFAResult"]]$object)
+
 
   cfaResult <- list()
 
@@ -195,7 +205,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # Bootstrapping with interruptible progress bar
   if (cfaResult[["spec"]]$bootstrap) {
-    cfaResult[["lav"]] <- lavBootstrap(cfaResult[["lav"]], options$bootstrapNumber)
+    cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapNumber)
   }
 
   # Save cfaResult as state so it's available even when opts don't change
@@ -475,7 +485,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   footnote <- NULL
   if (options[["se"]] == "bootstrap" && nrow(cfaResult[["lav"]]@boot[["coef"]]) < options[["bootstrapNumber"]]) {
-    footnote <- gettextf("Not all bootstrap samples were successful: CI based on %.0f samples.", 
+    footnote <- gettextf("Not all bootstrap samples were successful: CI based on %.0f samples.",
                          nrow(cfaResult[["lav"]]@boot[["coef"]]))
   }
 

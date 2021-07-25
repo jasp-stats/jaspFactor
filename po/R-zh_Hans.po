@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2021-06-29 15:53\n"
-"PO-Revision-Date: 2021-07-24 19:13+0000\n"
+"PO-Revision-Date: 2021-07-26 02:35+0000\n"
 "Last-Translator: shun wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-r/zh_Hans/>\n"
@@ -206,166 +206,170 @@ msgid "Intercepts"
 msgstr "截距"
 
 msgid "Modification Indices"
-msgstr ""
+msgstr "修正指数"
 
 msgid "Cross-loadings"
-msgstr ""
+msgstr "交叉载荷"
 
 msgid "Mod. Ind."
-msgstr ""
+msgstr "Mod. Ind."
 
 msgid "EPC"
-msgstr ""
+msgstr "EPC"
 
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "二阶交叉载荷"
 
 msgid "Implied covariance matrices"
-msgstr ""
+msgstr "隐含协方差矩阵"
 
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "隐含协方差矩阵"
 
 msgid "Residual covariance matrices"
-msgstr ""
+msgstr "残差协方差矩阵"
 
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "残差协方差矩阵"
 
 msgid "Plots"
-msgstr ""
+msgstr "绘图"
 
 msgid "Model plots"
-msgstr ""
+msgstr "模型图"
 
 msgid "Model plot"
-msgstr ""
+msgstr "模型图"
 
 msgid "Misfit plots"
-msgstr ""
+msgstr "Misfit plot"
 
 msgid "Misfit plot"
-msgstr ""
+msgstr "Misfit plot"
 
 msgid "Model syntax"
-msgstr ""
+msgstr "模型语法(syntax)"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr ""
+msgstr "对包含的变量数量，请求的因子过多 (%i)"
 
 msgid "Not enough valid cases (%i) to run this analysis"
-msgstr ""
+msgstr "没有足够的有效个案 (%i) 来运行此分析"
 
 msgid "Data not valid: variance is zero in each row"
-msgstr ""
+msgstr "数据无效：每行的方差为零"
 
 msgid "Data not valid: there are more variables than observations"
-msgstr ""
+msgstr "数据无效：变量多于观测值"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr ""
+msgstr "数据无效：变量 %s 中的缺失值太多。"
 
 msgid "Data not valid: all variables are collinear"
-msgstr ""
+msgstr "数据无效：所有变量共线"
 
 msgid "Estimation failed. \nInternal error message: %s"
 msgstr ""
+"估计失败。\n"
+"内部错误消息：%s"
 
 msgid "No components with an eigenvalue >"
-msgstr ""
+msgstr "没有成分具有特征值 >"
 
 msgid "."
-msgstr ""
+msgstr "."
 
 msgid "Maximum observed eigenvalue:"
-msgstr ""
+msgstr "最大观测特征值："
 
 msgid "Kaiser-Meyer-Olkin test"
-msgstr ""
+msgstr "Kaiser-Meyer-Olkin 检验"
 
 msgid "Overall MSA"
-msgstr ""
+msgstr "总体 MSA"
 
 msgid "Degrees of freedom below 0, model is unidentified."
-msgstr ""
+msgstr "自由度低于 0，模型未识别。"
 
 msgid "<em>Warning:</em>"
-msgstr ""
+msgstr "<em>警告:</em>"
 
 msgid "Factor Loadings"
-msgstr ""
+msgstr "因子载荷"
 
 msgid "Factor %i"
-msgstr ""
+msgstr "因子 %i"
 
 msgid "Uniqueness"
-msgstr ""
+msgstr "独特性(Uniqueness)"
 
 msgid "No rotation method applied."
-msgstr ""
+msgstr "未应用旋转方法。"
 
 msgid "Applied rotation method is %s."
-msgstr ""
+msgstr "应用的旋转方法为%s。"
 
 msgid "Factor Loadings (Structure Matrix)"
-msgstr ""
+msgstr "因子载荷（结构矩阵）"
 
 msgid "Factor Characteristics"
-msgstr ""
+msgstr "因素特征"
 
 msgid "SumSq. Loadings"
-msgstr ""
+msgstr "SumSq. Loadings"
 
 msgid "Proportion var."
-msgstr ""
+msgstr "比例变量."
 
 msgid "Cumulative"
-msgstr ""
+msgstr "累积"
 
 msgid "Factor Correlations"
-msgstr ""
+msgstr "因子相关性"
 
 msgid "Additional fit indices"
-msgstr ""
+msgstr "附加拟合指数"
 
 msgid "RMSEA"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
-msgstr ""
+msgstr "RMSEA 90%% 置信度"
 
 msgid "TLI"
-msgstr ""
+msgstr "TLI"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "Screeplot not available. \nInternal error message: %s"
 msgstr ""
+"碎石图 不可用。\n"
+"内部错误消息：%s"
 
 msgid "Data"
-msgstr ""
+msgstr "数据"
 
 msgid "Simulated (95th quantile)"
-msgstr ""
+msgstr "模拟(第 95 个分位数)"
 
 msgid "EFA Eigenvalue"
-msgstr ""
+msgstr "EFA 特征值"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "路径图"
 
 msgid "Component Loadings"
-msgstr ""
+msgstr "成分载荷"
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "特征值"
 
 msgid "Component Correlations"
-msgstr ""
+msgstr "成分相关性"
 
 msgid "Scree plot"
-msgstr ""
+msgstr "碎石图"
 
 msgid "Component"
-msgstr ""
+msgstr "成分"

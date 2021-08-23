@@ -273,8 +273,12 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   idx <- seq_len(pcaResults[["factors"]])
   eigtab[["comp"]] <- paste0(coltitle, idx)
   eigtab[["eigv"]] <- eigv[idx]
-  eigtab[["prop"]] <- Vaccounted["Proportion Var", idx]
-  eigtab[["cump"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Proportion", idx]
+  # matches this unit test: Component Characteristics table results match R, SPSS, SAS, MiniTab
+  eigtab[["prop"]] <- eigv[1:pcaResults$factors] / sum(eigv)
+  eigtab[["cump"]] <- cumsum(eigv)[1:pcaResults$factors] / sum(eigv)
+  # matches psych and fixes https://github.com/jasp-stats/jasp-test-release/issues/1490
+  # eigtab[["prop"]] <- Vaccounted["Proportion Var", idx]
+  # eigtab[["cump"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Proportion", idx]
 }
 
 .pcaCorrTable <- function(modelContainer, dataset, options, ready) {

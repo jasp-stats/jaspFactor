@@ -115,11 +115,32 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
 # Results functions ----
 .pcaComputeResults <- function(modelContainer, dataset, options, ready) {
+
+  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+
+  # see https://github.com/jasp-stats/jasp-test-release/issues/1500
+  # GPArotation::GPFoblq does
+  # Method <- paste("vgQ", method, sep = ".")
+  # VgQ <- do.call(Method, append(list(L), methodArgs))
+  # where Method is defined in psych... so this only works if you do library(psych) beforehand.
+  # to work around this we temporarily assign this function to the global environment, if this rotation method is selected.
+  if (rotate == "biquartimin") {
+    tmp <- mget("vgQ.bimin", envir = .GlobalEnv, ifnotfound = NA)[[1L]]
+    assign(x = "vgQ.bimin", value = psych::vgQ.bimin, envir = .GlobalEnv)
+    on.exit({
+      if (is.na(tmp)) {
+        rm("vgQ.bimin", envir = .GlobalEnv)
+      } else {
+        # restore whatever was assigned before
+        assign("vgQ.bimin", tmp, envir = .GlobalEnv)
+      }
+    })
+  }
   pcaResult <- try(
     psych::principal(
       r        = dataset,
       nfactors = .pcaGetNComp(dataset, options),
-      rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
+      rotate   = rotate,
       scores   = TRUE,
       covar    = options$basedOn == "covariance"
     )
@@ -248,10 +269,16 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   pcaResults <- modelContainer[["model"]][["object"]]
 
   eigv <- pcaResults$values
-  eigtab[["comp"]] <- paste0(coltitle, 1:pcaResults$factors)
-  eigtab[["eigv"]] <- eigv[1:pcaResults$factors]
+  Vaccounted <- pcaResults[["Vaccounted"]]
+  idx <- seq_len(pcaResults[["factors"]])
+  eigtab[["comp"]] <- paste0(coltitle, idx)
+  eigtab[["eigv"]] <- eigv[idx]
+  # matches this unit test: Component Characteristics table results match R, SPSS, SAS, MiniTab
   eigtab[["prop"]] <- eigv[1:pcaResults$factors] / sum(eigv)
   eigtab[["cump"]] <- cumsum(eigv)[1:pcaResults$factors] / sum(eigv)
+  # matches psych and fixes https://github.com/jasp-stats/jasp-test-release/issues/1490
+  # eigtab[["prop"]] <- Vaccounted["Proportion Var", idx]
+  # eigtab[["cump"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Proportion", idx]
 }
 
 .pcaCorrTable <- function(modelContainer, dataset, options, ready) {

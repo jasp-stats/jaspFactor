@@ -761,13 +761,15 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .cfaTableModIndices <- function(jaspResults, options, cfaResult) {
   if (is.null(cfaResult) || !options$modIndices || !is.null(jaspResults[["modind"]])) return()
 
-  mi <- lavaan::modindices(cfaResult[["lav"]])
+  mi <- try(lavaan::modindices(cfaResult[["lav"]]))
   jaspResults[["modind"]] <- mic <- createJaspContainer(gettext("Modification Indices"), position = 5)
   mic$dependOn(c("factors", "secondOrder", "rescov", "includemeanstructure", "identify", "uncorrelatedFactors",
                         "mimic", "estimator", "se", "bootstrapNumber", "groupvar", "invariance", "modIndices",
                         "miCutoff"))
 
-  if (options$groupvar != "") {
+  if (isTryError(mi)) {
+    mic$setError(.extractErrorMessage(mi))
+  } else if (options$groupvar != "") {
     groupLabs <- cfaResult[["lav"]]@Data@group.label
     for (i in 1:length(groupLabs)) {
       mic[[groupLabs[i]]] <- createJaspContainer(groupLabs[i])

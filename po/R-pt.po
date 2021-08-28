@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-06-29 15:53\n"
-"PO-Revision-Date: 2021-07-06 08:34+0000\n"
-"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
+"PO-Revision-Date: 2021-08-27 20:21+0000\n"
+"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/pt/>\n"
 "Language: pt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -68,10 +68,10 @@ msgid "p"
 msgstr "p"
 
 msgid "Baseline model"
-msgstr "Modelo de referência"
+msgstr "Modelo de linha de base"
 
 msgid "Factor model"
-msgstr "Modelo fatorial"
+msgstr "Fatores"
 
 msgid "Additional fit measures"
 msgstr "Medidas adicionais de ajuste"
@@ -89,34 +89,34 @@ msgid "Information criteria"
 msgstr "Critério de informação"
 
 msgid "Other fit measures"
-msgstr "Outras medidas de ajuste"
+msgstr "Medidas adicionais de ajuste"
 
 msgid "Metric"
 msgstr "Métrica"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr "Comparative Fit Index (CFI)"
+msgstr "Índice de Ajuste Comparativo"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr "Tucker-Lewis Index (TLI)"
+msgstr "Índice de Tucker-Lewis"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr "Bentler-Bonett Non-normed Fit Index (NNFI)"
+msgstr "Índice de ajuste não normalizado de Bentler-Bonett"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr "Bentler-Bonett Normed Fit Index (NFI)"
+msgstr "Índice de ajuste normalizado de Bentler-Bonett"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr "Parsimony Normed Fit Index (PNFI)"
+msgstr "Índice de ajuste normatizado de parcimônia (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr "Bollen's Relative Fit Index (RFI)"
+msgstr "Índice de ajuste relativo de Bollen"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
 msgstr "Bollen's Incremental Fit Index (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr "Relative Noncentrality Index (RNI)"
+msgstr "Índice relativo de não-centralidade"
 
 msgid "Log-likelihood"
 msgstr "Log-likelihood"
@@ -128,13 +128,13 @@ msgid "Akaike (AIC)"
 msgstr "Akaike (AIC)"
 
 msgid "Bayesian (BIC)"
-msgstr "Bayesiano (BIC)"
+msgstr "Bayesiano"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
 msgstr "Sample-size adjusted Bayesian (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr "Root mean square error of approximation (RMSEA)"
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% CI lower bound"
 msgstr "RMSEA 90%% IC limite inferior"
@@ -143,10 +143,10 @@ msgid "RMSEA 90%% CI upper bound"
 msgstr "RMSEA 90%% IC limite superior"
 
 msgid "RMSEA p-value"
-msgstr "RMSEA p-valor"
+msgstr "p-valor RMSEA"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr "Standardized root mean square residual (SRMR)"
+msgstr "Raiz quadrada média residual padronizada (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
 msgstr "N crítico de Hoelter (%s = 0,05)"
@@ -158,13 +158,13 @@ msgid "Goodness of fit index (GFI)"
 msgstr "Goodness of fit index (GFI)"
 
 msgid "McDonald fit index (MFI)"
-msgstr "McDonald fit index (MFI)"
+msgstr "Índice de ajuste de McDonald"
 
 msgid "Expected cross validation index (ECVI)"
 msgstr "Expected cross validation index (ECVI)"
 
 msgid "Parameter estimates"
-msgstr "Estimativas dos parâmetros"
+msgstr "Estimativas de parâmetros"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
@@ -181,13 +181,13 @@ msgid "Symbol"
 msgstr "Símbolo"
 
 msgid "Estimate"
-msgstr "Estimativas"
+msgstr "Estimativa"
 
 msgid "Std. Error"
 msgstr "Erro padrão"
 
 msgid "z-value"
-msgstr "valor z"
+msgstr "Valor"
 
 msgid "Lower"
 msgstr "Inferior"
@@ -250,7 +250,7 @@ msgid "Residual covariance matrix"
 msgstr "Matriz de covariância residual"
 
 msgid "Plots"
-msgstr "Diagramas"
+msgstr "Gráficos"
 
 msgid "Model plots"
 msgstr "Gráficos do modelo"
@@ -262,7 +262,7 @@ msgid "Misfit plots"
 msgstr "Diagrama de discrepância"
 
 msgid "Misfit plot"
-msgstr "Diagrama de discrepância"
+msgstr ""
 
 msgid "Model syntax"
 msgstr "Sintaxe do modelo"
@@ -277,9 +277,8 @@ msgstr "Não há casos válidos suficientes (%i) para executar esta análise"
 msgid "Data not valid: variance is zero in each row"
 msgstr "Dados inválidos: a variância é zero em cada linha"
 
-#, fuzzy
 msgid "Data not valid: there are more variables than observations"
-msgstr "Dados inválidos: todas as variáveis são colineares"
+msgstr "Os dados não são válidos: há mais variáveis do que observações"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
 msgstr "Dados inválidos: muitos valores ausentes em variável(is) %s."
@@ -316,7 +315,7 @@ msgid "<em>Warning:</em>"
 msgstr "<em>Aviso:</em>"
 
 msgid "Factor Loadings"
-msgstr "Cargas Fatoriais"
+msgstr "Cargas do fator"
 
 msgid "Factor %i"
 msgstr "Fator %i"

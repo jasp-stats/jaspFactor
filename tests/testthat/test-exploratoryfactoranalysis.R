@@ -19,7 +19,7 @@ options$numberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
 options$factorLoadingsSort <- "sortByVariables"
-options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon", 
+options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
 results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", options)
@@ -87,12 +87,12 @@ test_that("Missing values works", {
   options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$incl_correlations <- TRUE
-  
+
   options$missingValues <- "pairwise"
   results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 1.42781053334818, 2L, 0.489727939944839), label = "pairwise")
-  
+
   options$missingValues <- "listwise"
   results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
@@ -144,4 +144,16 @@ test_that("factorLoadingsSort sort the factor loadings table", {
     jaspTools::expect_equal_tables(table, reference[[factorLoadingsSort]], label = sprintf("factorLoadingsSort = %s", factorLoadingsSort))
   }
 
+})
+
+test_that("Estimation options do not crash", {
+  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options$variables <- paste0("Q0", 1:9)
+
+  for(fitmethod in c("minres", "ml", "pa", "ols", "wls", "gls", "minchi", "minrank")) {
+    options$fitmethod <- fitmethod
+    results <- runAnalysis("ExploratoryFactorAnalysis", "Fear of Statistics.csv", options)
+    testthat::expect(is.null(results[["results"]][["error"]]),
+                     sprintf("Estimation with method '%s' crashes", fitmethod))
+  }
 })

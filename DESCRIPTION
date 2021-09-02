@@ -19,7 +19,8 @@ Imports:
   qgraph,
   reshape2,
   semPlot,
-  GPArotation
+  GPArotation,
+  Rcsdp
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,

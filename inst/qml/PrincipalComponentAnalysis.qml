@@ -122,23 +122,26 @@ Form
 	{
 		title: qsTr("Output Options")
 
-		Slider
-		{
-			name: "highlightText"
-			title: qsTr("Highlight")
-			value: 0.4
-		}
+        Group {
+            RadioButtonGroup
+            {
+                name: "componentLoadingsSort"
+                title: qsTr("Order component loadings by")
+                RadioButton	{ name: "sortByComponentSize";	label: qsTr("Component size");	checked: true		}
+                RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
+            }
+
+            Slider
+            {
+                name: "loadingsThreshold"
+                label: qsTr("Loadings threshold")
+                value: 0.4
+                vertical: false
+            }
+        }
 
 		Group
 		{
-			RadioButtonGroup
-			{
-				name: "componentLoadingsSort"
-				title: qsTr("Order component loadings by")
-				RadioButton	{ name: "sortByComponentSize";	label: qsTr("Component size");	checked: true		}
-				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
-			}
-
 			Group
 			{
 				title: qsTr("Table")

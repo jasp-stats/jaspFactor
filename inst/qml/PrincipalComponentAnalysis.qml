@@ -37,14 +37,14 @@ Form
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		AvailableVariablesList { name: "allVariablesList" }
-		AssignedVariablesList
-		{
-			id: variables
-			name: "variables"
-			title: qsTr("Variables")
-			suggestedColumns: ["scale"]
-			allowedColumns: ["scale"]
-		}
+        AssignedVariablesList
+        {
+            id: variables
+            name: "variables"
+            title: qsTr("Variables")
+            suggestedColumns: ["scale"]
+            allowedColumns: ["scale"]
+        }
 	}
 
 
@@ -68,16 +68,16 @@ Form
 		}
 	}
 
-	Group
-	{
-		RadioButtonGroup
-		{
-			name: "rotationMethod"
-			title: qsTr("Rotation")
-			RadioButton
-			{
-				value	: "orthogonal"
-				label	: qsTr("Orthogonal")
+    Group
+    {
+        RadioButtonGroup
+        {
+            name: "rotationMethod"
+            title: qsTr("Rotation")
+            RadioButton
+            {
+                value	: "orthogonal"
+                label	: qsTr("Orthogonal")
 				DropDown
 				{
 					name: "orthogonalSelector"
@@ -90,39 +90,47 @@ Form
 						{ label: "geominT"		, value: "geominT"		}
 					]
 				}
-			}
-			RadioButton
-			{
-				value	: "oblique"
-				label	: qsTr("Oblique")
-				checked	: true
-				DropDown { name: "obliqueSelector"; values: [ "promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ" ] }
-			}
-		}
+            }
+            RadioButton
+            {
+                value	: "oblique"
+                label	: qsTr("Oblique")
+                checked	: true
+                DropDown { name: "obliqueSelector"; values: [ "promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ" ] }
+            }
+        }
 
-		RadioButtonGroup
-		{
-			name: "basedOn"
-			title: qsTr("Base decomposition on")
-			RadioButton
-			{
-				value: "correlation"
-				label: qsTr("Correlation matrix")
-				checked: true
-			}
-			RadioButton
-			{
-				value: "covariance"
-				label: qsTr("Covariance matrix")
-			}
-		}
-	}
+        RadioButtonGroup
+        {
+            name: "basedOn"
+            title: qsTr("Base decomposition on")
+            RadioButton
+            {
+                value: "correlation"
+                label: qsTr("Correlation matrix")
+                checked: true
+            }
+            RadioButton
+            {
+                value: "covariance"
+                label: qsTr("Covariance matrix")
+            }
+        }
+    }
 
 	Section
 	{
 		title: qsTr("Output Options")
 
-		Group {
+		Slider
+		{
+			name: "highlightText"
+			title: qsTr("Highlight")
+			value: 0.4
+		}
+
+		Group
+		{
 			RadioButtonGroup
 			{
 				name: "componentLoadingsSort"
@@ -131,17 +139,6 @@ Form
 				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
 			}
 
-			Slider
-			{
-				name: "loadingsThreshold"
-				label: qsTr("Loadings threshold")
-				value: 0.4
-				vertical: false
-			}
-		}
-
-		Group
-		{
 			Group
 			{
 				title: qsTr("Table")
@@ -166,17 +163,17 @@ Form
 		CheckBox 
 		{
 			debug: true
-			id: addPC
-			name: "addPC"
-			text: qsTr("Add PC scores to data")
-			enabled: variables.count > 1
+            id: addPC
+            name: "addPC"
+            text: qsTr("Add PC scores to data")
+            enabled: variables.count > 1
 
-			ComputedColumnField { 
-				name: 		"PCPrefix"
-				text: 		"Prefix: "
-				fieldWidth: 120
-				visible:    addPC.checked
-			}
-		}
+            ComputedColumnField { 
+                name: 		"PCPrefix"
+                text: 		"Prefix: "
+                fieldWidth: 120
+                visible:    addPC.checked
+            }
+        }
 	}
 }

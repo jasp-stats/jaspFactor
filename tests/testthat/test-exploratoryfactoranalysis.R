@@ -9,7 +9,7 @@ context("Exploratory Factor Analysis")
 options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$fitmethod <- "minres"
-options$loadingsThreshold <- 0.4
+options$highlightText <- 0.4
 options$incl_correlations <- TRUE
 options$incl_fitIndices <- TRUE
 options$incl_pathDiagram <- TRUE
@@ -108,7 +108,7 @@ test_that("factorLoadingsSort sort the factor loadings table", {
 
   options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
   options$orthogonalSelector <- "varimax"
-  options$loadingsThreshold <- 0.2
+  options$highlightText <- 0.2
   options$variables <- paste0("x", 1:9)
 
   reference <- list(

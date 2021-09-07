@@ -228,7 +228,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     return()
 
   loatab <- createJaspTable(gettext("Factor Loadings"))
-  loatab$dependOn(c("loadingsThreshold", "factorLoadingsSort"))
+  loatab$dependOn(c("highlightText", "factorLoadingsSort"))
   loatab$position <- 2
 
   loatab$addColumnInfo(name = "var", title = "", type = "string")
@@ -253,7 +253,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   loadings <- unclass(loads)
-  loadings[abs(loads) < options[["loadingsThreshold"]]] <- NA_real_
+  loadings[abs(loads) < options[["highlightText"]]] <- NA_real_
 
   df <- cbind.data.frame(
     var = rownames(loads),
@@ -275,7 +275,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaStructureTable <- function(modelContainer, dataset, options, ready) {
   if (!options[["incl_structure"]] || !is.null(modelContainer[["strtab"]])) return()
   strtab <- createJaspTable(gettext("Factor Loadings (Structure Matrix)"))
-  strtab$dependOn(c("loadingsThreshold", "incl_structure"))
+  strtab$dependOn(c("highlightText", "incl_structure"))
   strtab$position <- 2.5
   strtab$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["strtab"]] <- strtab
@@ -297,12 +297,12 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   for (i in 1:ncol(loads)) {
     # fix weird "all true" issue
-    if (all(abs(loads[, i]) < options$loadingsThreshold)) {
+    if (all(abs(loads[, i]) < options$highlightText)) {
       strtab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "string")
       strtab[[paste0("c", i)]] <- rep("", nrow(loads))
     } else {
       strtab$addColumnInfo(name = paste0("c", i), title = gettextf("Factor %i", i), type = "number", format = "dp:3")
-      strtab[[paste0("c", i)]] <- ifelse(abs(loads[, i]) < options$loadingsThreshold, NA, loads[ ,i])
+      strtab[[paste0("c", i)]] <- ifelse(abs(loads[, i]) < options$highlightText, NA, loads[ ,i])
     }
   }
 }
@@ -449,7 +449,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # Create plot object
   n_var <- length(options$variables)
   path <- createJaspPlot(title = gettext("Path Diagram"), width = 480, height = ifelse(n_var < 2, 300, 1 + 299 * (n_var / 5)))
-  path$dependOn(c("incl_pathDiagram", "loadingsThreshold"))
+  path$dependOn(c("incl_pathDiagram", "highlightText"))
   path$position <- 7
   modelContainer[["path"]] <- path
   if (!ready || modelContainer$getError()) return()
@@ -583,7 +583,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     mar                 = c(5,10,5,12),
     normalize           = FALSE,
     label.fill.vertical = 0.75,
-    cut                 = options$loadingsThreshold,
+    cut                 = options$highlightText,
     bg                  = "transparent"
   ))
 

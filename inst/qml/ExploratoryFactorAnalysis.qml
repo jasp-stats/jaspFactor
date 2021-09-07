@@ -143,23 +143,23 @@ Form
 	{
 		title: qsTr("Output Options")
 
-        Group {
-            RadioButtonGroup
-            {
-                name: "factorLoadingsSort"
-                title: qsTr("Order factor loadings by")
-                RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
-                RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
-            }
+		Group {
+			RadioButtonGroup
+			{
+				name: "factorLoadingsSort"
+				title: qsTr("Order factor loadings by")
+				RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
+				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
+			}
 
-            Slider {
-                name: "loadingsThreshold"
-                label: qsTr("Loadings threshold")
-                value: 0.4
-                vertical: false
-            }
+			Slider {
+				name: "loadingsThreshold"
+				label: qsTr("Loadings threshold")
+				value: 0.4
+				vertical: false
+			}
 
-        }
+		}
 
 		Group
 		{

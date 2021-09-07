@@ -205,7 +205,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 .pcaLoadingsTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["loatab"]])) return()
   loatab <- createJaspTable(gettext("Component Loadings"))
-  loatab$dependOn(c("highlightText", "componentLoadingsSort"))
+  loatab$dependOn(c("loadingsThreshold", "componentLoadingsSort"))
   loatab$position <- 2
   loatab$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["loatab"]] <- loatab
@@ -231,7 +231,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   loadings <- unclass(loads)
-  loadings[abs(loads) < options[["highlightText"]]] <- NA_real_
+  loadings[abs(loads) < options[["loadingsThreshold"]]] <- NA_real_
 
   df <- cbind.data.frame(
     var = rownames(loads),
@@ -373,7 +373,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   # Create plot object
   n_var <- length(options$variables)
   path <- createJaspPlot(title = gettext("Path Diagram"), width = 480, height = ifelse(n_var < 2, 300, 1 + 299 * (n_var / 5)))
-  path$dependOn(c("incl_pathDiagram", "highlightText"))
+  path$dependOn(c("incl_pathDiagram", "loadingsThreshold"))
   modelContainer[["path"]] <- path
   if (!ready || modelContainer$getError()) return()
 
@@ -501,7 +501,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     mar                 = c(5,10,5,12),
     normalize           = FALSE,
     label.fill.vertical = 0.75,
-    cut                 = options$highlightText,
+    cut                 = options$loadingsThreshold,
     bg                  = "transparent"
   ))
 

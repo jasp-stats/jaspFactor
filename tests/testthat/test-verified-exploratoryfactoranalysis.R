@@ -18,7 +18,7 @@ options$incl_screePlot <- TRUE
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$eigenValuesBox <- 1
 options$fitmethod <- "pa"
-options$highlightText <- 0.4
+options$loadingsThreshold <- 0.4
 options$obliqueSelector <- "oblimin"
 
 
@@ -122,7 +122,7 @@ test_that("Factor Characteristics table results match R, SPSS, SAS, MiniTab", {
 options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$fitmethod <- "minres"
-options$highlightText <- 0.4
+options$loadingsThreshold <- 0.4
 options$incl_correlations <- TRUE
 options$incl_fitIndices <- TRUE
 options$incl_pathDiagram <- TRUE

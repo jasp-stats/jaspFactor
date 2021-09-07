@@ -12,7 +12,7 @@ context("Principal Component Analysis -- Verification project")
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
 options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
 options$PCPrefix <- ""
-options$loadingsThreshold <- 0.4
+options$highlightText <- 0.4
 options$orthogonalSelector <- "varimax"
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$factorMethod <- "parallelAnalysis"

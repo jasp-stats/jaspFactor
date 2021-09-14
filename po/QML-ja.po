@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-09-11 22:44+0000\n"
-"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
+"PO-Revision-Date: 2021-09-15 12:15+0000\n"
+"Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ja/>\n"
 "Language: ja\n"
@@ -255,7 +255,7 @@ msgstr "オプション"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
-msgstr "明白な切片をゼロに修正"
+msgstr "顕在切片をゼロに修正"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix latent intercepts to zero"
@@ -263,7 +263,7 @@ msgstr "潜在変数の切片をゼロに修正"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr "残りの単一インジケーターを省略します"
+msgstr "単一インジケーターの残差を除外する"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"

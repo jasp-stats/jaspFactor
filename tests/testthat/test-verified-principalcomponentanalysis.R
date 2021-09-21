@@ -67,16 +67,18 @@ test_that("Component Loadings table results match R, SPSS, SAS, MiniTab", {
 })
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
-####### this needs new verification, since the third decimal for the rotation solution is different from SPSS
+#' the values presented here are slightly different from the SPSS, SAS, and Minitab values
+#' the reason for this is the optimization that just runs a bit shorter with the psych package we use for JASP
+#' adjusting the optimization (define a later breakpoint) results in the SPSS values
 test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab", {
   resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
   jaspTools::expect_equal_tables(resultsTable,
-                                 list("PC1", 0.162054332805079, 0.316958567983434, 3.72724965451683,
-                                      7.29004706361899, 0.162054332805079, 0.316958567983434, "PC2",
+                                 list("Component 1", 0.162054332805079, 0.316958567983434, 3.72724965451683,
+                                      7.29004706361899, 0.162054332805079, 0.316958567983434, "Component 2",
                                       0.307422479496941, 0.392559817846783, 3.34346737391282, 1.73882874685703,
-                                      0.145368146691862, 0.0756012498633492, "PC3", 0.418331823475735,
+                                      0.145368146691862, 0.0756012498633492, "Component 3", 0.418331823475735,
                                       0.449809884276163, 2.55091491151227, 1.31675152787573, 0.110909343978794,
-                                      0.0572500664293797, "PC4", 0.503166325737665, 0.503166325737664,
+                                      0.0572500664293797, "Component 4", 0.503166325737665, 0.503166325737664,
                                       1.95119355202438, 1.22719815361453, 0.0848345022619297, 0.0533564414615014
                                  ))
 })

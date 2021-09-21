@@ -14,7 +14,7 @@ Principcal Component Analysis is used to represent the data in smaller component
 
 #### Number of Components  
 - Here, the number of components that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
-  - Parallell Analysis: Components are selected on the basis of parallell analysis. With this method, components are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
+  - Parallel Analysis: Components are selected on the basis of parallel analysis. With this method, components are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
   - Eigenvalues: Components are selected when they have a certain eigenvalue. By default components are selected that have an eigenvalue above 1. 
   - Manual: The number of components can be specified manually. By default this is set to 1. 
 
@@ -61,9 +61,14 @@ Component Loadings:
 - Uniqueness: The percentage of the variance of each variable that is not explained by the component. 
 
 Component Characteristics:
-- Eigenvalues: The eigenvalue for each selected component
-- Proportion var.: The proportion of variance in the dataset explained by each component
-- Cumulative: The proportion of variance in the dataset explained by the components up to and including the current component.
+- Unrotated solution: 
+  - Eigenvalues: The eigenvalue for each component
+  - Proportion var.: The proportion of variance in the dataset explained by each component
+  - Cumulative: The proportion of variance in the dataset explained by the components up to and including the current component.
+- Rotated solution: 
+  - SumSq. Loadings: Sum of squared loadings, variance explained by each component
+  - Proportion var.: The proportion of variance in the dataset explained by each component
+  - Cumulative: The proportion of variance in the dataset explained by the components up to and including the current component.
 
 Component Correlations: 
 - The correlation between the principal components. 

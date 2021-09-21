@@ -6,7 +6,7 @@ context("Exploratory Factor Analysis -- Verification project")
 # - Eigen values above / manual
 # - contents of screeplot (set.seed does not work)
 
-## Testing Questionnaire data 
+## Testing Questionnaire data
 
 options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
 options$factorMethod <- "parallelAnalysis"
@@ -21,9 +21,8 @@ options$fitmethod <- "pa"
 options$highlightText <- 0.4
 options$obliqueSelector <- "oblimin"
 
-
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "EFA.csv", options)
+results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "PCA.csv", options)
 
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
@@ -99,16 +98,17 @@ test_that("Factor Loadings table results match R, SPSS, SAS, MiniTab", {
 })
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
-test_that("Factor Characteristics table results match R, SPSS, SAS, MiniTab", {
-  resultTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
-  jaspTools::expect_equal_tables(
-    "test"=resultTable,
-    "ref"=list("Factor 1", 0.131897550845727, 3.03364366945173, 0.131897550845727,
-               "Factor 2", 0.256005905753789, 2.85449216288541, 0.124108354908062,
-               "Factor 3", 0.342351093761207, 1.98593932417061, 0.0863451880074181,
-               "Factor 4", 0.404746469846354, 1.43509364995838, 0.0623953760851471
-    )
-  )
+test_that("Factor Characteristics table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1", 0.131897550845728, 0.293227816104412, 0.131897550845728,
+                                      0.293227816104412, 3.03364366945174, 6.74423977040149, "Factor 2",
+                                      0.256005905753789, 0.342246352158825, 0.124108354908061, 0.0490185360544126,
+                                      2.85449216288541, 1.12742632925149, "Factor 3", 0.342351093761207,
+                                      0.377617942230257, 0.0863451880074178, 0.0353715900714321, 1.98593932417061,
+                                      0.813546571642938, "Factor 4", 0.404746469846354, 0.404746469846354,
+                                      0.0623953760851471, 0.0271285276160969, 1.43509364995838, 0.623956135170229
+                                 ))
 })
 
 
@@ -131,7 +131,7 @@ options$incl_structure <- TRUE
 options$numberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
-options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon", 
+options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
 results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", options)
@@ -147,9 +147,10 @@ test_that("Factor Correlations table results match", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list("Factor 1", 0.211560139236826, 1.48092097465778, 0.211560139236826,
-                           "Factor 2", 0.36610038604766, 1.08178172767584, 0.154540246810834
-                      ))
+                                 list("Factor 1", 0.211560139237577, 0.21520386846338, 0.211560139237577,
+                                      0.21520386846338, 1.48092097466304, 1.50642707924366, "Factor 2",
+                                      0.366100386048402, 0.366966592875575, 0.154540246810825, 0.151762724412195,
+                                      1.08178172767577, 1.06233907088537))
 })
 
 test_that("Additional fit indices table results match", {
@@ -199,12 +200,12 @@ test_that("Missing values works", {
   options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$incl_correlations <- TRUE
-  
+
   options$missingValues <- "pairwise"
   results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 1.42781053334818, 2L, 0.489727939944839), label = "pairwise")
-  
+
   options$missingValues <- "listwise"
   results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]

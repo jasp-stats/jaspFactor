@@ -35,9 +35,10 @@ test_that("Factor Correlations table results match", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list("Factor 1", 0.211560139236826, 1.48092097465778, 0.211560139236826,
-                           "Factor 2", 0.36610038604766, 1.08178172767584, 0.154540246810834
-                      ))
+                                 list("Factor 1", 0.211560139237577, 0.21520386846338, 0.211560139237577,
+                                      0.21520386846338, 1.48092097466304, 1.50642707924366, "Factor 2",
+                                      0.366100386048402, 0.366966592875575, 0.154540246810825, 0.151762724412195,
+                                      1.08178172767577, 1.06233907088537))
 })
 
 test_that("Additional fit indices table results match", {

@@ -10,12 +10,11 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - There is no multicollinearity and singularity in the data. 
 
 ### Input 
----
 #### Asssignment Box 
 - Included Variables: In this box, the variables to perform the exploratory factor analysis on are selected. 
 
 #### Number of Factors 
-_NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014) for more information._
+- _NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014) for more information._
 - Here, the number of factors that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
   - Parallel Analysis: Factors are selected on the basis of parallell analysis. With this method, factors are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
   - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 0 or higher. This is called the Kaiser criterion. 
@@ -46,34 +45,44 @@ _NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected. 
 - Missing values: 
-    - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have a observation for all the variables to include the case in the analysis. This option is selected by default. 
+    - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. 
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 
 ### Output 
---- 
+
 #### Exploratory Factor Analysis 
-Factor Loadings:  
-- Variables: The first column shows all the variables included in the analysis. 
-- PC (1, 2, 3, etc.): This column shows the factor loadings on the variable. 
-- Uniqueness: The percentage of the variance of each variable that is not explained by the factor. 
+- Factor Loadings:
+  - Variables: The first column shows all the variables included in the analysis. 
+  - PC (1, 2, 3, etc.): This column shows the factor loadings on the variable. 
+  - Uniqueness: The percentage of the variance of each variable that is not explained by the factor. 
 
-Factor Correlations:  
-- The correlations between the factors. 
+- Factor Correlations:  
+  - The correlations between the factors. 
 
-Chi-squared Test: 
-The fit of the model is tested. When the test is significant, the model is rejected. Bear in mind that a chi-squared approximation may be unreliable for small sample sizes, and the chi-squared test may too readily reject the model with very large sample sizes. Additional information about the fit of the model can be obtained by selecting the option `Additional fit indices` in the `Output options`. See, for example, Saris, Satorra, & van der Veld (2009) for more discussions on overall fit metrics.
-- Model: The model obtained from the exploratory factor analysis. 
-- Value: The chi-squared test statistic.  
-- df: Degrees of freedom. 
-- p: P-value. 
+- Chi-squared Test: 
+  The fit of the model is tested. When the test is significant, the model is rejected. Bear in mind that a     chi-squared approximation may be unreliable for small sample sizes, and the chi-squared test may too         readily reject the model with very large sample sizes. Additional information about the fit of the model     can be obtained by selecting the option `Additional fit indices` in the `Output options`. See, for example,   Saris, Satorra, & van der Veld (2009) for more discussions on overall fit metrics.
+  - Model: The model obtained from the exploratory factor analysis. 
+  - Value: The chi-squared test statistic.  
+  - df: Degrees of freedom. 
+  - p: P-value. 
 
-Additional Fit Indices: 
-These fit indices provide information about the fit of the model. 
-- Model: The model obtained from the exploratory factor analysis. 
-- RMSEA: Root Mean Square Error of Approximation. Corrects for parsimony. When models peform the same, but model 1 has more degrees of freedom than model 2, model 1 will be recommended. Browne and Cudeck (1993) advise a value less than 0.08 for an acceptable model fit, less than 0.05 a good model fit, and advice to reject models with values of 0.1 or higher. However, there is absolute agreement on these cutoffs. 
-- RMSEA 90% confidence interval: The 90% confidence interval of the Root Mean Square Error of Approximation. 
-- TLI: Tucker-Lewis Index. Evaluates the fit compared to a more resticted, nested baseline model. Hopwood and Donnallan (2010) suggested that a value higher than .9 indicates a good fit. However, there is no consensus about this cutoff. 
-- BIC: Bayesian Information Criterion. This measure is useful for comparing the performances of different models on the same data, where a lower value indicates a better fitting model. 
+- Factor Characteristics:
+  - Unrotated solution: 
+    - SumSq. Loadings: Sum of squared loadings, variance explained by each unrotated factor
+    - Proportion var.: The proportion of variance in the dataset explained by each unrotated factor
+    - Cumulative: The proportion of variance in the dataset explained by the unrotated factor up to and including the current factor.
+  - Rotated solution: 
+  - SumSq. Loadings: Sum of squared loadings, variance explained by each rotated factor
+  - Proportion var.: The proportion of variance in the dataset explained by each rotated factor
+  - Cumulative: The proportion of variance in the dataset explained by the rotated factor up to and including the current factor.
+
+- Additional Fit Indices: 
+  These fit indices provide information about the fit of the model. 
+  - Model: The model obtained from the exploratory factor analysis. 
+  - RMSEA: Root Mean Square Error of Approximation. Corrects for parsimony. When models peform the same, but   model 1 has more degrees of freedom than model 2, model 1 will be recommended. Browne and Cudeck (1993)      advise a value less than 0.08 for an acceptable model fit, less than 0.05 a good model fit, and advice to    reject models with values of 0.1 or higher. However, there is absolute agreement on these cutoffs. 
+  - RMSEA 90% confidence interval: The 90% confidence interval of the Root Mean Square Error of Approximation. 
+  - TLI: Tucker-Lewis Index. Evaluates the fit compared to a more resticted, nested baseline model. Hopwood and Donnallan (2010) suggested that a value higher than .9 indicates a good fit. However, there is no consensus about this cutoff. 
+  - BIC: Bayesian Information Criterion. This measure is useful for comparing the performances of different models on the same data, where a lower value indicates a better fitting model. 
 
 #### Path Diagram 
 - F(1,2,3,...): The factors in the model are represented by the circles.  
@@ -82,6 +91,7 @@ These fit indices provide information about the fit of the model.
 
 #### Screeplot 
 The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. The scree plot can be used to decide how many factors should be selected in the model. 
+
 - Factors: On the x-axis, all possible factors. 
 - Eigenvalue: On the y-axis, the eigenvalue that indicates the variance explained by each factor. 
 - Data: The dotted line represents the data. 
@@ -89,7 +99,7 @@ The scree plot provides information on how much variance in the data, indicated 
 - Kaiser criterion: The horizontal line at the eigenvalue of 1 represents the Kaiser criterion. According to this criterion, only factors with values above this line (at an eigenvalue of 1) should be included in the model. 
 
 ### References 
----
+
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*.     
     Guilford Publications. 
 - Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. URL: http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf.
@@ -103,13 +113,11 @@ The scree plot provides information on how much variance in the data, indicated 
 - Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in quantitative methods for psychology, 9*(2), 79-94.
 
 ### R Packages 
---- 
 - ggplot2
 - psych
 - qgraph
 - stats
 
 ### Example 
----
 - For an example go to `File`-->`Data library`-->`Factor`-->`G Factor`. 
 - For more details about Exploratory Factor Analysis in JASP, watch this <a href="https://www.youtube.com/watch?v=dUPzMBqcMjo&feature=youtu.be">video</a>. 

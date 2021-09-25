@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-09-24 01:34+0000\n"
+"Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
 
@@ -21,7 +27,7 @@ msgstr "探索的因子分析"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
-msgstr "検証的因子分析"
+msgstr "確認的因子分析"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
@@ -81,7 +87,7 @@ msgstr "R二乗"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr "暗黙の共分散行列"
+msgstr "モデル共分散行列"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
@@ -237,11 +243,11 @@ msgstr "潜在変数"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "全ての"
+msgstr "全変数"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No X"
-msgstr "Xがありません"
+msgstr "Xを除く"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
@@ -289,7 +295,7 @@ msgstr "因子の数"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
-msgstr "並行分析"
+msgstr "平行分析"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues"
@@ -441,7 +447,7 @@ msgstr "成分数"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
-msgstr "並行分析"
+msgstr "平行分析"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues"
@@ -477,7 +483,7 @@ msgstr "斜交"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"
-msgstr "分解は次に基づく"
+msgstr "分析に用いる行列"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"

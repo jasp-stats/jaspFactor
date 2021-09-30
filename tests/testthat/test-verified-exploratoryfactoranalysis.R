@@ -22,7 +22,7 @@ options$highlightText <- 0.4
 options$obliqueSelector <- "oblimin"
 
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "PCA.csv", options)
+results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "EFA.csv", options)
 
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis

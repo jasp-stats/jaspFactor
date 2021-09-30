@@ -46,7 +46,7 @@ Principcal Component Analysis is used to represent the data in smaller component
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 
 ### Output 
-
+---
 #### Principal Component Analysis 
 - Chi-squared Test: 
   The fit of the model is tested. When the test is significant, the model is rejected. Bear in mind that a     chi-squared approximation may be unreliable for small sample sizes, and the chi-squared test may too         readily reject the model with very large sample sizes. See, for example, Saris, Satorra, & van der Veld      (2009) for more discussions on overall fit metrics.
@@ -87,7 +87,7 @@ The scree plot provides information on how much variance in the data, indicated 
 - Kaiser criterion: The horizontal line at the eigenvalue of 1 represents the Kaiser criterion. According to this criterion, only components with values above this line (at an eigenvalue of 1) should be included in the model. 
 
 ### References 
-
+---
 - Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational research methods, 7*(2), 191-205.
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning* (Vol. 112, p. 18). New York: springer.
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in exploratory factor analysis. *Best practices in quantitative methods*, 86-99.
@@ -95,7 +95,7 @@ The scree plot provides information on how much variance in the data, indicated 
 - Shlens, J. (2014). A tutorial on principal component analysis. *arXiv preprint arXiv:1404.1100*.
 
 ### R Packages 
-
+---
 - psych 
 - qgraph 
 

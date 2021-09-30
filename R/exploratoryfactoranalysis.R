@@ -337,11 +337,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!ready || modelContainer$getError()) return()
 
   efaResults <- modelContainer[["model"]][["object"]]
-#
-#   eigtab[["comp"]] <- paste("Factor", 1:efaResults$factors)
-#   eigtab[["eigv"]] <- efaResults$Vaccounted[1,]
-#   eigtab[["prop"]] <- efaResults$Vaccounted[2,]
-#   eigtab[["cump"]] <- cumsum(efaResults$Vaccounted[2,])
+
 
   eigv <- efaResults$values
   eigv_init <- efaResults$e.values

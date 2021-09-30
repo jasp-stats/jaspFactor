@@ -10,6 +10,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - There is no multicollinearity and singularity in the data. 
 
 ### Input 
+---
 #### Asssignment Box 
 - Included Variables: In this box, the variables to perform the exploratory factor analysis on are selected. 
 
@@ -49,7 +50,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 
 ### Output 
-
+---
 #### Exploratory Factor Analysis 
 - Factor Loadings:
   - Variables: The first column shows all the variables included in the analysis. 
@@ -99,7 +100,7 @@ The scree plot provides information on how much variance in the data, indicated 
 - Kaiser criterion: The horizontal line at the eigenvalue of 1 represents the Kaiser criterion. According to this criterion, only factors with values above this line (at an eigenvalue of 1) should be included in the model. 
 
 ### References 
-
+---
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*.     
     Guilford Publications. 
 - Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. URL: http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf.
@@ -113,11 +114,13 @@ The scree plot provides information on how much variance in the data, indicated 
 - Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in quantitative methods for psychology, 9*(2), 79-94.
 
 ### R Packages 
+---
 - ggplot2
 - psych
 - qgraph
 - stats
 
 ### Example 
+---
 - For an example go to `File`-->`Data library`-->`Factor`-->`G Factor`. 
 - For more details about Exploratory Factor Analysis in JASP, watch this <a href="https://www.youtube.com/watch?v=dUPzMBqcMjo&feature=youtu.be">video</a>. 

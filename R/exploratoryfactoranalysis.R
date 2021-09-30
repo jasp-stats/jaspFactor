@@ -312,9 +312,23 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   eigtab <- createJaspTable(gettext("Factor Characteristics"))
   eigtab$addColumnInfo(name = "comp", title = "",                         type = "string")
-  eigtab$addColumnInfo(name = "eigv", title = gettext("SumSq. Loadings"), type = "number", format = "sf:4;dp:3")
-  eigtab$addColumnInfo(name = "prop", title = gettext("Proportion var."), type = "number", format = "sf:4;dp:3")
-  eigtab$addColumnInfo(name = "cump", title = gettext("Cumulative"),      type = "number", format = "sf:4;dp:3")
+
+  # if a rotation is used, the table needs more columns
+  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  if (rotate != "none") {
+    overTitleA <- gettext("Unrotated solution")
+    overTitleB <- gettext("Rotated solution")
+    eigtab$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
+    eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
+    eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
+    eigtab$addColumnInfo(name = "sslR", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleB)
+    eigtab$addColumnInfo(name = "propR", title = gettext("Proportion var."), type = "number", overtitle = overTitleB)
+    eigtab$addColumnInfo(name = "cumpR", title = gettext("Cumulative"),      type = "number", overtitle = overTitleB)
+  } else {
+    eigtab$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number")
+    eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number")
+    eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number")
+  }
 
   eigtab$position <- 3
 
@@ -324,10 +338,20 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   efaResults <- modelContainer[["model"]][["object"]]
 
-  eigtab[["comp"]] <- paste("Factor", 1:efaResults$factors)
-  eigtab[["eigv"]] <- efaResults$Vaccounted[1,]
-  eigtab[["prop"]] <- efaResults$Vaccounted[2,]
-  eigtab[["cump"]] <- cumsum(efaResults$Vaccounted[2,])
+
+  eigv <- efaResults$values
+  eigv_init <- efaResults$e.values
+  Vaccounted <- efaResults[["Vaccounted"]]
+  idx <- seq_len(efaResults[["factors"]])
+  eigtab[["comp"]] <- paste("Factor", idx)
+  eigtab[["sslU"]] <- eigv[idx]
+  eigtab[["propU"]] <- eigv[idx] / sum(eigv_init)
+  eigtab[["cumpU"]] <- cumsum(eigv)[idx] / sum(eigv_init)
+  if (rotate != "none") {
+    eigtab[["sslR"]] <- Vaccounted["SS loadings", idx]
+    eigtab[["propR"]] <- Vaccounted["Proportion Var", idx]
+    eigtab[["cumpR"]] <- if (efaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
+  }
 }
 
 .efaCorrTable <- function(modelContainer, dataset, options, ready) {

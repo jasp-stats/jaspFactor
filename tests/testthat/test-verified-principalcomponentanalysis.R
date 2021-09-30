@@ -7,7 +7,7 @@ context("Principal Component Analysis -- Verification project")
 # - slider
 
 
-## Testing Questionnaire data 
+## Testing Questionnaire data
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
 options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
@@ -67,16 +67,20 @@ test_that("Component Loadings table results match R, SPSS, SAS, MiniTab", {
 })
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
+#' the values presented here are slightly different from the SPSS, SAS, and Minitab values
+#' the reason for this is the optimization that just runs a bit shorter with the psych package we use for JASP
+#' adjusting the optimization (define a later breakpoint) results in the SPSS values
 test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab", {
   resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
-  jaspTools::expect_equal_tables(
-    "test"=resultsTable,
-    "ref"=list("PC1", 0.316958567983434, 7.29004706361899, 0.316958567983434,
-               "PC2", 0.392559817846783, 1.73882874685703, 0.0756012498633492,
-               "PC3", 0.449809884276163, 1.31675152787573, 0.0572500664293797,
-               "PC4", 0.503166325737664, 1.22719815361453, 0.0533564414615014
-    )
-  )
+  jaspTools::expect_equal_tables(resultsTable,
+                                 list("Component 1", 0.162054332805079, 0.316958567983434, 3.72724965451683,
+                                      7.29004706361899, 0.162054332805079, 0.316958567983434, "Component 2",
+                                      0.307422479496941, 0.392559817846783, 3.34346737391282, 1.73882874685703,
+                                      0.145368146691862, 0.0756012498633492, "Component 3", 0.418331823475735,
+                                      0.449809884276163, 2.55091491151227, 1.31675152787573, 0.110909343978794,
+                                      0.0572500664293797, "Component 4", 0.503166325737665, 0.503166325737664,
+                                      1.95119355202438, 1.22719815361453, 0.0848345022619297, 0.0533564414615014
+                                 ))
 })
 
 # # https://jasp-stats.github.io/jasp-verification-project/factor.html
@@ -87,51 +91,56 @@ test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab",
 #   jaspTools::expect_equal_plots(testPlot, "scree-plot")
 # })
 
-options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
-options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
-options$eigenValuesBox <- 0.95
-options$orthogonalSelector <- "varimax"
-options$incl_pathDiagram <- TRUE
-options$incl_screePlot <- TRUE
-options$factorMethod <- "eigenValues"
-set.seed(1)
-results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
 
-
-test_that("Chi-squared Test table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                      list(56.1723464768203, 1, "Model", 6.63887442169672e-14))
-})
-
-test_that("Component Loadings table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                      list(0.709068975944499, -0.055882219913321, 0.494098364850579, "contNormal",
-                           -0.198414056307147, -0.730807163622534, 0.426552751857732, "contGamma",
-                           -0.154267640888903, 0.766942636295035, 0.388000487607395, "debCollin1",
-                           0.613519408318389, 0.258607271436745, 0.556716214776696, "contcor1",
-                           -0.560112933829558, 0.0519207989938901, 0.683577731988681, "facFifty"
-                      ))
-})
-
-test_that("Component Characteristics table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                      list("PC1", 0.269220893232411, 1.34610446616205, 0.269220893232411,
-                           "PC2", 0.490210889783784, 1.10494998275686, 0.220989996551372
-                      ))
-})
-
-test_that("Path Diagram plot matches", {
-  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
-  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "path-diagram")
-})
-
-test_that("Scree plot matches", {
-  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
-  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
-  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scree-plot")
-})
+# ### this seems unnecessary since it is a duplicate of what is already in the test-principalcomponentanalysis.R file
+# ### and it is not part of https://jasp-stats.github.io/jasp-verification-project/factor.html
+# ### so I assume it is not verified
+# options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+# options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
+# options$eigenValuesBox <- 0.95
+# options$orthogonalSelector <- "varimax"
+# options$incl_pathDiagram <- TRUE
+# options$incl_screePlot <- TRUE
+# options$factorMethod <- "eigenValues"
+# set.seed(1)
+# results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+#
+#
+# test_that("Chi-squared Test table results match", {
+#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+#   jaspTools::expect_equal_tables(table,
+#                       list(56.1723464768203, 1, "Model", 6.63887442169672e-14))
+# })
+#
+# test_that("Component Loadings table results match", {
+#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+#   jaspTools::expect_equal_tables(table,
+#                       list(0.709068975944499, -0.055882219913321, 0.494098364850579, "contNormal",
+#                            -0.198414056307147, -0.730807163622534, 0.426552751857732, "contGamma",
+#                            -0.154267640888903, 0.766942636295035, 0.388000487607395, "debCollin1",
+#                            0.613519408318389, 0.258607271436745, 0.556716214776696, "contcor1",
+#                            -0.560112933829558, 0.0519207989938901, 0.683577731988681, "facFifty"
+#                       ))
+# })
+#
+# test_that("Component Characteristics table results match", {
+#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+#   jaspTools::expect_equal_tables(table,
+#                                  list("PC1", 0.251215603687833, 0.269220893232411, 1.25607801843916,
+#                                       1.34610446616205, 0.251215603687833, 0.269220893232411, "PC2",
+#                                       0.490210889783784, 0.490210889783784, 1.19497643047975, 1.10494998275686,
+#                                       0.238995286095951, 0.220989996551372))
+# })
+#
+# test_that("Path Diagram plot matches", {
+#   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
+#   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+#   jaspTools::expect_equal_plots(testPlot, "path-diagram")
+# })
+#
+# test_that("Scree plot matches", {
+#   skip("Scree plot check does not work because some data is simulated (non-deterministic).")
+#   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
+#   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+#   jaspTools::expect_equal_plots(testPlot, "scree-plot")
+# })

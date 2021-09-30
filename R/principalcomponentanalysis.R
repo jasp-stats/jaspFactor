@@ -250,15 +250,30 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
 }
 
+
 .pcaEigenTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["eigtab"]])) return()
-  coltitle <- ifelse(options$rotationMethod == "orthogonal", "PC", "RC")
 
   eigtab <- createJaspTable("Component Characteristics")
   eigtab$addColumnInfo(name = "comp", title = "",                type = "string")
-  eigtab$addColumnInfo(name = "eigv", title = gettext("Eigenvalue"),      type = "number", format = "sf:4;dp:3")
-  eigtab$addColumnInfo(name = "prop", title = gettext("Proportion var."), type = "number", format = "sf:4;dp:3")
-  eigtab$addColumnInfo(name = "cump", title = gettext("Cumulative"),      type = "number", format = "sf:4;dp:3")
+
+  # check if a rotation is used
+  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  if (rotate != "none") {
+    overTitleA <- gettext("Unrotated solution")
+    overTitleB <- gettext("Rotated solution")
+    eigtab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number", overtitle = overTitleA)
+    eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
+    eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
+    eigtab$addColumnInfo(name = "eigvR", title = gettext("Variance explained"), type = "number", overtitle = overTitleB)
+    eigtab$addColumnInfo(name = "propR", title = gettext("Proportion var."), type = "number", overtitle = overTitleB)
+    eigtab$addColumnInfo(name = "cumpR", title = gettext("Cumulative"),      type = "number", overtitle = overTitleB)
+  } else {
+    eigtab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number")
+    eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number")
+    eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number")
+  }
+
 
   eigtab$position <- 3
 
@@ -271,15 +286,17 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   eigv <- pcaResults$values
   Vaccounted <- pcaResults[["Vaccounted"]]
   idx <- seq_len(pcaResults[["factors"]])
-  eigtab[["comp"]] <- paste0(coltitle, idx)
-  eigtab[["eigv"]] <- eigv[idx]
-  # matches this unit test: Component Characteristics table results match R, SPSS, SAS, MiniTab
-  eigtab[["prop"]] <- eigv[1:pcaResults$factors] / sum(eigv)
-  eigtab[["cump"]] <- cumsum(eigv)[1:pcaResults$factors] / sum(eigv)
-  # matches psych and fixes https://github.com/jasp-stats/jasp-test-release/issues/1490
-  # eigtab[["prop"]] <- Vaccounted["Proportion Var", idx]
-  # eigtab[["cump"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Proportion", idx]
+  eigtab[["comp"]] <- paste("Component", idx)
+  eigtab[["eigvU"]] <- eigv[idx]
+  eigtab[["propU"]] <- eigv[1:pcaResults$factors] / sum(eigv)
+  eigtab[["cumpU"]] <- cumsum(eigv)[1:pcaResults$factors] / sum(eigv)
+  if (rotate != "none") {
+    eigtab[["eigvR"]] <- Vaccounted["SS loadings", idx]
+    eigtab[["propR"]] <- Vaccounted["Proportion Var", idx]
+    eigtab[["cumpR"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
+  }
 }
+
 
 .pcaCorrTable <- function(modelContainer, dataset, options, ready) {
   if (!options[["incl_correlations"]] || !is.null(modelContainer[["cortab"]])) return()

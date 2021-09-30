@@ -22,7 +22,7 @@ import JASP.Controls 1.0
 
 Form
 {
-	
+
 
 	CheckBox { name: "incl_GoF"; checked: true; visible: false }
 	CheckBox { name: "incl_loadings"; checked: true; visible: false }
@@ -45,7 +45,7 @@ Form
 		}
 	}
 
-	Group 
+	Group
 	{
 		RadioButtonGroup
 		{
@@ -55,7 +55,7 @@ Form
 			RadioButton
 			{
 				value: "eigenValues";					label: qsTr("Eigenvalues")
-				DoubleField { name: "eigenValuesBox"; label: qsTr("Eigenvalues above"); defaultValue: 0; decimals: 1 }
+				DoubleField { name: "eigenValuesBox"; label: qsTr("Eigenvalues above"); defaultValue: 1; decimals: 1 }
 			}
 			RadioButton
 			{
@@ -71,7 +71,7 @@ Form
 			{
 				name: "fitmethod"
 				indexDefaultValue: 0
-				values: 
+				values:
 				[
 					{ value: "minres",		label: qsTr("Minimum residual")				},
 					{ value: "ml",			label: qsTr("Maximum likelihood")			},
@@ -84,10 +84,10 @@ Form
 				]
 			}
 		}
-		
+
 	}
-	
-	
+
+
 
 	Group
 	{

@@ -151,7 +151,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # on the modelcontainer.
     if (ncomp == 0)
       stop(
-        gettext("No components with an eigenvalue > "), options$eigenValuesBox, ". ",
+        gettext("No factors with an eigenvalue > "), options$eigenValuesBox, ". ",
         gettext("Maximum observed eigenvalue: "), round(max(pa$fa.values), 3)
       )
     return(ncomp)

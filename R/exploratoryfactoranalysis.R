@@ -144,7 +144,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (options$factorMethod == "manual")           return(options$numberOfFactors)
   pa <- try(psych::fa.parallel(dataset, plot = FALSE))
   if (inherits(pa, "try-error"))                  return(1)
-  if (options$factorMethod == "parallelAnalysis") return(max(1, pa$ncomp))
+  if (options$factorMethod == "parallelAnalysis") return(max(1, pa$nfact))
   if (options$factorMethod == "eigenValues") {
     ncomp <- sum(pa$fa.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on

@@ -9,14 +9,14 @@ context("Exploratory Factor Analysis -- Verification project")
 ## Testing Questionnaire data
 
 options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
-options$factorMethod <- "parallelAnalysis"
+options$factorMethod <- "manual"
 options$rotationMethod <- "orthogonal"
 options$orthogonalSelector <- "varimax"
 options$kmotest <- TRUE
 options$bartest <- TRUE
 options$incl_screePlot <- TRUE
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
-options$eigenValuesBox <- 1
+options$numberOfFactors <- 4
 options$fitmethod <- "pa"
 options$highlightText <- 0.4
 options$obliqueSelector <- "oblimin"

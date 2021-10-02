@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-06-29 15:53\n"
+"POT-Creation-Date: 2021-10-02 03:30\n"
 "PO-Revision-Date: 2021-09-07 11:34+0000\n"
 "Last-Translator: DanaJohanna <dana__@live.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -290,7 +290,8 @@ msgstr ""
 "Schatting mislukt. \n"
 "Interne foutmelding: %s"
 
-msgid "No components with an eigenvalue >"
+#, fuzzy
+msgid "No factors with an eigenvalue >"
 msgstr "Geen componenten met een eigenwaarde >"
 
 msgid "."
@@ -331,6 +332,12 @@ msgstr "Factorladingen (Structuurmatrix)"
 
 msgid "Factor Characteristics"
 msgstr "Factorkarakteristieken"
+
+msgid "Unrotated solution"
+msgstr ""
+
+msgid "Rotated solution"
+msgstr ""
 
 msgid "SumSq. Loadings"
 msgstr "Kwadratensom Ladingen"
@@ -378,11 +385,17 @@ msgstr "EFA Eigenwaarde"
 msgid "Path Diagram"
 msgstr "Paddiagram"
 
+msgid "No components with an eigenvalue >"
+msgstr "Geen componenten met een eigenwaarde >"
+
 msgid "Component Loadings"
 msgstr "Componentladingen"
 
 msgid "Eigenvalue"
 msgstr "Eigenwaarde"
+
+msgid "Variance explained"
+msgstr ""
 
 msgid "Component Correlations"
 msgstr "Component correlaties"

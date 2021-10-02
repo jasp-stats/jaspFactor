@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-06-29 15:53\n"
+"POT-Creation-Date: 2021-10-02 03:30\n"
 "PO-Revision-Date: 2021-08-05 12:33+0000\n"
 "Last-Translator: shun wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -16,13 +16,20 @@ msgstr ""
 msgid "Second-Order"
 msgstr "二阶"
 
-msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgid ""
+"The model could not be estimated. Ensure that factors have at least 2 "
+"observed variables."
 msgstr "模型无法估计。确保因子至少有 2 个观测变量。"
 
-msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgid ""
+"The model could not be estimated. A factor with less than 2 variables was "
+"added in Second-Order."
 msgstr "模型无法估计。在二阶中添加了少于 2 个变量的因子。"
 
-msgid "The model could not be estimated. Error message: \n\n %s"
+msgid ""
+"The model could not be estimated. Error message: \n"
+"\n"
+" %s"
 msgstr ""
 "模型无法估计。错误信息：\n"
 "\n"
@@ -268,12 +275,15 @@ msgstr "数据无效：变量 %s 中的缺失值太多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "数据无效：所有变量共线"
 
-msgid "Estimation failed. \nInternal error message: %s"
+msgid ""
+"Estimation failed. \n"
+"Internal error message: %s"
 msgstr ""
 "估计失败。\n"
 "内部错误消息：%s"
 
-msgid "No components with an eigenvalue >"
+#, fuzzy
+msgid "No factors with an eigenvalue >"
 msgstr "没有成分具有特征值 >"
 
 msgid "."
@@ -315,6 +325,12 @@ msgstr "因子载荷（结构矩阵）"
 msgid "Factor Characteristics"
 msgstr "因素特征"
 
+msgid "Unrotated solution"
+msgstr ""
+
+msgid "Rotated solution"
+msgstr ""
+
 msgid "SumSq. Loadings"
 msgstr "SumSq. Loadings"
 
@@ -342,7 +358,9 @@ msgstr "TLI"
 msgid "BIC"
 msgstr "BIC"
 
-msgid "Screeplot not available. \nInternal error message: %s"
+msgid ""
+"Screeplot not available. \n"
+"Internal error message: %s"
 msgstr ""
 "碎石图 不可用。\n"
 "内部错误消息：%s"
@@ -359,11 +377,17 @@ msgstr "EFA 特征值"
 msgid "Path Diagram"
 msgstr "路径图"
 
+msgid "No components with an eigenvalue >"
+msgstr "没有成分具有特征值 >"
+
 msgid "Component Loadings"
 msgstr "成分载荷"
 
 msgid "Eigenvalue"
 msgstr "特征值"
+
+msgid "Variance explained"
+msgstr ""
 
 msgid "Component Correlations"
 msgstr "成分相关性"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-06-29 15:53\n"
+"POT-Creation-Date: 2021-10-02 03:30\n"
 "PO-Revision-Date: 2021-09-03 13:34+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -293,7 +293,8 @@ msgstr ""
 "A estimativa falhou. \n"
 "Mensagem de erro interna: %s"
 
-msgid "No components with an eigenvalue >"
+#, fuzzy
+msgid "No factors with an eigenvalue >"
 msgstr "Nenhum componente com autovalor >"
 
 msgid "."
@@ -334,6 +335,12 @@ msgstr "Cargas dos fatores (Matriz estruturada)"
 
 msgid "Factor Characteristics"
 msgstr "Características do fator"
+
+msgid "Unrotated solution"
+msgstr ""
+
+msgid "Rotated solution"
+msgstr ""
 
 msgid "SumSq. Loadings"
 msgstr "Soma das cargas ao quadrado"
@@ -381,11 +388,17 @@ msgstr "Autovalor AFE"
 msgid "Path Diagram"
 msgstr "Diagrama de caminhos"
 
+msgid "No components with an eigenvalue >"
+msgstr "Nenhum componente com autovalor >"
+
 msgid "Component Loadings"
 msgstr "Cargas dos componentes"
 
 msgid "Eigenvalue"
 msgstr "Autovalor"
+
+msgid "Variance explained"
+msgstr ""
 
 msgid "Component Correlations"
 msgstr "Correlações de componentes"

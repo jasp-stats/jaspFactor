@@ -141,10 +141,13 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .efaGetNComp <- function(dataset, options) {
-  if (options$factorMethod == "manual")           return(options$numberOfFactors)
-  pa <- try(psych::fa.parallel(dataset, plot = FALSE))
-  if (inherits(pa, "try-error"))                  return(1)
-  if (options$factorMethod == "parallelAnalysis") return(max(1, pa$nfact))
+  if (options$factorMethod == "manual") return(options$numberOfFactors)
+  pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+  if (inherits(pa, "try-error"))        return(1)
+  if (options$factorMethod == "parallelAnalysis") {
+    if (options$parallelMethod == "pc") return(max(1, fa$ncomp))
+    if (options$parallelMethod == "fa") return(max(1, fa$nfact))
+  }
   if (options$factorMethod == "eigenValues") {
     ncomp <- sum(pa$fa.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
@@ -365,8 +368,9 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!ready || modelContainer$getError()) return()
 
   efaResult <- modelContainer[["model"]][["object"]]
-  if (efaResult$factors == 1) return()
-  cors <- zapsmall(as.matrix(efaResult$r.scores))
+  if (efaResult$factors == 1 || options$rotationMethod == "orthogonal") return()
+  # no factor correlation matrix when rotation specifiec uncorrelated factors!
+  cors <- zapsmall(as.matrix(efaResult$Phi))
   dims <- ncol(cors)
 
   cortab[["col"]] <- paste("Factor", 1:dims)
@@ -415,7 +419,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready || modelContainer$getError()) return()
 
-  pa <- try(psych::fa.parallel(dataset, plot = FALSE))
+  pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   if (inherits(pa, "try-error")) {
     errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
     scree$setError(errmsg)
@@ -424,17 +428,29 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   n_col <- ncol(dataset)
+
+  if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
+    evs <- c(pa$fa.values, pa$fa.sim)
+
+  } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
+    if (is.na(pa$pc.sim)) {
+      pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+    }
+    evs <- c(pa$pc.values, pa$pc.sim)
+  }
+
+
   df <- data.frame(
     id   = rep(seq_len(n_col), 2),
-    ev   = c(pa$fa.values, pa$fa.sim),
+    ev   = evs,
     type = rep(c(gettext("Data"), gettext("Simulated (95th quantile)")), each = n_col)
   )
-
   # basic scree plot
   plt <-
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Factor"), y = gettext("EFA Eigenvalue"))
+    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
+    ggplot2::geom_hline(yintercept = options$eigenValuesBox)
 
 
   # dynamic function for point size:
@@ -445,11 +461,6 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   pointsize <- 3 + log(10) - log(n_col)
   if (pointsize > 0) {
     plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
-  }
-
-  # optionally add an eigenvalue cutoff line
-  if (options$factorMethod == "eigenValues") {
-    plt <- plt + ggplot2::geom_hline(yintercept = options$eigenValuesBox)
   }
 
   # theming with special legend thingy

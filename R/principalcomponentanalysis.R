@@ -314,8 +314,11 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready || modelContainer$getError()) return()
 
-  coltitle <- ifelse(options$rotationMethod == "orthogonal", "PC", "RC")
-  cors <- zapsmall(modelContainer[["model"]][["object"]][["r.scores"]])
+  pcaResult <- modelContainer[["model"]][["object"]]
+
+  if (pcaResult$factors == 1 || options$rotationMethod == "orthogonal") return()
+  # no factor correlation matrix when rotation specifiec uncorrelated factors!
+  cors <- zapsmall(pcaResults$Phi)
   dims <- ncol(cors)
 
 
@@ -338,19 +341,26 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready || modelContainer$getError()) return()
 
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
-  if (inherits(fa, "try-error")) {
-    errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pcaResult, "condition")$message)
+  pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+  if (inherits(pa, "try-error")) {
+    errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
     scree$setError(errmsg)
     # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
     return()
   }
 
   n_col <- ncol(dataset)
-  if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa")
-    evs <- c(fa$fa.values, fa$fa.sim)
-  else
-    evs <- c(fa$pc.values, fa$pc.sim)
+
+  if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
+    evs <- c(pa$fa.values, pa$fa.sim)
+
+  } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
+    if (is.na(pa$pc.sim)) {
+      pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+    }
+    evs <- c(pa$pc.values, pa$pc.sim)
+  }
+
   df <- data.frame(
     id   = rep(seq_len(n_col), 2),
     ev   = evs,

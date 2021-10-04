@@ -58,15 +58,14 @@ Form
 
             RadioButtonGroup
             {
-                name:               "parallelMethod"
-                title:              qsTr("")
-//                childrenOnSameRow:  true
+                name:  "parallelMethod"
+                title: qsTr("")
 
                 RadioButton
                 {
-                    value:      "pc"
-                    label:      qsTr("Based on PC")
-                    checked:    true
+                    value:   "pc"
+                    label:   qsTr("Based on PC")
+                    checked: true
                 }
                 RadioButton
                 {

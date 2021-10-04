@@ -52,7 +52,26 @@ Form
 			name: "factorMethod"
 			title: qsTr("Number of Factors")
 			RadioButton { value: "parallelAnalysis";	label: qsTr("Parallel analysis");  checked: true	}
-			RadioButton
+
+            RadioButtonGroup
+            {
+                name:   "parallelMethod"
+                title:  qsTr("")
+
+                RadioButton
+                {
+                    value:      "pc"
+                    label:      qsTr("Based on PC")
+                    checked:    true
+                }
+                RadioButton
+                {
+                    value: "fa"
+                    label: qsTr("Based on FA")
+                }
+            }
+
+            RadioButton
 			{
 				value: "eigenValues";					label: qsTr("Eigenvalues")
 				DoubleField { name: "eigenValuesBox"; label: qsTr("Eigenvalues above"); defaultValue: 1; decimals: 1 }

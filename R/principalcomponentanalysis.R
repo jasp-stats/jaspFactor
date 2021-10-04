@@ -157,10 +157,15 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .pcaGetNComp <- function(dataset, options) {
-  if (options$factorMethod == "manual")           return(options$numberOfFactors)
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE))
-  if (inherits(fa, "try-error"))                  return(1)
-  if (options$factorMethod == "parallelAnalysis") return(max(1, fa$ncomp))
+
+  if (options$factorMethod == "manual") return(options$numberOfFactors)
+
+  fa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+  if (inherits(fa, "try-error"))        return(1)
+  if (options$factorMethod == "parallelAnalysis") {
+    if (options$parallelMethod == "pc") return(max(1, fa$ncomp))
+    if (options$parallelMethod == "fa") return(max(1, fa$nfact))
+  }
   if (options$factorMethod == "eigenValues") {
     ncomp <- sum(fa$pc.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
@@ -172,6 +177,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       )
     return(ncomp)
   }
+
 }
 
 
@@ -332,7 +338,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready || modelContainer$getError()) return()
 
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE))
+  fa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   if (inherits(fa, "try-error")) {
     errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pcaResult, "condition")$message)
     scree$setError(errmsg)
@@ -341,17 +347,21 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   n_col <- ncol(dataset)
+  if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa")
+    evs <- c(fa$fa.values, fa$fa.sim)
+  else
+    evs <- c(fa$pc.values, fa$pc.sim)
   df <- data.frame(
     id   = rep(seq_len(n_col), 2),
-    ev   = c(fa$pc.values, fa$pc.sim),
+    ev   = evs,
     type = rep(c(gettext("Data"), gettext("Simulated (95th quantile)")), each = n_col)
   )
-
   # basic scree plot
   plt <-
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue"))
+    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
+    ggplot2::geom_hline(yintercept = options$eigenValuesBox)
 
 
   # dynamic function for point size:
@@ -362,11 +372,6 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   pointsize <- 3 + log(10) - log(n_col)
   if (pointsize > 0) {
     plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
-  }
-
-  # optionally add an eigenvalue cutoff line
-  if (options$factorMethod == "eigenValues") {
-    plt <- plt + ggplot2::geom_hline(yintercept = options$eigenValuesBox)
   }
 
   # theming with special legend thingy

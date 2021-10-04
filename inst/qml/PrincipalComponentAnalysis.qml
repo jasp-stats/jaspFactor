@@ -55,6 +55,25 @@ Form
 		RadioButton
 		{
 			value: "parallelAnalysis"; label: qsTr("Parallel analysis"); checked: true
+
+            RadioButtonGroup
+            {
+                name:               "parallelMethod"
+                title:              qsTr("")
+//                childrenOnSameRow:  true
+
+                RadioButton
+                {
+                    value:      "pc"
+                    label:      qsTr("Based on PC")
+                    checked:    true
+                }
+                RadioButton
+                {
+                    value: "fa"
+                    label: qsTr("Based on FA")
+                }
+            }
 		}
 		RadioButton
 		{

@@ -109,7 +109,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorMethod",
-                              "eigenValuesBox", "numberOfFactors", "missingValues", "basedOn", "fitmethod"))
+                              "eigenValuesBox", "numberOfFactors", "missingValues", "basedOn", "fitmethod",
+                              "parallelMethod"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 
@@ -145,11 +146,11 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   if (inherits(pa, "try-error"))        return(1)
   if (options$factorMethod == "parallelAnalysis") {
-    if (options$parallelMethod == "pc") return(max(1, fa$ncomp))
-    if (options$parallelMethod == "fa") return(max(1, fa$nfact))
+    if (options$parallelMethod == "pc") return(max(1, pa$ncomp))
+    if (options$parallelMethod == "fa") return(max(1, pa$nfact))
   }
   if (options$factorMethod == "eigenValues") {
-    ncomp <- sum(pa$fa.values > options$eigenValuesBox)
+    ncomp <- sum(pa$pa.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)

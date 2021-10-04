@@ -29,7 +29,7 @@ results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", opti
 test_that("Factor Correlations table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_cortab"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(1, -0.0849326, "Factor 1", -0.0849326, 1, "Factor 2"))
+                                 list(1, -0.0736228, "Factor 1", -0.0736228, 1, "Factor 2"))
 })
 
 test_that("Factor Characteristics table results match", {
@@ -157,4 +157,56 @@ test_that("Estimation options do not crash", {
     testthat::expect(is.null(results[["results"]][["error"]]),
                      sprintf("Estimation with method '%s' crashes", fitmethod))
   }
+})
+
+
+options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options$factorMethod <- "parallelAnalysis"
+options$parallelMethod <- "pc"
+options$fitmethod <- "minres"
+options$highlightText <- 0.1
+options$incl_correlations <- TRUE
+options$incl_screePlot <- TRUE
+options$orthogonalSelector <- "none"
+options$rotationMethod <- "orthogonal"
+options$variables <- paste0("x", 1:9)
+set.seed(1)
+results <- runAnalysis("ExploratoryFactorAnalysis", "holzingerswineford.csv", options)
+
+test_that("Factor Characteristics table results match with parallel analysis based on PCs", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1", 0.314163998816933, 0.314163998816933, 2.82747598935239,
+                                      "Factor 2", 0.449126711506194, 0.134962712689261, 1.21466441420335,
+                                      "Factor 3", 0.539738017727465, 0.0906113062212709, 0.815501755991438
+                                 ))
+})
+
+test_that("Chi-squared Test table results match with parallel analysis based on PCs", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(22.5550491736693, 12, "Model", 0.0317499059313278))
+})
+
+test_that("Factor Loadings table results match with parallel analysis based on PCs", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.57552287197933, 0.16858001566767, 0.342210768279291, 0.523245992219849,
+                                      "x1", 0.308426854688606, "", 0.388394269653172, 0.744772821204661,
+                                      "x2", 0.400354070864591, 0.30942956544643, 0.444319828761981,
+                                      0.546549851738708, "x3", 0.768508957341882, -0.354895458997614,
+                                      -0.106671680536983, 0.272064348239582, "x4", 0.750543052745831,
+                                      -0.404369058055611, -0.164016362264787, 0.246269423771613, "x5",
+                                      0.763025590432945, -0.326669752718025, "", 0.308644745749135,
+                                      "x6", 0.307604731575466, 0.432831609311044, -0.486405923245351,
+                                      0.481445404925434, "x7", 0.393821088746758, 0.540664836861347,
+                                      -0.269738272928661, 0.479827748357475, "x8", 0.504966416074441,
+                                      0.453220919172841, "", 0.539538616482753, "x9"))
+})
+
+test_that("Scree plot matches", {
+  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
+  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "scree-plot")
 })

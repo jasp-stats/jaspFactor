@@ -105,7 +105,8 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorMethod",
-                              "eigenValuesBox", "numberOfFactors", "missingValues", "basedOn"))
+                              "eigenValuesBox", "numberOfFactors", "missingValues", "basedOn",
+                              "parallelMethod"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 

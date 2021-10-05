@@ -150,7 +150,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     if (options$parallelMethod == "fa") return(max(1, pa$nfact))
   }
   if (options$factorMethod == "eigenValues") {
-    ncomp <- sum(pa$pa.values > options$eigenValuesBox)
+    ncomp <- sum(pa$pc.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
@@ -434,7 +434,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     evs <- c(pa$fa.values, pa$fa.sim)
 
   } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
-    if (is.na(pa$pc.sim)) {
+    if (anyNA(pa$pc.sim)) {
       pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
     }
     evs <- c(pa$pc.values, pa$pc.sim)
@@ -450,7 +450,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   plt <-
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
+    ggplot2::labs(x = gettext("Factor"), y = gettext("Eigenvalue")) +
     ggplot2::geom_hline(yintercept = options$eigenValuesBox)
 
 

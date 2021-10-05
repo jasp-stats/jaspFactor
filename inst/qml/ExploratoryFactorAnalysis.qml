@@ -51,23 +51,28 @@ Form
 		{
 			name: "factorMethod"
 			title: qsTr("Number of Factors")
-			RadioButton { value: "parallelAnalysis";	label: qsTr("Parallel analysis");  checked: true	}
-
-            RadioButtonGroup
+            RadioButton
             {
-                name:   "parallelMethod"
-                title:  qsTr("")
+                value:      "parallelAnalysis";
+                label:      qsTr("Parallel analysis");
+                checked:    true
 
-                RadioButton
+                RadioButtonGroup
                 {
-                    value:      "pc"
-                    label:      qsTr("Based on PC")
-                    checked:    true
-                }
-                RadioButton
-                {
-                    value: "fa"
-                    label: qsTr("Based on FA")
+                    name:   "parallelMethod"
+                    title:  qsTr("")
+
+                    RadioButton
+                    {
+                        value:      "pc"
+                        label:      qsTr("Based on PC")
+                        checked:    true
+                    }
+                    RadioButton
+                    {
+                        value: "fa"
+                        label: qsTr("Based on FA")
+                    }
                 }
             }
 

@@ -8,7 +8,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -319,14 +319,14 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (pcaResult$factors == 1 || options$rotationMethod == "orthogonal") return()
   # no factor correlation matrix when rotation specifiec uncorrelated factors!
-  cors <- zapsmall(pcaResults$Phi)
+  cors <- zapsmall(pcaResult$Phi)
   dims <- ncol(cors)
 
 
-  cortab[["col"]] <- paste0(coltitle, 1:dims)
+  cortab[["col"]] <- paste("Component", 1:dims)
 
   for (i in 1:dims) {
-    thisname <- paste0(coltitle, i)
+    thisname <- paste("Component", i)
     cortab$addColumnInfo(name = thisname, title = thisname, type = "number", format = "dp:3")
     cortab[[thisname]] <- cors[,i]
   }
@@ -356,7 +356,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     evs <- c(pa$fa.values, pa$fa.sim)
 
   } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
-    if (is.na(pa$pc.sim)) {
+    if (anyNA(pa$pc.sim)) {
       pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
     }
     evs <- c(pa$pc.values, pa$pc.sim)

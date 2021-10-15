@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-15 11:42+0000\n"
+"PO-Revision-Date: 2021-10-15 11:46+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/es/>\n"
@@ -552,8 +552,8 @@ msgstr "Tamaño del factor"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr "Ordenar las cargas del componente según"
+msgstr "Ordenar las cargas de la componente según"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr ""
+msgstr "Tamaño de la componente"

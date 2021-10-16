@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-10-15 19:45+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Language: es\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -54,7 +60,7 @@ msgstr "Escala de factores"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr "Variaciones de factores"
+msgstr "Varianzas de factores"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
@@ -66,11 +72,11 @@ msgstr "Codificación de efectos"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr "Covarianzas residuales"
+msgstr "Covarianzas de los Residuos"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr "Output adicional"
+msgstr "Salida Adicional de Resultados"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
@@ -82,11 +88,11 @@ msgstr "R-cuadrado"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr "Matriz de covarianza implícita"
+msgstr "Matriz de covarianzas implícitas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr "Matriz de covarianza residual"
+msgstr "Matriz de covarianzas de los residuos"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
@@ -94,15 +100,15 @@ msgstr "Índices de modificación"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr "Corte"
+msgstr "Punto de corte"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
-msgstr "Mostrar sintaxis de lavaan"
+msgstr "Mostrar sintaxis de Lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
-msgstr "CFA multigrupo"
+msgstr "Análisis Factorial Confirmatorio Multigrupo"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
@@ -110,7 +116,7 @@ msgstr "Variable de agrupación"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr "Prueba de invariancia"
+msgstr "Comprobación de invariancia"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
@@ -146,7 +152,7 @@ msgstr "Mostrar parámetros"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
-msgstr "Estandarizado"
+msgstr "Tipificado"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
@@ -174,7 +180,7 @@ msgstr "EQS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
-msgstr "Cálculo de error"
+msgstr "Cálculo del error"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI width"
@@ -210,27 +216,27 @@ msgstr "Auto"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
-msgstr "ML"
+msgstr "MV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "GLS"
-msgstr "GLS"
+msgstr "MCG (GLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLS"
-msgstr "WLS"
+msgstr "MCP (WLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULS"
-msgstr "ULS"
+msgstr "MCSP (ULS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DWLS"
-msgstr "DWLS"
+msgstr "MCPD (DWLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
-msgstr "Estandarización"
+msgstr "Tipificación"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
@@ -262,11 +268,11 @@ msgstr "Omitir indicador único residual"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr "Variaciones residuales"
+msgstr "Varianzas de los residuos"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
-msgstr "Correlación de latentes exógenos"
+msgstr "Correlacionar variables latentes exógenas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add thresholds"
@@ -274,7 +280,7 @@ msgstr "Agregar umbrales"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
-msgstr "Agregar parámetros de escalamiento"
+msgstr "Agregar parámetros de escala"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
@@ -286,7 +292,7 @@ msgstr "Variables"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors"
-msgstr "Número de factores"
+msgstr "Número de Factores"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
@@ -422,7 +428,7 @@ msgstr "Prueba de Bartlett"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr "Valores Perdidos"
+msgstr "Valores Ausentes"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
@@ -430,7 +436,7 @@ msgstr "Excluir casos por pares"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
-msgstr "Excluir casos según la lista"
+msgstr "Excluir casos según lista"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
@@ -518,7 +524,7 @@ msgstr "Gráfico de sedimentación"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr "Valores Perdidos"
+msgstr "Valores Ausentes"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
@@ -526,28 +532,28 @@ msgstr "Excluir casos por pares"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
-msgstr "Excluir casos según la lista"
+msgstr "Excluir casos según lista"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr "Agregar puntajes de PC a los datos"
+msgstr "Agregar puntuaciones PC a los datos"
 
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
-msgstr "Explore la estructura oculta en los datos"
+msgstr "Explorar la estructura oculta en los datos"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
-msgstr ""
+msgstr "Ordenar las cargas del factor según"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
-msgstr ""
+msgstr "Tamaño del factor"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr ""
+msgstr "Ordenar las cargas de la componente según"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr ""
+msgstr "Tamaño de la componente"

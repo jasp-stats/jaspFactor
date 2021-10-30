@@ -2,376 +2,386 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2021-10-02 03:30\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-10-30 19:47+0000\n"
+"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"jasp/jaspfactor-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 msgid "Second-Order"
-msgstr ""
+msgstr "二階"
 
 msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
-msgstr ""
+msgstr "模式無法估計。請確認每個因素至少有兩個題項。"
 
 msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
-msgstr ""
+msgstr "模式無法估計。有低於兩個題項的因素被設為二階因素中。"
 
 msgid "The model could not be estimated. Error message: \n\n %s"
 msgstr ""
+"模式無法估計。錯誤訊息: : \n"
+"\n"
+" %s"
 
 msgid "The model is not admissible: %s"
-msgstr ""
+msgstr "模式無法分析: %s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr ""
+msgstr "模式無法估計，因結果無法收斂。"
 
 msgid "The model could not be estimated: No degrees of freedom left."
-msgstr ""
+msgstr "模式無法估計: 模式自由度為不足。"
 
 msgid "Model fit"
-msgstr ""
+msgstr "模型配適度"
 
 msgid "Chi-square test"
-msgstr ""
+msgstr "卡方檢驗"
 
 msgid "Model"
-msgstr ""
+msgstr "模式"
 
 msgid "df"
-msgstr ""
+msgstr "自由度"
 
 msgid "p"
-msgstr ""
+msgstr "p值"
 
 msgid "Baseline model"
-msgstr ""
+msgstr "基底模式"
 
 msgid "Factor model"
-msgstr ""
+msgstr "因素模式"
 
 msgid "Additional fit measures"
-msgstr ""
+msgstr "其他配適度指標"
 
 msgid "Fit indices"
-msgstr ""
+msgstr "配適度指標"
 
 msgid "Index"
-msgstr ""
+msgstr "指標"
 
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 msgid "Information criteria"
-msgstr ""
+msgstr "資訊量準則"
 
 msgid "Other fit measures"
-msgstr ""
+msgstr "其他配適度指標"
 
 msgid "Metric"
-msgstr ""
+msgstr "尺規"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr ""
+msgstr "相對配適指標 (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr ""
+msgstr "Tucker-Lewis 指標 (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr ""
+msgstr "Bentler-Bonett  非常態配適指標 (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr ""
+msgstr "Bentler-Bonett  常態配適指標 (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr ""
+msgstr "簡約常態配適指標 (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr ""
+msgstr "Bollen 相對配適指標 (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr ""
+msgstr "Bollen 遞增配適指標 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
+msgstr "相對非中心指標 (RNI)"
 
 msgid "Log-likelihood"
-msgstr ""
+msgstr "對數概似函數"
 
 msgid "Number of free parameters"
-msgstr ""
+msgstr "自由估計參數個數"
 
 msgid "Akaike (AIC)"
-msgstr ""
+msgstr "赤池資訊量準則 (AIC)"
 
 msgid "Bayesian (BIC)"
-msgstr ""
+msgstr "貝氏資訊量準則 (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr ""
+msgstr "樣本校正貝氏資訊量準則 (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr ""
+msgstr "均方根誤差(RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr ""
+msgstr "RMSEA 90 % 信賴區間下限"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr ""
+msgstr "RMSEA 90 % 信賴區間上限"
 
 msgid "RMSEA p-value"
-msgstr ""
+msgstr "RMSEA p 值"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr ""
+msgstr "標準殘差均方和平方根  (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
-msgstr ""
+msgstr "Hoelter  臨界N (%s = .05)"
 
 msgid "Hoelter's critical N (%s = .01)"
-msgstr ""
+msgstr "Hoelter 臨界N (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr ""
+msgstr "適合度配適指標 (GFI)"
 
 msgid "McDonald fit index (MFI)"
-msgstr ""
+msgstr "McDonald 配適指標 (IFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr ""
+msgstr "期望複核效化指標 (ECVI)"
 
 msgid "Parameter estimates"
-msgstr ""
+msgstr "參數估計"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
-msgstr ""
+msgstr "未能成功分析所有拔靴樣本: 所報告的信賴區間是基於 %. 的樣本"
 
 msgid "Factor"
-msgstr ""
+msgstr "因素"
 
 msgid "Indicator"
-msgstr ""
+msgstr "指標(題項)"
 
 msgid "Symbol"
-msgstr ""
+msgstr "符號"
 
 msgid "Estimate"
-msgstr ""
+msgstr "估計"
 
 msgid "Std. Error"
-msgstr ""
+msgstr "標準誤"
 
 msgid "z-value"
-msgstr ""
+msgstr "z值"
 
 msgid "Lower"
-msgstr ""
+msgstr "下"
 
 msgid "%s%% Confidence Interval"
-msgstr ""
+msgstr "%s 信賴區間"
 
 msgid "Upper"
-msgstr ""
+msgstr "上"
 
 msgid "Std. Est. (%s)"
-msgstr ""
+msgstr "標準化解 (%s)"
 
 msgid "Second-order factor loadings"
-msgstr ""
+msgstr "二階因素負荷量"
 
 msgid "Factor variances"
-msgstr ""
+msgstr "因素變異數"
 
 msgid "Factor Covariances"
-msgstr ""
+msgstr "因素共變數"
 
 msgid "Residual variances"
-msgstr ""
+msgstr "殘差變異數"
 
 msgid "Residual covariances"
-msgstr ""
+msgstr "殘差共變數"
 
 msgid "Factor Intercepts"
-msgstr ""
+msgstr "因素截距"
 
 msgid "Intercepts"
-msgstr ""
+msgstr "截距"
 
 msgid "Modification Indices"
-msgstr ""
+msgstr "修正指標"
 
 msgid "Cross-loadings"
-msgstr ""
+msgstr "交叉負荷量"
 
 msgid "Mod. Ind."
-msgstr ""
+msgstr "修正指標"
 
 msgid "EPC"
-msgstr ""
+msgstr "期望參數變動"
 
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "二階因素交叉因素負荷量"
 
 msgid "Implied covariance matrices"
-msgstr ""
+msgstr "模式共變數矩陣"
 
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "模式共變數矩陣"
 
 msgid "Residual covariance matrices"
-msgstr ""
+msgstr "殘差共變數矩陣"
 
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "殘差共變數矩陣"
 
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgid "Model plots"
-msgstr ""
+msgstr "模式圖"
 
 msgid "Model plot"
-msgstr ""
+msgstr "模式圖"
 
 msgid "Misfit plots"
-msgstr ""
+msgstr "不配適 (misfit) 圖圖"
 
 msgid "Misfit plot"
-msgstr ""
+msgstr "不配適 (misfit) 圖"
 
 msgid "Model syntax"
-msgstr ""
+msgstr "模式語法"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr ""
+msgstr "因素個數過多 (%i) 超過變項數"
 
 msgid "Not enough valid cases (%i) to run this analysis"
-msgstr ""
+msgstr "因樣本數不足 (%i) 而無法執行此分析"
 
 msgid "Data not valid: variance is zero in each row"
-msgstr ""
+msgstr "無效資料: 每列的變異數皆為零"
 
 msgid "Data not valid: there are more variables than observations"
-msgstr ""
+msgstr "無效資料: 變項數多於樣本數"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr ""
+msgstr "無效資料: %s 變項的遺漏值過多"
 
 msgid "Data not valid: all variables are collinear"
-msgstr ""
+msgstr "無效資料: 變項共線性"
 
 msgid "Estimation failed. \nInternal error message: %s"
 msgstr ""
+"無法估計. \n"
+"內部錯誤訊息: %s"
 
 msgid "No factors with an eigenvalue >"
-msgstr ""
+msgstr "沒有因素的特徵值大於"
 
 msgid "."
-msgstr ""
+msgstr "."
 
 msgid "Maximum observed eigenvalue:"
-msgstr ""
+msgstr "觀察特徵值之最大值"
 
 msgid "Kaiser-Meyer-Olkin test"
-msgstr ""
+msgstr "Kaiser-Meyer-Olkin 檢驗"
 
 msgid "Overall MSA"
-msgstr ""
+msgstr "整體MSA"
 
 msgid "Degrees of freedom below 0, model is unidentified."
-msgstr ""
+msgstr "自由度小於零, 模式無法識別"
 
 msgid "<em>Warning:</em>"
-msgstr ""
+msgstr "<em>警告:</em>"
 
 msgid "Factor Loadings"
-msgstr ""
+msgstr "因素負荷量"
 
 msgid "Factor %i"
-msgstr ""
+msgstr "因素 %i"
 
 msgid "Uniqueness"
-msgstr ""
+msgstr "殘差/獨特性"
 
 msgid "No rotation method applied."
-msgstr ""
+msgstr "不使用轉軸"
 
 msgid "Applied rotation method is %s."
-msgstr ""
+msgstr "採用 %. 轉軸法"
 
 msgid "Factor Loadings (Structure Matrix)"
-msgstr ""
+msgstr "因素負荷量(結構矩陣)"
 
 msgid "Factor Characteristics"
-msgstr ""
+msgstr "因素特徵"
 
 msgid "Unrotated solution"
-msgstr ""
+msgstr "未轉軸解"
 
 msgid "Rotated solution"
-msgstr ""
+msgstr "轉軸解"
 
 msgid "SumSq. Loadings"
-msgstr ""
+msgstr "因素負荷量平均數總和"
 
 msgid "Proportion var."
-msgstr ""
+msgstr "變異量解釋百分比"
 
 msgid "Cumulative"
-msgstr ""
+msgstr "累積"
 
 msgid "Factor Correlations"
-msgstr ""
+msgstr "因素相關"
 
 msgid "Additional fit indices"
-msgstr ""
+msgstr "其他配適指標"
 
 msgid "RMSEA"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
-msgstr ""
+msgstr "RMSEA 90% 信賴"
 
 msgid "TLI"
-msgstr ""
+msgstr "TLI"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "Screeplot not available. \nInternal error message: %s"
 msgstr ""
+"無法畫陡坡圖. \n"
+"內部錯誤訊息: %s"
 
 msgid "Data"
-msgstr ""
+msgstr "資料"
 
 msgid "Simulated (95th quantile)"
-msgstr ""
+msgstr "模擬 (95th 分位數)"
 
 msgid "EFA Eigenvalue"
-msgstr ""
+msgstr "探索性因素分析 (EFA) 特徵值"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "路徑圖"
 
 msgid "No components with an eigenvalue >"
-msgstr ""
+msgstr "沒有成分的特徵值高於"
 
 msgid "Component Loadings"
-msgstr ""
+msgstr "成分負荷量"
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "特徵值"
 
 msgid "Variance explained"
-msgstr ""
+msgstr "可解釋變異量"
 
 msgid "Component Correlations"
-msgstr ""
+msgstr "成分相關"
 
 msgid "Scree plot"
-msgstr ""
+msgstr "陡坡圖"
 
 msgid "Component"
-msgstr ""
+msgstr "成分"

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-30 19:47+0000\n"
+"PO-Revision-Date: 2021-10-31 14:36+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-qml/zh_Hant/>\n"
@@ -78,7 +78,7 @@ msgstr "其他分析報表"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr "其他配適指標"
+msgstr "其他適配指標"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
@@ -138,7 +138,7 @@ msgstr "圖形"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr "不配適圖"
+msgstr "不適配圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
@@ -162,7 +162,7 @@ msgstr "進階"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Emulation"
-msgstr "仿真"
+msgstr "仿照"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
@@ -170,19 +170,19 @@ msgstr "無"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
-msgstr "Mplus"
+msgstr "Mplus 程式"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
-msgstr "EQS"
+msgstr "EQS 程式"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
-msgstr "計算誤差"
+msgstr "誤差計算方式"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI width"
-msgstr "信賴區間大小"
+msgstr "信賴區間範圍"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Method"
@@ -206,7 +206,7 @@ msgstr "拔靴樣本數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr "估計式"
+msgstr "估計法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
@@ -222,7 +222,7 @@ msgstr "廣義最小平方法 (GLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLS"
-msgstr "加權最小平方法"
+msgstr "加權最小平方法 (WLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULS"
@@ -262,7 +262,7 @@ msgstr "設定潛在變項的截距為0"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr "若因素只以單一題項測量，忽略其殘差"
+msgstr "忽略單一題項測量因素之殘差"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
@@ -334,11 +334,11 @@ msgstr "最小平方法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
-msgstr "加權最小平方法"
+msgstr "加權最小平方法 (WLS)"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
-msgstr "廣義最小平方法"
+msgstr "廣義最小平方法 (GLS)"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
@@ -398,7 +398,7 @@ msgstr "因素相關係數"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
-msgstr "其他配適指標"
+msgstr "其他適配指標"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"

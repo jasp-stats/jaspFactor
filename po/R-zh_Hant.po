@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2021-10-02 03:30\n"
-"PO-Revision-Date: 2021-10-30 19:47+0000\n"
+"PO-Revision-Date: 2021-10-31 14:36+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-r/zh_Hant/>\n"
@@ -29,16 +29,16 @@ msgstr ""
 " %s"
 
 msgid "The model is not admissible: %s"
-msgstr "模式無法分析: %s"
+msgstr "此模式無法執行: %s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr "模式無法估計，因結果無法收斂。"
+msgstr "此模式無法估計: 迭代結果無法聚合"
 
 msgid "The model could not be estimated: No degrees of freedom left."
-msgstr "模式無法估計: 模式自由度為不足。"
+msgstr "此模式無法估計: 自由度不足"
 
 msgid "Model fit"
-msgstr "模型配適度"
+msgstr "模型適配度"
 
 msgid "Chi-square test"
 msgstr "卡方檢驗"
@@ -50,7 +50,7 @@ msgid "df"
 msgstr "自由度"
 
 msgid "p"
-msgstr "p值"
+msgstr "p 值"
 
 msgid "Baseline model"
 msgstr "基底模式"
@@ -59,10 +59,10 @@ msgid "Factor model"
 msgstr "因素模式"
 
 msgid "Additional fit measures"
-msgstr "其他配適度指標"
+msgstr "其他適配指標"
 
 msgid "Fit indices"
-msgstr "配適度指標"
+msgstr "適配指標"
 
 msgid "Index"
 msgstr "指標"
@@ -71,37 +71,37 @@ msgid "Value"
 msgstr "值"
 
 msgid "Information criteria"
-msgstr "資訊量準則"
+msgstr "資訊準則"
 
 msgid "Other fit measures"
-msgstr "其他配適度指標"
+msgstr "其他適配指標"
 
 msgid "Metric"
-msgstr "尺規"
+msgstr "量尺"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr "相對配適指標 (CFI)"
+msgstr "比較適配指標 (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr "Tucker-Lewis 指標 (TLI)"
+msgstr "Tucker-Lewis Index (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr "Bentler-Bonett  非常態配適指標 (NNFI)"
+msgstr "非常態適配指標 (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr "Bentler-Bonett  常態配適指標 (NFI)"
+msgstr "常態適配指標 (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr "簡約常態配適指標 (PNFI)"
+msgstr "簡約常態適配指標 (PFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr "Bollen 相對配適指標 (RFI)"
+msgstr "相對適配指標 (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr "Bollen 遞增配適指標 (IFI)"
+msgstr "增加適配指標 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr "相對非中心指標 (RNI)"
+msgstr "相對非中心配適指標  (RNI)"
 
 msgid "Log-likelihood"
 msgstr "對數概似函數"
@@ -110,46 +110,46 @@ msgid "Number of free parameters"
 msgstr "自由估計參數個數"
 
 msgid "Akaike (AIC)"
-msgstr "赤池資訊量準則 (AIC)"
+msgstr "赤池資訊量準則"
 
 msgid "Bayesian (BIC)"
 msgstr "貝氏資訊量準則 (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr "樣本校正貝氏資訊量準則 (SSABIC)"
+msgstr "依照樣本大小校正之貝氏資訊量準則 (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr "均方根誤差(RMSEA)"
+msgstr "標準化均方根殘差值"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr "RMSEA 90 % 信賴區間下限"
+msgstr "RMSEA 90%% 信賴區間下界"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr "RMSEA 90 % 信賴區間上限"
+msgstr "RMSEA 90%% 信賴區間上界"
 
 msgid "RMSEA p-value"
-msgstr "RMSEA p 值"
+msgstr "RMSEA p值"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr "標準殘差均方和平方根  (SRMR)"
+msgstr "標準化均方根殘差 (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
-msgstr "Hoelter  臨界N (%s = .05)"
+msgstr "Hoelter 關鍵N (%s = .05)"
 
 msgid "Hoelter's critical N (%s = .01)"
-msgstr "Hoelter 臨界N (%s = .01)"
+msgstr "Hoelter 關鍵N (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr "適合度配適指標 (GFI)"
+msgstr "適合度適配指標 (GFI)"
 
 msgid "McDonald fit index (MFI)"
-msgstr "McDonald 配適指標 (IFI)"
+msgstr "McDonald 適配指標 (IFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr "期望複核效化指標 (ECVI)"
+msgstr "Expected cross validation index  (EVCI)"
 
 msgid "Parameter estimates"
-msgstr "參數估計"
+msgstr "參數估計值"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "未能成功分析所有拔靴樣本: 所報告的信賴區間是基於 %. 的樣本"
@@ -164,22 +164,22 @@ msgid "Symbol"
 msgstr "符號"
 
 msgid "Estimate"
-msgstr "估計"
+msgstr "估計值"
 
 msgid "Std. Error"
 msgstr "標準誤"
 
 msgid "z-value"
-msgstr "z值"
+msgstr "z 值"
 
 msgid "Lower"
-msgstr "下"
+msgstr "下界"
 
 msgid "%s%% Confidence Interval"
-msgstr "%s 信賴區間"
+msgstr "%s%% 信賴區間"
 
 msgid "Upper"
-msgstr "上"
+msgstr "上界"
 
 msgid "Std. Est. (%s)"
 msgstr "標準化解 (%s)"
@@ -224,7 +224,7 @@ msgid "Implied covariance matrices"
 msgstr "模式共變數矩陣"
 
 msgid "Implied covariance matrix"
-msgstr "模式共變數矩陣"
+msgstr "模式隱含之共變數矩陣"
 
 msgid "Residual covariance matrices"
 msgstr "殘差共變數矩陣"
@@ -242,10 +242,10 @@ msgid "Model plot"
 msgstr "模式圖"
 
 msgid "Misfit plots"
-msgstr "不配適 (misfit) 圖圖"
+msgstr "不適配 (misfit) 圖圖"
 
 msgid "Misfit plot"
-msgstr "不配適 (misfit) 圖"
+msgstr "不適配 (misfit) 圖"
 
 msgid "Model syntax"
 msgstr "模式語法"
@@ -334,7 +334,7 @@ msgid "Factor Correlations"
 msgstr "因素相關"
 
 msgid "Additional fit indices"
-msgstr "其他配適指標"
+msgstr "其他適配指標"
 
 msgid "RMSEA"
 msgstr "RMSEA"

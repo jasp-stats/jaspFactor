@@ -55,6 +55,24 @@ Form
 		RadioButton
 		{
 			value: "parallelAnalysis"; label: qsTr("Parallel analysis"); checked: true
+
+            RadioButtonGroup
+            {
+                name:  "parallelMethod"
+                title: qsTr("")
+
+                RadioButton
+                {
+                    value:   "pc"
+                    label:   qsTr("Based on PC")
+                    checked: true
+                }
+                RadioButton
+                {
+                    value: "fa"
+                    label: qsTr("Based on FA")
+                }
+            }
 		}
 		RadioButton
 		{
@@ -148,7 +166,16 @@ Form
 			{
 				title: qsTr("Plots")
 				CheckBox { name: "incl_pathDiagram";	label: qsTr("Path diagram")				}
-				CheckBox { name: "incl_screePlot";		label: qsTr("Scree plot")				}
+				CheckBox {
+					name:  "incl_screePlot";
+					label: qsTr("Scree plot")
+
+					CheckBox {
+						name:		"screeDispParallel"
+						label:		qsTr("Parallel analysis results")
+						checked:	true
+					}
+				}
 			}
 		}
 

@@ -8,7 +8,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -105,7 +105,8 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorMethod",
-                              "eigenValuesBox", "numberOfFactors", "missingValues", "basedOn"))
+                              "eigenValuesBox", "numberOfFactors", "missingValues", "basedOn",
+                              "parallelMethod"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 
@@ -146,7 +147,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     )
   )
 
-  if (inherits(pcaResult, "try-error")) {
+  if (isTryError(pcaResult)) {
     errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(pcaResult, "condition")$message)
     modelContainer$setError(errmsg)
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
@@ -157,10 +158,18 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .pcaGetNComp <- function(dataset, options) {
-  if (options$factorMethod == "manual")           return(options$numberOfFactors)
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE))
-  if (inherits(fa, "try-error"))                  return(1)
-  if (options$factorMethod == "parallelAnalysis") return(max(1, fa$ncomp))
+
+  if (options$factorMethod == "manual") return(options$numberOfFactors)
+
+  fa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+  if (isTryError(fa)) return(1)
+  if (options$factorMethod == "parallelAnalysis") {
+    if (options$parallelMethod == "pc") {
+      return(max(1, fa$ncomp))
+    } else { # parallel method is fa
+      return(max(1, fa$nfact))
+    }
+  }
   if (options$factorMethod == "eigenValues") {
     ncomp <- sum(fa$pc.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
@@ -172,6 +181,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       )
     return(ncomp)
   }
+
 }
 
 
@@ -308,15 +318,18 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready || modelContainer$getError()) return()
 
-  coltitle <- ifelse(options$rotationMethod == "orthogonal", "PC", "RC")
-  cors <- zapsmall(modelContainer[["model"]][["object"]][["r.scores"]])
+  pcaResult <- modelContainer[["model"]][["object"]]
+
+  if (pcaResult$factors == 1 || options$rotationMethod == "orthogonal") return()
+  # no factor correlation matrix when rotation specifiec uncorrelated factors!
+  cors <- zapsmall(pcaResult$Phi)
   dims <- ncol(cors)
 
 
-  cortab[["col"]] <- paste0(coltitle, 1:dims)
+  cortab[["col"]] <- paste("Component", 1:dims)
 
   for (i in 1:dims) {
-    thisname <- paste0(coltitle, i)
+    thisname <- paste("Component", i)
     cortab$addColumnInfo(name = thisname, title = thisname, type = "number", format = "dp:3")
     cortab[[thisname]] <- cors[,i]
   }
@@ -327,31 +340,49 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!options[["incl_screePlot"]] || !is.null(modelContainer[["scree"]])) return()
 
   scree <- createJaspPlot(title = gettext("Scree plot"), width = 480, height = 320)
-  scree$dependOn("incl_screePlot")
+  scree$dependOn(c("incl_screePlot", "screeDispParallel", "parallelMethod"))
   modelContainer[["scree"]] <- scree
 
   if (!ready || modelContainer$getError()) return()
 
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE))
-  if (inherits(fa, "try-error")) {
-    errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pcaResult, "condition")$message)
-    scree$setError(errmsg)
-    # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
-    return()
+  n_col <- ncol(dataset)
+
+  if (options[["screeDispParallel"]]) {
+
+    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    if (isTryError(pa)) {
+      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
+      scree$setError(errmsg)
+      # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
+      return()
+    }
+
+    if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
+      evs <- c(pa$fa.values, pa$fa.sim)
+    } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
+      if (anyNA(pa$pc.sim)) {
+        pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+      }
+      evs <- c(pa$pc.values, pa$pc.sim)
+    }
+    tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
+
+  } else { # do not display parallel analysis
+    evs <- eigen(cov(dataset, use = "pairwise.complete.obs"), only.values = T)$values
+    tp <- rep(gettext("Data"), each = n_col)
   }
 
-  n_col <- ncol(dataset)
   df <- data.frame(
     id   = rep(seq_len(n_col), 2),
-    ev   = c(fa$pc.values, fa$pc.sim),
-    type = rep(c(gettext("Data"), gettext("Simulated (95th quantile)")), each = n_col)
+    ev   = evs,
+    type = tp
   )
-
   # basic scree plot
   plt <-
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue"))
+    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
+    ggplot2::geom_hline(yintercept = options$eigenValuesBox)
 
 
   # dynamic function for point size:
@@ -362,11 +393,6 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   pointsize <- 3 + log(10) - log(n_col)
   if (pointsize > 0) {
     plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
-  }
-
-  # optionally add an eigenvalue cutoff line
-  if (options$factorMethod == "eigenValues") {
-    plt <- plt + ggplot2::geom_hline(yintercept = options$eigenValuesBox)
   }
 
   # theming with special legend thingy

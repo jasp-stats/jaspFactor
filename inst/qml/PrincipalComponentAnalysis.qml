@@ -166,7 +166,16 @@ Form
 			{
 				title: qsTr("Plots")
 				CheckBox { name: "incl_pathDiagram";	label: qsTr("Path diagram")				}
-				CheckBox { name: "incl_screePlot";		label: qsTr("Scree plot")				}
+				CheckBox {
+					name:  "incl_screePlot";
+					label: qsTr("Scree plot")
+
+					CheckBox {
+						name:		"screeDispParallel"
+						label:		qsTr("Parallel analysis results")
+						checked:	true
+					}
+				}
 			}
 		}
 

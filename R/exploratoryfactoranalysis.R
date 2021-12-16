@@ -131,7 +131,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     )
   )
 
-  if (inherits(efaResult, "try-error")) {
+  if (isTryError(efaResult)) {
     errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(efaResult, "condition")$message)
     modelContainer$setError(errmsg)
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
@@ -144,10 +144,13 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaGetNComp <- function(dataset, options) {
   if (options$factorMethod == "manual") return(options$numberOfFactors)
   pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
-  if (inherits(pa, "try-error"))        return(1)
+  if (isTryError(pa)) return(1)
   if (options$factorMethod == "parallelAnalysis") {
-    if (options$parallelMethod == "pc") return(max(1, pa$ncomp))
-    if (options$parallelMethod == "fa") return(max(1, pa$nfact))
+    if (options$parallelMethod == "pc") {
+      return(max(1, pa$ncomp))
+    } else { # parallelmethod is fa
+      return(max(1, pa$nfact))
+    }
   }
   if (options$factorMethod == "eigenValues") {
     ncomp <- sum(pa$pc.values > options$eigenValuesBox)
@@ -414,38 +417,45 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!options[["incl_screePlot"]] || !is.null(modelContainer[["scree"]])) return()
 
   scree <- createJaspPlot(title = "Scree plot", width = 480, height = 320)
-  scree$dependOn("incl_screePlot")
+  scree$dependOn(c("incl_screePlot", "screeDispParallel", "parallelMethod"))
   scree$position <- 8
   modelContainer[["scree"]] <- scree
 
   if (!ready || modelContainer$getError()) return()
 
-  pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
-  if (inherits(pa, "try-error")) {
-    errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
-    scree$setError(errmsg)
-    # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
-    return()
-  }
-
   n_col <- ncol(dataset)
 
-  if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
-    evs <- c(pa$fa.values, pa$fa.sim)
+  if (options[["screeDispParallel"]]) {
 
-  } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
-    if (anyNA(pa$pc.sim)) {
-      pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    if (isTryError(pa)) {
+      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
+      scree$setError(errmsg)
+      # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
+      return()
     }
-    evs <- c(pa$pc.values, pa$pc.sim)
-  }
 
+    if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
+      evs <- c(pa$fa.values, pa$fa.sim)
+    } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
+      if (anyNA(pa$pc.sim)) {
+        pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+      }
+      evs <- c(pa$pc.values, pa$pc.sim)
+    }
+    tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
+
+  } else { # do not display parallel analysis
+    evs <- eigen(cov(dataset, use = "pairwise.complete.obs"), only.values = T)$values
+    tp <- rep(gettext("Data"), each = n_col)
+  }
 
   df <- data.frame(
     id   = rep(seq_len(n_col), 2),
     ev   = evs,
-    type = rep(c(gettext("Data"), gettext("Simulated (95th quantile)")), each = n_col)
+    type = tp
   )
+
   # basic scree plot
   plt <-
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +

@@ -23,7 +23,7 @@ Upgrades
 	{
 		functionName:       "ExploratoryFactorAnalysis"
 		fromVersion:		"0.16"
-		toVersion:			"0.17"
+		toVersion:			"0.16.1"
 
 		ChangeSetValue
 		{

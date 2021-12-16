@@ -1010,6 +1010,9 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (any(rhsAreLatent))
     semPlotMod@Pars$rhs[rhsAreLatent] <- .translateFactorNames(semPlotMod@Pars$rhs[rhsAreLatent], options)
 
+  if (.hasSlot(semPlotMod, "Thresholds"))
+    semPlotMod@Thresholds$lhs <- ifelse(nchar(semPlotMod@Thresholds$lhs) > 0, decodeColNames(semPlotMod@Thresholds$lhs), "")
+
   return(semPlotMod)
 }
 

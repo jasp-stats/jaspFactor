@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-10-02 03:30\n"
+"POT-Creation-Date: 2021-12-18 03:31\n"
 "PO-Revision-Date: 2021-10-30 03:29+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -375,11 +375,11 @@ msgstr ""
 msgid "Data"
 msgstr "Data"
 
-msgid "Simulated (95th quantile)"
-msgstr "Gesimuleerd (95ste kwantiel)"
+msgid "Simulated data from parallel analysis"
+msgstr ""
 
-msgid "EFA Eigenvalue"
-msgstr "EFA Eigenwaarde"
+msgid "Eigenvalue"
+msgstr "Eigenwaarde"
 
 msgid "Path Diagram"
 msgstr "Paddiagram"
@@ -389,9 +389,6 @@ msgstr "Geen componenten met een eigenwaarde >"
 
 msgid "Component Loadings"
 msgstr "Componentladingen"
-
-msgid "Eigenvalue"
-msgstr "Eigenwaarde"
 
 msgid "Variance explained"
 msgstr "Verklaarde variantie"
@@ -404,3 +401,9 @@ msgstr "Scree plot"
 
 msgid "Component"
 msgstr "Component"
+
+#~ msgid "Simulated (95th quantile)"
+#~ msgstr "Gesimuleerd (95ste kwantiel)"
+
+#~ msgid "EFA Eigenvalue"
+#~ msgstr "EFA Eigenwaarde"

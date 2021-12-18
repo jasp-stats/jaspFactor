@@ -551,3 +551,35 @@ msgstr "Ordenar las cargas de la componente según"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
 msgstr "Tamaño de la componente"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""

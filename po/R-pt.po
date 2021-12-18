@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-10-02 03:30\n"
+"POT-Creation-Date: 2021-12-18 03:31\n"
 "PO-Revision-Date: 2021-09-03 13:34+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -379,11 +379,11 @@ msgstr ""
 msgid "Data"
 msgstr "Dados"
 
-msgid "Simulated (95th quantile)"
-msgstr "Simulado (95º quantil)"
+msgid "Simulated data from parallel analysis"
+msgstr ""
 
-msgid "EFA Eigenvalue"
-msgstr "Autovalor AFE"
+msgid "Eigenvalue"
+msgstr "Autovalor"
 
 msgid "Path Diagram"
 msgstr "Diagrama de caminhos"
@@ -393,9 +393,6 @@ msgstr "Nenhum componente com autovalor >"
 
 msgid "Component Loadings"
 msgstr "Cargas dos componentes"
-
-msgid "Eigenvalue"
-msgstr "Autovalor"
 
 msgid "Variance explained"
 msgstr ""
@@ -408,3 +405,9 @@ msgstr "Gráfico de sedimentação"
 
 msgid "Component"
 msgstr "Componentes"
+
+#~ msgid "Simulated (95th quantile)"
+#~ msgstr "Simulado (95º quantil)"
+
+#~ msgid "EFA Eigenvalue"
+#~ msgstr "Autovalor AFE"

@@ -550,3 +550,35 @@ msgstr "按列表排除个案"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
 msgstr "将主成分分数添加到数据中"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""

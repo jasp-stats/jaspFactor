@@ -550,3 +550,35 @@ msgstr "コンポーネントの読み込みを次の順序で並べ替えます
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
 msgstr "成分のサイズ"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""

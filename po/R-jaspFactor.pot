@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-10-02 03:30\n"
+"POT-Creation-Date: 2021-12-18 03:31\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -346,10 +346,10 @@ msgstr ""
 msgid "Data"
 msgstr ""
 
-msgid "Simulated (95th quantile)"
+msgid "Simulated data from parallel analysis"
 msgstr ""
 
-msgid "EFA Eigenvalue"
+msgid "Eigenvalue"
 msgstr ""
 
 msgid "Path Diagram"
@@ -359,9 +359,6 @@ msgid "No components with an eigenvalue >"
 msgstr ""
 
 msgid "Component Loadings"
-msgstr ""
-
-msgid "Eigenvalue"
 msgstr ""
 
 msgid "Variance explained"

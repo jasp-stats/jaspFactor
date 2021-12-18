@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-10-02 03:30\n"
+"POT-Creation-Date: 2021-12-18 03:31\n"
 "PO-Revision-Date: 2021-10-24 10:38+0000\n"
 "Last-Translator: shun wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -367,11 +367,11 @@ msgstr ""
 msgid "Data"
 msgstr "数据"
 
-msgid "Simulated (95th quantile)"
-msgstr "模拟(第 95 个分位数)"
+msgid "Simulated data from parallel analysis"
+msgstr ""
 
-msgid "EFA Eigenvalue"
-msgstr "EFA 特征值"
+msgid "Eigenvalue"
+msgstr "特征值"
 
 msgid "Path Diagram"
 msgstr "路径图"
@@ -381,9 +381,6 @@ msgstr "没有成分具有特征值 >"
 
 msgid "Component Loadings"
 msgstr "成分载荷"
-
-msgid "Eigenvalue"
-msgstr "特征值"
 
 msgid "Variance explained"
 msgstr "差异解释"
@@ -396,3 +393,9 @@ msgstr "碎石图"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Simulated (95th quantile)"
+#~ msgstr "模拟(第 95 个分位数)"
+
+#~ msgid "EFA Eigenvalue"
+#~ msgstr "EFA 特征值"

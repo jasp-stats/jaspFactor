@@ -187,7 +187,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaBartlett <- function(modelContainer, dataset, options, ready) {
   if (!options[["bartest"]] || !is.null(modelContainer[["bartab"]])) return()
 
-  bartab <- createJaspTable("Bartlett's test")
+  bartab <- createJaspTable(gettext("Bartlett's test"))
   bartab$dependOn("bartest")
   bartab$addColumnInfo(name = "chisq", title = "\u03a7\u00b2", type = "number", format = "dp:3")
   bartab$addColumnInfo(name = "df",    title = gettext("df"), type = "number", format = "dp:3")
@@ -206,7 +206,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaGoFTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["goftab"]])) return()
 
-  goftab <- createJaspTable(title = "Chi-squared Test")
+  goftab <- createJaspTable(title = gettext("Chi-squared Test"))
   goftab$addColumnInfo(name = "model", title = "",                 type = "string")
   goftab$addColumnInfo(name = "chisq", title = gettext("Value"),   type = "number", format = "dp:3")
   goftab$addColumnInfo(name = "df",    title = gettext("df"),      type = "integer")

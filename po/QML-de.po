@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-12-21 09:52+0000\n"
+"PO-Revision-Date: 2021-12-22 10:53+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/de/>\n"
@@ -140,7 +140,7 @@ msgstr "Abbildungen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr "Niet-passings grafiek"
+msgstr "Misfit-Plot"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
@@ -444,7 +444,7 @@ msgstr "Variablen"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components"
-msgstr "Anzahl an Komponenten"
+msgstr "Anzahl Komponenten"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
@@ -456,7 +456,7 @@ msgstr "Eigenwerte"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
-msgstr "Eigenwerte darüber"
+msgstr "Eigenwerte über"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
@@ -464,7 +464,7 @@ msgstr "Manuell"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of components"
-msgstr "Anzahl an Komponenten"
+msgstr "Anzahl Komponenten"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"

@@ -189,7 +189,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 .pcaGoFTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["goftab"]])) return()
 
-  goftab <- createJaspTable(title = "Chi-squared Test")
+  goftab <- createJaspTable(title = gettext("Chi-squared Test"))
   goftab$addColumnInfo(name = "model", title = "",               type = "string")
   goftab$addColumnInfo(name = "chisq", title = gettext("Value"), type = "number", format = "dp:3")
   goftab$addColumnInfo(name = "df",    title = gettext("df"),    type = "integer")
@@ -264,7 +264,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 .pcaEigenTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["eigtab"]])) return()
 
-  eigtab <- createJaspTable("Component Characteristics")
+  eigtab <- createJaspTable(gettext("Component Characteristics"))
   eigtab$addColumnInfo(name = "comp", title = "",                type = "string")
 
   # check if a rotation is used

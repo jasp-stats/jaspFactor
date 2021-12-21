@@ -378,7 +378,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .cfaTableRsquared <- function(jaspResults, options, cfaResult) {
   if (!options$rsquared || !is.null(jaspResults[["maincontainer"]][["rsquared"]])) return()
 
-  jaspResults[["maincontainer"]][["rsquared"]] <- tabr2 <- createJaspTable("R-Squared")
+  jaspResults[["maincontainer"]][["rsquared"]] <- tabr2 <- createJaspTable(gettext("R-Squared"))
   tabr2$addColumnInfo(name = "__var__", title = "", type = "string")
   tabr2$setExpectedSize(rows = 1, cols = 1)
   tabr2$dependOn(c("factors", "secondOrder", "rescov", "includemeanstructure", "identify", "uncorrelatedFactors",
@@ -521,7 +521,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # First-order factor loadings ----
   # Set up table
-  jrobject[["fl1"]] <- fl1 <- createJaspTable(title = "Factor loadings")
+  jrobject[["fl1"]] <- fl1 <- createJaspTable(title = gettext("Factor loadings"))
   if (!is.null(footnote)) fl1$addFootnote(footnote)
 
   fl1$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)

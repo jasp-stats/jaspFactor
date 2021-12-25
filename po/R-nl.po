@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-12-18 03:31\n"
+"POT-Creation-Date: 2021-12-25 03:31\n"
 "PO-Revision-Date: 2021-10-30 03:29+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -69,6 +69,9 @@ msgstr "Baseline model"
 
 msgid "Factor model"
 msgstr "Factor model"
+
+msgid "R-Squared"
+msgstr ""
 
 msgid "Additional fit measures"
 msgstr "Extra pasmaten"
@@ -168,6 +171,10 @@ msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 "Niet alle bootstrap steekproeven waren succesvol. Betrouwbaarheidinterval is "
 "gebaseerd op %.0f steekproeven."
+
+#, fuzzy
+msgid "Factor loadings"
+msgstr "Factorladingen"
 
 msgid "Factor"
 msgstr "Factor"
@@ -305,6 +312,13 @@ msgstr "Kaiser-Meyer-Olkin toets"
 msgid "Overall MSA"
 msgstr "Algemene MSA"
 
+msgid "Bartlett's test"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-squared Test"
+msgstr "Chikwadraattoets"
+
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "Vrijheidsgraden onder 0, model is niet geïdentificeerd."
 
@@ -389,6 +403,10 @@ msgstr "Geen componenten met een eigenwaarde >"
 
 msgid "Component Loadings"
 msgstr "Componentladingen"
+
+#, fuzzy
+msgid "Component Characteristics"
+msgstr "Factorkarakteristieken"
 
 msgid "Variance explained"
 msgstr "Verklaarde variantie"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
-"POT-Creation-Date: 2021-12-18 03:31\n"
+"POT-Creation-Date: 2021-12-25 03:31\n"
 "PO-Revision-Date: 2021-11-10 04:46+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -67,6 +67,9 @@ msgstr "ベースラインモデル"
 
 msgid "Factor model"
 msgstr "因子モデル"
+
+msgid "R-Squared"
+msgstr ""
 
 msgid "Additional fit measures"
 msgstr "追加の適合度指標"
@@ -165,6 +168,10 @@ msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 "すべてのブートストラップサンプルが成功したわけではありません。CIは%.0fのサン"
 "プルに基づいています。"
+
+#, fuzzy
+msgid "Factor loadings"
+msgstr "因子負荷量"
 
 msgid "Factor"
 msgstr "要因"
@@ -302,6 +309,13 @@ msgstr "Kaiser-Meyer-Olkin検定"
 msgid "Overall MSA"
 msgstr "全体的な MSA"
 
+msgid "Bartlett's test"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-squared Test"
+msgstr "カイ二乗検定"
+
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "自由度が0より小さく，モデルは識別できません。"
 
@@ -386,6 +400,10 @@ msgstr "次より大きい固有値を持つコンポーネントがありませ
 
 msgid "Component Loadings"
 msgstr "成分負荷量"
+
+#, fuzzy
+msgid "Component Characteristics"
+msgstr "因子特性"
 
 msgid "Variance explained"
 msgstr "因子寄与"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-12-18 03:31\n"
+"POT-Creation-Date: 2021-12-25 03:31\n"
 "PO-Revision-Date: 2021-12-19 02:19+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -64,6 +64,9 @@ msgstr "基线模型"
 
 msgid "Factor model"
 msgstr "因子模型"
+
+msgid "R-Squared"
+msgstr ""
 
 msgid "Additional fit measures"
 msgstr "附加拟合测度"
@@ -160,6 +163,10 @@ msgstr "参数估计"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "并非所有bootstrap样本都成功：CI 基于 %.0f 个样本。"
+
+#, fuzzy
+msgid "Factor loadings"
+msgstr "因子载荷"
 
 msgid "Factor"
 msgstr "因子"
@@ -297,6 +304,13 @@ msgstr "Kaiser-Meyer-Olkin 检验"
 msgid "Overall MSA"
 msgstr "总体 MSA"
 
+msgid "Bartlett's test"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-squared Test"
+msgstr "卡方检验"
+
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "自由度低于 0，模型未识别。"
 
@@ -381,6 +395,10 @@ msgstr "没有成分具有特征值 >"
 
 msgid "Component Loadings"
 msgstr "成分载荷"
+
+#, fuzzy
+msgid "Component Characteristics"
+msgstr "因素特征"
 
 msgid "Variance explained"
 msgstr "差异解释"

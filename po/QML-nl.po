@@ -553,10 +553,6 @@ msgid "Component size"
 msgstr "Componentgrootte"
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
 msgstr ""
 
@@ -569,10 +565,6 @@ msgid "Parallel analysis results"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
 msgstr ""
 
@@ -582,4 +574,12 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
 msgstr ""

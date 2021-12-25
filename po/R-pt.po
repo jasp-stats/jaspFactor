@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-12-18 03:31\n"
+"POT-Creation-Date: 2021-12-25 03:31\n"
 "PO-Revision-Date: 2021-09-03 13:34+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -72,6 +72,9 @@ msgstr "Modelo de linha de base"
 
 msgid "Factor model"
 msgstr "Fatores"
+
+msgid "R-Squared"
+msgstr ""
 
 msgid "Additional fit measures"
 msgstr "Medidas adicionais de ajuste"
@@ -170,6 +173,10 @@ msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 "Nem todas as amostras de bootstrap foram bem sucedidas: IC com base em %.0f "
 "amostras."
+
+#, fuzzy
+msgid "Factor loadings"
+msgstr "Cargas do fator"
 
 msgid "Factor"
 msgstr "Fator"
@@ -309,6 +316,13 @@ msgstr "Teste Kaiser-Meyer-Olkin"
 msgid "Overall MSA"
 msgstr "MSA geral"
 
+msgid "Bartlett's test"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-squared Test"
+msgstr "Teste qui-quadrado"
+
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "Graus de liberdade abaixo de 0, modelo não identificado."
 
@@ -393,6 +407,10 @@ msgstr "Nenhum componente com autovalor >"
 
 msgid "Component Loadings"
 msgstr "Cargas dos componentes"
+
+#, fuzzy
+msgid "Component Characteristics"
+msgstr "Características do fator"
 
 msgid "Variance explained"
 msgstr ""

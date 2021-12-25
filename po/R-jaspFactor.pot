@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-12-18 03:31\n"
+"POT-Creation-Date: 2021-12-25 03:31\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,9 @@ msgid "Baseline model"
 msgstr ""
 
 msgid "Factor model"
+msgstr ""
+
+msgid "R-Squared"
 msgstr ""
 
 msgid "Additional fit measures"
@@ -146,6 +149,9 @@ msgid "Parameter estimates"
 msgstr ""
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
+msgstr ""
+
+msgid "Factor loadings"
 msgstr ""
 
 msgid "Factor"
@@ -280,6 +286,12 @@ msgstr ""
 msgid "Overall MSA"
 msgstr ""
 
+msgid "Bartlett's test"
+msgstr ""
+
+msgid "Chi-squared Test"
+msgstr ""
+
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr ""
 
@@ -359,6 +371,9 @@ msgid "No components with an eigenvalue >"
 msgstr ""
 
 msgid "Component Loadings"
+msgstr ""
+
+msgid "Component Characteristics"
 msgstr ""
 
 msgid "Variance explained"

@@ -4,7 +4,8 @@ Exploratory Factor Analysis
 With Exploratory Factor Analysis it is possible to identify one or more factors underlying the data. The factors are chosen such that they capture the common variance in the data. 
 
 ### Assumptions (Yong & Pearce, 2013)
-- The variables included in the analysis are continuous. 
+- The variables included in the analysis are continuous*. 
+  - If variables are ordinal, this assumption can be overcome when basing the analysis on the polychoric or tetrachoric correlation matrix (Timmerman  & Lorenzo-Seva, 2011).
 - The data follow a multivariate normal distribution. 
 - There is a linear relation between the variables and the factors. 
 - There is no multicollinearity and singularity in the data. 
@@ -43,6 +44,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Include Tables: 
     - Factor correlations: When selecting this option, a table with the correlations between the factors will be displayed. 
     - Additional fit indices: This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model. 
+    - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis.
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected. 
 - Missing values: 
@@ -84,6 +86,8 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
   - RMSEA 90% confidence interval: The 90% confidence interval of the Root Mean Square Error of Approximation. 
   - TLI: Tucker-Lewis Index. Evaluates the fit compared to a more resticted, nested baseline model. Hopwood and Donnallan (2010) suggested that a value higher than .9 indicates a good fit. However, there is no consensus about this cutoff. 
   - BIC: Bayesian Information Criterion. This measure is useful for comparing the performances of different models on the same data, where a lower value indicates a better fitting model. 
+  
+- Parallel Analysis: The table displays as many numbers of factors as variables selected for analysis, eigenvalues corresponding to the real-data factor, and the eigenvalue corresponding to the parallel mean resampled value. It will display an asterisk along the names of the factors advised to be retained (whose real-data eigenvalue is bigger than the resampled-data mean value).
 
 #### Path Diagram 
 - F(1,2,3,...): The factors in the model are represented by the circles.  
@@ -111,6 +115,7 @@ The scree plot provides information on how much variance in the data, indicated 
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in 
     exploratory factor analysis. *Best practices in quantitative methods*, 86-99.
 - Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. Structural Equation Modeling, 16(4), 561-582.
+- Timmerman, M. E., & Lorenzo-Seva, U. (2011). Dimensionality assessment of ordered polytomous items with parallel analysis. *Psychological methods*, 16(2), 209.
 - Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in quantitative methods for psychology, 9*(2), 79-94.
 
 ### R Packages 

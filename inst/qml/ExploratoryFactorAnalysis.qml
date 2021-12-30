@@ -40,8 +40,8 @@ Form
 			id: variables
 			name: "variables"
 			title: qsTr("Variables")
-			suggestedColumns: ["scale"]
-			allowedColumns: ["scale"]
+			suggestedColumns: ["scale","ordinal"]
+			allowedColumns: ["scale","ordinal"]
 		}
 	}
 
@@ -151,14 +151,19 @@ Form
 			title: qsTr("Base analysis on")
 			RadioButton
 			{
-				value: "correlation"
+				value: "cor"
 				label: qsTr("Correlation matrix")
 				checked: true
 			}
 			RadioButton
 			{
-				value: "covariance"
+				value: "cov"
 				label: qsTr("Covariance matrix")
+			}
+			RadioButton
+			{
+				value: "mixed"
+				label: qsTr("Polychoric or tetrachoric correlation matrix")
 			}
 		}
 	}
@@ -189,6 +194,7 @@ Form
 				CheckBox { name: "incl_structure";		label: qsTr("Structure matrix")			}
 				CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
 				CheckBox { name: "incl_fitIndices";		label: qsTr("Additional fit indices")	}
+				CheckBox { name: "incl_PAtable";		  label: qsTr("Parallel analysis")	}
 			}
 			Group
 			{
@@ -213,7 +219,8 @@ Form
 			{
 				title: qsTr("Assumption checks")
 				CheckBox { name: "kmotest";				label: qsTr("KMO test")					}
-				CheckBox { name: "bartest";				label: qsTr("Bartlett's test")			}
+				CheckBox { name: "bartest";				label: qsTr("Bartlett's test")	}
+				CheckBox { name: "martest";				label: qsTr("Mardia's test")	  }
 			}
 			RadioButtonGroup
 			{

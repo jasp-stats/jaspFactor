@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-12-25 03:31\n"
-"PO-Revision-Date: 2021-12-19 13:07+0000\n"
+"PO-Revision-Date: 2021-12-26 19:54+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
-"Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspfactor-"
-"r/gl/>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-r/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Virgin-Header: remove this line if you change anything in the header.\n"
 "X-Language: gl_ES\n"
 "X-Source-Language: C\n"
@@ -78,7 +78,7 @@ msgid "Factor model"
 msgstr "Modelo de factores"
 
 msgid "R-Squared"
-msgstr ""
+msgstr "R-cadrado"
 
 msgid "Additional fit measures"
 msgstr "Medidas adicionais de axuste"
@@ -178,9 +178,8 @@ msgstr ""
 "Non todas as mostras de bootstrap foron acertadas: IC baseado en n %.0f "
 "mostras."
 
-#, fuzzy
 msgid "Factor loadings"
-msgstr "Cargas dos Factores"
+msgstr "Cargas dos factores"
 
 msgid "Factor"
 msgstr "Factor"
@@ -320,9 +319,8 @@ msgid "Overall MSA"
 msgstr "MIM (MSA) xeral"
 
 msgid "Bartlett's test"
-msgstr ""
+msgstr "Proba de Bartlett"
 
-#, fuzzy
 msgid "Chi-squared Test"
 msgstr "Proba Khi-cadrado"
 
@@ -411,9 +409,8 @@ msgstr "Sen compoñentes cun autovalor >"
 msgid "Component Loadings"
 msgstr "Cargas de Compoñentes"
 
-#, fuzzy
 msgid "Component Characteristics"
-msgstr "Características dos Factores"
+msgstr "Características das Compoñentes"
 
 msgid "Variance explained"
 msgstr "Varianza explicada"

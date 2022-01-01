@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2021-12-25 03:31\n"
-"PO-Revision-Date: 2021-12-19 02:19+0000\n"
+"PO-Revision-Date: 2021-12-31 06:53+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-r/zh_Hans/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.10\n"
+"X-Generator: Weblate 4.10.1\n"
 
 msgid "Second-Order"
 msgstr "二阶"
@@ -66,7 +66,7 @@ msgid "Factor model"
 msgstr "因子模型"
 
 msgid "R-Squared"
-msgstr ""
+msgstr "R平方"
 
 msgid "Additional fit measures"
 msgstr "附加拟合测度"
@@ -164,7 +164,6 @@ msgstr "参数估计"
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "并非所有bootstrap样本都成功：CI 基于 %.0f 个样本。"
 
-#, fuzzy
 msgid "Factor loadings"
 msgstr "因子载荷"
 
@@ -305,9 +304,8 @@ msgid "Overall MSA"
 msgstr "总体 MSA"
 
 msgid "Bartlett's test"
-msgstr ""
+msgstr "Bartlett's 检验"
 
-#, fuzzy
 msgid "Chi-squared Test"
 msgstr "卡方检验"
 
@@ -396,9 +394,8 @@ msgstr "没有成分具有特征值 >"
 msgid "Component Loadings"
 msgstr "成分载荷"
 
-#, fuzzy
 msgid "Component Characteristics"
-msgstr "因素特征"
+msgstr "成分特征"
 
 msgid "Variance explained"
 msgstr "差异解释"

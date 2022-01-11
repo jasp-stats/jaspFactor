@@ -275,7 +275,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     eigtab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number", overtitle = overTitleA)
     eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
-    eigtab$addColumnInfo(name = "eigvR", title = gettext("Variance explained"), type = "number", overtitle = overTitleB)
+    eigtab$addColumnInfo(name = "eigvR", title = gettext("Eigenvalue"), type = "number", overtitle = overTitleB)
     eigtab$addColumnInfo(name = "propR", title = gettext("Proportion var."), type = "number", overtitle = overTitleB)
     eigtab$addColumnInfo(name = "cumpR", title = gettext("Cumulative"),      type = "number", overtitle = overTitleB)
   } else {

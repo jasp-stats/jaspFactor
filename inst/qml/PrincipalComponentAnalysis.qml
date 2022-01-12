@@ -143,7 +143,7 @@ Form
 		Slider
 		{
 			name: "highlightText"
-			title: qsTr("Highlight")
+			label: qsTr("Highlight")
 			value: 0.4
 		}
 

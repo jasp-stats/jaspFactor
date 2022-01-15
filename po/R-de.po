@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-12-25 03:31\n"
+"POT-Creation-Date: 2022-01-15 03:31\n"
 "PO-Revision-Date: 2021-12-26 19:54+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -404,9 +404,6 @@ msgstr "Komponentenladungen"
 msgid "Component Characteristics"
 msgstr "Komponenten-Charakteristiken"
 
-msgid "Variance explained"
-msgstr "Erklärte Varianz"
-
 msgid "Component Correlations"
 msgstr "Komponentenkorrelationen"
 
@@ -415,6 +412,9 @@ msgstr "Scree-Plot"
 
 msgid "Component"
 msgstr "Komponente"
+
+#~ msgid "Variance explained"
+#~ msgstr "Erklärte Varianz"
 
 #~ msgid "Simulated (95th quantile)"
 #~ msgstr "Simuliert (95tes Quantil)"

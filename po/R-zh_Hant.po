@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2021-12-25 03:31\n"
+"POT-Creation-Date: 2022-01-15 03:31\n"
 "PO-Revision-Date: 2021-10-31 14:36+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -400,9 +400,6 @@ msgstr "成分負荷量"
 msgid "Component Characteristics"
 msgstr "因素特徵"
 
-msgid "Variance explained"
-msgstr "可解釋變異量"
-
 msgid "Component Correlations"
 msgstr "成分相關"
 
@@ -411,6 +408,9 @@ msgstr "陡坡圖"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Variance explained"
+#~ msgstr "可解釋變異量"
 
 #~ msgid "Simulated (95th quantile)"
 #~ msgstr "模擬 (95th 分位數)"

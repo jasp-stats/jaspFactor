@@ -229,6 +229,20 @@ test_that("Bootstrapping works", {
 
 
 
+# # validate the following tests with:
+# library(lavaan)
+#
+# HS.model <- '
+# visual  =~ x1 + x2 + x3
+# textual =~ x4 + x5 + x6
+# speed   =~ x7 + x8 + x9
+# x7 ~~ x8
+# g =~ visual + textual + speed
+# '
+# # Configural model
+# fit <- cfa(HS.model, data = HolzingerSwineford1939, effect.coding = TRUE, group = "school")
+# summary(fit)
+
 options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
 options$groupvar <- "school"
 options$invariance <- "configural"

@@ -338,7 +338,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                               collapse = " - "))
         ef <- paste0(ef, "\n", restr)
       } else { # configural invariance
-        restr = ""
+        restr <- ""
         for (j in 1:n_levels) {
           restr <- paste0(restr, unlist(labels[[i]][1])[j], " == ",
                           paste(c(length(labels[[i]]), lapply(labels[[i]][-1], function(x) x[j])),

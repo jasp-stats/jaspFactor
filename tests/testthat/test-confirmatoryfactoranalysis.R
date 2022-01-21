@@ -226,3 +226,204 @@ test_that("Bootstrapping works", {
                                       0.859593369706291, 0.669980108781259, "<unicode>33", "Factor 3",
                                       0, "x9", 0.0650169734598685, 10.3046954222623))
 })
+
+
+
+# # validate the following tests with:
+# library(lavaan)
+#
+# HS.model <- '
+# visual  =~ x1 + x2 + x3
+# textual =~ x4 + x5 + x6
+# speed   =~ x7 + x8 + x9
+# x7 ~~ x8
+# g =~ visual + textual + speed
+# '
+# # Configural model
+# fit <- cfa(HS.model, data = HolzingerSwineford1939, effect.coding = TRUE, group = "school")
+# summary(fit)
+
+options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
+options$groupvar <- "school"
+options$invariance <- "configural"
+options$mimic <- "lavaan"
+options$se <- "standard"
+options$estimator <- "default"
+options$std <- "none"
+options$factors <- list(
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "visual"),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "textual"),
+  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "speed")
+)
+options$identify <- "effects"
+options$missing <- "FIML"
+options$rescov <-  list(c("x7", "x8"))
+options$secondOrder <- list("visual", "textual", "speed")
+set.seed(1)
+
+results <- jaspTools::runAnalysis("ConfirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+
+
+test_that("Residual covariances table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Grant-White"]][["collection"]][["estimates_Grant-White_Residual Covariances"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.208580408543772, 0.561085317759383, 0.384832863151578, "x7",
+                                      "<unicode>", 1.87379671678922e-05, "x8", 0.0899263741569042,
+                                      4.27942154634322))
+})
+
+test_that("Factor loadings table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Grant-White"]][["collection"]][["estimates_Grant-White_fl1"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.97824694709509, 1.41103286870157, 1.19463990789833, "<unicode>112",
+                                      "visual", 0, "x1", 0.110406600585583, 10.8203667313558, 0.576588928452012,
+                                      1.01820949425935, 0.797399211355682, "<unicode>122", "visual",
+                                      1.46349599106088e-12, "x2", 0.112660377764792, 7.07790287212119,
+                                      0.803379282477899, 1.21254247901407, 1.00796088074599, "<unicode>132",
+                                      "visual", 0, "x3", 0.104380284475531, 9.65662132279655, 0.918525808353015,
+                                      1.11584455993924, 1.01718518414613, "<unicode>212", "textual",
+                                      0, "x4", 0.0503373411814332, 20.2073681341222, 0.904533581821138,
+                                      1.10788011779749, 1.00620684980931, "<unicode>222", "textual",
+                                      0, "x5", 0.0518750695370728, 19.3967325497313, 0.875800310154247,
+                                      1.07741562193487, 0.97660796604456, "<unicode>232", "textual",
+                                      0, "x6", 0.0514334225962675, 18.9878082528273, 0.448709591199949,
+                                      0.861628177339534, 0.655168884269742, "<unicode>312", "speed",
+                                      4.98220797950921e-10, "x7", 0.105338309631359, 6.21966392438387,
+                                      0.632652017321973, 1.05862185080329, 0.845636934062633, "<unicode>322",
+                                      "speed", 7.105427357601e-15, "x8", 0.108667770643062, 7.7818559178901,
+                                      1.15381004087615, 1.8445783224591, 1.49919418166763, "<unicode>332",
+                                      "speed", 0, "x9", 0.176219636440169, 8.50753191842297))
+})
+
+test_that("Second-order factor loadings table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Grant-White"]][["collection"]][["estimates_Grant-White_fl2"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.894743205210185, 1.46886037814872, 1.18180179167945, "<unicode>112",
+                                      "SecondOrder", 6.66133814775094e-16, "visual", 0.146461153742391,
+                                      8.06904603358591, 0.749885842194451, 1.26363322117426, 1.00675953168436,
+                                      "<unicode>122", "SecondOrder", 1.57651669496772e-14, "textual",
+                                      0.131060413107635, 7.68164473018669, 0.56185444727119, 1.06102290600119,
+                                      0.811438676636188, "<unicode>132", "SecondOrder", 1.86384685463281e-10,
+                                      "speed", 0.127341232458192, 6.37215975510994))
+})
+
+test_that("Factor variances table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Grant-White"]][["collection"]][["estimates_Grant-White_fv"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(-0.127514015381487, 0.232797490998318, 0.0526417378084156, "visual",
+                                      0.566845167322731, 0.0919178896198851, 0.572703942900658, 0.402546923419005,
+                                      0.818456895883089, 0.610501909651047, "textual", 8.7184031105636e-09,
+                                      0.106101432410169, 5.75394597210484, 0.112134953780972, 0.390602552366561,
+                                      0.251368753073767, "speed", 0.000402463070696024, 0.0710389580579302,
+                                      3.53846340016394, 0.18878050866914, 0.407359188716625, 0.298069848692882,
+                                      "Second-Order", 9.01677925657651e-08, 0.0557608919785278, 5.34550001114871
+                                 ))
+})
+
+test_that("Residual variances table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Grant-White"]][["collection"]][["estimates_Grant-White_rv"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.414991134180042, 0.883789180220234, 0.649390157200138, "x1",
+                                      5.63612934101343e-08, 0.119593535834845, 5.4299770691363, 0.688644414789547,
+                                      1.1677638546569, 0.928204134723222, "x2", 3.10862446895044e-14,
+                                      0.122226592847263, 7.5941259025614, 0.406227454069119, 0.787625738823265,
+                                      0.596926596446192, "x3", 8.51159587256234e-10, 0.097297268664773,
+                                      6.13508071334291, 0.186519967210478, 0.439406093549079, 0.312963030379778,
+                                      "x4", 1.2273786600403e-06, 0.0645129523637512, 4.85116583434534,
+                                      0.276773271697164, 0.558601647697828, 0.417687459697496, "x5",
+                                      6.26294172079156e-09, 0.0718963149893798, 5.80958091884396,
+                                      0.274236151148393, 0.545213766052058, 0.409724958600226, "x6",
+                                      3.08463521392355e-09, 0.0691282128245982, 5.92702952757996,
+                                      0.655173489603016, 1.08413872653021, 0.869656108066612, "x7",
+                                      1.99840144432528e-15, 0.109431918216563, 7.94700597631476, 0.556982773635263,
+                                      0.99157734143102, 0.774280057533141, "x8", 2.87303514312498e-12,
+                                      0.110867998397875, 6.98380117547052, -0.344694371374334, 0.434630459583225,
+                                      0.0449680441044453, "x9", 0.821057629495469, 0.198811008035039,
+                                      0.226184880550075))
+})
+
+test_that("Residual covariances table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Pasteur"]][["collection"]][["estimates_Pasteur_Residual Covariances"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.122168637770757, 0.493921275449714, 0.308044956610236, "x7",
+                                      "<unicode>", 0.00116151745589432, "x8", 0.0948365991955195,
+                                      3.24816536256384))
+})
+
+test_that("Factor loadings table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Pasteur"]][["collection"]][["estimates_Pasteur_fl1"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(1.10105262470584, 1.66239528529133, 1.38172395499858, "<unicode>111",
+                                      "visual", 0, "x1", 0.143202289688303, 9.64875602203059, 0.421600080181834,
+                                      0.92883305854499, 0.675216569363412, "<unicode>121", "visual",
+                                      1.80752648182292e-07, "x2", 0.129398545678427, 5.21811559645668,
+                                      0.700542606262643, 1.18557634501337, 0.943059475638005, "<unicode>131",
+                                      "visual", 2.50910403565285e-14, "x3", 0.123735370286549, 7.62158365432657,
+                                      0.879064138342627, 1.07622533217526, 0.977644735258943, "<unicode>211",
+                                      "textual", 0, "x4", 0.0502971471383697, 19.437379471432, 1.0651533306052,
+                                      1.2703138855335, 1.16773360806935, "<unicode>221", "textual",
+                                      0, "x5", 0.0523378379772753, 22.3114605646563, 0.764826837719821,
+                                      0.944416475623597, 0.854621656671709, "<unicode>231", "textual",
+                                      0, "x6", 0.0458145249913662, 18.6539455954801, 0.195451723833617,
+                                      0.94752882557255, 0.571490274703083, "<unicode>311", "speed",
+                                      0.00289488302453056, "x7", 0.191859928976048, 2.97868490702104,
+                                      0.309395340929874, 1.11953466025497, 0.714465000592425, "<unicode>321",
+                                      "speed", 0.00054622557003281, "x8", 0.206671991351723, 3.45699964431328,
+                                      1.02162210406388, 2.40646734534511, 1.71404472470449, "<unicode>331",
+                                      "speed", 1.22372831157236e-06, "x9", 0.353283338929875, 4.85175646804199
+                                 ))
+})
+
+test_that("Second-order factor loadings table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Pasteur"]][["collection"]][["estimates_Pasteur_fl2"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.895669276497663, 2.01755133623086, 1.45661030636426, "<unicode>111",
+                                      "SecondOrder", 3.59027865659556e-07, "visual", 0.286199661979113,
+                                      5.08948996058061, 0.592187450357759, 1.46800533965735, 1.03009639500755,
+                                      "<unicode>121", "SecondOrder", 4.01822369711091e-06, "textual",
+                                      0.223427036467998, 4.61043753384383, 0.216566327907607, 0.810020269348763,
+                                      0.513293298628185, "<unicode>131", "SecondOrder", 0.000697793364336396,
+                                      "speed", 0.151394093494126, 3.39044467839889))
+})
+
+test_that("Factor variances table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Pasteur"]][["collection"]][["estimates_Pasteur_fv"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(-0.322593861704548, 0.374611235772924, 0.0260086870341885, "visual",
+                                      0.88373996127601, 0.177861711484736, 0.146229825503622, 0.453300232388463,
+                                      0.952377694237456, 0.702838963312959, "textual", 3.38341130667885e-08,
+                                      0.127318018541578, 5.52034167169694, 0.10185269536012, 0.363320003790462,
+                                      0.232586349575291, "speed", 0.000488574525319363, 0.0667020696535148,
+                                      3.48694352039548, 0.126201051830929, 0.302878789671742, 0.214539920751336,
+                                      "Second-Order", 1.93620086053059e-06, 0.0450716796926947, 4.75997172091434
+                                 ))
+})
+
+test_that("Residual variances table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_Pasteur"]][["collection"]][["estimates_Pasteur_rv"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.145806292617985, 0.80727193782207, 0.476539115220027, "x1",
+                                      0.00474239054532877, 0.168744336738236, 2.82403027225296, 0.980200194655344,
+                                      1.58852574174061, 1.28436296819797, "x2", 2.22044604925031e-16,
+                                      0.155187940156977, 8.27617769073297, 0.661807192404595, 1.1738532769286,
+                                      0.917830234666598, "x3", 2.11963779861435e-12, 0.130626401444863,
+                                      7.02637617292099, 0.293428309541255, 0.567242028683073, 0.430335169112164,
+                                      "x4", 7.24262871898418e-10, 0.0698517220983715, 6.16069520098771,
+                                      0.269842486146815, 0.608344243183404, 0.439093364665109, "x5",
+                                      3.68010061757573e-07, 0.0863540758163536, 5.08480185230533,
+                                      0.195590984648919, 0.394088799248797, 0.294839891948858, "x6",
+                                      5.79779713127948e-09, 0.0506381280894964, 5.82248797640715,
+                                      0.821118830524024, 1.32986765676015, 1.07549324364209, "x7",
+                                      2.22044604925031e-16, 0.129785248670147, 8.28671405003417, 0.583281164346786,
+                                      1.02554323626783, 0.80441220030731, "x8", 1.00519592649562e-12,
+                                      0.112824030290749, 7.12979494026521, -0.618627025731548, 0.874943807048513,
+                                      0.128158390658482, "x9", 0.736602350153651, 0.381019968877275,
+                                      0.336356099750146))
+})
+
+test_that("Chi-square test table results match for multiple groups and effects coding", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_cfatab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(957.769050808683, 72, "Baseline model", "", 84.655095268701, 46,
+                                      "Factor model", 0.000448372893282811))
+})

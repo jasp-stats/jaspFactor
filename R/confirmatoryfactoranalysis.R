@@ -155,11 +155,9 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!is.null(jaspResults[["stateCFAResult"]])) return(jaspResults[["stateCFAResult"]]$object)
 
-
   cfaResult <- list()
 
   cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
-
 
   # Recalculate the model
   mod <- .optionsToCFAMod(options, dataset, cfaResult)
@@ -187,7 +185,6 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     mimic           = options$mimic,
     estimator       = options$estimator
   ))
-
 
   # Quit analysis on error
   if (inherits(cfaResult[["lav"]], "try-error")) {
@@ -264,10 +261,20 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   for (i in 1:length(vars)) {
     pre <- paste0("\n", latents[i], " =~ ")
     len <- length(vars[[i]]$indicators)
-    labelledvars <- labels[[i]] <- character(len)
+    labelledvars <- character(len)
+    labels[[i]] <- list()
     for (j in 1:len) {
-      labels[[i]][j]  <- paste0("lambda_", i, "_", j)
-      labelledvars[j] <- paste0("lambda_", i, "_", j, "*", .v(vars[[i]]$indicators[j]))
+      if (nchar(options$groupvar) == 0 || options$invariance !="configural") {
+        labels[[i]][[j]]  <- paste0("lambda_", i, "_", j)
+        labelledvars[j] <- paste0("lambda_", i, "_", j, "*", .v(vars[[i]]$indicators[j]))
+      } else { # grouping variable present and configural invariance
+        # we need a vector with different labels per group for lavaan
+        n_levels <- length(unique(na.omit(dataset[[options$groupvar]])))
+        tmp_labels <- paste0("lambda_", i, "_", j, "_", seq(n_levels))
+        labels[[i]][[j]] <- tmp_labels
+        labelledvars[j] <- paste0("c(", paste0(tmp_labels, collapse = ","), ")", "*", .v(vars[[i]]$indicators[j]))
+      }
+
     }
     fo <- paste0(fo, pre, paste0(labelledvars, collapse = " + "))
   }
@@ -280,17 +287,26 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     so  <- "# Second-order factor"
     pre <- "\nSecondOrder =~ "
     len <- length(facs)
-    labelledfacs <- labels[[lenvars + 1]] <- character(len)
+    labelledfacs <- character(len)
+    labels[[lenvars + 1]] <- list()
     for (j in 1:len) {
-      labels[[lenvars + 1]][j] <- paste0("gamma_1_", j)
-      labelledfacs[j] <- paste0("gamma_1_", j, "*", facs[j])
+      # the normal case, either no grouping or no configural invariance
+      if (nchar(options$groupvar) == 0 || options$invariance !="configural") {
+        labels[[lenvars + 1]][[j]] <- paste0("gamma_1_", j)
+        labelledfacs[j] <- paste0("gamma_1_", j, "*", facs[j])
+      } else { # grouping variable present and configural invariance
+        # we need a vector with different labels per group for lavaan
+        tmp_labels <- paste0("gamma_1_", j, "_", seq(n_levels))
+        labels[[lenvars + 1]][[j]] <- tmp_labels
+        labelledfacs[j] <- paste0("c(", paste0(tmp_labels, collapse = ","), ")", "*", facs[j])
+      }
+
     }
 
     so <- paste0(so, pre, paste0(labelledfacs, collapse = " + "))
   } else {
     so <- NULL
   }
-
 
   if (length(options$rescov) > 0) {
     rc <- "# Residual Correlations"
@@ -301,25 +317,39 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     rc <- NULL
   }
 
+  #' I dont think we need this bit of code, as setting meanstructure to TRUE
+  #' does already fix the latent means to zero across groups,
+  #' which is exactly what this piece of code does
   if (options$includemeanstructure && options$groupvar != "") {
     lm <- "# Latent means"
     lvs <- c(cfaResult[["spec"]]$latents, cfaResult[["spec"]]$soLatents)
     for (i in seq_along(lvs)) {
       lm <- paste0(lm, '\n', lvs[i], " ~ c(0,",
-                  paste(rep(NA, length(unique(dataset[[gv]])) - 1), collapse = ","),
+                  paste(rep(NA, length(unique(na.omit(dataset[[gv]]))) - 1), collapse = ","),
                   ")*1")
     }
   } else {
     lm <- NULL
   }
+  # lm <- NULL
 
   if (options$identify == "effects") {
     ef <- "# Effects coding restrictions"
     for (i in 1:length(labels)) {
-      restr <- paste0(labels[[i]][1], " == ",
-                      paste(c(length(labels[[i]]), labels[[i]][-1]),
-                            collapse = " - "))
-      ef <- paste0(ef, "\n", restr)
+      if (nchar(options$groupvar) == 0 || options$invariance !="configural") {
+        restr <- paste0(labels[[i]][1], " == ",
+                        paste(c(length(labels[[i]]), labels[[i]][-1]),
+                              collapse = " - "))
+        ef <- paste0(ef, "\n", restr)
+      } else { # configural invariance
+        restr <- ""
+        for (j in 1:n_levels) {
+          restr <- paste0(restr, unlist(labels[[i]][1])[j], " == ",
+                          paste(c(length(labels[[i]]), lapply(labels[[i]][-1], function(x) x[j])),
+                                collapse = " - "), "\n")
+        }
+        ef <- paste0(ef, "\n", restr)
+      }
     }
   } else {
     ef <- NULL

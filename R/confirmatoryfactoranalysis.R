@@ -269,7 +269,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
         labelledvars[j] <- paste0("lambda_", i, "_", j, "*", .v(vars[[i]]$indicators[j]))
       } else { # grouping variable present and configural invariance
         # we need a vector with different labels per group for lavaan
-        n_levels <- length(unique(dataset[[options$groupvar]]))
+        n_levels <- length(unique(na.omit(dataset[[options$groupvar]])))
         tmp_labels <- paste0("lambda_", i, "_", j, "_", seq(n_levels))
         labels[[i]][[j]] <- tmp_labels
         labelledvars[j] <- paste0("c(", paste0(tmp_labels, collapse = ","), ")", "*", .v(vars[[i]]$indicators[j]))
@@ -317,17 +317,21 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     rc <- NULL
   }
 
+  #' I dont think we need this bit of code, as setting meanstructure to TRUE
+  #' does already fix the latent means to zero across groups,
+  #' which is exactly what this piece of code does
   if (options$includemeanstructure && options$groupvar != "") {
     lm <- "# Latent means"
     lvs <- c(cfaResult[["spec"]]$latents, cfaResult[["spec"]]$soLatents)
     for (i in seq_along(lvs)) {
       lm <- paste0(lm, '\n', lvs[i], " ~ c(0,",
-                  paste(rep(NA, length(unique(dataset[[gv]])) - 1), collapse = ","),
+                  paste(rep(NA, length(unique(na.omit(dataset[[gv]]))) - 1), collapse = ","),
                   ")*1")
     }
   } else {
     lm <- NULL
   }
+  # lm <- NULL
 
   if (options$identify == "effects") {
     ef <- "# Effects coding restrictions"

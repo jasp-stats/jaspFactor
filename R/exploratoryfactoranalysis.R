@@ -372,9 +372,14 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!ready || modelContainer$getError()) return()
 
   efaResult <- modelContainer[["model"]][["object"]]
-  if (efaResult$factors == 1 || options$rotationMethod == "orthogonal") return()
-  # no factor correlation matrix when rotation specifiec uncorrelated factors!
-  cors <- zapsmall(as.matrix(efaResult$Phi))
+
+  if (efaResult$factors == 1 || options$rotationMethod == "orthogonal") {
+    # no factor correlation matrix when rotation specified uncorrelated factors!
+    cors <- diag(efaResult$factors)
+  } else {
+    cors <- zapsmall(efaResult$Phi)
+  }
+
   dims <- ncol(cors)
 
   cortab[["col"]] <- paste("Factor", 1:dims)

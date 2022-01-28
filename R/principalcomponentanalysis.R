@@ -320,9 +320,13 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   pcaResult <- modelContainer[["model"]][["object"]]
 
-  if (pcaResult$factors == 1 || options$rotationMethod == "orthogonal") return()
-  # no factor correlation matrix when rotation specifiec uncorrelated factors!
-  cors <- zapsmall(pcaResult$Phi)
+  if (pcaResult$factors == 1 || options$rotationMethod == "orthogonal") {
+    # no factor correlation matrix when rotation specified uncorrelated factors!
+    cors <- diag(pcaResult$factors)
+  } else {
+    cors <- zapsmall(pcaResult$Phi)
+  }
+
   dims <- ncol(cors)
 
 

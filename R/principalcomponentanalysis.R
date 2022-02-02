@@ -372,7 +372,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
 
   } else { # do not display parallel analysis
-    evs <- eigen(cov(dataset, use = "pairwise.complete.obs"), only.values = T)$values
+    evs <- eigen(cor(dataset, use = "pairwise.complete.obs"), only.values = TRUE)$values
     tp <- rep(gettext("Data"), each = n_col)
   }
 

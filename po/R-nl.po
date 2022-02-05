@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2022-01-15 03:31\n"
-"PO-Revision-Date: 2021-10-30 03:29+0000\n"
-"Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
+"PO-Revision-Date: 2022-02-05 03:26+0000\n"
+"Last-Translator: Don van den Bergh <donvdbergh@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "nl/>\n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 msgid "Second-Order"
 msgstr "Tweede-Orde"
@@ -71,7 +71,7 @@ msgid "Factor model"
 msgstr "Factor model"
 
 msgid "R-Squared"
-msgstr ""
+msgstr "R-kwadraat"
 
 msgid "Additional fit measures"
 msgstr "Extra pasmaten"
@@ -172,7 +172,6 @@ msgstr ""
 "Niet alle bootstrap steekproeven waren succesvol. Betrouwbaarheidinterval is "
 "gebaseerd op %.0f steekproeven."
 
-#, fuzzy
 msgid "Factor loadings"
 msgstr "Factorladingen"
 
@@ -313,9 +312,8 @@ msgid "Overall MSA"
 msgstr "Algemene MSA"
 
 msgid "Bartlett's test"
-msgstr ""
+msgstr "Bartlett's toets"
 
-#, fuzzy
 msgid "Chi-squared Test"
 msgstr "Chikwadraattoets"
 
@@ -390,7 +388,7 @@ msgid "Data"
 msgstr "Data"
 
 msgid "Simulated data from parallel analysis"
-msgstr ""
+msgstr "Gesimuleerde data van parallelle analyse"
 
 msgid "Eigenvalue"
 msgstr "Eigenwaarde"
@@ -404,7 +402,6 @@ msgstr "Geen componenten met een eigenwaarde >"
 msgid "Component Loadings"
 msgstr "Componentladingen"
 
-#, fuzzy
 msgid "Component Characteristics"
 msgstr "Factorkarakteristieken"
 

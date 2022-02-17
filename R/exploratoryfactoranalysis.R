@@ -552,11 +552,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   patab[["val2"]] <- c(ResampledEigen)
 
 
-  if (options$parallelMethod == "pc") {
-    patab$addFootnote(message = gettext("* = Advised factor to be retained.\nResults from PC-based parallel analysis"))
-  } else { # parallelmethod is fa
-    patab$addFootnote(message = gettext("* = Advised factor to be retained.\nResults from FA-based parallel analysis"))
-  }
+   patab$addFootnote(message = footnote)
 }
 
 .efaScreePlot <- function(modelContainer, dataset, options, ready) {

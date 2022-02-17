@@ -256,7 +256,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   martab <- createJaspTable(gettext("Mardia's Test of Multivariate Normality"))
   martab$dependOn("martest")
   martab$addColumnInfo(name = "tests", title =  "", type = "number", format = "dp:3")
-  martab$addColumnInfo(name = "coefs", title =  gettext("Coefficient"), type = "number", format = "dp:3")
+  martab$addColumnInfo(name = "coefs", title =  gettext("Value"), type = "number", format = "dp:3")
   martab$addColumnInfo(name = "statistics", title =  gettext("Statistic"), type = "number", format = "dp:3")
   martab$addColumnInfo(name = "dfs", title =  gettext("df"), type = "integer")
   martab$addColumnInfo(name = "pval",  title = gettext("p"), type = "number", format = "dp:3;p:.001")

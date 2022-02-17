@@ -265,7 +265,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready) return()
 
-  mar <- psych::mardia(dataset, plot = F)
+  mar <- psych::mardia(dataset, plot = FALSE)
 
   mardianames <- c("Skewness","Small Sample Skewness", "Kurtosis")
 

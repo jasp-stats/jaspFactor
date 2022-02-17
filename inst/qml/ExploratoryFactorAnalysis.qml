@@ -163,7 +163,7 @@ Form
 			RadioButton
 			{
 				value: "mixed"
-				label: qsTr("Polychoric or tetrachoric correlation matrix")
+				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
 		}
 	}

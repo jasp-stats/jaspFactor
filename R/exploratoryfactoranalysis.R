@@ -582,8 +582,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                    plot = FALSE,
                                    fa = options$parallelMethod,
                                    n.obs = nrow(dataset)))
-    }
-    else {
+    } else {
       pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
     }
     if (isTryError(pa)) {

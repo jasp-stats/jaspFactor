@@ -253,7 +253,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaMardia <- function(modelContainer, dataset, options, ready) {
   if (!options[["martest"]] || !is.null(modelContainer[["martab"]])) return()
 
-  martab <- createJaspTable(gettext("Mardia's tests of Multivariate Normality"))
+  martab <- createJaspTable(gettext("Mardia's Test of Multivariate Normality"))
   martab$dependOn("martest")
   martab$addColumnInfo(name = "tests", title =  "", type = "number", format = "dp:3")
   martab$addColumnInfo(name = "coefs", title =  gettext("Coefficient"), type = "number", format = "dp:3")

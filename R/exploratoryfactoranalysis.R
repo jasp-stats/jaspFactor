@@ -673,7 +673,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # theming with special legend thingy
   plt <-
-    jaspGraphs::themeJasp(plt) +
+    jaspGraphs::themeJaspRaw(plt) +
     ggplot2::theme(
       legend.position      = c(0.99, 0.95),
       legend.justification = c(1, 1),

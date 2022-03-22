@@ -34,6 +34,13 @@ Principcal Component Analysis is used to represent the data in smaller component
       - bentlerQ: Oblique rotation method bentlerQ. 
       - biquartimin: Oblique rotation method biquartimin. 
       - cluster: Oblique rotation method cluster. 
+      
+#### Base decomposition on
+- Correlation: Bases the PCA on the correlation matrix of the data
+- Covariance: Bases the PCA on the covariance matrix of the data
+- Polychoric/tetrachoric: Bases the PCA on the poly/tetrachoric (mixed) correlation matrix of the data.
+  This is sometimes unstable when sample size is small and when some variables do not contain all response categories
+
 
 ### Output Options 
 - Highlight: This option cuts the scaling of paths in width and color saturation. Paths with absolute weights over this value will have the strongest color intensity and become wider the stronger they are, and paths with absolute weights under this value will have the smallest width and become vaguer the weaker the weight. If set to 0, no cutoff is used and all paths vary in width and color.

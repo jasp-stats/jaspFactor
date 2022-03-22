@@ -44,9 +44,9 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!is.null(dataset)) return(dataset)
 
   if (options[["missingValues"]] == "listwise") {
-    return(.readDataSetToEnd(columns = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
+    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
   } else {
-    return(.readDataSetToEnd(columns = unlist(options$variables)))
+    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
   }
 }
 
@@ -143,7 +143,8 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       nfactors = .pcaGetNComp(dataset, options),
       rotate   = rotate,
       scores   = TRUE,
-      covar    = options$basedOn == "covariance"
+      covar    = options$basedOn == "cov",
+      cor      = options$basedOn,
     )
   )
 
@@ -161,23 +162,34 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options$factorMethod == "manual") return(options$numberOfFactors)
 
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
-  if (isTryError(fa)) return(1)
+  if (options[["basedOn"]] == "mixed") {
+    polytetracor <- psych::mixedCor(dataset)
+    pa <- try(psych::fa.parallel(polytetracor$rho,
+                                 plot = FALSE,
+                                 fa = options$parallelMethod,
+                                 n.obs = nrow(dataset)))
+  }
+  else {
+    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+  }
+
+  if (isTryError(pa)) return(1)
+
   if (options$factorMethod == "parallelAnalysis") {
     if (options$parallelMethod == "pc") {
-      return(max(1, fa$ncomp))
+      return(max(1, pa$ncomp))
     } else { # parallel method is fa
-      return(max(1, fa$nfact))
+      return(max(1, pa$nfact))
     }
   }
   if (options$factorMethod == "eigenValues") {
-    ncomp <- sum(fa$pc.values > options$eigenValuesBox)
+    ncomp <- sum(pa$pc.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
       stop(
         gettext("No components with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue: "), round(max(fa$pc.values), 3)
+        gettext("Maximum observed eigenvalue: "), round(max(pa$pc.values), 3)
       )
     return(ncomp)
   }
@@ -353,7 +365,16 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options[["screeDispParallel"]]) {
 
-    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    if (options[["basedOn"]] == "mixed") {
+      polytetracor <- psych::mixedCor(dataset)
+      pa <- try(psych::fa.parallel(polytetracor$rho,
+                                   plot = FALSE,
+                                   fa = options$parallelMethod,
+                                   n.obs = nrow(dataset)))
+    } else {
+      pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    }
+
     if (isTryError(pa)) {
       errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
       scree$setError(errmsg)
@@ -365,7 +386,15 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       evs <- c(pa$fa.values, pa$fa.sim)
     } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
       if (anyNA(pa$pc.sim)) {
-        pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+        if (options[["basedOn"]] == "mixed") {
+          polytetracor <- psych::mixedCor(dataset)
+          pa <- try(psych::fa.parallel(polytetracor$rho,
+                                       plot = FALSE,
+                                       fa = options$parallelMethod,
+                                       n.obs = nrow(dataset)))
+        } else {
+          pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+        }
       }
       evs <- c(pa$pc.values, pa$pc.sim)
     }
@@ -401,7 +430,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # theming with special legend thingy
   plt <-
-    jaspGraphs::themeJasp(plt) +
+    jaspGraphs::themeJaspRaw(plt) +
     ggplot2::theme(
       legend.position      = c(0.99, 0.95),
       legend.justification = c(1, 1),
@@ -558,7 +587,6 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if(!ready || !options[["addPC"]] || options[["PCPrefix"]] == "" || modelContainer$getError()) return()
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
-
   for (i in 1:ncol(scores)) {
     scorename <- paste0(options[["PCPrefix"]], "_", i)
     if (is.null(jaspResults[[scorename]])) {

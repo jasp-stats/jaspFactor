@@ -42,8 +42,8 @@ Form
             id: variables
             name: "variables"
             title: qsTr("Variables")
-            suggestedColumns: ["scale"]
-            allowedColumns: ["scale"]
+			suggestedColumns: ["scale","ordinal"]
+			allowedColumns: ["scale","ordinal"]
         }
 	}
 
@@ -122,17 +122,22 @@ Form
         {
             name: "basedOn"
             title: qsTr("Base decomposition on")
-            RadioButton
-            {
-                value: "correlation"
-                label: qsTr("Correlation matrix")
-                checked: true
-            }
-            RadioButton
-            {
-                value: "covariance"
-                label: qsTr("Covariance matrix")
-            }
+			RadioButton
+			{
+				value: "cor"
+				label: qsTr("Correlation matrix")
+				checked: true
+			}
+			RadioButton
+			{
+				value: "cov"
+				label: qsTr("Covariance matrix")
+			}
+			RadioButton
+			{
+				value: "mixed"
+				label: qsTr("Polychoric/tetrachoric correlation matrix")
+			}
         }
     }
 

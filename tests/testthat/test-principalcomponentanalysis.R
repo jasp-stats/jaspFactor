@@ -234,3 +234,69 @@ test_that("rotation methods match", {
 #
 # }
 # dputAllResults(allResults)
+
+
+# results for PCA based on covariance
+options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
+options$eigenValuesBox <- 0.95
+options$orthogonalSelector <- "varimax"
+options$factorMethod <- "parallelAnalysis"
+options$basedOn <- "cov"
+set.seed(1)
+results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+
+test_that("Component Characteristics table results match for cov based", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Component 1", 0.403619588144788, 0.403619588144787, 2.63130873518658,
+                                      2.63130873518658, 0.403619588144788, 0.403619588144787))
+})
+
+test_that("Chi-squared Test table results match for cov based", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(27.1095189593822, 5, "Model", 5.43083232250125e-05))
+})
+
+test_that("Component Loadings table results match for cov based", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.198854317174461, 1.08069632866638, "contNormal", -1.32987221212188,
+                                      0.579723759159583, "contGamma", 0.0104334466232627, 0.00662752872503283,
+                                      "debCollin1", 0.313010562259167, 0.925841829156714, "contcor1",
+                                      0.851540443114395, 1.29508089394256, "facFive"))
+})
+
+
+# results for PCA based on mixed matrix (poly or tetrachoric)
+options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
+options$eigenValuesBox <- 0.95
+options$orthogonalSelector <- "varimax"
+options$factorMethod <- "parallelAnalysis"
+options$basedOn <- "mixed"
+set.seed(1)
+results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+
+test_that("Component Characteristics table results match for mixed based", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Component 1", 0.28119928428077, 0.28119928428077, 1.40599642140385,
+                                      1.40599642140385, 0.28119928428077, 0.28119928428077))
+})
+
+test_that("Chi-squared Test table results match for mixed based", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(21.3878764890033, 5, "Model", 0.000684141884394517))
+})
+
+test_that("Component Loadings table results match for mixed based", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.468967752780233, 0.780069246852258, "contNormal", -0.644079133313335,
+                                      0.585162070030343, "contGamma", 0.277117722692202, 0.923205767769888,
+                                      "debCollin1", 0.624793529702314, 0.609633045242123, "contcor1",
+                                      0.551422298513999, 0.695933448701539, "facFive"))
+})

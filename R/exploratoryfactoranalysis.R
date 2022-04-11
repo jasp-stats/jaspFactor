@@ -515,39 +515,46 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   }
 
+   if (options$parallelMethod == "pc") {
+    eigTitle <- gettext("Real data component eigenvalues")
+    rowsName <- gettext("Component")
+    RealDataEigen <- pa$pc.values
+    ResampledEigen <- pa$pc.sim
+    footnote <- gettext("'*' = Component should be retained.\nResults from PC-based parallel analysis")
+  } else { # parallelmethod is FA
+    eigTitle <- gettext("Real data factor eigenvalues")
+    rowsName <- gettext("Factor")
+    RealDataEigen <- pa$fa.values
+    ResampledEigen <- pa$fa.sim
+    footnote <- gettext("'*' = Factor should be retained.\nResults from FA-based parallel analysis")
+  }
+
   patab <- createJaspTable(gettext("Parallel Analysis"))
   patab$dependOn("incl_PAtable")
   patab$addColumnInfo(name = "col", title = "", type = "string")
-  patab$addColumnInfo(name = "val1", title = gettext("Real Data Eigenvalue"), type = "number", format = "dp:3")
-  patab$addColumnInfo(name = "val2", title = gettext("Mean of Resampled Eigenvalues"), type = "number", format = "dp:3")
+
+  patab$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
+  patab$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
   patab$position <- 5
   modelContainer[["patab"]] <- patab
 
   if (!ready || modelContainer$getError()) return()
 
-  if (options$parallelMethod == "pc") {
-    RealDataEigen <- pa$pc.values
-    ResampledEigen <- pa$pc.sim
-  } else { # parallelmethod is fa
-    RealDataEigen <- pa$fa.values
-    ResampledEigen <- pa$fa.sim
-  }
-
   efaResult <- modelContainer[["model"]][["object"]]
-  PAs <- zapsmall(as.matrix(data.frame(RealDataEigen,ResampledEigen),fix.empty.names = F))
-  forasterisk <- data.frame(applyforasterisk=RealDataEigen-ResampledEigen)
+  PAs <- zapsmall(as.matrix(data.frame(RealDataEigen, ResampledEigen), fix.empty.names = FALSE))
+  forasterisk <- data.frame(applyforasterisk = RealDataEigen - ResampledEigen)
   dims <- nrow(PAs)
 
   firstcol <- data.frame()
   for (i in 1:dims) {
     if (forasterisk$applyforasterisk[i] > 0) {
-      firstcol <- rbind(firstcol,paste("Factor", " ", i,"*", sep=""))
-    }
-    else {
-      firstcol <- rbind(firstcol,paste("Factor", i))
+      firstcol <- rbind(firstcol, paste(rowsName, " ", i,"*", sep = ""))
+    } else {
+      firstcol <- rbind(firstcol, paste(rowsName, i))
     }
   }
-  patab[["col"]] <- c(firstcol$X.Factor.1..)
+
+  patab[["col"]] <- firstcol[[1]]
   patab[["val1"]] <- c(RealDataEigen)
   patab[["val2"]] <- c(ResampledEigen)
 

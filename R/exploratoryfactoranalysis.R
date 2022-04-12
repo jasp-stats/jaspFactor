@@ -267,14 +267,14 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   mar <- psych::mardia(dataset, plot = FALSE)
 
-  mardianames <- c("Skewness","Small Sample Skewness", "Kurtosis")
+  mardiaHead <- c("Skewness","Small Sample Skewness", "Kurtosis")
 
   # dfs of the skewness coefficients are calculated via Mardia's formula (1970);
   # package psych doesn't seem to provide them
   k <- length(dataset)
   mardiadfs <- (k * (k + 1) * (k + 2)) / 6
 
-  martab[["tests"]] <- mardianames
+  martab[["tests"]] <- mardiaHead
   martab[["coefs"]] <- c(mar[["b1p"]], mar[["b1p"]], mar[["b2p"]])
   martab[["statistics"]] <- c(mar[["skew"]], mar[["small.skew"]], mar[["kurtosis"]])
   martab[["dfs"]] <- c(mardiadfs, mardiadfs)

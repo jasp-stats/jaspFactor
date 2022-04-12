@@ -1,16 +1,16 @@
 Exploratory Factor Analysis 
 === 
 
-With Exploratory Factor Analysis it is possible to identify one or more factors underlying the data. The factors are chosen such that they capture the common variance in the data. 
+With Exploratory Factor Analysis it is possible to identify one or more factors underlying the data. The factors are chosen such that they capture the common variance in the data.
 
 ### Assumptions (Yong & Pearce, 2013)
-- The variables included in the analysis are continuous*. 
-  - If variables are ordinal, this assumption can be overcome when basing the analysis on the polychoric or tetrachoric correlation matrix (Timmerman  & Lorenzo-Seva, 2011).
-- The data follow a multivariate normal distribution. 
-- There is a linear relation between the variables and the factors. 
-- There is no multicollinearity and singularity in the data. 
+- The variables included in the analysis are continuous*.
+  - If variables are ordinal, this assumption can be overcome when basing the analysis on the polychoric or tetrachoric correlation matrix (Bandalos & Finney, 2018).
+- The data follow a multivariate normal distribution.
+- There is a linear relation between the variables and the factors.
+- There is no multicollinearity and singularity in the data.
 
-### Input 
+### Input
 ---
 #### Asssignment Box 
 - Included Variables: In this box, the variables to perform the exploratory factor analysis on are selected. 
@@ -18,7 +18,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 #### Number of Factors 
 - _NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014) for more information._
 - Here, the number of factors that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
-  - Parallel Analysis: Factors are selected on the basis of parallell analysis. With this method, factors are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
+  - Parallel Analysis: Factors are selected on the basis of parallell analysis. With this method, factors are selected when their eigenvalue is greater than the parallel average random eigenvalue. This method is selected by default. 
   - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 0 or higher. This is called the Kaiser criterion. 
   - Manual: The number of factors can be specified manually. By default this is set to 1. 
 
@@ -46,14 +46,24 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
     - Additional fit indices: This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model. 
     - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis.
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
-    - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected. 
+    - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
+- Assumption Checks:
+	- Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis.
 - Missing values: 
     - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. 
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 
 ### Output 
 ---
-#### Exploratory Factor Analysis 
+#### Assumption Checks
+- Mardia's Test of Multivariate Normality:
+	- Tests: The first column shows all the tests performed.
+	- Value: The values of `b1p` (multivariate skewness) and `b2p` (multivariate kurtosis), as denoted in Mardia (1970).
+	- Statistic: The two chi-squared test statistics of multivariate skewness (both standard and corrected for small samples) and the standard normal test statistic of multivariate kurtosis.
+	- df: Degrees of freedom.
+	- p: P-value. 
+
+#### Exploratory Factor Analysis
 - Factor Loadings:
   - Variables: The first column shows all the variables included in the analysis. 
   - PC (1, 2, 3, etc.): This column shows the factor loadings on the variable. 
@@ -87,7 +97,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
   - TLI: Tucker-Lewis Index. Evaluates the fit compared to a more resticted, nested baseline model. Hopwood and Donnallan (2010) suggested that a value higher than .9 indicates a good fit. However, there is no consensus about this cutoff. 
   - BIC: Bayesian Information Criterion. This measure is useful for comparing the performances of different models on the same data, where a lower value indicates a better fitting model. 
   
-- Parallel Analysis: The table displays as many numbers of factors as variables selected for analysis, eigenvalues corresponding to the real-data factor, and the eigenvalue corresponding to the parallel mean resampled value. It will display an asterisk along the names of the factors advised to be retained (whose real-data eigenvalue is bigger than the resampled-data mean value).
+- Parallel Analysis: The table displays as many numbers of factors as variables selected for analysis, eigenvalues corresponding to the real-data factor, and the eigenvalue corresponding to the parallel mean resampled value. It will display an asterisk along the names of the factors advised to be retained (whose real-data eigenvalue is greater than the resampled-data mean value). Note that, even when selecting a PC-based parallel analysis, the table will refer to "factors" as the ones advised to be retained instead of "components"; this is due to common usage of the PC-based parallel analysis method for assessing the number of factors within EFA (e.g., Golino et al., 2020).
 
 #### Path Diagram 
 - F(1,2,3,...): The factors in the model are represented by the circles.  
@@ -105,17 +115,19 @@ The scree plot provides information on how much variance in the data, indicated 
 
 ### References 
 ---
+- Bandalos, D. L., & Finney, S. J. (2018). Factor analysis: Exploratory and confirmatory. In *The reviewer’s guide to quantitative methods in the social sciences* (pp. 98-122). Routledge.
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*.     
     Guilford Publications. 
 - Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. URL: http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf.
+- Golino, H., Shi, D., Christensen, A. P., Garrido, L. E., Nieto, M. D., Sadana, R., ... & Martinez-Molina, A. (2020). Investigating the performance of exploratory graph analysis and traditional techniques to identify the number of latent factors: A simulation and tutorial. *Psychological Methods*, *25*(3), 292.
 - Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention     
     decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational research methods, 7*(2), 191-205.
 - Hopwood, C. J., & Donnellan, M. B. (2010). How should the internal structure 
-    of personality inventories be evaluated? *Personality and Social Psychology Review, 14*, 332–346. 
+    of personality inventories be evaluated? *Personality and Social Psychology Review, 14*, 332–346.
+- Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. *Biometrika*, *57*(3), 519-530.
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in 
     exploratory factor analysis. *Best practices in quantitative methods*, 86-99.
 - Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. Structural Equation Modeling, 16(4), 561-582.
-- Timmerman, M. E., & Lorenzo-Seva, U. (2011). Dimensionality assessment of ordered polytomous items with parallel analysis. *Psychological methods*, 16(2), 209.
 - Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in quantitative methods for psychology, 9*(2), 79-94.
 
 ### R Packages 

@@ -279,6 +279,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   martab[["statistics"]] <- c(mar[["skew"]], mar[["small.skew"]], mar[["kurtosis"]])
   martab[["dfs"]] <- c(mardiadfs, mardiadfs)
   martab[["pval"]] <- c(mar[["p.skew"]], mar[["p.small"]], mar[["p.kurt"]])
+  
+   martab$addFootnote(message = gettext("The statistic for skewness is Chi^2 distributed and the statistic for kurtosis is standard normal."))
 }
 
 .efaGoFTable <- function(modelContainer, dataset, options, ready) {

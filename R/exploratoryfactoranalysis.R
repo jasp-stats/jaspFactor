@@ -145,6 +145,17 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
 
+# Modification here: if the estimation of the polychoric/tetrachoric correlation matrix fails with this specific error,
+# JASP replaces the internal error message with a more informative one.
+  if (isTryError(efaResult) && (errmsg == "Estimation failed. \nInternal error message: missing value where TRUE/FALSE needed")) {
+    errmsgPolychor <- gettextf(
+      "Unfortunately, the estimation of the polychoric / tetrachoric correlation matrix failed.
+      This might be due to a small sample size or variables not containing all response categories.",
+                               attr(efaResult, "condition")$message)
+    modelContainer$setError(errmsgPolychor)
+    # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
+  }
+  
   modelContainer[["model"]] <- createJaspState(efaResult)
   return(efaResult)
 }

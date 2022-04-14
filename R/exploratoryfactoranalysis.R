@@ -153,7 +153,6 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       This might be due to a small sample size or variables not containing all response categories.",
                                attr(efaResult, "condition")$message)
     modelContainer$setError(errmsgPolychor)
-    # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
   
   modelContainer[["model"]] <- createJaspState(efaResult)

@@ -522,7 +522,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     polytetracor <- psych::mixedCor(dataset)
     pa <- try(psych::fa.parallel(polytetracor$rho,
                                  plot = FALSE,
-                                 fa = options$parallelMethod,
+                                 fa = options$parallelMethodTable,
                                  n.obs = nrow(dataset)))
   } else {
     pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))

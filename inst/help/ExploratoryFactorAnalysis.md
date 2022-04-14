@@ -44,7 +44,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Include Tables: 
     - Factor correlations: When selecting this option, a table with the correlations between the factors will be displayed. 
     - Additional fit indices: This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model. 
-    - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis.
+    - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA).
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
 - Assumption Checks:

@@ -543,7 +543,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   patab <- createJaspTable(gettext("Parallel Analysis"))
-  patab$dependOn("incl_PAtable")
+  patab$dependOn(c("incl_PAtable", "parallelMethodTable"))
   patab$addColumnInfo(name = "col", title = "", type = "string")
 
   patab$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")

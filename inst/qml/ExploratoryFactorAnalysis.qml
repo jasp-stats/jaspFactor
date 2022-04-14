@@ -194,7 +194,27 @@ Form
 				CheckBox { name: "incl_structure";		label: qsTr("Structure matrix")			}
 				CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
 				CheckBox { name: "incl_fitIndices";		label: qsTr("Additional fit indices")	}
-				CheckBox { name: "incl_PAtable";		  label: qsTr("Parallel analysis")	}
+CheckBox {
+					name:	"incl_PAtable";
+					label:	qsTr("Parallel analysis")
+					RadioButtonGroup
+					{
+						name:   "parallelMethodTable"
+						title:  qsTr("")
+
+						RadioButton
+						{
+							value:      "pc"
+							label:      qsTr("Based on PC")
+							checked:    true
+						}
+						RadioButton
+						{
+							value: "fa"
+							label: qsTr("Based on FA")
+						}
+					}
+				}
 			}
 			Group
 			{

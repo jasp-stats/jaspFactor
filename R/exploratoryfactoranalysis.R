@@ -533,7 +533,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     rowsName <- gettext("Factor")
     RealDataEigen <- pa$pc.values
     ResampledEigen <- pa$pc.sim
-    footnote <- gettext("'*' = Factor should be retained.\nResults from PC-based parallel analysis")
+    footnote <- gettext("'*' = Factor should be retained.\nResults from PC-based parallel analysis.")
   } else { # parallelmethod is FA
     eigTitle <- gettext("Real data factor eigenvalues")
     rowsName <- gettext("Factor")

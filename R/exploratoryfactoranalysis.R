@@ -539,7 +539,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     rowsName <- gettext("Factor")
     RealDataEigen <- pa$fa.values
     ResampledEigen <- pa$fa.sim
-    footnote <- gettext("'*' = Factor should be retained.\nResults from FA-based parallel analysis")
+    footnote <- gettext("'*' = Factor should be retained.\nResults from FA-based parallel analysis.")
   }
 
   patab <- createJaspTable(gettext("Parallel Analysis"))

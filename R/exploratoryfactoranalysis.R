@@ -525,7 +525,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                  fa = options$parallelMethodTable,
                                  n.obs = nrow(dataset)))
   } else {
-    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethodTable))
   }
 
    if (options$parallelMethodTable == "pc") {

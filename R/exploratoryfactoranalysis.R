@@ -528,7 +528,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   }
 
-   if (options$parallelMethod == "pc") {
+   if (options$parallelMethodTable == "pc") {
     eigTitle <- gettext("Real data component eigenvalues")
     rowsName <- gettext("Factor")
     RealDataEigen <- pa$pc.values

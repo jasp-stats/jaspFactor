@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-04-10 05:07+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspfactor-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.12-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -229,7 +235,7 @@ msgstr "未加权最小二乘法 (ULS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DWLS"
-msgstr "对角加权最小二乘法"
+msgstr "对角加权最小二乘法(DWLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
@@ -261,7 +267,7 @@ msgstr "将潜变量的截距固定为零"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr "Omit residual single indicator"
+msgstr "省略残差单一指标"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
@@ -277,7 +283,7 @@ msgstr "添加阈值"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
-msgstr "添加缩放参数"
+msgstr "添加尺度设定参数"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"

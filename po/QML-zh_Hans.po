@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-04-10 05:07+0000\n"
+"PO-Revision-Date: 2022-04-18 14:11+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-qml/zh_Hans/>\n"
@@ -59,7 +59,7 @@ msgstr "固定外生协变量"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor Scaling"
-msgstr "因子缩放"
+msgstr "因子测量"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
@@ -391,7 +391,7 @@ msgstr "标注"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
-msgstr "因子载荷排序 由"
+msgstr "因子载荷排序依据"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
@@ -515,7 +515,7 @@ msgstr "标注"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr "成分载荷排序方式"
+msgstr "成分载荷排序依据"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"

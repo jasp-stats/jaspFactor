@@ -574,4 +574,3 @@ msgstr "基于 FA"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr "平行分析结果"
-

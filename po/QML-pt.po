@@ -576,4 +576,3 @@ msgstr ""
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr ""
-

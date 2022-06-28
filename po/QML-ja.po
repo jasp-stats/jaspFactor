@@ -575,10 +575,3 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr "平行解析結果"
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr ""

@@ -581,11 +581,3 @@ msgstr "Basierend auf FA"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr "Ergebnisse Parallelanalyse"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr " "
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr " "

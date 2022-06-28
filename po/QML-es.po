@@ -559,10 +559,6 @@ msgid "Component size"
 msgstr "Tamaño de la componente"
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr "  "
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
 msgstr "Basado en CP"
 
@@ -573,10 +569,6 @@ msgstr "Basado en AF"
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
 msgstr "Resultados de análisis paralelos"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr "  "
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"

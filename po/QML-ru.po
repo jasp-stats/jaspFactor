@@ -582,10 +582,3 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr ""
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr ""

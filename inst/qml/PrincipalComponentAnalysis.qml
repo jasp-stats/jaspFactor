@@ -59,7 +59,7 @@ Form
             RadioButtonGroup
             {
                 name:  "parallelMethod"
-                title: qsTr("")
+				title: ""
 
                 RadioButton
                 {

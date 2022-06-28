@@ -559,10 +559,6 @@ msgid "Exclude cases listwise"
 msgstr "Excluír casos segundo a lista"
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr "  "
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
 msgstr "Baseado en CP"
 
@@ -573,10 +569,6 @@ msgstr "Baseado en AF"
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
 msgstr "Resultados de análises paralelas"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr "  "
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"

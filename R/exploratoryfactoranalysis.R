@@ -149,11 +149,11 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 # JASP replaces the internal error message with a more informative one.
   if (isTryError(efaResult) && (attr(efaResult, "condition")$message == "missing value where TRUE/FALSE needed"
                                 || attr(efaResult, "condition")$message == "attempt to set 'rownames' on an object with no dimensions")) {
-    errmsgPolychor <- gettextf(
+    errmsgPolyCor <- gettextf(
       "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.
       This might be due to a small sample size or variables not containing all response categories.
       \nInternal error message: %s", attr(efaResult, "condition")$message)
-    modelContainer$setError(errmsgPolychor)
+    modelContainer$setError(errmsgPolyCor)
   }
 
   modelContainer[["model"]] <- createJaspState(efaResult)
@@ -168,32 +168,35 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # to base the Parallel Analysis on.
   # If "basedOn == mixed" is not selected (i.e., correlation/covariance matrix are selected), then analysis carries on
   # as usual.
+  options(mc.cores = 1)
   if (options[["basedOn"]] == "mixed") {
-    polytetracor <- psych::mixedCor(dataset)
-    pa <- try(psych::fa.parallel(polytetracor$rho,
+    polyTetraCor <- psych::mixedCor(dataset)
+    set.seed(options[["parallelSeed"]])
+    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
                                  fa = options$parallelMethod,
                                  n.obs = nrow(dataset)))
   }
   else {
-    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    set.seed(options[["parallelSeed"]])
+    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   }
-  if (isTryError(pa)) return(1)
+  if (isTryError(parallelResult)) return(1)
   if (options$factorMethod == "parallelAnalysis") {
     if (options$parallelMethod == "pc") {
-      return(max(1, pa$ncomp))
+      return(max(1, parallelResult$ncomp))
     } else { # parallelmethod is fa
-      return(max(1, pa$nfact))
+      return(max(1, parallelResult$nfact))
     }
   }
   if (options$factorMethod == "eigenValues") {
-    ncomp <- sum(pa$pc.values > options$eigenValuesBox)
+    ncomp <- sum(parallelResult$pc.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
       stop(
         gettext("No factors with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue: "), round(max(pa$fa.values), 3)
+        gettext("Maximum observed eigenvalue: "), round(max(parallelResult$fa.values), 3)
       )
     return(ncomp)
   }
@@ -218,8 +221,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # based on said correlation matrix:
   # else: analysis carries on as usual
   if (options[["basedOn"]] == "mixed") {
-    polytetracor <- psych::mixedCor(dataset)
-    kmo <- psych::KMO(polytetracor$rho)
+    polyTetraCor <- psych::mixedCor(dataset)
+    kmo <- psych::KMO(polyTetraCor$rho)
   }
   else{
     kmo <- psych::KMO(dataset)
@@ -246,8 +249,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # if "basedOn = mixed", bartlett's test is calculated
   # based on the polychoric/tetrachoric matrix.
   if (options[["basedOn"]] == "mixed") {
-    polytetracor <- psych::mixedCor(dataset)
-    bar <- psych::cortest.bartlett(polytetracor$rho, n = nrow(dataset))
+    polyTetraCor <- psych::mixedCor(dataset)
+    bar <- psych::cortest.bartlett(polyTetraCor$rho, n = nrow(dataset))
   }
   else {
     bar <- psych::cortest.bartlett(dataset)
@@ -516,40 +519,44 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 # We are also going to be adding an asterisk aside any factor whose real data eigenvalue is above
 # the 95th percentile simulated data eigenvalue
 .efaPATable <- function(modelContainer, dataset, options, ready) {
-  if (!options[["incl_PAtable"]] || !is.null(modelContainer[["patab"]])) return()
+  if (!options[["incl_PAtable"]] || !is.null(modelContainer[["paTab"]])) return()
+
+  options(mc.cores = 1) # prevent the fa.parallel function using mutlitple cores by default
 
   if (options[["basedOn"]] == "mixed") {
-    polytetracor <- psych::mixedCor(dataset)
-    pa <- try(psych::fa.parallel(polytetracor$rho,
+    polyTetraCor <- psych::mixedCor(dataset)
+    set.seed(options[["parallelSeed"]])
+    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
                                  fa = options$parallelMethodTable,
                                  n.obs = nrow(dataset)))
   } else {
-    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethodTable))
+    set.seed(options[["parallelSeed"]])
+    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethodTable))
   }
 
    if (options$parallelMethodTable == "pc") {
     eigTitle <- gettext("Real data component eigenvalues")
     rowsName <- gettext("Factor")
-    RealDataEigen <- pa$pc.values
-    ResampledEigen <- pa$pc.sim
+    RealDataEigen <- parallelResult$pc.values
+    ResampledEigen <- parallelResult$pc.sim
     footnote <- gettext("'*' = Factor should be retained.\nResults from PC-based parallel analysis.")
   } else { # parallelmethod is FA
     eigTitle <- gettext("Real data factor eigenvalues")
     rowsName <- gettext("Factor")
-    RealDataEigen <- pa$fa.values
-    ResampledEigen <- pa$fa.sim
+    RealDataEigen <- parallelResult$fa.values
+    ResampledEigen <- parallelResult$fa.sim
     footnote <- gettext("'*' = Factor should be retained.\nResults from FA-based parallel analysis.")
   }
 
-  patab <- createJaspTable(gettext("Parallel Analysis"))
-  patab$dependOn(c("incl_PAtable", "parallelMethodTable"))
-  patab$addColumnInfo(name = "col", title = "", type = "string")
+  paTab <- createJaspTable(gettext("Parallel Analysis"))
+  paTab$dependOn(c("incl_PATable", "parallelMethodTable"))
+  paTab$addColumnInfo(name = "col", title = "", type = "string")
 
-  patab$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
-  patab$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
-  patab$position <- 5
-  modelContainer[["patab"]] <- patab
+  paTab$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
+  paTab$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
+  paTab$position <- 5
+  modelContainer[["paTab"]] <- paTab
 
   if (!ready || modelContainer$getError()) return()
 
@@ -567,12 +574,12 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     }
   }
 
-  patab[["col"]] <- firstcol[[1]]
-  patab[["val1"]] <- c(RealDataEigen)
-  patab[["val2"]] <- c(ResampledEigen)
+  paTab[["col"]] <- firstcol[[1]]
+  paTab[["val1"]] <- c(RealDataEigen)
+  paTab[["val2"]] <- c(ResampledEigen)
 
 
-   patab$addFootnote(message = footnote)
+   paTab$addFootnote(message = footnote)
 }
 
 .efaScreePlot <- function(modelContainer, dataset, options, ready) {
@@ -592,16 +599,19 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # Modification here:
     # if "BasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
     # correlation matrix.
+    options(mc.cores = 1)
     if (options[["basedOn"]] == "mixed") {
-      polytetracor <- psych::mixedCor(dataset)
-      pa <- try(psych::fa.parallel(polytetracor$rho,
+      polyTetraCor <- psych::mixedCor(dataset)
+      set.seed(options[["parallelSeed"]])
+      parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,
                                    fa = options$parallelMethod,
                                    n.obs = nrow(dataset)))
     } else {
-      pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+      set.seed(options[["parallelSeed"]])
+      parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
     }
-    if (isTryError(pa)) {
+    if (isTryError(parallelResult)) {
       errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
       scree$setError(errmsg)
       # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
@@ -609,23 +619,26 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     }
 
     if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
-      evs <- c(pa$fa.values, pa$fa.sim)
+      evs <- c(parallelResult$fa.values, parallelResult$fa.sim)
     } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
-      if (anyNA(pa$pc.sim)) {
+      if (anyNA(parallelResult$pc.sim)) {
         # Modification here:
         # if "BasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
         # correlation matrix.
+        options(mc.cores = 1)
         if (options[["basedOn"]] == "mixed") {
-          polytetracor <- psych::mixedCor(dataset)
-          pa <- try(psych::fa.parallel(polytetracor$rho,
+          polyTetraCor <- psych::mixedCor(dataset)
+          set.seed(options[["parallelSeed"]])
+          parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                        plot = FALSE,
                                        fa = options$parallelMethod,
                                        n.obs = nrow(dataset)))
         } else {
-          pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+          set.seed(options[["parallelSeed"]])
+          parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
         }
       }
-      evs <- c(pa$pc.values, pa$pc.sim)
+      evs <- c(parallelResult$pc.values, parallelResult$pc.sim)
     }
     tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
 

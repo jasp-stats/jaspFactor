@@ -74,6 +74,15 @@ Form
                         label: qsTr("Based on FA")
                     }
                 }
+				IntegerField
+				{
+					name: 			"parallelSeed"
+					label: 			"Seed"
+					defaultValue: 	1234
+					fieldWidth: 	60
+					min: 			1
+					max: 			1e6
+				}
             }
 
             RadioButton
@@ -171,15 +180,13 @@ Form
 	Section
 	{
 		title: qsTr("Output Options")
-
-		Slider {
-			name: "highlightText"
-			label: qsTr("Highlight")
-			value: 0.4
-		}
-
 		Group
 		{
+			Slider {
+				name: "highlightText"
+				label: qsTr("Highlight")
+				value: 0.4
+			}
 			RadioButtonGroup
 			{
 				name: "factorLoadingsSort"
@@ -187,14 +194,17 @@ Form
 				RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
 				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
 			}
+		}
 
+		Group
+		{
 			Group
 			{
 				title: qsTr("Tables")
 				CheckBox { name: "incl_structure";		label: qsTr("Structure matrix")			}
 				CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
 				CheckBox { name: "incl_fitIndices";		label: qsTr("Additional fit indices")	}
-CheckBox {
+				CheckBox {
 					name:	"incl_PAtable";
 					label:	qsTr("Parallel analysis")
 					RadioButtonGroup
@@ -233,22 +243,20 @@ CheckBox {
 			}
 		}
 
+
 		Group
 		{
-			Group
-			{
-				title: qsTr("Assumption checks")
-				CheckBox { name: "kmotest";				label: qsTr("KMO test")					}
-				CheckBox { name: "bartest";				label: qsTr("Bartlett's test")	}
-				CheckBox { name: "martest";				label: qsTr("Mardia's test")	  }
-			}
-			RadioButtonGroup
-			{
-				name: "missingValues"
-				title: qsTr("Missing Values")
-				RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
-				RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}
-			}
+			title: qsTr("Assumption checks")
+			CheckBox { name: "kmotest";				label: qsTr("KMO test")					}
+			CheckBox { name: "bartest";				label: qsTr("Bartlett's test")	}
+			CheckBox { name: "martest";				label: qsTr("Mardia's test")	  }
+		}
+		RadioButtonGroup
+		{
+			name: "missingValues"
+			title: qsTr("Missing Values")
+			RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
+			RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}
 		}
 	}
 }

@@ -18,7 +18,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 #### Number of Factors 
 - _NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014) for more information._
 - Here, the number of factors that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
-  - Parallel Analysis: Factors are selected on the basis of parallel analysis. With this method, factors are selected when their eigenvalue is greater than the parallel average random eigenvalue. This method is selected by default. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA).
+  - Parallel Analysis: Factors are selected on the basis of parallel analysis. With this method, factors are selected when their eigenvalue is greater than the parallel average random eigenvalue. This method is selected by default. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). A seed (1234) is chosen by default so that the results from the parallel analysis are equal across the EFA.
   - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 0 or higher. This is called the Kaiser criterion. 
   - Manual: The number of factors can be specified manually. By default this is set to 1. 
 

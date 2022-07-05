@@ -22,6 +22,11 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
   - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 0 or higher. This is called the Kaiser criterion. 
   - Manual: The number of factors can be specified manually. By default this is set to 1. 
 
+#### Estimation Method:
+- Choose the estimation method used within the psych package to find the factor solution, options are: 
+  - Minimum residual (default), maximum likelihood, principal axis factoring, ordinal elast squares, 
+  weighted least squares, generalized least squares, minimum chi-square, minimum rank
+
 #### Rotation 
 - Here, the rotation method to apply to the factors can be specified.
   - Orthogonal: This method produces factors that are uncorrelated. For this method, there are several possibilities that can be selected: 
@@ -38,6 +43,11 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
       - bentlerQ: Oblique rotation method bentlerQ. 
       - biquartimin: Oblique rotation method biquartimin. 
       - cluster: Oblique rotation method cluster. 
+
+#### Base decomposition on
+- Correlation: Bases the PCA on the correlation matrix of the data
+- Covariance: Bases the PCA on the covariance matrix of the data
+- Polychoric/tetrachoric: Bases the PCA on the poly/tetrachoric (mixed) correlation matrix of the data. This is sometimes unstable when sample size is small and when some variables do not contain all response categories.
 
 ### Output Options 
 - Highlight: This option cuts the scaling of paths in width and color saturation. Paths with absolute weights over this value will have the strongest color intensity and become wider the stronger they are, and paths with absolute weights under this value will have the smallest width and become vaguer the weaker the weight. If set to 0, no cutoff is used and all paths vary in width and color.

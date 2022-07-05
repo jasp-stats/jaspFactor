@@ -147,14 +147,15 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
 # Modification here: if the estimation of the polychoric/tetrachoric correlation matrix fails with this specific error,
 # JASP replaces the internal error message with a more informative one.
-  if (isTryError(efaResult) && (errmsg == "Estimation failed. \nInternal error message: missing value where TRUE/FALSE needed")) {
+  if (isTryError(efaResult) && (attr(efaResult, "condition")$message == "missing value where TRUE/FALSE needed"
+                                || attr(efaResult, "condition")$message == "attempt to set 'rownames' on an object with no dimensions")) {
     errmsgPolychor <- gettextf(
-      "Unfortunately, the estimation of the polychoric / tetrachoric correlation matrix failed.
-      This might be due to a small sample size or variables not containing all response categories.",
-                               attr(efaResult, "condition")$message)
+      "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.
+      This might be due to a small sample size or variables not containing all response categories.
+      \nInternal error message: %s", attr(efaResult, "condition")$message)
     modelContainer$setError(errmsgPolychor)
   }
-  
+
   modelContainer[["model"]] <- createJaspState(efaResult)
   return(efaResult)
 }
@@ -289,7 +290,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   martab[["statistics"]] <- c(mar[["skew"]], mar[["small.skew"]], mar[["kurtosis"]])
   martab[["dfs"]] <- c(mardiadfs, mardiadfs)
   martab[["pval"]] <- c(mar[["p.skew"]], mar[["p.small"]], mar[["p.kurt"]])
-  
+
    martab$addFootnote(message = gettext("The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."))
 }
 

@@ -25,6 +25,8 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (ready)
     .efaCheckErrors(dataset, options)
 
+  options(mc.cores = 1) # prevent the fa.parallel function using mutlitple cores by default
+
   modelContainer <- .efaModelContainer(jaspResults)
 
   # output functions
@@ -168,7 +170,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # to base the Parallel Analysis on.
   # If "basedOn == mixed" is not selected (i.e., correlation/covariance matrix are selected), then analysis carries on
   # as usual.
-  options(mc.cores = 1)
+
   if (options[["basedOn"]] == "mixed") {
     polyTetraCor <- psych::mixedCor(dataset)
     set.seed(options[["parallelSeed"]])
@@ -521,8 +523,6 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaPATable <- function(modelContainer, dataset, options, ready) {
   if (!options[["incl_PAtable"]] || !is.null(modelContainer[["paTab"]])) return()
 
-  options(mc.cores = 1) # prevent the fa.parallel function using mutlitple cores by default
-
   if (options[["basedOn"]] == "mixed") {
     polyTetraCor <- psych::mixedCor(dataset)
     set.seed(options[["parallelSeed"]])
@@ -599,7 +599,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # Modification here:
     # if "BasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
     # correlation matrix.
-    options(mc.cores = 1)
+
     if (options[["basedOn"]] == "mixed") {
       polyTetraCor <- psych::mixedCor(dataset)
       set.seed(options[["parallelSeed"]])
@@ -625,7 +625,7 @@ ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
         # Modification here:
         # if "BasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
         # correlation matrix.
-        options(mc.cores = 1)
+
         if (options[["basedOn"]] == "mixed") {
           polyTetraCor <- psych::mixedCor(dataset)
           set.seed(options[["parallelSeed"]])

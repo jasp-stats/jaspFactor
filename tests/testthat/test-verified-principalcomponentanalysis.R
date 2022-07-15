@@ -26,7 +26,7 @@ results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "PCA.csv", optio
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
 test_that("Chi-squared Test table results match R, SPSS, SAS, MiniTab", {
-  resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(
     "test"=resultsTable,
     "ref"=list(2634.37444035402, 167, "Model", 0)
@@ -36,7 +36,7 @@ test_that("Chi-squared Test table results match R, SPSS, SAS, MiniTab", {
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
 test_that("Component Loadings table results match R, SPSS, SAS, MiniTab", {
-  resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
   jaspTools::expect_equal_tables(
     "test"=resultsTable,
     "ref"=list("", 0.496602144100478, "", "", 0.565352292517859, "Question_01",
@@ -71,7 +71,7 @@ test_that("Component Loadings table results match R, SPSS, SAS, MiniTab", {
 #' the reason for this is the optimization that just runs a bit shorter with the psych package we use for JASP
 #' adjusting the optimization (define a later breakpoint) results in the SPSS values
 test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab", {
-  resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  resultsTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
   jaspTools::expect_equal_tables(resultsTable,
                                  list("Component 1", 0.162054332805079, 0.316958567983434, 3.72724965451683,
                                       7.29004706361899, 0.162054332805079, 0.316958567983434, "Component 2",
@@ -107,13 +107,13 @@ test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab",
 #
 #
 # test_that("Chi-squared Test table results match", {
-#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
 #   jaspTools::expect_equal_tables(table,
 #                       list(56.1723464768203, 1, "Model", 6.63887442169672e-14))
 # })
 #
 # test_that("Component Loadings table results match", {
-#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
 #   jaspTools::expect_equal_tables(table,
 #                       list(0.709068975944499, -0.055882219913321, 0.494098364850579, "contNormal",
 #                            -0.198414056307147, -0.730807163622534, 0.426552751857732, "contGamma",
@@ -124,7 +124,7 @@ test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab",
 # })
 #
 # test_that("Component Characteristics table results match", {
-#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+#   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
 #   jaspTools::expect_equal_tables(table,
 #                                  list("PC1", 0.251215603687833, 0.269220893232411, 1.25607801843916,
 #                                       1.34610446616205, 0.251215603687833, 0.269220893232411, "PC2",

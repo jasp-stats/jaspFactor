@@ -27,13 +27,13 @@ results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", opti
 
 
 test_that("Factor Correlations table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_cortab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_corTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(1, -0.0736228, "Factor 1", -0.0736228, 1, "Factor 2"))
 })
 
 test_that("Factor Characteristics table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.211560139237577, 0.21520386846338, 0.211560139237577,
                                       0.21520386846338, 1.48092097466304, 1.50642707924366, "Factor 2",
@@ -42,19 +42,19 @@ test_that("Factor Characteristics table results match", {
 })
 
 test_that("Additional fit indices table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fittab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list(-32.7898349546892, 0, "0 - 0.065", 1.20127892716016))
 })
 
 test_that("Chi-squared Test table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list(4.05152653321549, 8, "Model", 0.85244487039262))
 })
 
 test_that("Factor Loadings table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list("", "", 0.951432334368898, "contWide", 0.654092561077089, "",
                            0.57413710933047, "contcor1", 1.00020594814694, "", -0.00255707470903843,
@@ -91,12 +91,12 @@ test_that("Missing values works", {
 
   options$missingValues <- "pairwise"
   results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 1.42781053334818, 2L, 0.489727939944839), label = "pairwise")
 
   options$missingValues <- "listwise"
   results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 0.491396758561133, 2L, 0.782158104440787), label = "listwise")
 })
 
@@ -141,7 +141,7 @@ test_that("factorLoadingsSort sort the factor loadings table", {
     set.seed(123)
     results <- runAnalysis("ExploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
-    table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+    table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
     jaspTools::expect_equal_tables(table, reference[[factorLoadingsSort]], label = sprintf("factorLoadingsSort = %s", factorLoadingsSort))
   }
 
@@ -174,7 +174,7 @@ set.seed(1)
 results <- runAnalysis("ExploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
 test_that("Factor Characteristics table results match with parallel analysis based on PCs", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.314163998816933, 0.314163998816933, 2.82747598935239,
                                       "Factor 2", 0.449126711506194, 0.134962712689261, 1.21466441420335,
@@ -183,13 +183,13 @@ test_that("Factor Characteristics table results match with parallel analysis bas
 })
 
 test_that("Chi-squared Test table results match with parallel analysis based on PCs", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(22.5550491736693, 12, "Model", 0.0317499059313278))
 })
 
 test_that("Factor Loadings table results match with parallel analysis based on PCs", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(0.57552287197933, 0.16858001566767, 0.342210768279291, 0.523245992219849,
                                       "x1", 0.308426854688606, "", 0.388394269653172, 0.744772821204661,
@@ -226,14 +226,14 @@ set.seed(1)
 results <- runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
 
 test_that("Factor Characteristics table results match with poly cor", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.237661902584815, 0.237661825764328, 0.237661902584815,
                                       0.237661825764328, 1.42597141550889, 1.42597095458596))
 })
 
 test_that("Mardia's Test of Multivariate Normality table results match with poly cor", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_martab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_marTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(3.0201435883819, 56, 0.706100154506541, 49.8323692083014, "Skewness",
                                       3.0201435883819, 56, 0.635010590136702, 51.78632377773, "Small Sample Skewness",

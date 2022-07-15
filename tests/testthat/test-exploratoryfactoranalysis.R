@@ -210,3 +210,43 @@ test_that("Scree plot matches", {
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "scree-plot")
 })
+
+
+options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options$factorMethod <- "parallelAnalysis"
+options$parallelMethod <- "pc"
+options$highlightText <- 0.1
+options$basedOn <- "mixed"
+options$martest <- TRUE
+options$incl_PAtable <- TRUE
+options$rotationMethod <- "oblique"
+options$fitmethod <- "minres"
+options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+set.seed(1)
+results <- runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
+
+test_that("Factor Characteristics table results match with poly cor", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1", 0.237661902584815, 0.237661825764328, 0.237661902584815,
+                                      0.237661825764328, 1.42597141550889, 1.42597095458596))
+})
+
+test_that("Mardia's Test of Multivariate Normality table results match with poly cor", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_martab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(3.0201435883819, 56, 0.706100154506541, 49.8323692083014, "Skewness",
+                                      3.0201435883819, 56, 0.635010590136702, 51.78632377773, "Small Sample Skewness",
+                                      44.9365639232773, 0.119834882997249, -1.55546702109016, "Kurtosis"
+                                 ))
+})
+
+test_that("Parallel Analysis table results match with poly cor", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_paTab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1*", 1.78311572348898, 1.35019729324916, "Factor 2*",
+                                      1.28924116893078, 1.18561012192069, "Factor 3*", 1.08833059622023,
+                                      1.03479212515924, "Factor 4", 0.845932695389084, 0.916703296293484,
+                                      "Factor 5", 0.688011322780564, 0.816974205065407, "Factor 6",
+                                      0.305368493190363, 0.695722958312017))
+})

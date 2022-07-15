@@ -7,8 +7,8 @@ Upgrades
 	Upgrade
 	{
 		functionName:       "PrincipalComponentAnalysis"
-		fromVersion:		"0.16"
-		toVersion:			"0.16.1"
+		fromVersion:		"0.15"
+		toVersion:			"0.16.4"
 
 		ChangeSetValue
 		{
@@ -22,8 +22,8 @@ Upgrades
 	Upgrade
 	{
 		functionName:       "ExploratoryFactorAnalysis"
-		fromVersion:		"0.16"
-		toVersion:			"0.16.1"
+		fromVersion:		"0.15"
+		toVersion:			"0.16.4"
 
 		ChangeSetValue
 		{

@@ -8,7 +8,7 @@ context("Exploratory Factor Analysis -- Verification project")
 
 ## Testing Questionnaire data
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$rotationMethod <- "orthogonal"
 options$orthogonalSelector <- "varimax"
@@ -22,7 +22,7 @@ options$highlightText <- 0.4
 options$obliqueSelector <- "oblimin"
 
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "EFA.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "EFA.csv", options)
 
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
@@ -119,7 +119,7 @@ test_that("Factor Characteristics table results match", {
 #   # jaspTools::expect_equal_plots(testPlot, "scree-plot")
 # })
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$fitmethod <- "minres"
 options$highlightText <- 0.4
@@ -134,7 +134,7 @@ options$rotationMethod <- "oblique"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "debug.csv", options)
 
 
 
@@ -197,17 +197,17 @@ test_that("Factor Loadings (Structure Matrix) table results match", {
 })
 
 test_that("Missing values works", {
-  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$incl_correlations <- TRUE
 
   options$missingValues <- "pairwise"
-  results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 1.42781053334818, 2L, 0.489727939944839), label = "pairwise")
 
   options$missingValues <- "listwise"
-  results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 0.491396758561133, 2L, 0.782158104440787), label = "listwise")
 })

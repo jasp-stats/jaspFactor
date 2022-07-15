@@ -15,7 +15,7 @@
 # along with this program.	If not, see <http://www.gnu.org/licenses/>.
 #
 
-ExploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
+exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset

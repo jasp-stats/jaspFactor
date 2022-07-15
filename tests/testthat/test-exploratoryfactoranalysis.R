@@ -6,7 +6,7 @@ context("Exploratory Factor Analysis")
 # - Eigen values above / manual
 # - contents of screeplot (set.seed does not work)
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$fitmethod <- "minres"
 options$highlightText <- 0.4
@@ -22,7 +22,7 @@ options$factorLoadingsSort <- "sortByVariables"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "debug.csv", options)
 
 
 
@@ -85,17 +85,17 @@ test_that("Factor Loadings (Structure Matrix) table results match", {
 })
 
 test_that("Missing values works", {
-  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$incl_correlations <- TRUE
 
   options$missingValues <- "pairwise"
-  results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 1.42781053334818, 2L, 0.489727939944839), label = "pairwise")
 
   options$missingValues <- "listwise"
-  results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 0.491396758561133, 2L, 0.782158104440787), label = "listwise")
 })
@@ -107,7 +107,7 @@ options$factorLoadingsSort <- "sortByVariables"
 
 test_that("factorLoadingsSort sort the factor loadings table", {
 
-  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
   options$orthogonalSelector <- "varimax"
   options$highlightText <- 0.2
   options$variables <- paste0("x", 1:9)
@@ -139,7 +139,7 @@ test_that("factorLoadingsSort sort the factor loadings table", {
     options$factorLoadingsSort <- factorLoadingsSort
 
     set.seed(123)
-    results <- runAnalysis("ExploratoryFactorAnalysis", "holzingerswineford.csv", options)
+    results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
     table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
     jaspTools::expect_equal_tables(table, reference[[factorLoadingsSort]], label = sprintf("factorLoadingsSort = %s", factorLoadingsSort))
@@ -148,19 +148,19 @@ test_that("factorLoadingsSort sort the factor loadings table", {
 })
 
 test_that("Estimation options do not crash", {
-  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
   options$variables <- paste0("Q0", 1:9)
 
   for(fitmethod in c("minres", "ml", "pa", "ols", "wls", "gls", "minchi", "minrank")) {
     options$fitmethod <- fitmethod
-    results <- runAnalysis("ExploratoryFactorAnalysis", "Fear of Statistics.csv", options)
+    results <- runAnalysis("exploratoryFactorAnalysis", "Fear of Statistics.csv", options)
     testthat::expect(is.null(results[["results"]][["error"]]),
                      sprintf("Estimation with method '%s' crashes", fitmethod))
   }
 })
 
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "parallelAnalysis"
 options$parallelMethod <- "pc"
 options$fitmethod <- "minres"
@@ -171,7 +171,7 @@ options$orthogonalSelector <- "none"
 options$rotationMethod <- "orthogonal"
 options$variables <- paste0("x", 1:9)
 set.seed(1)
-results <- runAnalysis("ExploratoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
 test_that("Factor Characteristics table results match with parallel analysis based on PCs", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
@@ -212,7 +212,7 @@ test_that("Scree plot matches", {
 })
 
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "parallelAnalysis"
 options$parallelMethod <- "pc"
 options$highlightText <- 0.1
@@ -223,7 +223,7 @@ options$rotationMethod <- "oblique"
 options$fitmethod <- "minres"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
 set.seed(1)
-results <- runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
+results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
 
 test_that("Factor Characteristics table results match with poly cor", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]

@@ -7,6 +7,7 @@ Upgrades
 	Upgrade
 	{
 		functionName:       "PrincipalComponentAnalysis"
+		newFunctionName:	"principalComponentAnalysis"
 		fromVersion:		"0.15"
 		toVersion:			"0.16.4"
 
@@ -22,6 +23,7 @@ Upgrades
 	Upgrade
 	{
 		functionName:       "ExploratoryFactorAnalysis"
+		newFunctionName:	"exploratoryFactorAnalysis"
 		fromVersion:		"0.15"
 		toVersion:			"0.16.4"
 

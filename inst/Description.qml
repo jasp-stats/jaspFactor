@@ -16,13 +16,13 @@ Description
 	Analysis
 	{
 		title:	qsTr("Principal Component Analysis")
-		func:	"PrincipalComponentAnalysis"
+		func:	"principalComponentAnalysis"
 	}
 
 	Analysis
 	{
 		title:	qsTr("Exploratory Factor Analysis")
-		func:	"ExploratoryFactorAnalysis"
+		func:	"exploratoryFactorAnalysis"
 	}
 
 	Analysis

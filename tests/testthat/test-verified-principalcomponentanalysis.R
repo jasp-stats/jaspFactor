@@ -10,7 +10,7 @@ context("Principal Component Analysis -- Verification project")
 ## Testing Questionnaire data
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
-options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+options <- jaspTools::analysisOptions("principalComponentAnalysis")
 options$PCPrefix <- ""
 options$highlightText <- 0.4
 options$orthogonalSelector <- "varimax"
@@ -22,7 +22,7 @@ options$missingValues <- "pairwise"
 options$incl_screePlot <- TRUE
 
 set.seed(1)
-results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "PCA.csv", options)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", "PCA.csv", options)
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
 test_that("Chi-squared Test table results match R, SPSS, SAS, MiniTab", {
@@ -95,7 +95,7 @@ test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab",
 # ### this seems unnecessary since it is a duplicate of what is already in the test-principalcomponentanalysis.R file
 # ### and it is not part of https://jasp-stats.github.io/jasp-verification-project/factor.html
 # ### so I assume it is not verified
-# options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+# options <- jaspTools::analysisOptions("principalComponentAnalysis")
 # options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 # options$eigenValuesBox <- 0.95
 # options$orthogonalSelector <- "varimax"
@@ -103,7 +103,7 @@ test_that("Component Characteristics table results match R, SPSS, SAS, MiniTab",
 # options$incl_screePlot <- TRUE
 # options$factorMethod <- "eigenValues"
 # set.seed(1)
-# results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+# results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 #
 #
 # test_that("Chi-squared Test table results match", {

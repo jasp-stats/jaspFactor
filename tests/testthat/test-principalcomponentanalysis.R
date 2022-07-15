@@ -7,7 +7,7 @@ context("Principal Component Analysis")
 # - slider
 
 
-options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+options <- jaspTools::analysisOptions("principalComponentAnalysis")
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$eigenValuesBox <- 0.95
 options$orthogonalSelector <- "varimax"
@@ -15,7 +15,7 @@ options$incl_pathDiagram <- TRUE
 options$incl_screePlot <- TRUE
 options$factorMethod <- "eigenValues"
 set.seed(1)
-results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
 
 test_that("Chi-squared Test table results match", {
@@ -63,7 +63,7 @@ rotationOptions <- list(
   "oblique"    = c("promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ")
 )
 
-options <- analysisOptions("PrincipalComponentAnalysis")
+options <- analysisOptions("principalComponentAnalysis")
 options$factorMethod <- "eigenValues"
 options$variables <- c("contNormal", "contGamma", "contExpon", "contWide", "contNarrow", "contOutlier", "contcor1", "contcor2", "debMiss1", "debCollin1")
 jaspTableToRTable <- function(x) do.call(rbind, lapply(x, do.call, what = cbind.data.frame))
@@ -200,7 +200,7 @@ test_that("rotation methods match", {
       }
 
       set.seed(1)
-      results <- runAnalysis("PrincipalComponentAnalysis", "test.csv", options, view = FALSE)
+      results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE)
       tb <- jaspTableToRTable(results$results$modelContainer$collection$modelContainer_eigTab$data)
 
       # allResults[[rotationMethod]][[rotation]] <- tb
@@ -237,14 +237,14 @@ test_that("rotation methods match", {
 
 
 # results for PCA based on covariance
-options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+options <- jaspTools::analysisOptions("principalComponentAnalysis")
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
 options$eigenValuesBox <- 0.95
 options$orthogonalSelector <- "varimax"
 options$factorMethod <- "parallelAnalysis"
 options$basedOn <- "cov"
 set.seed(1)
-results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
 test_that("Component Characteristics table results match for cov based", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
@@ -270,14 +270,14 @@ test_that("Component Loadings table results match for cov based", {
 
 
 # results for PCA based on mixed matrix (poly or tetrachoric)
-options <- jaspTools::analysisOptions("PrincipalComponentAnalysis")
+options <- jaspTools::analysisOptions("principalComponentAnalysis")
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
 options$eigenValuesBox <- 0.95
 options$orthogonalSelector <- "varimax"
 options$factorMethod <- "parallelAnalysis"
 options$basedOn <- "mixed"
 set.seed(1)
-results <- jaspTools::runAnalysis("PrincipalComponentAnalysis", "test.csv", options)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
 test_that("Component Characteristics table results match for mixed based", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-01-15 03:31\n"
+"POT-Creation-Date: 2022-07-16 03:43\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,6 +271,9 @@ msgstr ""
 msgid "Estimation failed. \nInternal error message: %s"
 msgstr ""
 
+msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.\n      This might be due to a small sample size or variables not containing all response categories.\n      \nInternal error message: %s"
+msgstr ""
+
 msgid "No factors with an eigenvalue >"
 msgstr ""
 
@@ -287,6 +290,15 @@ msgid "Overall MSA"
 msgstr ""
 
 msgid "Bartlett's test"
+msgstr ""
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid "The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."
 msgstr ""
 
 msgid "Chi-squared Test"
@@ -350,6 +362,24 @@ msgid "TLI"
 msgstr ""
 
 msgid "BIC"
+msgstr ""
+
+msgid "Real data component eigenvalues"
+msgstr ""
+
+msgid "'*' = Factor should be retained.\nResults from PC-based parallel analysis."
+msgstr ""
+
+msgid "Real data factor eigenvalues"
+msgstr ""
+
+msgid "'*' = Factor should be retained.\nResults from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+msgid "Simulated data mean eigenvalues"
 msgstr ""
 
 msgid "Screeplot not available. \nInternal error message: %s"

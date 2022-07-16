@@ -575,3 +575,15 @@ msgstr ""
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Mardia's test"
+msgstr ""

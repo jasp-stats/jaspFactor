@@ -575,3 +575,15 @@ msgstr "Basado en AF"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr "Resultados de análisis paralelos"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Mardia's test"
+msgstr ""

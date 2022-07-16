@@ -575,3 +575,15 @@ msgstr "Gebaseerd op FA"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr "Resultaten parallelle analyse"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Mardia's test"
+msgstr ""

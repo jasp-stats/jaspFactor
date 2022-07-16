@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-01-15 03:31\n"
+"POT-Creation-Date: 2022-07-16 03:43\n"
 "PO-Revision-Date: 2022-04-04 09:38+0000\n"
 "Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -289,6 +289,15 @@ msgstr ""
 "無法估計. \n"
 "內部錯誤訊息: %s"
 
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed.\n"
+"      This might be due to a small sample size or variables not containing "
+"all response categories.\n"
+"      \n"
+"Internal error message: %s"
+msgstr ""
+
 msgid "No factors with an eigenvalue >"
 msgstr "沒有因素的特徵值大於"
 
@@ -305,6 +314,17 @@ msgid "Overall MSA"
 msgstr "整體MSA"
 
 msgid "Bartlett's test"
+msgstr ""
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
 msgstr ""
 
 #, fuzzy
@@ -371,6 +391,31 @@ msgstr "TLI"
 msgid "BIC"
 msgstr "BIC"
 
+#, fuzzy
+msgid "Real data component eigenvalues"
+msgstr "沒有成分的特徵值高於"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from PC-based parallel analysis."
+msgstr ""
+
+#, fuzzy
+msgid "Real data factor eigenvalues"
+msgstr "沒有因素的特徵值大於"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+#, fuzzy
+msgid "Simulated data mean eigenvalues"
+msgstr "模擬 (95th 分位數)"
+
 msgid ""
 "Screeplot not available. \n"
 "Internal error message: %s"
@@ -411,9 +456,6 @@ msgstr "成分"
 
 #~ msgid "Variance explained"
 #~ msgstr "可解釋變異量"
-
-#~ msgid "Simulated (95th quantile)"
-#~ msgstr "模擬 (95th 分位數)"
 
 #~ msgid "EFA Eigenvalue"
 #~ msgstr "探索性因素分析 (EFA) 特徵值"

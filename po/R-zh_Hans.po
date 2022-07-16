@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-01-15 03:31\n"
+"POT-Creation-Date: 2022-07-16 03:43\n"
 "PO-Revision-Date: 2022-02-05 03:26+0000\n"
 "Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -288,6 +288,15 @@ msgstr ""
 "估计失败。\n"
 "内部错误消息：%s"
 
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed.\n"
+"      This might be due to a small sample size or variables not containing "
+"all response categories.\n"
+"      \n"
+"Internal error message: %s"
+msgstr ""
+
 msgid "No factors with an eigenvalue >"
 msgstr "没有具有特征值的因子 >"
 
@@ -305,6 +314,17 @@ msgstr "总体 MSA"
 
 msgid "Bartlett's test"
 msgstr "Bartlett's 检验"
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
+msgstr ""
 
 msgid "Chi-squared Test"
 msgstr "卡方检验"
@@ -368,6 +388,31 @@ msgstr "TLI"
 
 msgid "BIC"
 msgstr "BIC"
+
+#, fuzzy
+msgid "Real data component eigenvalues"
+msgstr "没有成分具有特征值 >"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from PC-based parallel analysis."
+msgstr ""
+
+#, fuzzy
+msgid "Real data factor eigenvalues"
+msgstr "没有具有特征值的因子 >"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+#, fuzzy
+msgid "Simulated data mean eigenvalues"
+msgstr "来自平行分析的模拟数据"
 
 msgid ""
 "Screeplot not available. \n"

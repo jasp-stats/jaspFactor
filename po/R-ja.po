@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
-"POT-Creation-Date: 2022-01-15 03:31\n"
+"POT-Creation-Date: 2022-07-16 03:43\n"
 "PO-Revision-Date: 2022-01-07 12:53+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -293,6 +293,15 @@ msgstr ""
 "推定に失敗しました。\n"
 "内部エラー メッセージ : %s"
 
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed.\n"
+"      This might be due to a small sample size or variables not containing "
+"all response categories.\n"
+"      \n"
+"Internal error message: %s"
+msgstr ""
+
 msgid "No factors with an eigenvalue >"
 msgstr "次より大きい固有値を持つ因子がありません >"
 
@@ -310,6 +319,17 @@ msgstr "全体的な MSA"
 
 msgid "Bartlett's test"
 msgstr "Bartlettの検定"
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
+msgstr ""
 
 msgid "Chi-squared Test"
 msgstr "カイ二乗検定"
@@ -373,6 +393,31 @@ msgstr "TLI"
 
 msgid "BIC"
 msgstr "BIC"
+
+#, fuzzy
+msgid "Real data component eigenvalues"
+msgstr "次より大きい固有値を持つコンポーネントがありません: >"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from PC-based parallel analysis."
+msgstr ""
+
+#, fuzzy
+msgid "Real data factor eigenvalues"
+msgstr "次より大きい固有値を持つ因子がありません >"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+#, fuzzy
+msgid "Simulated data mean eigenvalues"
+msgstr "平行解析によるシミュレーションデータ"
 
 msgid ""
 "Screeplot not available. \n"

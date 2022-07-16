@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-01-15 03:31\n"
+"POT-Creation-Date: 2022-07-16 03:43\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -13,13 +13,20 @@ msgstr ""
 msgid "Second-Order"
 msgstr ""
 
-msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgid ""
+"The model could not be estimated. Ensure that factors have at least 2 "
+"observed variables."
 msgstr ""
 
-msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgid ""
+"The model could not be estimated. A factor with less than 2 variables was "
+"added in Second-Order."
 msgstr ""
 
-msgid "The model could not be estimated. Error message: \n\n %s"
+msgid ""
+"The model could not be estimated. Error message: \n"
+"\n"
+" %s"
 msgstr ""
 
 msgid "The model is not admissible: %s"
@@ -268,7 +275,18 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid "Estimation failed. \nInternal error message: %s"
+msgid ""
+"Estimation failed. \n"
+"Internal error message: %s"
+msgstr ""
+
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed.\n"
+"      This might be due to a small sample size or variables not containing "
+"all response categories.\n"
+"      \n"
+"Internal error message: %s"
 msgstr ""
 
 msgid "No factors with an eigenvalue >"
@@ -287,6 +305,17 @@ msgid "Overall MSA"
 msgstr ""
 
 msgid "Bartlett's test"
+msgstr ""
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
 msgstr ""
 
 msgid "Chi-squared Test"
@@ -352,7 +381,31 @@ msgstr ""
 msgid "BIC"
 msgstr ""
 
-msgid "Screeplot not available. \nInternal error message: %s"
+msgid "Real data component eigenvalues"
+msgstr ""
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from PC-based parallel analysis."
+msgstr ""
+
+msgid "Real data factor eigenvalues"
+msgstr ""
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+msgid "Simulated data mean eigenvalues"
+msgstr ""
+
+msgid ""
+"Screeplot not available. \n"
+"Internal error message: %s"
 msgstr ""
 
 msgid "Data"

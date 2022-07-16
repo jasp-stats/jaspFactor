@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-01-15 03:31\n"
+"POT-Creation-Date: 2022-07-16 03:43\n"
 "PO-Revision-Date: 2021-12-26 19:54+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -295,6 +295,15 @@ msgstr ""
 "Schätzung fehlgeschlagen. \n"
 "Interne Fehlermeldung: %s"
 
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed.\n"
+"      This might be due to a small sample size or variables not containing "
+"all response categories.\n"
+"      \n"
+"Internal error message: %s"
+msgstr ""
+
 msgid "No factors with an eigenvalue >"
 msgstr "Keine Faktoren mit einem Eigenwert >"
 
@@ -312,6 +321,17 @@ msgstr "Gesamt-MSA"
 
 msgid "Bartlett's test"
 msgstr "Bartletts Test"
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
+msgstr ""
 
 msgid "Chi-squared Test"
 msgstr "Chi-Quadrat-Test"
@@ -375,6 +395,31 @@ msgstr "TLI"
 
 msgid "BIC"
 msgstr "BIC"
+
+#, fuzzy
+msgid "Real data component eigenvalues"
+msgstr "Keine Komponenten mit einem Eigenwert >"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from PC-based parallel analysis."
+msgstr ""
+
+#, fuzzy
+msgid "Real data factor eigenvalues"
+msgstr "Keine Faktoren mit einem Eigenwert >"
+
+msgid ""
+"'*' = Factor should be retained.\n"
+"Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+#, fuzzy
+msgid "Simulated data mean eigenvalues"
+msgstr "Simulierte Daten aus Parallelanalyse"
 
 msgid ""
 "Screeplot not available. \n"

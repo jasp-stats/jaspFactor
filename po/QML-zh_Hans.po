@@ -580,9 +580,9 @@ msgid "Polychoric/tetrachoric correlation matrix"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
+msgid "Mardia's test"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Mardia's test"
+msgid ""
 msgstr ""

@@ -988,19 +988,21 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       rotation       = ifelse(options$plotrotate, 2, 1),
       intercepts     = options$plotmeans,
       whatLabels     = if (!options$plotpars) "name" else if (options$plotstd) "std" else "par",
+      mar            = if (!options$plotrotate) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 12, 3, 12), c(3, 6, 3, 6)),
       edge.color     = "black",
       color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
       border.width   = 1.5,
-      edge.label.cex = 0.9,
+      edge.label.cex = options$fontSize,
       lty            = 2,
       title          = FALSE,
       thresholds     = FALSE,
       residuals      = options$showvariances
     ))
-  #mar            = ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3))
 
-  plotwidth  <- options$plotwidth
-  plotheight <- options$plotheight
+  # set height depending on whether there is a second-order factor
+  plotwidth  <- 640
+  plotheight <- 320
+  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$plotrotate) plotheight <- 500
 
 
   if (options$groupvar != "") {
@@ -1016,7 +1018,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                                            width = plotwidth)
   }
 
-  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathplot", "plotmeans", "plotpars", "plotstd", "plotrotate", "plotwidth", "plotheight", "showvariances"))
+  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathplot", "plotmeans", "plotpars", "plotstd", "plotrotate", "fontSize", "showvariances"))
 }
 
 .cfaLavToPlotObj <- function(lavResult, options) {

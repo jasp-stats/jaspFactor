@@ -172,13 +172,11 @@ Form
 					text: qsTr("Show parameters")
 					name: "plotpars"
 					CheckBox { text: qsTr("Standardized"); name: "plotstd" }
+					DoubleField { text: qsTr("Font size")	 ; name: "fontSize"		; defaultValue: 0.9; max: 2.0 }
 				}
 				CheckBox { text: qsTr("Show means")      ; name: "plotmeans"	; enabled: meanstructure.checked }
 				CheckBox { text: qsTr("Show variances")  ; name: "showvariances"; checked: true 	}
 				CheckBox { text: qsTr("Rotate plot")	 ; name: "plotrotate" 						}
-				IntegerField { text: qsTr("Plot width")  ; name: "plotwidth"  	; defaultValue: 640 }
-				IntegerField { text: qsTr("Plot height")  ; name: "plotheight"	; defaultValue: 640 }
-
 			}
 		}
 	}

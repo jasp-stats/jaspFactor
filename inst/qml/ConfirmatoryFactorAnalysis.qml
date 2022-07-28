@@ -163,20 +163,20 @@ Form
 		GroupBox
 		{
 			title: qsTr("Plots")
-			CheckBox { text: qsTr("Misfit plot")     ; name: "misfitplot" }
+			CheckBox { text: qsTr("Misfit plot")     ; name: "misfitPlot" }
 			CheckBox
 			{
 				text: qsTr("Model plot")
-				name: "pathplot"
+				name: "pathPlot"
 				CheckBox {
 					text: qsTr("Show parameters")
-					name: "plotpars"
-					CheckBox { text: qsTr("Standardized"); name: "plotstd" }
-					DoubleField { text: qsTr("Font size")	 ; name: "fontSize"		; defaultValue: 0.9; max: 2.0 }
+					name: "pathParameter"
+					CheckBox { text: qsTr("Standardized"); name: "pathStandardized" }
+					DoubleField { text: qsTr("Font size")	 ; name: "pathFontSize"		; defaultValue: 0.9; max: 2.0 }
 				}
-				CheckBox { text: qsTr("Show means")      ; name: "plotmeans"	; enabled: meanstructure.checked }
-				CheckBox { text: qsTr("Show variances")  ; name: "showvariances"; checked: true 	}
-				CheckBox { text: qsTr("Rotate plot")	 ; name: "plotrotate" 						}
+				CheckBox { text: qsTr("Show means")      ; name: "pathMean"	; enabled: meanstructure.checked }
+				CheckBox { text: qsTr("Show variances")  ; name: "pathVariance"; checked: true 	}
+				CheckBox { text: qsTr("Rotate plot")	 ; name: "pathRotation" 						}
 			}
 		}
 	}

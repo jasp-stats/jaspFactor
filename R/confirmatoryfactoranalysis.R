@@ -967,7 +967,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .cfaInitPlots <- function(jaspResults, options, cfaResult) {
-  if (is.null(cfaResult) || !(options$pathplot || options$misfitplot) || !is.null(jaspResults[["plots"]])) return()
+  if (is.null(cfaResult) || !(options$pathPlot || options$misfitPlot) || !is.null(jaspResults[["plots"]])) return()
 
   jaspResults[["plots"]] <- createJaspContainer(gettext("Plots"), position = 6)
   jaspResults[["plots"]]$dependOn(c(
@@ -977,7 +977,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .cfaPlotPath <- function(jaspResults, options, cfaResult) {
-  if (is.null(cfaResult) || !options$pathplot || !is.null(jaspResults[["plots"]][["pathplot"]])) return()
+  if (is.null(cfaResult) || !options$pathPlot || !is.null(jaspResults[["plots"]][["pathplot"]])) return()
 
   jaspBase:::.suppressGrDevice(
     pathplot <- semPlot::semPaths(
@@ -985,24 +985,24 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       DoNotPlot      = TRUE,
       ask            = FALSE,
       layout         = "tree",
-      rotation       = ifelse(options$plotrotate, 2, 1),
-      intercepts     = options$plotmeans,
-      whatLabels     = if (!options$plotpars) "name" else if (options$plotstd) "std" else "par",
-      mar            = if (!options$plotrotate) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 12, 3, 12), c(3, 6, 3, 6)),
+      rotation       = ifelse(options$pathRotation, 2, 1),
+      intercepts     = options$pathMean,
+      whatLabels     = if (!options$pathParameter) "name" else if (options$pathStandardized) "std" else "par",
+      mar            = if (!options$pathRotation) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 6, 3, 6), c(3, 3, 3, 3)),
       edge.color     = "black",
       color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
       border.width   = 1.5,
-      edge.label.cex = options$fontSize,
+      edge.label.cex = options$pathFontSize,
       lty            = 2,
       title          = FALSE,
       thresholds     = FALSE,
-      residuals      = options$showvariances
+      residuals      = options$pathVariance
     ))
 
   # set height depending on whether there is a second-order factor
   plotwidth  <- 640
   plotheight <- 320
-  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$plotrotate) plotheight <- 500
+  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$pathRotation) plotheight <- 500
 
 
   if (options$groupvar != "") {
@@ -1011,14 +1011,14 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     for (i in 1:length(groupLabs)) {
       jaspResults[["plots"]][["pathplot"]][[groupLabs[i]]] <-
         createJaspPlot(pathplot[[i]], title = groupLabs[i], height = plotheight, width = plotwidth)
-      jaspResults[["plots"]][["pathplot"]][[groupLabs[i]]]$dependOn(c("pathplot", "plotmeans", "plotpars"))
+      jaspResults[["plots"]][["pathplot"]][[groupLabs[i]]]$dependOn(c("pathPlot", "pathMean", "pathParameter"))
     }
   } else {
     jaspResults[["plots"]][["pathplot"]] <- createJaspPlot(pathplot, title = gettext("Model plot"), height = plotheight,
                                                            width = plotwidth)
   }
 
-  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathplot", "plotmeans", "plotpars", "plotstd", "plotrotate", "fontSize", "showvariances"))
+  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathPlot", "pathMean", "pathParameter", "pathStandardized", "pathRotation", "pathFontSize", "pathVariance"))
 }
 
 .cfaLavToPlotObj <- function(lavResult, options) {
@@ -1051,7 +1051,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .cfaPlotMisfit <- function(jaspResults, options, cfaResult) {
-  if (is.null(cfaResult) || !options$misfitplot || !is.null(jaspResults[["plots"]][["misfitplot"]])) return()
+  if (is.null(cfaResult) || !options$misfitPlot || !is.null(jaspResults[["plots"]][["misfitplot"]])) return()
   rescor <- lavaan::residuals(cfaResult[["lav"]], type = "cor")
   wh <- 50 + 50 * length(cfaResult[["spec"]][["variables"]])
 
@@ -1064,7 +1064,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       gg <- .resCorToMisFitPlot(cc)
       jaspResults[["plots"]][["misfitplot"]][[groupLabs[i]]] <-
         createJaspPlot(gg, title = groupLabs[i], width = wh, height = wh)
-      jaspResults[["plots"]][["misfitplot"]][[groupLabs[i]]]$dependOn("misfitplot")
+      jaspResults[["plots"]][["misfitplot"]][[groupLabs[i]]]$dependOn("misfitPlot")
     }
   } else {
     cc <- rescor$cov
@@ -1073,7 +1073,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     jaspResults[["plots"]][["misfitplot"]] <- createJaspPlot(gg, title = gettext("Misfit plot"), width = wh, height = wh)
   }
 
-  jaspResults[["plots"]][["misfitplot"]]$dependOn("misfitplot")
+  jaspResults[["plots"]][["misfitplot"]]$dependOn("misfitPlot")
 }
 
 .resCorToMisFitPlot <- function(rescor) {

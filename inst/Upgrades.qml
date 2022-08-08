@@ -8,7 +8,7 @@ Upgrades
 	{
 		functionName:       "PrincipalComponentAnalysis"
 		newFunctionName:	"principalComponentAnalysis"
-		fromVersion:		"0.15"
+		fromVersion:		"0.16.3"
 		toVersion:			"0.16.4"
 
 		ChangeSetValue
@@ -24,7 +24,7 @@ Upgrades
 	{
 		functionName:       "ExploratoryFactorAnalysis"
 		newFunctionName:	"exploratoryFactorAnalysis"
-		fromVersion:		"0.15"
+		fromVersion:		"0.16.3"
 		toVersion:			"0.16.4"
 
 		ChangeSetValue

@@ -137,14 +137,17 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       }
     })
   }
+  if (options[["basedOn"]] == "correlation") baseOn <- "cor"
+  else if (options[["basedOn"]] == "covariance") baseOn <- "cov"
+  else if (options[["basedOn"]] == "mixedCorrelationMatrix") baseOn <- "mixed"
   pcaResult <- try(
     psych::principal(
       r        = dataset,
       nfactors = .pcaGetNComp(dataset, options),
       rotate   = rotate,
       scores   = TRUE,
-      covar    = options$basedOn == "cov",
-      cor      = options$basedOn,
+      covar    = options$basedOn == "covariance",
+      cor      = baseOn
     )
   )
 
@@ -162,7 +165,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options$factorMethod == "manual") return(options$numberOfFactors)
 
-  if (options[["basedOn"]] == "mixed") {
+  if (options[["basedOn"]] == "mixedCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
@@ -365,7 +368,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options[["screeDispParallel"]]) {
 
-    if (options[["basedOn"]] == "mixed") {
+    if (options[["basedOn"]] == "mixedCorrelationMatrix") {
       polyTetraCor <- psych::mixedCor(dataset)
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,
@@ -386,7 +389,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       evs <- c(parallelResult$fa.values, parallelResult$fa.sim)
     } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
       if (anyNA(parallelResult$pc.sim)) {
-        if (options[["basedOn"]] == "mixed") {
+        if (options[["basedOn"]] == "mixedCorrelationMatrix") {
           polyTetraCor <- psych::mixedCor(dataset)
           parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                        plot = FALSE,

@@ -124,18 +124,18 @@ Form
             title: qsTr("Base decomposition on")
 			RadioButton
 			{
-				value: "cor"
+				value: "correlation"
 				label: qsTr("Correlation matrix")
 				checked: true
 			}
 			RadioButton
 			{
-				value: "cov"
+				value: "covariance"
 				label: qsTr("Covariance matrix")
 			}
 			RadioButton
 			{
-				value: "mixed"
+				value: "mixedCorrelationMatrix"
 				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
         }

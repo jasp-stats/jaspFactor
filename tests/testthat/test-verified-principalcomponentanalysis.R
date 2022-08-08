@@ -17,7 +17,7 @@ options$orthogonalSelector <- "varimax"
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$factorMethod <- "parallelAnalysis"
 options$rotationMethod <- "orthogonal"
-options$basedOn <- "cor"
+options$basedOn <- "correlation"
 options$missingValues <- "pairwise"
 options$incl_screePlot <- TRUE
 

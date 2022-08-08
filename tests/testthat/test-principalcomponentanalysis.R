@@ -242,7 +242,7 @@ options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "
 options$eigenValuesBox <- 0.95
 options$orthogonalSelector <- "varimax"
 options$factorMethod <- "parallelAnalysis"
-options$basedOn <- "cov"
+options$basedOn <- "covariance"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
@@ -275,7 +275,7 @@ options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "
 options$eigenValuesBox <- 0.95
 options$orthogonalSelector <- "varimax"
 options$factorMethod <- "parallelAnalysis"
-options$basedOn <- "mixed"
+options$basedOn <- "mixedCorrelationMatrix"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 

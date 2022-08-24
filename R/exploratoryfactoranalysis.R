@@ -142,19 +142,19 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   )
 
   if (isTryError(efaResult)) {
-    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(efaResult, "condition")$message)
+    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", .extractErrorMessage(efaResult))
     modelContainer$setError(errmsg)
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
 
 # Modification here: if the estimation of the polychoric/tetrachoric correlation matrix fails with this specific error,
 # JASP replaces the internal error message with a more informative one.
-  if (isTryError(efaResult) && (attr(efaResult, "condition")$message == "missing value where TRUE/FALSE needed"
-                                || attr(efaResult, "condition")$message == "attempt to set 'rownames' on an object with no dimensions")) {
+  if (isTryError(efaResult) && (.extractErrorMessage(efaResult) == "missing value where TRUE/FALSE needed"
+                                || .extractErrorMessage(efaResult) == "attempt to set 'rownames' on an object with no dimensions")) {
     errmsgPolyCor <- gettextf(
       "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.
       This might be due to a small sample size or variables not containing all response categories.
-      \nInternal error message: %s", attr(efaResult, "condition")$message)
+      \nInternal error message: %s", .extractErrorMessage(efaResult))
     modelContainer$setError(errmsgPolyCor)
   }
 
@@ -612,7 +612,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
     }
     if (isTryError(parallelResult)) {
-      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(parallelResult, "condition")$message)
+      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", .extractErrorMessage(parallelResult))
       scree$setError(errmsg)
       # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
       return()

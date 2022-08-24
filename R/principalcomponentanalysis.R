@@ -137,9 +137,11 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       }
     })
   }
-  if (options[["basedOn"]] == "correlation") baseOn <- "cor"
-  else if (options[["basedOn"]] == "covariance") baseOn <- "cov"
-  else if (options[["basedOn"]] == "mixedCorrelationMatrix") baseOn <- "mixed"
+  baseOn <- switch(options[["basedOn"]],
+                   "correlation" = "cor",
+                   "covariance" = "cov",
+                   "mixedCorrelationMatrix" = "mixed")
+
   pcaResult <- try(
     psych::principal(
       r        = dataset,
@@ -152,7 +154,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   )
 
   if (isTryError(pcaResult)) {
-    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(pcaResult, "condition")$message)
+    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", .extractErrorMessage(pcaResult))
     modelContainer$setError(errmsg)
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
@@ -161,7 +163,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   return(pcaResult)
 }
 
-.pcaGetNComp <- function(dataset, options) {
+.pcaGetNComp <- function(dataset, options, modelContainer) {
 
   if (options$factorMethod == "manual") return(options$numberOfFactors)
 
@@ -176,9 +178,13 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
   }
 
-  if (isTryError(parallelResult)) return(1)
-
   if (options$factorMethod == "parallelAnalysis") {
+
+    if (isTryError(parallelResult)) {
+      errmsg <- gettextf("Parallel analysis failed. \nInternal error message: %s", .extractErrorMessage(parallelResult))
+      modelContainer$setError(errmsg)
+    }
+
     if (options$parallelMethod == "pc") {
       return(max(1, parallelResult$ncomp))
     } else { # parallel method is fa
@@ -379,7 +385,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     }
 
     if (isTryError(parallelResult)) {
-      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(parallelResult, "condition")$message)
+      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", .extractErrorMessage(parallelResult))
       scree$setError(errmsg)
       # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
       return()

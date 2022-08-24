@@ -15,7 +15,7 @@
 # along with this program.	If not, see <http://www.gnu.org/licenses/>.
 #
 
-PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
+principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
@@ -44,9 +44,9 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!is.null(dataset)) return(dataset)
 
   if (options[["missingValues"]] == "listwise") {
-    return(.readDataSetToEnd(columns = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
+    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
   } else {
-    return(.readDataSetToEnd(columns = unlist(options$variables)))
+    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
   }
 }
 
@@ -137,18 +137,24 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
       }
     })
   }
+  baseOn <- switch(options[["basedOn"]],
+                   "correlation" = "cor",
+                   "covariance" = "cov",
+                   "mixedCorrelationMatrix" = "mixed")
+
   pcaResult <- try(
     psych::principal(
       r        = dataset,
       nfactors = .pcaGetNComp(dataset, options),
       rotate   = rotate,
       scores   = TRUE,
-      covar    = options$basedOn == "covariance"
+      covar    = options$basedOn == "covariance",
+      cor      = baseOn
     )
   )
 
   if (isTryError(pcaResult)) {
-    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", attr(pcaResult, "condition")$message)
+    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", .extractErrorMessage(pcaResult))
     modelContainer$setError(errmsg)
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
@@ -157,27 +163,42 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   return(pcaResult)
 }
 
-.pcaGetNComp <- function(dataset, options) {
+.pcaGetNComp <- function(dataset, options, modelContainer) {
 
   if (options$factorMethod == "manual") return(options$numberOfFactors)
 
-  fa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
-  if (isTryError(fa)) return(1)
+  if (options[["basedOn"]] == "mixedCorrelationMatrix") {
+    polyTetraCor <- psych::mixedCor(dataset)
+    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+                                 plot = FALSE,
+                                 fa = options$parallelMethod,
+                                 n.obs = nrow(dataset)))
+  }
+  else {
+    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+  }
+
   if (options$factorMethod == "parallelAnalysis") {
+
+    if (isTryError(parallelResult)) {
+      errmsg <- gettextf("Parallel analysis failed. \nInternal error message: %s", .extractErrorMessage(parallelResult))
+      modelContainer$setError(errmsg)
+    }
+
     if (options$parallelMethod == "pc") {
-      return(max(1, fa$ncomp))
+      return(max(1, parallelResult$ncomp))
     } else { # parallel method is fa
-      return(max(1, fa$nfact))
+      return(max(1, parallelResult$nfact))
     }
   }
   if (options$factorMethod == "eigenValues") {
-    ncomp <- sum(fa$pc.values > options$eigenValuesBox)
+    ncomp <- sum(parallelResult$pc.values > options$eigenValuesBox)
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
       stop(
         gettext("No components with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue: "), round(max(fa$pc.values), 3)
+        gettext("Maximum observed eigenvalue: "), round(max(parallelResult$pc.values), 3)
       )
     return(ncomp)
   }
@@ -187,38 +208,38 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
 # Output functions ----
 .pcaGoFTable <- function(modelContainer, dataset, options, ready) {
-  if (!is.null(modelContainer[["goftab"]])) return()
+  if (!is.null(modelContainer[["gofTab"]])) return()
 
-  goftab <- createJaspTable(title = gettext("Chi-squared Test"))
-  goftab$addColumnInfo(name = "model", title = "",               type = "string")
-  goftab$addColumnInfo(name = "chisq", title = gettext("Value"), type = "number", format = "dp:3")
-  goftab$addColumnInfo(name = "df",    title = gettext("df"),    type = "integer")
-  goftab$addColumnInfo(name = "p",     title = gettext("p"),     type = "number", format = "dp:3;p:.001")
-  goftab$position <- 1
+  gofTab <- createJaspTable(title = gettext("Chi-squared Test"))
+  gofTab$addColumnInfo(name = "model", title = "",               type = "string")
+  gofTab$addColumnInfo(name = "chisq", title = gettext("Value"), type = "number", format = "dp:3")
+  gofTab$addColumnInfo(name = "df",    title = gettext("df"),    type = "integer")
+  gofTab$addColumnInfo(name = "p",     title = gettext("p"),     type = "number", format = "dp:3;p:.001")
+  gofTab$position <- 1
 
-  modelContainer[["goftab"]] <- goftab
+  modelContainer[["gofTab"]] <- gofTab
 
   if (!ready) return()
 
   pcaResults <- .pcaComputeResults(modelContainer, dataset, options)
   if (modelContainer$getError()) return()
 
-  goftab[["model"]] <- "Model"
-  goftab[["chisq"]] <- pcaResults$STATISTIC
-  goftab[["df"]]    <- pcaResults$dof
-  goftab[["p"]]     <- pcaResults$PVAL
+  gofTab[["model"]] <- "Model"
+  gofTab[["chisq"]] <- pcaResults$STATISTIC
+  gofTab[["df"]]    <- pcaResults$dof
+  gofTab[["p"]]     <- pcaResults$PVAL
 
   if (pcaResults$dof < 0)
-    goftab$addFootnote(message = gettext("Degrees of freedom below 0, model is unidentified."), symbol = gettext("<em>Warning:</em>"))
+    gofTab$addFootnote(message = gettext("Degrees of freedom below 0, model is unidentified."), symbol = gettext("<em>Warning:</em>"))
 }
 
 .pcaLoadingsTable <- function(modelContainer, dataset, options, ready) {
-  if (!is.null(modelContainer[["loatab"]])) return()
-  loatab <- createJaspTable(gettext("Component Loadings"))
-  loatab$dependOn(c("highlightText", "componentLoadingsSort"))
-  loatab$position <- 2
-  loatab$addColumnInfo(name = "var", title = "", type = "string")
-  modelContainer[["loatab"]] <- loatab
+  if (!is.null(modelContainer[["loadTab"]])) return()
+  loadTab <- createJaspTable(gettext("Component Loadings"))
+  loadTab$dependOn(c("highlightText", "componentLoadingsSort"))
+  loadTab$position <- 2
+  loadTab$addColumnInfo(name = "var", title = "", type = "string")
+  modelContainer[["loadTab"]] <- loadTab
 
   if (!ready || modelContainer$getError()) return()
 
@@ -227,14 +248,14 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   coltitle <- if (options[["rotationMethod"]] == "orthogonal") "PC" else "RC"
   for (i in seq_len(ncol(loads)))
-    loatab$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "number", format = "dp:3")
+    loadTab$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "number", format = "dp:3")
 
-  loatab$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
+  loadTab$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
 
   if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
-    loatab$addFootnote(message = gettext("No rotation method applied."))
+    loadTab$addFootnote(message = gettext("No rotation method applied."))
   } else {
-    loatab$addFootnote(
+    loadTab$addFootnote(
       message = gettextf("Applied rotation method is %s.",
                          if (options[["rotationMethod"]] == "orthogonal") options[["orthogonalSelector"]] else options[["obliqueSelector"]])
     )
@@ -255,39 +276,39 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if (options[["componentLoadingsSort"]] == "sortByComponentSize")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
-  loatab$setData(df)
-  modelContainer[["loatab"]] <- loatab
+  loadTab$setData(df)
+  modelContainer[["loadTab"]] <- loadTab
 
 }
 
 
 .pcaEigenTable <- function(modelContainer, dataset, options, ready) {
-  if (!is.null(modelContainer[["eigtab"]])) return()
+  if (!is.null(modelContainer[["eigTab"]])) return()
 
-  eigtab <- createJaspTable(gettext("Component Characteristics"))
-  eigtab$addColumnInfo(name = "comp", title = "",                type = "string")
+  eigTab <- createJaspTable(gettext("Component Characteristics"))
+  eigTab$addColumnInfo(name = "comp", title = "",                type = "string")
 
   # check if a rotation is used
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
-    eigtab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number", overtitle = overTitleA)
-    eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
-    eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
-    eigtab$addColumnInfo(name = "eigvR", title = gettext("SumSq. Loadings"), type = "number", overtitle = overTitleB)
-    eigtab$addColumnInfo(name = "propR", title = gettext("Proportion var."), type = "number", overtitle = overTitleB)
-    eigtab$addColumnInfo(name = "cumpR", title = gettext("Cumulative"),      type = "number", overtitle = overTitleB)
+    eigTab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number", overtitle = overTitleA)
+    eigTab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
+    eigTab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
+    eigTab$addColumnInfo(name = "eigvR", title = gettext("SumSq. Loadings"), type = "number", overtitle = overTitleB)
+    eigTab$addColumnInfo(name = "propR", title = gettext("Proportion var."), type = "number", overtitle = overTitleB)
+    eigTab$addColumnInfo(name = "cumpR", title = gettext("Cumulative"),      type = "number", overtitle = overTitleB)
   } else {
-    eigtab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number")
-    eigtab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number")
-    eigtab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number")
+    eigTab$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number")
+    eigTab$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number")
+    eigTab$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number")
   }
 
 
-  eigtab$position <- 3
+  eigTab$position <- 3
 
-  modelContainer[["eigtab"]] <- eigtab
+  modelContainer[["eigTab"]] <- eigTab
 
   if (!ready || modelContainer$getError()) return()
 
@@ -296,25 +317,25 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   eigv <- pcaResults$values
   Vaccounted <- pcaResults[["Vaccounted"]]
   idx <- seq_len(pcaResults[["factors"]])
-  eigtab[["comp"]] <- paste("Component", idx)
-  eigtab[["eigvU"]] <- eigv[idx]
-  eigtab[["propU"]] <- eigv[1:pcaResults$factors] / sum(eigv)
-  eigtab[["cumpU"]] <- cumsum(eigv)[1:pcaResults$factors] / sum(eigv)
+  eigTab[["comp"]] <- paste("Component", idx)
+  eigTab[["eigvU"]] <- eigv[idx]
+  eigTab[["propU"]] <- eigv[1:pcaResults$factors] / sum(eigv)
+  eigTab[["cumpU"]] <- cumsum(eigv)[1:pcaResults$factors] / sum(eigv)
   if (rotate != "none") {
-    eigtab[["eigvR"]] <- Vaccounted["SS loadings", idx]
-    eigtab[["propR"]] <- Vaccounted["Proportion Var", idx]
-    eigtab[["cumpR"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
+    eigTab[["eigvR"]] <- Vaccounted["SS loadings", idx]
+    eigTab[["propR"]] <- Vaccounted["Proportion Var", idx]
+    eigTab[["cumpR"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
 }
 
 
 .pcaCorrTable <- function(modelContainer, dataset, options, ready) {
-  if (!options[["incl_correlations"]] || !is.null(modelContainer[["cortab"]])) return()
-  cortab <- createJaspTable(gettext("Component Correlations"))
-  cortab$dependOn("incl_correlations")
-  cortab$addColumnInfo(name = "col", title = "", type = "string")
-  cortab$position <- 4
-  modelContainer[["cortab"]] <- cortab
+  if (!options[["incl_correlations"]] || !is.null(modelContainer[["corTab"]])) return()
+  corTab <- createJaspTable(gettext("Component Correlations"))
+  corTab$dependOn("incl_correlations")
+  corTab$addColumnInfo(name = "col", title = "", type = "string")
+  corTab$position <- 4
+  modelContainer[["corTab"]] <- corTab
 
   if (!ready || modelContainer$getError()) return()
 
@@ -330,12 +351,12 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   dims <- ncol(cors)
 
 
-  cortab[["col"]] <- paste("Component", 1:dims)
+  corTab[["col"]] <- paste("Component", 1:dims)
 
   for (i in 1:dims) {
     thisname <- paste("Component", i)
-    cortab$addColumnInfo(name = thisname, title = thisname, type = "number", format = "dp:3")
-    cortab[[thisname]] <- cors[,i]
+    corTab$addColumnInfo(name = thisname, title = thisname, type = "number", format = "dp:3")
+    corTab[[thisname]] <- cors[,i]
   }
 
 }
@@ -353,21 +374,38 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options[["screeDispParallel"]]) {
 
-    pa <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
-    if (isTryError(pa)) {
-      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", attr(pa, "condition")$message)
+    if (options[["basedOn"]] == "mixedCorrelationMatrix") {
+      polyTetraCor <- psych::mixedCor(dataset)
+      parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+                                   plot = FALSE,
+                                   fa = options$parallelMethod,
+                                   n.obs = nrow(dataset)))
+    } else {
+      parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+    }
+
+    if (isTryError(parallelResult)) {
+      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", .extractErrorMessage(parallelResult))
       scree$setError(errmsg)
       # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
       return()
     }
 
     if (options$factorMethod == "parallelAnalysis" && options$parallelMethod == "fa") {
-      evs <- c(pa$fa.values, pa$fa.sim)
+      evs <- c(parallelResult$fa.values, parallelResult$fa.sim)
     } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
-      if (anyNA(pa$pc.sim)) {
-        pa <- psych::fa.parallel(dataset, plot = FALSE, fa = "pc")
+      if (anyNA(parallelResult$pc.sim)) {
+        if (options[["basedOn"]] == "mixedCorrelationMatrix") {
+          polyTetraCor <- psych::mixedCor(dataset)
+          parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+                                       plot = FALSE,
+                                       fa = options$parallelMethod,
+                                       n.obs = nrow(dataset)))
+        } else {
+          parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = options$parallelMethod))
+        }
       }
-      evs <- c(pa$pc.values, pa$pc.sim)
+      evs <- c(parallelResult$pc.values, parallelResult$pc.sim)
     }
     tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
 
@@ -401,7 +439,7 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   # theming with special legend thingy
   plt <-
-    jaspGraphs::themeJasp(plt) +
+    jaspGraphs::themeJaspRaw(plt) +
     ggplot2::theme(
       legend.position      = c(0.99, 0.95),
       legend.justification = c(1, 1),
@@ -558,7 +596,6 @@ PrincipalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if(!ready || !options[["addPC"]] || options[["PCPrefix"]] == "" || modelContainer$getError()) return()
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
-
   for (i in 1:ncol(scores)) {
     scorename <- paste0(options[["PCPrefix"]], "_", i)
     if (is.null(jaspResults[[scorename]])) {

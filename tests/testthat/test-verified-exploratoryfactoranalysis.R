@@ -8,7 +8,7 @@ context("Exploratory Factor Analysis -- Verification project")
 
 ## Testing Questionnaire data
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$rotationMethod <- "orthogonal"
 options$orthogonalSelector <- "varimax"
@@ -22,12 +22,12 @@ options$highlightText <- 0.4
 options$obliqueSelector <- "oblimin"
 
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "EFA.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "EFA.csv", options)
 
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
 test_that("Kaiser-Meyer-Olkin test match R, SPSS, SAS, MiniTab", {
-  resultTable <- results$results$modelContainer$collection$modelContainer_kmotab$data
+  resultTable <- results$results$modelContainer$collection$modelContainer_kmoTab$data
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list("Overall MSA
@@ -49,7 +49,7 @@ test_that("Kaiser-Meyer-Olkin test match R, SPSS, SAS, MiniTab", {
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
 test_that("Bartlett's test match R, SPSS, SAS, MiniTab", {
-  resultTable <- results$results$modelContainer$collection$modelContainer_bartab$data
+  resultTable <- results$results$modelContainer$collection$modelContainer_barTab$data
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list(19334.4919887839, 253, 0)
@@ -58,7 +58,7 @@ test_that("Bartlett's test match R, SPSS, SAS, MiniTab", {
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
 test_that("Chi-squared Test table results match R, SPSS, SAS, MiniTab", {
-  resultTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  resultTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list(1166.49275431232, 167, "Model", 2.05253874626043e-149)
@@ -69,7 +69,7 @@ test_that("Chi-squared Test table results match R, SPSS, SAS, MiniTab", {
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
 test_that("Factor Loadings table results match R, SPSS, SAS, MiniTab", {
-  resultTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  resultTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list(0.504443068600037, "", "", "", 0.62706699829401, "Question_01",
@@ -99,7 +99,7 @@ test_that("Factor Loadings table results match R, SPSS, SAS, MiniTab", {
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
 test_that("Factor Characteristics table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.131897550845728, 0.293227816104412, 0.131897550845728,
                                       0.293227816104412, 3.03364366945174, 6.74423977040149, "Factor 2",
@@ -119,7 +119,7 @@ test_that("Factor Characteristics table results match", {
 #   # jaspTools::expect_equal_plots(testPlot, "scree-plot")
 # })
 
-options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorMethod <- "manual"
 options$fitmethod <- "minres"
 options$highlightText <- 0.4
@@ -134,18 +134,18 @@ options$rotationMethod <- "oblique"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
-results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "debug.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "debug.csv", options)
 
 
 
 test_that("Factor Correlations table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_cortab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_corTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(1, -0.0736228, "Factor 1", -0.0736228, 1, "Factor 2"))
 })
 
 test_that("Factor Characteristics table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigtab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.211560139237577, 0.21520386846338, 0.211560139237577,
                                       0.21520386846338, 1.48092097466304, 1.50642707924366, "Factor 2",
@@ -154,19 +154,19 @@ test_that("Factor Characteristics table results match", {
 })
 
 test_that("Additional fit indices table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fittab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list(-32.7898349546892, 0, "0 - 0.065", 1.20127892716016))
 })
 
 test_that("Chi-squared Test table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list(4.05152653321549, 8, "Model", 0.85244487039262))
 })
 
 test_that("Factor Loadings table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loatab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list("", "", 0.951432334368898, "contWide", 0.654092561077089, "",
                            0.57413710933047, "contcor1", 1.00020594814694, "", -0.00255707470903843,
@@ -197,18 +197,18 @@ test_that("Factor Loadings (Structure Matrix) table results match", {
 })
 
 test_that("Missing values works", {
-  options <- jaspTools::analysisOptions("ExploratoryFactorAnalysis")
+  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$incl_correlations <- TRUE
 
   options$missingValues <- "pairwise"
-  results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 1.42781053334818, 2L, 0.489727939944839), label = "pairwise")
 
   options$missingValues <- "listwise"
-  results <- jaspTools::runAnalysis("ExploratoryFactorAnalysis", "test.csv", options)
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goftab"]][["data"]]
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table, list("Model", 0.491396758561133, 2L, 0.782158104440787), label = "listwise")
 })
 

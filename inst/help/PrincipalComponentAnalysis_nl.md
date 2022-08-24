@@ -35,6 +35,13 @@ Principale componentenanalyse wordt gebruikt om data weer te geven in minder com
       - Biquartimin: De biquartimin oblique rotatiemethode.
       - Cluster: De cluster oblique rotatiemethode.
 
+#### Basis decompositie op
+- Correlatie: Baseert de PCA op de correlatiematrix van de gegevens
+- Covariantie: Baseert de PCA op de covariantiematrix van de gegevens
+- Polychorisch/tetrachorisch: Baseert de PCA op de poly/tetrachorische (gemengde) correlatiematrix van de gegevens.
+  Dit is soms onstabiel wanneer de steekproefomvang klein is en wanneer sommige variabelen niet alle antwoordcategorieën bevatten
+
+
 ### Uitvoeropties 
 - Markeer: Deze optie zet de waarde vanaf waar de paden schalen in breedte. Paden met absolute gewichten hoger dan deze waarde zullen steeds breder worden terwijl waardes eronder een vaste dunne breedte hebben. Alle paden krijgen een sterkere of zwakkere kleurintensiteit naarmate ze een sterker gewicht hebben. Als de waarde op 0 gezet wordt zullen alle paden een verschillende breedte krijgen.
 - Neem tabellen mee:
@@ -83,10 +90,10 @@ De screeplot geeft informatie over hoeveel variantie in de data wordt verklaard 
 
 ### Referenties  
 --- 
-- Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational research methods, 7*(2), 191-205.
+- Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205.
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning* (Vol. 112, p. 18). New York: springer.
-- Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in exploratory factor analysis. *Best practices in quantitative methods*, 86-99.
-- Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. Structural Equation Modeling, 16(4), 561-582.
+- Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in exploratory factor analysis. *Best Practices in Quantitative Methods*, 86-99.
+- Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. *Structural Equation Modeling, 16*(4), 561-582.
 - Shlens, J. (2014). A tutorial on principal component analysis. *arXiv preprint arXiv:1404.1100*.
 
 ### R Packages 

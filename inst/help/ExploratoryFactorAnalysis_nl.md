@@ -38,6 +38,11 @@ _NB: eigenwaarden voor EFA zijn anders dan eigenwaarden voor PCA. Meer informati
       - biquartimin: Oblique rotatiemethode biquartimin. 
       - cluster: Oblique rotatiemethode cluster. 
 
+#### Basis decompositie op
+- Correlatie: Baseert de PCA op de correlatiematrix van de gegevens
+- Covariantie: Baseert de PCA op de covariantiematrix van de gegevens
+- Polychorisch/tetrachorisch: Baseert de PCA op de poly/tetrachorische (gemengde) correlatiematrix van de gegevens. Dit is soms onstabiel wanneer de steekproefomvang klein is en wanneer sommige variabelen niet alle antwoordcategorieën bevatten.
+
 ### Uitvoeropties 
 - Markeer: Deze optie zet de waarde vanaf waar de paden schalen in breedte. Paden met absolute gewichten hoger dan deze waarde zullen steeds breder worden terwijl waardes eronder een vaste dunne breedte hebben. Alle paden krijgen een sterkere of zwakkere kleurintensiteit naarmate ze een sterker gewicht hebben. Als de waarde op 0 gezet wordt zullen alle paden een verschillende breedte krijgen.
 - Voeg Tabellen Toe: 
@@ -90,16 +95,21 @@ De screeplot geeft informatie over hoeveel variantie in de data, aangegeven door
 
 ### Referenties 
 ---
+- Bandalos, D. L., & Finney, S. J. (2018). Factor analysis: Exploratory and confirmatory. In *The reviewer’s guide to quantitative methods in the social sciences* (pp. 98-122). Routledge.
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*.     
     Guilford Publications. 
+- Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. URL: http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf.
+- Golino, H., Shi, D., Christensen, A. P., Garrido, L. E., Nieto, M. D., Sadana, R., ... & Martinez-Molina, A. (2020). Investigating the performance of exploratory graph analysis and traditional techniques to identify the number of latent factors: A simulation and tutorial. *Psychological Methods*, *25*(3), 292.
 - Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention     
-    decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational research methods, 7*(2), 191-205.
+    decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205.
 - Hopwood, C. J., & Donnellan, M. B. (2010). How should the internal structure 
-    of personality inventories be evaluated? *Personality and Social Psychology Review, 14*, 332–346. 
+    of personality inventories be evaluated? *Personality and Social Psychology Review, 14*, 332–346.
+- Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. *Biometrika*, *57*(3), 519-530.
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in 
-    exploratory factor analysis. *Best practices in quantitative methods*, 86-99.
-- Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. Structural Equation Modeling, 16(4), 561-582.
-- Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in quantitative methods for psychology, 9*(2), 79-94.
+    exploratory factor analysis. *Best Practices in Quantitative Methods*, 86-99.
+- Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. *Structural Equation Modeling, 16*(4), 561-582.
+- Timmerman, M. E., & Lorenzo-Seva, U. (2011). Dimensionality assessment of ordered polytomous items with parallel analysis. *Psychological Methods*, *16*(2), 209.
+- Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in Quantitative Methods for Psychology*, *9*(2), 79-94.
 
 ### R Packages 
 --- 

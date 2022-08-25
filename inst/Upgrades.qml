@@ -38,8 +38,8 @@ Upgrades
 	Upgrade
 	{
 		functionName:		"ConfirmatoryFactorAnalysis"
-		fromVersion:		"0.16.1"
-		toVersion:			"0.16.2"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
 
 		ChangeRename	{ from: "misfitplot";			to: "misfitPlot"}
 		ChangeRename	{ from: "pathplot";				to: "pathPlot"}

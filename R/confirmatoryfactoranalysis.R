@@ -985,24 +985,24 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       DoNotPlot      = TRUE,
       ask            = FALSE,
       layout         = "tree",
-      rotation       = ifelse(options$pathRotation, 2, 1),
-      intercepts     = options$pathMean,
-      whatLabels     = if (!options$pathParameter) "name" else if (options$pathStandardized) "std" else "par",
-      mar            = if (!options$pathRotation) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 6, 3, 6), c(3, 3, 3, 3)),
+      rotation       = ifelse(options$pathPlotRotation, 2, 1),
+      intercepts     = options$pathPlotMean,
+      whatLabels     = if (!options$pathPlotParameter) "name" else if (options$pathPlotStandardized) "std" else "par",
+      mar            = if (!options$pathPlotRotation) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 6, 3, 6), c(3, 3, 3, 3)),
       edge.color     = "black",
       color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
       border.width   = 1.5,
-      edge.label.cex = options$pathFontSize,
+      edge.label.cex = options$pathPlotFontSize,
       lty            = 2,
       title          = FALSE,
       thresholds     = FALSE,
-      residuals      = options$pathVariance
+      residuals      = options$pathPlotVariance
     ))
 
   # set height depending on whether there is a second-order factor
   plotwidth  <- 640
   plotheight <- 320
-  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$pathRotation) plotheight <- 500
+  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$pathPlotRotation) plotheight <- 500
 
 
   if (options$groupvar != "") {
@@ -1011,14 +1011,14 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     for (i in 1:length(groupLabs)) {
       jaspResults[["plots"]][["pathplot"]][[groupLabs[i]]] <-
         createJaspPlot(pathplot[[i]], title = groupLabs[i], height = plotheight, width = plotwidth)
-      jaspResults[["plots"]][["pathplot"]][[groupLabs[i]]]$dependOn(c("pathPlot", "pathMean", "pathParameter"))
+      jaspResults[["plots"]][["pathplot"]][[groupLabs[i]]]$dependOn(c("pathPlot", "pathPlotMean", "pathPlotParameter"))
     }
   } else {
     jaspResults[["plots"]][["pathplot"]] <- createJaspPlot(pathplot, title = gettext("Model plot"), height = plotheight,
                                                            width = plotwidth)
   }
 
-  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathPlot", "pathMean", "pathParameter", "pathStandardized", "pathRotation", "pathFontSize", "pathVariance"))
+  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathPlot", "pathPlotMean", "pathPlotParameter", "pathPlotStandardized", "pathPlotRotation", "pathPlotFontSize", "pathPlotVariance"))
 }
 
 .cfaLavToPlotObj <- function(lavResult, options) {

@@ -34,4 +34,16 @@ Upgrades
 			jsonValue:	"fa"
 		}
 	}
+
+	Upgrade
+	{
+		functionName:		"ConfirmatoryFactorAnalysis"
+		fromVersion:		"0.16.1"
+		toVersion:			"0.16.2"
+
+		ChangeRename	{ from: "misfitplot";			to: "misfitPlot"}
+		ChangeRename	{ from: "pathplot";				to: "pathPlot"}
+		ChangeRename	{ from: "plotpars";				to: "pathPlotParameter"}
+		ChangeRename	{ from: "plotstd";				to: "pathPlotStandardized"}
+	}
 }

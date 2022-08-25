@@ -170,13 +170,13 @@ Form
 				name: "pathPlot"
 				CheckBox {
 					text: qsTr("Show parameters")
-					name: "pathParameter"
-					CheckBox { text: qsTr("Standardized"); name: "pathStandardized" }
-					DoubleField { text: qsTr("Font size")	 ; name: "pathFontSize"		; defaultValue: 0.9; max: 2.0 }
+					name: "pathPlotParameter"
+					CheckBox { text: qsTr("Standardized"); name: "pathPlotStandardized" }
+					DoubleField { text: qsTr("Font size")	 ; name: "pathPlotFontSize"		; defaultValue: 0.9; max: 2.0 }
 				}
-				CheckBox { text: qsTr("Show means")      ; name: "pathMean"	; enabled: meanstructure.checked }
-				CheckBox { text: qsTr("Show variances")  ; name: "pathVariance"; checked: true 	}
-				CheckBox { text: qsTr("Rotate plot")	 ; name: "pathRotation" 						}
+				CheckBox { text: qsTr("Show means")      ; name: "pathPlotMean"	; enabled: meanstructure.checked }
+				CheckBox { text: qsTr("Show variances")  ; name: "pathPlotVariance"; checked: true 	}
+				CheckBox { text: qsTr("Rotate plot")	 ; name: "pathPlotRotation" 						}
 			}
 		}
 	}

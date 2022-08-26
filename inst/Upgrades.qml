@@ -41,9 +41,10 @@ Upgrades
 		fromVersion:		"0.16.3"
 		toVersion:			"0.16.4"
 
-		ChangeRename	{ from: "misfitplot";			to: "misfitPlot"}
-		ChangeRename	{ from: "pathplot";				to: "pathPlot"}
-		ChangeRename	{ from: "plotpars";				to: "pathPlotParameter"}
-		ChangeRename	{ from: "plotstd";				to: "pathPlotStandardized"}
+		ChangeRename	{ from: "misfitplot";			to: "misfitPlot"			}
+		ChangeRename	{ from: "pathplot";				to: "pathPlot"				}
+		ChangeRename	{ from: "plotpars";				to: "pathPlotParameter"		}
+		ChangeRename	{ from: "plotstd";				to: "pathPlotStandardized"	}
+		ChangeRename	{ from: "plotmeans";			to: "pathPlotMean"			}
 	}
 }

@@ -985,10 +985,10 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       DoNotPlot      = TRUE,
       ask            = FALSE,
       layout         = "tree",
-      rotation       = ifelse(options$pathPlotRotation, 2, 1),
+      rotation       = ifelse(options$pathPlotRotated, 2, 1),
       intercepts     = options$pathPlotMean,
       whatLabels     = if (!options$pathPlotParameter) "name" else if (options$pathPlotStandardized) "std" else "par",
-      mar            = if (!options$pathPlotRotation) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 6, 3, 6), c(3, 3, 3, 3)),
+      mar            = if (!options$pathPlotRotated) ifelse(rep(is.null(options$secondOrder), 4), c(12, 3, 12, 3), c(6, 3, 6, 3)) else ifelse(rep(is.null(options$secondOrder), 4), c(3, 6, 3, 6), c(3, 3, 3, 3)),
       edge.color     = "black",
       color          = list(lat = "#EAEAEA", man = "#EAEAEA", int = "#FFFFFF"),
       border.width   = 1.5,
@@ -1002,7 +1002,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # set height depending on whether there is a second-order factor
   plotwidth  <- 640
   plotheight <- 320
-  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$pathPlotRotation) plotheight <- 500
+  if (length(cfaResult[["spec"]][["soLatents"]]) > 0 && !options$pathPlotRotated) plotheight <- 500
 
 
   if (options$groupvar != "") {
@@ -1018,7 +1018,7 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                                            width = plotwidth)
   }
 
-  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathPlot", "pathPlotMean", "pathPlotParameter", "pathPlotStandardized", "pathPlotRotation", "pathPlotFontSize", "pathPlotVariance"))
+  jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathPlot", "pathPlotMean", "pathPlotParameter", "pathPlotStandardized", "pathPlotRotated", "pathPlotFontSize", "pathPlotVariance"))
 }
 
 .cfaLavToPlotObj <- function(lavResult, options) {

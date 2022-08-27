@@ -586,3 +586,7 @@ msgstr ""
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
 msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""

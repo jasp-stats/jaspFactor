@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-07-16 03:43\n"
+"Project-Id-Version: jaspFactor 0.16.4\n"
+"POT-Creation-Date: 2022-08-27 04:06\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,6 +395,9 @@ msgid "Eigenvalue"
 msgstr ""
 
 msgid "Path Diagram"
+msgstr ""
+
+msgid "Parallel analysis failed. \nInternal error message: %s"
 msgstr ""
 
 msgid "No components with an eigenvalue >"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
-"POT-Creation-Date: 2022-07-16 03:43\n"
+"POT-Creation-Date: 2022-08-27 04:06\n"
 "PO-Revision-Date: 2022-01-07 12:53+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -437,6 +437,14 @@ msgstr "固有値"
 
 msgid "Path Diagram"
 msgstr "パス図"
+
+#, fuzzy
+msgid ""
+"Parallel analysis failed. \n"
+"Internal error message: %s"
+msgstr ""
+"推定に失敗しました。\n"
+"内部エラー メッセージ : %s"
 
 msgid "No components with an eigenvalue >"
 msgstr "次より大きい固有値を持つコンポーネントがありません: >"

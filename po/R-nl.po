@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-07-16 03:43\n"
+"POT-Creation-Date: 2022-08-27 04:06\n"
 "PO-Revision-Date: 2022-06-03 15:14+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -440,6 +440,14 @@ msgstr "Eigenwaarde"
 
 msgid "Path Diagram"
 msgstr "Paddiagram"
+
+#, fuzzy
+msgid ""
+"Parallel analysis failed. \n"
+"Internal error message: %s"
+msgstr ""
+"Schatting mislukt. \n"
+"Interne foutmelding: %s"
 
 msgid "No components with an eigenvalue >"
 msgstr "Geen componenten met een eigenwaarde >"

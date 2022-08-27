@@ -586,3 +586,8 @@ msgstr "Mardia's 检验"
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
 msgstr ""
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr "多重性/四重性的相关矩阵"

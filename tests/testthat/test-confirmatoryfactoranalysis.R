@@ -2,18 +2,18 @@ context("Confirmatory Factor Analysis")
 
 # 3-factor run
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-options$groupvar <- ""
-options$invariance <- "configural"
-options$mimic <- "lavaan"
-options$se <- "standard"
+options$groupingVariable <- ""
+options$invarianceTesting <- "configural"
+options$package <- "lavaan"
+options$standardErrorType <- "standard"
 options$estimator <- "default"
-options$std <- "none"
+options$standardized <- "none"
 options$factors <- list(
   list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
   list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
 )
-options$identify <- "factor"
+options$modelIdentification <- "factorVariance"
 options$missing <- "FIML"
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
@@ -95,18 +95,18 @@ test_that("[CFA 3-Factor] Chi-square test table results match", {
 # Second-order factor
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
-options$groupvar <- ""
-options$invariance <- "configural"
-options$mimic <- "lavaan"
-options$se <- "standard"
+options$groupingVariable <- ""
+options$invarianceTesting <- "configural"
+options$package <- "lavaan"
+options$standardErrorType <- "standard"
 options$estimator <- "default"
-options$std <- "none"
+options$standardized <- "none"
 options$factors <- list(
   list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
   list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
 )
-options$identify <- "factor"
+options$modelIdentification <- "factorVariance"
 options$missing <- "FIML"
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
@@ -188,19 +188,19 @@ test_that("[CFA Second order] Chi-square test table results match", {
 
 test_that("Bootstrapping works", {
   options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-  options$groupvar <- ""
-  options$invariance <- "configural"
-  options$mimic <- "lavaan"
-  options$se <- "bootstrap"
-  options$bootstrapNumber <- 100
+  options$groupingVariable <- ""
+  options$invarianceTesting <- "configural"
+  options$package <- "lavaan"
+  options$standardErrorType <- "bootstrap"
+  options$bootstrapSamples <- 100
   options$estimator <- "default"
-  options$std <- "none"
+  options$standardized <- "none"
   options$factors <- list(
     list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
     list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
     list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
   )
-  options$identify <- "factor"
+  options$modelIdentification <- "factorVariance"
   options$missing <- "FIML"
   set.seed(1)
   results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
@@ -244,20 +244,20 @@ test_that("Bootstrapping works", {
 # summary(fit)
 
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-options$groupvar <- "school"
-options$invariance <- "configural"
-options$mimic <- "lavaan"
-options$se <- "standard"
+options$groupingVariable <- "school"
+options$invarianceTesting <- "configural"
+options$package <- "lavaan"
+options$standardErrorType <- "standard"
 options$estimator <- "default"
-options$std <- "none"
+options$standardized <- "none"
 options$factors <- list(
   list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "visual"),
   list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "textual"),
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "speed")
 )
-options$identify <- "effects"
+options$modelIdentification <- "effectsCoding"
 options$missing <- "FIML"
-options$rescov <-  list(c("x7", "x8"))
+options$covarResiduals <-  list(c("x7", "x8"))
 options$secondOrder <- list("visual", "textual", "speed")
 set.seed(1)
 

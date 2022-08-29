@@ -362,11 +362,133 @@ Upgrades
 		fromVersion:		"0.16.3"
 		toVersion:			"0.16.4"
 
-		ChangeRename	{ from: "misfitplot";			to: "misfitPlot"			}
-		ChangeRename	{ from: "pathplot";				to: "pathPlot"				}
-		ChangeRename	{ from: "plotpars";				to: "pathPlotParameter"		}
-		ChangeRename	{ from: "plotstd";				to: "pathPlotStandardized"	}
-		ChangeRename	{ from: "plotmeans";			to: "pathPlotMean"			}
+		ChangeRename	{ from: "misfitplot";				to: "misfitPlot"				}
+		ChangeRename	{ from: "pathplot";					to: "pathPlot"					}
+		ChangeRename	{ from: "plotpars";					to: "pathPlotParameter"			}
+		ChangeRename	{ from: "plotstd";					to: "pathPlotStandardized"		}
+		ChangeRename	{ from: "plotmeans";				to: "pathPlotMean"				}
+
+		ChangeRename	{
+			from: "includemeanstructure"
+			to: "meanStructure"
+		}
+		ChangeRename	{
+			from: "uncorrelatedFactors"
+			to: "factorUncorrelated"
+		}
+		ChangeRename	{
+			from: "fixExogenousCovariates"
+			to: "exogenousCovariatesFixed"
+		}
+		ChangeRename	{
+			from: "identify"
+			to: "modelIdentification"
+		}
+		ChangeJS
+		{
+			name:		"modelIdentification"
+			jsFunction:	function(options)
+			{
+				switch(options["modelIdentification"])
+				{
+					case "factor":		return "factorVariance";
+					case "marker":		return "markerVariable";
+					case "effects":		return "effectsCoding";
+				}
+			}
+		}
+		ChangeRename	{
+			from:	"observedvars"
+			to:		"observedVariables"
+		}
+		ChangeRename	{
+			from:	"rescov"
+			to:		"covarResiduals"
+		}
+		ChangeRename	{
+			from:	"additionalfits"
+			to:		"fitMeasures"
+		}
+		ChangeRename	{
+			from:	"rsquared"
+			to:		"rSquared"
+		}
+		ChangeRename	{
+			from:	"impliedCov"
+			to:		"impliedCovarianceMatrix"
+		}
+		ChangeRename	{
+			from:	"residCov"
+			to:		"residualCovarianceMatrix"
+		}
+		ChangeRename	{
+			from:	"modIndices"
+			to:		"modificationIndices"
+		}
+		ChangeRename	{
+			from:	"miCutoff"
+			to:		"modificationIndicesCutoff"
+		}
+		ChangeRename	{
+			from:	"showSyntax"
+			to:		"showLavaanSyntax"
+		}
+		ChangeRename	{
+			from:	"groupvar"
+			to:		"groupingVariable"
+		}
+		ChangeRename	{
+			from:	"invariance"
+			to:		"invarianceTesting"
+		}
+		ChangeRename	{
+			from:	"mimic"
+			to:		"package"
+		}
+		ChangeRename	{
+			from:	"ciWidth"
+			to:		"ciLevel"
+		}
+		ChangeRename	{
+			from:	"se"
+			to:		"standardErrorType"
+		}
+		ChangeRename	{
+			from:	"bootstrapNumber"
+			to:		"bootstrapSamples"
+		}
+		ChangeRename	{
+			from:	"std"
+			to:		"standardized"
+		}
+		ChangeRename	{
+			from:	"fixManifestInterceptsToZero"
+			to:		"manifestInterceptsFixedToZero"
+		}
+		ChangeRename	{
+			from:	"fixLatentInterceptsToZero"
+			to:		"latentInterceptsFixedToZero"
+		}
+		ChangeRename	{
+			from:	"omitResidualSingleIndicator"
+			to:		"residualSingleIndicatorOmitted"
+		}
+		ChangeRename	{
+			from:	"correlateExogenousLatents"
+			to:		"exogenousLatentsCorrelated"
+		}
+		ChangeRename	{
+			from:	"addThresholds"
+			to:		"thresholds"
+		}
+		ChangeRename	{
+			from:	"addScalingParameters"
+			to:		"scalingParamaters"
+		}
+		ChangeRename	{
+			from:	"correlateDependentVariables"
+			to:		"dependentVariablesCorrelated"
+		}
 
 	}
 }

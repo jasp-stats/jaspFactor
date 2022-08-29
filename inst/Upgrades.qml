@@ -212,11 +212,6 @@ Upgrades
 		}
 		ChangeRename
 		{
-			from:	"plotWidthScreePlot"
-			to:		"screePlotPlotWidth"
-		}
-		ChangeRename
-		{
 			from:	"factorMethod"
 			to:		"factorCountMethod"
 		}
@@ -236,11 +231,6 @@ Upgrades
 					case "fa":		return "factorBased";
 				}
 			}
-		}
-		ChangeRename
-		{
-			from:	"parallelSeed"
-			to:		"parallelSeedValue"
 		}
 		ChangeRename
 		{
@@ -297,28 +287,6 @@ Upgrades
 		}
 		ChangeRename
 		{
-			from:	"incl_PAtable"
-			to:		"parallelAnalysisTable"
-		}
-		ChangeRename
-		{
-			from:	"parallelMethodTable"
-			to:		"parallelAnalysisTableMethod"
-		}
-		ChangeJS
-		{
-			name:		"parallelAnalysisTableMethod"
-			jsFunction:	function(options)
-			{
-				switch(options["parallelAnalysisTableMethod"])
-				{
-					case "pc":		return "principalComponentBased";
-					case "fa":		return "factorBased";
-				}
-			}
-		}
-		ChangeRename
-		{
 			from:	"incl_pathDiagram"
 			to:		"pathDiagram"
 		}
@@ -344,11 +312,6 @@ Upgrades
 		}
 		ChangeRename
 		{
-			from:	"martest"
-			to:		"mardiaTest"
-		}
-		ChangeRename
-		{
 			from:	"missingValues"
 			to:		"naAction"
 		}
@@ -369,20 +332,20 @@ Upgrades
 		ChangeRename	{ from: "plotmeans";				to: "pathPlotMean"				}
 
 		ChangeRename	{
-			from: "includemeanstructure"
-			to: "meanStructure"
+			from:	"includemeanstructure"
+			to:		"meanStructure"
 		}
 		ChangeRename	{
-			from: "uncorrelatedFactors"
-			to: "factorUncorrelated"
+			from:	"uncorrelatedFactors"
+			to:		"factorUncorrelated"
 		}
 		ChangeRename	{
-			from: "fixExogenousCovariates"
-			to: "exogenousCovariatesFixed"
+			from:	"fixExogenousCovariates"
+			to:		"exogenousCovariatesFixed"
 		}
 		ChangeRename	{
-			from: "identify"
-			to: "modelIdentification"
+			from:	"identify"
+			to:		"modelIdentification"
 		}
 		ChangeJS
 		{
@@ -396,10 +359,6 @@ Upgrades
 					case "effects":		return "effectsCoding";
 				}
 			}
-		}
-		ChangeRename	{
-			from:	"observedvars"
-			to:		"observedVariables"
 		}
 		ChangeRename	{
 			from:	"rescov"

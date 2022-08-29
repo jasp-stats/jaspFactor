@@ -102,7 +102,7 @@ Form
 			{
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-				AvailableVariablesList {		name: "observedVariables";	source: factors.name	}
+				AvailableVariablesList {		name: "observedvars";	source: factors.name	}
 				AssignedPairsVariablesList {	name: "covarResiduals"								}
 			}
 		}

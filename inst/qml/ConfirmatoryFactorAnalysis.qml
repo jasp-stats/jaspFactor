@@ -130,7 +130,7 @@ Form
 					defaultValue: 3.84
 				}
 			}
-			CheckBox { label: qsTr("Show lavaan syntax")         ; name: "showSyntax" }
+			CheckBox { label: qsTr("Show lavaan syntax")         ; name: "showLavaanSyntax" }
 		}
 	}
 

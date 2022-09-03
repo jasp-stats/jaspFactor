@@ -581,10 +581,22 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
 msgstr ""
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr ""
-
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Font size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
 msgstr ""

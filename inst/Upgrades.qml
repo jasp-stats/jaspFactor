@@ -295,7 +295,7 @@ Upgrades
 		}
 		ChangeRename	{
 			from:	"uncorrelatedFactors"
-			to:		"factorUncorrelated"
+			to:		"factorsUncorrelated"
 		}
 		ChangeRename	{
 			from:	"fixExogenousCovariates"

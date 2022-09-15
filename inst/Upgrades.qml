@@ -87,7 +87,7 @@ Upgrades
 				switch(options["analysisBasedOn"])
 				{
 					case "correlation":		return "correlationMatrix";
-					case "covariance":		return "covarianceMatrix";
+					case "covariance":		return "covarianceMatrix"
 				}
 			}
 		}
@@ -195,9 +195,8 @@ Upgrades
 			{
 				switch(options["analysisBasedOn"])
 				{
-					case "cor":		return "correlationMatrix";
-					case "cov":		return "covarianceMatrix";
-					case "mixed":	return "polyTetrachoricMatrix";
+					case "correlation":		return "correlationMatrix";
+					case "covariance":		return "covarianceMatrix"
 				}
 			}
 		}
@@ -418,7 +417,8 @@ Upgrades
 					case "GLS":		return "generalizedLeastSquares";
 					case "WLS":		return "weightedLeastSquares";
 					case "ULS":		return "unweightedLeastSquares";
-					case "DWLS":	return "diagonallyWeightedLeastSquares"
+					case "DWLS":	return "diagonallyWeightedLeastSquares";
+					default:		return options["estimator"]
 				}
 			}
 		}
@@ -430,7 +430,8 @@ Upgrades
 				switch(options["standardized"])
 				{
 					case "lv":		return "latentVariables";
-					case "nox":		return "noExogenousCovariates"
+					case "nox":		return "noExogenousCovariates";
+					default:		return options["standardized"]
 				}
 			}
 		}

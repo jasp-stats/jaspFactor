@@ -17,7 +17,6 @@ options$modelIdentification <- "factorVariance"
 options$missing <- "FIML"
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
-results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", holz, options)
 
 
 

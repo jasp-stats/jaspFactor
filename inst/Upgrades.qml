@@ -41,41 +41,7 @@ Upgrades
 		fromVersion:		"0.16.3"
 		toVersion:			"0.16.4"
 
-		ChangeRename
-		{
-			from:	"incl_GoF"
-			to:		"goodnessOfFit"
-		}
-		ChangeRename
-		{
-			from:	"incl_fitIndices"
-			to:		"fitIndices"
-		}
-		ChangeRename
-		{
-			from:	"incl_loadings"
-			to:		"loadings"
-		}
-		ChangeRename
-		{
-			from:	"plotHeightPathDiagram"
-			to:		"pathDiagramPlotHeight"
-		}
-		ChangeRename
-		{
-			from:	"plotHeightScreePlot"
-			to:		"screePlotPlotHeight"
-		}
-		ChangeRename
-		{
-			from:	"plotWidthPathDiagram"
-			to:		"pathDiagramPlotWidth"
-		}
-		ChangeRename
-		{
-			from:	"plotWidthScreePlot"
-			to:		"screePlotPlotWidth"
-		}
+
 		ChangeRename
 		{
 			from:	"factorMethod"
@@ -106,7 +72,7 @@ Upgrades
 		ChangeRename
 		{
 			from:	"numberOfFactors"
-			to:		"numberOfComponents"
+			to:		"manualNumberOfComponents"
 		}
 		ChangeRename
 		{
@@ -182,36 +148,6 @@ Upgrades
 
 		ChangeRename
 		{
-			from:	"incl_GoF"
-			to:		"goodnessOfFit"
-		}
-		ChangeRename
-		{
-			from:	"incl_loadings"
-			to:		"loadings"
-		}
-		ChangeRename
-		{
-			from:	"plotHeightPathDiagram"
-			to:		"pathDiagramPlotHeight"
-		}
-		ChangeRename
-		{
-			from:	"plotHeightScreePlot"
-			to:		"screePlotPlotHeight"
-		}
-		ChangeRename
-		{
-			from:	"plotWidthPathDiagram"
-			to:		"pathDiagramPlotWidth"
-		}
-		ChangeRename
-		{
-			from:	"plotWidthScreePlot"
-			to:		"screePlotPlotWidth"
-		}
-		ChangeRename
-		{
 			from:	"factorMethod"
 			to:		"factorCountMethod"
 		}
@@ -236,6 +172,11 @@ Upgrades
 		{
 			from:	"eigenValuesBox"
 			to:		"eigenValuesAbove"
+		}
+		ChangeRename
+		{
+			from:	"numberOfFactors"
+			to:		"manualNumberOfFactors"
 		}
 		ChangeRename
 		{
@@ -315,6 +256,24 @@ Upgrades
 			from:	"missingValues"
 			to:		"naAction"
 		}
+		ChangeJS
+		{
+			name:		"factoringMethod"
+			jsFunction:	function(options)
+			{
+				switch(options["factoringMethod"])
+				{
+					case "minres":	return "minimumResidual";
+					case "ml":		return "maximumLikelihood";
+					case "pa":		return "principalAxis";
+					case "ols":		return "ordinaryLeastSquares";
+					case "wls":		return "weightedLeastSquares";
+					case "gls":		return "generalizedLeastSquares";
+					case "minchi":	return "minimumChiSquare";
+					case "minrank":	return "minimumRank";
+				}
+			}
+		}
 	}
 
 
@@ -362,7 +321,7 @@ Upgrades
 		}
 		ChangeRename	{
 			from:	"rescov"
-			to:		"covarResiduals"
+			to:		"residualsCovarying"
 		}
 		ChangeRename	{
 			from:	"additionalfits"
@@ -390,11 +349,11 @@ Upgrades
 		}
 		ChangeRename	{
 			from:	"showSyntax"
-			to:		"showLavaanSyntax"
+			to:		"lavaanSyntax"
 		}
 		ChangeRename	{
 			from:	"groupvar"
-			to:		"groupingVariable"
+			to:		"group"
 		}
 		ChangeRename	{
 			from:	"invariance"
@@ -402,7 +361,7 @@ Upgrades
 		}
 		ChangeRename	{
 			from:	"mimic"
-			to:		"package"
+			to:		"packageMimiced"
 		}
 		ChangeRename	{
 			from:	"ciWidth"
@@ -410,7 +369,7 @@ Upgrades
 		}
 		ChangeRename	{
 			from:	"se"
-			to:		"standardErrorType"
+			to:		"seType"
 		}
 		ChangeRename	{
 			from:	"bootstrapNumber"
@@ -447,6 +406,33 @@ Upgrades
 		ChangeRename	{
 			from:	"correlateDependentVariables"
 			to:		"dependentVariablesCorrelated"
+		}
+		ChangeJS
+		{
+			name:		"estimator"
+			jsFunction:	function(options)
+			{
+				switch(options["estimator"])
+				{
+					case "ML":		return "maximumLikelihood";
+					case "GLS":		return "generalizedLeastSquares";
+					case "WLS":		return "weightedLeastSquares";
+					case "ULS":		return "unweightedLeastSquares";
+					case "DWLS":	return "diagonallyWeightedLeastSquares"
+				}
+			}
+		}
+		ChangeJS
+		{
+			name:		"standardized"
+			jsFunction:	function(options)
+			{
+				switch(options["standardized"])
+				{
+					case "lv":		return "latentVariables";
+					case "nox":		return "noExogenousCovariates"
+				}
+			}
 		}
 
 	}

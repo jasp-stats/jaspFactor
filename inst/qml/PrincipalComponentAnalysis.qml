@@ -25,14 +25,6 @@ Form
 {
 
 
-	CheckBox { name: "goodnessOfFit"; checked: true; visible: false }
-	CheckBox { name: "fitIndices"; checked: false; visible: false }
-	CheckBox { name: "loadings"; checked: true; visible: false }
-	IntegerField { name: "pathDiagramPlotheigth"; defaultValue: 0; visible: false }
-	IntegerField { name: "screePlotPlotHeigth"  ; defaultValue: 300; visible: false }
-	IntegerField { name: "pathDiagramPlotWidth" ; defaultValue: 480; visible: false }
-	IntegerField { name: "screePlotPlotWidth"   ; defaultValue: 300; visible: false }
-
 	VariablesForm
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
@@ -77,12 +69,22 @@ Form
 		RadioButton
 		{
 			value: "eigenValues"; label: qsTr("Eigenvalues")
-			DoubleField { name: "eigenValuesAbove"; label: qsTr("Eigenvalues above"); defaultValue: 1; decimals: 1 }
+			DoubleField {
+				name:			"eigenValuesAbove"
+				label:			qsTr("Eigenvalues above")
+				defaultValue:	1
+				decimals:		1
+			}
 		}
 		RadioButton
 		{
 			value: "manual"; label: qsTr("Manual")
-			IntegerField { name: "numberOfComponents"; label: qsTr("Number of components"); defaultValue: 1; min: 1 }
+			IntegerField {
+				name:			"manualNumberOfComponents"
+				label:			qsTr("Number of components")
+				defaultValue:	1
+				min:			1
+			}
 		}
 	}
 

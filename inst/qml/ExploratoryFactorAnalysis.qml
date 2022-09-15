@@ -23,13 +23,6 @@ import JASP.Controls 1.0
 Form
 {
 
-	CheckBox { name: "goodnessOfFit"; checked: true; visible: false }
-	CheckBox { name: "loadings"; checked: true; visible: false }
-	IntegerField { name: "pathDiagramPlotheigth"; defaultValue: 0; visible: false }
-	IntegerField { name: "screePlotPlotHeigth"  ; defaultValue: 300; visible: false }
-	IntegerField { name: "pathDiagramPlotWidth" ; defaultValue: 480; visible: false }
-	IntegerField { name: "screePlotPlotWidth"   ; defaultValue: 300; visible: false }
-
 	VariablesForm
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
@@ -75,7 +68,7 @@ Form
 				}
 				IntegerField
 				{
-					name: 			"parallelSeedValue"
+					name: 			"parallelAnalysisSeed"
 					label: 			"Seed"
 					defaultValue: 	1234
 					fieldWidth: 	60
@@ -86,13 +79,23 @@ Form
 
 			RadioButton
 			{
-				value: "eigenValues";					label: qsTr("Eigenvalues")
-				DoubleField { name: "eigenValuesAbove"; label: qsTr("Eigenvalues above"); defaultValue: 1; decimals: 1 }
+				value: "eigenValues"; label: qsTr("Eigenvalues")
+				DoubleField {
+					name:			"eigenValuesAbove"
+					label:			qsTr("Eigenvalues above")
+					defaultValue:	1
+					decimals:		1
+				}
 			}
 			RadioButton
 			{
-				value: "manual";						label: qsTr("Manual")
-				IntegerField { name: "numberOfFactors"; label: qsTr("Number of factors"); defaultValue: 1; min: 1 }
+				value: "manual"; label: qsTr("Manual")
+				IntegerField {
+					name:			"manualNumberOfFactors"
+					label:			qsTr("Number of factors")
+					defaultValue:	1
+					min:			1
+				}
 			}
 		}
 
@@ -105,14 +108,14 @@ Form
 				indexDefaultValue: 0
 				values:
 				[
-					{ value: "minres",		label: qsTr("Minimum residual")				},
-					{ value: "ml",			label: qsTr("Maximum likelihood")			},
-					{ value: "pa",			label: qsTr("Principal axis factoring")		},
-					{ value: "ols",			label: qsTr("Ordinary least squares")		},
-					{ value: "wls",			label: qsTr("Weighted least squares") 		},
-					{ value: "gls",			label: qsTr("Generalized least squares")	},
-					{ value: "minchi",		label: qsTr("Minimum chi-square") 			},
-					{ value: "minrank",		label: qsTr("Minimum rank")					}
+					{ label: qsTr("Minimum residual"),			value: "minimumResidual"		},
+					{ label: qsTr("Maximum likelihood"),		value: "maximumLikelihood"		},
+					{ label: qsTr("Principal axis factoring"),	value: "principalAxis"			},
+					{ label: qsTr("Ordinary least squares"),	value: "ordinaryLeastSquares"	},
+					{ label: qsTr("Weighted least squares"),	value: "weightedLeastSquares"	},
+					{ label: qsTr("Generalized least squares"), value: "generalizedLeastSquares"},
+					{ label: qsTr("Minimum chi-square"),		value: "minimumChiSquare"		},
+					{ label: qsTr("Minimum rank"),				value: "minimumRank"			}
 				]
 			}
 		}

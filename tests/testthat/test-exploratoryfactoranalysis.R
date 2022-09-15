@@ -8,14 +8,14 @@ context("Exploratory Factor Analysis")
 
 options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorCountMethod <- "manual"
-options$factoringMethod <- "minres"
+options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
 options$factorCorrelations <- TRUE
 options$fitIndices <- TRUE
 options$pathDiagram <- TRUE
 options$screePlot <- TRUE
 options$factorStructure <- TRUE
-options$numberOfFactors <- 2
+options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
 options$factorLoadingsOrder <- "sortByVariables"
@@ -150,7 +150,14 @@ test_that("Estimation options do not crash", {
   options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
   options$variables <- paste0("Q0", 1:9)
 
-  for(factoringMethod in c("minres", "ml", "pa", "ols", "wls", "gls", "minchi", "minrank")) {
+  for(factoringMethod in c("minimumResidual",
+                           "maximumLikelihood",
+                           "principalAxis",
+                           "ordinaryLeastSquares",
+                           "weightedLeastSquares",
+                           "generalizedLeastSquares",
+                           "minimumChiSquare",
+                           "minimumRank")) {
     options$factoringMethod <- factoringMethod
     results <- runAnalysis("exploratoryFactorAnalysis", "Fear of Statistics.csv", options)
     testthat::expect(is.null(results[["results"]][["error"]]),
@@ -162,7 +169,7 @@ test_that("Estimation options do not crash", {
 options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
-options$factoringMethod <- "minres"
+options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.1
 options$factorCorrelations <- TRUE
 options$screePlot <- TRUE
@@ -171,6 +178,7 @@ options$rotationMethod <- "orthogonal"
 options$variables <- paste0("x", 1:9)
 set.seed(1)
 results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
+
 
 test_that("Factor Characteristics table results match with parallel analysis based on PCs", {
 
@@ -222,8 +230,9 @@ options$analysisBasedOn <- "polyTetrachoricMatrix"
 options$mardiaTest <- TRUE
 options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
-options$factoringMethod <- "minres"
+options$factoringMethod <- "minimumResidual"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+
 set.seed(1)
 results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
 

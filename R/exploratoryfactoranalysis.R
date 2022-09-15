@@ -62,8 +62,8 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   customChecksEFA <- list(
     function() {
       if (length(options$variables) > 0 && options$factorCountMethod == "manual" &&
-          options$numberOfFactors > length(options$variables)) {
-        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$numberOfFactors))
+          options$manualNumberOfFactors > length(options$variables)) {
+        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$manualNumberOfFactors))
       }
     },
     function() {
@@ -90,7 +90,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
       # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
-      error_variables <- .unv(names(Np)[Np < P])
+      error_variables <- names(Np)[Np < P]
       if (length(error_variables) > 0) {
         return(gettextf("Data not valid: too many missing values in variable(s) %s.",
                         paste(error_variables, collapse = ", ")))
@@ -113,7 +113,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorCountMethod",
-                              "eigenValuesAbove", "numberOfFactors", "naAction", "analysisBasedOn", "factoringMethod",
+                              "eigenValuesAbove", "manualNumberOfFactors", "naAction", "analysisBasedOn", "factoringMethod",
                               "parallelAnalysisMethod"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
@@ -132,6 +132,17 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                       "covarianceMatrix" = "cov",
                       "polyTetrachoricMatrix" = "mixed")
 
+  factoringMethod <- switch(options[["factoringMethod"]],
+                            "minimumResidual"         = "minres",
+                            "maximumLikelihood"       = "ml",
+                            "principalAxis"           = "pa",
+                            "ordinaryLeastSquares"    = "ols",
+                            "weightedLeastSquares"    = "wls",
+                            "generalizedLeastSquares" = "gls",
+                            "minimumChiSquare"        = "minchi",
+                            "minimumRank"             = "minrank"
+                            )
+
   efaResult <- try(
     psych::fa(
       r        = dataset,
@@ -140,7 +151,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       scores   = TRUE,
       covar    = options$analysisBasedOn == "covarianceMatrix",
       cor      = corMethod,
-      fm       = options$factoringMethod
+      fm       = factoringMethod
     )
   )
 
@@ -174,11 +185,11 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .efaGetNComp <- function(dataset, options) {
-  if (options$factorCountMethod == "manual") return(options$numberOfFactors)
+  if (options$factorCountMethod == "manual") return(options$manualNumberOfFactors)
 
   if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
-    set.seed(options[["parallelSeedValue"]])
+    set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
                                  fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
@@ -186,7 +197,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                  n.obs = nrow(dataset)))
   }
   else {
-    set.seed(options[["parallelSeedValue"]])
+    set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
                                                          "pc", "fa")))
@@ -236,7 +247,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     kmo <- psych::KMO(dataset)
   }
 
-  kmoTable[["col"]] <- c(gettext("Overall MSA\n"), .unv(names(kmo$MSAi)))
+  kmoTable[["col"]] <- c(gettext("Overall MSA\n"), names(kmo$MSAi))
   kmoTable[["val"]] <- c(kmo$MSA, kmo$MSAi)
 }
 
@@ -407,7 +418,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   loads <- efaResults$Structure
-  structureTable[["var"]] <- .unv(rownames(loads))
+  structureTable[["var"]] <- rownames(loads)
 
   for (i in 1:ncol(loads)) {
     # fix weird "all true" issue
@@ -536,14 +547,14 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
-    set.seed(options[["parallelSeedValue"]])
+    set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
                                  fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                              "pc", "fa"),
                                  n.obs = nrow(dataset)))
   } else {
-    set.seed(options[["parallelSeedValue"]])
+    set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                          "pc", "fa")))
@@ -554,13 +565,13 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     rowsName <- gettext("Factor")
     RealDataEigen <- parallelResult$pc.values
     ResampledEigen <- parallelResult$pc.sim
-    footnote <- gettext("'*' = Factor should be retained.\nResults from PC-based parallel analysis.")
+    footnote <- gettext("'*' = Factor should be retained. Results from PC-based parallel analysis.")
   } else { # parallelAnalysisMethod is FA
     eigTitle <- gettext("Real data factor eigenvalues")
     rowsName <- gettext("Factor")
     RealDataEigen <- parallelResult$fa.values
     ResampledEigen <- parallelResult$fa.sim
-    footnote <- gettext("'*' = Factor should be retained.\nResults from FA-based parallel analysis.")
+    footnote <- gettext("'*' = Factor should be retained. Results from FA-based parallel analysis.")
   }
 
   paTab <- createJaspTable(gettext("Parallel Analysis"))
@@ -616,14 +627,14 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
     if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
       polyTetraCor <- psych::mixedCor(dataset)
-      set.seed(options[["parallelSeedValue"]])
+      set.seed(options[["parallelAnalysisSeed"]])
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,
                                    fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
                                                "pc", "fa"),
                                    n.obs = nrow(dataset)))
     } else {
-      set.seed(options[["parallelSeedValue"]])
+      set.seed(options[["parallelAnalysisSeed"]])
       parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                                fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
                                                            "pc", "fa")))
@@ -707,7 +718,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # Variable names
   xName   <- ifelse(options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none", "PC", "RC")
   factors <- paste0(xName, seq_len(ncol(LY)))
-  labels  <- .unv(rownames(LY))
+  labels  <- rownames(LY)
 
   # Number of variables:
   nFactor    <- length(factors)

@@ -16,8 +16,8 @@ options$kaiserMeyerOlkinTest <- TRUE
 options$bartlettTest <- TRUE
 options$screePlot <- TRUE
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
-options$numberOfFactors <- 4
-options$factoringMethod <- "pa"
+options$manualNumberOfFactors <- 4
+options$factoringMethod <- "principalAxis"
 options$loadingsDisplayLimit <- 0.4
 options$obliqueSelector <- "oblimin"
 
@@ -126,14 +126,14 @@ test_that("Factor Characteristics table results match", {
 
 options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorCountMethod <- "manual"
-options$factoringMethod <- "minres"
+options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
 options$factorCorrelations <- TRUE
 options$fitIndices <- TRUE
 options$pathDiagram <- TRUE
 options$screePlot <- TRUE
 options$factorStructure <- TRUE
-options$numberOfFactors <- 2
+options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",

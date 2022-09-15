@@ -54,8 +54,8 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   customChecksPCAEFA <- list(
     function() {
       if (length(options$variables) > 0 && options$componentCountMethod == "manual" &&
-          options$numberOfComponents > length(options$variables)) {
-        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$numberOfComponents))
+          options$manualNumberOfComponents > length(options$variables)) {
+        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$manualNumberOfComponents))
       }
     },
     function() {
@@ -105,7 +105,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "componentCountMethod",
-                              "eigenValuesAbove", "numberOfComponents", "naAction", "analysisBasedOn",
+                              "eigenValuesAbove", "manualNumberOfComponents", "naAction", "analysisBasedOn",
                               "parallelAnalysisMethod"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
@@ -164,7 +164,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
 .pcaGetNComp <- function(dataset, options, modelContainer) {
 
-  if (options$componentCountMethod == "manual") return(options$numberOfComponents)
+  if (options$componentCountMethod == "manual") return(options$manualNumberOfComponents)
 
   if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)

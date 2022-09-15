@@ -2,10 +2,10 @@ context("Confirmatory Factor Analysis")
 
 # 3-factor run
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-options$groupingVariable <- ""
+options$group <- ""
 options$invarianceTesting <- "configural"
-options$package <- "lavaan"
-options$standardErrorType <- "standard"
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
@@ -17,6 +17,8 @@ options$modelIdentification <- "factorVariance"
 options$missing <- "FIML"
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", holz, options)
+
 
 
 test_that("[CFA 3-Factor] Factor Covariances table results match", {
@@ -95,10 +97,10 @@ test_that("[CFA 3-Factor] Chi-square test table results match", {
 # Second-order factor
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
-options$groupingVariable <- ""
+options$group <- ""
 options$invarianceTesting <- "configural"
-options$package <- "lavaan"
-options$standardErrorType <- "standard"
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
@@ -188,10 +190,10 @@ test_that("[CFA Second order] Chi-square test table results match", {
 
 test_that("Bootstrapping works", {
   options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-  options$groupingVariable <- ""
+  options$group <- ""
   options$invarianceTesting <- "configural"
-  options$package <- "lavaan"
-  options$standardErrorType <- "bootstrap"
+  options$packageMimiced <- "lavaan"
+  options$seType <- "bootstrap"
   options$bootstrapSamples <- 100
   options$estimator <- "default"
   options$standardized <- "none"
@@ -244,10 +246,10 @@ test_that("Bootstrapping works", {
 # summary(fit)
 
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-options$groupingVariable <- "school"
+options$group <- "school"
 options$invarianceTesting <- "configural"
-options$package <- "lavaan"
-options$standardErrorType <- "standard"
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
@@ -257,11 +259,12 @@ options$factors <- list(
 )
 options$modelIdentification <- "effectsCoding"
 options$missing <- "FIML"
-options$covarResiduals <-  list(c("x7", "x8"))
+options$residualsCovarying <-  list(c("x7", "x8"))
 options$secondOrder <- list("visual", "textual", "speed")
 set.seed(1)
 
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+
 
 
 test_that("Residual covariances table results match for multiple groups and effects coding", {

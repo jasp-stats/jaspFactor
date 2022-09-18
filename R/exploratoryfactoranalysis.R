@@ -142,19 +142,27 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   )
 
   if (isTryError(efaResult)) {
-    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", .extractErrorMessage(efaResult))
+    errtxt <- .extractErrorMessage(efaResult)
+    errcodes <- c("L-BFGS-B needs finite values of 'fn'", "missing value where TRUE/FALSE needed",
+                  "reciprocal condition number = 0", "infinite or missing values in 'x'")
+    if (errtxt %in% errcodes) {
+      errmsg <- gettextf("Estimation failed. Internal error message: %s. %s", .extractErrorMessage(efaResult),
+                         "Try basing the analysis on a different type of matrix or change the factoring method.")
+    } else {
+      errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(efaResult))
+    }
+
     modelContainer$setError(errmsg)
-    # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
 
 # Modification here: if the estimation of the polychoric/tetrachoric correlation matrix fails with this specific error,
 # JASP replaces the internal error message with a more informative one.
-  if (isTryError(efaResult) && (.extractErrorMessage(efaResult) == "missing value where TRUE/FALSE needed"
+  if (isTryError(efaResult) && options[["basedOn"]] == "mixed" && (.extractErrorMessage(efaResult) == "missing value where TRUE/FALSE needed"
                                 || .extractErrorMessage(efaResult) == "attempt to set 'rownames' on an object with no dimensions")) {
     errmsgPolyCor <- gettextf(
       "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.
       This might be due to a small sample size or variables not containing all response categories.
-      \nInternal error message: %s", .extractErrorMessage(efaResult))
+      Internal error message: %s", .extractErrorMessage(efaResult))
     modelContainer$setError(errmsgPolyCor)
   }
 
@@ -198,7 +206,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     if (ncomp == 0)
       stop(
         gettext("No factors with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue: "), round(max(parallelResult$fa.values), 3)
+        gettext("Maximum observed eigenvalue equals "), round(max(parallelResult$fa.values), 3)
       )
     return(ncomp)
   }
@@ -281,7 +289,13 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (!ready) return()
 
-  mar <- psych::mardia(dataset, plot = FALSE)
+  mar <- try(psych::mardia(dataset, plot = FALSE), silent = TRUE)
+  if (isTryError(mar)) {
+    errmsg <- gettextf("Mardia test failed. Internal error message: %s", mar[1])
+    # with .extractErrorMessage the error is not informative because it contains multiple colons
+    marTab$setError(errmsg)
+    return()
+  }
 
   mardiaHead <- c("Skewness","Small Sample Skewness", "Kurtosis")
 

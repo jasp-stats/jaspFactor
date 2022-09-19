@@ -154,7 +154,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   )
 
   if (isTryError(pcaResult)) {
-    errmsg <- gettextf("Estimation failed. \nInternal error message: %s", .extractErrorMessage(pcaResult))
+    errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(pcaResult))
     modelContainer$setError(errmsg)
     # modelContainer$setError(.decodeVarsInMessage(names(dataset), errmsg))
   }
@@ -181,7 +181,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   if (options$factorMethod == "parallelAnalysis") {
 
     if (isTryError(parallelResult)) {
-      errmsg <- gettextf("Parallel analysis failed. \nInternal error message: %s", .extractErrorMessage(parallelResult))
+      errmsg <- gettextf("Parallel analysis failed. Internal error message: %s", .extractErrorMessage(parallelResult))
       modelContainer$setError(errmsg)
     }
 
@@ -198,7 +198,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
     if (ncomp == 0)
       stop(
         gettext("No components with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue: "), round(max(parallelResult$pc.values), 3)
+        gettext("Maximum observed eigenvalue equals "), round(max(parallelResult$pc.values), 3)
       )
     return(ncomp)
   }

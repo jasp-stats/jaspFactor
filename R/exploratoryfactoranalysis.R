@@ -291,8 +291,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
   mar <- try(psych::mardia(dataset, plot = FALSE), silent = TRUE)
   if (isTryError(mar)) {
-    errmsg <- gettextf("Mardia test failed. Internal error message: %s", mar[1])
-    # with .extractErrorMessage the error is not informative because it contains multiple colons
+    errmsg <- gettextf("Mardia test failed. Internal error message: %s", .extractErrorMessage(mar))
     marTab$setError(errmsg)
     return()
   }

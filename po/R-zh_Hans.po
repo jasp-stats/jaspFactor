@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-08-27 04:06\n"
+"POT-Creation-Date: 2022-09-24 04:10\n"
 "PO-Revision-Date: 2022-09-21 16:19+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -281,9 +281,14 @@ msgstr "数据无效：变量 %s 中的缺失值太多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "数据无效：所有变量共线"
 
-msgid ""
-"Estimation failed. \n"
-"Internal error message: %s"
+#, fuzzy
+msgid "Estimation failed. Internal error message: %s. %s"
+msgstr ""
+"估计失败。\n"
+"内部错误消息：%s"
+
+#, fuzzy
+msgid "Estimation failed. Internal error message: %s"
 msgstr ""
 "估计失败。\n"
 "内部错误消息：%s"
@@ -293,8 +298,7 @@ msgid ""
 "matrix failed.\n"
 "      This might be due to a small sample size or variables not containing "
 "all response categories.\n"
-"      \n"
-"Internal error message: %s"
+"      Internal error message: %s"
 msgstr ""
 
 msgid "No factors with an eigenvalue >"
@@ -303,7 +307,8 @@ msgstr "没有具有特征值的因子 >"
 msgid "."
 msgstr "."
 
-msgid "Maximum observed eigenvalue:"
+#, fuzzy
+msgid "Maximum observed eigenvalue equals"
 msgstr "最大观测特征值："
 
 msgid "Kaiser-Meyer-Olkin test"
@@ -320,6 +325,12 @@ msgstr ""
 
 msgid "Statistic"
 msgstr ""
+
+#, fuzzy
+msgid "Mardia test failed. Internal error message: %s"
+msgstr ""
+"估计失败。\n"
+"内部错误消息：%s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
@@ -434,9 +445,7 @@ msgid "Path Diagram"
 msgstr "路径图"
 
 #, fuzzy
-msgid ""
-"Parallel analysis failed. \n"
-"Internal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 "估计失败。\n"
 "内部错误消息：%s"

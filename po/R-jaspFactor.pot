@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.16.4\n"
-"POT-Creation-Date: 2022-08-27 04:06\n"
+"POT-Creation-Date: 2022-09-24 04:10\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,10 +268,13 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid "Estimation failed. \nInternal error message: %s"
+msgid "Estimation failed. Internal error message: %s. %s"
 msgstr ""
 
-msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.\n      This might be due to a small sample size or variables not containing all response categories.\n      \nInternal error message: %s"
+msgid "Estimation failed. Internal error message: %s"
+msgstr ""
+
+msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.\n      This might be due to a small sample size or variables not containing all response categories.\n      Internal error message: %s"
 msgstr ""
 
 msgid "No factors with an eigenvalue >"
@@ -280,7 +283,7 @@ msgstr ""
 msgid "."
 msgstr ""
 
-msgid "Maximum observed eigenvalue:"
+msgid "Maximum observed eigenvalue equals"
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin test"
@@ -296,6 +299,9 @@ msgid "Mardia's Test of Multivariate Normality"
 msgstr ""
 
 msgid "Statistic"
+msgstr ""
+
+msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
 
 msgid "The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."
@@ -397,7 +403,7 @@ msgstr ""
 msgid "Path Diagram"
 msgstr ""
 
-msgid "Parallel analysis failed. \nInternal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
 msgid "No components with an eigenvalue >"

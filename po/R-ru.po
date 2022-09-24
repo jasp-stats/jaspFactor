@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-08-27 04:06\n"
+"POT-Creation-Date: 2022-09-24 04:10\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -275,9 +275,10 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid ""
-"Estimation failed. \n"
-"Internal error message: %s"
+msgid "Estimation failed. Internal error message: %s. %s"
+msgstr ""
+
+msgid "Estimation failed. Internal error message: %s"
 msgstr ""
 
 msgid ""
@@ -285,8 +286,7 @@ msgid ""
 "matrix failed.\n"
 "      This might be due to a small sample size or variables not containing "
 "all response categories.\n"
-"      \n"
-"Internal error message: %s"
+"      Internal error message: %s"
 msgstr ""
 
 msgid "No factors with an eigenvalue >"
@@ -295,7 +295,7 @@ msgstr ""
 msgid "."
 msgstr ""
 
-msgid "Maximum observed eigenvalue:"
+msgid "Maximum observed eigenvalue equals"
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin test"
@@ -311,6 +311,9 @@ msgid "Mardia's Test of Multivariate Normality"
 msgstr ""
 
 msgid "Statistic"
+msgstr ""
+
+msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
 
 msgid ""
@@ -420,9 +423,7 @@ msgstr ""
 msgid "Path Diagram"
 msgstr ""
 
-msgid ""
-"Parallel analysis failed. \n"
-"Internal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
 msgid "No components with an eigenvalue >"

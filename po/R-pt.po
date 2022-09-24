@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-08-27 04:06\n"
+"POT-Creation-Date: 2022-09-24 04:10\n"
 "PO-Revision-Date: 2022-08-29 00:17+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -293,9 +293,14 @@ msgstr "Dados inválidos: muitos valores ausentes em variável(is) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Dados inválidos: todas as variáveis são colineares"
 
-msgid ""
-"Estimation failed. \n"
-"Internal error message: %s"
+#, fuzzy
+msgid "Estimation failed. Internal error message: %s. %s"
+msgstr ""
+"A estimativa falhou. \n"
+"Mensagem de erro interna: %s"
+
+#, fuzzy
+msgid "Estimation failed. Internal error message: %s"
 msgstr ""
 "A estimativa falhou. \n"
 "Mensagem de erro interna: %s"
@@ -305,8 +310,7 @@ msgid ""
 "matrix failed.\n"
 "      This might be due to a small sample size or variables not containing "
 "all response categories.\n"
-"      \n"
-"Internal error message: %s"
+"      Internal error message: %s"
 msgstr ""
 
 #, fuzzy
@@ -316,7 +320,8 @@ msgstr "Nenhum componente com autovalor >"
 msgid "."
 msgstr "."
 
-msgid "Maximum observed eigenvalue:"
+#, fuzzy
+msgid "Maximum observed eigenvalue equals"
 msgstr "Autovalor máximo observado:"
 
 msgid "Kaiser-Meyer-Olkin test"
@@ -333,6 +338,12 @@ msgstr ""
 
 msgid "Statistic"
 msgstr ""
+
+#, fuzzy
+msgid "Mardia test failed. Internal error message: %s"
+msgstr ""
+"A estimativa falhou. \n"
+"Mensagem de erro interna: %s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
@@ -448,9 +459,7 @@ msgid "Path Diagram"
 msgstr "Diagrama de caminhos"
 
 #, fuzzy
-msgid ""
-"Parallel analysis failed. \n"
-"Internal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 "A estimativa falhou. \n"
 "Mensagem de erro interna: %s"

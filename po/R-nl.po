@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-08-27 04:06\n"
+"POT-Creation-Date: 2022-09-24 04:10\n"
 "PO-Revision-Date: 2022-06-03 15:14+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -289,9 +289,14 @@ msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Data niet valide: alle variabelen zijn collineair"
 
-msgid ""
-"Estimation failed. \n"
-"Internal error message: %s"
+#, fuzzy
+msgid "Estimation failed. Internal error message: %s. %s"
+msgstr ""
+"Schatting mislukt. \n"
+"Interne foutmelding: %s"
+
+#, fuzzy
+msgid "Estimation failed. Internal error message: %s"
 msgstr ""
 "Schatting mislukt. \n"
 "Interne foutmelding: %s"
@@ -301,8 +306,7 @@ msgid ""
 "matrix failed.\n"
 "      This might be due to a small sample size or variables not containing "
 "all response categories.\n"
-"      \n"
-"Internal error message: %s"
+"      Internal error message: %s"
 msgstr ""
 
 msgid "No factors with an eigenvalue >"
@@ -311,7 +315,8 @@ msgstr "Geen factoren met een eigenwaarde >"
 msgid "."
 msgstr "."
 
-msgid "Maximum observed eigenvalue:"
+#, fuzzy
+msgid "Maximum observed eigenvalue equals"
 msgstr "Maximaal geobserveerde eigenwaarde:"
 
 msgid "Kaiser-Meyer-Olkin test"
@@ -328,6 +333,12 @@ msgstr ""
 
 msgid "Statistic"
 msgstr ""
+
+#, fuzzy
+msgid "Mardia test failed. Internal error message: %s"
+msgstr ""
+"Schatting mislukt. \n"
+"Interne foutmelding: %s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
@@ -442,9 +453,7 @@ msgid "Path Diagram"
 msgstr "Paddiagram"
 
 #, fuzzy
-msgid ""
-"Parallel analysis failed. \n"
-"Internal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 "Schatting mislukt. \n"
 "Interne foutmelding: %s"

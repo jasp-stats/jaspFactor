@@ -169,7 +169,7 @@ Form
 				label: qsTr("Model plot")
 				name: "pathPlot"
 				CheckBox {
-					label: qsTr("Show parameters")
+					label: qsTr("Show parameter estimates")
 					name: "pathPlotParameter"
 					CheckBox { label: qsTr("Standardized")	; name: "pathPlotStandardized" }
 					DoubleField { label: qsTr("Font size")	; name: "pathPlotFontSize"		; defaultValue: 0.9; max: 5.0 }

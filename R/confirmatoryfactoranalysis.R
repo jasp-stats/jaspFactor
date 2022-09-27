@@ -1047,6 +1047,9 @@ ConfirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (.hasSlot(semPlotMod, "Thresholds"))
     semPlotMod@Thresholds$lhs <- ifelse(nchar(semPlotMod@Thresholds$lhs) > 0, decodeColNames(semPlotMod@Thresholds$lhs), "")
 
+  semPlotMod@Pars$label <- gsub("_", "", gsub("gamma", "\u03b3", gsub("lambda", "\u03bb", semPlotMod@Pars$label)))
+
+
   return(semPlotMod)
 }
 

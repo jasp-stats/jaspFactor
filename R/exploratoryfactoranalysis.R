@@ -135,7 +135,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
       nfactors = .efaGetNComp(dataset, options),
       rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
       scores   = TRUE,
-      covar    = options$basedOn == "cov",
+      covar    = options$basedOn == "covariance",
       cor      = options$basedOn,
       fm       = options$fitmethod
     )

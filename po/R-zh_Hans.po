@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2022-09-24 04:10\n"
-"PO-Revision-Date: 2022-09-21 16:19+0000\n"
+"PO-Revision-Date: 2022-09-25 11:23+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-r/zh_Hans/>\n"
@@ -281,17 +281,15 @@ msgstr "数据无效：变量 %s 中的缺失值太多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "数据无效：所有变量共线"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %s. %s"
 msgstr ""
 "估计失败。\n"
-"内部错误消息：%s"
+"内部错误消息： %s. %s"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %s"
 msgstr ""
 "估计失败。\n"
-"内部错误消息：%s"
+"内部错误消息： %s"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
@@ -300,6 +298,9 @@ msgid ""
 "all response categories.\n"
 "      Internal error message: %s"
 msgstr ""
+"糟糕，多色/四色相关矩阵的估计失败了。\n"
+"      这可能是由于样本量小或变量不包含所有响应类别。\n"
+"      内部错误消息：%s"
 
 msgid "No factors with an eigenvalue >"
 msgstr "没有具有特征值的因子 >"
@@ -307,9 +308,8 @@ msgstr "没有具有特征值的因子 >"
 msgid "."
 msgstr "."
 
-#, fuzzy
 msgid "Maximum observed eigenvalue equals"
-msgstr "最大观测特征值："
+msgstr "最大观测到的特征值等于"
 
 msgid "Kaiser-Meyer-Olkin test"
 msgstr "Kaiser-Meyer-Olkin 检验"
@@ -321,21 +321,18 @@ msgid "Bartlett's test"
 msgstr "Bartlett's 检验"
 
 msgid "Mardia's Test of Multivariate Normality"
-msgstr ""
+msgstr "Mardia 多元正态性检验"
 
 msgid "Statistic"
-msgstr ""
+msgstr "统计量"
 
-#, fuzzy
 msgid "Mardia test failed. Internal error message: %s"
-msgstr ""
-"估计失败。\n"
-"内部错误消息：%s"
+msgstr "Mardia 测试失败。内部错误消息：%s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
 "statistic for kurtosis standard normal."
-msgstr ""
+msgstr "偏度的统计量假定为 Chi^2 分布，峰度标准正态的统计量。"
 
 msgid "Chi-squared Test"
 msgstr "卡方检验"
@@ -400,30 +397,31 @@ msgstr "TLI"
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "Real data component eigenvalues"
-msgstr "没有成分具有特征值 >"
+msgstr "实际数据成分特征值"
 
 msgid ""
 "'*' = Factor should be retained.\n"
 "Results from PC-based parallel analysis."
 msgstr ""
+"'*' = 应保留因子。\n"
+"结果基于主成分(PC)的平行分析。"
 
-#, fuzzy
 msgid "Real data factor eigenvalues"
-msgstr "没有具有特征值的因子 >"
+msgstr "实际数据因子特征值"
 
 msgid ""
 "'*' = Factor should be retained.\n"
 "Results from FA-based parallel analysis."
 msgstr ""
+"'*' = 应保留因子。\n"
+"结果基于因子分析(FA)的平行分析。"
 
 msgid "Parallel Analysis"
-msgstr ""
+msgstr "平行分析"
 
-#, fuzzy
 msgid "Simulated data mean eigenvalues"
-msgstr "来自平行分析的模拟数据"
+msgstr "模拟数据平均特征值"
 
 msgid ""
 "Screeplot not available. \n"
@@ -444,11 +442,8 @@ msgstr "特征值"
 msgid "Path Diagram"
 msgstr "路径图"
 
-#, fuzzy
 msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
-"估计失败。\n"
-"内部错误消息：%s"
+msgstr "平分析失败。内部错误消息：%s"
 
 msgid "No components with an eigenvalue >"
 msgstr "没有成分具有特征值 >"

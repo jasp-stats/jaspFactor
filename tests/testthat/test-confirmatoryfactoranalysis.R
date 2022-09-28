@@ -1,7 +1,7 @@
 context("Confirmatory Factor Analysis")
 
 # 3-factor run
-options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$groupvar <- ""
 options$invariance <- "configural"
 options$mimic <- "lavaan"
@@ -16,7 +16,7 @@ options$factors <- list(
 options$identify <- "factor"
 options$missing <- "FIML"
 set.seed(1)
-results <- jaspTools::runAnalysis("ConfirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
 
 test_that("[CFA 3-Factor] Factor Covariances table results match", {
@@ -93,7 +93,7 @@ test_that("[CFA 3-Factor] Chi-square test table results match", {
 
 
 # Second-order factor
-options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
 options$groupvar <- ""
 options$invariance <- "configural"
@@ -109,7 +109,7 @@ options$factors <- list(
 options$identify <- "factor"
 options$missing <- "FIML"
 set.seed(1)
-results <- jaspTools::runAnalysis("ConfirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
 
 test_that("[CFA Second order] Factor loadings table results match", {
@@ -187,7 +187,7 @@ test_that("[CFA Second order] Chi-square test table results match", {
 
 
 test_that("Bootstrapping works", {
-  options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
+  options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
   options$groupvar <- ""
   options$invariance <- "configural"
   options$mimic <- "lavaan"
@@ -203,7 +203,7 @@ test_that("Bootstrapping works", {
   options$identify <- "factor"
   options$missing <- "FIML"
   set.seed(1)
-  results <- jaspTools::runAnalysis("ConfirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+  results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fl1"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -243,7 +243,7 @@ test_that("Bootstrapping works", {
 # fit <- cfa(HS.model, data = HolzingerSwineford1939, effect.coding = TRUE, group = "school")
 # summary(fit)
 
-options <- jaspTools::analysisOptions("ConfirmatoryFactorAnalysis")
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$groupvar <- "school"
 options$invariance <- "configural"
 options$mimic <- "lavaan"
@@ -261,7 +261,7 @@ options$rescov <-  list(c("x7", "x8"))
 options$secondOrder <- list("visual", "textual", "speed")
 set.seed(1)
 
-results <- jaspTools::runAnalysis("ConfirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
 
 test_that("Residual covariances table results match for multiple groups and effects coding", {

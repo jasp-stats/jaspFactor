@@ -129,14 +129,19 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 # If basedOn == mixed, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
 # depending on the number of response categories of the ordinal variables.
 .efaComputeResults <- function(modelContainer, dataset, options, ready) {
+  baseOn <- switch(options[["basedOn"]],
+                   correlation = "cor",
+                   covariance  = "cov",
+                   mixed       = "mixed")
+
   efaResult <- try(
     psych::fa(
       r        = dataset,
       nfactors = .efaGetNComp(dataset, options),
       rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
       scores   = TRUE,
-      covar    = options$basedOn == "cov",
-      cor      = options$basedOn,
+      covar    = options$basedOn == "covariance",
+      cor      = baseOn,
       fm       = options$fitmethod
     )
   )

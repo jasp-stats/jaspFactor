@@ -93,10 +93,6 @@ msgid "Model plot"
 msgstr "Gráfico do modelo"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Show parameters"
-msgstr "Exibir parâmetros"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
 msgstr "Exibir médias"
 
@@ -599,6 +595,10 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"

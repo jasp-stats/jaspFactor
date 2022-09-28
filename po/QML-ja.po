@@ -140,10 +140,6 @@ msgid "Model plot"
 msgstr "モデルプロット"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Show parameters"
-msgstr "パラメータの表示"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
 msgstr "標準化"
 
@@ -597,6 +593,10 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"

@@ -140,10 +140,6 @@ msgid "Model plot"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Show parameters"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
 msgstr ""
 
@@ -597,6 +593,10 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"

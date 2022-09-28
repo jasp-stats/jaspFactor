@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-09-28 09:50+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspfactor-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -583,22 +589,21 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
 msgstr "Mardia's 检验"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
 msgstr "多重性/四重性的相关矩阵"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
-msgstr ""
+msgstr "字体大小"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr ""
+msgstr "显示方差"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr ""
+msgstr "旋转绘图"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""

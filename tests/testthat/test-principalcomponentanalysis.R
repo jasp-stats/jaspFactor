@@ -256,7 +256,7 @@ test_that("Component Characteristics table results match for cov based", {
 test_that("Chi-squared Test table results match for cov based", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_gofTab"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(27.1095189593822, 5, "Model", 5.43083232250125e-05))
+                                 list(0, 5, "Model", 1))
 })
 
 test_that("Component Loadings table results match for cov based", {

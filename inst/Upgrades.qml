@@ -38,8 +38,8 @@ Upgrades
 	{
 		functionName: 		"PrincipalComponentAnalysis"
 		newFunctionName:	"principalComponentAnalysis"
-		fromVersion:		"0.16.3"
-		toVersion:			"0.16.4"
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
 
 
 		ChangeRename
@@ -86,8 +86,9 @@ Upgrades
 			{
 				switch(options["analysisBasedOn"])
 				{
-					case "correlation":		return "correlationMatrix";
-					case "covariance":		return "covarianceMatrix"
+					case "correlation":				return "correlationMatrix";
+					case "covariance":				return "covarianceMatrix";
+					case "mixedCorrelationMatrix":	return "polyTetrachoricCorrelationMatrix"
 				}
 			}
 		}
@@ -143,8 +144,8 @@ Upgrades
 	{
 		functionName: 		"ExploratoryFactorAnalysis"
 		newFunctionName:	"exploratoryFactorAnalysis"
-		fromVersion:		"0.16.3"
-		toVersion:			"0.16.4"
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
 
 		ChangeRename
 		{
@@ -167,6 +168,11 @@ Upgrades
 					case "fa":		return "factorBased";
 				}
 			}
+		}
+		ChangeRename
+		{
+			from:	"parallelSeed"
+			to:		"parallelAnalysisSeed"
 		}
 		ChangeRename
 		{
@@ -196,7 +202,8 @@ Upgrades
 				switch(options["analysisBasedOn"])
 				{
 					case "correlation":		return "correlationMatrix";
-					case "covariance":		return "covarianceMatrix"
+					case "covariance":		return "covarianceMatrix";
+					case "mixed":			return "polyTetrachoricCorrelationMatrix";
 				}
 			}
 		}
@@ -252,6 +259,11 @@ Upgrades
 		}
 		ChangeRename
 		{
+			from:	"martest"
+			to:		"mardiaTest"
+		}
+		ChangeRename
+		{
 			from:	"missingValues"
 			to:		"naAction"
 		}
@@ -288,6 +300,13 @@ Upgrades
 		ChangeRename	{ from: "plotpars";					to: "pathPlotParameter"			}
 		ChangeRename	{ from: "plotstd";					to: "pathPlotStandardized"		}
 		ChangeRename	{ from: "plotmeans";				to: "pathPlotMean"				}
+	}
+
+
+	Upgrade
+	{
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
 
 		ChangeRename	{
 			from:	"includemeanstructure"

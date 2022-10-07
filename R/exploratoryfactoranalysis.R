@@ -124,13 +124,13 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 
 # Results functions ----
 # Modification here: added "cor" argument to the fa function.
-# If analysisBasedOn == polyTetrachoricMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
+# If analysisBasedOn == polyTetrachoricCorrelationMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
 # depending on the number of response categories of the ordinal variables.
 .efaComputeResults <- function(modelContainer, dataset, options, ready) {
   corMethod <- switch(options[["analysisBasedOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
-                      "polyTetrachoricMatrix" = "mixed")
+                      "polyTetrachoricCorrelationMatrix" = "mixed")
 
   factoringMethod <- switch(options[["factoringMethod"]],
                             "minimumResidual"         = "minres",
@@ -187,7 +187,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaGetNComp <- function(dataset, options) {
   if (options$factorCountMethod == "manual") return(options$manualNumberOfFactors)
 
-  if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
@@ -239,7 +239,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # If a polychoric/tetrachoric-correlation-based FA is requested, then compute the KMO values
   # based on said correlation matrix:
   # else: analysis carries on as usual
-  if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     kmo <- psych::KMO(polyTetraCor$rho)
   }
@@ -265,7 +265,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!ready) return()
 
 
-  if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     bar <- psych::cortest.bartlett(polyTetraCor$rho, n = nrow(dataset))
   }
@@ -545,7 +545,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 .efaParallelTable <- function(modelContainer, dataset, options, ready) {
   if (!options[["parallelAnalysisTable"]] || !is.null(modelContainer[["paTab"]])) return()
 
-  if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
@@ -625,7 +625,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     # if "BasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
     # correlation matrix.
 
-    if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+    if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
       polyTetraCor <- psych::mixedCor(dataset)
       set.seed(options[["parallelAnalysisSeed"]])
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,

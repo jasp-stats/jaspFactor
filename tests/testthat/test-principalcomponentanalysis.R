@@ -279,7 +279,7 @@ options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "parallelAnalysis"
-options$analysisBasedOn <- "polyTetrachoricMatrix"
+options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 

@@ -173,7 +173,7 @@ Form
 			}
 			RadioButton
 			{
-				value: "polyTetrachoricMatrix"
+				value: "polyTetrachoricCorrelationMatrix"
 				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
 		}

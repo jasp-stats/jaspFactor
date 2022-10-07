@@ -226,7 +226,7 @@ options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$loadingsDisplayLimit <- 0.1
-options$analysisBasedOn <- "polyTetrachoricMatrix"
+options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
 options$mardiaTest <- TRUE
 options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"

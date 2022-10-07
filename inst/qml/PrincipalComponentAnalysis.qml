@@ -136,6 +136,11 @@ Form
 				value: "covarianceMatrix"
 				label: qsTr("Covariance matrix")
 			}
+			RadioButton
+			{
+				value: "polyTetrachoricCorrelationMatrix"
+				label: qsTr("Polychoric/tetrachoric correlation matrix")
+			}
 		}
 	}
 

@@ -140,7 +140,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   corMethod <- switch(options[["analysisBasedOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
-                      "polyTetrachoricMatrix" = "mixed")
+                      "polyTetrachoricCorrelationMatrix" = "mixed")
 
   pcaResult <- try(
     psych::principal(
@@ -166,7 +166,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options$componentCountMethod == "manual") return(options$manualNumberOfComponents)
 
-  if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
@@ -379,7 +379,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
   if (options[["screePlotParallelAnalysisResults"]]) {
 
-    if (options[["analysisBasedOn"]] == "polyTetrachoricMatrix") {
+    if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
       polyTetraCor <- psych::mixedCor(dataset)
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,

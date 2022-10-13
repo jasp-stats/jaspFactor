@@ -114,6 +114,8 @@ Form
 		Group
 		{
 			CheckBox { label: qsTr("Additional fit measures")   ; name: "fitMeasures"   }
+			CheckBox { label: qsTr("Kaiser-Meyer-Olkin (KMO) test"); name: "kaiserMeyerOlkin"}
+			CheckBox { label: qsTr("Bartlett's test of sphericity"); name: "bartlett"}
 			CheckBox { label: qsTr("R-Squared")                 ; name: "rSquared"         }
 		}
 		Group
@@ -228,6 +230,20 @@ Form
 			RadioButton { label: qsTr("ULS")  ; value: "unweightedLeastSquares"			}
 			RadioButton { label: qsTr("DWLS") ; value: "diagonallyWeightedLeastSquares"	}
 		}
+
+		DropDown
+			{
+				name: "naAction"
+				label: qsTr("Missing data handling")
+				values:
+				[
+					{ label: qsTr("FIML")				, value: "fiml"				},
+					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
+					{ label: qsTr("Pairwise")			, value: "pairwise"			},
+					{ label: qsTr("Two-stage")			, value: "twoStage"			},
+					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
+				]
+			}
 
 		RadioButtonGroup
 		{

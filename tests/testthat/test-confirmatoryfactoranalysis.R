@@ -14,7 +14,9 @@ options$factors <- list(
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
-options$missing <- "FIML"
+options$naAction <- "listwise"
+options$kaiserMeyerOlkin <- TRUE
+options$bartlett <- TRUE
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
@@ -92,6 +94,21 @@ test_that("[CFA 3-Factor] Chi-square test table results match", {
                            "Factor model", 8.50255310602677e-09))
 })
 
+test_that("Kaiser-Meyer-Olkin (KMO) test table results match", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_kmo"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("x1", 0.805021226632053, "x2", 0.777938285398466, "x3", 0.734302877282004,
+                                      "x4", 0.763262045280562, "x5", 0.73872385651986, "x6", 0.807559054803425,
+                                      "x7", 0.593046810632567, "x8", 0.682937939231282, "x9", 0.787864851859471,
+                                      "Overall", 0.752244592603047))
+})
+
+test_that("Bartlett's test of sphericity table results match", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_bartlett"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(904.097051036859, 36, 1.9120788740615e-166))
+})
+
 
 # Second-order factor
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
@@ -108,7 +125,7 @@ options$factors <- list(
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
-options$missing <- "FIML"
+options$naAction <- "listwise"
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
@@ -202,7 +219,7 @@ test_that("Bootstrapping works", {
     list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
   )
   options$modelIdentification <- "factorVariance"
-  options$missing <- "FIML"
+  options$naAction <- "listwise"
   set.seed(1)
   results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
@@ -257,8 +274,8 @@ options$factors <- list(
   list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "speed")
 )
 options$modelIdentification <- "effectsCoding"
-options$missing <- "FIML"
 options$residualsCovarying <-  list(c("x7", "x8"))
+options$naAction <- "listwise"
 options$secondOrder <- list("visual", "textual", "speed")
 set.seed(1)
 

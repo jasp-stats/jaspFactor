@@ -210,7 +210,7 @@ Form
 					RadioButtonGroup
 					{
 						name:   "parallelMethodTable"
-						title:  qsTr("")
+						title:  ""
 
 						RadioButton
 						{

@@ -30,7 +30,7 @@ Description
 	Analysis
 	{
 		title:	qsTr("Confirmatory Factor Analysis")
-		func:	"ConfirmatoryFactorAnalysis"
-		qml:	"ConfirmatoryFactorAnalysis.qml"
+		func:	"confirmatoryFactorAnalysis"
+		qml:    "ConfirmatoryFactorAnalysis.qml"
 	}
 }

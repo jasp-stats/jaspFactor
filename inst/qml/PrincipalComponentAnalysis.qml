@@ -23,79 +23,81 @@ import JASP.Controls 1.0
 
 Form
 {
-	
 
-	CheckBox { name: "incl_GoF"; checked: true; visible: false }
-	CheckBox { name: "incl_fitIndices"; checked: false; visible: false }
-	CheckBox { name: "incl_loadings"; checked: true; visible: false }
-	IntegerField { name: "plotHeightPathDiagram"; defaultValue: 0; visible: false }
-	IntegerField { name: "plotHeightScreePlot"  ; defaultValue: 300; visible: false }
-	IntegerField { name: "plotWidthPathDiagram" ; defaultValue: 480; visible: false }
-	IntegerField { name: "plotWidthScreePlot"   ; defaultValue: 300; visible: false }
 
 	VariablesForm
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		AvailableVariablesList { name: "allVariablesList" }
-        AssignedVariablesList
-        {
-            id: variables
-            name: "variables"
-            title: qsTr("Variables")
-			suggestedColumns: ["scale","ordinal"]
-			allowedColumns: ["scale","ordinal"]
-        }
+		AssignedVariablesList
+		{
+			id: variables
+			name: "variables"
+			title: qsTr("Variables")
+			suggestedColumns: ["scale"]
+			allowedColumns: ["scale"]
+		}
 	}
 
 
 	RadioButtonGroup
 	{
-		name: "factorMethod"
-		title: qsTr("Number of Components")
+		name: "componentCountMethod"
+		title: qsTr("Number of Components based on")
 		RadioButton
 		{
 			value: "parallelAnalysis"; label: qsTr("Parallel analysis"); checked: true
 
-            RadioButtonGroup
-            {
-                name:  "parallelMethod"
+			RadioButtonGroup
+			{
+				name:  "parallelAnalysisMethod"
 				title: ""
 
-                RadioButton
-                {
-                    value:   "pc"
-                    label:   qsTr("Based on PC")
-                    checked: true
-                }
-                RadioButton
-                {
-                    value: "fa"
-                    label: qsTr("Based on FA")
-                }
-            }
+				RadioButton
+				{
+					value:		"principalComponentBased"
+					label:		qsTr("Based on principal components")
+					checked:	true
+				}
+				RadioButton
+				{
+					value: "factorBased"
+					label: qsTr("Based on factors")
+				}
+			}
 		}
 		RadioButton
 		{
 			value: "eigenValues"; label: qsTr("Eigenvalues")
-			DoubleField { name: "eigenValuesBox"; label: qsTr("Eigenvalues above"); defaultValue: 1; decimals: 1 }
+			DoubleField {
+				name:			"eigenValuesAbove"
+				label:			qsTr("Eigenvalues above")
+				defaultValue:	1
+				decimals:		1
+			}
 		}
 		RadioButton
 		{
 			value: "manual"; label: qsTr("Manual")
-			IntegerField { name: "numberOfFactors"; label: qsTr("Number of components"); defaultValue: 1; min: 1 }
+			IntegerField {
+				name:			"manualNumberOfComponents"
+				label:			qsTr("Number of components")
+				defaultValue:	1
+				min:			1
+			}
 		}
 	}
 
-    Group
-    {
-        RadioButtonGroup
-        {
-            name: "rotationMethod"
-            title: qsTr("Rotation")
-            RadioButton
-            {
-                value	: "orthogonal"
-                label	: qsTr("Orthogonal")
+	Group
+	{
+		RadioButtonGroup
+		{
+			name: "rotationMethod"
+			title: qsTr("Rotation")
+			RadioButton
+			{
+				value	: "orthogonal"
+				label	: qsTr("Orthogonal")
 				DropDown
 				{
 					name: "orthogonalSelector"
@@ -108,38 +110,39 @@ Form
 						{ label: "geominT"		, value: "geominT"		}
 					]
 				}
-            }
-            RadioButton
-            {
-                value	: "oblique"
-                label	: qsTr("Oblique")
-                checked	: true
-                DropDown { name: "obliqueSelector"; values: [ "promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ" ] }
-            }
-        }
-
-        RadioButtonGroup
-        {
-            name: "basedOn"
-            title: qsTr("Base decomposition on")
+			}
 			RadioButton
 			{
-				value: "correlation"
+				value	: "oblique"
+				label	: qsTr("Oblique")
+				checked	: true
+				DropDown { name: "obliqueSelector";
+					values: [ "promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ" ] }
+			}
+		}
+
+		RadioButtonGroup
+		{
+			name: "analysisBasedOn"
+			title: qsTr("Base decomposition on")
+			RadioButton
+			{
+				value: "correlationMatrix"
 				label: qsTr("Correlation matrix")
 				checked: true
 			}
 			RadioButton
 			{
-				value: "covariance"
+				value: "covarianceMatrix"
 				label: qsTr("Covariance matrix")
 			}
 			RadioButton
 			{
-				value: "mixedCorrelationMatrix"
+				value: "polyTetrachoricCorrelationMatrix"
 				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
-        }
-    }
+		}
+	}
 
 	Section
 	{
@@ -147,8 +150,8 @@ Form
 
 		Slider
 		{
-			name: "highlightText"
-			label: qsTr("Highlight")
+			name: "loadingsDisplayLimit"
+			label: qsTr("Display loadings above")
 			value: 0.4
 		}
 
@@ -156,7 +159,7 @@ Form
 		{
 			RadioButtonGroup
 			{
-				name: "componentLoadingsSort"
+				name: "componentLoadingsOrder"
 				title: qsTr("Order component loadings by")
 				RadioButton	{ name: "sortByComponentSize";	label: qsTr("Component size");	checked: true		}
 				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
@@ -165,18 +168,21 @@ Form
 			Group
 			{
 				title: qsTr("Table")
-				CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
+				CheckBox { name: "componentCorrelations";	label: qsTr("Component correlations")		}
 			}
 			Group
 			{
 				title: qsTr("Plots")
-				CheckBox { name: "incl_pathDiagram";	label: qsTr("Path diagram")				}
 				CheckBox {
-					name:  "incl_screePlot";
+					name: "pathDiagram"
+					label: qsTr("Path diagram")
+				}
+				CheckBox {
+					name:  "screePlot";
 					label: qsTr("Scree plot")
 
 					CheckBox {
-						name:		"screeDispParallel"
+						name:		"screePlotParallelAnalysisResults"
 						label:		qsTr("Parallel analysis results")
 						checked:	true
 					}
@@ -186,26 +192,26 @@ Form
 
 		RadioButtonGroup
 		{
-			name: "missingValues"
+			name: "naAction"
 			title: qsTr("Missing Values")
 			RadioButton { value: "pairwise";		label: qsTr("Exclude cases pairwise"); checked: true	}
 			RadioButton { value: "listwise";		label: qsTr("Exclude cases listwise")					}
 		}
 
-		CheckBox 
+		CheckBox
 		{
 			debug: true
-            id: addPC
-            name: "addPC"
-            text: qsTr("Add PC scores to data")
-            enabled: variables.count > 1
+			id: addPC
+			name: "addComponentScores"
+			text: qsTr("Add PC scores to data")
+			enabled: variables.count > 1
 
-            ComputedColumnField { 
-                name: 		"PCPrefix"
-                text: 		"Prefix: "
-                fieldWidth: 120
-                visible:    addPC.checked
-            }
-        }
+			ComputedColumnField {
+				name: 		"componentsPrefix"
+				text: 		"Prefix: "
+				fieldWidth: 120
+				visible:    addPC.checked
+			}
+		}
 	}
 }

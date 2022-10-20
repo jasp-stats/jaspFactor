@@ -23,14 +23,6 @@ import JASP.Controls 1.0
 Form
 {
 
-
-	CheckBox { name: "incl_GoF"; checked: true; visible: false }
-	CheckBox { name: "incl_loadings"; checked: true; visible: false }
-	IntegerField { name: "plotHeightPathDiagram"; defaultValue: 0; visible: false }
-	IntegerField { name: "plotHeightScreePlot"  ; defaultValue: 300; visible: false }
-	IntegerField { name: "plotWidthPathDiagram" ; defaultValue: 480; visible: false }
-	IntegerField { name: "plotWidthScreePlot"   ; defaultValue: 300; visible: false }
-
 	VariablesForm
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
@@ -49,71 +41,81 @@ Form
 	{
 		RadioButtonGroup
 		{
-			name: "factorMethod"
-			title: qsTr("Number of Factors")
-            RadioButton
-            {
-                value:      "parallelAnalysis";
-                label:      qsTr("Parallel analysis");
-                checked:    true
+			name: "factorCountMethod"
+			title: qsTr("Number of Factors based on")
+			RadioButton
+			{
+				value:      "parallelAnalysis";
+				label:      qsTr("Parallel analysis");
+				checked:    true
 
-                RadioButtonGroup
-                {
-                    name:   "parallelMethod"
+				RadioButtonGroup
+				{
+					name:   "parallelAnalysisMethod"
 					title:  ""
 
-                    RadioButton
-                    {
-                        value:      "pc"
-                        label:      qsTr("Based on PC")
-                        checked:    true
-                    }
-                    RadioButton
-                    {
-                        value: "fa"
-                        label: qsTr("Based on FA")
-                    }
-                }
+					RadioButton
+					{
+						value:		"principalComponentBased"
+						label:		qsTr("Based on PC")
+						checked:	true
+					}
+					RadioButton
+					{
+						value: "factorBased"
+						label: qsTr("Based on FA")
+					}
+				}
 				IntegerField
 				{
-					name: 			"parallelSeed"
+					name: 			"parallelAnalysisSeed"
 					label: 			"Seed"
 					defaultValue: 	1234
 					fieldWidth: 	60
 					min: 			1
 					max: 			1e6
 				}
-            }
+			}
 
-            RadioButton
+			RadioButton
 			{
-				value: "eigenValues";					label: qsTr("Eigenvalues")
-				DoubleField { name: "eigenValuesBox"; label: qsTr("Eigenvalues above"); defaultValue: 1; decimals: 1 }
+				value: "eigenValues"; label: qsTr("Eigenvalues")
+				DoubleField {
+					name:			"eigenValuesAbove"
+					label:			qsTr("Eigenvalues above")
+					defaultValue:	1
+					decimals:		1
+				}
 			}
 			RadioButton
 			{
-				value: "manual";						label: qsTr("Manual")
-				IntegerField { name: "numberOfFactors"; label: qsTr("Number of factors"); defaultValue: 1; min: 1 }
+				value: "manual"; label: qsTr("Manual")
+				IntegerField {
+					name:			"manualNumberOfFactors"
+					label:			qsTr("Number of factors")
+					defaultValue:	1
+					min:			1
+				}
 			}
 		}
 
 		Group
 		{
-			title: qsTr("Estimation method")
+			title: qsTr("Factoring method")
 			DropDown
 			{
-				name: "fitmethod"
+				name: "factoringMethod"
 				indexDefaultValue: 0
 				values:
 				[
-					{ value: "minres",		label: qsTr("Minimum residual")				},
-					{ value: "ml",			label: qsTr("Maximum likelihood")			},
-					{ value: "pa",			label: qsTr("Principal axis factoring")		},
-					{ value: "ols",			label: qsTr("Ordinary least squares")		},
-					{ value: "wls",			label: qsTr("Weighted least squares") 		},
-					{ value: "gls",			label: qsTr("Generalized least squares")	},
-					{ value: "minchi",		label: qsTr("Minimum chi-square") 			},
-					{ value: "minrank",		label: qsTr("Minimum rank")					}
+					{ label: qsTr("Minimum residual"),			value: "minimumResidual"		},
+					{ label: qsTr("Maximum likelihood"),		value: "maximumLikelihood"		},
+					{ label: qsTr("Principal axis factoring"),	value: "principalAxis"			},
+					{ label: qsTr("Ordinary least squares"),	value: "ordinaryLeastSquares"	},
+					{ label: qsTr("Weighted least squares"),	value: "weightedLeastSquares"	},
+					{ label: qsTr("Generalized least squares"), value: "generalizedLeastSquares"},
+					{ label: qsTr("Minimum chi-square"),		value: "minimumChiSquare"		},
+					{ label: qsTr("Minimum rank"),				value: "minimumRank"			}
 				]
 			}
 		}
@@ -156,22 +158,22 @@ Form
 
 		RadioButtonGroup
 		{
-			name: "basedOn"
+			name: "analysisBasedOn"
 			title: qsTr("Base analysis on")
 			RadioButton
 			{
-				value: "correlation"
+				value: "correlationMatrix"
 				label: qsTr("Correlation matrix")
 				checked: true
 			}
 			RadioButton
 			{
-				value: "covariance"
+				value: "covarianceMatrix"
 				label: qsTr("Covariance matrix")
 			}
 			RadioButton
 			{
-				value: "mixed"
+				value: "polyTetrachoricCorrelationMatrix"
 				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
 		}
@@ -183,13 +185,13 @@ Form
 		Group
 		{
 			Slider {
-				name: "highlightText"
-				label: qsTr("Highlight")
+				name: "loadingsDisplayLimit"
+				label: qsTr("Display loadings above")
 				value: 0.4
 			}
 			RadioButtonGroup
 			{
-				name: "factorLoadingsSort"
+				name: "factorLoadingsOrder"
 				title: qsTr("Order factor loadings by")
 				RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
 				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
@@ -201,26 +203,26 @@ Form
 			Group
 			{
 				title: qsTr("Tables")
-				CheckBox { name: "incl_structure";		label: qsTr("Structure matrix")			}
-				CheckBox { name: "incl_correlations";	label: qsTr("Factor correlations")		}
-				CheckBox { name: "incl_fitIndices";		label: qsTr("Additional fit indices")	}
+				CheckBox { name: "factorStructure";		label: qsTr("Structure matrix")			}
+				CheckBox { name: "factorCorrelations";	label: qsTr("Factor correlations")		}
+				CheckBox { name: "fitIndices";		label: qsTr("Additional fit indices")	}
 				CheckBox {
-					name:	"incl_PAtable";
+					name:	"parallelAnalysisTable";
 					label:	qsTr("Parallel analysis")
 					RadioButtonGroup
 					{
-						name:   "parallelMethodTable"
+						name:   "parallelAnalysisTableMethod"
 						title:  qsTr("")
 
 						RadioButton
 						{
-							value:      "pc"
+							value:      "principalComponentBased"
 							label:      qsTr("Based on PC")
 							checked:    true
 						}
 						RadioButton
 						{
-							value: "fa"
+							value: "factorBased"
 							label: qsTr("Based on FA")
 						}
 					}
@@ -229,13 +231,13 @@ Form
 			Group
 			{
 				title: qsTr("Plots")
-				CheckBox { name: "incl_pathDiagram";	label: qsTr("Path diagram")				}
+				CheckBox { name: "pathDiagram";	label: qsTr("Path diagram")				}
 				CheckBox {
-					name:  "incl_screePlot";
+					name:  "screePlot";
 					label: qsTr("Scree plot")
 
 					CheckBox {
-						name:		"screeDispParallel"
+						name:		"screePlotParallelAnalysisResults"
 						label:		qsTr("Parallel analysis results")
 						checked:	true
 					}
@@ -247,13 +249,13 @@ Form
 		Group
 		{
 			title: qsTr("Assumption checks")
-			CheckBox { name: "kmotest";				label: qsTr("KMO test")					}
-			CheckBox { name: "bartest";				label: qsTr("Bartlett's test")	}
-			CheckBox { name: "martest";				label: qsTr("Mardia's test")	  }
+			CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
+			CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
+			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  }
 		}
 		RadioButtonGroup
 		{
-			name: "missingValues"
+			name: "naAction"
 			title: qsTr("Missing Values")
 			RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
 			RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}

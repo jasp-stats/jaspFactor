@@ -4,11 +4,13 @@ import JASP.Module 	1.0
 Upgrades
 {
 
+	// These changes were introduced in https://github.com/jasp-stats/jaspFactor/pull/93
 	Upgrade
 	{
-		functionName:		"PrincipalComponentAnalysis"
-		fromVersion:		"0.16"
-		toVersion:			"0.16.1"
+		functionName:       "PrincipalComponentAnalysis"
+		newFunctionName:	"principalComponentAnalysis"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
 
 		ChangeSetValue
 		{
@@ -18,13 +20,13 @@ Upgrades
 		}
 	}
 
-
+	// These changes were introduced in https://github.com/jasp-stats/jaspFactor/pull/93
 	Upgrade
 	{
-
-		functionName:		"ExploratoryFactorAnalysis"
-		fromVersion:		"0.16"
-		toVersion:			"0.16.1"
+		functionName:       "ExploratoryFactorAnalysis"
+		newFunctionName:	"exploratoryFactorAnalysis"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
 
 		ChangeSetValue
 		{
@@ -34,10 +36,24 @@ Upgrades
 		}
 	}
 
+	// These changes were introduced in https://github.com/jasp-stats/jaspFactor/pull/104
 	Upgrade
 	{
-		functionName: 		"PrincipalComponentAnalysis"
-		newFunctionName:	"principalComponentAnalysis"
+		functionName:		"ConfirmatoryFactorAnalysis"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
+
+		ChangeRename	{ from: "misfitplot";			to: "misfitPlot"			}
+		ChangeRename	{ from: "pathplot";				to: "pathPlot"				}
+		ChangeRename	{ from: "plotpars";				to: "pathPlotParameter"		}
+		ChangeRename	{ from: "plotstd";				to: "pathPlotStandardized"	}
+		ChangeRename	{ from: "plotmeans";			to: "pathPlotMean"			}
+	}
+
+	// Renaming for Syntax: https://github.com/jasp-stats/jaspFactor/pull/109
+	Upgrade
+	{
+		functionName: 		"principalComponentAnalysis"
 		fromVersion:		"0.16.4"
 		toVersion:			"0.17.0"
 
@@ -59,8 +75,8 @@ Upgrades
 			{
 				switch(options["parallelAnalysisMethod"])
 				{
-					case "pc":		return "principalComponentBased";
-					case "fa":		return "factorBased";
+				case "pc":		return "principalComponentBased";
+				case "fa":		return "factorBased";
 				}
 			}
 		}
@@ -86,9 +102,9 @@ Upgrades
 			{
 				switch(options["analysisBasedOn"])
 				{
-					case "correlation":				return "correlationMatrix";
-					case "covariance":				return "covarianceMatrix";
-					case "mixedCorrelationMatrix":	return "polyTetrachoricCorrelationMatrix"
+				case "correlation":				return "correlationMatrix";
+				case "covariance":				return "covarianceMatrix";
+				case "mixedCorrelationMatrix":	return "polyTetrachoricCorrelationMatrix"
 				}
 			}
 		}
@@ -142,8 +158,7 @@ Upgrades
 
 	Upgrade
 	{
-		functionName: 		"ExploratoryFactorAnalysis"
-		newFunctionName:	"exploratoryFactorAnalysis"
+		functionName: 		"exploratoryFactorAnalysis"
 		fromVersion:		"0.16.4"
 		toVersion:			"0.17.0"
 
@@ -164,8 +179,8 @@ Upgrades
 			{
 				switch(options["parallelAnalysisMethod"])
 				{
-					case "pc":		return "principalComponentBased";
-					case "fa":		return "factorBased";
+				case "pc":		return "principalComponentBased";
+				case "fa":		return "factorBased";
 				}
 			}
 		}
@@ -201,9 +216,9 @@ Upgrades
 			{
 				switch(options["analysisBasedOn"])
 				{
-					case "correlation":		return "correlationMatrix";
-					case "covariance":		return "covarianceMatrix";
-					case "mixed":			return "polyTetrachoricCorrelationMatrix";
+				case "correlation":		return "correlationMatrix";
+				case "covariance":		return "covarianceMatrix";
+				case "mixed":			return "polyTetrachoricCorrelationMatrix";
 				}
 			}
 		}
@@ -274,37 +289,23 @@ Upgrades
 			{
 				switch(options["factoringMethod"])
 				{
-					case "minres":	return "minimumResidual";
-					case "ml":		return "maximumLikelihood";
-					case "pa":		return "principalAxis";
-					case "ols":		return "ordinaryLeastSquares";
-					case "wls":		return "weightedLeastSquares";
-					case "gls":		return "generalizedLeastSquares";
-					case "minchi":	return "minimumChiSquare";
-					case "minrank":	return "minimumRank";
+				case "minres":	return "minimumResidual";
+				case "ml":		return "maximumLikelihood";
+				case "pa":		return "principalAxis";
+				case "ols":		return "ordinaryLeastSquares";
+				case "wls":		return "weightedLeastSquares";
+				case "gls":		return "generalizedLeastSquares";
+				case "minchi":	return "minimumChiSquare";
+				case "minrank":	return "minimumRank";
 				}
 			}
 		}
 	}
 
-
 	Upgrade
 	{
-		functionName: 		"ConfirmatoryFactorAnalysis"
+		functionName:		"ConfirmatoryFactorAnalysis"
 		newFunctionName:	"confirmatoryFactorAnalysis"
-		fromVersion:		"0.16.3"
-		toVersion:			"0.16.4"
-
-		ChangeRename	{ from: "misfitplot";				to: "misfitPlot"				}
-		ChangeRename	{ from: "pathplot";					to: "pathPlot"					}
-		ChangeRename	{ from: "plotpars";					to: "pathPlotParameter"			}
-		ChangeRename	{ from: "plotstd";					to: "pathPlotStandardized"		}
-		ChangeRename	{ from: "plotmeans";				to: "pathPlotMean"				}
-	}
-
-
-	Upgrade
-	{
 		fromVersion:		"0.16.4"
 		toVersion:			"0.17.0"
 
@@ -331,9 +332,9 @@ Upgrades
 			{
 				switch(options["modelIdentification"])
 				{
-					case "factor":		return "factorVariance";
-					case "marker":		return "markerVariable";
-					case "effects":		return "effectsCoding";
+				case "factor":		return "factorVariance";
+				case "marker":		return "markerVariable";
+				case "effects":		return "effectsCoding";
 				}
 			}
 		}
@@ -432,12 +433,12 @@ Upgrades
 			{
 				switch(options["estimator"])
 				{
-					case "ML":		return "maximumLikelihood";
-					case "GLS":		return "generalizedLeastSquares";
-					case "WLS":		return "weightedLeastSquares";
-					case "ULS":		return "unweightedLeastSquares";
-					case "DWLS":	return "diagonallyWeightedLeastSquares";
-					default:		return options["estimator"]
+				case "ML":		return "maximumLikelihood";
+				case "GLS":		return "generalizedLeastSquares";
+				case "WLS":		return "weightedLeastSquares";
+				case "ULS":		return "unweightedLeastSquares";
+				case "DWLS":	return "diagonallyWeightedLeastSquares";
+				default:		return options["estimator"]
 				}
 			}
 		}
@@ -448,12 +449,12 @@ Upgrades
 			{
 				switch(options["standardized"])
 				{
-					case "lv":		return "latentVariables";
-					case "nox":		return "noExogenousCovariates";
-					default:		return options["standardized"]
+				case "lv":		return "latentVariables";
+				case "nox":		return "noExogenousCovariates";
+				default:		return options["standardized"]
 				}
 			}
 		}
-
 	}
 }
+

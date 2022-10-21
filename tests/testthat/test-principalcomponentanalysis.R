@@ -327,6 +327,7 @@ options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
 
+options("mc.cores" = 1L)
 set.seed(1)
 results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
 

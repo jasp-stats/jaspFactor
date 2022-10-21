@@ -203,9 +203,10 @@ Form
 			Group
 			{
 				title: qsTr("Tables")
-				CheckBox { name: "factorStructure";		label: qsTr("Structure matrix")			}
+				CheckBox { name: "factorStructure";			label: qsTr("Structure matrix")				}
 				CheckBox { name: "factorCorrelations";	label: qsTr("Factor correlations")		}
-				CheckBox { name: "fitIndices";		label: qsTr("Additional fit indices")	}
+				CheckBox { name: "fitIndices";					label: qsTr("Additional fit indices")	}
+				CheckBox { name: "residualMatrix";			label: qsTr("Residual matrix")				}
 				CheckBox {
 					name:	"parallelAnalysisTable";
 					label:	qsTr("Parallel analysis")
@@ -228,6 +229,7 @@ Form
 					}
 				}
 			}
+
 			Group
 			{
 				title: qsTr("Plots")

@@ -2,8 +2,6 @@ context("Principal Component Analysis")
 
 # does not test
 # - error handling
-# - oblique rotation
-# - Parallel analysis / manual
 # - slider
 
 
@@ -13,6 +11,7 @@ options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$pathDiagram <- TRUE
 options$screePlot <- TRUE
+options$residualMatrix <- TRUE
 options$componentCountMethod <- "eigenValues"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -45,6 +44,19 @@ test_that("Component Characteristics table results match with varimax rotation",
                                       1.34610446616205, 0.251215603687833, 0.269220893232411, "Component 2",
                                       0.490210889783784, 0.490210889783784, 1.19497643047975, 1.10494998275686,
                                       0.238995286095951, 0.220989996551372))
+})
+
+test_that("Residual Matrix table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_residualTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("contNormal", 0.494098364850579, 0.0406497391363535, 0.142790676592631,
+                                      -0.259544102254463, 0.287479555208803, "contGamma", 0.0406497391363535,
+                                      0.426552751857732, 0.35944859178909, 0.154167617583788, -0.0297744482768839,
+                                      "debCollin1", 0.142790676592631, 0.35944859178909, 0.388000487607394,
+                                      -0.0764961170814851, -0.137220517578011, "contcor1", -0.259544102254463,
+                                      0.154167617583788, -0.0764961170814851, 0.556716214776696, 0.247688236920046,
+                                      "facFifty", 0.287479555208803, -0.0297744482768839, -0.137220517578011,
+                                      0.247688236920046, 0.683577731988681))
 })
 
 test_that("Path Diagram plot matches", {
@@ -279,6 +291,8 @@ options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "parallelAnalysis"
+options$parallelAnalysisTable <- TRUE
+options$parallelAnalysisSeed <- 1234
 options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -303,4 +317,25 @@ test_that("Component Loadings table results match for mixed based", {
                                       0.585162070030343, "contGamma", 0.277117722692202, 0.923205767769888,
                                       "debCollin1", 0.624793529702314, 0.609633045242123, "contcor1",
                                       0.551422298513999, 0.695933448701539, "facFive"))
+})
+
+
+options <- jaspTools::analysisOptions("principalComponentAnalysis")
+options$componentCountMethod <- "parallelAnalysis"
+options$parallelAnalysisMethod <- "principalComponentBased"
+options$parallelAnalysisTable <- TRUE
+options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
+options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+
+set.seed(1)
+results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
+
+test_that("Parallel Analysis table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1*", 1.7795916550878, 1.3666469872842, "Factor 2*", 1.28644706023115,
+                                      1.16634731028432, "Factor 3*", 1.08333785331839, 1.04662919278838,
+                                      "Factor 4", 0.848949206589453, 0.937115883176427, "Factor 5",
+                                      0.696170865182367, 0.806896345892467, "Factor 6", 0.305503359590833,
+                                      0.676364280574212))
 })

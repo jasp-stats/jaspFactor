@@ -65,6 +65,15 @@ Form
 					label: qsTr("Based on factors")
 				}
 			}
+			IntegerField
+			{
+				name: 			"parallelAnalysisSeed"
+				label: 			"Seed"
+				defaultValue: 	1234
+				fieldWidth: 	60
+				min: 			1
+				max: 			1e6
+			}
 		}
 		RadioButton
 		{
@@ -167,8 +176,30 @@ Form
 
 			Group
 			{
-				title: qsTr("Table")
+				title: qsTr("Tables")
 				CheckBox { name: "componentCorrelations";	label: qsTr("Component correlations")		}
+				CheckBox { name: "residualMatrix";				label: qsTr("Residual matrix")					}
+				CheckBox {
+					name:	"parallelAnalysisTable";
+					label:	qsTr("Parallel analysis")
+					RadioButtonGroup
+					{
+						name:   "parallelAnalysisTableMethod"
+						title:  qsTr("")
+
+						RadioButton
+						{
+							value:      "principalComponentBased"
+							label:      qsTr("Based on PC")
+							checked:    true
+						}
+						RadioButton
+						{
+							value: "factorBased"
+							label: qsTr("Based on FA")
+						}
+					}
+				}
 			}
 			Group
 			{

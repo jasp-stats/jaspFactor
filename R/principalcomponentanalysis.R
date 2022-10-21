@@ -32,6 +32,8 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   .pcaLoadingsTable(      modelContainer, dataset, options, ready)
   .pcaEigenTable(         modelContainer, dataset, options, ready)
   .pcaCorrTable(          modelContainer, dataset, options, ready)
+  .pcaResidualTable(      modelContainer, dataset, options, ready)
+  .pcaParallelTable(      modelContainer, dataset, options, ready)
   .pcaScreePlot(          modelContainer, dataset, options, ready)
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
@@ -82,7 +84,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
       # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
-      error_variables <- .unv(names(Np)[Np < P])
+      error_variables <- names(Np)[Np < P]
       if (length(error_variables) > 0) {
         return(gettextf("Data not valid: too many missing values in variable(s) %s.",
                         paste(error_variables, collapse = ", ")))
@@ -361,10 +363,103 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   for (i in 1:dims) {
     thisname <- paste("Component", i)
     correlationTable$addColumnInfo(name = thisname, title = thisname, type = "number", format = "dp:3")
-    correlationTable[[thisname]] <- cors[,i]
+    correlationTable[[thisname]] <- cors[, i]
   }
 
 }
+
+.pcaResidualTable <- function(modelContainer, dataset, options, ready) {
+
+  if (!options[["residualMatrix"]] || !is.null(modelContainer[["residualTable"]])) return()
+  residualTable <- createJaspTable(gettext("Residual Matrix"))
+  residualTable$dependOn("residualMatrix")
+  residualTable$addColumnInfo(name = "col1", title = "", type = "string")
+  residualTable$position <- 5
+  modelContainer[["residualTable"]] <- residualTable
+
+  if (!ready || modelContainer$getError()) return()
+
+  pcaResult <- modelContainer[["model"]][["object"]]
+
+  residuals <- pcaResult$residual
+  cols <- ncol(residuals)
+  residualTable[["col1"]] <- options[["variables"]] # fill the rows
+
+  for (i in 1:cols) {
+    value <- paste0("value", i)
+    residualTable$addColumnInfo(name = value, title = options[["variables"]][i], type = "number", format = "dp:3")
+    residualTable[[value]] <- residuals[, i]
+  }
+
+}
+
+
+.pcaParallelTable <- function(modelContainer, dataset, options, ready) {
+  if (!options[["parallelAnalysisTable"]] || !is.null(modelContainer[["parallelTable"]])) return()
+
+  if (!ready || modelContainer$getError()) return()
+
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+    polyTetraCor <- psych::mixedCor(dataset)
+    set.seed(options[["parallelAnalysisSeed"]])
+    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+                                             plot = FALSE,
+                                             fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
+                                                         "pc", "fa"),
+                                             n.obs = nrow(dataset)))
+  } else {
+    set.seed(options[["parallelAnalysisSeed"]])
+    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
+                                             fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
+                                                         "pc", "fa")))
+  }
+
+  if (options$parallelAnalysisTableMethod == "principalComponentBased") {
+    eigTitle <- gettext("Real data component eigenvalues")
+    rowsName <- gettext("Factor")
+    RealDataEigen <- parallelResult$pc.values
+    print(RealDataEigen)
+    ResampledEigen <- parallelResult$pc.sim
+    footnote <- gettext("'*' = Factor should be retained. Results from PC-based parallel analysis.")
+  } else { # parallelAnalysisMethod is FA
+    eigTitle <- gettext("Real data factor eigenvalues")
+    rowsName <- gettext("Component")
+    RealDataEigen <- parallelResult$fa.values
+    ResampledEigen <- parallelResult$fa.sim
+    footnote <- gettext("'*' = Factor should be retained. Results from FA-based parallel analysis.")
+  }
+
+  parallelTable <- createJaspTable(gettext("Parallel Analysis"))
+  parallelTable$dependOn(c("parallelAnalysisTable", "parallelAnalysisTableMethod", "parallelAnalysisSeed"))
+  parallelTable$addColumnInfo(name = "col", title = "", type = "string")
+
+  parallelTable$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
+  parallelTable$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
+  parallelTable$position <- 6
+  modelContainer[["parallelTable"]] <- parallelTable
+
+  pcaResult <- modelContainer[["model"]][["object"]]
+  PAs <- zapsmall(as.matrix(data.frame(RealDataEigen, ResampledEigen), fix.empty.names = FALSE))
+  forasterisk <- data.frame(applyforasterisk = RealDataEigen - ResampledEigen)
+  dims <- nrow(PAs)
+
+  firstcol <- data.frame()
+  for (i in 1:dims) {
+    if (forasterisk$applyforasterisk[i] > 0) {
+      firstcol <- rbind(firstcol, paste(rowsName, " ", i,"*", sep = ""))
+    } else {
+      firstcol <- rbind(firstcol, paste(rowsName, i))
+    }
+  }
+
+  parallelTable[["col"]] <- firstcol[[1]]
+  parallelTable[["val1"]] <- c(RealDataEigen)
+  parallelTable[["val2"]] <- c(ResampledEigen)
+
+  parallelTable$addFootnote(message = footnote)
+}
+
+
 
 .pcaScreePlot <- function(modelContainer, dataset, options, ready) {
   if (!options[["screePlot"]] || !is.null(modelContainer[["scree"]])) return()
@@ -468,7 +563,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   # Variable names
   xName   <- ifelse(options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none", "PC", "RC")
   factors <- paste0(xName, seq_len(ncol(LY)))
-  labels  <- .unv(rownames(LY))
+  labels  <- rownames(LY)
 
   # Number of variables:
   nFactor    <- length(factors)

@@ -9,12 +9,12 @@ Principcal Component Analysis is used to represent the data in smaller component
 
 ### Input 
 ---
-#### Asssignment Box 
+#### Assignment Box 
 - Included Variables: In this box, the variables to perform the principal component analysis on are selected. 
 
 #### Number of Components  
 - Here, the number of components that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
-  - Parallel Analysis: Components are selected on the basis of parallel analysis. With this method, components are selected when their eigenvalue is bigger than the parallel average random eigenvalue. This method is selected by default. 
+  - Parallel Analysis: Factors are selected on the basis of parallel analysis. With this method, factors are selected when their eigenvalue is greater than the parallel average random eigenvalue. This method is selected by default. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). A seed (1234) is chosen by default so that the results from the parallel analysis are equal across the PCA.
   - Eigenvalues: Components are selected when they have a certain eigenvalue. By default components are selected that have an eigenvalue above 1. 
   - Manual: The number of components can be specified manually. By default this is set to 1. 
 
@@ -46,6 +46,8 @@ Principcal Component Analysis is used to represent the data in smaller component
 - Highlight: This option cuts the scaling of paths in width and color saturation. Paths with absolute weights over this value will have the strongest color intensity and become wider the stronger they are, and paths with absolute weights under this value will have the smallest width and become vaguer the weaker the weight. If set to 0, no cutoff is used and all paths vary in width and color.
 - Include Tables: 
     - Component correlations: When selecting this option, a table with the correlations between the components will be displayed. 
+    - Residual matrix: Displays a table containing the residual variances and correlations
+    - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of factors above.
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and component will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each component. A scree plot can be used to decide how many components should be selected.  
 - Missing values: 

@@ -33,7 +33,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   .pcaEigenTable(         modelContainer, dataset, options, ready)
   .pcaCorrTable(          modelContainer, dataset, options, ready)
   .pcaResidualTable(      modelContainer, dataset, options, ready)
-  .pcaParallelTable(      modelContainer, dataset, options, ready)
+  .parallelAnalysisTable( modelContainer, dataset, options, ready, name = "Component")
   .pcaScreePlot(          modelContainer, dataset, options, ready)
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
@@ -392,73 +392,6 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
 }
-
-
-.pcaParallelTable <- function(modelContainer, dataset, options, ready) {
-  if (!options[["parallelAnalysisTable"]] || !is.null(modelContainer[["parallelTable"]])) return()
-
-  if (!ready || modelContainer$getError()) return()
-
-  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
-    polyTetraCor <- psych::mixedCor(dataset)
-    set.seed(options[["parallelAnalysisSeed"]])
-    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
-                                             plot = FALSE,
-                                             fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
-                                                         "pc", "fa"),
-                                             n.obs = nrow(dataset)))
-  } else {
-    set.seed(options[["parallelAnalysisSeed"]])
-    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
-                                             fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
-                                                         "pc", "fa")))
-  }
-
-  if (options$parallelAnalysisTableMethod == "principalComponentBased") {
-    eigTitle <- gettext("Real data component eigenvalues")
-    rowsName <- gettext("Factor")
-    RealDataEigen <- parallelResult$pc.values
-    print(RealDataEigen)
-    ResampledEigen <- parallelResult$pc.sim
-    footnote <- gettext("'*' = Factor should be retained. Results from PC-based parallel analysis.")
-  } else { # parallelAnalysisMethod is FA
-    eigTitle <- gettext("Real data factor eigenvalues")
-    rowsName <- gettext("Component")
-    RealDataEigen <- parallelResult$fa.values
-    ResampledEigen <- parallelResult$fa.sim
-    footnote <- gettext("'*' = Factor should be retained. Results from FA-based parallel analysis.")
-  }
-
-  parallelTable <- createJaspTable(gettext("Parallel Analysis"))
-  parallelTable$dependOn(c("parallelAnalysisTable", "parallelAnalysisTableMethod", "parallelAnalysisSeed"))
-  parallelTable$addColumnInfo(name = "col", title = "", type = "string")
-
-  parallelTable$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
-  parallelTable$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
-  parallelTable$position <- 6
-  modelContainer[["parallelTable"]] <- parallelTable
-
-  pcaResult <- modelContainer[["model"]][["object"]]
-  PAs <- zapsmall(as.matrix(data.frame(RealDataEigen, ResampledEigen), fix.empty.names = FALSE))
-  forasterisk <- data.frame(applyforasterisk = RealDataEigen - ResampledEigen)
-  dims <- nrow(PAs)
-
-  firstcol <- data.frame()
-  for (i in 1:dims) {
-    if (forasterisk$applyforasterisk[i] > 0) {
-      firstcol <- rbind(firstcol, paste(rowsName, " ", i,"*", sep = ""))
-    } else {
-      firstcol <- rbind(firstcol, paste(rowsName, i))
-    }
-  }
-
-  parallelTable[["col"]] <- firstcol[[1]]
-  parallelTable[["val1"]] <- c(RealDataEigen)
-  parallelTable[["val2"]] <- c(ResampledEigen)
-
-  parallelTable$addFootnote(message = footnote)
-}
-
 
 
 .pcaScreePlot <- function(modelContainer, dataset, options, ready) {

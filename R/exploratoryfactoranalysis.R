@@ -40,7 +40,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   .efaCorrTable(         modelContainer, dataset, options, ready)
   .efaAdditionalFitTable(modelContainer, dataset, options, ready)
   .efaResidualTable(     modelContainer,          options, ready)
-  .efaParallelTable(     modelContainer, dataset, options, ready)
+  .parallelAnalysisTable(modelContainer, dataset, options, ready, name = "Factor")
   .efaScreePlot(         modelContainer, dataset, options, ready)
   .efaPathDiagram(       modelContainer, dataset, options, ready)
 
@@ -569,7 +569,7 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 
-.efaParallelTable <- function(modelContainer, dataset, options, ready) {
+.parallelAnalysisTable <- function(modelContainer, dataset, options, ready, name = "Factor") {
   if (!options[["parallelAnalysisTable"]] || !is.null(modelContainer[["parallelTable"]])) return()
 
   if (!ready || modelContainer$getError()) return()
@@ -587,21 +587,20 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                          "pc", "fa")))
-    print(parallelResult)
   }
 
   if (options$parallelAnalysisTableMethod == "principalComponentBased") {
     eigTitle <- gettext("Real data component eigenvalues")
-    rowsName <- gettext("Factor")
+    rowsName <- gettext(name)
     RealDataEigen <- parallelResult$pc.values
     ResampledEigen <- parallelResult$pc.sim
-    footnote <- gettext("'*' = Factor should be retained. Results from PC-based parallel analysis.")
+    footnote <- gettextf("'*' = %s should be retained. Results from PC-based parallel analysis.", name)
   } else { # parallelAnalysisMethod is FA
     eigTitle <- gettext("Real data factor eigenvalues")
-    rowsName <- gettext("Factor")
+    rowsName <- gettext(name)
     RealDataEigen <- parallelResult$fa.values
     ResampledEigen <- parallelResult$fa.sim
-    footnote <- gettext("'*' = Factor should be retained. Results from FA-based parallel analysis.")
+    footnote <- gettextf("'*' = %s should be retained. Results from FA-based parallel analysis.")
   }
 
   parallelTable <- createJaspTable(gettext("Parallel Analysis"))

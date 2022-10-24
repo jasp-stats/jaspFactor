@@ -32,6 +32,8 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   .pcaLoadingsTable(      modelContainer, dataset, options, ready)
   .pcaEigenTable(         modelContainer, dataset, options, ready)
   .pcaCorrTable(          modelContainer, dataset, options, ready)
+  .pcaResidualTable(      modelContainer, dataset, options, ready)
+  .parallelAnalysisTable( modelContainer, dataset, options, ready, name = "Component")
   .pcaScreePlot(          modelContainer, dataset, options, ready)
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
@@ -82,7 +84,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 
       # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
-      error_variables <- .unv(names(Np)[Np < P])
+      error_variables <- names(Np)[Np < P]
       if (length(error_variables) > 0) {
         return(gettextf("Data not valid: too many missing values in variable(s) %s.",
                         paste(error_variables, collapse = ", ")))
@@ -361,10 +363,36 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   for (i in 1:dims) {
     thisname <- paste("Component", i)
     correlationTable$addColumnInfo(name = thisname, title = thisname, type = "number", format = "dp:3")
-    correlationTable[[thisname]] <- cors[,i]
+    correlationTable[[thisname]] <- cors[, i]
   }
 
 }
+
+.pcaResidualTable <- function(modelContainer, dataset, options, ready) {
+
+  if (!options[["residualMatrix"]] || !is.null(modelContainer[["residualTable"]])) return()
+  residualTable <- createJaspTable(gettext("Residual Matrix"))
+  residualTable$dependOn("residualMatrix")
+  residualTable$addColumnInfo(name = "col1", title = "", type = "string")
+  residualTable$position <- 5
+  modelContainer[["residualTable"]] <- residualTable
+
+  if (!ready || modelContainer$getError()) return()
+
+  pcaResult <- modelContainer[["model"]][["object"]]
+
+  residuals <- pcaResult$residual
+  cols <- ncol(residuals)
+  residualTable[["col1"]] <- options[["variables"]] # fill the rows
+
+  for (i in 1:cols) {
+    value <- paste0("value", i)
+    residualTable$addColumnInfo(name = value, title = options[["variables"]][i], type = "number", format = "dp:3")
+    residualTable[[value]] <- residuals[, i]
+  }
+
+}
+
 
 .pcaScreePlot <- function(modelContainer, dataset, options, ready) {
   if (!options[["screePlot"]] || !is.null(modelContainer[["scree"]])) return()
@@ -468,7 +496,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   # Variable names
   xName   <- ifelse(options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none", "PC", "RC")
   factors <- paste0(xName, seq_len(ncol(LY)))
-  labels  <- .unv(rownames(LY))
+  labels  <- rownames(LY)
 
   # Number of variables:
   nFactor    <- length(factors)

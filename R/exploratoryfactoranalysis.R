@@ -39,7 +39,8 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   .efaEigenTable(        modelContainer, dataset, options, ready)
   .efaCorrTable(         modelContainer, dataset, options, ready)
   .efaAdditionalFitTable(modelContainer, dataset, options, ready)
-  .efaParallelTable(           modelContainer, dataset, options, ready)
+  .efaResidualTable(     modelContainer,          options, ready)
+  .parallelAnalysisTable(modelContainer, dataset, options, ready, name = "Factor")
   .efaScreePlot(         modelContainer, dataset, options, ready)
   .efaPathDiagram(       modelContainer, dataset, options, ready)
 
@@ -521,8 +522,11 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   fitTable$dependOn("fitIndices")
   fitTable$addColumnInfo(name = "RMSEA",   title = gettext("RMSEA"), type = "number", format = "dp:3")
   fitTable$addColumnInfo(name = "RMSEAci", title = gettextf("RMSEA 90%% confidence"),   type = "string")
+  fitTable$addColumnInfo(name = "SRMR",    title = gettext("SRMR"),   type = "number", format = "dp:3")
   fitTable$addColumnInfo(name = "TLI",     title = gettext("TLI"),   type = "number", format = "dp:3")
+  fitTable$addColumnInfo(name = "CFI",     title = gettext("CFI"),   type = "number", format = "dp:3")
   fitTable$addColumnInfo(name = "BIC",     title = gettext("BIC"),   type = "number", format = "dp:3")
+
   fitTable$position <- 4.5
   modelContainer[["fitTable"]] <- fitTable
 
@@ -539,20 +543,66 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   fitTable[["TLI"]]     <- if (is.null(efaResults$TLI))      NA  else efaResults$TLI
   fitTable[["BIC"]]     <- if (is.null(efaResults$BIC))      NA  else efaResults$BIC
 
+  # SRMR, see Hu and Bentler (1998)
+  if (is.null(efaResults$Phi)) {
+    phi <- diag(efaResults$factors)
+  } else {
+    phi <- efaResults$Phi
+  }
+
+  impl <- efaResults$loadings[] %*% phi %*% t(efaResults$loadings[]) + diag(diag(efaResults$residual))
+  cmat_data <- efaResults$r
+  lobs <-  cmat_data[!lower.tri(cmat_data)]
+  limp <-  impl[!lower.tri(impl)]
+  fitTable[["SRMR"]] <- sqrt(mean((limp - lobs)^2))
+
+  # CFI (see Hu & Bentler, 1998)
+  d0 <- efaResults$null.chisq - efaResults$null.dof
+  dmod <- efaResults$STATISTIC - efaResults$dof
+  fitTable[["CFI"]] <- 1 - (max(dmod, 0) / max(d0, dmod, 0))
+
 }
 
 
-.efaParallelTable <- function(modelContainer, dataset, options, ready) {
-  if (!options[["parallelAnalysisTable"]] || !is.null(modelContainer[["paTab"]])) return()
+.efaResidualTable <- function(modelContainer, options, ready) {
+
+  if (!options[["residualMatrix"]] || !is.null(modelContainer[["residualTable"]])) return()
+  residualTable <- createJaspTable(gettext("Residual Matrix"))
+  residualTable$dependOn("residualMatrix")
+  residualTable$addColumnInfo(name = "col1", title = "", type = "string")
+  residualTable$position <- 5
+  modelContainer[["residualTable"]] <- residualTable
+
+  if (!ready || modelContainer$getError()) return()
+
+  efaResult <- modelContainer[["model"]][["object"]]
+
+  residuals <- efaResult$residual
+  cols <- ncol(residuals)
+  residualTable[["col1"]] <- options[["variables"]] # fill the rows
+
+  for (i in 1:cols) {
+    value <- paste0("value", i)
+    residualTable$addColumnInfo(name = value, title = options[["variables"]][i], type = "number", format = "dp:3")
+    residualTable[[value]] <- residuals[, i]
+  }
+
+}
+
+
+.parallelAnalysisTable <- function(modelContainer, dataset, options, ready, name = "Factor") {
+  if (!options[["parallelAnalysisTable"]] || !is.null(modelContainer[["parallelTable"]])) return()
+
+  if (!ready || modelContainer$getError()) return()
 
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
-                                 plot = FALSE,
-                                 fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
-                                             "pc", "fa"),
-                                 n.obs = nrow(dataset)))
+                                             plot = FALSE,
+                                             fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
+                                                         "pc", "fa"),
+                                             n.obs = nrow(dataset)))
   } else {
     set.seed(options[["parallelAnalysisSeed"]])
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
@@ -560,30 +610,29 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
                                                          "pc", "fa")))
   }
 
-   if (options$parallelAnalysisTableMethod == "principalComponentBased") {
+  if (options$parallelAnalysisTableMethod == "principalComponentBased") {
     eigTitle <- gettext("Real data component eigenvalues")
-    rowsName <- gettext("Factor")
+    rowsName <- gettext(name)
     RealDataEigen <- parallelResult$pc.values
     ResampledEigen <- parallelResult$pc.sim
-    footnote <- gettext("'*' = Factor should be retained. Results from PC-based parallel analysis.")
+    footnote <- gettextf("'*' = %s should be retained. Results from PC-based parallel analysis.", name)
   } else { # parallelAnalysisMethod is FA
     eigTitle <- gettext("Real data factor eigenvalues")
-    rowsName <- gettext("Factor")
+    rowsName <- gettext(name)
     RealDataEigen <- parallelResult$fa.values
     ResampledEigen <- parallelResult$fa.sim
-    footnote <- gettext("'*' = Factor should be retained. Results from FA-based parallel analysis.")
+    footnote <- gettextf("'*' = %s should be retained. Results from FA-based parallel analysis.", name)
   }
 
-  paTab <- createJaspTable(gettext("Parallel Analysis"))
-  paTab$dependOn(c("parallelAnalysisTable", "parallelAnalysisTableMethod"))
-  paTab$addColumnInfo(name = "col", title = "", type = "string")
+  parallelTable <- createJaspTable(gettext("Parallel Analysis"))
+  parallelTable$dependOn(c("parallelAnalysisTable", "parallelAnalysisTableMethod", "parallelAnalysisSeed"))
+  parallelTable$addColumnInfo(name = "col", title = "", type = "string")
 
-  paTab$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
-  paTab$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
-  paTab$position <- 5
-  modelContainer[["paTab"]] <- paTab
+  parallelTable$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
+  parallelTable$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"), type = "number", format = "dp:3")
+  parallelTable$position <- 6
+  modelContainer[["parallelTable"]] <- parallelTable
 
-  if (!ready || modelContainer$getError()) return()
 
   efaResult <- modelContainer[["model"]][["object"]]
   PAs <- zapsmall(as.matrix(data.frame(RealDataEigen, ResampledEigen), fix.empty.names = FALSE))
@@ -599,13 +648,13 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     }
   }
 
-  paTab[["col"]] <- firstcol[[1]]
-  paTab[["val1"]] <- c(RealDataEigen)
-  paTab[["val2"]] <- c(ResampledEigen)
+  parallelTable[["col"]] <- firstcol[[1]]
+  parallelTable[["val1"]] <- c(RealDataEigen)
+  parallelTable[["val2"]] <- c(ResampledEigen)
 
-
-  paTab$addFootnote(message = footnote)
+  parallelTable$addFootnote(message = footnote)
 }
+
 
 .efaScreePlot <- function(modelContainer, dataset, options, ready) {
   if (!options[["screePlot"]] || !is.null(modelContainer[["scree"]])) return()

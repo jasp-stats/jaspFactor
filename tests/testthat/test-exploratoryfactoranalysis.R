@@ -15,6 +15,7 @@ options$fitIndices <- TRUE
 options$pathDiagram <- TRUE
 options$screePlot <- TRUE
 options$factorStructure <- TRUE
+options$residualMatrix <- TRUE
 options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
@@ -43,9 +44,9 @@ test_that("Factor Characteristics table results match", {
 test_that("Additional fit indices table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(-32.7898349546892, 0, "0 - 0.065", 1.20127892716016))
+                                 list(-32.7898349547043, 1, 0, "0 - 0.065", 0.0303448017639664, 1.20127892716092
+                                 ))
 })
-
 test_that("Chi-squared Test table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -60,6 +61,28 @@ test_that("Factor Loadings table results match", {
                            "contcor2", "", "", 0.953108905280117, "facFifty", "", 0.997800455330077,
                            0.00428892032601724, "contExpon", "", "", 0.998135387367175,
                            "debCollin1", "", "", 0.958751715702742, "debEqual1"))
+})
+
+test_that("Residual Matrix table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_residualTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("contWide", 0.951432334370607, 0.0112373371683486, -0.00454295818756886,
+                                      -0.0148706449107472, -0.00519428394442353, -0.125257443372847,
+                                      0.020275526281743, "contcor1", 0.0112373371683486, 0.57413710932081,
+                                      0.00471350991178054, 0.0263330466494297, -0.0127263359328001,
+                                      0.00285880595202862, 0.0382189272536737, "contcor2", -0.00454295818756886,
+                                      0.00471350991178077, -0.0025570747054946, -0.0178203074176956,
+                                      0.0108200520284527, 0.0172047845713419, -0.0387548561505903,
+                                      "facFifty", -0.0148706449107472, 0.0263330466494297, -0.0178203074176956,
+                                      0.9531089052801, 0.0141245292541732, -0.00176631106058231, -0.0632960313074266,
+                                      "contExpon", -0.00519428394442353, -0.0127263359328001, 0.0108200520284527,
+                                      0.0141245292541732, 0.00428892032584216, 0.0201554960330016,
+                                      0.00347754876308279, "debCollin1", -0.125257443372847, 0.00285880595202862,
+                                      0.0172047845713419, -0.00176631106058231, 0.0201554960330016,
+                                      0.998135387367303, 0.00898031463684731, "debEqual1", 0.020275526281743,
+                                      0.0382189272536737, -0.0387548561505903, -0.0632960313074266,
+                                      0.00347754876308276, 0.00898031463684731, 0.958751715702019
+                                 ))
 })
 
 test_that("Path Diagram plot matches", {
@@ -255,7 +278,7 @@ test_that("Mardia's Test of Multivariate Normality table results match with poly
 })
 
 test_that("Parallel Analysis table results match with poly cor", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_paTab"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Factor 1*", 1.78311572348898, 1.35019729324916, "Factor 2*",
                                       1.28924116893078, 1.18561012192069, "Factor 3*", 1.08833059622023,
@@ -263,3 +286,27 @@ test_that("Parallel Analysis table results match with poly cor", {
                                       "Factor 5", 0.688011322780564, 0.816974205065407, "Factor 6",
                                       0.305368493190363, 0.695722958312017))
 })
+
+
+
+options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options$factorCountMethod <- "parallelAnalysis"
+options$parallelAnalysisMethod <- "principalComponentBased"
+options$parallelAnalysisTable <- TRUE
+options$rotationMethod <- "oblique"
+options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+
+options("mc.cores" = 1L)
+set.seed(1)
+results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+
+test_that("Parallel Analysis table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1*", 1.7795916550878, 1.3666469872842, "Factor 2*", 1.28644706023115,
+                                      1.16634731028432, "Factor 3*", 1.08333785331839, 1.04662919278838,
+                                      "Factor 4", 0.848949206589453, 0.937115883176427, "Factor 5",
+                                      0.696170865182367, 0.806896345892467, "Factor 6", 0.305503359590833,
+                                      0.676364280574212))
+})
+

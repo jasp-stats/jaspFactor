@@ -54,8 +54,8 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Include Tables: 
     - Factor correlations: When selecting this option, a table with the correlations between the factors will be displayed. 
     - Additional fit indices: This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model. 
-    - Residual matrix: A table containing the residual variances and correlations
-    - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA).
+    - Residual matrix: Displays a table containing the residual variances and correlations
+    - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of factors above
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
 - Assumption Checks:
@@ -103,9 +103,11 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Additional Fit Indices: 
   These fit indices provide information about the fit of the model. 
   - Model: The model obtained from the exploratory factor analysis. 
-  - RMSEA: Root Mean Square Error of Approximation. Corrects for parsimony. When models peform the same, but   model 1 has more degrees of freedom than model 2, model 1 will be recommended. Browne and Cudeck (1993)      advise a value less than 0.08 for an acceptable model fit, less than 0.05 a good model fit, and advice to    reject models with values of 0.1 or higher. However, there is absolute agreement on these cutoffs. 
+  - RMSEA: Root Mean Square Error of Approximation. Corrects for parsimony. When models peform the same, but   model 1 has more degrees of freedom than model 2, model 1 will be recommended. Browne and Cudeck (1993) advise a value less than 0.08 for an acceptable model fit, less than 0.05 a good model fit, and advice to reject models with values of 0.1 or higher. However, there is absolute agreement on these cutoffs. 
   - RMSEA 90% confidence interval: The 90% confidence interval of the Root Mean Square Error of Approximation. 
+  - SRMR: Standardized root mean square residual. Cutoffs similar to RMSEA
   - TLI: Tucker-Lewis Index. Evaluates the fit compared to a more resticted, nested baseline model. Hopwood and Donnallan (2010) suggested that a value higher than .9 indicates a good fit. However, there is no consensus about this cutoff. 
+  - CFI: Comparative fit index. Cutoffs similar to TLI
   - BIC: Bayesian Information Criterion. This measure is useful for comparing the performances of different models on the same data, where a lower value indicates a better fitting model. 
   
 - Parallel Analysis: The table displays as many factors as variables selected for analysis, eigenvalues corresponding to the real-data factor, and the eigenvalue corresponding to the parallel mean resampled value. It will display an asterisk along the names of the factors advised to be retained (whose real-data eigenvalue is greater than the resampled-data mean value). Note that, even when selecting a PC-based parallel analysis, the table will refer to "factors" as the ones advised to be retained instead of "components"; this is due to common usage of the PC-based parallel analysis method for assessing the number of factors within EFA (e.g., Golino et al., 2020).
@@ -135,6 +137,7 @@ The scree plot provides information on how much variance in the data, indicated 
     decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205.
 - Hopwood, C. J., & Donnellan, M. B. (2010). How should the internal structure 
     of personality inventories be evaluated? *Personality and Social Psychology Review, 14*, 332–346.
+- Hu, L.-t., & Bentler, P. M. (1998). Fit indices in covariance structure modeling: Sensitivity to underparameterized model misspecification. *Psychological Methods, 3*(4), 424–453. https://doi.org/10.1037/1082-989X.3.4.424
 - Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. *Biometrika*, *57*(3), 519-530.
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in 
     exploratory factor analysis. *Best Practices in Quantitative Methods*, 86-99.

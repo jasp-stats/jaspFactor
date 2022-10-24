@@ -522,8 +522,11 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   fitTable$dependOn("fitIndices")
   fitTable$addColumnInfo(name = "RMSEA",   title = gettext("RMSEA"), type = "number", format = "dp:3")
   fitTable$addColumnInfo(name = "RMSEAci", title = gettextf("RMSEA 90%% confidence"),   type = "string")
+  fitTable$addColumnInfo(name = "SRMR",    title = gettext("SRMR"),   type = "number", format = "dp:3")
   fitTable$addColumnInfo(name = "TLI",     title = gettext("TLI"),   type = "number", format = "dp:3")
+  fitTable$addColumnInfo(name = "CFI",     title = gettext("CFI"),   type = "number", format = "dp:3")
   fitTable$addColumnInfo(name = "BIC",     title = gettext("BIC"),   type = "number", format = "dp:3")
+
   fitTable$position <- 4.5
   modelContainer[["fitTable"]] <- fitTable
 
@@ -539,6 +542,24 @@ exploratoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   fitTable[["RMSEAci"]] <- paste(rmsealo, "-", rmseahi)
   fitTable[["TLI"]]     <- if (is.null(efaResults$TLI))      NA  else efaResults$TLI
   fitTable[["BIC"]]     <- if (is.null(efaResults$BIC))      NA  else efaResults$BIC
+
+  # SRMR, see Hu and Bentler (1998)
+  if (is.null(efaResults$Phi)) {
+    phi <- diag(efaResults$factors)
+  } else {
+    phi <- efaResults$Phi
+  }
+
+  impl <- efaResults$loadings[] %*% phi %*% t(efaResults$loadings[]) + diag(diag(efaResults$residual))
+  cmat_data <- efaResults$r
+  lobs <-  cmat_data[!lower.tri(cmat_data)]
+  limp <-  impl[!lower.tri(impl)]
+  fitTable[["SRMR"]] <- sqrt(mean((limp - lobs)^2))
+
+  # CFI (see Hu & Bentler, 1998)
+  d0 <- efaResults$null.chisq - efaResults$null.dof
+  dmod <- efaResults$STATISTIC - efaResults$dof
+  fitTable[["CFI"]] <- 1 - (max(dmod, 0) / max(d0, dmod, 0))
 
 }
 

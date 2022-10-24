@@ -44,9 +44,9 @@ test_that("Factor Characteristics table results match", {
 test_that("Additional fit indices table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(-32.7898349546892, 0, "0 - 0.065", 1.20127892716016))
+                                 list(-32.7898349547043, 1, 0, "0 - 0.065", 0.0303448017639664, 1.20127892716092
+                                 ))
 })
-
 test_that("Chi-squared Test table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -309,3 +309,4 @@ test_that("Parallel Analysis table results match", {
                                       0.696170865182367, 0.806896345892467, "Factor 6", 0.305503359590833,
                                       0.676364280574212))
 })
+

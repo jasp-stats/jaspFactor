@@ -139,7 +139,7 @@ options$rotationMethod <- "oblique"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
-results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "debug.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
 
 
 
@@ -161,10 +161,10 @@ test_that("Factor Characteristics table results match", {
 })
 
 test_that("Additional fit indices table results match", {
-
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(-32.7898349546892, 0, "0 - 0.065", 1.20127892716016))
+                                 list(-32.7898349547043, 1, 0, "0 - 0.065", 0.0303448017639664, 1.20127892716092
+                                 ))
 })
 
 test_that("Chi-squared Test table results match", {

@@ -1,4 +1,5 @@
 import(jaspBase)
 export(principalComponentAnalysis)
 export(exploratoryFactorAnalysis)
-export(ConfirmatoryFactorAnalysis)
+export(confirmatoryFactorAnalysis)
+

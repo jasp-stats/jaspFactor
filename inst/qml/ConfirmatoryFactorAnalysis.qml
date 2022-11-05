@@ -80,17 +80,17 @@ Form
 		Group
 		{
 			title: qsTr("Model Options")
-			CheckBox { label: qsTr("Include mean structure")      ; name: "includemeanstructure"   ; id: meanstructure }
-			CheckBox { label: qsTr("Assume factors uncorrelated") ; name: "uncorrelatedFactors"    }
-			CheckBox { label: qsTr("Fix exogenous covariates")    ; name: "fixExogenousCovariates" ; checked: true ; visible: false }
+			CheckBox { label: qsTr("Include mean structure")      ; name: "meanStructure"   ; id: meanstructure }
+			CheckBox { label: qsTr("Assume factors uncorrelated") ; name: "factorsUncorrelated"    }
+			CheckBox { label: qsTr("Fix exogenous covariates")    ; name: "exogenousCovariatesFixed" ; checked: true ; visible: false }
 			DropDown
 			{
-				label: qsTr("Factor Scaling")
-				name: "identify"
+				label: qsTr("Model identification")
+				name: "modelIdentification"
 				values: [
-					{ label: qsTr("Factor variances"),	value: "factor"  },
-					{ label: qsTr("Marker variable"),	value: "marker"  },
-					{ label: qsTr("Effects coding"),	value: "effects" }
+					{ label: qsTr("Factor variances"),	value: "factorVariance" },
+					{ label: qsTr("Marker variable"),	value: "markerVariable" },
+					{ label: qsTr("Effects coding"),	value: "effectsCoding"  }
 				]
 			}
 		}
@@ -102,8 +102,8 @@ Form
 			{
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-				AvailableVariablesList {name: "observedvars";	source: factors.name	}
-				AssignedPairsVariablesList { name: "rescov" }
+				AvailableVariablesList {		name: "observedvars";	source: factors.name	}
+				AssignedPairsVariablesList {	name: "residualsCovarying"						}
 			}
 		}
 	}
@@ -113,24 +113,24 @@ Form
 		title: qsTr("Additional Output")
 		Group
 		{
-			CheckBox { label: qsTr("Additional fit measures")   ; name: "additionalfits"   }
-			CheckBox { label: qsTr("R-Squared")                 ; name: "rsquared"         }
+			CheckBox { label: qsTr("Additional fit measures")   ; name: "fitMeasures"   }
+			CheckBox { label: qsTr("R-Squared")                 ; name: "rSquared"         }
 		}
 		Group
 		{
-			CheckBox { label: qsTr("Implied covariance matrix")  ; name: "impliedCov" }
-			CheckBox { label: qsTr("Residual covariance matrix") ; name: "residCov"   }
+			CheckBox { label: qsTr("Implied covariance matrix")  ; name: "impliedCovarianceMatrix"		}
+			CheckBox { label: qsTr("Residual covariance matrix") ; name: "residualCovarianceMatrix"		}
 			CheckBox {
 				label: qsTr("Modification indices")
-				name: "modIndices"
+				name: "modificationIndices"
 				DoubleField {
 					label: qsTr("Cutoff")
-					name: "miCutoff"
+					name: "modificationIndicesCutoff"
 					min: 0
 					defaultValue: 3.84
 				}
 			}
-			CheckBox { label: qsTr("Show lavaan syntax")         ; name: "showSyntax" }
+			CheckBox { label: qsTr("Show lavaan syntax")         ; name: "lavaanSyntax" }
 		}
 	}
 
@@ -140,14 +140,14 @@ Form
 		DropDown
 		{
 			label: qsTr("Grouping variable") ;
-			name: "groupvar";
+			name: "group";
 			showVariableTypeIcon: true;
 			addEmptyValue: true;
 		} // No model: it takes all variables per default
 		DropDown
 		{
 			label: qsTr("Invariance testing")
-			name: "invariance"
+			name: "invarianceTesting"
 			values: [
 				 { label: qsTr("Configural") , value: "configural"	},
 				 { label: qsTr("Metric")     , value: "metric"		},
@@ -174,9 +174,9 @@ Form
 					CheckBox { label: qsTr("Standardized")	; name: "pathPlotStandardized" }
 					DoubleField { label: qsTr("Font size")	; name: "pathPlotFontSize"		; defaultValue: 0.9; max: 5.0 }
 				}
-				CheckBox { label: qsTr("Show means")      	; name: "pathPlotMean"	; enabled: meanstructure.checked }
-				CheckBox { label: qsTr("Show variances")  	; name: "pathPlotVariance"; checked: true 	}
-				CheckBox { label: qsTr("Rotate plot")		; name: "pathPlotRotated" 					}
+				CheckBox { label: qsTr("Show means")      	; name: "pathPlotMean"	; enabled: meanstructure.checked	}
+				CheckBox { label: qsTr("Show variances")  	; name: "pathPlotVariance"; checked: true					}
+				CheckBox { label: qsTr("Rotate plot")		; name: "pathPlotRotated"									}
 			}
 		}
 	}
@@ -186,9 +186,9 @@ Form
 		title: qsTr("Advanced")
 		RadioButtonGroup
 		{
-			title: qsTr("Emulation")
-			name: "mimic"
-			RadioButton { label: qsTr("None")  ; value: "lavaan"  ; checked: true }
+			title: qsTr("Mimic package")
+			name: "packageMimiced"
+			RadioButton { label: qsTr("Lavaan"); value: "lavaan"  ; checked: true }
 			RadioButton { label: qsTr("Mplus") ; value: "Mplus" }
 			RadioButton { label: qsTr("EQS")   ; value: "EQS"   }
 		}
@@ -196,19 +196,19 @@ Form
 		Group
 		{
 			title: qsTr("Error calculation")
-			CIField { text: qsTr("CI width"); name: "ciWidth" }
+			CIField { text: qsTr("CI level"); name: "ciLevel" }
 			RadioButtonGroup
 			{
-				title: qsTr("Method")
-				name: "se"
-				RadioButton { label: qsTr("Standard")  ; value: "standard" ; checked: true }
-				RadioButton { label: qsTr("Robust")    ; value: "robust" }
+				title: qsTr("Standard error")
+				name: "seType"
+				RadioButton { label: qsTr("Standard")  ;	value: "standard" ; checked: true }
+				RadioButton { label: qsTr("Robust");		value: "robust" }
 				RadioButton {
-					label: qsTr("Bootstrap CI")
+					label: qsTr("Bootstrap")
 					value: "bootstrap"
 					IntegerField {
 						label: qsTr("Bootstrap samples")
-						name: "bootstrapNumber"
+						name: "bootstrapSamples"
 						defaultValue: 1000
 						min: 100
 						max: 1000000
@@ -222,35 +222,35 @@ Form
 			title: qsTr("Estimator")
 			name: "estimator"
 			RadioButton { label: qsTr("Auto") ; value: "default"; checked: true }
-			RadioButton { label: qsTr("ML")   ; value: "ML"       }
-			RadioButton { label: qsTr("GLS")  ; value: "GLS"      }
-			RadioButton { label: qsTr("WLS")  ; value: "WLS"      }
-			RadioButton { label: qsTr("ULS")  ; value: "ULS"      }
-			RadioButton { label: qsTr("DWLS") ; value: "DWLS"     }
+			RadioButton { label: qsTr("ML")   ; value: "maximumLikelihood"				}
+			RadioButton { label: qsTr("GLS")  ; value: "generalizedLeastSquares"		}
+			RadioButton { label: qsTr("WLS")  ; value: "weightedLeastSquares"			}
+			RadioButton { label: qsTr("ULS")  ; value: "unweightedLeastSquares"			}
+			RadioButton { label: qsTr("DWLS") ; value: "diagonallyWeightedLeastSquares"	}
 		}
 
 		RadioButtonGroup
 		{
 			title: qsTr("Standardization")
-			name: "std"
-			RadioButton { label: qsTr("None")    ; value: "none"; checked: true }
-			RadioButton { label: qsTr("Latents") ; value: "lv"  }
-			RadioButton { label: qsTr("All")     ; value: "all" }
-			RadioButton { label: qsTr("No X")    ; value: "nox" }
+			name: "standardized"
+			RadioButton { label: qsTr("None");						value: "none"; checked: true	}
+			RadioButton { label: qsTr("Latents");					value: "latentVariables"		}
+			RadioButton { label: qsTr("All");						value: "all"					}
+			RadioButton { label: qsTr("No Exogenous Covariates");	value: "noExogenousCovariates"	}
 		}
 
 		Group
 		{
 			title: qsTr("Options")
 			debug: true
-			CheckBox { label: qsTr("Fix manifest intercepts to zero")	; name: "fixManifestInterceptsToZero" }
-			CheckBox { label: qsTr("Fix latent intercepts to zero")   	; name: "fixLatentInterceptsToZero"   ; checked: true }
-			CheckBox { label: qsTr("Omit residual single indicator")  	; name: "omitResidualSingleIndicator" ; checked: true }
-			CheckBox { label: qsTr("Residual variances")              	; name: "residualVariances"           ; checked: true }
-			CheckBox { label: qsTr("Correlate exogenous latents")     	; name: "correlateExogenousLatents"   ; checked: true }
-			CheckBox { label: qsTr("Add thresholds")                 	; name: "addThresholds"               ; checked: true }
-			CheckBox { label: qsTr("Add scalings parameters")         	; name: "addScalingParameters"        ; checked: true }
-			CheckBox { label: qsTr("Correlate dependent variables")   	; name: "correlateDependentVariables" ; checked: true }
+			CheckBox { label: qsTr("Fix manifest intercepts to zero")	; name: "manifestInterceptsFixedToZero" }
+			CheckBox { label: qsTr("Fix latent intercepts to zero")   	; name: "latentInterceptsFixedToZero";		checked: true }
+			CheckBox { label: qsTr("Omit residual single indicator")  	; name: "residualSingleIndicatorOmitted";	checked: true }
+			CheckBox { label: qsTr("Residual variances")              	; name: "residualVariances";				checked: true }
+			CheckBox { label: qsTr("Correlate exogenous latents")     	; name: "exogenousLatentsCorrelated";		checked: true }
+			CheckBox { label: qsTr("Add thresholds")                 	; name: "thresholds";						checked: true }
+			CheckBox { label: qsTr("Add scalings parameters")         	; name: "scalingParamaters";				checked: true }
+			CheckBox { label: qsTr("Correlate dependent variables")   	; name: "dependentVariablesCorrelated";		checked: true }
 		}
 	}
 }

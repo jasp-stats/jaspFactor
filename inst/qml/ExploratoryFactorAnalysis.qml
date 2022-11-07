@@ -213,7 +213,7 @@ Form
 					RadioButtonGroup
 					{
 						name:   "parallelAnalysisTableMethod"
-						title:  qsTr("")
+						title:  ""
 
 						RadioButton
 						{

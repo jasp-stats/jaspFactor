@@ -114,8 +114,8 @@ Form
 		Group
 		{
 			CheckBox { label: qsTr("Additional fit measures")   ; name: "fitMeasures"   }
-			CheckBox { label: qsTr("Kaiser-Meyer-Olkin (KMO) test"); name: "kaiserMeyerOlkin"}
-			CheckBox { label: qsTr("Bartlett's test of sphericity"); name: "bartlett"}
+			CheckBox { label: qsTr("Kaiser-Meyer-Olkin (KMO) test"); name: "kaiserMeyerOlkinTest"}
+			CheckBox { label: qsTr("Bartlett's test of sphericity"); name: "bartlettTest"}
 			CheckBox { label: qsTr("R-Squared")                 ; name: "rSquared"         }
 		}
 		Group

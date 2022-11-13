@@ -434,11 +434,11 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .cfaTableKMO <- function(jaspResults, options, cfaResult) {
-  if (!options$kaiserMeyerOlkin || !is.null(jaspResults[["maincontainer"]][["kmo"]])) return()
+  if (!options$kaiserMeyerOlkinTest || !is.null(jaspResults[["maincontainer"]][["kmo"]])) return()
 
   jaspResults[["maincontainer"]][["kmo"]] <- tabkmo <- createJaspTable(gettext("Kaiser-Meyer-Olkin (KMO) test"))
   tabkmo$addColumnInfo(name = "indicator", title = "Indicator", type = "string")
-  tabkmo$dependOn(c("factors", "naAction", "group", "kaiserMeyerOlkin"))
+  tabkmo$dependOn(c("factors", "naAction", "group", "kaiserMeyerOlkinTest"))
   if (is.null(cfaResult)) return()
 
   cov_implied <- lavaan::fitted(cfaResult[["lav"]])
@@ -465,10 +465,10 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .cfaTableBartlett <- function(jaspResults, options, cfaResult) {
-  if (!options$bartlett || !is.null(jaspResults[["maincontainer"]][["bartlett"]])) return()
+  if (!options$bartlettTest || !is.null(jaspResults[["maincontainer"]][["bartlett"]])) return()
 
   jaspResults[["maincontainer"]][["bartlett"]] <- tabbartlett <- createJaspTable(gettext("Bartlett's test of sphericity"))
-  tabbartlett$dependOn(c("factors", "naAction", "group", "bartlett"))
+  tabbartlett$dependOn(c("factors", "naAction", "group", "bartlettTest"))
   if (is.null(cfaResult)) return()
 
   cov_implied <- lavaan::fitted(cfaResult[["lav"]])

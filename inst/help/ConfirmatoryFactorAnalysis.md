@@ -24,6 +24,8 @@ Model options
 Additional output
 -------
 - Additional fit measures: select these to display the value of the various fit indices in the output pane
+- Kaiser-Meyer-Olkin (KMO) test: show Kaiser-Meyer-Olkin (KMO) test results for sampling adequacy (MSA).
+- Bartlett's test of sphericity: show Bartlett's test of sphericity.
 - Implied covariance matrix: show the covariance matrix implied by the model
 - Residual covariance matrix: show the covariances between the indicators that remains after taking into consideration the model. A perfect model shows all 0s here. 
 - Modification indices: Display MIs with a minimum cutoff. A MI shows how much the chi-square value of overall fit would change if the parameter in question is freed up. EPC shows the expected change of the parameter itself.
@@ -49,6 +51,7 @@ Advanced
 - Error calculation: Change how standard errors for the parameters are computed
 - Estimator: change the estimator for the CFA (Auto: ML if only scale variables used, WLS otherwise)
 - Standardization: display standardized parameters for different standardization schemes
+- Missing data handling: change the missing data handling method.
 
 References
 -------

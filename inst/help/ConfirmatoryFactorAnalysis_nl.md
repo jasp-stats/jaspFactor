@@ -24,6 +24,8 @@ Model opties
 Aanvullende uitvoer
 -------
 - Extra pasmaten: Kies deze om de waarde van verschillende model pasmaten te tonen in de resultaten.
+- Kaiser-Meyer-Olkin (KMO) test: Toon Kaiser-Meyer-Olkin (KMO) test resultaten voor steekproef geschiktheid (MSA).
+- Bartlett's test voor sfericiteit: Toon Bartlett's test voor sfericiteit.
 - Geïmpliceerde covariantiematrix: Toon de covariantiematrix die het model impliceert.
 - Residu covariantiematrix: Toon de covarianties tussen indicatoren die behouden blijft met het model. Een perfect model toont enkel 0-en hier. 
 - Modificatie indices: Toont MIs met een minimum grens. Een MI toont hoeveel de chi-square waarde van de passing zou veranderen als de gespecificeerde parameter vrij zou zijn. EPC toont de verwachten verandering van de parameter zelf.
@@ -49,6 +51,7 @@ Geavanceerd
 - Foutberekening: Wijzigt de manier waarop de standaardfout wordt berekend.
 - Estimator: Wijzigt de estimator voor de CFA. (Auto: ML als alleen "scale" variabelen gebruikt worden, anders WLS)
 - Standaardisatie: Toon gestandardiseerde parameters voor verschillende standaardisatieschema's.
+- Behandeling van missende data: Wijzigt de methode waarmee missende data worden behandeld.
 
 Referenties
 -------

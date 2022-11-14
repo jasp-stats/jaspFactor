@@ -40,6 +40,8 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   .cfaContainerMain(   jaspResults, options, cfaResult) # Main table container
   .cfaTableMain(       jaspResults, options, cfaResult) # Main table with fit info
   .cfaTableFitMeasures(jaspResults, options, cfaResult) # Additional fit indices
+  .cfaTableKMO(        jaspResults, options, cfaResult) # Kaiser-Meyer-Olkin test.
+  .cfaTableBartlett(   jaspResults, options, cfaResult) # Bartlett's test of sphericity
   .cfaTableRsquared(   jaspResults, options, cfaResult) # R-squared of indicators
   .cfaTableParEst(     jaspResults, options, cfaResult) # Parameter estimates tables
   .cfaTableModIndices( jaspResults, options, cfaResult) # Modification Indices
@@ -86,7 +88,6 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   # TODO (vankesteren) content error checks, e.g., posdef covmat
 
   # Number of variables in the factors
-
   nVarsPerFactor <- unlist(lapply(options$factors, function(x) setNames(length(x$indicators), x$title)))
   if (all(nVarsPerFactor == 0)) return("No variables")
   if (any(nVarsPerFactor == 1)) jaspBase:::.quitAnalysis(gettext("The model could not be estimated. Ensure that factors have at least 2 observed variables."))
@@ -193,12 +194,28 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     auto.delta      = TRUE,
     auto.cov.y      = TRUE,
     mimic           = options$packageMimiced,
-    estimator       = estimator
-  ))
+    estimator       = estimator,
+    missing         = ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
+                             ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
+    ))
 
   # Quit analysis on error
   if (inherits(cfaResult[["lav"]], "try-error")) {
-    jaspBase:::.quitAnalysis(gettextf("The model could not be estimated. Error message: \n\n %s", attr(cfaResult[["lav"]], "condition")$message))
+    if (!options[["estimator"]] %in% c("default", "ML") && options[["naAction"]] == "fiml") {
+      jaspBase:::.quitAnalysis(gettext("FIML missing data handling only available with ML-type estimators"))
+    }
+    err <- attr(cfaResult[["lav"]], "condition")$message
+    if(grepl("not available in the categorical", err)){
+      if(grepl("ml", err))
+        errMissingMethod <- "FIML"
+      if(grepl("two.stage", err))
+        errMissingMethod <- "Two-stage"
+      if(grepl("robust.two.stage", err))
+        errMissingMethod <- "Robust two-stage"
+      err <- gettextf("Missing data handling '%s' is not supported for categorical data. \n Please select another method under 'Missing data handling' within the 'Advanced' options tab",
+                      errMissingMethod)
+    }
+    jaspBase:::.quitAnalysis(gettextf("The model could not be estimated. Error message: \n\n %s", err))
   }
 
   admissible <- .withWarnings(lavaan:::lav_object_post_check(cfaResult[["lav"]]))
@@ -225,8 +242,9 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults[["stateCFAResult"]] <- createJaspState(cfaResult)
   jaspResults[["stateCFAResult"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
-    "factorsUncorrelated", "packageMimiced", "estimator", "seType", "bootstrapSamples",
+    "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
     "group", "invarianceTesting"
+
   ))
 
   return(cfaResult)
@@ -384,7 +402,7 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults[["maincontainer"]] <- createJaspContainer(gettext("Model fit"), position = 1)
   jaspResults[["maincontainer"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
-    "factorsUncorrelated", "packageMimiced", "estimator", "seType", "bootstrapSamples",
+    "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
     "group", "invarianceTesting"
   ))
 }
@@ -415,6 +433,74 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 }
 
+.cfaTableKMO <- function(jaspResults, options, cfaResult) {
+  if (!options$kaiserMeyerOlkinTest || !is.null(jaspResults[["maincontainer"]][["kmo"]])) return()
+
+  jaspResults[["maincontainer"]][["kmo"]] <- tabkmo <- createJaspTable(gettext("Kaiser-Meyer-Olkin (KMO) test"))
+  tabkmo$addColumnInfo(name = "indicator", title = "Indicator", type = "string")
+  tabkmo$dependOn(c("factors", "naAction", "group", "kaiserMeyerOlkinTest"))
+  if (is.null(cfaResult)) return()
+
+  cov_implied <- lavaan::fitted(cfaResult[["lav"]])
+  cov_resids <- lavaan::resid(cfaResult[["lav"]])
+
+  if (options$group != "") {
+    group_names <- names(cov_implied)
+    indicator_names <- colnames(cov_implied[[1]]$cov)
+    indicator_names <- c(indicator_names, "Overall")
+    tabkmo[["indicator"]] <- indicator_names
+    for (group in group_names) {
+      tabkmo$addColumnInfo(name = group, title = group, overtitle = "MSA", type = "number" )
+      kmo_result <- psych::KMO(stats::cov2cor(cov_implied[[group]]$cov + cov_resids[[group]]$cov))
+      tabkmo[[group]] <- c(kmo_result$MSAi, kmo_result$MSA)
+    }
+  } else {
+    indicator_names <- colnames(cov_implied$cov)
+    indicator_names <- c(indicator_names, "Overall")
+    tabkmo[["indicator"]] <- indicator_names
+    tabkmo$addColumnInfo(name = "value", title = "MSA", type = "number" )
+    kmo_result <- psych::KMO(stats::cov2cor(cov_implied$cov + cov_resids$cov))
+    tabkmo[["value"]] <- c(kmo_result$MSAi, kmo_result$MSA)
+  }
+}
+
+.cfaTableBartlett <- function(jaspResults, options, cfaResult) {
+  if (!options$bartlettTest || !is.null(jaspResults[["maincontainer"]][["bartlett"]])) return()
+
+  jaspResults[["maincontainer"]][["bartlett"]] <- tabbartlett <- createJaspTable(gettext("Bartlett's test of sphericity"))
+  tabbartlett$dependOn(c("factors", "naAction", "group", "bartlettTest"))
+  if (is.null(cfaResult)) return()
+
+  cov_implied <- lavaan::fitted(cfaResult[["lav"]])
+  cov_resids  <- lavaan::resid(cfaResult[["lav"]])
+
+  if (options$group != "") {
+    group_names <- names(cov_implied)
+    for (group in seq_along(group_names)) {
+      tabbartlett$addColumnInfo(name = paste0("chisq", group),  title = "\u03a7\u00b2", overtitle = group_names[group], type = "number" )
+      tabbartlett$addColumnInfo(name = paste0("df", group),     title = "df",           overtitle = group_names[group], type = "integer")
+      tabbartlett$addColumnInfo(name = paste0("pvalue", group), title = "p",            overtitle = group_names[group], type = "pvalue" )
+
+      ns <- lavaan::lavInspect(cfaResult[["lav"]], what = "nobs")
+      bartlett_result <- psych::cortest.bartlett(stats::cov2cor(cov_implied[[group_names[group]]]$cov + cov_resids[[group_names[group]]]$cov), ns[group])
+      tabbartlett[[paste0("chisq", group)]]  <- bartlett_result$chisq
+      tabbartlett[[paste0("df", group)]]     <- bartlett_result$df
+      tabbartlett[[paste0("pvalue", group)]] <- bartlett_result$p.value
+    }
+  } else {
+    tabbartlett$addColumnInfo(name = "chisq",  title = "\u03a7\u00b2", type = "number" )
+    tabbartlett$addColumnInfo(name = "df",     title = "df",           type = "integer")
+    tabbartlett$addColumnInfo(name = "pvalue", title = "p",            type = "pvalue" )
+
+    n <- lavaan::lavInspect(cfaResult[["lav"]], what = "nobs")
+    bartlett_result <- psych::cortest.bartlett(stats::cov2cor(cov_implied$cov + cov_resids$cov), n)
+    tabbartlett[["chisq"]]  <- bartlett_result$chisq
+    tabbartlett[["df"]]    <- bartlett_result$df
+    tabbartlett[["pvalue"]] <- bartlett_result$p.value
+
+  }
+}
+
 .cfaTableRsquared <- function(jaspResults, options, cfaResult) {
   if (!options$rSquared || !is.null(jaspResults[["maincontainer"]][["rSquared"]])) return()
 
@@ -422,7 +508,8 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   tabr2$addColumnInfo(name = "__var__", title = "", type = "string")
   tabr2$setExpectedSize(rows = 1, cols = 1)
   tabr2$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                   "packageMimiced", "estimator", "seType", "bootstrapSamples", "group", "invarianceTesting", "rSquared"))
+                   "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "rSquared"))
+
   if (is.null(cfaResult)) return()
 
   r2res <- lavaan::inspect(cfaResult[["lav"]], "r2")
@@ -455,7 +542,7 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   if (!options$fitMeasures || !is.null(jaspResults[["maincontainer"]][["fits"]])) return()
   jaspResults[["maincontainer"]][["fits"]] <- fitms <- createJaspContainer(gettext("Additional fit measures"))
   fitms$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                   "packageMimiced", "estimator", "seType", "bootstrapSamples", "group", "invarianceTesting", "fitMeasures"))
+                   "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "fitMeasures"))
 
   # Fit indices
   fitms[["indices"]] <- fitin <- createJaspTable(gettext("Fit indices"))
@@ -502,6 +589,8 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
     gettext("Sample-size adjusted Bayesian (SSABIC)")
   )
   fitic[["value"]] <- fm[c("logl", "npar", "aic", "bic", "bic2")]
+  if(is.na(fm["logl"]) && is.na(fm["aic"]) && is.na(fm["bic"]))
+    fitic$setError("Information criteria are only available with ML-type estimators")
 
   # other fitmeasures
   fitot[["index"]] <- c(
@@ -522,12 +611,14 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   return()
 }
 
+
 .cfaTableParEst <- function(jaspResults, options, cfaResult) {
   if (is.null(cfaResult) || !is.null(jaspResults[["estimates"]])) return()
 
   jaspResults[["estimates"]] <- ests <- createJaspContainer(gettext("Parameter estimates"), position = 2)
   ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                  "packageMimiced", "estimator", "seType", "bootstrapSamples", "group", "invarianceTesting", "standardized", "ciLevel"))
+                  "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "standardized", "ciLevel"))
+
 
   footnote <- NULL
   if (options[["seType"]] == "bootstrap" && nrow(cfaResult[["lav"]]@boot[["coef"]]) < options[["bootstrapSamples"]]) {
@@ -815,7 +906,7 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   mi <- try(lavaan::modindices(cfaResult[["lav"]]))
   jaspResults[["modind"]] <- mic <- createJaspContainer(gettext("Modification Indices"), position = 5)
   mic$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                        "packageMimiced", "estimator", "seType", "bootstrapSamples", "group", "invarianceTesting", "modificationIndices",
+                        "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "modificationIndices",
                         "modificationIndicesCutoff"))
 
   if (isTryError(mi)) {
@@ -943,7 +1034,7 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   icc$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
-                 "factorsUncorrelated", "packageMimiced", "estimator", "seType", "bootstrapSamples",
+                 "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
                  "group", "invarianceTesting", "impliedCovarianceMatrix"))
 }
 
@@ -978,7 +1069,7 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   }
 
   rcc$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                 "packageMimiced", "estimator", "seType", "bootstrapSamples", "group", "invarianceTesting", "residualCovarianceMatrix"))
+                 "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "residualCovarianceMatrix"))
 }
 
 .cfaInitPlots <- function(jaspResults, options, cfaResult) {
@@ -987,7 +1078,7 @@ confirmatoryFactorAnalysis <- function(jaspResults, dataset, options, ...) {
   jaspResults[["plots"]] <- createJaspContainer(gettext("Plots"), position = 6)
   jaspResults[["plots"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated", "packageMimiced",
-    "estimator", "seType", "bootstrapSamples", "group", "invarianceTesting"
+    "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting"
   ))
 }
 

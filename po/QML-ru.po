@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2022-11-15 13:47+0000\n"
-"Last-Translator: 12Riklama18 <12riklama18@gmail.com>\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ru/>\n"
 "Language: ru\n"
@@ -36,7 +36,7 @@ msgstr "Фактор второго порядка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
-msgstr ""
+msgstr "Факторы второго порядка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
@@ -50,17 +50,19 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
 msgstr "Зафиксировать факторы ортогональными (независимыми)"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr ""
+msgstr "Зафиксировать экзогенные ковариаты"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor Scaling"
 msgstr "Тип шкалирования факторов"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Факторные дисперсии"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"

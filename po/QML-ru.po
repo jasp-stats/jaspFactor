@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-04-22 15:14+0000\n"
-"Last-Translator: 12Riklama18 <12riklama18@gmail.com>\n"
+"PO-Revision-Date: 2022-11-15 13:47+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ru/>\n"
 "Language: ru\n"
@@ -10,21 +10,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Qt-Contexts: true\n"
 "X-Language: ru\n"
 
 msgctxt "Description|"
 msgid "Factor"
-msgstr ""
+msgstr "Фактор"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr ""
+msgstr "Метод Главных Компонент"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
-msgstr ""
+msgstr "Эксплораторный Факторный Анализ"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
@@ -36,7 +36,7 @@ msgstr "Фактор второго порядка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
-msgstr ""
+msgstr "Факторы второго порядка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
@@ -44,23 +44,25 @@ msgstr "Настройки спецификации модели"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr ""
+msgstr "Включить в модель структуру средних"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
 msgstr "Зафиксировать факторы ортогональными (независимыми)"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr ""
+msgstr "Зафиксировать экзогенные ковариаты"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor Scaling"
 msgstr "Тип шкалирования факторов"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Факторные дисперсии"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
@@ -581,4 +583,3 @@ msgstr ""
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
 msgstr ""
-

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2022-10-08 03:51\n"
-"PO-Revision-Date: 2022-11-14 06:44+0000\n"
+"PO-Revision-Date: 2022-11-26 00:43+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "pl/>\n"
@@ -42,13 +42,13 @@ msgid "Chi-square test"
 msgstr ""
 
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "Baseline model"
 msgstr ""
@@ -69,7 +69,7 @@ msgid "Index"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Wartość"
 
 msgid "Information criteria"
 msgstr ""
@@ -159,7 +159,7 @@ msgid "Factor loadings"
 msgstr ""
 
 msgid "Factor"
-msgstr ""
+msgstr "Czynnik"
 
 msgid "Indicator"
 msgstr ""
@@ -168,7 +168,7 @@ msgid "Symbol"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "Oszacuj"
 
 msgid "Std. Error"
 msgstr ""
@@ -303,7 +303,7 @@ msgid "Mardia's Test of Multivariate Normality"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Statystyka"
 
 msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
@@ -372,7 +372,7 @@ msgid "TLI"
 msgstr ""
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "Real data component eigenvalues"
 msgstr ""
@@ -402,7 +402,7 @@ msgid "Simulated data from parallel analysis"
 msgstr ""
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "Wartość własna"
 
 msgid "Path Diagram"
 msgstr ""

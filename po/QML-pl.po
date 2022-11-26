@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-14 06:44+0000\n"
+"PO-Revision-Date: 2022-11-24 17:48+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/pl/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Factor"
-msgstr ""
+msgstr "Czynnik"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
@@ -83,7 +83,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr ""
+msgstr "R-kwadrat"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
@@ -95,7 +95,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
-msgstr ""
+msgstr "Indeksy modyfikacyjne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
@@ -135,7 +135,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Wykresy"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
@@ -151,11 +151,11 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
-msgstr ""
+msgstr "Pokaż średnie"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
-msgstr ""
+msgstr "Zaawansowane"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Emulation"
@@ -167,11 +167,11 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
-msgstr ""
+msgstr "Mplus"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
-msgstr ""
+msgstr "EQS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
@@ -183,7 +183,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
@@ -191,11 +191,11 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr ""
+msgstr "Odporne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap CI"
-msgstr ""
+msgstr "Bootstrap CI"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
@@ -207,27 +207,27 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
-msgstr ""
+msgstr "Automatyczny"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
-msgstr ""
+msgstr "ML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "GLS"
-msgstr ""
+msgstr "GLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLS"
-msgstr ""
+msgstr "WLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULS"
-msgstr ""
+msgstr "ULS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DWLS"
-msgstr ""
+msgstr "DWLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
@@ -235,7 +235,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
-msgstr ""
+msgstr "Latentne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
@@ -247,7 +247,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
-msgstr ""
+msgstr "Opcje"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
@@ -283,11 +283,11 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
-msgstr ""
+msgstr "Zmienne"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors"
-msgstr ""
+msgstr "Liczba czynników"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
@@ -303,7 +303,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
-msgstr ""
+msgstr "Ręcznie"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
@@ -347,7 +347,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
-msgstr ""
+msgstr "Rotacja"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Orthogonal"
@@ -359,7 +359,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
-msgstr ""
+msgstr "Oblique"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
@@ -383,7 +383,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
-msgstr ""
+msgstr "Tabele"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Structure matrix"
@@ -399,7 +399,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Wykresy"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
@@ -415,7 +415,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
-msgstr ""
+msgstr "Test KMO"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
@@ -463,7 +463,7 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"
-msgstr ""
+msgstr "Rotacja"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Orthogonal"
@@ -475,7 +475,7 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
-msgstr ""
+msgstr "Oblique"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"

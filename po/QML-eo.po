@@ -50,10 +50,6 @@ msgid "Fix exogenous covariates"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Factor Scaling"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
 msgstr ""
 
@@ -154,10 +150,6 @@ msgid "Advanced"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Emulation"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
 msgstr ""
 
@@ -174,23 +166,11 @@ msgid "Error calculation"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "CI width"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Method"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap CI"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -238,10 +218,6 @@ msgid "All"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "No X"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
 msgstr ""
 
@@ -282,10 +258,6 @@ msgid "Variables"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Number of Factors"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
 msgstr ""
 
@@ -303,10 +275,6 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Estimation method"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
@@ -374,10 +342,6 @@ msgid "Output Options"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Highlight"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
 msgstr ""
 
@@ -442,10 +406,6 @@ msgid "Variables"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
-msgid "Number of Components"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
 msgstr ""
 
@@ -498,23 +458,11 @@ msgid "Output Options"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
-msgid "Highlight"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Table"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Factor correlations"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
@@ -597,6 +545,110 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
 msgstr ""
 
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model identification"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic package"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Lavaan"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "CI level"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard error"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Missing data handling"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FIML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Listwise deletion"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Pairwise"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No Exogenous Covariates"
+msgstr ""
+
 msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of Factors based on"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factoring method"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of Components based on"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on principal components"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on factors"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component correlations"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
 msgid ""
 msgstr ""

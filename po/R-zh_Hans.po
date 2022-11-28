@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-09-24 04:10\n"
+"POT-Creation-Date: 2022-11-28 14:25\n"
 "PO-Revision-Date: 2022-11-03 13:04+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -25,6 +25,15 @@ msgid ""
 "The model could not be estimated. A factor with less than 2 variables was "
 "added in Second-Order."
 msgstr "模型无法估计。在二阶中添加了少于 2 个变量的因子。"
+
+msgid "FIML missing data handling only available with ML-type estimators"
+msgstr ""
+
+msgid ""
+"Missing data handling '%s' is not supported for categorical data. \n"
+" Please select another method under 'Missing data handling' within the "
+"'Advanced' options tab"
+msgstr ""
 
 msgid ""
 "The model could not be estimated. Error message: \n"
@@ -64,6 +73,14 @@ msgstr "基线模型"
 
 msgid "Factor model"
 msgstr "因子模型"
+
+#, fuzzy
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr "Kaiser-Meyer-Olkin 检验"
+
+#, fuzzy
+msgid "Bartlett's test of sphericity"
+msgstr "Bartlett's 检验"
 
 msgid "R-Squared"
 msgstr "R平方"
@@ -391,18 +408,27 @@ msgstr "RMSEA"
 msgid "RMSEA 90%% confidence"
 msgstr "RMSEA 90%% 置信度"
 
+msgid "SRMR"
+msgstr ""
+
 msgid "TLI"
 msgstr "TLI"
+
+msgid "CFI"
+msgstr ""
 
 msgid "BIC"
 msgstr "BIC"
 
+#, fuzzy
+msgid "Residual Matrix"
+msgstr "残余方差"
+
 msgid "Real data component eigenvalues"
 msgstr "实际数据成分特征值"
 
-msgid ""
-"'*' = Factor should be retained.\n"
-"Results from PC-based parallel analysis."
+#, fuzzy
+msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
 msgstr ""
 "'*' = 应保留因子。\n"
 "结果基于主成分(PC)的平行分析。"
@@ -410,9 +436,8 @@ msgstr ""
 msgid "Real data factor eigenvalues"
 msgstr "实际数据因子特征值"
 
-msgid ""
-"'*' = Factor should be retained.\n"
-"Results from FA-based parallel analysis."
+#, fuzzy
+msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
 msgstr ""
 "'*' = 应保留因子。\n"
 "结果基于因子分析(FA)的平行分析。"

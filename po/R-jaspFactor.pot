@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2022-10-08 03:51\n"
+"POT-Creation-Date: 2022-11-28 14:25\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
 
 msgid "Second-Order"
 msgstr ""
@@ -17,6 +17,12 @@ msgid "The model could not be estimated. Ensure that factors have at least 2 obs
 msgstr ""
 
 msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgstr ""
+
+msgid "FIML missing data handling only available with ML-type estimators"
+msgstr ""
+
+msgid "Missing data handling '%s' is not supported for categorical data. \n Please select another method under 'Missing data handling' within the 'Advanced' options tab"
 msgstr ""
 
 msgid "The model could not be estimated. Error message: \n\n %s"
@@ -50,6 +56,12 @@ msgid "Baseline model"
 msgstr ""
 
 msgid "Factor model"
+msgstr ""
+
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgid "Bartlett's test of sphericity"
 msgstr ""
 
 msgid "R-Squared"
@@ -364,22 +376,31 @@ msgstr ""
 msgid "RMSEA 90%% confidence"
 msgstr ""
 
+msgid "SRMR"
+msgstr ""
+
 msgid "TLI"
+msgstr ""
+
+msgid "CFI"
 msgstr ""
 
 msgid "BIC"
 msgstr ""
 
+msgid "Residual Matrix"
+msgstr ""
+
 msgid "Real data component eigenvalues"
 msgstr ""
 
-msgid "'*' = Factor should be retained.\nResults from PC-based parallel analysis."
+msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
 msgstr ""
 
 msgid "Real data factor eigenvalues"
 msgstr ""
 
-msgid "'*' = Factor should be retained.\nResults from FA-based parallel analysis."
+msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Parallel Analysis"

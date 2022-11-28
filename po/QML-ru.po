@@ -1,18 +1,12 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-15 13:47+0000\n"
-"Last-Translator: fedder <fedor.derish@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
-"jaspfactor-qml/ru/>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
-"X-Qt-Contexts: true\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Language: ru\n"
+"X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Factor"
@@ -54,10 +48,6 @@ msgstr "Зафиксировать факторы ортогональными (
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
 msgstr "Зафиксировать экзогенные ковариаты"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Factor Scaling"
-msgstr "Тип шкалирования факторов"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -149,10 +139,6 @@ msgid "Model plot"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Show parameters"
-msgstr "Показать параметры"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
 msgstr "Стандартизированные"
 
@@ -163,10 +149,6 @@ msgstr "Показать средние (интерцепты)"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
 msgstr "Продвинутые настройки"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Emulation"
-msgstr "Эмуляция ПО"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
@@ -185,23 +167,11 @@ msgid "Error calculation"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "CI width"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Method"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap CI"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -249,10 +219,6 @@ msgid "All"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "No X"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
 msgstr ""
 
@@ -293,10 +259,6 @@ msgid "Variables"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Number of Factors"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
 msgstr ""
 
@@ -314,10 +276,6 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Estimation method"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
@@ -385,10 +343,6 @@ msgid "Output Options"
 msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Highlight"
-msgstr ""
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
 msgstr ""
 
@@ -404,9 +358,10 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
 msgstr ""
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Графики"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
@@ -442,10 +397,6 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Number of Components"
 msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
@@ -500,21 +451,10 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
 msgstr ""
 
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Highlight"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Table"
-msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Factor correlations"
-msgstr ""
-
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Графики"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Path diagram"
@@ -582,4 +522,140 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model identification"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Font size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic package"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Lavaan"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "CI level"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard error"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Missing data handling"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FIML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Listwise deletion"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Pairwise"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No Exogenous Covariates"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of Factors based on"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factoring method"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Mardia's test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of Components based on"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on principal components"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on factors"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component correlations"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
 msgstr ""

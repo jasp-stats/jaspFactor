@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-09-24 04:10\n"
+"POT-Creation-Date: 2022-11-28 14:25\n"
 "PO-Revision-Date: 2022-08-29 00:17+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -33,6 +33,15 @@ msgid ""
 msgstr ""
 "O modelo não pode ser estimado. Um fator com menos que 2 variáveis foi "
 "adicionado na Segunda Ordem."
+
+msgid "FIML missing data handling only available with ML-type estimators"
+msgstr ""
+
+msgid ""
+"Missing data handling '%s' is not supported for categorical data. \n"
+" Please select another method under 'Missing data handling' within the "
+"'Advanced' options tab"
+msgstr ""
 
 msgid ""
 "The model could not be estimated. Error message: \n"
@@ -72,6 +81,13 @@ msgstr "Modelo de linha de base"
 
 msgid "Factor model"
 msgstr "Fatores"
+
+#, fuzzy
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr "Teste Kaiser-Meyer-Olkin"
+
+msgid "Bartlett's test of sphericity"
+msgstr ""
 
 msgid "R-Squared"
 msgstr "R²"
@@ -408,28 +424,34 @@ msgstr "RMSEA"
 msgid "RMSEA 90%% confidence"
 msgstr "RMSEA 90%% de confiança"
 
+msgid "SRMR"
+msgstr ""
+
 msgid "TLI"
 msgstr "TLI"
+
+msgid "CFI"
+msgstr ""
 
 msgid "BIC"
 msgstr "BIC"
 
 #, fuzzy
+msgid "Residual Matrix"
+msgstr "Variâncias residuais"
+
+#, fuzzy
 msgid "Real data component eigenvalues"
 msgstr "Nenhum componente com autovalor >"
 
-msgid ""
-"'*' = Factor should be retained.\n"
-"Results from PC-based parallel analysis."
+msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
 msgstr ""
 
 #, fuzzy
 msgid "Real data factor eigenvalues"
 msgstr "Nenhum componente com autovalor >"
 
-msgid ""
-"'*' = Factor should be retained.\n"
-"Results from FA-based parallel analysis."
+msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Parallel Analysis"

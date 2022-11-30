@@ -50,34 +50,47 @@ Principcal Component Analysis is used to represent the data in smaller component
     - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of factors above.
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and component will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each component. A scree plot can be used to decide how many components should be selected.  
+- Assumption Checks:
+  - Kaiser-Meyer-Olkin Test (KMO): Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables
+  - Bartlett's Test (of sphericity): Determines if the data correlation matrix is the identity matrix, meaning, if the variables are related or not
+	- Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
 - Missing values: 
     - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have a observation for all the variables to include the case in the analysis. This option is selected by default. 
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 
 ### Output 
 ---
-#### Principal Component Analysis 
-- Chi-squared Test: 
-  The fit of the model is tested. When the test is significant, the model is rejected. Bear in mind that a     chi-squared approximation may be unreliable for small sample sizes, and the chi-squared test may too         readily reject the model with very large sample sizes. See, for example, Saris, Satorra, & van der Veld      (2009) for more discussions on overall fit metrics.
+#### Assumption Checks
+- Kaiser-Meyer-Olkin Test (KMO): Measure of sampling adequacy (MSA) as the proportion of common variance among variables is computed for all variables; values closer to 1 are desired.
+- Bartlett's Test (of sphericity): A significant result means the correlation matrix is unlike the identity matrix.
+- Mardia's Test of Multivariate Normality:
+	- Tests: The first column shows all the tests performed.
+	- Value: The values of `b1p` (multivariate skewness) and `b2p` (multivariate kurtosis), as denoted in Mardia (1970).
+	- Statistic: The two chi-squared test statistics of multivariate skewness (both standard and corrected for small samples) and the standard normal test statistic of multivariate kurtosis.
+	- df: Degrees of freedom.
+	- p: P-value. 
+
+#### Chi-squared Test: 
+The fit of the model is tested. When the test is significant, the model is rejected. Bear in mind that a chi-squared approximation may be unreliable for small sample sizes, and the chi-squared test may too readily reject the model with very large sample sizes. See, for example, Saris, Satorra, & van der Veld (2009) for more discussions on overall fit metrics.
   - Model: The model obtained from the principal component analysis. 
   - Value: The chi-squared test statistic.  
   - df: Degrees of freedom. 
   - p: P-value. 
 
-- Component Loadings:
-  - Variables: The first column shows all the variables included in the analysis. 
-  - PC (1, 2, 3, ...): This column shows the variable loadings on the components. 
-  - Uniqueness: The percentage of the variance of each variable that is not explained by the component. 
+#### Component Loadings:
+- Variables: The first column shows all the variables included in the analysis. 
+- PC (1, 2, 3, ...): This column shows the variable loadings on the components. 
+- Uniqueness: The percentage of the variance of each variable that is not explained by the component. 
 
-- Component Characteristics:
-  - Unrotated solution: 
-    - Eigenvalues: The eigenvalue for each component
-    - Proportion var.: The proportion of variance in the dataset explained by each unrotated component
-    - Cumulative: The proportion of variance in the dataset explained by the unrotated components up to and including the current component.
-  - Rotated solution: 
-    - SumSq. Loadings: Sum of squared loadings, variance explained by each rotated component
-    - Proportion var.: The proportion of variance in the dataset explained by each rotated component
-    - Cumulative: The proportion of variance in the dataset explained by the rotated components up to and including the current component.
+#### Component Characteristics:
+- Unrotated solution: 
+  - Eigenvalues: The eigenvalue for each component
+  - Proportion var.: The proportion of variance in the dataset explained by each unrotated component
+  - Cumulative: The proportion of variance in the dataset explained by the unrotated components up to and including the current component.
+- Rotated solution: 
+  - SumSq. Loadings: Sum of squared loadings, variance explained by each rotated component
+  - Proportion var.: The proportion of variance in the dataset explained by each rotated component
+  - Cumulative: The proportion of variance in the dataset explained by the rotated components up to and including the current component.
 
 -  Correlations: 
   The correlation between the principal components. 
@@ -100,6 +113,7 @@ The scree plot provides information on how much variance in the data, indicated 
 - Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205. https://doi.org/10.1177/1094428104263675
 - Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. *Psychometrika, 30*(2), 179–185. https://doi.org/10.1007%2Fbf02289447
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning* (2nd ed.). Springer.
+- Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. *Biometrika*, *57*(3), 519-530. https://doi.org/10.2307/2334770
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in exploratory factor analysis. In J. Osborne (Ed.), *Best practices in quantitative methods* (pp. 86-99). SAGE Publications, Inc. https://doi.org/10.4135/9781412995627.d8
 - Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. *Structural Equation Modeling: A Multidisciplinary Journal, 16*(4), 561-582. https://doi.org/10.1080/10705510903203433
 - Shlens, J. (2014). A tutorial on principal component analysis. *arXiv preprint arXiv:1404.1100*. https://doi.org/10.48550/arXiv.1404.1100

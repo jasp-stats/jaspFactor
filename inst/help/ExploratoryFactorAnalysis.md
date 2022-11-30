@@ -59,6 +59,8 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
 - Assumption Checks:
+  - Kaiser-Meyer-Olkin Test (KMO): Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables
+  - Bartlett's Test (of sphericity): Determines if the data correlation matrix is the identity matrix, meaning, if the variables are related or not
 	- Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
 - Missing values: 
     - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. 
@@ -67,6 +69,8 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 ### Output 
 ---
 #### Assumption Checks
+- Kaiser-Meyer-Olkin Test (KMO): Measure of sampling adequacy (MSA) as the proportion of common variance among variables is computed for all variables; values closer to 1 are desired.
+- Bartlett's Test (of sphericity): A significant result means the correlation matrix is unlike the identity matrix.
 - Mardia's Test of Multivariate Normality:
 	- Tests: The first column shows all the tests performed.
 	- Value: The values of `b1p` (multivariate skewness) and `b2p` (multivariate kurtosis), as denoted in Mardia (1970).
@@ -112,6 +116,10 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
   
 - Parallel Analysis: The table displays as many factors as variables selected for analysis, eigenvalues corresponding to the real-data factor, and the eigenvalue corresponding to the parallel mean resampled value. It will display an asterisk along the names of the factors advised to be retained (whose real-data eigenvalue is greater than the resampled-data mean value). Note that, even when selecting a PC-based parallel analysis, the table will refer to "factors" as the ones advised to be retained instead of "components"; this is due to common usage of the PC-based parallel analysis method for assessing the number of factors within EFA (e.g., Golino et al., 2020).
 
+- Assumption Checks:
+
+	- Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
+
 #### Path Diagram 
 - F(1,2,3,...): The factors in the model are represented by the circles.  
 - Variables: The variables are represented by the boxes. 
@@ -130,6 +138,7 @@ The scree plot provides information on how much variance in the data, indicated 
 ---
 - Bandalos, D. L., & Finney, S. J. (2018). Factor analysis: Exploratory and confirmatory. In G. R. Hancock, L. M. Stapleton, & R. O. Mueller, *The reviewer’s guide to quantitative methods in the social sciences* (pp. 98-122). Routledge. https://doi.org/10.4324/9781315755649
 - Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. https://alexisdinno.com/Software/files/PA_for_PCA_vs_FA.pdf
+- Dziuban, C. D., & Shirkey, E. C. (1974). When is a correlation matrix appropriate for factor analysis? Some decision rules. *Psychological Bulletin, 81*(6), 358–361. https://doi.org/10.1037/h0036316
 - Golino, H., Shi, D., Christensen, A. P., Garrido, L. E., Nieto, M. D., Sadana, R., ... & Martinez-Molina, A. (2020). Investigating the performance of exploratory graph analysis and traditional techniques to identify the number of latent factors: A simulation and tutorial. *Psychological Methods*, *25*(3), 292. https://doi.org/10.1037/met0000255
 - Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention 
     decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205. https://doi.org/10.1177/1094428104263675

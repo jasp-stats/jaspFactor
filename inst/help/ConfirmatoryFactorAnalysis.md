@@ -5,7 +5,10 @@ Confirmatory factor analysis (CFA) models observed variables (indicators) as noi
 
 ### Assignment Box
 -------
-In the assignment box, continuous variables in your dataset can be assigned to different factors. There is a minimum of one factor, and each factor needs to have at least two indicators. You can add factors by pressing the (+) button and remove factors by pressing the (-) button. You may rename factors by changing the name above the assignment boxes. Either scale or ordinal variables are allowed. If you use ordinal variables, the chosen estimator will by default be "WLS".
+In the assignment box, continuous and ordinal variables in your dataset can be assigned to different factors.
+There is a minimum of one factor, and each factor needs to have at least two indicators. You can add factors by pressing the (+) button and remove factors by pressing the (-) button. You may rename factors by changing the name above the assignment boxes. Either scale or ordinal variables are allowed. 
+
+If you use any ordinal variables, the chosen estimator will by default be "DWLS" and the test statistic and fit measures will be scaled and shifted (mean and variance adjusted, see *lavaan* documentation). Other possible estimators are "WLS" and "ULS". When you use ordinal variables it may make sense to choose robust standard errors.
 
 ### Second-order factor
 -------

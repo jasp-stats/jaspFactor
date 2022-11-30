@@ -227,7 +227,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (!options[["kaiserMeyerOlkinTest"]] || !is.null(modelContainer[["kmoTable"]])) return()
 
-  kmoTable <- createJaspTable(gettext("Kaiser-Meyer-Olkin test"))
+  kmoTable <- createJaspTable(gettext("Kaiser-Meyer-Olkin Test"))
   kmoTable$dependOn("kaiserMeyerOlkinTest")
   kmoTable$addColumnInfo(name = "col", title = "", type = "string")
   kmoTable$addColumnInfo(name = "val", title = "MSA", type = "number", format = "dp:3")
@@ -255,7 +255,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 .efaBartlett <- function(modelContainer, dataset, options, ready) {
   if (!options[["bartlettTest"]] || !is.null(modelContainer[["bartlettTable"]])) return()
 
-  bartlettTable <- createJaspTable(gettext("Bartlett's test"))
+  bartlettTable <- createJaspTable(gettext("Bartlett's Test"))
   bartlettTable$dependOn("bartlettTest")
   bartlettTable$addColumnInfo(name = "chisq", title = "\u03a7\u00b2", type = "number", format = "dp:3")
   bartlettTable$addColumnInfo(name = "df",    title = gettext("df"), type = "number", format = "dp:3")
@@ -279,9 +279,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   bartlettTable[["pval"]]  <- bar[["p.value"]]
 }
 
-# Modification here:
-# Added Mardia's tests of multivariate normality for further probing of the
-# multivariate normality assumption.
+
 .efaMardia <- function(modelContainer, dataset, options, ready) {
 
   if (!options[["mardiaTest"]] || !is.null(modelContainer[["mardiaTable"]])) return()

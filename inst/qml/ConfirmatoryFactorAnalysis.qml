@@ -251,9 +251,9 @@ Form
 		{
 			title: qsTr("Standardization")
 			name: "standardized"
-			RadioButton { label: qsTr("None");						value: "none"; checked: true	}
-			RadioButton { label: qsTr("Latents");					value: "latentVariables"		}
-			RadioButton { label: qsTr("All");						value: "all"					}
+			RadioButton { label: qsTr("None");										value: "none"; checked: true	}
+			RadioButton { label: qsTr("Latents");									value: "latentVariables"		}
+			RadioButton { label: qsTr("All");											value: "all"					}
 			RadioButton { label: qsTr("No Exogenous Covariates");	value: "noExogenousCovariates"	}
 		}
 

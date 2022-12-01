@@ -1,17 +1,19 @@
-Confirmatieve Factoranalyse
+## Confirmatieve Factoranalyse
 ==========================
 
 Confirmatieve Factoranalyse (CFA) modelleert geobserveerde variabelen (indicatoren) als rumoerige manifestaties van onderliggende latente variabelen (factoren). JASP's CFA is gemaakt met `lavaan` (lavaan.org; Rosseel, 2012), een `R` package voor structural equation modeling. Zie Brown (2014) of Kline (2015) voor boeken over het onderwerp, CFA.
 
-Invoerveld
+### Invoerveld
 -------
-In het invoerveld kunt u continue variabelen van uw dataset toewijzen aan verschillende factoren. Er is een minimum van één factor, en elke factor heeft minstens twee indicatoren. U kunt factoren toevoegen door te drukken op de (+) knop en verwijderen door te drukken op de (-) knop. U kunt de factoren hernoemen door de namen boven de invoervelden te wijzigen. Variabelen van het type "scale" of "ordinal" zijn toegestaan. In het geval dat "ordinal" variabelen worden gebruikt wordt de "WLS" schatter (estimator) gebruikt.
+In het toewijzingsvak kunnen continue en ordinale variabelen in uw dataset worden toegewezen aan verschillende factoren. Er is een minimum van één factor, en elke factor moet minstens twee indicatoren hebben. U kunt factoren toevoegen door op de (+)-knop te drukken en factoren verwijderen door op de (-)-knop te drukken. U kunt factoren hernoemen door de naam boven de toewijzingsvakjes te veranderen. Zowel schaal- als ordinale variabelen zijn toegestaan. 
 
-Tweede-orde factor
+Indien u ordinale variabelen gebruikt, is de gekozen schatter standaard "DWLS" en worden de teststatistiek en de fit-maten geschaald en verschoven (gemiddelde en variantie aangepast, zie *lavaan* documentatie). Andere mogelijke schatters zijn "WLS" en "ULS". Wanneer u ordinale variabelen gebruikt, kan het zinvol zijn robuuste standaardfouten te kiezen.
+
+### Tweede-orde factor
 -------
 JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde factor. Dit kan gespecificeerd worden door de factornamen naar het tweede orde invoerveld te slepen. Alle factoren die geen indicatoren van de tweede-orde factor zijn, kunnen covariëren met elkaar en met de tweede-orde factor, maar niet met de indicatoren van de tweede-orde factor.
 
-Model opties
+### Model opties
 -------
 - Voeg gemiddelde structuur toe: Toon gemiddeldes van de indicatoren en, in the geval van multi-groep CFA, de gemiddeldes van de latente variabelen.
 - Neem ongecorreleerde factoren aan: Zet de correlatie tussen verschillende latente variabelen op 0.
@@ -21,7 +23,7 @@ Model opties
   - Effecten coderen: Het gemiddelde van de factorlading is vastgezet op 1. Voor meer informatie over de interpretatie van effecten coderen, zie Veen (2018).
 - Residu covarianties: Om ook covariantie toe te staan tussen indicatoren die niet verklaard worden door hun respectieve factor, bijvoorbeeld omdat vragen in een vergelijkbare manier verwoord zijn, sleep twee variabelen naar het rechter invoerveld. 
 
-Aanvullende uitvoer
+### Aanvullende uitvoer
 -------
 - Extra pasmaten: Kies deze om de waarde van verschillende model pasmaten te tonen in de resultaten.
 - Kaiser-Meyer-Olkin (KMO) test: Toon Kaiser-Meyer-Olkin (KMO) test resultaten voor steekproef geschiktheid (MSA).
@@ -31,7 +33,7 @@ Aanvullende uitvoer
 - Modificatie indices: Toont MIs met een minimum grens. Een MI toont hoeveel de chi-square waarde van de passing zou veranderen als de gespecificeerde parameter vrij zou zijn. EPC toont de verwachten verandering van de parameter zelf.
 - Toon lavaan syntax: Toon de lavaan modeleer syntax die nodig zou zijn om het model in R weer te geven.
 
-Multigroep CFA
+### Multigroep CFA
 ------
 - Groepen: Selecteer hier een categorische variabele om CFA modellen voor iedere groep te creëren. 
 - Invariantie testen: Selecteer een niveau van beperkende parameters over de verschillende groepen. 
@@ -40,12 +42,12 @@ Multigroep CFA
   - Scalar: De factorladingen en gemiddeldes van de indicatoren van de groepen zijn gelijk.
   - Strikt: De factorladingen, gemiddeldes van de indicatoren, residu varianties, en residu covarianties van de groepen zijn gelijk.
   
-Grafieken
+### Grafieken
 -------
 - Misfit grafiek: Visualisatie van de residu correlaties (gestandaardiseerde residu covariantiematrix) van de indicatoren.
 - Model grafiek: Visualisatie van de geschatte modelstructuur.
 
-Geavanceerd
+### Geavanceerd
 -------
 - Emulatie: Emuleer resultaten van verschillende software.
 - Foutberekening: Wijzigt de manier waarop de standaardfout wordt berekend.
@@ -53,12 +55,11 @@ Geavanceerd
 - Standaardisatie: Toon gestandardiseerde parameters voor verschillende standaardisatieschema's.
 - Behandeling van missende data: Wijzigt de methode waarmee missende data worden behandeld.
 
-Referenties
+### Referenties
 -------
-- Brown, T. A. (2014). Confirmatory factor analysis for applied research. _Guilford Publications_.
-- Kline, R. B. (2015). Principles and practice of structural equation modeling. _Guilford publications_.
-- Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. _Journal of Statistical Software, 48_(2), 1-36. URL www.jstatsoft.org/v48/i02/
-- Veen, D., Little, T.D. & van de Schoot, R. (2018). Effects Coding as Unbiased Alternative to Scale Scores. (manuscript under review).
+- Brown, T. A. (2014). *Confirmatory factor analysis for applied research*. Guilford Press. 
+- Kline, R. B. (2015). *Principles and practice of structural equation modeling* (4th ed.). Guilford Press.
+- Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. *Journal of Statistical Software, 48*(2), 1-36. https://doi.org/10.18637/jss.v048.i02
 
 ### R Packages
 ---

@@ -85,6 +85,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaCheckErrors <- function(dataset, options) {
+
   # TODO (vankesteren) content error checks, e.g., posdef covmat
 
   # Number of variables in the factors
@@ -161,6 +162,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
 
   # Recalculate the model
+
   mod <- .optionsToCFAMod(options, dataset, cfaResult)
   geq <- .CFAInvariance(options)
   if (options$group == "") grp <- NULL else grp <- options$group
@@ -207,6 +209,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     if (!options[["estimator"]] %in% c("default", "ML") && options[["naAction"]] == "fiml") {
       jaspBase:::.quitAnalysis(gettext("FIML missing data handling only available with ML-type estimators"))
     }
+
+    if (options[["estimator"]] == "generalizedLeastSquares" && option[["seType"]] == "robust") {
+      jaspBase::.quitAnalysis(gettext("Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."))
+    }
+
     err <- attr(cfaResult[["lav"]], "condition")$message
     if(grepl("not available in the categorical", err)){
       if(grepl("ml", err))
@@ -444,7 +451,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
       maintab[["df"]]     <- fitMeasures[c("baseline.df.scaled", "df.scaled")]
       maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue.scaled"])
-      footnote <- gettextf("The estimator is %s and the test statistic is %s because there are categorical variables in the data.",
+      footnote <- gettextf("The estimator is %1$s and the test statistic is %2$s because there are categorical variables in the data.",
                            fitOptions$estimator, fitOptions$test)
       if (options[["seType"]] == "standard") {
         footnote <- paste(footnote, gettext("You may consider changing the standard error method to 'robust'."))
@@ -944,34 +951,38 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # Thresholds
   if ("|" %in% pei$op) {
-
-    # Manifest variable intercepts
-    jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
-    if (!is.null(footnote)) th$addFootnote(footnote)
-
-    th$addColumnInfo(name = "lhs",    title  = gettext("Indicator threshold"),  type = "string", combine = TRUE)
-    th$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
-    th$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
-    th$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
-    th$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number", format = "dp:3;p:.001")
-
-    th$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number", format = "sf:4;dp:3",
-                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-    th$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
-                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-    if (options$standardized != "none")
-      th$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                       type = "number", format = "sf:4;dp:3")
-
-    # add data
-    thdat <- pei[pei$op == "|", colSel[-c(2, 3)]]
-    thdat$lhs <- paste(thdat$lhs, "|", pei$rhs[pei$op == "|"])
-    th$setData(thdat)
-    th$dependOn(optionsFromObject = jrobject)
+    .thresholdsTable(jrobject, footnote, options, standardization, pei, colSel)
   }
 
+}
 
+.thresholdsTable <- function(jrobject, footnote, options, standardization, pei, colSel) {
+  # Manifest variable intercepts
+  jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
+  if (!is.null(footnote)) th$addFootnote(footnote)
+
+  th$addColumnInfo(name = "lhs",    title  = gettext("Indicator"),  type = "string", combine = TRUE)
+  th$addColumnInfo(name = "rhs",    title  = gettext("Threshold"),  type = "string")
+  th$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number")
+  th$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number")
+  th$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number")
+  th$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number")
+
+  th$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number",
+                   overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+  th$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number",
+                   overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+
+  if (options$standardized != "none")
+    th$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
+                     type = "number")
+
+  # add data
+  thdat <- pei[pei$op == "|", colSel[-c(2, 3)]]
+  thdat$lhs <- thdat$lhs
+  thdat$rhs <- pei$rhs[pei$op == "|"]
+  th$setData(thdat)
+  th$dependOn(optionsFromObject = jrobject)
 }
 
 .cfaTableModIndices <- function(jaspResults, options, cfaResult) {

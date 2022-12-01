@@ -161,7 +161,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     errcodes <- c("L-BFGS-B needs finite values of 'fn'", "missing value where TRUE/FALSE needed",
                   "reciprocal condition number = 0", "infinite or missing values in 'x'")
     if (errtxt %in% errcodes) {
-      errmsg <- gettextf("Estimation failed. Internal error message: %s. %s", .extractErrorMessage(efaResult),
+      errmsg <- gettextf("Estimation failed. Internal error message: %1$s. %2$s", .extractErrorMessage(efaResult),
                          "Try basing the analysis on a different type of matrix or change the factoring method.")
     } else {
       errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(efaResult))

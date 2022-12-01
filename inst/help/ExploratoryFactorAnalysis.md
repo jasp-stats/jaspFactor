@@ -116,10 +116,6 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
   
 - Parallel Analysis: The table displays as many factors as variables selected for analysis, eigenvalues corresponding to the real-data factor, and the eigenvalue corresponding to the parallel mean resampled value. It will display an asterisk along the names of the factors advised to be retained (whose real-data eigenvalue is greater than the resampled-data mean value). Note that, even when selecting a PC-based parallel analysis, the table will refer to "factors" as the ones advised to be retained instead of "components"; this is due to common usage of the PC-based parallel analysis method for assessing the number of factors within EFA (e.g., Golino et al., 2020).
 
-- Assumption Checks:
-
-	- Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
-
 #### Path Diagram 
 - F(1,2,3,...): The factors in the model are represented by the circles.  
 - Variables: The variables are represented by the boxes. 

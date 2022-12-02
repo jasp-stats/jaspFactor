@@ -114,9 +114,14 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     for (group in levels(dataset[[options$group]])) {
 
       idx <- dataset[[options$group]] == group
-      .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
-                 varCovData.corFun = stats::cov)
 
+      if (any(sapply(dataset[, vars], is.ordered))) {
+        .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                   varCovData.corFun = lavaan::lavCor)
+      } else {
+        .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                   varCovData.corFun = stats::cov)
+      }
     }
   }
 

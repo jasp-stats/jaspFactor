@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-24 17:48+0000\n"
+"PO-Revision-Date: 2022-12-15 11:49+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/pl/>\n"
@@ -19,7 +19,7 @@ msgstr "Czynnik"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr ""
+msgstr "Analiza głównych składowych (PCA)"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
@@ -179,7 +179,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI width"
-msgstr ""
+msgstr "Szerokość PU"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Method"
@@ -195,7 +195,7 @@ msgstr "Odporne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap CI"
-msgstr "Bootstrap CI"
+msgstr "Bootstrapowe PU"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
@@ -323,7 +323,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
-msgstr ""
+msgstr "Metoda osi głównych (PAF)"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-11-28 14:25\n"
+"POT-Creation-Date: 2022-12-17 03:30\n"
 "PO-Revision-Date: 2022-11-25 07:47+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -318,9 +318,6 @@ msgstr ""
 msgid "No factors with an eigenvalue >"
 msgstr "沒有因素的特徵值大於"
 
-msgid "."
-msgstr "."
-
 msgid "Maximum observed eigenvalue equals"
 msgstr "觀察特徵值之最大值為"
 
@@ -483,6 +480,9 @@ msgstr "陡坡圖"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "."
+#~ msgstr "."
 
 #~ msgid "Variance explained"
 #~ msgstr "可解釋變異量"

@@ -618,11 +618,11 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
 }
 
 .pcaAddComponentsToData <- function(jaspResults, modelContainer, options, ready) {
-  if(!ready || !options[["addComponentScores"]] || options[["componentsPrefix"]] == "" || modelContainer$getError()) return()
+  if(!ready || !options[["addCoordinates"]] || options[["coordinatesColumn"]] == "" || modelContainer$getError()) return()
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
   for (i in 1:ncol(scores)) {
-    scorename <- paste0(options[["componentsPrefix"]], "_", i)
+    scorename <- paste0(options[["coordinatesColumn"]], "_", i)
     if (is.null(jaspResults[[scorename]])) {
       jaspResults[[scorename]] <- createJaspColumn(scorename)
       jaspResults[[scorename]]$dependOn(optionsFromObject = modelContainer)

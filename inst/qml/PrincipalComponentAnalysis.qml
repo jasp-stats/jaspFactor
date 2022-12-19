@@ -153,6 +153,32 @@ Form
 		}
 	}
 
+    Group
+    {
+        property alias enabled:			exportSection.enabled
+        property alias showSave:		saveGroup.visible
+
+        id:								exportSection
+        title:							qsTr("Export Results")
+
+        CheckBox
+        {
+            id:							addCoordinates
+            name:						"addCoordinates"
+            text:						qsTr("Add coordinates to data")
+
+            ComputedColumnField
+            {
+                id:						coordinatesColumn
+                name:					"coordinatesColumn"
+                text:					qsTr("Column name")
+                placeholderText:		qsTr("e.g., coordinates")
+                fieldWidth:				120
+                enabled:				addCoordinates.checked
+            }
+        }
+    }
+
 	Section
 	{
 		title: qsTr("Output Options")

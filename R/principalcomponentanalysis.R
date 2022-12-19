@@ -616,7 +616,7 @@ principalComponentAnalysis <- function(jaspResults, dataset, options, ...) {
   ))
 
 }
-
+ 
 .pcaAddComponentsToData <- function(jaspResults, modelContainer, options, ready) {
   if(!ready || !options[["addCoordinates"]] || options[["coordinatesColumn"]] == "" || modelContainer$getError()) return()
 

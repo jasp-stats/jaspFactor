@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2022-12-17 03:30\n"
-"PO-Revision-Date: 2022-11-25 07:47+0000\n"
+"PO-Revision-Date: 2022-12-20 20:17+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspfactor-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 msgid "Second-Order"
 msgstr "二階"
@@ -27,13 +27,16 @@ msgid ""
 msgstr "模型無法估計。有個少於兩個變數的因素被設為二階因素。"
 
 msgid "FIML missing data handling only available with ML-type estimators"
-msgstr ""
+msgstr "只有使用最大概似法 "
+"(ML)類的估計法時，才能使用完全訊息最大概似法的方式來處理遺漏值"
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
 msgstr ""
+"遺漏值資料處理方式 '%s'不適用於類別資料\n"
+"請在「進階」選項中的「處理遺漏值資料」中選擇其他的處理方法"
 
 msgid ""
 "The model could not be estimated. Error message: \n"
@@ -74,13 +77,11 @@ msgstr "基準模型"
 msgid "Factor model"
 msgstr "因素模型"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr "Kaiser-Meyer-Olkin 檢驗"
+msgstr "Kaiser-Meyer-Olkin (KMO) 檢驗"
 
-#, fuzzy
 msgid "Bartlett's test of sphericity"
-msgstr "Bartlett's檢定"
+msgstr "Bartlett's 球型檢定"
 
 msgid "R-Squared"
 msgstr "R平方"
@@ -173,13 +174,13 @@ msgid "McDonald fit index (MFI)"
 msgstr "McDonald 適配指標 (IFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr "Expected cross validation index  (EVCI)"
+msgstr "Expected cross validation index (EVCI)"
 
 msgid "Parameter estimates"
 msgstr "參數估計值"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
-msgstr "未能成功分析所有拔靴樣本: 所報告的信賴區間是基於 %.0f 的樣本"
+msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間是基於 %.的樣本"
 
 msgid "Factor loadings"
 msgstr "因素負荷量"
@@ -202,14 +203,16 @@ msgstr "標準誤"
 msgid "z-value"
 msgstr "z 值"
 
+#, fuzzy
 msgid "Lower"
-msgstr "下限"
+msgstr "下界"
 
 msgid "%s%% Confidence Interval"
 msgstr "%s%% 信賴區間"
 
+#, fuzzy
 msgid "Upper"
-msgstr "上限"
+msgstr "上界"
 
 msgid "Std. Est. (%s)"
 msgstr "標準化解 (%s)"
@@ -402,20 +405,19 @@ msgid "RMSEA 90%% confidence"
 msgstr "RMSEA 90%% 信賴"
 
 msgid "SRMR"
-msgstr ""
+msgstr "SRMR"
 
 msgid "TLI"
 msgstr "TLI"
 
 msgid "CFI"
-msgstr ""
+msgstr "CFI"
 
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "Residual Matrix"
-msgstr "殘差變異數"
+msgstr "殘差變異數矩陣"
 
 msgid "Real data component eigenvalues"
 msgstr "真實資料的成分特徵值"
@@ -429,11 +431,8 @@ msgstr ""
 msgid "Real data factor eigenvalues"
 msgstr "真實資料特徵值"
 
-#, fuzzy
 msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr ""
-"'*'為應保留之因素. \n"
-"基於因素模型的平行分析結果"
+msgstr "根據因素模型的平行分析結果'*'=%s 應要保留"
 
 msgid "Parallel Analysis"
 msgstr "平行分析"

@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-12-15 11:49+0000\n"
+"PO-Revision-Date: 2022-12-31 03:27+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-"
-"qml/pl/>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -23,11 +23,11 @@ msgstr "Analiza głównych składowych (PCA)"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
-msgstr ""
+msgstr "Eksploracyjna analiza czynnikowa"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
-msgstr ""
+msgstr "Konfirmacyjna analiza czynnikowa"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
@@ -39,7 +39,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr ""
+msgstr "Opcje modelu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
@@ -47,7 +47,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr ""
+msgstr "Załóż, że czynniki nie są skorelowane"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
@@ -59,7 +59,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Wariancje czynników"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
@@ -71,15 +71,15 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr ""
+msgstr "Kowariancje reszt"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr ""
+msgstr "Dodatkowe wyniki"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Dodatkowe miary dopasowania"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
@@ -99,11 +99,11 @@ msgstr "Indeksy modyfikacyjne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr ""
+msgstr "Punkt odcięcia"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
-msgstr ""
+msgstr "Pokaż składnię lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
@@ -111,7 +111,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Zmienna grupująca"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
@@ -263,7 +263,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr ""
+msgstr "Wariancje reszt"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
@@ -271,7 +271,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add thresholds"
-msgstr ""
+msgstr "Dodaj progi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
@@ -279,7 +279,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
-msgstr ""
+msgstr "Skoreluj zmienne zależne"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
@@ -291,15 +291,15 @@ msgstr "Liczba czynników"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
-msgstr ""
+msgstr "Analiza równoległa"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues"
-msgstr ""
+msgstr "Wartości własne"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Wartości własne powyżej"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
@@ -307,19 +307,19 @@ msgstr "Ręcznie"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr ""
+msgstr "Liczba czynników"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Estimation method"
-msgstr ""
+msgstr "Metoda estymacji"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
-msgstr ""
+msgstr "Minimalna reszta"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"
-msgstr ""
+msgstr "Metoda największej wiarygodności"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
@@ -351,11 +351,11 @@ msgstr "Rotacja"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Orthogonal"
-msgstr ""
+msgstr "Ortogonalna"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "none"
-msgstr ""
+msgstr "brak"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
@@ -363,23 +363,23 @@ msgstr "Oblique"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
-msgstr ""
+msgstr "Oprzyj analizę na"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Macierz korelacji"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "Macierz kowariancji"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
-msgstr ""
+msgstr "Opcje wyników"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Highlight"
-msgstr ""
+msgstr "Wyróżnij"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
@@ -391,7 +391,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor correlations"
-msgstr ""
+msgstr "Korelacje pomiędzy czynnikami"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
@@ -403,15 +403,15 @@ msgstr "Wykresy"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Diagram ścieżkowy"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Scree plot"
-msgstr ""
+msgstr "Wykres osypiska"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr ""
+msgstr "Weryfikacja założeń"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
@@ -419,15 +419,15 @@ msgstr "Test KMO"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
-msgstr ""
+msgstr "Test Bartletta"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Braki danych"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Wyklucz obserwacje z wybranych analiz"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
@@ -435,31 +435,31 @@ msgstr "Wyklucz obserwacje ze wszystkich analiz"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
-msgstr ""
+msgstr "Zmienne"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components"
-msgstr ""
+msgstr "Liczba składowych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
-msgstr ""
+msgstr "Analiza równoległa"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues"
-msgstr ""
+msgstr "Wartości własne"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Wartości własne powyżej"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
-msgstr ""
+msgstr "Ręcznie"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of components"
-msgstr ""
+msgstr "Liczba składowych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"
@@ -467,11 +467,11 @@ msgstr "Rotacja"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Orthogonal"
-msgstr ""
+msgstr "Ortogonalna"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "none"
-msgstr ""
+msgstr "brak"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
@@ -483,47 +483,47 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Macierz korelacji"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "Macierz kowariancji"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
-msgstr ""
+msgstr "Opcje wyników"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Highlight"
-msgstr ""
+msgstr "Wyróżnij"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Table"
-msgstr ""
+msgstr "Tabela"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Factor correlations"
-msgstr ""
+msgstr "Korelacje pomiędzy czynnikami"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Wykresy"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Diagram ścieżkowy"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Scree plot"
-msgstr ""
+msgstr "Wykres osypiska"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Braki danych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Wyklucz obserwacje z wybranych analiz"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
@@ -563,7 +563,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "Wyniki analizy równoległej"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
@@ -575,7 +575,7 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "Wyniki analizy równoległej"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
@@ -583,7 +583,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
-msgstr ""
+msgstr "Test Mardii"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
@@ -591,19 +591,19 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
-msgstr ""
+msgstr "Rozmiar czcionki"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr ""
+msgstr "Pokaż wariancje"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr ""
+msgstr "Obróć wykres"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
-msgstr ""
+msgstr "Pokaż oszacowania parametrów"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""

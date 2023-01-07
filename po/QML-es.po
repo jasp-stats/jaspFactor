@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-12-26 17:53+0000\n"
+"PO-Revision-Date: 2023-01-07 10:35+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/jaspfactor-"
-"qml/es/>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,7 +72,7 @@ msgstr "Codificación de efectos"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr "Covarianzas de los Residuos"
+msgstr "Covarianzas de los Errores"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
@@ -92,7 +92,7 @@ msgstr "Matriz de covarianzas implícitas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr "Matriz de covarianzas de los residuos"
+msgstr "Matriz de covarianzas de los errores"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
@@ -264,11 +264,11 @@ msgstr "Fijar en 0, las ordenadas en el origen latentes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr "Omitir el índice único de residuo"
+msgstr "Omitir el índice único del error"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr "Varianzas de los residuos"
+msgstr "Varianzas de los errores"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
@@ -320,7 +320,7 @@ msgstr "Método de estimación"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
-msgstr "Mínimo residual"
+msgstr "Error mínimo"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"

@@ -253,38 +253,35 @@ test_that("rotation methods match", {
 
 
 # results for PCA based on covariance
-options <- jaspTools::analysisOptions("principalComponentAnalysis")
-options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
-options$eigenValuesAbove <- 0.95
+options <- analysisOptions("principalComponentAnalysis")
+options$variables <- list("contNormal", "contGamma", "contcor1", "contcor2")
 options$orthogonalSelector <- "varimax"
-options$componentCountMethod <- "parallelAnalysis"
+options$componentCountMethod <- "manual"
 options$analysisBasedOn <- "covarianceMatrix"
 set.seed(1)
-results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
+results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
 
-test_that("Component Characteristics table results match for cov based", {
+
+test_that("Component Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Component 1", 0.403619588144788, 0.403619588144787, 2.63130873518658,
-                                      2.63130873518658, 0.403619588144788, 0.403619588144787))
+                                 list("Component 1", 0.445242040210262, 0.445242040210261, 2.44912355022028,
+                                      2.44912355022028, 0.445242040210262, 0.445242040210261))
 })
 
-test_that("Chi-squared Test table results match for cov based", {
-  if (jaspBase::getOS() == "linux") {
-    skip("This test results in NA on linux systems")
-  }
+test_that("Chi-squared Test table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0, 5, "Model", 1))
+                                 list(0, 2, "Model", 1))
 })
 
-test_that("Component Loadings table results match for cov based", {
+test_that("Component Loadings table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.198854317174461, 1.08069632866638, "contNormal", -1.32987221212188,
-                                      0.579723759159583, "contGamma", 0.0104334466232627, 0.00662752872503283,
-                                      "debCollin1", 0.313010562259167, 0.925841829156714, "contcor1",
-                                      0.851540443114395, 1.29508089394256, "facFive"))
+                                 list(-0.167424873032004, 1.09220828001551, "contNormal", 1.46947969487352,
+                                      0.188913286087952, "contGamma", -0.412348047289494, 0.853786529139055,
+                                      "contcor1", -0.302805178888101, 0.916624916670696, "contcor2"
+                                 ))
 })
 
 

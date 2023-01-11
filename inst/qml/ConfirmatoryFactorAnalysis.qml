@@ -101,8 +101,8 @@ Form
 			{
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-				AvailableVariablesList {		name: "observedvars";	source: factors.name	}
-				AssignedPairsVariablesList {	name: "residualsCovarying"						}
+				AvailableVariablesList 		 {	name: "observedVarsForResidualCov";	source: factors.name}
+				AssignedPairsVariablesList {	name: "residualsCovarying"}
 			}
 		}
 	}
@@ -202,7 +202,7 @@ Form
 			{
 				title: qsTr("Standard error")
 				name: "seType"
-				RadioButton { label: qsTr("Standard")  ;	value: "standard" ; checked: true }
+				RadioButton { label: qsTr("Standard");	value: "standard"; checked: true}
 				RadioButton { label: qsTr("Robust");		value: "robust" }
 				RadioButton {
 					label: qsTr("Bootstrap")

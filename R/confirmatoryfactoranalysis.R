@@ -199,6 +199,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                              ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
     ))
 
+  # are there ordered variables in the data?
+  cfaResult[["orderedVariables"]] <- any(sapply(dataset, is.ordered))
+
   # Quit analysis on error
   if (inherits(cfaResult[["lav"]], "try-error")) {
     if (!options[["estimator"]] %in% c("default", "ML") && options[["naAction"]] == "fiml") {
@@ -271,7 +274,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     spec$se <- "standard"
     spec$bootstrap <- TRUE
   } else {
-    spec$se <- options$seType
+    if (options$seType == "robust") {
+      spec$se <- "robust.sem"
+    } else {
+      spec$se <- options$seType
+    }
     spec$bootstrap <- FALSE
   }
   return(spec)
@@ -425,11 +432,33 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     maintab[["df"]]     <- c(           "."           ,           "."          )
     maintab[["pvalue"]] <- c(           "."           ,           "."          )
   } else {
-    fm <- lavaan::fitMeasures(cfaResult[["lav"]])
-    maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
-    maintab[["chisq"]]  <- fm[c("baseline.chisq", "chisq")]
-    maintab[["df"]]     <- fm[c("baseline.df", "df")]
-    maintab[["pvalue"]] <- c(NA, fm["pvalue"])
+    # check the fit options
+    fitOptions <- lavaan::inspect(cfaResult[["lav"]], what = "options")
+
+    # get the model fit
+    fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
+
+    if (cfaResult[["orderedVariables"]] && options[["estimator"]] == "default") {
+      # when the estimator is not default lavaan does not use the robust test
+      maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
+      maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
+      maintab[["df"]]     <- fitMeasures[c("baseline.df.scaled", "df.scaled")]
+      maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue.scaled"])
+      footnote <- gettextf("The estimator is %s and the test statistic is %s because there are categorical variables in the data.",
+                           fitOptions$estimator, fitOptions$test)
+      if (options[["seType"]] == "standard") {
+        footnote <- paste(footnote, gettext("You may consider changing the standard error method to 'robust'."))
+      }
+      maintab$addFootnote(footnote)
+    } else {
+      maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
+      maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq", "chisq")]
+      maintab[["df"]]     <- fitMeasures[c("baseline.df", "df")]
+      maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue"])
+      if (options[["estimator"]] == "default") {
+        maintab$addFootnote(gettextf("The estimator is %s.", fitOptions$estimator))
+      }
+    }
   }
 }
 
@@ -565,7 +594,19 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (is.null(cfaResult)) return()
 
   # actually compute the fit measures
-  fm <- lavaan::fitmeasures(cfaResult[["lav"]])
+  fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
+
+  # information criteria
+  fitic[["index"]] <- c(
+    gettext("Log-likelihood"),
+    gettext("Number of free parameters"),
+    gettext("Akaike (AIC)"),
+    gettext("Bayesian (BIC)"),
+    gettext("Sample-size adjusted Bayesian (SSABIC)")
+  )
+  fitic[["value"]] <- fitMeasures[c("logl", "npar", "aic", "bic", "bic2")]
+  if(is.na(fitMeasures["logl"]) && is.na(fitMeasures["aic"]) && is.na(fitMeasures["bic"]))
+    fitic$setError("Information criteria are only available with ML-type estimators")
 
   # Fit indices
   fitin[["index"]] <- c(
@@ -578,19 +619,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     gettext("Bollen's Incremental Fit Index (IFI)"),
     gettext("Relative Noncentrality Index (RNI)")
   )
-  fitin[["value"]] <- fm[c("cfi", "tli", "nnfi", "nfi", "pnfi", "rfi", "ifi", "rni")]
-
-  # information criteria
-  fitic[["index"]] <- c(
-    gettext("Log-likelihood"),
-    gettext("Number of free parameters"),
-    gettext("Akaike (AIC)"),
-    gettext("Bayesian (BIC)"),
-    gettext("Sample-size adjusted Bayesian (SSABIC)")
-  )
-  fitic[["value"]] <- fm[c("logl", "npar", "aic", "bic", "bic2")]
-  if(is.na(fm["logl"]) && is.na(fm["aic"]) && is.na(fm["bic"]))
-    fitic$setError("Information criteria are only available with ML-type estimators")
 
   # other fitmeasures
   fitot[["index"]] <- c(
@@ -605,8 +633,21 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     gettext("McDonald fit index (MFI)"),
     gettext("Expected cross validation index (ECVI)")
   )
-  fitot[["value"]] <- fm[c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue",
-                           "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
+
+  if (cfaResult[["orderedVariables"]] && !is.na(fitMeasures["chisq.scaled"])) {
+    fitin[["value"]] <- fitMeasures[c("cfi.scaled", "tli.scaled", "nnfi.scaled", "nfi.scaled", "pnfi",
+                                      "rfi.scaled", "ifi.scaled", "rni.scaled")]
+    fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because of categorical variables in the data."))
+
+    fitot[["value"]] <- fitMeasures[c("rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled",
+                                      "rmsea.pvalue.scaled", "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
+    fitot$addFootnote(gettext("The RMSEA results are scaled because of categorical variables in the data."))
+  } else {
+    fitin[["value"]] <- fitMeasures[c("cfi", "tli", "nnfi", "nfi", "pnfi", "rfi", "ifi", "rni")]
+    fitot[["value"]] <- fitMeasures[c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue",
+                                      "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
+  }
+
 
   return()
 }
@@ -616,8 +657,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (is.null(cfaResult) || !is.null(jaspResults[["estimates"]])) return()
 
   jaspResults[["estimates"]] <- ests <- createJaspContainer(gettext("Parameter estimates"), position = 2)
-  ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                  "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "standardized", "ciLevel"))
+  ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
+                  "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
+                  "group", "invarianceTesting", "standardized", "ciLevel"))
 
 
   footnote <- NULL
@@ -840,8 +882,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     residualCovTable[["ci.lower"]] <- rc$ci.lower
     residualCovTable[["ci.upper"]] <- rc$ci.upper
 
-
     jrobject[["Residual Covariances"]] <- residualCovTable
+
   }
 
   # Intercepts ----
@@ -898,6 +940,38 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     vi$setData(vidat)
     vi$dependOn(optionsFromObject = jrobject)
   }
+
+
+  # Thresholds
+  if ("|" %in% pei$op) {
+
+    # Manifest variable intercepts
+    jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
+    if (!is.null(footnote)) th$addFootnote(footnote)
+
+    th$addColumnInfo(name = "lhs",    title  = gettext("Indicator threshold"),  type = "string", combine = TRUE)
+    th$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+    th$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
+    th$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
+    th$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number", format = "dp:3;p:.001")
+
+    th$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number", format = "sf:4;dp:3",
+                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+    th$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
+                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+
+    if (options$standardized != "none")
+      th$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
+                       type = "number", format = "sf:4;dp:3")
+
+    # add data
+    thdat <- pei[pei$op == "|", colSel[-c(2, 3)]]
+    thdat$lhs <- paste(thdat$lhs, "|", pei$rhs[pei$op == "|"])
+    th$setData(thdat)
+    th$dependOn(optionsFromObject = jrobject)
+  }
+
+
 }
 
 .cfaTableModIndices <- function(jaspResults, options, cfaResult) {
@@ -1224,3 +1298,4 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
   jaspResults[["syntax"]]$dependOn("lavaanSyntax")
 }
+

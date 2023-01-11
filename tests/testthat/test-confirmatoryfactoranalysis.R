@@ -445,3 +445,101 @@ test_that("Chi-square test table results match for multiple groups and effects c
                                  list(957.769050808683, 72, "Baseline model", "", 84.655095268701, 46,
                                       "Factor model", 0.000448372893282811))
 })
+
+
+
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$group <- ""
+options$packageMimiced <- "lavaan"
+options$seType <- "robust"
+options$estimator <- "default"
+options$factors <- list(
+  list(indicators = list("V1", "V2", "V3", "V4"),
+       name = "Factor1", title = "Factor 1"),
+  list(indicators = list("V5", "V6", "V7", "V8"),
+       name = "Factor2", title = "Factor 2")
+)
+options$modelIdentification <- "factorVariance"
+options$naAction <- "pairwise"
+options$thresholds <- TRUE
+options$group <- "gender"
+options$fitMeasures <- TRUE
+dt <- read.csv("cavalini_group.csv")
+dt[, c("V1", "V5", "V8")] <- lapply(dt[, c("V1", "V5", "V8")], ordered)
+
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", dt, options)
+
+
+test_that("Thresholds table results match", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_f"]][["collection"]][["estimates_f_Thresholds"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(-1.37345271503234, -1.05964335802485, -1.2165480365286, "V1 | t1",
+                                      0, 0.0800548784270476, -15.1964260071572, -0.358874219848855,
+                                      -0.118911115849374, -0.238892667849114, "V1 | t2", 9.52271353014122e-05,
+                                      0.0612162024129726, -3.90244181168758, 0.124863894782197, 0.364954328270292,
+                                      0.244909111526244, "V1 | t3", 6.3717733790325e-05, 0.0612486850222499,
+                                      3.99860195263418, 0.547166075781201, 0.805483371744301, 0.676324723762751,
+                                      "V5 | t1", 0, 0.065898480278381, 10.2631308173677, 1.32801878330997,
+                                      1.69596338637514, 1.51199108484256, "V5 | t2", 0, 0.0938651439433244,
+                                      16.1081208777083, 1.58695081056115, 2.03777591515951, 1.81236336286033,
+                                      "V5 | t3", 0, 0.115008517542776, 15.7585142525312, -0.667907099127094,
+                                      -0.417271559864424, -0.542589329495759, "V8 | t1", 0, 0.0639388124576908,
+                                      -8.48607142734779, 0.575854076158956, 0.836151253707481, 0.706002664933219,
+                                      "V8 | t2", 0, 0.0664035613923819, 10.6320000031537, 1.28086251788209,
+                                      1.63744971087504, 1.45915611437857, "V8 | t3", 0, 0.090967792215996,
+                                      16.040359767267))
+})
+
+test_that("Thresholds table results match", {
+  table <- results[["results"]][["estimates"]][["collection"]][["estimates_m"]][["collection"]][["estimates_m_Thresholds"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(-1.33296389680349, -1.01400542884757, -1.17348466282553, "V1 | t1",
+                                      0, 0.0813684512755931, -14.4218630738216, -0.342662717731549,
+                                      -0.0942651168100136, -0.218463917270781, "V1 | t2", 0.000565698466995501,
+                                      0.0633678993289836, -3.44754867344733, 0.276480375367169, 0.53014885331,
+                                      0.403314614338585, "V1 | t3", 4.59333238111981e-10, 0.0647125355220137,
+                                      6.23240321346065, 0.501097035494698, 0.766182966064704, 0.633640000779701,
+                                      "V5 | t1", 0, 0.067625204509106, 9.36987925403433, 1.35781354298621,
+                                      1.74921140203548, 1.55351247251084, "V5 | t2", 0, 0.0998482273492178,
+                                      15.5587386351633, 1.60472242820073, 2.08355527282974, 1.84413885051524,
+                                      "V5 | t3", 0, 0.122153480473616, 15.0968997638471, -0.629660973554337,
+                                      -0.371855294149489, -0.500758133851913, "V8 | t1", 2.66453525910038e-14,
+                                      0.0657679634519783, -7.61401307822997, 0.682580238630726, 0.961593110504241,
+                                      0.822086674567484, "V8 | t2", 0, 0.0711780609425307, 11.549720007563,
+                                      1.45747588382256, 1.8793065040716, 1.66839119394708, "V8 | t3",
+                                      0, 0.107611829496968, 15.5037898876544))
+})
+
+test_that("Fit indices table results match", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_fits"]][["collection"]][["maincontainer_fits_indices"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Comparative Fit Index (CFI)", 0.837270996361255, "Tucker-Lewis Index (TLI)",
+                                      0.760188836742902, "Bentler-Bonett Non-normed Fit Index (NNFI)",
+                                      0.760188836742902, "Bentler-Bonett Normed Fit Index (NFI)",
+                                      0.814729950768132, "Parsimony Normed Fit Index (PNFI)", 0.648989559539764,
+                                      "Bollen's Relative Fit Index (RFI)", 0.726970453763563, "Bollen's Incremental Fit Index (IFI)",
+                                      0.839626473453737, "Relative Noncentrality Index (RNI)", 0.837270996361255
+                                 ))
+})
+
+test_that("Other fit measures table results match", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_fits"]][["collection"]][["maincontainer_fits_others"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Root mean square error of approximation (RMSEA)", 0.112727222947185,
+                                      "RMSEA 90% CI lower bound", 0.0992231977494561, "RMSEA 90% CI upper bound",
+                                      0.12668058010314, "RMSEA p-value", 1.10023101740353e-13, "Standardized root mean square residual (SRMR)",
+                                      0.0652605072256331, "Hoelter's critical N (<unicode> = .05)",
+                                      415.284725169067, "Hoelter's critical N (<unicode> = .01)",
+                                      475.650388677281, "Goodness of fit index (GFI)", 0.986569391374822,
+                                      "McDonald fit index (MFI)", 0.959420192033006, "Expected cross validation index (ECVI)",
+                                      ""))
+})
+
+test_that("Chi-square test table results match", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_cfatab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(1281.53663843542, 56, "Baseline model", "", 237.430356095373,
+                                      38, "Factor model", 0))
+})
+

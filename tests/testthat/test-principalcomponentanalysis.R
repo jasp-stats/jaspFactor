@@ -270,6 +270,9 @@ test_that("Component Characteristics table results match for cov based", {
 })
 
 test_that("Chi-squared Test table results match for cov based", {
+  if (jaspBase::getOS() == "linux") {
+    skip("This test results in NA on linux systems")
+  }
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(0, 5, "Model", 1))

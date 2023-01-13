@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-11 15:53+0000\n"
-"Last-Translator: Jill de Ron <jillderon93@gmail.com>\n"
+"PO-Revision-Date: 2023-01-13 12:30+0000\n"
+"Last-Translator: Don van den Bergh <donvdbergh@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/nl/>\n"
 "Language: nl\n"
@@ -528,11 +528,11 @@ msgstr "Resultaten parallelle analyse"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "Polychorische/tetrachorische correlatie matrix"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
-msgstr ""
+msgstr "Mardia's test"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
@@ -584,7 +584,7 @@ msgstr "Standaard fout"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
@@ -646,7 +646,6 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
 msgstr "Laat ladingen bovenaan zien"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Tables"
 msgstr "Tabellen"

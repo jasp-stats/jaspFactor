@@ -650,7 +650,3 @@ msgstr ""
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
 msgstr ""
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr ""

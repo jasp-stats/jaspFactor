@@ -666,7 +666,3 @@ msgstr "Корреляции компонентов"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
 msgstr "Остаточная матрица"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid ""
-msgstr ""

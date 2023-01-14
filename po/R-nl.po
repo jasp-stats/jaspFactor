@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2022-12-17 03:30\n"
-"PO-Revision-Date: 2022-09-28 11:28+0000\n"
+"PO-Revision-Date: 2023-01-11 15:53+0000\n"
 "Last-Translator: Jill de Ron <jillderon93@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "nl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 msgid "Second-Order"
 msgstr "Tweede-Orde"
@@ -32,13 +32,16 @@ msgstr ""
 "was toegevoegd in Tweede-Orde."
 
 msgid "FIML missing data handling only available with ML-type estimators"
-msgstr ""
+msgstr "FIML missende dataverwerking alleen beschikbaar met ML-type schatters"
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
 msgstr ""
+"Missende dataverwerking '%s' is niet beschikbaar voor categorische data. \n"
+"Selecteer een andere methode onder 'Missende dataverwerking' binnen de "
+"'Geavanceerde' opties tab"
 
 msgid ""
 "The model could not be estimated. Error message: \n"
@@ -79,13 +82,11 @@ msgstr "Baseline model"
 msgid "Factor model"
 msgstr "Factor model"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr "Kaiser-Meyer-Olkin toets"
+msgstr "Kaiser-Meyer-Olkin (KMO) toets"
 
-#, fuzzy
 msgid "Bartlett's test of sphericity"
-msgstr "Bartlett's toets"
+msgstr "Bartlett's toets van sfericiteit"
 
 msgid "R-Squared"
 msgstr "R-kwadraat"
@@ -414,38 +415,35 @@ msgid "RMSEA 90%% confidence"
 msgstr "RMSEA 90%% betrouwbaarheid"
 
 msgid "SRMR"
-msgstr ""
+msgstr "SRMR"
 
 msgid "TLI"
 msgstr "TLI"
 
 msgid "CFI"
-msgstr ""
+msgstr "CFI"
 
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "Residual Matrix"
-msgstr "Residu varianties"
+msgstr "Residuele matrix"
 
 msgid "Real data component eigenvalues"
 msgstr "Echte data component eigenwaarden"
 
-#, fuzzy
 msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
 msgstr ""
-"'*' = Factor moet behouden blijven.\n"
-"Resultaten van PC-gebaseerde parallele analyse."
+"'*' = %s moet behouden blijven. Resultaten van PC-gebaseerde parallele "
+"analyse."
 
 msgid "Real data factor eigenvalues"
 msgstr "Echte data factor eigenwaardes"
 
-#, fuzzy
 msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
 msgstr ""
-"'*' = Factor moet behouden blijven.\n"
-"Resultaten van FA-gebaseerde parallele analyse."
+"'*' = %s moet behouden blijven. Resultaten van FA-gebaseerde parallele "
+"analyse."
 
 msgid "Parallel Analysis"
 msgstr "Parallelle Analyse"

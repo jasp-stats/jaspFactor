@@ -180,7 +180,7 @@ msgid "Parameter estimates"
 msgstr "參數估計值"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
-msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間是基於 %.的樣本"
+msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間是基於 %.0f的樣本"
 
 msgid "Factor loadings"
 msgstr "因素負荷量"

@@ -1,16 +1,10 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-31 14:36+0000\n"
-"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"jasp/jaspfactor-qml/zh_Hant/>\n"
-"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hant\n"
-"X-Generator: Weblate 4.9-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -52,10 +46,6 @@ msgstr "假設因素間無關"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
 msgstr "固定外衍共變項"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Factor Scaling"
-msgstr "設定因素尺規"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
@@ -146,10 +136,6 @@ msgid "Model plot"
 msgstr "模式圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Show parameters"
-msgstr "顯示參數"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
 msgstr "標準化"
 
@@ -160,10 +146,6 @@ msgstr "顯示平均數"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
 msgstr "進階"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Emulation"
-msgstr "仿照"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
@@ -182,24 +164,12 @@ msgid "Error calculation"
 msgstr "誤差計算方式"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "CI width"
-msgstr "信賴區間範圍"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Method"
-msgstr "方法"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
 msgstr "標準"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
 msgstr "穩健"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap CI"
-msgstr "以拔靴法計算信賴區間"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
@@ -246,10 +216,6 @@ msgid "All"
 msgstr "所有"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "No X"
-msgstr "X除外"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
 msgstr "設定"
 
@@ -290,10 +256,6 @@ msgid "Variables"
 msgstr "變項"
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Number of Factors"
-msgstr "因素個數"
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
 msgstr "平行分析法"
 
@@ -312,10 +274,6 @@ msgstr "自訂"
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
 msgstr "因素個數"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Estimation method"
-msgstr "估計法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
@@ -382,10 +340,6 @@ msgid "Output Options"
 msgstr "報表設定"
 
 msgctxt "ExploratoryFactorAnalysis|"
-msgid "Highlight"
-msgstr "強調"
-
-msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
 msgstr "表格"
 
@@ -442,10 +396,6 @@ msgid "Variables"
 msgstr "變項"
 
 msgctxt "PrincipalComponentAnalysis|"
-msgid "Number of Components"
-msgstr "成分個數"
-
-msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
 msgstr "平行分析法"
 
@@ -498,18 +448,6 @@ msgid "Output Options"
 msgstr "報表設定"
 
 msgctxt "PrincipalComponentAnalysis|"
-msgid "Highlight"
-msgstr "強調"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Table"
-msgstr "表格"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Factor correlations"
-msgstr "因素相關"
-
-msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
 msgstr "圖"
 
@@ -556,3 +494,160 @@ msgstr "成份負荷量排序方式為"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
 msgstr "成分大小"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model identification"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Font size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic package"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Lavaan"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "CI level"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard error"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Missing data handling"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FIML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Listwise deletion"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Pairwise"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No Exogenous Covariates"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of Factors based on"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factoring method"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Mardia's test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of Components based on"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on principal components"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on factors"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Tables"
+msgstr "表格"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component correlations"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""

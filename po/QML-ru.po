@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-01-29 16:13+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "X-Language: ru\n"
 "X-Qt-Contexts: true\n"
 
@@ -44,12 +50,10 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
 msgstr "Зафиксировать факторы ортогональными (независимыми)"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
 msgstr "Зафиксировать экзогенные ковариаты"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
 msgstr "Факторные дисперсии"
@@ -70,10 +74,9 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
 msgstr "Дополнительный вывод"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr "Дополнительные подходящие показатели"
+msgstr "Дополнительные индексы пригодности"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
@@ -95,7 +98,6 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
 msgstr "Сокращение"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
 msgstr "Показать код lavaan"

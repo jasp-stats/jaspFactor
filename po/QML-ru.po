@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-29 16:13+0000\n"
+"PO-Revision-Date: 2023-01-30 17:41+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ru/>\n"
@@ -20,11 +20,11 @@ msgstr "Фактор"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr "Метод Главных Компонент"
+msgstr "Анализ главных компонент"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
-msgstr "Эксплораторный Факторный Анализ"
+msgstr "Эксплораторный факторный анализ"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
@@ -40,11 +40,12 @@ msgstr "Факторы второго порядка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr "Настройки спецификации модели"
+msgstr "Параметры модели"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr "Включить в модель структуру средних"
+msgstr "Включить структуру средних"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
@@ -58,17 +59,18 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
 msgstr "Факторные дисперсии"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr "Двузначная переменная"
+msgstr "Маркерная переменная"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
-msgstr "Кодирование эффекта"
+msgstr "Кодирование эффектов"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr "Остатки"
+msgstr "Остаточные ковариации"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
@@ -363,7 +365,6 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
 msgstr "Дополнительные подходящие индексы"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
 msgstr "Графики"
@@ -372,7 +373,6 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
 msgstr "Диаграмма траектории"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Scree plot"
 msgstr "График каменистой осыпи"
@@ -497,10 +497,9 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
 msgstr "Размер фактора"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr "Порядок компонентных нагрузок по"
+msgstr "Упорядочить нагрузки по"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"

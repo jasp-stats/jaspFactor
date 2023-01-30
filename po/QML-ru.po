@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2023-01-30 20:09+0000\n"
-"Last-Translator: fedder <fedor.derish@gmail.com>\n"
+"Last-Translator: 12Riklama18 <12riklama18@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ru/>\n"
 "Language: ru\n"
@@ -84,7 +84,7 @@ msgstr "Дополнительные индексы пригодности"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr "R-квадрат"
+msgstr "R^2"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"

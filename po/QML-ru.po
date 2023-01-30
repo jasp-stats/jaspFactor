@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-30 20:09+0000\n"
-"Last-Translator: 12Riklama18 <12riklama18@gmail.com>\n"
+"PO-Revision-Date: 2023-02-01 03:03+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ru/>\n"
 "Language: ru\n"
@@ -84,7 +84,7 @@ msgstr "Дополнительные индексы пригодности"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr "R^2"
+msgstr "R ^ 2"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -95,9 +95,10 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
 msgstr "Матрица ковариаций остатков"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
-msgstr "Индексы модификаций"
+msgstr "Индексы модификации"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
@@ -105,7 +106,7 @@ msgstr "Не показывать меньше"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
-msgstr "Показать код lavaan"
+msgstr "Показать синтаксис lavaan"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -140,6 +141,7 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
 msgstr "Графики"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
 msgstr "График несоответствия"
@@ -154,7 +156,7 @@ msgstr "Стандартизированные"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
-msgstr "Показать средние (intercepts)"
+msgstr "Показать средние (интерцепты)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
@@ -178,12 +180,11 @@ msgstr "Вычисление ошибки"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
-msgstr "Стандартная"
+msgstr "Стандартная оценка"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr "Робастная"
+msgstr "Робастная оценка"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -192,7 +193,7 @@ msgstr "Выборка бутсрэпинга"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr "Метод оценки"
+msgstr "Метод"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
@@ -225,12 +226,12 @@ msgstr "Стандартизация"
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
-msgstr "Латентных переменных"
+msgstr "Латентные переменные"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "Всех переменных"
+msgstr "Все переменные"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"

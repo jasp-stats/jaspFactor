@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-30 20:09+0000\n"
+"PO-Revision-Date: 2023-02-01 03:03+0000\n"
 "Last-Translator: Ünal Halit ÖZDEN <uozden@ticaret.edu.tr>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/tr/>\n"
@@ -31,7 +31,7 @@ msgstr "Keşifsel (Açıklayıcı) faktörü analizi"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
-msgstr ""
+msgstr "Doğrulayıcı faktör analizi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"

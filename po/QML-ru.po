@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-02-01 03:03+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "X-Language: ru\n"
 "X-Qt-Contexts: true\n"
 
@@ -14,11 +20,11 @@ msgstr "Фактор"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr "Метод Главных Компонент"
+msgstr "Анализ главных компонент"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
-msgstr "Эксплораторный Факторный Анализ"
+msgstr "Эксплораторный факторный анализ"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
@@ -34,87 +40,90 @@ msgstr "Факторы второго порядка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr "Настройки спецификации модели"
+msgstr "Параметры модели"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr "Включить в модель структуру средних"
+msgstr "Включить структуру средних"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr "Зафиксировать факторы ортогональными (независимыми)"
+msgstr "Зафиксировать факторы некоррелирующими"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
 msgstr "Зафиксировать экзогенные ковариаты"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
 msgstr "Факторные дисперсии"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr "Двузначная переменная"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Effects coding"
-msgstr "Кодирование эффекта"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Residual Covariances"
-msgstr "Остатки"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Additional Output"
-msgstr "Дополнительный вывод"
+msgstr "Маркерная переменная"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Effects coding"
+msgstr "Фиксирование эффектов"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual Covariances"
+msgstr "Ковариации остатков"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional Output"
+msgstr "Дополнительно"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr "Дополнительные подходящие показатели"
+msgstr "Дополнительные индексы пригодности"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr "R-квадрат"
+msgstr "R ^ 2"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr "Подразумеваемая ковариационная матрица"
+msgstr "Ковариационная матрица"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
 msgstr "Матрица ковариаций остатков"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
-msgstr "Индексы модификаций"
+msgstr "Индексы модификации"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr "Сокращение"
+msgstr "Не показывать меньше"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
-msgstr "Показать код lavaan"
+msgstr "Показать синтаксис lavaan"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
 msgstr "Групповой КФА"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr "Перменная группировки"
+msgstr "Группирующая переменная"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr "Проверка инвариантности"
+msgstr "Проверка инвариативности"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr "Конфигуральная"
+msgstr "Настраиваемая"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
@@ -132,9 +141,10 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
 msgstr "Графики"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr "Несоответствующий график"
+msgstr "График несоответствия"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
@@ -150,13 +160,12 @@ msgstr "Показать средние (интерцепты)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
-msgstr "Продвинутые настройки"
+msgstr "Расширенные настройки"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
 msgstr "Нет"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
 msgstr "Mplus"
@@ -171,35 +180,36 @@ msgstr "Вычисление ошибки"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
-msgstr "Стандартный"
+msgstr "Стандартная оценка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr "Надежный"
+msgstr "Робастная оценка"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
-msgstr "Загружать образцы"
+msgstr "Выборка бутсрэпинга"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr "Средство оценки"
+msgstr "Метод"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
-msgstr "Автоматический"
+msgstr "Автоматически"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
-msgstr "Язык моделирования"
+msgstr "ML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "GLS"
-msgstr "Обобщенный метод наименьших квадратов"
+msgstr "GLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLS"
-msgstr "Взвешенный метод наименьших квадратов"
+msgstr "WLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULS"
@@ -213,45 +223,51 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
 msgstr "Стандартизация"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
-msgstr "Скрытый"
+msgstr "Латентные переменные"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "Все"
+msgstr "Все переменные"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
-msgstr "Варианты"
+msgstr "Параметры"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
-msgstr "Зафиксировать явный  перехват до нуля"
+msgstr "Зафиксировать манифестирующие интерцепты как 0"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix latent intercepts to zero"
-msgstr "Зафиксировать скрытый перехват до нуля"
+msgstr "Зафиксировать латентные интерцепты как 0"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr "Опустить остаточный одиночный индикатор"
+msgstr "Опустить одиночный индикатор остатков"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr "Остаточные дисперсии"
+msgstr "Дисперсии остатков"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
-msgstr "Коррелировать экзогенные латенты"
+msgstr "Коррелировать экзогенные латентные переменные"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add thresholds"
 msgstr "Добавить пороговые значения"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
-msgstr "Добавить параметры масштабирования"
+msgstr "Добавить параметры шкал"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
@@ -271,47 +287,48 @@ msgstr "Собственные значения"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues above"
-msgstr "Вышеуказанные собственные значения"
+msgstr "Собственное значение больше"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
-msgstr "Руководствующий"
+msgstr "Вручную"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr "Ряд факторов"
+msgstr "Количество факторов"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
-msgstr "Минимальный остаток"
+msgstr "Метод наименьших остатков"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"
-msgstr "Максимальное правдоподобие"
+msgstr "Метод максимального правдоподобия (ML)"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
-msgstr "Факторинг главной оси"
+msgstr "Метод факторизации главной оси"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"
-msgstr "Простой метод наименьших квадратов"
+msgstr "Метод наименьших квадратов"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
-msgstr "Метод взвешенных наименьших квадратов"
+msgstr "Взвешенный метод наименьших квадратов"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
 msgstr "Обобщенный метод наименьших квадратов"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
-msgstr "Минимальный хи-квадрат"
+msgstr "Метод минимального X^2"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"
-msgstr "Минимальный ранг"
+msgstr "Метод минимального ранга"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
@@ -319,7 +336,7 @@ msgstr "Вращение"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Orthogonal"
-msgstr "Ортогональный"
+msgstr "Ортогональное"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "none"
@@ -327,19 +344,19 @@ msgstr "нет"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
-msgstr "Наклонный"
+msgstr "Облическое"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
-msgstr "Базовый анализ на"
+msgstr "Анализ на основе"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Correlation matrix"
-msgstr "Корреляционная матрица"
+msgstr "корреляционной матрицы"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Covariance matrix"
-msgstr "Ковариационная матрица"
+msgstr "ковариационной матрицы"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
@@ -359,37 +376,35 @@ msgstr "Корреляции факторов"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
-msgstr "Дополнительные подходящие индексы"
+msgstr "Дополнительные индексы пригодности"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
 msgstr "Графики"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
-msgstr "Диаграмма траектории"
+msgstr "Диаграмма путей"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Scree plot"
 msgstr "График каменистой осыпи"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr "Проверки допущений"
+msgstr "Проверка допущений"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
-msgstr "Тест Кайзера-Мейера-Олкина"
+msgstr "Критерий Кайзера-Мейера-Олкина (KMO)"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
-msgstr "Тест Бартлетта"
+msgstr "Критерий сферичности Бартлетта"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr "Отсутствующие значения"
+msgstr "Пропущенные значения"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
@@ -397,7 +412,7 @@ msgstr "Исключить случаи попарно"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
-msgstr "Исключить случаи из списка"
+msgstr "Исключить случаи целиком"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
@@ -413,15 +428,15 @@ msgstr "Собственные значения"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
-msgstr "Превышающие собственные значения"
+msgstr "Собственные значения больше"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
-msgstr "Руководство"
+msgstr "Вручную"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of components"
-msgstr "Количество компонентов"
+msgstr "Количество компонент"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"
@@ -429,7 +444,7 @@ msgstr "Вращение"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Orthogonal"
-msgstr "Ортогональный"
+msgstr "Ортогональное"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "none"
@@ -437,19 +452,19 @@ msgstr "нет"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
-msgstr "Наклонный"
+msgstr "Облическое"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"
-msgstr "Базовое разложение на"
+msgstr "Основан на"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"
-msgstr "Корреляционная матрица"
+msgstr "корреляционной матрице"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Covariance matrix"
-msgstr "Ковариационная матрица"
+msgstr "ковариационной матрице"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
@@ -461,7 +476,7 @@ msgstr "Графики"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Path diagram"
-msgstr "Диаграмма траектории"
+msgstr "Диаграмма путей"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Scree plot"
@@ -469,7 +484,7 @@ msgstr "График каменистой осыпи"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr "Отсутствующие значения"
+msgstr "Пропущенные значения"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
@@ -477,40 +492,40 @@ msgstr "Исключить случаи попарно"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
-msgstr "Исключить случаи из списка"
+msgstr "Исключить случаи целиком"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr "Добавление оценок ПК к данным"
+msgstr "Добавить значения компонент к данным"
 
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
-msgstr "Изучение скрытой структуры в данных"
+msgstr "Исследовать скрытую структуру в данных"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
-msgstr "Порядок факторных нагрузок по"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Factor size"
-msgstr "Размер фактора"
+msgstr "Упорядочить нагрузки по"
 
 #, fuzzy
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor size"
+msgstr "Значение"
+
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr "Порядок компонентных нагрузок по"
+msgstr "Упорядочить нагрузки по"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr "Размер компонента"
+msgstr "Значение"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
-msgstr "На базе ПК"
+msgstr "Метод главных компонент"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on FA"
-msgstr "На базе факторного анализа"
+msgstr "Эксплораторный факторный анализ"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
@@ -518,11 +533,11 @@ msgstr "Результаты параллельного анализа"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
-msgstr "На базе ПК"
+msgstr "Метод главных компонент"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on FA"
-msgstr "На базе факторного анализа"
+msgstr "Эксплораторный факторный анализ"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
@@ -534,15 +549,15 @@ msgstr "Идентификация модели"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr "Тест Кайзера-Мейера-Олкина"
+msgstr "Критерий Кайзера-Мейера-Олкина (KMO)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr "Тест Бартлетта на сферичность"
+msgstr "Критерий сферичности Бартлетта"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
-msgstr "Показать оценки параметров"
+msgstr "Показать оцениваемые параметры"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
@@ -550,18 +565,17 @@ msgstr "Размер шрифта"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr "Показать отклонения"
+msgstr "Показать дисперсии"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr "Вращение графика"
+msgstr "Повернуть график"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic package"
-msgstr "Имитирующий пакет"
+msgstr "MIMIC"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
 msgstr "Lavaan"
@@ -577,26 +591,27 @@ msgstr "Стандартная ошибка"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr "Начальная загрузка"
+msgstr "Бутстрэп"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr "Отсутствует обработка данных"
+msgstr "Корр. пропусков"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr "Максимальное правдоподобие полной информации"
+msgstr "FIML"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr "Удаление из списка"
+msgstr "Удаление целиком"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr "Попарный"
+msgstr "Попарно"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
@@ -605,55 +620,62 @@ msgstr "Двухэтапный"
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
-msgstr "Надёжный двухэтапный"
+msgstr "Робастный двухэтапный"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr "Экзогенные ковариаты отсутствуют"
+msgstr "Без экзогенных ковариат"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors based on"
-msgstr "Количество факторов на основе"
+msgstr "Выбор числа факторов"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factoring method"
-msgstr "Метод факторинга"
+msgstr "Извлечение факторов"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr "Матрица полихорической/тетрахорической корреляции"
+msgstr "поли/тетра-хорической матрице корреляций"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Display loadings above"
-msgstr "Отображать нагрузки выше"
+msgstr "Показать нагрузки выше"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Residual matrix"
-msgstr "Остаточная матрица"
+msgstr "Матрица остатков"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
-msgstr "Тест Мардии"
+msgstr "Критерий Мардиа"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components based on"
-msgstr "Количество компонентов на основе"
+msgstr "Выбор числа компонент"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on principal components"
-msgstr "На основе основных компонентов"
+msgstr "Анализ главных компонент"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on factors"
-msgstr "На основе факторов"
+msgstr "Эксплораторный факторный анализ"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr "Матрица полихорической/тетрахорической корреляции"
+msgstr "поли/тетра-хорической матрице корреляций"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
-msgstr "Отображать нагрузки выше"
+msgstr "Показать нагрузки выше"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Tables"
@@ -663,6 +685,7 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Component correlations"
 msgstr "Корреляции компонентов"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
-msgstr "Остаточная матрица"
+msgstr "Матрица остатков"

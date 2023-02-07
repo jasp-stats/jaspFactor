@@ -19,7 +19,7 @@
 
 confirmatoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.17",
+          version = "0.17.1",
           bartlettTest = FALSE,
           bootstrapSamples = 1000,
           ciLevel = 0.95,

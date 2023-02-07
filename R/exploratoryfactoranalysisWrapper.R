@@ -19,7 +19,7 @@
 
 exploratoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.17",
+          version = "0.17.1",
           analysisBasedOn = "correlationMatrix",
           bartlettTest = FALSE,
           eigenValuesAbove = 1,

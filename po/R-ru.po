@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2022-12-17 03:30\n"
-"PO-Revision-Date: 2023-01-31 20:41+0000\n"
+"PO-Revision-Date: 2023-02-09 17:38+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/ru/>\n"
@@ -138,9 +138,8 @@ msgstr "Инкрементный индекс соответствия Болл�
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "Cравнительный индекс не-центральности (RNI)"
 
-#, fuzzy
 msgid "Log-likelihood"
-msgstr "Лог-подобие"
+msgstr "Лог-функция правдоподобия"
 
 msgid "Number of free parameters"
 msgstr "Количество свободных параметров"
@@ -213,14 +212,16 @@ msgstr "Стд. ошибка"
 msgid "z-value"
 msgstr "z"
 
+#, fuzzy
 msgid "Lower"
-msgstr "Нижний"
+msgstr "Нижняя граница"
 
 msgid "%s%% Confidence Interval"
 msgstr "%s%% Доверительный интервал"
 
+#, fuzzy
 msgid "Upper"
-msgstr "Верхний"
+msgstr "Верхняя граница"
 
 msgid "Std. Est. (%s)"
 msgstr "Стд. оц. (%s)"
@@ -244,7 +245,7 @@ msgstr "Ковариации остатков"
 
 #, fuzzy
 msgid "Factor Intercepts"
-msgstr "Интерцепты факторов"
+msgstr "Факторные интерцепты"
 
 msgid "Intercepts"
 msgstr "Интерцепты"
@@ -268,11 +269,11 @@ msgstr "Кросс-нагрузки факторов второго порядк
 
 #, fuzzy
 msgid "Implied covariance matrices"
-msgstr "Подразумеваемые ковариационные матрицы"
+msgstr "Ковариационные матрицы"
 
 #, fuzzy
 msgid "Implied covariance matrix"
-msgstr "Подразумеваемая ковариационная матрица"
+msgstr "Ковариационная матрица"
 
 #, fuzzy
 msgid "Residual covariance matrices"
@@ -293,11 +294,11 @@ msgstr "График модели"
 
 #, fuzzy
 msgid "Misfit plots"
-msgstr "Графики несоответствия"
+msgstr "Графики несовпадений"
 
 #, fuzzy
 msgid "Misfit plot"
-msgstr "График несоответствия"
+msgstr "График несовпадений"
 
 msgid "Model syntax"
 msgstr "Синтаксис модели"
@@ -467,7 +468,7 @@ msgstr "Параллельный анализ"
 
 #, fuzzy
 msgid "Simulated data mean eigenvalues"
-msgstr "Средние собственных значений смоделированных данных"
+msgstr "Собственные значения параллельного анализа"
 
 msgid ""
 "Screeplot not available. \n"

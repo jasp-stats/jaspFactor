@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2022-12-17 03:30\n"
-"PO-Revision-Date: 2023-02-09 17:38+0000\n"
+"PO-Revision-Date: 2023-02-16 13:03+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/ru/>\n"
@@ -66,8 +66,9 @@ msgstr "Не удалось построить модель: не осталос
 msgid "Model fit"
 msgstr "Оценка пригодности модели"
 
+#, fuzzy
 msgid "Chi-square test"
-msgstr "Критерий хи-квадрат (Chi ^ 2)"
+msgstr "Критерий X%s"
 
 msgid "Model"
 msgstr "Модель"
@@ -212,14 +213,12 @@ msgstr "Стд. ошибка"
 msgid "z-value"
 msgstr "z"
 
-#, fuzzy
 msgid "Lower"
 msgstr "Нижняя граница"
 
 msgid "%s%% Confidence Interval"
 msgstr "%s%% Доверительный интервал"
 
-#, fuzzy
 msgid "Upper"
 msgstr "Верхняя граница"
 
@@ -372,8 +371,9 @@ msgstr ""
 "Предполагается, что асимметрия соответствует с Chi ^ 2-распределению, а "
 "эксцесс - нормальному распределению."
 
+#, fuzzy
 msgid "Chi-squared Test"
-msgstr "Критерий Chi ^ 2"
+msgstr "Критерий X%s"
 
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "Степени свободы ниже 0, модель неидентифицирована."

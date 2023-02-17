@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-02-16 13:03+0000\n"
+"PO-Revision-Date: 2023-02-18 03:27+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/ru/>\n"
@@ -323,7 +323,7 @@ msgstr "Обобщенный метод наименьших квадратов"
 #, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
-msgstr "Метод минимального X%s"
+msgstr "Метод минимального χ²"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"

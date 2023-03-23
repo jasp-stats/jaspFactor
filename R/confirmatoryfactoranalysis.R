@@ -24,6 +24,9 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
+  # sink(file="~/Downloads/log.txt")
+  # on.exit(sink(NULL))
+
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
 
@@ -47,6 +50,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   .cfaTableModIndices( jaspResults, options, cfaResult) # Modification Indices
   .cfaTableImpliedCov( jaspResults, options, cfaResult) # Implied Covariance matrix
   .cfaTableResCov(     jaspResults, options, cfaResult) # Residual Covariance Matrix
+  .cfaTableAve(        jaspResults, options, cfaResult) # Average variance explained table
+  .cfaTableHtmt(       jaspResults, options, cfaResult) # Heterotrait monotrait
+  .cfaTableReliability(jaspResults, options, cfaResult) # Reliability
+
 
   # Output plots
   .cfaInitPlots( jaspResults, options, cfaResult)      # Create plots container
@@ -165,10 +172,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   cfaResult <- list()
 
   cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
-
   # Recalculate the model
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult)
+  modObj <- .optionsToCFAMod(options, dataset, cfaResult)
+  mod <- modObj$model
+  cfaResult[["model"]] <- mod
+  cfaResult[["model_simple"]] <- modObj$simple_model
   geq <- .CFAInvariance(options)
   if (options$group == "") grp <- NULL else grp <- options$group
 
@@ -303,13 +312,18 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   vars    <- options$factors
   latents <- cfaResult[["spec"]]$latents
   labels  <- list()
+  # add extra output here because the Htmt needs a model syntax without grouping labels
+  labels_simp <- list()
 
   fo <- "# Factors"
+  fo_simp <- "# Factors"
   for (i in 1:length(vars)) {
     pre <- paste0("\n", latents[i], " =~ ")
     len <- length(vars[[i]]$indicators)
     labelledvars <- character(len)
     labels[[i]] <- list()
+    labelledvars_simp <- character(len)
+    labels_simp[[i]] <- list()
     for (j in 1:len) {
       if (nchar(options$group) == 0 || options$invarianceTesting !="configural") {
         labels[[i]][[j]]  <- paste0("lambda_", i, "_", j)
@@ -321,9 +335,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
         labels[[i]][[j]] <- tmp_labels
         labelledvars[j] <- paste0("c(", paste0(tmp_labels, collapse = ","), ")", "*", vars[[i]]$indicators[j])
       }
-
+      # give the simple model always since that is needed for the HTMT
+      labels_simp[[i]][[j]]  <- paste0("lambda_", i, "_", j)
+      labelledvars_simp[j] <- paste0("lambda_", i, "_", j, "*", vars[[i]]$indicators[j])
     }
     fo <- paste0(fo, pre, paste0(labelledvars, collapse = " + "))
+    fo_simp <- paste0(fo_simp, pre, paste0(labelledvars_simp, collapse = " + "))
   }
 
 
@@ -402,7 +419,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     ef <- NULL
   }
 
-  return(paste0(c(fo, so, rc, lm, ef), collapse = "\n\n"))
+  return(list(model = paste0(c(fo, so, rc, lm, ef), collapse = "\n\n"), simple_model = fo_simp))
 }
 
 .CFAInvariance <- function(options) {
@@ -1038,8 +1055,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     focro[["epc"]] <- foc$epc
   }
 
-
   # cross loadings (second order)
+  soc <- matrix(NA, 0, 0)
   if (length(options$secondOrder) > 1) {
     soc <- mii[mii$op == "=~" & mii$lhs %in% options$soLatents & mii$rhs %in% cfaResult[["spec"]]$latents,
                c("lhs", "rhs", "mi", "epc")]
@@ -1089,6 +1106,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     residualCovTable[["rhs"]] <- rec$rhs
     residualCovTable[["mi"]]  <- rec$mi
     residualCovTable[["epc"]] <- rec$epc
+  }
+
+  # display empty table when no modindex is above the cutoff
+  if (nrow(foc) == 0 && nrow(soc) == 0 && nrow(rec) == 0) {
+    jrobject[["empties"]] <- emptyModIndicesTable <- createJaspTable(gettext("Modification indices"))
+    emptyModIndicesTable$dependOn(optionsFromObject = jrobject)
+    emptyModIndicesTable$addFootnote(gettext("No modification index was above the cutoff"))
   }
 }
 
@@ -1308,10 +1332,142 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaSyntax <- function(jaspResults, options, dataset, cfaResult) {
   if (is.null(cfaResult) || !options$lavaanSyntax || !is.null(jaspResults[["syntax"]])) return()
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)
+  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
 
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
   jaspResults[["syntax"]]$dependOn("lavaanSyntax")
 }
+
+.cfaTableAve <- function(jaspResults, options, cfaResult) {
+  if (is.null(cfaResult) || !options[["ave"]] || !is.null(jaspResults[["resAveTable"]])) return()
+
+  aveTable <- createJaspTable(gettext("Average variance extracted"), position = 4.1)
+  if (options[["group"]] != "") {
+    aveTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
+  aveTable$addColumnInfo(name = "factor", title = gettext("Factor"), type = "string")
+  aveTable$addColumnInfo(name = "ave", title = gettext("AVE"), type = "number")
+  aveTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "ave"))
+
+  if (options$group != "") {
+    ave_result <- semTools::AVE(cfaResult[["lav"]])
+    groups <- cfaResult[["lav"]]@Data@group.label
+    ave_result <- ave_result[, -1, drop = FALSE]
+    aveTable[["group"]]   <- rep(groups, each = length(cfaResult[["spec"]][["latents"]]))
+    aveTable[["factor"]]  <- rep(sapply(options[["factors"]], function(x) x[["title"]]), length(groups))
+    aveTable[["ave"]]     <- c(t(ave_result))
+  } else {
+    ave_result <- semTools::AVE(cfaResult[["lav"]])
+    aveTable[["factor"]] <- sapply(options[["factors"]], function(x) x[["title"]])
+    aveTable[["ave"]] <- ave_result
+  }
+  jaspResults[["resAveTable"]] <- aveTable
+
+}
+
+.cfaTableHtmt <- function(jaspResults, options, cfaResult) {
+  #### this has an ordering argument that still needs to be implemented once the categorical data stuff is done
+
+  if (is.null(cfaResult) || !options[["htmt"]] || !is.null(jaspResults[["resHtmtTable"]])) return()
+
+  htmtTable <- createJaspTable(gettext("Heterotrait-monotrait ratio"), position = 4.2)
+  htmtTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt"))
+
+  if (options[["group"]] != "") {
+    htmtTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+    htmtTable$addColumnInfo(name = "faNames", title = "", type = "string")
+  }
+
+  facNames <- sapply(options[["factors"]], function(x) x[["title"]])
+  for (fname in facNames) {
+    htmtTable$addColumnInfo(name = fname, title = gettext(fname), type = "number")
+  }
+
+  if (options$group != "") {
+    groups <- cfaResult[["lav"]]@Data@group.label
+    # get the list of datasets per group
+    dataList <- lavaan::inspect(cfaResult[["lav"]], what = "data")
+    tmp_dat <- data.frame()
+    for (gg in groups) {
+      ind <- which(gg == groups)
+      dataGroup <- as.data.frame(dataList[[gg]])
+      colnames(dataGroup) <- cfaResult[["lav"]]@Data@ov.names[[ind]]
+      htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataGroup,
+                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+      htmt_result[upper.tri(htmt_result)] <- NA
+      tmp_dat <- rbind(tmp_dat, htmt_result)
+    }
+    htmtTable[["group"]] <- rep(groups, each = length(facNames))
+    htmtTable[["faNames"]] <- rep(facNames, times = length(groups))
+    for (fname in facNames) {
+      ii <- which(fname == facNames)
+      htmtTable[[fname]] <- tmp_dat[, ii]
+    }
+
+  } else {
+    # get the dataset
+    dataset <- as.data.frame(lavaan::inspect(cfaResult[["lav"]], what = "data"))
+    colnames(dataset) <- cfaResult[["lav"]]@Data@ov.names[[1]]
+    if (is.null(cfaResult[["spec"]][["soIndics"]])) {
+      htmt_result <- semTools::htmt(model = cfaResult[["model"]], data = dataset,
+                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+    } else { # the htmt does not allow a second order factor, so we take the model syntax without the seco
+      htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataset,
+                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+    }
+
+    htmt_result[upper.tri(htmt_result)] <- NA
+    for (fname in facNames) {
+      ii <- which(fname == facNames)
+      htmtTable[[fname]] <- htmt_result[, ii]
+    }
+  }
+  jaspResults[["resHtmtTable"]] <- htmtTable
+
+}
+
+
+.cfaTableReliability <- function(jaspResults, options, cfaResult) {
+  if (is.null(cfaResult) || !options[["reliability"]] || !is.null(jaspResults[["resRelTable"]])) return()
+
+  relTable <- createJaspTable(gettext("Reliability"), position = 4.3)
+  if (options[["group"]] != "") {
+    relTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
+  relTable$addColumnInfo(name = "factor", title = "", type = "string")
+  relTable$addColumnInfo(name = "rel", title = gettext("Coefficient \u03C9"), type = "number")
+  relTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability"))
+
+  nfac <- length(cfaResult[["spec"]][["latents"]])
+
+  if (options$group != "") {
+    if (is.null(cfaResult[["spec"]][["soIndics"]])) {
+      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
+    } else {
+      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
+                                         higher = "SecondOrder")
+    }
+    groups <- cfaResult[["lav"]]@Data@group.label
+    rel_result <- rel_result[, -1, drop = FALSE]
+    relTable[["group"]]   <- rep(groups, each = ncol(rel_result))
+    relTable[["factor"]]  <- rep(c(sapply(options[["factors"]], function(x) x[["title"]]), colnames(rel_result)[-(1:nfac)]), length(groups))
+    relTable[["rel"]]     <- c(t(rel_result))
+  } else {
+    if (is.null(cfaResult[["spec"]][["soIndics"]])) {
+      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
+    } else {
+      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
+                                         higher = "SecondOrder")
+    }
+    relTable[["factor"]] <- c(sapply(options[["factors"]], function(x) x[["title"]]), names(rel_result)[-(1:nfac)])
+    relTable[["rel"]] <- rel_result
+  }
+  jaspResults[["resRelTable"]] <- relTable
+
+}
+
 

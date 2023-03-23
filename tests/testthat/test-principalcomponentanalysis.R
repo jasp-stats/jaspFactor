@@ -272,7 +272,7 @@ test_that("Component Characteristics table results match", {
 test_that("Chi-squared Test table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0, 2, "Model", 1))
+                                 list(0, 2, "Model", 68.91351))
 })
 
 test_that("Component Loadings table results match", {

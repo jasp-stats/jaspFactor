@@ -17,6 +17,7 @@ options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
 options$kaiserMeyerOlkinTest <- TRUE
 options$bartlettTest <- TRUE
+
 set.seed(1)
 
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
@@ -544,3 +545,52 @@ test_that("Chi-square test table results match", {
                                       38, "Factor model", 0))
 })
 
+
+# additional output test
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$group <- "sex"
+options$invarianceTesting <- "metric"
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
+options$estimator <- "default"
+options$standardized <- "none"
+options$factors <- list(
+  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1"),
+  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2"),
+  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3")
+)
+options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
+options$modelIdentification <- "factorVariance"
+options$naAction <- "listwise"
+options$ave <- TRUE
+options$htmt <- TRUE
+options$reliability <- TRUE
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+
+test_that("Average variance extracted table results match", {
+  table <- results[["results"]][["resAveTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.305051834487418, "Factor 1", 1, 0.700620392588814, "Factor 2", 1, 0.440212867852147,
+                                      "Factor 3", 1, 0.429925397038108, "Factor 1", 2, 0.740548656102918, "Factor 2",
+                                      2, 0.400676692760547, "Factor 3", 2))
+})
+
+test_that("Heterotrait-monotrait ratio table results match", {
+  table <- results[["results"]][["resHtmtTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(1, "", "", "Factor 1", 1, 0.376412961722238, 1, "", "Factor 2", 1, 0.341052011589284,
+                                      0.0950654664695311, 1, "Factor 3", 1, 1, "", "", "Factor 1", 2, 0.438572930736534,
+                                      1, "", "Factor 2", 2, 0.446623050626322, 0.355871932355235, 1, "Factor 3",
+                                      2))
+})
+
+test_that("Reliability table results match", {
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1", 1, 0.535028679477941, "Factor 2", 1, 0.87499706003875, "Factor 3", 1,
+                                      0.702706608978988, "total", 1, 0.843988152680847, "SecondOrder",
+                                      1, 0.51731822568291, "Factor 1", 2, 0.676466492554183, "Factor 2", 2, 0.895339124317018,
+                                      "Factor 3", 2, 0.648172924932421, "total", 2, 0.832040767424991, "SecondOrder",
+                                      2, 0.568295638332184))
+})

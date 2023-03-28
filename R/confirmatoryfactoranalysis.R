@@ -1390,7 +1390,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     groups <- cfaResult[["lav"]]@Data@group.label
     # get the list of datasets per group
     dataList <- lavaan::inspect(cfaResult[["lav"]], what = "data")
-    tmp_dat <- data.frame()
+    tmp_dat <- data.frame(group = rep(groups, each = length(facNames)),
+                          faNames = rep(facNames, times = length(groups)))
     for (gg in groups) {
       ind <- which(gg == groups)
       dataGroup <- as.data.frame(dataList[[gg]])
@@ -1398,14 +1399,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataGroup,
                                     missing = cfaResult[["lav"]]@Options[["missing"]])
       htmt_result[upper.tri(htmt_result)] <- NA
-      tmp_dat <- rbind(tmp_dat, htmt_result)
+      tmp_dat[tmp_dat$group == gg, facNames] <- htmt_result
     }
-    htmtTable[["group"]] <- rep(groups, each = length(facNames))
-    htmtTable[["faNames"]] <- rep(facNames, times = length(groups))
-    for (fname in facNames) {
-      ii <- which(fname == facNames)
-      htmtTable[[fname]] <- tmp_dat[, ii]
-    }
+    htmtTable$setData(tmp_dat)
 
   } else {
     # get the dataset

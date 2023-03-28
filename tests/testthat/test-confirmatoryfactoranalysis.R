@@ -23,6 +23,7 @@ set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
 
+
 test_that("[CFA 3-Factor] Factor Covariances table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fc"]][["data"]]
   jaspTools::expect_equal_tables(table,

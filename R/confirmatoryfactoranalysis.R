@@ -700,23 +700,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   pe <- lavaan::parameterEstimates(cfaResult[["lav"]], standardized = TRUE, remove.eq = FALSE, remove.system.eq = TRUE,
                                    remove.ineq = FALSE, remove.def = FALSE, add.attributes = TRUE, boot.ci.type = "perc",
                                    level = options$ciLevel)
+  .cfaParEstToTablesHelper(pe, options, cfaResult, ests, footnote)
 
-  if (options$group != "") {
-    groupLabs <- cfaResult[["lav"]]@Data@group.label
-    for (i in 1:max(pe$group)) {
-      pei <- pe[pe$group == i, ]
-      ests[[groupLabs[i]]] <- createJaspContainer(groupLabs[i])
-      ests[[groupLabs[i]]]$dependOn(optionsFromObject = ests)
-      .cfaParEstToTablesHelper(pei, options, cfaResult[["spec"]], ests[[groupLabs[i]]], footnote)
-    }
-  } else {
-    .cfaParEstToTablesHelper(pe, options, cfaResult[["spec"]], ests, footnote)
-  }
 }
 
-.cfaParEstToTablesHelper <- function(pei, options, spec, jrobject, footnote) {
+.cfaParEstToTablesHelper <- function(pei, options, cfaResult, jrobject, footnote) {
   pei <- as.data.frame(pei)
-  facNames <- c(spec$latents)
+  facNames <- c(cfaResult[["spec"]]$latents)
 
   colSel <- c("lhs", "rhs", "est", "se", "z", "pvalue", "ci.lower", "ci.upper")
   standardization <- switch(options$standardized,
@@ -731,6 +721,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jrobject[["fl1"]] <- fl1 <- createJaspTable(title = gettext("Factor loadings"))
   if (!is.null(footnote)) fl1$addFootnote(footnote)
 
+  if (options$group != "") {
+    fl1$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
   fl1$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
   fl1$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
 
@@ -752,6 +745,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   fl1dat <- pei[pei$op == "=~" & !pei$rhs %in% facNames, colSel]
   fl1dat$lhs <- .translateFactorNames(fl1dat$lhs, options)
   fl1dat$rhs <- fl1dat$rhs
+  if (options$group != "") {
+    groupLabs <- cfaResult[["lav"]]@Data@group.label
+    fl1dat$group <- rep(groupLabs, each = 9)
+  }
   fl1$setData(fl1dat)
   fl1$dependOn(optionsFromObject = jrobject)
 

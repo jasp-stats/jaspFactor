@@ -718,7 +718,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   pei <- as.data.frame(pei)
   facNames <- c(spec$latents)
 
-  colSel <- c("lhs", "rhs", "label", "est", "se", "z", "pvalue", "ci.lower", "ci.upper")
+  colSel <- c("lhs", "rhs", "est", "se", "z", "pvalue", "ci.lower", "ci.upper")
   standardization <- switch(options$standardized,
                             "none"                  = "none",
                             "latentVariables"       = "lv",
@@ -733,7 +733,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   fl1$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
   fl1$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
-  fl1$addColumnInfo(name = "label", title = gettext("Symbol"),    type = "string")
 
   fl1$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
   fl1$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
@@ -751,7 +750,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # add data
   fl1dat <- pei[pei$op == "=~" & !pei$rhs %in% facNames, colSel]
-  fl1dat$label <- gsub("_", "", gsub("lambda", "\u03bb", fl1dat$label))
   fl1dat$lhs <- .translateFactorNames(fl1dat$lhs, options)
   fl1dat$rhs <- fl1dat$rhs
   fl1$setData(fl1dat)
@@ -765,7 +763,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
     fl2$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
     fl2$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
-    fl2$addColumnInfo(name = "label", title = gettext("Symbol"),    type = "string")
 
     fl2$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
     fl2$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
@@ -783,7 +780,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
     # add data
     fl2dat <- pei[pei$op == "=~" & pei$rhs %in% facNames, colSel]
-    fl2dat$label <- gsub("_", "", gsub("gamma", "\u03b3", fl2dat$label))
     fl2dat$rhs   <- .translateFactorNames(fl2dat$rhs, options)
     fl2$setData(fl2dat)
     fl2$dependOn(optionsFromObject = jrobject)
@@ -811,7 +807,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      type = "number", format = "sf:4;dp:3")
 
   # Add data
-  fvdat     <- pei[pei$op == "~~" & pei$lhs %in% c(facNames, "SecondOrder") & pei$lhs == pei$rhs, colSel[-c(2, 3)]]
+  fvdat     <- pei[pei$op == "~~" & pei$lhs %in% c(facNames, "SecondOrder") & pei$lhs == pei$rhs,
+                   colSel[!colSel %in% c('rhs')]]
   fvdat$lhs <- .translateFactorNames(fvdat$lhs, options)
   fv$setData(fvdat)
   fv$dependOn(optionsFromObject = jrobject)
@@ -843,7 +840,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                        type   = "number",
                        format = "sf:4;dp:3")
 
-    fcdat <- pei[pei$op == "~~" & pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel[-c(3)]]
+    fcdat <- pei[pei$op == "~~" & pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
     fcdat$lhs <- .translateFactorNames(fcdat$lhs, options)
     fcdat$rhs <- .translateFactorNames(fcdat$rhs, options)
     fcdat$op  <- rep("\u2194", nrow(fcdat))
@@ -876,14 +873,14 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # add data
   rvdat <- pei[pei$op == "~~" & !pei$lhs %in% facNames & !pei$lhs == "SecondOrder" &
-                 pei$lhs == pei$rhs, colSel[-c(2, 3)]]
+                 pei$lhs == pei$rhs, colSel[!colSel %in% c('rhs')]]
   rvdat$lhs <- rvdat$lhs
   rv$setData(rvdat)
   rv$dependOn(optionsFromObject = jrobject)
 
   # Residual covariances ----
   if (length(options$residualsCovarying) > 0) {
-    rc <- pei[pei$op == "~~" & !pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel[-3]]
+    rc <- pei[pei$op == "~~" & !pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
     residualCovTable <- createJaspTable(gettext("Residual covariances"))
     if (!is.null(footnote)) residualCovTable$addFootnote(footnote)
     residualCovTable$dependOn(optionsFromObject = jrobject)
@@ -938,7 +935,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                           type = "number", format = "sf:4;dp:3")
 
       # add data
-      fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[-c(2, 3)]]
+      fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[!colSel %in% c('rhs')]]
       fidat$lhs <- .translateFactorNames(fidat$lhs, options)
       fi$setData(fidat)
       fi$dependOn(optionsFromObject = jrobject)
@@ -964,7 +961,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                         type = "number", format = "sf:4;dp:3")
 
     # add data
-    vidat <- pei[pei$op == "~1" & !pei$lhs == "SecondOrder" & !pei$lhs %in% facNames , colSel[-c(2, 3)]]
+    vidat <- pei[pei$op == "~1" & !pei$lhs == "SecondOrder" & !pei$lhs %in% facNames,
+                 colSel[!colSel %in% c('rhs')]]
     vidat$lhs <- vidat$lhs
     vi$setData(vidat)
     vi$dependOn(optionsFromObject = jrobject)
@@ -1000,7 +998,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      type = "number")
 
   # add data
-  thdat <- pei[pei$op == "|", colSel[-c(2, 3)]]
+  thdat <- pei[pei$op == "|", colSel[!colSel %in% c('rhs')]]
   thdat$lhs <- thdat$lhs
   thdat$rhs <- pei$rhs[pei$op == "|"]
   th$setData(thdat)

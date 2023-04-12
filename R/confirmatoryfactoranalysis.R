@@ -1473,32 +1473,35 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
   relTable$addColumnInfo(name = "factor", title = "", type = "string")
   relTable$addColumnInfo(name = "rel", title = gettext("Coefficient \u03C9"), type = "number")
+  relTable$addColumnInfo(name = "alpha", title = gettext("Coefficient \u03B1"), type = "number")
   relTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                       "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability"))
 
   nfac <- length(cfaResult[["spec"]][["latents"]])
 
-  if (options$group != "") {
-    if (is.null(cfaResult[["spec"]][["soIndics"]])) {
-      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
-    } else {
-      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
-                                         higher = "SecondOrder")
-    }
-    groups <- cfaResult[["lav"]]@Data@group.label
-    rel_result <- rel_result[, -1, drop = FALSE]
-    relTable[["group"]]   <- rep(groups, each = ncol(rel_result))
-    relTable[["factor"]]  <- rep(c(sapply(options[["factors"]], function(x) x[["title"]]), colnames(rel_result)[-(1:nfac)]), length(groups))
-    relTable[["rel"]]     <- c(t(rel_result))
+  rel_result_alpha <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE, tau.eq = TRUE)
+  if (is.null(cfaResult[["spec"]][["soIndics"]])) {
+    rel_result_omega <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
   } else {
-    if (is.null(cfaResult[["spec"]][["soIndics"]])) {
-      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
-    } else {
-      rel_result <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
-                                         higher = "SecondOrder")
-    }
-    relTable[["factor"]] <- c(sapply(options[["factors"]], function(x) x[["title"]]), names(rel_result)[-(1:nfac)])
-    relTable[["rel"]] <- rel_result
+    rel_result_omega <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
+                                             higher = "SecondOrder")
+    rel_result_alpha <- cbind(rel_result_alpha, NA)
+  }
+
+  if (options$group != "") {
+    groups <- cfaResult[["lav"]]@Data@group.label
+    rel_result_omega <- rel_result_omega[, -1, drop = FALSE]
+    rel_result_alpha <- rel_result_alpha[, -1, drop = FALSE]
+    relTable[["group"]]   <- rep(groups, each = ncol(rel_result_omega))
+    relTable[["factor"]]  <- rep(c(sapply(options[["factors"]], function(x) x[["title"]]),
+                                   colnames(rel_result_omega)[-(1:nfac)]), length(groups))
+    relTable[["rel"]]     <- c(t(rel_result_omega))
+    relTable[["alpha"]] <- c(t(rel_result_alpha))
+  } else {
+    relTable[["factor"]] <- c(sapply(options[["factors"]], function(x) x[["title"]]),
+                              names(rel_result_omega)[-(1:nfac)])
+    relTable[["rel"]] <- rel_result_omega
+    relTable[["alpha"]] <- rel_result_alpha
   }
   jaspResults[["resRelTable"]] <- relTable
 

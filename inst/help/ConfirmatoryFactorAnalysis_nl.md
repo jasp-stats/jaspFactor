@@ -28,6 +28,10 @@ JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde 
 - Extra pasmaten: Kies deze om de waarde van verschillende model pasmaten te tonen in de resultaten.
 - Kaiser-Meyer-Olkin (KMO) test: Toon Kaiser-Meyer-Olkin (KMO) test resultaten voor steekproef geschiktheid (MSA).
 - Bartlett's test voor sfericiteit: Toon Bartlett's test voor sfericiteit.
+- R-Squared: het deel van de variantie in de indicatoren dat wordt verklaard door alle voorspellers (factoren)
+- Gemiddelde variantie geëxtraheerd (AVE): een maat voor de hoeveelheid variantie die wordt vastgelegd door een construct in relatie tot de hoeveelheid variantie als gevolg van meetfouten
+- Heterotrait-monotrait ratio (HTMT): maat voor de overeenkomst tussen latente variabelen, beoordeling van discriminantvaliditeit. Als de HTMT duidelijk kleiner is dan één, kan discriminantvaliditeit als vastgesteld worden beschouwd.
+- Betrouwbaarheid: een maat voor de relatieve hoeveelheid testscorevariantie die wordt verklaard door de factor(en). De uitvoer bevat de coëfficiënt omega (McDonald's) voor elke indicatorgroep, in totaal, en geeft, als een factor van de tweede orde is opgegeven, omega_hiërarchisch. Biedt ook coëfficiënt alfa (Cronbach's).
 - Geïmpliceerde covariantiematrix: Toon de covariantiematrix die het model impliceert.
 - Residu covariantiematrix: Toon de covarianties tussen indicatoren die behouden blijft met het model. Een perfect model toont enkel 0-en hier. 
 - Modificatie indices: Toont MIs met een minimum grens. Een MI toont hoeveel de chi-square waarde van de passing zou veranderen als de gespecificeerde parameter vrij zou zijn. EPC toont de verwachten verandering van de parameter zelf.
@@ -58,6 +62,7 @@ JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde 
 ### Referenties
 -------
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*. Guilford Press. 
+- Henseler, J., Ringle, C. M. & Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. *Journal of the Academy of Marketing Science, 43*, 115–135 (2015). https://doi.org/10.1007/s11747-014-0403-8
 - Kline, R. B. (2015). *Principles and practice of structural equation modeling* (4th ed.). Guilford Press.
 - Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. *Journal of Statistical Software, 48*(2), 1-36. https://doi.org/10.18637/jss.v048.i02
 

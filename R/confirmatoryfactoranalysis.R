@@ -24,6 +24,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
+
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
 
@@ -47,6 +48,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   .cfaTableModIndices( jaspResults, options, cfaResult) # Modification Indices
   .cfaTableImpliedCov( jaspResults, options, cfaResult) # Implied Covariance matrix
   .cfaTableResCov(     jaspResults, options, cfaResult) # Residual Covariance Matrix
+  .cfaTableAve(        jaspResults, options, cfaResult) # Average variance explained table
+  .cfaTableHtmt(       jaspResults, options, cfaResult) # Heterotrait monotrait
+  .cfaTableReliability(jaspResults, options, cfaResult) # Reliability
+
 
   # Output plots
   .cfaInitPlots( jaspResults, options, cfaResult)      # Create plots container
@@ -85,6 +90,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaCheckErrors <- function(dataset, options) {
+
   # TODO (vankesteren) content error checks, e.g., posdef covmat
 
   # Number of variables in the factors
@@ -113,9 +119,14 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     for (group in levels(dataset[[options$group]])) {
 
       idx <- dataset[[options$group]] == group
-      .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
-                 varCovData.corFun = stats::cov)
 
+      if (any(sapply(dataset[, vars], is.ordered))) {
+        .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                   varCovData.corFun = lavaan::lavCor)
+      } else {
+        .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                   varCovData.corFun = stats::cov)
+      }
     }
   }
 
@@ -159,9 +170,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   cfaResult <- list()
 
   cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
-
   # Recalculate the model
-  mod <- .optionsToCFAMod(options, dataset, cfaResult)
+
+  modObj <- .optionsToCFAMod(options, dataset, cfaResult)
+  mod <- modObj$model
+  cfaResult[["model"]] <- mod
+  cfaResult[["model_simple"]] <- modObj$simple_model
   geq <- .CFAInvariance(options)
   if (options$group == "") grp <- NULL else grp <- options$group
 
@@ -199,11 +213,19 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                              ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
     ))
 
+  # are there ordered variables in the data?
+  cfaResult[["orderedVariables"]] <- any(sapply(dataset, is.ordered))
+
   # Quit analysis on error
   if (inherits(cfaResult[["lav"]], "try-error")) {
     if (!options[["estimator"]] %in% c("default", "ML") && options[["naAction"]] == "fiml") {
       jaspBase:::.quitAnalysis(gettext("FIML missing data handling only available with ML-type estimators"))
     }
+
+    if (options[["estimator"]] == "generalizedLeastSquares" && option[["seType"]] == "robust") {
+      jaspBase::.quitAnalysis(gettext("Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."))
+    }
+
     err <- attr(cfaResult[["lav"]], "condition")$message
     if(grepl("not available in the categorical", err)){
       if(grepl("ml", err))
@@ -271,7 +293,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     spec$se <- "standard"
     spec$bootstrap <- TRUE
   } else {
-    spec$se <- options$seType
+    if (options$seType == "robust") {
+      spec$se <- "robust.sem"
+    } else {
+      spec$se <- options$seType
+    }
     spec$bootstrap <- FALSE
   }
   return(spec)
@@ -284,13 +310,18 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   vars    <- options$factors
   latents <- cfaResult[["spec"]]$latents
   labels  <- list()
+  # add extra output here because the Htmt needs a model syntax without grouping labels
+  labels_simp <- list()
 
-  fo <- "# Factors"
+  fo <- gettext("# Factors")
+  fo_simp <- gettext("# Factors")
   for (i in 1:length(vars)) {
     pre <- paste0("\n", latents[i], " =~ ")
     len <- length(vars[[i]]$indicators)
     labelledvars <- character(len)
     labels[[i]] <- list()
+    labelledvars_simp <- character(len)
+    labels_simp[[i]] <- list()
     for (j in 1:len) {
       if (nchar(options$group) == 0 || options$invarianceTesting !="configural") {
         labels[[i]][[j]]  <- paste0("lambda_", i, "_", j)
@@ -302,9 +333,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
         labels[[i]][[j]] <- tmp_labels
         labelledvars[j] <- paste0("c(", paste0(tmp_labels, collapse = ","), ")", "*", vars[[i]]$indicators[j])
       }
-
+      # give the simple model always since that is needed for the HTMT
+      labels_simp[[i]][[j]]  <- paste0("lambda_", i, "_", j)
+      labelledvars_simp[j] <- paste0("lambda_", i, "_", j, "*", vars[[i]]$indicators[j])
     }
     fo <- paste0(fo, pre, paste0(labelledvars, collapse = " + "))
+    fo_simp <- paste0(fo_simp, pre, paste0(labelledvars_simp, collapse = " + "))
   }
 
 
@@ -383,7 +417,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     ef <- NULL
   }
 
-  return(paste0(c(fo, so, rc, lm, ef), collapse = "\n\n"))
+  return(list(model = paste0(c(fo, so, rc, lm, ef), collapse = "\n\n"), simple_model = fo_simp))
 }
 
 .CFAInvariance <- function(options) {
@@ -425,11 +459,33 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     maintab[["df"]]     <- c(           "."           ,           "."          )
     maintab[["pvalue"]] <- c(           "."           ,           "."          )
   } else {
-    fm <- lavaan::fitMeasures(cfaResult[["lav"]])
-    maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
-    maintab[["chisq"]]  <- fm[c("baseline.chisq", "chisq")]
-    maintab[["df"]]     <- fm[c("baseline.df", "df")]
-    maintab[["pvalue"]] <- c(NA, fm["pvalue"])
+    # check the fit options
+    fitOptions <- lavaan::inspect(cfaResult[["lav"]], what = "options")
+
+    # get the model fit
+    fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
+
+    if (cfaResult[["orderedVariables"]] && options[["estimator"]] == "default") {
+      # when the estimator is not default lavaan does not use the robust test
+      maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
+      maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
+      maintab[["df"]]     <- fitMeasures[c("baseline.df.scaled", "df.scaled")]
+      maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue.scaled"])
+      footnote <- gettextf("The estimator is %1$s and the test statistic is %2$s because there are categorical variables in the data.",
+                           fitOptions$estimator, fitOptions$test)
+      if (options[["seType"]] == "standard") {
+        footnote <- paste(footnote, gettext("You may consider changing the standard error method to 'robust'."))
+      }
+      maintab$addFootnote(footnote)
+    } else {
+      maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
+      maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq", "chisq")]
+      maintab[["df"]]     <- fitMeasures[c("baseline.df", "df")]
+      maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue"])
+      if (options[["estimator"]] == "default") {
+        maintab$addFootnote(gettextf("The estimator is %s.", fitOptions$estimator))
+      }
+    }
   }
 }
 
@@ -565,7 +621,19 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (is.null(cfaResult)) return()
 
   # actually compute the fit measures
-  fm <- lavaan::fitmeasures(cfaResult[["lav"]])
+  fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
+
+  # information criteria
+  fitic[["index"]] <- c(
+    gettext("Log-likelihood"),
+    gettext("Number of free parameters"),
+    gettext("Akaike (AIC)"),
+    gettext("Bayesian (BIC)"),
+    gettext("Sample-size adjusted Bayesian (SSABIC)")
+  )
+  fitic[["value"]] <- fitMeasures[c("logl", "npar", "aic", "bic", "bic2")]
+  if(is.na(fitMeasures["logl"]) && is.na(fitMeasures["aic"]) && is.na(fitMeasures["bic"]))
+    fitic$setError("Information criteria are only available with ML-type estimators")
 
   # Fit indices
   fitin[["index"]] <- c(
@@ -578,19 +646,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     gettext("Bollen's Incremental Fit Index (IFI)"),
     gettext("Relative Noncentrality Index (RNI)")
   )
-  fitin[["value"]] <- fm[c("cfi", "tli", "nnfi", "nfi", "pnfi", "rfi", "ifi", "rni")]
-
-  # information criteria
-  fitic[["index"]] <- c(
-    gettext("Log-likelihood"),
-    gettext("Number of free parameters"),
-    gettext("Akaike (AIC)"),
-    gettext("Bayesian (BIC)"),
-    gettext("Sample-size adjusted Bayesian (SSABIC)")
-  )
-  fitic[["value"]] <- fm[c("logl", "npar", "aic", "bic", "bic2")]
-  if(is.na(fm["logl"]) && is.na(fm["aic"]) && is.na(fm["bic"]))
-    fitic$setError("Information criteria are only available with ML-type estimators")
 
   # other fitmeasures
   fitot[["index"]] <- c(
@@ -605,8 +660,21 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     gettext("McDonald fit index (MFI)"),
     gettext("Expected cross validation index (ECVI)")
   )
-  fitot[["value"]] <- fm[c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue",
-                           "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
+
+  if (cfaResult[["orderedVariables"]] && !is.na(fitMeasures["chisq.scaled"])) {
+    fitin[["value"]] <- fitMeasures[c("cfi.scaled", "tli.scaled", "nnfi.scaled", "nfi.scaled", "pnfi",
+                                      "rfi.scaled", "ifi.scaled", "rni.scaled")]
+    fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because of categorical variables in the data."))
+
+    fitot[["value"]] <- fitMeasures[c("rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled",
+                                      "rmsea.pvalue.scaled", "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
+    fitot$addFootnote(gettext("The RMSEA results are scaled because of categorical variables in the data."))
+  } else {
+    fitin[["value"]] <- fitMeasures[c("cfi", "tli", "nnfi", "nfi", "pnfi", "rfi", "ifi", "rni")]
+    fitot[["value"]] <- fitMeasures[c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue",
+                                      "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
+  }
+
 
   return()
 }
@@ -616,8 +684,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (is.null(cfaResult) || !is.null(jaspResults[["estimates"]])) return()
 
   jaspResults[["estimates"]] <- ests <- createJaspContainer(gettext("Parameter estimates"), position = 2)
-  ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                  "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "standardized", "ciLevel"))
+  ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
+                  "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
+                  "group", "invarianceTesting", "standardized", "ciLevel"))
 
 
   footnote <- NULL
@@ -629,25 +698,15 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   pe <- lavaan::parameterEstimates(cfaResult[["lav"]], standardized = TRUE, remove.eq = FALSE, remove.system.eq = TRUE,
                                    remove.ineq = FALSE, remove.def = FALSE, add.attributes = TRUE, boot.ci.type = "perc",
                                    level = options$ciLevel)
+  .cfaParEstToTablesHelper(pe, options, cfaResult, ests, footnote)
 
-  if (options$group != "") {
-    groupLabs <- cfaResult[["lav"]]@Data@group.label
-    for (i in 1:max(pe$group)) {
-      pei <- pe[pe$group == i, ]
-      ests[[groupLabs[i]]] <- createJaspContainer(groupLabs[i])
-      ests[[groupLabs[i]]]$dependOn(optionsFromObject = ests)
-      .cfaParEstToTablesHelper(pei, options, cfaResult[["spec"]], ests[[groupLabs[i]]], footnote)
-    }
-  } else {
-    .cfaParEstToTablesHelper(pe, options, cfaResult[["spec"]], ests, footnote)
-  }
 }
 
-.cfaParEstToTablesHelper <- function(pei, options, spec, jrobject, footnote) {
+.cfaParEstToTablesHelper <- function(pei, options, cfaResult, jrobject, footnote) {
   pei <- as.data.frame(pei)
-  facNames <- c(spec$latents)
+  facNames <- c(cfaResult[["spec"]]$latents)
 
-  colSel <- c("lhs", "rhs", "label", "est", "se", "z", "pvalue", "ci.lower", "ci.upper")
+  colSel <- c("lhs", "rhs", "est", "se", "z", "pvalue", "ci.lower", "ci.upper")
   standardization <- switch(options$standardized,
                             "none"                  = "none",
                             "latentVariables"       = "lv",
@@ -660,9 +719,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jrobject[["fl1"]] <- fl1 <- createJaspTable(title = gettext("Factor loadings"))
   if (!is.null(footnote)) fl1$addFootnote(footnote)
 
+  if (options$group != "") {
+    fl1$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
   fl1$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
   fl1$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
-  fl1$addColumnInfo(name = "label", title = gettext("Symbol"),    type = "string")
 
   fl1$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
   fl1$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
@@ -680,9 +741,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # add data
   fl1dat <- pei[pei$op == "=~" & !pei$rhs %in% facNames, colSel]
-  fl1dat$label <- gsub("_", "", gsub("lambda", "\u03bb", fl1dat$label))
   fl1dat$lhs <- .translateFactorNames(fl1dat$lhs, options)
   fl1dat$rhs <- fl1dat$rhs
+  if (options$group != "") {
+    groupLabs <- cfaResult[["lav"]]@Data@group.label
+    fl1dat$group <- rep(groupLabs, each = nrow(fl1dat) / 2)
+  }
   fl1$setData(fl1dat)
   fl1$dependOn(optionsFromObject = jrobject)
 
@@ -692,9 +756,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     jrobject[["fl2"]] <- fl2 <- createJaspTable(title = gettext("Second-order factor loadings"))
     if (!is.null(footnote)) fl2$addFootnote(footnote)
 
+    if (options$group != "") {
+      fl2$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+    }
     fl2$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
     fl2$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
-    fl2$addColumnInfo(name = "label", title = gettext("Symbol"),    type = "string")
 
     fl2$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
     fl2$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
@@ -712,8 +778,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
     # add data
     fl2dat <- pei[pei$op == "=~" & pei$rhs %in% facNames, colSel]
-    fl2dat$label <- gsub("_", "", gsub("gamma", "\u03b3", fl2dat$label))
     fl2dat$rhs   <- .translateFactorNames(fl2dat$rhs, options)
+
+    if (options$group != "") {
+      fl2dat$group <- rep(groupLabs, each = nrow(fl2dat) / 2)
+    }
     fl2$setData(fl2dat)
     fl2$dependOn(optionsFromObject = jrobject)
   }
@@ -724,6 +793,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jrobject[["fv"]] <- fv <- createJaspTable(gettext("Factor variances"))
   if (!is.null(footnote)) fv$addFootnote(footnote)
 
+  if (options$group != "") {
+    fv$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
   fv$addColumnInfo(name = "lhs",    title = gettext("Factor"),     type = "string", combine = TRUE)
   fv$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format  = "sf:4;dp:3")
   fv$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format  = "sf:4;dp:3")
@@ -740,8 +812,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      type = "number", format = "sf:4;dp:3")
 
   # Add data
-  fvdat     <- pei[pei$op == "~~" & pei$lhs %in% c(facNames, "SecondOrder") & pei$lhs == pei$rhs, colSel[-c(2, 3)]]
+  fvdat     <- pei[pei$op == "~~" & pei$lhs %in% c(facNames, "SecondOrder") & pei$lhs == pei$rhs,
+                   colSel[!colSel %in% c('rhs')]]
   fvdat$lhs <- .translateFactorNames(fvdat$lhs, options)
+  if (options$group != "") {
+    fvdat$group <- rep(groupLabs, each = nrow(fvdat) / 2)
+  }
   fv$setData(fvdat)
   fv$dependOn(optionsFromObject = jrobject)
 
@@ -753,6 +829,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     jrobject[["fc"]] <- fc <- createJaspTable(gettext("Factor Covariances"))
     if (!is.null(footnote)) fc$addFootnote(footnote)
 
+    if (options$group != "") {
+      fc$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+    }
     fc$addColumnInfo(name = "lhs",    title = "",                    type = "string")
     fc$addColumnInfo(name = "op",     title = "",                    type = "string")
     fc$addColumnInfo(name = "rhs",    title = "",                    type = "string")
@@ -772,11 +851,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                        type   = "number",
                        format = "sf:4;dp:3")
 
-    fcdat <- pei[pei$op == "~~" & pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel[-c(3)]]
+    fcdat <- pei[pei$op == "~~" & pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
     fcdat$lhs <- .translateFactorNames(fcdat$lhs, options)
     fcdat$rhs <- .translateFactorNames(fcdat$rhs, options)
     fcdat$op  <- rep("\u2194", nrow(fcdat))
-
+    if (options$group != "") {
+      fcdat$group <- rep(groupLabs, each = nrow(fcdat) / 2)
+    }
     fc$setData(fcdat)
     fc$dependOn(optionsFromObject = jrobject)
   }
@@ -786,6 +867,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jrobject[["rv"]] <- rv <- createJaspTable(gettext("Residual variances"))
   if (!is.null(footnote)) rv$addFootnote(footnote)
 
+  if (options$group != "") {
+    rv$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
   rv$addColumnInfo(name = "lhs",    title = gettext("Indicator"),  type = "string", combine = TRUE)
   rv$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format  = "sf:4;dp:3")
   rv$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format  = "sf:4;dp:3")
@@ -805,52 +889,60 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # add data
   rvdat <- pei[pei$op == "~~" & !pei$lhs %in% facNames & !pei$lhs == "SecondOrder" &
-                 pei$lhs == pei$rhs, colSel[-c(2, 3)]]
+                 pei$lhs == pei$rhs, colSel[!colSel %in% c('rhs')]]
   rvdat$lhs <- rvdat$lhs
+  if (options$group != "") {
+    rvdat$group <- rep(groupLabs, each = nrow(rvdat) / 2)
+  }
   rv$setData(rvdat)
   rv$dependOn(optionsFromObject = jrobject)
 
   # Residual covariances ----
   if (length(options$residualsCovarying) > 0) {
-    rc <- pei[pei$op == "~~" & !pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel[-3]]
-    residualCovTable <- createJaspTable(gettext("Residual covariances"))
-    if (!is.null(footnote)) residualCovTable$addFootnote(footnote)
-    residualCovTable$dependOn(optionsFromObject = jrobject)
 
-    residualCovTable$addColumnInfo(name = "lhs",    title = "",                    type = "string")
-    residualCovTable$addColumnInfo(name = "op",     title = "",                    type = "string")
-    residualCovTable$addColumnInfo(name = "rhs",    title = "",                    type = "string")
-    residualCovTable$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
-    residualCovTable$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
-    residualCovTable$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
-    residualCovTable$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
+    jrobject[["rc"]] <- rc <- createJaspTable(gettext("Residual covariances"))
+    if (!is.null(footnote)) rc$addFootnote(footnote)
 
-    residualCovTable$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number", format = "sf:4;dp:3",
+    if (options$group != "") {
+      rc$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+    }
+    rc$addColumnInfo(name = "lhs",    title = "",                    type = "string")
+    rc$addColumnInfo(name = "op",     title = "",                    type = "string")
+    rc$addColumnInfo(name = "rhs",    title = "",                    type = "string")
+    rc$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+    rc$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
+    rc$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
+    rc$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
+
+    rc$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number", format = "sf:4;dp:3",
                          overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-    residualCovTable$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
+    rc$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                          overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
 
-    residualCovTable[["lhs"]]      <- rc$lhs
-    residualCovTable[["op"]]       <- rep("\u2194", nrow(rc))
-    residualCovTable[["rhs"]]      <- rc$rhs
-    residualCovTable[["est"]]      <- rc$est
-    residualCovTable[["se"]]       <- rc$se
-    residualCovTable[["z"]]        <- rc$z
-    residualCovTable[["pvalue"]]   <- rc$pvalue
-    residualCovTable[["ci.lower"]] <- rc$ci.lower
-    residualCovTable[["ci.upper"]] <- rc$ci.upper
-
-
-    jrobject[["Residual Covariances"]] <- residualCovTable
+    if (options$standardized != "none")
+      rc$addColumnInfo(name   = paste0("std.", standardization),
+                       title  = gettextf("Std. Est. (%s)", standardization),
+                       type   = "number",
+                       format = "sf:4;dp:3")
+    # add data
+    rcdat <- pei[pei$op == "~~" & !pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
+    rcdat$op  <- rep("\u2194", nrow(rcdat))
+    if (options$group != "") {
+      rcdat$group <- rep(groupLabs, each = nrow(rcdat) / 2)
+    }
+    rc$setData(rcdat)
+    rc$dependOn(optionsFromObject = jrobject)
   }
 
   # Intercepts ----
   if (options$meanStructure) {
 
     if (options$group != "") {
+
       jrobject[["Factor Intercepts"]] <- fi <- createJaspTable(title = gettext("Factor Intercepts"))
       if (!is.null(footnote)) fi$addFootnote(footnote)
 
+      fi$addColumnInfo(name = "group",  title = gettext("Group"), type = "string", combine = TRUE)
       fi$addColumnInfo(name = "lhs",    title = gettext("Factor"),     type = "string", combine = TRUE)
       fi$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
       fi$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
@@ -867,8 +959,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                           type = "number", format = "sf:4;dp:3")
 
       # add data
-      fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[-c(2, 3)]]
+      fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[!colSel %in% 'rhs']]
       fidat$lhs <- .translateFactorNames(fidat$lhs, options)
+      fidat$group <- rep(groupLabs, each = nrow(fidat) / 2)
       fi$setData(fidat)
       fi$dependOn(optionsFromObject = jrobject)
     }
@@ -877,6 +970,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     jrobject[["Intercepts"]] <- vi <- createJaspTable(title = gettext("Intercepts"))
     if (!is.null(footnote)) vi$addFootnote(footnote)
 
+    if (options$group != "") {
+      vi$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+    }
     vi$addColumnInfo(name = "lhs",    title  = gettext("Indicator"),  type = "string", combine = TRUE)
     vi$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
     vi$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
@@ -893,11 +989,58 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                         type = "number", format = "sf:4;dp:3")
 
     # add data
-    vidat <- pei[pei$op == "~1" & !pei$lhs == "SecondOrder" & !pei$lhs %in% facNames , colSel[-c(2, 3)]]
+    vidat <- pei[pei$op == "~1" & !pei$lhs == "SecondOrder" & !pei$lhs %in% facNames,
+                 colSel[!colSel %in% c('rhs')]]
     vidat$lhs <- vidat$lhs
+    if (options$group != "") {
+      vidat$group <- rep(groupLabs, each = nrow(vidat) / 2)
+    }
     vi$setData(vidat)
     vi$dependOn(optionsFromObject = jrobject)
   }
+
+
+  # Thresholds
+  if ("|" %in% pei$op) {
+    .thresholdsTable(jrobject, footnote, options, standardization, pei, colSel, cfaResult)
+  }
+
+}
+
+.thresholdsTable <- function(jrobject, footnote, options, standardization, pei, colSel, cfaResult) {
+  # Manifest variable intercepts
+  jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
+  if (!is.null(footnote)) th$addFootnote(footnote)
+
+  if (options$group != "") {
+    th$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
+  th$addColumnInfo(name = "lhs",    title  = gettext("Indicator"),  type = "string", combine = TRUE)
+  th$addColumnInfo(name = "rhs",    title  = gettext("Threshold"),  type = "string")
+  th$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number")
+  th$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number")
+  th$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number")
+  th$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number")
+
+  th$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number",
+                   overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+  th$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number",
+                   overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+
+  if (options$standardized != "none")
+    th$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
+                     type = "number")
+
+  # add data
+  thdat <- pei[pei$op == "|", colSel[!colSel %in% c('rhs')]]
+  thdat$lhs <- thdat$lhs
+  thdat$rhs <- pei$rhs[pei$op == "|"]
+  if (options$group != "") {
+    groupLabs <- cfaResult[["lav"]]@Data@group.label
+    thdat$group <- rep(groupLabs, each = nrow(thdat) / 2)
+  }
+  th$setData(thdat)
+  th$dependOn(optionsFromObject = jrobject)
 }
 
 .cfaTableModIndices <- function(jaspResults, options, cfaResult) {
@@ -948,8 +1091,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     focro[["epc"]] <- foc$epc
   }
 
-
   # cross loadings (second order)
+  soc <- matrix(NA, 0, 0)
   if (length(options$secondOrder) > 1) {
     soc <- mii[mii$op == "=~" & mii$lhs %in% options$soLatents & mii$rhs %in% cfaResult[["spec"]]$latents,
                c("lhs", "rhs", "mi", "epc")]
@@ -999,6 +1142,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     residualCovTable[["rhs"]] <- rec$rhs
     residualCovTable[["mi"]]  <- rec$mi
     residualCovTable[["epc"]] <- rec$epc
+  }
+
+  # display empty table when no modindex is above the cutoff
+  if (nrow(foc) == 0 && nrow(soc) == 0 && nrow(rec) == 0) {
+    jrobject[["empties"]] <- emptyModIndicesTable <- createJaspTable(gettext("Modification indices"))
+    emptyModIndicesTable$dependOn(optionsFromObject = jrobject)
+    emptyModIndicesTable$addFootnote(gettext("No modification index was above the cutoff"))
   }
 }
 
@@ -1218,9 +1368,141 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaSyntax <- function(jaspResults, options, dataset, cfaResult) {
   if (is.null(cfaResult) || !options$lavaanSyntax || !is.null(jaspResults[["syntax"]])) return()
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)
+  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
 
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
   jaspResults[["syntax"]]$dependOn("lavaanSyntax")
 }
+
+.cfaTableAve <- function(jaspResults, options, cfaResult) {
+  if (is.null(cfaResult) || !options[["ave"]] || !is.null(jaspResults[["resAveTable"]])) return()
+
+  aveTable <- createJaspTable(gettext("Average variance extracted"), position = 4.1)
+  if (options[["group"]] != "") {
+    aveTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
+  aveTable$addColumnInfo(name = "factor", title = gettext("Factor"), type = "string")
+  aveTable$addColumnInfo(name = "ave", title = gettext("AVE"), type = "number")
+  aveTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "ave"))
+
+  if (options$group != "") {
+    ave_result <- semTools::AVE(cfaResult[["lav"]])
+    groups <- cfaResult[["lav"]]@Data@group.label
+    ave_result <- ave_result[, -1, drop = FALSE]
+    aveTable[["group"]]   <- rep(groups, each = length(cfaResult[["spec"]][["latents"]]))
+    aveTable[["factor"]]  <- rep(sapply(options[["factors"]], function(x) x[["title"]]), length(groups))
+    aveTable[["ave"]]     <- c(t(ave_result))
+  } else {
+    ave_result <- semTools::AVE(cfaResult[["lav"]])
+    aveTable[["factor"]] <- sapply(options[["factors"]], function(x) x[["title"]])
+    aveTable[["ave"]] <- ave_result
+  }
+  jaspResults[["resAveTable"]] <- aveTable
+
+}
+
+.cfaTableHtmt <- function(jaspResults, options, cfaResult) {
+  #### this has an ordering argument that still needs to be implemented once the categorical data stuff is done
+
+  if (is.null(cfaResult) || !options[["htmt"]] || !is.null(jaspResults[["resHtmtTable"]])) return()
+
+  htmtTable <- createJaspTable(gettext("Heterotrait-monotrait ratio"), position = 4.2)
+  htmtTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt"))
+
+  if (options[["group"]] != "") {
+    htmtTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+    htmtTable$addColumnInfo(name = "faNames", title = "", type = "string")
+  }
+
+  facNames <- sapply(options[["factors"]], function(x) x[["title"]])
+  for (fname in facNames) {
+    htmtTable$addColumnInfo(name = fname, title = gettext(fname), type = "number")
+  }
+
+  if (options$group != "") {
+    groups <- cfaResult[["lav"]]@Data@group.label
+    # get the list of datasets per group
+    dataList <- lavaan::inspect(cfaResult[["lav"]], what = "data")
+    tmp_dat <- data.frame(group = rep(groups, each = length(facNames)),
+                          faNames = rep(facNames, times = length(groups)))
+    for (gg in groups) {
+      ind <- which(gg == groups)
+      dataGroup <- as.data.frame(dataList[[gg]])
+      colnames(dataGroup) <- cfaResult[["lav"]]@Data@ov.names[[ind]]
+      htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataGroup,
+                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+      htmt_result[upper.tri(htmt_result)] <- NA
+      tmp_dat[tmp_dat$group == gg, facNames] <- htmt_result
+    }
+    htmtTable$setData(tmp_dat)
+
+  } else {
+    # get the dataset
+    dataset <- as.data.frame(lavaan::inspect(cfaResult[["lav"]], what = "data"))
+    colnames(dataset) <- cfaResult[["lav"]]@Data@ov.names[[1]]
+    if (is.null(cfaResult[["spec"]][["soIndics"]])) {
+      htmt_result <- semTools::htmt(model = cfaResult[["model"]], data = dataset,
+                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+    } else { # the htmt does not allow a second order factor, so we take the model syntax without the seco
+      htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataset,
+                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+    }
+
+    htmt_result[upper.tri(htmt_result)] <- NA
+    for (fname in facNames) {
+      ii <- which(fname == facNames)
+      htmtTable[[fname]] <- htmt_result[, ii]
+    }
+  }
+  jaspResults[["resHtmtTable"]] <- htmtTable
+
+}
+
+
+.cfaTableReliability <- function(jaspResults, options, cfaResult) {
+  if (is.null(cfaResult) || !options[["reliability"]] || !is.null(jaspResults[["resRelTable"]])) return()
+
+  relTable <- createJaspTable(gettext("Reliability"), position = 4.3)
+  if (options[["group"]] != "") {
+    relTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
+  }
+  relTable$addColumnInfo(name = "factor", title = "", type = "string")
+  relTable$addColumnInfo(name = "rel", title = gettext("Coefficient \u03C9"), type = "number")
+  relTable$addColumnInfo(name = "alpha", title = gettext("Coefficient \u03B1"), type = "number")
+  relTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability"))
+
+  nfac <- length(cfaResult[["spec"]][["latents"]])
+
+  rel_result_alpha <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE, tau.eq = TRUE)
+  if (is.null(cfaResult[["spec"]][["soIndics"]])) {
+    rel_result_omega <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
+  } else {
+    rel_result_omega <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
+                                             higher = "SecondOrder")
+    rel_result_alpha <- cbind(rel_result_alpha, NA)
+  }
+
+  if (options$group != "") {
+    groups <- cfaResult[["lav"]]@Data@group.label
+    rel_result_omega <- rel_result_omega[, -1, drop = FALSE]
+    rel_result_alpha <- rel_result_alpha[, -1, drop = FALSE]
+    relTable[["group"]]   <- rep(groups, each = ncol(rel_result_omega))
+    relTable[["factor"]]  <- rep(c(sapply(options[["factors"]], function(x) x[["title"]]),
+                                   colnames(rel_result_omega)[-(1:nfac)]), length(groups))
+    relTable[["rel"]]     <- c(t(rel_result_omega))
+    relTable[["alpha"]] <- c(t(rel_result_alpha))
+  } else {
+    relTable[["factor"]] <- c(sapply(options[["factors"]], function(x) x[["title"]]),
+                              names(rel_result_omega)[-(1:nfac)])
+    relTable[["rel"]] <- rel_result_omega
+    relTable[["alpha"]] <- rel_result_alpha
+  }
+  jaspResults[["resRelTable"]] <- relTable
+
+}
+
+

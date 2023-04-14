@@ -101,8 +101,8 @@ Form
 			{
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-				AvailableVariablesList {		name: "observedvars";	source: factors.name	}
-				AssignedPairsVariablesList {	name: "residualsCovarying"						}
+				AvailableVariablesList 		 {	name: "observedVarsForResidualCov";	source: factors.name}
+				AssignedPairsVariablesList {	name: "residualsCovarying"}
 			}
 		}
 	}
@@ -116,6 +116,9 @@ Form
 			CheckBox { label: qsTr("Kaiser-Meyer-Olkin (KMO) test"); name: "kaiserMeyerOlkinTest"}
 			CheckBox { label: qsTr("Bartlett's test of sphericity"); name: "bartlettTest"}
 			CheckBox { label: qsTr("R-Squared")                 ; name: "rSquared"         }
+			CheckBox { name: "ave";						label: qsTr("Average variance extracted (AVE)")		}
+			CheckBox { name: "htmt";					label: qsTr("Heterotrait-monotrait ratio (HTMT)")	}
+			CheckBox { name: "reliability";		label: qsTr("Reliability")					}
 		}
 		Group
 		{
@@ -202,7 +205,7 @@ Form
 			{
 				title: qsTr("Standard error")
 				name: "seType"
-				RadioButton { label: qsTr("Standard")  ;	value: "standard" ; checked: true }
+				RadioButton { label: qsTr("Standard");	value: "standard"; checked: true}
 				RadioButton { label: qsTr("Robust");		value: "robust" }
 				RadioButton {
 					label: qsTr("Bootstrap")

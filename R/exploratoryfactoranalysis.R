@@ -161,7 +161,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     errcodes <- c("L-BFGS-B needs finite values of 'fn'", "missing value where TRUE/FALSE needed",
                   "reciprocal condition number = 0", "infinite or missing values in 'x'")
     if (errtxt %in% errcodes) {
-      errmsg <- gettextf("Estimation failed. Internal error message: %s. %s", .extractErrorMessage(efaResult),
+      errmsg <- gettextf("Estimation failed. Internal error message: %1$s. %2$s", .extractErrorMessage(efaResult),
                          "Try basing the analysis on a different type of matrix or change the factoring method.")
     } else {
       errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(efaResult))
@@ -227,7 +227,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (!options[["kaiserMeyerOlkinTest"]] || !is.null(modelContainer[["kmoTable"]])) return()
 
-  kmoTable <- createJaspTable(gettext("Kaiser-Meyer-Olkin test"))
+  kmoTable <- createJaspTable(gettext("Kaiser-Meyer-Olkin Test"))
   kmoTable$dependOn("kaiserMeyerOlkinTest")
   kmoTable$addColumnInfo(name = "col", title = "", type = "string")
   kmoTable$addColumnInfo(name = "val", title = "MSA", type = "number", format = "dp:3")
@@ -255,7 +255,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 .efaBartlett <- function(modelContainer, dataset, options, ready) {
   if (!options[["bartlettTest"]] || !is.null(modelContainer[["bartlettTable"]])) return()
 
-  bartlettTable <- createJaspTable(gettext("Bartlett's test"))
+  bartlettTable <- createJaspTable(gettext("Bartlett's Test"))
   bartlettTable$dependOn("bartlettTest")
   bartlettTable$addColumnInfo(name = "chisq", title = "\u03a7\u00b2", type = "number", format = "dp:3")
   bartlettTable$addColumnInfo(name = "df",    title = gettext("df"), type = "number", format = "dp:3")
@@ -279,9 +279,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   bartlettTable[["pval"]]  <- bar[["p.value"]]
 }
 
-# Modification here:
-# Added Mardia's tests of multivariate normality for further probing of the
-# multivariate normality assumption.
+
 .efaMardia <- function(modelContainer, dataset, options, ready) {
 
   if (!options[["mardiaTest"]] || !is.null(modelContainer[["mardiaTable"]])) return()
@@ -442,10 +440,10 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   # if a rotation is used, the table needs more columns
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  eigenTable$addColumnInfo(name = "eigen", title = gettext("Eigenvalues"),  type = "number")
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
-
     eigenTable$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
@@ -472,6 +470,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   Vaccounted <- efaResults[["Vaccounted"]]
   idx <- seq_len(efaResults[["factors"]])
 
+  eigenTable[["eigen"]] <- eigv_init[idx]
   eigenTable[["comp"]] <- paste("Factor", idx)
   eigenTable[["sslU"]] <- eigv[idx]
   eigenTable[["propU"]] <- eigv[idx] / sum(eigv_init)

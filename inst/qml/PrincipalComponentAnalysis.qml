@@ -31,8 +31,8 @@ Form
 			id: variables
 			name: "variables"
 			title: qsTr("Variables")
-			suggestedColumns: ["scale"]
-			allowedColumns: ["scale"]
+			suggestedColumns: ["scale","ordinal"]
+			allowedColumns: ["scale", "ordinal"]
 		}
 	}
 
@@ -218,6 +218,14 @@ Form
 			}
 		}
 
+		Group
+		{
+			title: qsTr("Assumption checks")
+			CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
+			CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
+			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  }
+		}
+
 		RadioButtonGroup
 		{
 			name: "naAction"
@@ -225,6 +233,7 @@ Form
 			RadioButton { value: "pairwise";		label: qsTr("Exclude cases pairwise"); checked: true	}
 			RadioButton { value: "listwise";		label: qsTr("Exclude cases listwise")					}
 		}
+
 
 		CheckBox
 		{

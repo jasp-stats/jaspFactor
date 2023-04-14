@@ -50,12 +50,26 @@ _NB: eigenwaarden voor EFA zijn anders dan eigenwaarden voor PCA. Meer informati
     - Aanvullende fit indices: Deze optie toont de wortel van de gemiddelde kwadraatsom fout (RMSEA) met 90% betrouwbaarheidsinterval, de Tucker Lewis Index (TLI), en de Bayesian Information Criterion (BIC) om de model fit te testen. 
     - Paddiagram: Bij het selecteren van deze optie wordt een visuele representatie van de richting en de sterkte van de relatie tussen de variabele en de factor weergegeven. 
     - Screeplot: Bij het selecteren van deze optie, wordt een screeplot getoond. De screeplot geeft informatie over hoeveel variantie in de data, aangegeven door de eigenwaarde, wordt verklaard door elke factor. Een screeplot kan gebruikt worden om te beslissen over de hoeveelheid van de factoren. 
+- Aannamecontroles:
+   - Kaiser-Meyer-Olkin Test (KMO): Bepaalt hoe goed variabelen geschikt zijn voor factoranalyse door het aandeel gemeenschappelijke variantie tussen variabelen te berekenen.
+   - Bartlett's Test (van sfericiteit): Bepaalt of de correlatiematrix van de gegevens de identiteitsmatrix is, d.w.z. of de variabelen aan elkaar gerelateerd zijn of niet.
+   - Mardia's test van multivariate normaliteit: Beoordeelt de mate van afwijking van de multivariate normaliteit van de opgenomen variabelen in termen van multivariate scheefheid en kurtose. De Mardia's test omvat altijd de lijstvolledige gevallen.
 - Ontbrekende waarden: 
     - Sluit paarsgewijs uit: Indien 1 observatie van een variabele mist, worden de observaties van de andere variabelen nog wel gebruikt voor de analyse. In dit scenario is het niet nodig om voor elke variabele een observatie te hebben. Dit is de standaardoptie. 
     - Sluit lijstgewijs uit: Indien 1 observatie van een variabele mist, wordt de gehele casus (dus alle andere variabelen van dezelfde casus) uitgesloten voor analyse. In dit scenario zijn is voor elke variabele een observatie nodig. 
 
 ### Uitvoer 
 --- 
+#### Aannamecontroles
+- Kaiser-Meyer-Olkin Test (KMO): Maat voor steekproeftoereikendheid (MSA) als het aandeel van de gemeenschappelijke variantie tussen variabelen wordt berekend voor alle variabelen; waarden dichter bij 1 zijn gewenst.
+- Bartlett's Test (of sphericity): Een significant resultaat betekent dat de correlatiematrix afwijkt van de identiteitsmatrix.
+- Mardia's Test van multivariate normaliteit:
+	- Tests: In de eerste kolom staan alle uitgevoerde testen.
+	- Waarde: De waarden van `b1p` (multivariate scheefheid) en `b2p` (multivariate kurtosis), zoals aangegeven in Mardia (1970).
+	- Statistiek: De twee chi-kwadraat teststatistieken van multivariate scheefheid (zowel standaard als gecorrigeerd voor kleine steekproeven) en de standaard normale teststatistiek van multivariate kurtosis.
+	- df: Vrijheidsgraden.
+	- p: P-waarde. 
+
 #### Exploratieve Factoranalyse
 Factorladingen:  
 - Variabelen: De eerste kolom toont alle variabelen die zijn meegenomen in de analyse. 
@@ -95,21 +109,22 @@ De screeplot geeft informatie over hoeveel variantie in de data, aangegeven door
 
 ### Referenties 
 ---
-- Bandalos, D. L., & Finney, S. J. (2018). Factor analysis: Exploratory and confirmatory. In *The reviewer’s guide to quantitative methods in the social sciences* (pp. 98-122). Routledge.
-- Brown, T. A. (2014). *Confirmatory factor analysis for applied research*.     
-    Guilford Publications. 
-- Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. URL: http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf.
-- Golino, H., Shi, D., Christensen, A. P., Garrido, L. E., Nieto, M. D., Sadana, R., ... & Martinez-Molina, A. (2020). Investigating the performance of exploratory graph analysis and traditional techniques to identify the number of latent factors: A simulation and tutorial. *Psychological Methods*, *25*(3), 292.
-- Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention     
-    decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205.
+- Bandalos, D. L., & Finney, S. J. (2018). Factor analysis: Exploratory and confirmatory. In G. R. Hancock, L. M. Stapleton, & R. O. Mueller, *The reviewer’s guide to quantitative methods in the social sciences* (pp. 98-122). Routledge. https://doi.org/10.4324/9781315755649
+- Dinno, A. (2014) Gently clarifying the application of Horn’s parallel analysis to principal component analysis versus factor analysis. *Working paper*. https://alexisdinno.com/Software/files/PA_for_PCA_vs_FA.pdf
+- Dziuban, C. D., & Shirkey, E. C. (1974). When is a correlation matrix appropriate for factor analysis? Some decision rules. *Psychological Bulletin, 81*(6), 358–361. https://doi.org/10.1037/h0036316
+- Golino, H., Shi, D., Christensen, A. P., Garrido, L. E., Nieto, M. D., Sadana, R., ... & Martinez-Molina, A. (2020). Investigating the performance of exploratory graph analysis and traditional techniques to identify the number of latent factors: A simulation and tutorial. *Psychological Methods*, *25*(3), 292. https://doi.org/10.1037/met0000255
+- Hayton, J. C., Allen, D. G., & Scarpello, V. (2004). Factor retention 
+    decisions in exploratory factor analysis: A tutorial on parallel analysis. *Organizational Research Methods, 7*(2), 191-205. https://doi.org/10.1177/1094428104263675
 - Hopwood, C. J., & Donnellan, M. B. (2010). How should the internal structure 
-    of personality inventories be evaluated? *Personality and Social Psychology Review, 14*, 332–346.
-- Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. *Biometrika*, *57*(3), 519-530.
+    of personality inventories be evaluated? *Personality and Social Psychology Review, 14*(3), 332–346. https://doi.org/10.1177/1088868310361240
+- Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. *Psychometrika, 30*(2), 179–185. https://doi.org/10.1007%2Fbf02289447
+- Hu, L.-t., & Bentler, P. M. (1998). Fit indices in covariance structure modeling: Sensitivity to underparameterized model misspecification. *Psychological Methods, 3*(4), 424–453. https://doi.org/10.1037/1082-989X.3.4.424
+- Mardia, K. V. (1970). Measures of multivariate skewness and kurtosis with applications. *Biometrika*, *57*(3), 519-530. https://doi.org/10.2307/2334770
 - Osborne, J. W., Costello, A. B., & Kellow, J. T. (2008). Best practices in 
-    exploratory factor analysis. *Best Practices in Quantitative Methods*, 86-99.
-- Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. *Structural Equation Modeling, 16*(4), 561-582.
-- Timmerman, M. E., & Lorenzo-Seva, U. (2011). Dimensionality assessment of ordered polytomous items with parallel analysis. *Psychological Methods*, *16*(2), 209.
-- Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in Quantitative Methods for Psychology*, *9*(2), 79-94.
+    exploratory factor analysis. In J. Osborne (Ed.), *Best practices in quantitative methods* (pp. 86-99). SAGE Publications, Inc. https://doi.org/10.4135/9781412995627.d8
+- Saris, W. E., Satorra, A., & Van der Veld, W. M. (2009). Testing structural equation models or detection of misspecifications?. *Structural Equation Modeling: A Multidisciplinary Journal, 16*(4), 561-582. https://doi.org/10.1080/10705510903203433
+- Timmerman, M. E., & Lorenzo-Seva, U. (2011). Dimensionality assessment of ordered polytomous items with parallel analysis. *Psychological Methods*, *16*(2), 209. https://doi.org/10.1037/a0023353
+- Yong, A. G., & Pearce, S. (2013). A beginner’s guide to factor analysis: Focusing on exploratory factor analysis. *Tutorials in Quantitative Methods for Psychology*, *9*(2), 79-94. https://doi.org/10.20982/tqmp.09.2.p079
 
 ### R Packages 
 --- 

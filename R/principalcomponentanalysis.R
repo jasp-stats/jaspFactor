@@ -34,6 +34,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .pcaCorrTable(          modelContainer, dataset, options, ready)
   .pcaResidualTable(      modelContainer, dataset, options, ready)
   .parallelAnalysisTable( modelContainer, dataset, options, ready, name = "Component")
+  .efaKMOtest(            modelContainer, dataset, options, ready)
+  .efaBartlett(           modelContainer, dataset, options, ready)
+  .efaMardia(             modelContainer, dataset, options, ready)
   .pcaScreePlot(          modelContainer, dataset, options, ready)
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 

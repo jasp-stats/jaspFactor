@@ -1,8 +1,8 @@
 Package: jaspFactor
 Type: Package
 Title: Factor Module for JASP
-Version: 0.17.1
-Date: 2022-10-05
+Version: 0.17.2
+Date: 2023-04-14
 Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
@@ -20,7 +20,8 @@ Imports:
   reshape2,
   semPlot,
   GPArotation,
-  Rcsdp
+  Rcsdp, 
+  semTools
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,

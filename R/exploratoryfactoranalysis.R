@@ -440,10 +440,10 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   # if a rotation is used, the table needs more columns
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  eigenTable$addColumnInfo(name = "eigen", title = gettext("Eigenvalues"),  type = "number")
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
-
     eigenTable$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
@@ -470,6 +470,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   Vaccounted <- efaResults[["Vaccounted"]]
   idx <- seq_len(efaResults[["factors"]])
 
+  eigenTable[["eigen"]] <- eigv_init[idx]
   eigenTable[["comp"]] <- paste("Factor", idx)
   eigenTable[["sslU"]] <- eigv[idx]
   eigenTable[["propU"]] <- eigv[idx] / sum(eigv_init)

@@ -24,8 +24,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
-  # sink(file="~/Downloads/log.txt")
-  # on.exit(sink(NULL))
 
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
@@ -315,8 +313,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # add extra output here because the Htmt needs a model syntax without grouping labels
   labels_simp <- list()
 
-  fo <- "# Factors"
-  fo_simp <- "# Factors"
+  fo <- gettext("# Factors")
+  fo_simp <- gettext("# Factors")
   for (i in 1:length(vars)) {
     pre <- paste0("\n", latents[i], " =~ ")
     len <- length(vars[[i]]$indicators)

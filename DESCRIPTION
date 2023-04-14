@@ -1,8 +1,8 @@
 Package: jaspFactor
 Type: Package
 Title: Factor Module for JASP
-Version: 0.17.1
-Date: 2023-03-21
+Version: 0.17.2
+Date: 2023-04-14
 Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>

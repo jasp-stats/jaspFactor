@@ -650,3 +650,35 @@ msgstr "成分相关性"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
 msgstr "残差矩阵"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Average variance extracted (AVE)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Heterotrait-monotrait ratio (HTMT)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Reliability"
+msgstr ""
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Assumption checks"
+msgstr "假设检查"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "KMO test"
+msgstr "KMO 检验"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Bartlett's test"
+msgstr "巴特利特检验(Bartlett's)"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Mardia's test"
+msgstr "Mardia's 检验"

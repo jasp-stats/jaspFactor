@@ -651,3 +651,35 @@ msgstr "Component correlaties"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
 msgstr "Residuele matrix"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Average variance extracted (AVE)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Heterotrait-monotrait ratio (HTMT)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Reliability"
+msgstr ""
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Assumption checks"
+msgstr "Verificatie van aannames"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "KMO test"
+msgstr "KMO toets"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Bartlett's test"
+msgstr "Bartlett's toets"
+
+#, fuzzy
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Mardia's test"
+msgstr "Mardia's test"

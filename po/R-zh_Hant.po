@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-12-17 03:30\n"
+"POT-Creation-Date: 2023-04-15 03:28\n"
 "PO-Revision-Date: 2022-12-31 15:49+0000\n"
 "Last-Translator: Sau-chin Chen <pmsp96@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -27,8 +27,15 @@ msgid ""
 msgstr "模型無法估計。有個少於兩個變數的因素被設為二階因素。"
 
 msgid "FIML missing data handling only available with ML-type estimators"
-msgstr "只有使用最大概似法 "
-"(ML)類的估計法時，才能使用完全訊息最大概似法的方式來處理遺漏值"
+msgstr ""
+"只有使用最大概似法 (ML)類的估計法時，才能使用完全訊息最大概似法的方式來處理遺"
+"漏值"
+
+msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
+msgstr ""
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
@@ -56,6 +63,10 @@ msgstr "此模型無法估計: 迭代結果無法聚合"
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "此模型無法估計: 自由度不足"
 
+#, fuzzy
+msgid "# Factors"
+msgstr "因子"
+
 msgid "Model fit"
 msgstr "模型適配度"
 
@@ -76,6 +87,17 @@ msgstr "基準模型"
 
 msgid "Factor model"
 msgstr "因素模型"
+
+msgid ""
+"The estimator is %1$s and the test statistic is %2$s because there are "
+"categorical variables in the data."
+msgstr ""
+
+msgid "You may consider changing the standard error method to 'robust'."
+msgstr ""
+
+msgid "The estimator is %s."
+msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) 檢驗"
@@ -107,6 +129,21 @@ msgstr "其他適配指標"
 msgid "Metric"
 msgstr "量尺"
 
+msgid "Log-likelihood"
+msgstr "對數概度"
+
+msgid "Number of free parameters"
+msgstr "自由估計參數個數"
+
+msgid "Akaike (AIC)"
+msgstr "赤池資訊量準則"
+
+msgid "Bayesian (BIC)"
+msgstr "貝氏資訊量準則 (BIC)"
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr "依照樣本大小校正之貝氏資訊量準則 (SSABIC)"
+
 msgid "Comparative Fit Index (CFI)"
 msgstr "比較適配指標 (CFI)"
 
@@ -130,21 +167,6 @@ msgstr "增加適配指標 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "相對非中心配適指標  (RNI)"
-
-msgid "Log-likelihood"
-msgstr "對數概度"
-
-msgid "Number of free parameters"
-msgstr "自由估計參數個數"
-
-msgid "Akaike (AIC)"
-msgstr "赤池資訊量準則"
-
-msgid "Bayesian (BIC)"
-msgstr "貝氏資訊量準則 (BIC)"
-
-msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr "依照樣本大小校正之貝氏資訊量準則 (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr "標準化均方根殘差值"
@@ -176,6 +198,15 @@ msgstr "McDonald 適配指標 (IFI)"
 msgid "Expected cross validation index (ECVI)"
 msgstr "Expected cross validation index (EVCI)"
 
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
+msgstr ""
+
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
 msgid "Parameter estimates"
 msgstr "參數估計值"
 
@@ -185,14 +216,14 @@ msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間�
 msgid "Factor loadings"
 msgstr "因素負荷量"
 
+msgid "Group"
+msgstr ""
+
 msgid "Factor"
 msgstr "因子"
 
 msgid "Indicator"
 msgstr "指標"
-
-msgid "Symbol"
-msgstr "符號"
 
 msgid "Estimate"
 msgstr "估計"
@@ -238,6 +269,12 @@ msgstr "因素截距"
 msgid "Intercepts"
 msgstr "截距"
 
+msgid "Thresholds"
+msgstr ""
+
+msgid "Threshold"
+msgstr ""
+
 msgid "Modification Indices"
 msgstr "修正指標"
 
@@ -252,6 +289,13 @@ msgstr "期望參數變動"
 
 msgid "Second-order cross-loadings"
 msgstr "二階因素交叉因素負荷量"
+
+#, fuzzy
+msgid "Modification indices"
+msgstr "修正指標"
+
+msgid "No modification index was above the cutoff"
+msgstr ""
 
 msgid "Implied covariance matrices"
 msgstr "模式共變數矩陣"
@@ -283,6 +327,24 @@ msgstr "不適配 (misfit) 圖"
 msgid "Model syntax"
 msgstr "模型語法"
 
+msgid "Average variance extracted"
+msgstr ""
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr ""
+
+msgid "Reliability"
+msgstr ""
+
+msgid "Coefficient ω"
+msgstr ""
+
+msgid "Coefficient α"
+msgstr ""
+
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "因素個數過多 (%i) 超過變項數"
 
@@ -301,7 +363,8 @@ msgstr "資料無效: %s 變數的遺漏值過多"
 msgid "Data not valid: all variables are collinear"
 msgstr "資料無效: 所有變數互為共線性"
 
-msgid "Estimation failed. Internal error message: %s. %s"
+#, fuzzy
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "無法估計. 內部錯誤訊息: %s. %s"
 
 msgid "Estimation failed. Internal error message: %s"
@@ -324,13 +387,15 @@ msgstr "沒有因素的特徵值大於"
 msgid "Maximum observed eigenvalue equals"
 msgstr "觀察特徵值之最大值為"
 
-msgid "Kaiser-Meyer-Olkin test"
+#, fuzzy
+msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin 檢驗"
 
 msgid "Overall MSA"
 msgstr "整體MSA"
 
-msgid "Bartlett's test"
+#, fuzzy
+msgid "Bartlett's Test"
 msgstr "Bartlett's檢定"
 
 msgid "Mardia's Test of Multivariate Normality"
@@ -376,6 +441,10 @@ msgstr "因素負荷量(結構矩陣)"
 
 msgid "Factor Characteristics"
 msgstr "因素特徵"
+
+#, fuzzy
+msgid "Eigenvalues"
+msgstr "特徵值"
 
 msgid "Unrotated solution"
 msgstr "未轉軸解"
@@ -479,6 +548,9 @@ msgstr "陡坡圖"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Symbol"
+#~ msgstr "符號"
 
 #~ msgid "."
 #~ msgstr "."

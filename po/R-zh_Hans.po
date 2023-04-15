@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2022-12-17 03:30\n"
+"POT-Creation-Date: 2023-04-15 03:28\n"
 "PO-Revision-Date: 2023-01-18 15:03+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -30,6 +30,12 @@ msgid "FIML missing data handling only available with ML-type estimators"
 msgstr "FIML 缺失数据处理仅适用于 ML 类型的估计器"
 
 msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
+msgstr ""
+
+msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
@@ -55,6 +61,10 @@ msgstr "由于不收敛，无法估计模型。"
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "无法估计模型：没有剩余的自由度。"
 
+#, fuzzy
+msgid "# Factors"
+msgstr "因子"
+
 msgid "Model fit"
 msgstr "模型拟合"
 
@@ -75,6 +85,17 @@ msgstr "基线模型"
 
 msgid "Factor model"
 msgstr "因子模型"
+
+msgid ""
+"The estimator is %1$s and the test statistic is %2$s because there are "
+"categorical variables in the data."
+msgstr ""
+
+msgid "You may consider changing the standard error method to 'robust'."
+msgstr ""
+
+msgid "The estimator is %s."
+msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) 检验"
@@ -106,6 +127,21 @@ msgstr "其他拟合测量"
 msgid "Metric"
 msgstr "单位(Metric)"
 
+msgid "Log-likelihood"
+msgstr "对数似然"
+
+msgid "Number of free parameters"
+msgstr "自由参数的数量"
+
+msgid "Akaike (AIC)"
+msgstr "Akaike (AIC)"
+
+msgid "Bayesian (BIC)"
+msgstr "贝叶斯 (BIC)"
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr "样本大小调整贝叶斯 (SSABIC)"
+
 msgid "Comparative Fit Index (CFI)"
 msgstr "比较拟合指数 (CFI)"
 
@@ -129,21 +165,6 @@ msgstr "Bollen's Incremental 拟合指数 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "相对非中心指数 (RNI)"
-
-msgid "Log-likelihood"
-msgstr "对数似然"
-
-msgid "Number of free parameters"
-msgstr "自由参数的数量"
-
-msgid "Akaike (AIC)"
-msgstr "Akaike (AIC)"
-
-msgid "Bayesian (BIC)"
-msgstr "贝叶斯 (BIC)"
-
-msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr "样本大小调整贝叶斯 (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr "近似误差均方根 (RMSEA)"
@@ -175,6 +196,15 @@ msgstr "McDonald 拟合指数 (MFI)"
 msgid "Expected cross validation index (ECVI)"
 msgstr "期望复核指数 (ECVI)"
 
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
+msgstr ""
+
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
 msgid "Parameter estimates"
 msgstr "参数估计"
 
@@ -184,14 +214,14 @@ msgstr "并非所有bootstrap样本都成功：CI 基于 %.0f 个样本。"
 msgid "Factor loadings"
 msgstr "因子载荷"
 
+msgid "Group"
+msgstr ""
+
 msgid "Factor"
 msgstr "因子"
 
 msgid "Indicator"
 msgstr "指标"
-
-msgid "Symbol"
-msgstr "符号"
 
 msgid "Estimate"
 msgstr "估计"
@@ -235,6 +265,12 @@ msgstr "因素截距"
 msgid "Intercepts"
 msgstr "截距"
 
+msgid "Thresholds"
+msgstr ""
+
+msgid "Threshold"
+msgstr ""
+
 msgid "Modification Indices"
 msgstr "修正指数"
 
@@ -249,6 +285,13 @@ msgstr "EPC"
 
 msgid "Second-order cross-loadings"
 msgstr "二阶交叉载荷"
+
+#, fuzzy
+msgid "Modification indices"
+msgstr "修正指数"
+
+msgid "No modification index was above the cutoff"
+msgstr ""
 
 msgid "Implied covariance matrices"
 msgstr "隐含协方差矩阵"
@@ -280,6 +323,24 @@ msgstr "Misfit plot"
 msgid "Model syntax"
 msgstr "模型语法(syntax)"
 
+msgid "Average variance extracted"
+msgstr ""
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr ""
+
+msgid "Reliability"
+msgstr ""
+
+msgid "Coefficient ω"
+msgstr ""
+
+msgid "Coefficient α"
+msgstr ""
+
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "对包含的变量数量，请求的因子过多 (%i)"
 
@@ -298,7 +359,8 @@ msgstr "数据无效：变量 %s 中的缺失值太多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "数据无效：所有变量共线"
 
-msgid "Estimation failed. Internal error message: %s. %s"
+#, fuzzy
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr ""
 "估计失败。\n"
 "内部错误消息： %s. %s"
@@ -325,13 +387,15 @@ msgstr "没有具有特征值的因子 >"
 msgid "Maximum observed eigenvalue equals"
 msgstr "最大观测到的特征值等于"
 
-msgid "Kaiser-Meyer-Olkin test"
+#, fuzzy
+msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin 检验"
 
 msgid "Overall MSA"
 msgstr "总体 MSA"
 
-msgid "Bartlett's test"
+#, fuzzy
+msgid "Bartlett's Test"
 msgstr "Bartlett's 检验"
 
 msgid "Mardia's Test of Multivariate Normality"
@@ -377,6 +441,10 @@ msgstr "因子载荷（结构矩阵）"
 
 msgid "Factor Characteristics"
 msgstr "因素特征"
+
+#, fuzzy
+msgid "Eigenvalues"
+msgstr "特征值"
 
 msgid "Unrotated solution"
 msgstr "未旋转的方案"
@@ -477,6 +545,9 @@ msgstr "碎石图"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Symbol"
+#~ msgstr "符号"
 
 #~ msgid "."
 #~ msgstr "."

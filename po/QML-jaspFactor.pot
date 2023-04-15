@@ -648,3 +648,31 @@ msgstr ""
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
 msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Average variance extracted (AVE)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Heterotrait-monotrait ratio (HTMT)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Reliability"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Assumption checks"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "KMO test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Bartlett's test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Mardia's test"
+msgstr ""

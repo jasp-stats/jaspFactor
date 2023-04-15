@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2022-12-17 03:30\n"
+"POT-Creation-Date: 2023-04-15 03:28\n"
 "PO-Revision-Date: 2023-04-14 19:52+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -31,6 +31,12 @@ msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
 
 msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
+msgstr ""
+
+msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
@@ -51,6 +57,10 @@ msgstr ""
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr ""
 
+#, fuzzy
+msgid "# Factors"
+msgstr "Czynnik"
+
 msgid "Model fit"
 msgstr ""
 
@@ -70,6 +80,17 @@ msgid "Baseline model"
 msgstr ""
 
 msgid "Factor model"
+msgstr ""
+
+msgid ""
+"The estimator is %1$s and the test statistic is %2$s because there are "
+"categorical variables in the data."
+msgstr ""
+
+msgid "You may consider changing the standard error method to 'robust'."
+msgstr ""
+
+msgid "The estimator is %s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -102,6 +123,21 @@ msgstr ""
 msgid "Metric"
 msgstr ""
 
+msgid "Log-likelihood"
+msgstr ""
+
+msgid "Number of free parameters"
+msgstr ""
+
+msgid "Akaike (AIC)"
+msgstr ""
+
+msgid "Bayesian (BIC)"
+msgstr ""
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr ""
+
 msgid "Comparative Fit Index (CFI)"
 msgstr ""
 
@@ -124,21 +160,6 @@ msgid "Bollen's Incremental Fit Index (IFI)"
 msgstr ""
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
-
-msgid "Log-likelihood"
-msgstr ""
-
-msgid "Number of free parameters"
-msgstr ""
-
-msgid "Akaike (AIC)"
-msgstr ""
-
-msgid "Bayesian (BIC)"
-msgstr ""
-
-msgid "Sample-size adjusted Bayesian (SSABIC)"
 msgstr ""
 
 msgid "Root mean square error of approximation (RMSEA)"
@@ -171,6 +192,15 @@ msgstr ""
 msgid "Expected cross validation index (ECVI)"
 msgstr ""
 
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
+msgstr ""
+
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
 msgid "Parameter estimates"
 msgstr ""
 
@@ -180,13 +210,13 @@ msgstr ""
 msgid "Factor loadings"
 msgstr ""
 
+msgid "Group"
+msgstr ""
+
 msgid "Factor"
 msgstr "Czynnik"
 
 msgid "Indicator"
-msgstr ""
-
-msgid "Symbol"
 msgstr ""
 
 msgid "Estimate"
@@ -231,6 +261,12 @@ msgstr ""
 msgid "Intercepts"
 msgstr ""
 
+msgid "Thresholds"
+msgstr ""
+
+msgid "Threshold"
+msgstr ""
+
 msgid "Modification Indices"
 msgstr ""
 
@@ -244,6 +280,12 @@ msgid "EPC"
 msgstr ""
 
 msgid "Second-order cross-loadings"
+msgstr ""
+
+msgid "Modification indices"
+msgstr ""
+
+msgid "No modification index was above the cutoff"
 msgstr ""
 
 msgid "Implied covariance matrices"
@@ -276,6 +318,24 @@ msgstr ""
 msgid "Model syntax"
 msgstr ""
 
+msgid "Average variance extracted"
+msgstr ""
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr ""
+
+msgid "Reliability"
+msgstr ""
+
+msgid "Coefficient ω"
+msgstr ""
+
+msgid "Coefficient α"
+msgstr ""
+
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr ""
 
@@ -294,7 +354,7 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid "Estimation failed. Internal error message: %s. %s"
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr ""
 
 msgid "Estimation failed. Internal error message: %s"
@@ -314,13 +374,13 @@ msgstr ""
 msgid "Maximum observed eigenvalue equals"
 msgstr ""
 
-msgid "Kaiser-Meyer-Olkin test"
+msgid "Kaiser-Meyer-Olkin Test"
 msgstr ""
 
 msgid "Overall MSA"
 msgstr ""
 
-msgid "Bartlett's test"
+msgid "Bartlett's Test"
 msgstr ""
 
 msgid "Mardia's Test of Multivariate Normality"
@@ -366,6 +426,10 @@ msgstr ""
 
 msgid "Factor Characteristics"
 msgstr ""
+
+#, fuzzy
+msgid "Eigenvalues"
+msgstr "Wartość własna"
 
 msgid "Unrotated solution"
 msgstr ""

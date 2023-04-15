@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-12-17 03:30\n"
+"POT-Creation-Date: 2023-04-15 03:28\n"
 "PO-Revision-Date: 2022-08-29 00:17+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -38,6 +38,12 @@ msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
 
 msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
+msgstr ""
+
+msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
@@ -61,6 +67,10 @@ msgstr "O modelo não pode ser estimado devido a não convergência."
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "O modelo não pode ser estimado: sem graus de liberdade restantes."
 
+#, fuzzy
+msgid "# Factors"
+msgstr "Fator"
+
 msgid "Model fit"
 msgstr "Ajuste do modelo"
 
@@ -81,6 +91,17 @@ msgstr "Modelo de linha de base"
 
 msgid "Factor model"
 msgstr "Fatores"
+
+msgid ""
+"The estimator is %1$s and the test statistic is %2$s because there are "
+"categorical variables in the data."
+msgstr ""
+
+msgid "You may consider changing the standard error method to 'robust'."
+msgstr ""
+
+msgid "The estimator is %s."
+msgstr ""
 
 #, fuzzy
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -113,6 +134,21 @@ msgstr "Medidas adicionais de ajuste"
 msgid "Metric"
 msgstr "Métrica"
 
+msgid "Log-likelihood"
+msgstr "Log-likelihood"
+
+msgid "Number of free parameters"
+msgstr "Número de parâmetros livres"
+
+msgid "Akaike (AIC)"
+msgstr "Akaike (AIC)"
+
+msgid "Bayesian (BIC)"
+msgstr "Bayesiano (BIC)"
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr "Sample-size adjusted Bayesian (SSABIC)"
+
 msgid "Comparative Fit Index (CFI)"
 msgstr "Índice de Ajuste Comparativo (CFI)"
 
@@ -136,21 +172,6 @@ msgstr "Bollen's Incremental Fit Index (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "Índice relativo de não-centralidade (RNI)"
-
-msgid "Log-likelihood"
-msgstr "Log-likelihood"
-
-msgid "Number of free parameters"
-msgstr "Número de parâmetros livres"
-
-msgid "Akaike (AIC)"
-msgstr "Akaike (AIC)"
-
-msgid "Bayesian (BIC)"
-msgstr "Bayesiano (BIC)"
-
-msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr "Sample-size adjusted Bayesian (SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr "RMSEA"
@@ -182,6 +203,15 @@ msgstr "Índice de ajuste de McDonald (MFI)"
 msgid "Expected cross validation index (ECVI)"
 msgstr "Expected cross validation index (ECVI)"
 
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
+msgstr ""
+
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
 msgid "Parameter estimates"
 msgstr "Estimativas de parâmetros"
 
@@ -194,14 +224,14 @@ msgstr ""
 msgid "Factor loadings"
 msgstr "Cargas do fator"
 
+msgid "Group"
+msgstr ""
+
 msgid "Factor"
 msgstr "Fator"
 
 msgid "Indicator"
 msgstr "Indicador"
-
-msgid "Symbol"
-msgstr "Símbolo"
 
 msgid "Estimate"
 msgstr "Estimativa"
@@ -245,6 +275,12 @@ msgstr "Interceptos do fator"
 msgid "Intercepts"
 msgstr "Interceptos"
 
+msgid "Thresholds"
+msgstr ""
+
+msgid "Threshold"
+msgstr ""
+
 msgid "Modification Indices"
 msgstr "Índices de modificação"
 
@@ -259,6 +295,13 @@ msgstr "EPC"
 
 msgid "Second-order cross-loadings"
 msgstr "Cargas cruzadas de segunda ordem"
+
+#, fuzzy
+msgid "Modification indices"
+msgstr "Índices de modificação"
+
+msgid "No modification index was above the cutoff"
+msgstr ""
 
 msgid "Implied covariance matrices"
 msgstr "Matriz de covariância implícita"
@@ -290,6 +333,24 @@ msgstr "Gráfico de desajuste"
 msgid "Model syntax"
 msgstr "Sintaxe do modelo"
 
+msgid "Average variance extracted"
+msgstr ""
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr ""
+
+msgid "Reliability"
+msgstr ""
+
+msgid "Coefficient ω"
+msgstr ""
+
+msgid "Coefficient α"
+msgstr ""
+
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr ""
 "Muitos fatores solicitados (%i) para a quantidade de variáveis incluídas"
@@ -310,7 +371,7 @@ msgid "Data not valid: all variables are collinear"
 msgstr "Dados inválidos: todas as variáveis são colineares"
 
 #, fuzzy
-msgid "Estimation failed. Internal error message: %s. %s"
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr ""
 "A estimativa falhou. \n"
 "Mensagem de erro interna: %s"
@@ -337,13 +398,14 @@ msgstr "Nenhum componente com autovalor >"
 msgid "Maximum observed eigenvalue equals"
 msgstr "Autovalor máximo observado:"
 
-msgid "Kaiser-Meyer-Olkin test"
+#, fuzzy
+msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Teste Kaiser-Meyer-Olkin"
 
 msgid "Overall MSA"
 msgstr "MSA geral"
 
-msgid "Bartlett's test"
+msgid "Bartlett's Test"
 msgstr ""
 
 msgid "Mardia's Test of Multivariate Normality"
@@ -393,6 +455,10 @@ msgstr "Cargas dos fatores (Matriz estruturada)"
 
 msgid "Factor Characteristics"
 msgstr "Características do fator"
+
+#, fuzzy
+msgid "Eigenvalues"
+msgstr "Autovalor"
 
 msgid "Unrotated solution"
 msgstr ""
@@ -501,6 +567,9 @@ msgstr "Gráfico de sedimentação"
 
 msgid "Component"
 msgstr "Componentes"
+
+#~ msgid "Symbol"
+#~ msgstr "Símbolo"
 
 #~ msgid "."
 #~ msgstr "."

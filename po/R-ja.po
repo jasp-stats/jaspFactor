@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
-"POT-Creation-Date: 2022-12-17 03:30\n"
+"POT-Creation-Date: 2023-04-15 03:28\n"
 "PO-Revision-Date: 2022-01-07 12:53+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -33,6 +33,12 @@ msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
 
 msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
+msgstr ""
+
+msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
@@ -56,6 +62,10 @@ msgstr "収束しなかったため，モデルは推定できませんでした
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "モデルは推定できませんでした: 自由度が残っていません。"
 
+#, fuzzy
+msgid "# Factors"
+msgstr "要因"
+
 msgid "Model fit"
 msgstr "モデル適合"
 
@@ -76,6 +86,17 @@ msgstr "ベースラインモデル"
 
 msgid "Factor model"
 msgstr "因子モデル"
+
+msgid ""
+"The estimator is %1$s and the test statistic is %2$s because there are "
+"categorical variables in the data."
+msgstr ""
+
+msgid "You may consider changing the standard error method to 'robust'."
+msgstr ""
+
+msgid "The estimator is %s."
+msgstr ""
 
 #, fuzzy
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -109,6 +130,21 @@ msgstr "その他の適合度指標"
 msgid "Metric"
 msgstr "計量的"
 
+msgid "Log-likelihood"
+msgstr "対数尤度"
+
+msgid "Number of free parameters"
+msgstr "自由パラメーターの数"
+
+msgid "Akaike (AIC)"
+msgstr "赤池情報量規準(AIC)"
+
+msgid "Bayesian (BIC)"
+msgstr "ベイズ情報量規準(BIC)"
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr "サンプルサイズ調整済みベイジアン情報量規準(SSABIC)"
+
 msgid "Comparative Fit Index (CFI)"
 msgstr "相対適合度指標(CFI)"
 
@@ -132,21 +168,6 @@ msgstr "ボレンのインクリメンタルフィット指数(IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "相対的非中心性指数(RNI)"
-
-msgid "Log-likelihood"
-msgstr "対数尤度"
-
-msgid "Number of free parameters"
-msgstr "自由パラメーターの数"
-
-msgid "Akaike (AIC)"
-msgstr "赤池情報量規準(AIC)"
-
-msgid "Bayesian (BIC)"
-msgstr "ベイズ情報量規準(BIC)"
-
-msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr "サンプルサイズ調整済みベイジアン情報量規準(SSABIC)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr "二乗平均平方根誤差(RMSEA)"
@@ -178,6 +199,15 @@ msgstr "マクドナルドの適合度指標(MFI)"
 msgid "Expected cross validation index (ECVI)"
 msgstr "期待される交差検証指数（ECVI）"
 
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
+msgstr ""
+
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
 msgid "Parameter estimates"
 msgstr "パラメータ推定"
 
@@ -189,14 +219,14 @@ msgstr ""
 msgid "Factor loadings"
 msgstr "因子負荷量"
 
+msgid "Group"
+msgstr ""
+
 msgid "Factor"
 msgstr "要因"
 
 msgid "Indicator"
 msgstr "指標"
-
-msgid "Symbol"
-msgstr "シンボル"
 
 msgid "Estimate"
 msgstr "推定"
@@ -240,6 +270,12 @@ msgstr "因子の切片"
 msgid "Intercepts"
 msgstr "切片"
 
+msgid "Thresholds"
+msgstr ""
+
+msgid "Threshold"
+msgstr ""
+
 msgid "Modification Indices"
 msgstr "修正指数"
 
@@ -254,6 +290,13 @@ msgstr "EPC"
 
 msgid "Second-order cross-loadings"
 msgstr "2次のクロスした負荷量"
+
+#, fuzzy
+msgid "Modification indices"
+msgstr "修正指数"
+
+msgid "No modification index was above the cutoff"
+msgstr ""
 
 msgid "Implied covariance matrices"
 msgstr "モデル共分散行列"
@@ -285,6 +328,24 @@ msgstr "不適合プロット"
 msgid "Model syntax"
 msgstr "モデルのシンタックス"
 
+msgid "Average variance extracted"
+msgstr ""
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr ""
+
+msgid "Reliability"
+msgstr ""
+
+msgid "Coefficient ω"
+msgstr ""
+
+msgid "Coefficient α"
+msgstr ""
+
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "含まれる変数の量に対して要求された因子 (%i) が多すぎます"
 
@@ -304,7 +365,7 @@ msgid "Data not valid: all variables are collinear"
 msgstr "データが無効: すべての変数が共線関係にあります"
 
 #, fuzzy
-msgid "Estimation failed. Internal error message: %s. %s"
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr ""
 "推定に失敗しました。\n"
 "内部エラー メッセージ : %s"
@@ -330,13 +391,15 @@ msgstr "次より大きい固有値を持つ因子がありません >"
 msgid "Maximum observed eigenvalue equals"
 msgstr "観測された最大の固有値:"
 
-msgid "Kaiser-Meyer-Olkin test"
+#, fuzzy
+msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin検定"
 
 msgid "Overall MSA"
 msgstr "全体的な MSA"
 
-msgid "Bartlett's test"
+#, fuzzy
+msgid "Bartlett's Test"
 msgstr "Bartlettの検定"
 
 msgid "Mardia's Test of Multivariate Normality"
@@ -385,6 +448,10 @@ msgstr "因子負荷(構造行列)"
 
 msgid "Factor Characteristics"
 msgstr "因子特性"
+
+#, fuzzy
+msgid "Eigenvalues"
+msgstr "固有値"
 
 msgid "Unrotated solution"
 msgstr "非回転解"
@@ -492,6 +559,9 @@ msgstr "スクリープロット"
 
 msgid "Component"
 msgstr "コンポーネント"
+
+#~ msgid "Symbol"
+#~ msgstr "シンボル"
 
 #~ msgid "."
 #~ msgstr "."

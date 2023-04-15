@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-04-14 21:52+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/pl/>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-Language: pl\n"
 "X-Qt-Contexts: true\n"
 
@@ -26,11 +32,11 @@ msgstr "Konfirmacyjna analiza czynnikowa"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
-msgstr ""
+msgstr "Czynnik drugiego rzędu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
-msgstr ""
+msgstr "Drugi rząd"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
@@ -110,7 +116,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr ""
+msgstr "Konfiguracja"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
@@ -118,7 +124,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Scalar"
-msgstr ""
+msgstr "Skalarny"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Strict"
@@ -134,11 +140,11 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
-msgstr ""
+msgstr "Wykres modelu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
-msgstr ""
+msgstr "Standaryzowane"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
@@ -150,7 +156,7 @@ msgstr "Zaawansowane"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
@@ -162,11 +168,11 @@ msgstr "EQS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
-msgstr ""
+msgstr "Obliczanie błędów"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
-msgstr ""
+msgstr "Standardowe"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
@@ -174,11 +180,11 @@ msgstr "Odporne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
-msgstr ""
+msgstr "Liczba próbek"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr ""
+msgstr "Estymator"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
@@ -206,7 +212,7 @@ msgstr "DWLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
-msgstr ""
+msgstr "Standaryzacja"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
@@ -214,7 +220,7 @@ msgstr "Latentne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr ""
+msgstr "Wszystko"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
@@ -290,23 +296,23 @@ msgstr "Metoda osi głównych (PAF)"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"
-msgstr ""
+msgstr "Metoda najmniejszych kwadratów"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
-msgstr ""
+msgstr "Ważona metoda najmniejszych kwadratów"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
-msgstr ""
+msgstr "Uogólniona metoda najmniejszych kwadratów"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
-msgstr ""
+msgstr "Minimalne chi-kwadrat"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"
-msgstr ""
+msgstr "Minimalna ranga"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
@@ -346,7 +352,7 @@ msgstr "Tabele"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Structure matrix"
-msgstr ""
+msgstr "Macierz struktury"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor correlations"
@@ -354,7 +360,7 @@ msgstr "Korelacje pomiędzy czynnikami"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
-msgstr ""
+msgstr "Dodatkowe miary dopasowania"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
@@ -482,7 +488,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
-msgstr ""
+msgstr "Uporządkuj ładunki czynnikowe wg"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
@@ -490,7 +496,7 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr ""
+msgstr "Uporządkuj ładunki czynnikowe wg"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
@@ -498,11 +504,11 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
-msgstr ""
+msgstr "W oparciu o główne składowe"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on FA"
-msgstr ""
+msgstr "W oparciu o czynniki"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
@@ -510,11 +516,11 @@ msgstr "Wyniki analizy równoległej"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
-msgstr ""
+msgstr "W oparciu o główne składowe"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on FA"
-msgstr ""
+msgstr "W oparciu o czynniki"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
@@ -554,11 +560,11 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr ""
+msgstr "Test Kaisera-Meyera-Olkina (KMO)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr ""
+msgstr "Test sferyczności Bartletta"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic package"
@@ -566,31 +572,31 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr ""
+msgstr "Lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI level"
-msgstr ""
+msgstr "Poziom PU"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard error"
-msgstr ""
+msgstr "Błąd standardowy"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr ""
+msgstr "Obsługa braków danych"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr ""
+msgstr "FIML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr ""
+msgstr "Usuwanie z listy"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
@@ -598,11 +604,11 @@ msgstr "Parami"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
-msgstr ""
+msgstr "Dwustopniowe"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
-msgstr ""
+msgstr "Odporne dwustopniowe"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
@@ -610,7 +616,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors based on"
-msgstr ""
+msgstr "Liczba czynników na podstawie"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factoring method"
@@ -618,7 +624,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "Wyświetl ładunki powyżej"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Residual matrix"
@@ -626,28 +632,27 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components based on"
-msgstr ""
+msgstr "Liczba składowych na podstawie"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on principal components"
-msgstr ""
+msgstr "W oparciu o główne składowe"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on factors"
-msgstr ""
+msgstr "W oparciu o czynniki"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "Wyświetl ładunki powyżej"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Tables"
 msgstr "Tabele"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component correlations"
-msgstr ""
+msgstr "Korelacje składowych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"

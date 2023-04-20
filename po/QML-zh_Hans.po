@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-04-20 16:37+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspfactor-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -653,32 +659,28 @@ msgstr "残差矩阵"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Average variance extracted (AVE)"
-msgstr ""
+msgstr "提取的平均方差 (AVE)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Heterotrait-monotrait ratio (HTMT)"
-msgstr ""
+msgstr "异质性-单质性比（HTMT）"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
-msgstr ""
+msgstr "可靠性"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Assumption checks"
-msgstr "假设检查"
+msgstr "假设检验"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "KMO test"
 msgstr "KMO 检验"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Bartlett's test"
 msgstr "巴特利特检验(Bartlett's)"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
 msgstr "Mardia's 检验"

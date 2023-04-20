@@ -711,7 +711,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                             "none"                  = "none",
                             "latentVariables"       = "lv",
                             "all"                   = "all",
-                            "noExogenousCoavriates" = "nox")
+                            "noExogenousCovariates" = "nox")
   if (options$standardized != "none") colSel <- c(colSel, paste0("std.", standardization))
 
   # First-order factor loadings ----

@@ -237,18 +237,19 @@ Form
 
 		CheckBox
 		{
-			debug: true
 			id: addPC
 			name: "addComponentScores"
 			text: qsTr("Add PC scores to data")
 			enabled: variables.count > 1
 
-			ComputedColumnField {
-				name: 		"componentsPrefix"
-				text: 		"Prefix: "
-				fieldWidth: 120
-				visible:    addPC.checked
-			}
+			// ComputedColumnField
+			// {
+			// 	name:					"addComponentScoresPrefix"
+			// 	text:					qsTr("Column prefix")
+			// 	placeholderText:		qsTr("Score_")
+			// 	fieldWidth:				120
+			// 	enabled:				addPC.checked
+			// }
 		}
 	}
 }

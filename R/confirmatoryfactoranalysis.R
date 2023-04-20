@@ -222,7 +222,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       jaspBase:::.quitAnalysis(gettext("FIML missing data handling only available with ML-type estimators"))
     }
 
-    if (options[["estimator"]] == "generalizedLeastSquares" && option[["seType"]] == "robust") {
+    if (options[["estimator"]] == "generalizedLeastSquares" && options[["seType"]] == "robust") {
       jaspBase::.quitAnalysis(gettext("Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."))
     }
 

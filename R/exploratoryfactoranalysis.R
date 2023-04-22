@@ -299,7 +299,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   mar <- try(psych::mardia(dataset, plot = FALSE), silent = TRUE)
   if (isTryError(mar)) {
     errmsg <- gettextf("Mardia test failed. Internal error message: %s", .extractErrorMessage(mar))
-    marTab$setError(errmsg)
+    mardiaTable$setError(errmsg)
     return()
   }
 

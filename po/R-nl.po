@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2023-04-15 03:28\n"
-"PO-Revision-Date: 2023-01-11 15:53+0000\n"
-"Last-Translator: Jill de Ron <jillderon93@gmail.com>\n"
+"PO-Revision-Date: 2023-04-20 12:51+0000\n"
+"Last-Translator: Don van den Bergh <donvdbergh@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "nl/>\n"
 "Language: nl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 msgid "Second-Order"
 msgstr "Tweede-Orde"
@@ -39,6 +39,9 @@ msgid ""
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
 msgstr ""
+"Robuuste standaardfouten zijn niet beschikbaar met de GLS-schatter. Probeer "
+"de standaardfoutmethode in de \"Geavanceerde\" instellingen te wijzigen om "
+"het model te passen."
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
@@ -67,9 +70,8 @@ msgstr "Het model kon niet worden geschat door niet-convergentie."
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Het model kon niet worden geschat: Geen vrijheidsgraden over."
 
-#, fuzzy
 msgid "# Factors"
-msgstr "Factor"
+msgstr "# Factors"
 
 msgid "Model fit"
 msgstr "Model passing"
@@ -96,12 +98,14 @@ msgid ""
 "The estimator is %1$s and the test statistic is %2$s because there are "
 "categorical variables in the data."
 msgstr ""
+"De schatter is %1$s en de teststatistiek is %2$s omdat de gegevens "
+"categorische variabelen bevatten."
 
 msgid "You may consider changing the standard error method to 'robust'."
-msgstr ""
+msgstr "U kunt overwegen de standaardfoutmethode te wijzigen in \"robuust\"."
 
 msgid "The estimator is %s."
-msgstr ""
+msgstr "De schatter is %s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) toets"
@@ -207,10 +211,14 @@ msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
 msgstr ""
+"Met uitzondering van de PNFI worden de fit-indices geschaald vanwege "
+"categorische variabelen in de data."
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
 msgstr ""
+"De RMSEA-resultaten zijn geschaald vanwege de categorische variabelen in de "
+"data."
 
 msgid "Parameter estimates"
 msgstr "Parameterschattingen"
@@ -224,7 +232,7 @@ msgid "Factor loadings"
 msgstr "Factorladingen"
 
 msgid "Group"
-msgstr ""
+msgstr "Groep"
 
 msgid "Factor"
 msgstr "Factor"
@@ -275,10 +283,10 @@ msgid "Intercepts"
 msgstr "Intercepten"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "Drempelwaarden"
 
 msgid "Threshold"
-msgstr ""
+msgstr "Drempelwaarde"
 
 msgid "Modification Indices"
 msgstr "Modificatie Indices"
@@ -295,12 +303,11 @@ msgstr "EPC"
 msgid "Second-order cross-loadings"
 msgstr "Tweede-rang kruis-ladingen"
 
-#, fuzzy
 msgid "Modification indices"
-msgstr "Modificatie Indices"
+msgstr "Modificatie-indices"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "Geen enkele modificatie-index lag boven de cutoff"
 
 msgid "Implied covariance matrices"
 msgstr "Geïmpliceerde covariantie matrices"
@@ -333,22 +340,22 @@ msgid "Model syntax"
 msgstr "Model syntax"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "Gemiddelde geëxtraheerde variantie"
 
 msgid "AVE"
-msgstr ""
+msgstr "AVE"
 
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "Heterotrait-monotrait ratio"
 
 msgid "Reliability"
-msgstr ""
+msgstr "Betrouwbaarheid"
 
 msgid "Coefficient ω"
-msgstr ""
+msgstr "Coëfficiënt ω"
 
 msgid "Coefficient α"
-msgstr ""
+msgstr "Coëfficiënt α"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "Teveel factoren gevraagd (%i) voor het aantal meegenomen variabelen"
@@ -368,9 +375,8 @@ msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Data niet valide: alle variabelen zijn collineair"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr "Schatting mislukt. Interne foutmelding: %s. %s"
+msgstr "Schatting mislukt. Interne foutmelding: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Schatting mislukt. Interne foutmelding: %s"
@@ -394,14 +400,12 @@ msgstr "Geen factoren met een eigenwaarde >"
 msgid "Maximum observed eigenvalue equals"
 msgstr "Maximaal geobserveerde eigenwaarde is gelijk aan"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin toets"
 
 msgid "Overall MSA"
 msgstr "Algemene MSA"
 
-#, fuzzy
 msgid "Bartlett's Test"
 msgstr "Bartlett's toets"
 
@@ -451,9 +455,8 @@ msgstr "Factorladingen (Structuurmatrix)"
 msgid "Factor Characteristics"
 msgstr "Factorkarakteristieken"
 
-#, fuzzy
 msgid "Eigenvalues"
-msgstr "Eigenwaarde"
+msgstr "Eigenwaarden"
 
 msgid "Unrotated solution"
 msgstr "Niet-geroteerde oplossing"

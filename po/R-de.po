@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2023-04-15 03:28\n"
-"PO-Revision-Date: 2023-03-29 08:41+0000\n"
+"PO-Revision-Date: 2023-04-16 13:59+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "de/>\n"
@@ -39,6 +39,9 @@ msgid ""
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
 msgstr ""
+"Robuste Standardfehler sind mit dem GLS-Schätzer nicht verfügbar. Versuchen "
+"Sie, die Standardfehlermethode in den \"Erweiterten\" Einstellungen zu "
+"ändern, um das Modell anzupassen."
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
@@ -68,9 +71,8 @@ msgstr "Das Modell konnte nicht geschätzt werden durch fehlende Konvergenz."
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Das Modell konnte nicht geschätzt werden: Keine Freiheitsgrade übrig."
 
-#, fuzzy
 msgid "# Factors"
-msgstr "Faktor"
+msgstr "# Faktoren"
 
 msgid "Model fit"
 msgstr "Modell-Anpassung"
@@ -97,12 +99,14 @@ msgid ""
 "The estimator is %1$s and the test statistic is %2$s because there are "
 "categorical variables in the data."
 msgstr ""
+"Der Schätzer ist %1$s und die Teststatistik ist %2$s, weil die Daten "
+"kategoriale Variablen enthalten."
 
 msgid "You may consider changing the standard error method to 'robust'."
-msgstr ""
+msgstr "Sie können erwägen, die Standardfehlermethode auf \"robust\" zu ändern."
 
 msgid "The estimator is %s."
-msgstr ""
+msgstr "Der Schätzer ist %s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin-Test (KMO)"
@@ -207,10 +211,14 @@ msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
 msgstr ""
+"Außer den PNFI sind die Anpassungsindizes skaliert, weil die Daten "
+"kategoriale Variablen enthalten."
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
 msgstr ""
+"Die RMSEA-Ergebnisse sind aufgrund kategorialer Variablen in den Daten "
+"skaliert."
 
 msgid "Parameter estimates"
 msgstr "Parameterschätzungen"
@@ -224,7 +232,7 @@ msgid "Factor loadings"
 msgstr "Faktorladungen"
 
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 msgid "Factor"
 msgstr "Faktor"
@@ -275,10 +283,10 @@ msgid "Intercepts"
 msgstr "Konstanten"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "Schwellenwerte"
 
 msgid "Threshold"
-msgstr ""
+msgstr "Schwellenwert"
 
 msgid "Modification Indices"
 msgstr "Modifikations-Indizes"
@@ -295,12 +303,11 @@ msgstr "EPC"
 msgid "Second-order cross-loadings"
 msgstr "Querladungen zweiter Ordnung"
 
-#, fuzzy
 msgid "Modification indices"
-msgstr "Modifikations-Indizes"
+msgstr "Modifizierungsindizes"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "Kein Modifikationsindex lag über dem Cutoff"
 
 msgid "Implied covariance matrices"
 msgstr "Implizierte Kovarianzmatrizen"
@@ -333,22 +340,24 @@ msgid "Model syntax"
 msgstr "Modellsyntax"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "Durchschnittliche extrahierte Varianz"
 
 msgid "AVE"
-msgstr ""
+msgstr "AVE"
 
+#, fuzzy
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "Heterotrait-Monotrait-Verhältnis"
 
+#, fuzzy
 msgid "Reliability"
-msgstr ""
+msgstr "Reliabilität"
 
 msgid "Coefficient ω"
-msgstr ""
+msgstr "Koeffizient ω"
 
 msgid "Coefficient α"
-msgstr ""
+msgstr "Koeffizient α"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "Zuviele geforderte Faktoren (%i) für die Anzahl einbezogener Variablen"
@@ -368,9 +377,8 @@ msgstr "Ungültige Daten: Zuviele fehlende Werte in Variable(n) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Ungültige Daten: Alle Variablen sind kollinear"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr "Schätzung fehlgeschlagen. Interne Fehlermeldung: %s. %s"
+msgstr "Schätzung fehlgeschlagen. Interne Fehlermeldung: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Schätzung fehlgeschlagen. Interne Fehlermeldung: %s"
@@ -394,14 +402,12 @@ msgstr "Keine Faktoren mit einem Eigenwert >"
 msgid "Maximum observed eigenvalue equals"
 msgstr "Maximaler beobachteter Eigenwert ist gleich"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin-Test"
 
 msgid "Overall MSA"
 msgstr "Gesamt-MSA"
 
-#, fuzzy
 msgid "Bartlett's Test"
 msgstr "Bartletts Test"
 
@@ -451,9 +457,8 @@ msgstr "Faktorladungen (Strukturmatrix)"
 msgid "Factor Characteristics"
 msgstr "Faktorcharakteristiken"
 
-#, fuzzy
 msgid "Eigenvalues"
-msgstr "Eigenwert"
+msgstr "Eigenwerte"
 
 msgid "Unrotated solution"
 msgstr "Unrotierte Lösung"

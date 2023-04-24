@@ -621,16 +621,15 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .pcaAddComponentsToData <- function(jaspResults, modelContainer, options, ready) {
-  if(!ready || !options[["addComponentScores"]] || options[["scoresPrefix"]] == "" || modelContainer$getError()) return()
+  if(!ready || !options[["addComponentScores"]] || options[["componentsPrefix"]] == "" || modelContainer$getError()) return()
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
   for (i in 1:ncol(scores)) {
-    containerName <- paste0("scoresSavedToDataColumn_", i)
-    if (is.null(modelContainer[[containerName]])) {
-      colname <- paste0(options[["scoresPrefix_"]], i)
-      modelContainer[[containerName]] <- createJaspColumn(columnName = jaspBase::encodeColNames(colname))
-      modelContainer[[containerName]]$dependOn(optionsFromObject = modelContainer)
-      modelContainer[[containerName]]$setScale(scores[, i])
+    scorename <- paste0(options[["componentsPrefix"]], "_", i)
+    if (is.null(jaspResults[[scorename]])) {
+      jaspResults[[scorename]] <- createJaspColumn(scorename)
+      jaspResults[[scorename]]$dependOn(optionsFromObject = modelContainer)
+      jaspResults[[scorename]]$setScale(scores[, i])
     }
   }
 }

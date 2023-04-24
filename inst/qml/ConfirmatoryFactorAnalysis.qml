@@ -261,12 +261,12 @@ Form
 		{
 			title: qsTr("Options")
 			debug: true
-			CheckBox { label: qsTr("Fix manifest intercepts to zero")	; 	name: "manifestInterceptsFixedToZero" }
+			CheckBox { label: qsTr("Fix manifest intercepts to zero")	; name: "manifestInterceptsFixedToZero" }
 			CheckBox { label: qsTr("Fix latent intercepts to zero")   	; name: "latentInterceptsFixedToZero";		checked: true }
 			CheckBox { label: qsTr("Omit residual single indicator")  	; name: "residualSingleIndicatorOmitted";	checked: true }
 			CheckBox { label: qsTr("Residual variances")              	; name: "residualVariances";				checked: true }
 			CheckBox { label: qsTr("Correlate exogenous latents")     	; name: "exogenousLatentsCorrelated";		checked: true }
-			CheckBox { label: qsTr("Add thresholds")                 	; 	name: "thresholds";						checked: true }
+			CheckBox { label: qsTr("Add thresholds")                 	; name: "thresholds";						checked: true }
 			CheckBox { label: qsTr("Add scalings parameters")         	; name: "scalingParamaters";				checked: true }
 			CheckBox { label: qsTr("Correlate dependent variables")   	; name: "dependentVariablesCorrelated";		checked: true }
 		}

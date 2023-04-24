@@ -56,8 +56,10 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
     - Additional fit indices: This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model. 
     - Residual matrix: Displays a table containing the residual variances and correlations
     - Parallel analysis: If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of factors above
+- Plots:
     - Path diagram: By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed. 
     - Scree plot: When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
+      - Parallel analysis results: Display the results of the parallel analysis in the scree plot. The parallel analysis will be based on PC or FA as defined by the option for the parallel analysis table
 - Assumption Checks:
   - Kaiser-Meyer-Olkin Test (KMO): Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables
   - Bartlett's Test (of sphericity): Determines if the data correlation matrix is the identity matrix, meaning, if the variables are related or not

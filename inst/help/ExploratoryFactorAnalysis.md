@@ -12,19 +12,19 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 
 ### Input
 ---
-#### Asssignment Box 
+#### Assignment Box 
 - Included Variables: In this box, the variables to perform the exploratory factor analysis on are selected. 
 
-#### Number of Factors 
+#### Number of Factors based on
 - _NB: eigenvalues for EFA are different from eigenvalues for PCA. See Dinno (2014) for more information._
 - Here, the number of factors that the rotation is applied to is specified. Several methods to determine this number can be chosen from:   
   - Parallel Analysis: Factors are selected on the basis of parallel analysis. With this method, factors are selected when their eigenvalue is greater than the parallel average random eigenvalue. This method is selected by default. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). A seed (1234) is chosen by default so that the results from the parallel analysis are equal across the EFA.
   - Eigenvalues: Factors are selected when they have a certain eigenvalue. By default factors are selected that have an eigenvalue of 0 or higher. This is called the Kaiser criterion. 
   - Manual: The number of factors can be specified manually. By default this is set to 1. 
 
-#### Estimation Method:
+#### Factoring Method:
 - Choose the estimation method used within the psych package to find the factor solution, options are: 
-  - Minimum residual (default), maximum likelihood, principal axis factoring, ordinal elast squares, 
+  - Minimum residual (default), maximum likelihood, principal axis factoring, ordinal least squares, 
   weighted least squares, generalized least squares, minimum chi-square, minimum rank
 
 #### Rotation 
@@ -44,13 +44,14 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
       - biquartimin: Oblique rotation method biquartimin. 
       - cluster: Oblique rotation method cluster. 
 
-#### Base decomposition on
+#### Base analysis on
 - Correlation: Bases the PCA on the correlation matrix of the data
 - Covariance: Bases the PCA on the covariance matrix of the data
 - Polychoric/tetrachoric: Bases the PCA on the poly/tetrachoric (mixed) correlation matrix of the data. This is sometimes unstable when sample size is small and when some variables do not contain all response categories.
 
 ### Output Options 
-- Highlight: This option cuts the scaling of paths in width and color saturation. Paths with absolute weights over this value will have the strongest color intensity and become wider the stronger they are, and paths with absolute weights under this value will have the smallest width and become vaguer the weaker the weight. If set to 0, no cutoff is used and all paths vary in width and color.
+- Display loadings above: cutoff for the loadings to be displayed in the output table
+- Order factor loadings by: Loadings in table are either ordered by size or variable names
 - Include Tables: 
     - Factor correlations: When selecting this option, a table with the correlations between the factors will be displayed. 
     - Additional fit indices: This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model. 
@@ -63,7 +64,7 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Assumption Checks:
   - Kaiser-Meyer-Olkin Test (KMO): Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables
   - Bartlett's Test (of sphericity): Determines if the data correlation matrix is the identity matrix, meaning, if the variables are related or not
-	- Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
+  - Mardia's Test of Multivariate Normality: Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
 - Missing values: 
     - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. 
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 

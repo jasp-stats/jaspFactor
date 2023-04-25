@@ -47,9 +47,11 @@ _NB: eigenwaarden voor EFA zijn anders dan eigenwaarden voor PCA. Meer informati
 - Markeer: Deze optie zet de waarde vanaf waar de paden schalen in breedte. Paden met absolute gewichten hoger dan deze waarde zullen steeds breder worden terwijl waardes eronder een vaste dunne breedte hebben. Alle paden krijgen een sterkere of zwakkere kleurintensiteit naarmate ze een sterker gewicht hebben. Als de waarde op 0 gezet wordt zullen alle paden een verschillende breedte krijgen.
 - Voeg Tabellen Toe: 
     - Factorcorrelaties: Bij het selecteren van deze optie, wordt een tabel met de correlaties tussen factoren weergegeven. 
-    - Aanvullende fit indices: Deze optie toont de wortel van de gemiddelde kwadraatsom fout (RMSEA) met 90% betrouwbaarheidsinterval, de Tucker Lewis Index (TLI), en de Bayesian Information Criterion (BIC) om de model fit te testen. 
+    - Aanvullende fit indices: Deze optie toont de wortel van de gemiddelde kwadraatsom fout (RMSEA) met 90% betrouwbaarheidsinterval, de Tucker Lewis Index (TLI), en de Bayesian Information Criterion (BIC) om de model fit te testen.
+- Plots:
     - Paddiagram: Bij het selecteren van deze optie wordt een visuele representatie van de richting en de sterkte van de relatie tussen de variabele en de factor weergegeven. 
     - Screeplot: Bij het selecteren van deze optie, wordt een screeplot getoond. De screeplot geeft informatie over hoeveel variantie in de data, aangegeven door de eigenwaarde, wordt verklaard door elke factor. Een screeplot kan gebruikt worden om te beslissen over de hoeveelheid van de factoren. 
+        - Resultaten van parallelle analyse: Toont de resultaten van de parallelle analyse in de scree plot. De parallelle analyse wordt gebaseerd op PC of FA, zoals bepaald door de optie voor de parallelle analysetabel.
 - Aannamecontroles:
    - Kaiser-Meyer-Olkin Test (KMO): Bepaalt hoe goed variabelen geschikt zijn voor factoranalyse door het aandeel gemeenschappelijke variantie tussen variabelen te berekenen.
    - Bartlett's Test (van sfericiteit): Bepaalt of de correlatiematrix van de gegevens de identiteitsmatrix is, d.w.z. of de variabelen aan elkaar gerelateerd zijn of niet.

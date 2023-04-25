@@ -299,7 +299,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   mar <- try(psych::mardia(dataset, plot = FALSE), silent = TRUE)
   if (isTryError(mar)) {
     errmsg <- gettextf("Mardia test failed. Internal error message: %s", .extractErrorMessage(mar))
-    marTab$setError(errmsg)
+    mardiaTable$setError(errmsg)
     return()
   }
 
@@ -678,13 +678,13 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       set.seed(options[["parallelAnalysisSeed"]])
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,
-                                   fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
+                                   fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                "pc", "fa"),
                                    n.obs = nrow(dataset)))
     } else {
       set.seed(options[["parallelAnalysisSeed"]])
       parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
-                                               fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
+                                               fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                            "pc", "fa")))
     }
     if (isTryError(parallelResult)) {
@@ -694,7 +694,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       return()
     }
 
-    if (options$factorCountMethod == "parallelAnalysis" && options$parallelAnalysisMethod == "factorBased") {
+    if (options$parallelAnalysisTableMethod == "factorBased") {
       evs <- c(parallelResult$fa.values, parallelResult$fa.sim)
     } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
       evs <- c(parallelResult$pc.values, parallelResult$pc.sim)

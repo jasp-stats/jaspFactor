@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-05-02 05:11+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/pl/>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Language: pl\n"
 "X-Qt-Contexts: true\n"
 
@@ -46,7 +52,7 @@ msgstr "Załóż, że czynniki nie są skorelowane"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr ""
+msgstr "Ustal wartości zmiennych objaśniających"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
@@ -54,11 +60,11 @@ msgstr "Wariancje czynników"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr ""
+msgstr "Marker"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
-msgstr ""
+msgstr "Kodowanie efektów"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
@@ -78,11 +84,11 @@ msgstr "R-kwadrat"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Implikowana macierz kowariancji"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Macierz kowariancji reszt"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
@@ -98,7 +104,7 @@ msgstr "Pokaż składnię lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
-msgstr ""
+msgstr "Wielogrupowa CFA"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
@@ -106,7 +112,7 @@ msgstr "Zmienna grupująca"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr ""
+msgstr "Badanie inwariancji"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
@@ -114,7 +120,7 @@ msgstr "Konfiguracja"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
-msgstr ""
+msgstr "Metryczne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Scalar"
@@ -122,7 +128,7 @@ msgstr "Skalarny"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Strict"
-msgstr ""
+msgstr "Ścisłe"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
@@ -130,7 +136,7 @@ msgstr "Wykresy"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr ""
+msgstr "Wykres niedopasowania"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
@@ -226,7 +232,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix latent intercepts to zero"
-msgstr ""
+msgstr "Ustal latentne wyrazy wolne na zero"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
@@ -238,7 +244,7 @@ msgstr "Wariancje reszt"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
-msgstr ""
+msgstr "Skoreluj latentne zmienne egzogeniczne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add thresholds"
@@ -246,7 +252,7 @@ msgstr "Dodaj progi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
-msgstr ""
+msgstr "Dodaj parametry skalowania"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
@@ -434,7 +440,7 @@ msgstr "Oblique"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"
-msgstr ""
+msgstr "Podstawa dekompozycji"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"
@@ -474,11 +480,11 @@ msgstr "Wyklucz obserwacje ze wszystkich analiz"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr ""
+msgstr "Załącz ładunki czynnikowe"
 
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
-msgstr ""
+msgstr "Eksploruj ukrytą strukturę danych"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
@@ -486,7 +492,7 @@ msgstr "Uporządkuj ładunki czynnikowe wg"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
-msgstr ""
+msgstr "Czynniki"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
@@ -494,7 +500,7 @@ msgstr "Uporządkuj ładunki czynnikowe wg"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr ""
+msgstr "Składowe"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
@@ -522,7 +528,7 @@ msgstr "Wyniki analizy równoległej"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "Macierz korelacji polichorycznej/tetrachorycznej"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
@@ -530,7 +536,7 @@ msgstr "Test Mardii"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "Macierz korelacji polichorycznej/tetrachorycznej"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
@@ -550,7 +556,7 @@ msgstr "Pokaż oszacowania parametrów"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model identification"
-msgstr ""
+msgstr "Identyfikacja modelu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -562,7 +568,7 @@ msgstr "Test sferyczności Bartletta"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic package"
-msgstr ""
+msgstr "Naśladowany pakiet"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
@@ -606,7 +612,7 @@ msgstr "Odporne dwustopniowe"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr ""
+msgstr "Brak współzmiennych egzogenicznych"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors based on"
@@ -614,7 +620,7 @@ msgstr "Liczba czynników na podstawie"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factoring method"
-msgstr ""
+msgstr "Metoda ustalania liczby czynników"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Display loadings above"
@@ -622,7 +628,7 @@ msgstr "Wyświetl ładunki powyżej"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "Macierz reszt"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components based on"
@@ -650,36 +656,32 @@ msgstr "Korelacje składowych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "Macierz reszt"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Average variance extracted (AVE)"
-msgstr ""
+msgstr "Średnia wyodrębniona wariancja (AVE)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Heterotrait-monotrait ratio (HTMT)"
-msgstr ""
+msgstr "Wskaźnik HTMT"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
-msgstr ""
+msgstr "Rzetelność"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Assumption checks"
 msgstr "Weryfikacja założeń"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "KMO test"
 msgstr "Test KMO"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Bartlett's test"
 msgstr "Test Bartletta"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
 msgstr "Test Mardii"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-04-15 03:28\n"
-"PO-Revision-Date: 2023-04-29 03:26+0000\n"
+"PO-Revision-Date: 2023-05-02 05:11+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "pl/>\n"
@@ -88,7 +88,7 @@ msgid "df"
 msgstr "df"
 
 msgid "p"
-msgstr "p"
+msgstr "<em>p</em>"
 
 msgid "Baseline model"
 msgstr ""
@@ -431,62 +431,61 @@ msgid "Uniqueness"
 msgstr ""
 
 msgid "No rotation method applied."
-msgstr ""
+msgstr "Nie zastosowano rotacji."
 
 msgid "Applied rotation method is %s."
-msgstr ""
+msgstr "Zastosowano metodę rotacji %s."
 
 msgid "Factor Loadings (Structure Matrix)"
-msgstr ""
+msgstr "Ładunki czynnikowe (macierz struktury)"
 
 msgid "Factor Characteristics"
-msgstr ""
+msgstr "Charakterystyka czynników"
 
-#, fuzzy
 msgid "Eigenvalues"
-msgstr "Wartość własna"
+msgstr "Wartości własne"
 
 msgid "Unrotated solution"
-msgstr ""
+msgstr "Rozwiązanie nierotowane"
 
 msgid "Rotated solution"
-msgstr ""
+msgstr "Rozwiązanie rotowane"
 
 msgid "SumSq. Loadings"
-msgstr ""
+msgstr "Ładunki sumy kwadratów"
 
 msgid "Proportion var."
-msgstr ""
+msgstr "Zmienna proporcji"
 
 msgid "Cumulative"
-msgstr ""
+msgstr "Skumulowane"
 
 msgid "Factor Correlations"
-msgstr ""
+msgstr "Korelacje pomiędzy czynnikami"
 
 msgid "Additional fit indices"
-msgstr ""
+msgstr "Dodatkowe miary dopasowania"
 
 msgid "RMSEA"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
-msgstr ""
+msgstr "RMSEA 90%% PU"
 
 msgid "SRMR"
-msgstr ""
+msgstr "SRMR"
 
 msgid "TLI"
-msgstr ""
+msgstr "TLI"
 
 msgid "CFI"
-msgstr ""
+msgstr "CFI"
 
 msgid "BIC"
 msgstr "BIC"
 
 msgid "Residual Matrix"
-msgstr ""
+msgstr "Macierz reszt"
 
 msgid "Real data component eigenvalues"
 msgstr ""
@@ -501,7 +500,7 @@ msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Parallel Analysis"
-msgstr ""
+msgstr "Analiza równoległa"
 
 msgid "Simulated data mean eigenvalues"
 msgstr ""
@@ -510,9 +509,11 @@ msgid ""
 "Screeplot not available. \n"
 "Internal error message: %s"
 msgstr ""
+"Wykres rozrzutu jest niedostępny. \n"
+"Komunikat o błędzie: %s"
 
 msgid "Data"
-msgstr ""
+msgstr "Dane"
 
 msgid "Simulated data from parallel analysis"
 msgstr ""
@@ -521,25 +522,25 @@ msgid "Eigenvalue"
 msgstr "Wartość własna"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "Diagram ścieżkowy"
 
 msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
+msgstr "Nie udało się wykonać analizy równoległej. Komunikat o błędzie: %s"
 
 msgid "No components with an eigenvalue >"
-msgstr ""
+msgstr "Brak składowych o wartości własnej >"
 
 msgid "Component Loadings"
-msgstr ""
+msgstr "Ładunki czynnikowe"
 
 msgid "Component Characteristics"
-msgstr ""
+msgstr "Charakterystyka składowych"
 
 msgid "Component Correlations"
-msgstr ""
+msgstr "Korelacje składowych"
 
 msgid "Scree plot"
-msgstr ""
+msgstr "Wykres osypiska"
 
 msgid "Component"
-msgstr ""
+msgstr "Składowa"

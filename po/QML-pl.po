@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-05-02 05:11+0000\n"
+"PO-Revision-Date: 2023-05-04 19:40+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/pl/>\n"
@@ -44,7 +44,7 @@ msgstr "Opcje modelu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr ""
+msgstr "Uwzględnij średnią strukturę"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
@@ -228,7 +228,7 @@ msgstr "Opcje"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
-msgstr ""
+msgstr "Ustal wyrazy wolne manifestu na zero"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix latent intercepts to zero"
@@ -236,7 +236,7 @@ msgstr "Ustal latentne wyrazy wolne na zero"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr ""
+msgstr "Pomiń pojedynczy wskaźnik resztowy"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
@@ -392,7 +392,7 @@ msgstr "Braki danych"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Sprawdzaj dla każdej analizy oddzielnie"
+msgstr "Sprawdzaj oddzielnie dla każdej analizy"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
@@ -472,7 +472,7 @@ msgstr "Braki danych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Sprawdzaj dla każdej analizy oddzielnie"
+msgstr "Sprawdzaj oddzielnie dla każdej analizy"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"

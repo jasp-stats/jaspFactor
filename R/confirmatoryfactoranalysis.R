@@ -1470,8 +1470,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     relTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
   }
   relTable$addColumnInfo(name = "factor", title = "", type = "string")
-  relTable$addColumnInfo(name = "rel", title = gettext("Coefficient \u03C9"), type = "number")
-  relTable$addColumnInfo(name = "alpha", title = gettext("Coefficient \u03B1"), type = "number")
+  relTable$addColumnInfo(name = "rel", title = gettextf("Coefficient %s", "\u03C9"), type = "number")
+  relTable$addColumnInfo(name = "alpha", title = gettextf("Coefficient %s", "\u03B1"), type = "number")
   relTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                       "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability"))
 

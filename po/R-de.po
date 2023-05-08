@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-04-15 03:28\n"
+"POT-Creation-Date: 2023-05-08 16:33\n"
 "PO-Revision-Date: 2023-04-16 13:59+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -103,7 +103,8 @@ msgstr ""
 "kategoriale Variablen enthalten."
 
 msgid "You may consider changing the standard error method to 'robust'."
-msgstr "Sie können erwägen, die Standardfehlermethode auf \"robust\" zu ändern."
+msgstr ""
+"Sie können erwägen, die Standardfehlermethode auf \"robust\" zu ändern."
 
 msgid "The estimator is %s."
 msgstr "Der Schätzer ist %s."
@@ -353,11 +354,9 @@ msgstr "Heterotrait-Monotrait-Verhältnis"
 msgid "Reliability"
 msgstr "Reliabilität"
 
-msgid "Coefficient ω"
-msgstr "Koeffizient ω"
-
-msgid "Coefficient α"
-msgstr "Koeffizient α"
+#, fuzzy
+msgid "Coefficient %s"
+msgstr "Koeffizient %s"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "Zuviele geforderte Faktoren (%i) für die Anzahl einbezogener Variablen"
@@ -563,6 +562,9 @@ msgstr "Scree-Plot"
 
 msgid "Component"
 msgstr "Komponente"
+
+#~ msgid "Coefficient α"
+#~ msgstr "Koeffizient α"
 
 #~ msgid "Symbol"
 #~ msgstr "Symbol"

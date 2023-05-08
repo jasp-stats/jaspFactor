@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2023-04-15 03:28\n"
+"POT-Creation-Date: 2023-05-08 16:33\n"
 "PO-Revision-Date: 2023-01-18 15:03+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -335,10 +335,7 @@ msgstr ""
 msgid "Reliability"
 msgstr ""
 
-msgid "Coefficient ω"
-msgstr ""
-
-msgid "Coefficient α"
+msgid "Coefficient %s"
 msgstr ""
 
 msgid "Too many factors requested (%i) for the amount of included variables"

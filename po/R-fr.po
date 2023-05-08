@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2023-04-15 03:28\n"
+"POT-Creation-Date: 2023-05-08 16:33\n"
 "PO-Revision-Date: 2023-05-08 10:19+0000\n"
 "Last-Translator: Josée Turcotte <jturcotte@laurentienne.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -343,10 +343,7 @@ msgstr ""
 msgid "Reliability"
 msgstr ""
 
-msgid "Coefficient ω"
-msgstr ""
-
-msgid "Coefficient α"
+msgid "Coefficient %s"
 msgstr ""
 
 msgid "Too many factors requested (%i) for the amount of included variables"

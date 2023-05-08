@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-04-15 03:28\n"
+"POT-Creation-Date: 2023-05-08 16:33\n"
 "PO-Revision-Date: 2023-04-20 12:51+0000\n"
 "Last-Translator: Don van den Bergh <donvdbergh@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -351,11 +351,8 @@ msgstr "Heterotrait-monotrait ratio"
 msgid "Reliability"
 msgstr "Betrouwbaarheid"
 
-msgid "Coefficient ω"
-msgstr "Coëfficiënt ω"
-
-msgid "Coefficient α"
-msgstr "Coëfficiënt α"
+msgid "Coefficient %s"
+msgstr "Coëfficiënt %s"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "Teveel factoren gevraagd (%i) voor het aantal meegenomen variabelen"
@@ -561,6 +558,9 @@ msgstr "Scree plot"
 
 msgid "Component"
 msgstr "Component"
+
+#~ msgid "Coefficient α"
+#~ msgstr "Coëfficiënt α"
 
 #~ msgid "Symbol"
 #~ msgstr "Symbool"

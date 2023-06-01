@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2023-05-30 18:51+0000\n"
+"PO-Revision-Date: 2023-06-02 20:48+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "pl/>\n"
@@ -94,7 +94,7 @@ msgid "Baseline model"
 msgstr "Model bazowy"
 
 msgid "Factor model"
-msgstr ""
+msgstr "Model czynnikowy"
 
 msgid ""
 "The estimator is %1$s and the test statistic is %2$s because there are "
@@ -221,12 +221,14 @@ msgstr "Oszacowanie parametrów"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
+"Nie wszystkie powtórzenia bootstrapowe zakończyły się powodzeniem: PU bazują "
+"na %.0f próbkach."
 
 msgid "Factor loadings"
-msgstr ""
+msgstr "Ładunki czynnikowe"
 
 msgid "Group"
-msgstr ""
+msgstr "Grupa"
 
 msgid "Factor"
 msgstr "Czynnik"
@@ -253,46 +255,46 @@ msgid "Upper"
 msgstr "Górna granica"
 
 msgid "Std. Est. (%s)"
-msgstr ""
+msgstr "Stand. est. (%s)"
 
 msgid "Second-order factor loadings"
 msgstr ""
 
 msgid "Factor variances"
-msgstr ""
+msgstr "Wariancja czynnika"
 
 msgid "Factor Covariances"
 msgstr ""
 
 msgid "Residual variances"
-msgstr ""
+msgstr "Wariancje reszt"
 
 msgid "Residual covariances"
 msgstr ""
 
 msgid "Factor Intercepts"
-msgstr ""
+msgstr "Wyrazy wolne czynnika"
 
 msgid "Intercepts"
-msgstr ""
+msgstr "Wyrazy wolne"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "Progi"
 
 msgid "Threshold"
-msgstr ""
+msgstr "Próg"
 
 msgid "Modification Indices"
-msgstr ""
+msgstr "Indeksy modyfikacyjne"
 
 msgid "Cross-loadings"
 msgstr ""
 
 msgid "Mod. Ind."
-msgstr ""
+msgstr "Ind. mod."
 
 msgid "EPC"
-msgstr ""
+msgstr "EPC"
 
 msgid "Second-order cross-loadings"
 msgstr ""
@@ -316,7 +318,7 @@ msgid "Residual covariance matrix"
 msgstr ""
 
 msgid "Plots"
-msgstr ""
+msgstr "Wykresy"
 
 msgid "Model plots"
 msgstr ""
@@ -331,40 +333,40 @@ msgid "Misfit plot"
 msgstr ""
 
 msgid "Model syntax"
-msgstr ""
+msgstr "Składnia modelu"
 
 msgid "Average variance extracted"
 msgstr ""
 
 msgid "AVE"
-msgstr ""
+msgstr "AVE"
 
 msgid "Heterotrait-monotrait ratio"
 msgstr ""
 
 msgid "Reliability"
-msgstr ""
+msgstr "Rzetelność"
 
 msgid "Coefficient %s"
-msgstr ""
+msgstr "Współczynnik %s"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr ""
 
 msgid "Not enough valid cases (%i) to run this analysis"
-msgstr ""
+msgstr "Zbyt mało ważnych obserwacji, aby uruchomić tę analizę"
 
 msgid "Data not valid: variance is zero in each row"
 msgstr ""
 
 msgid "Data not valid: there are more variables than observations"
-msgstr ""
+msgstr "Nieprawidłowe dane: występuje więcej zmiennych niż obserwacji"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
 msgstr ""
 
 msgid "Data not valid: all variables are collinear"
-msgstr ""
+msgstr "Nieprawidłowe dane: wszystkie zmienne są współliniowe"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr ""
@@ -387,13 +389,13 @@ msgid "Maximum observed eigenvalue equals"
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin Test"
-msgstr ""
+msgstr "Test KMO"
 
 msgid "Overall MSA"
 msgstr ""
 
 msgid "Bartlett's Test"
-msgstr ""
+msgstr "Test Bartletta"
 
 msgid "Mardia's Test of Multivariate Normality"
 msgstr ""
@@ -410,19 +412,19 @@ msgid ""
 msgstr ""
 
 msgid "Chi-squared Test"
-msgstr ""
+msgstr "Test chi kwadrat"
 
 msgid "Degrees of freedom below 0, model is unidentified."
-msgstr ""
+msgstr "Liczba stopni swobody poniżej 0; model nie jest zdefiniowany."
 
 msgid "<em>Warning:</em>"
-msgstr ""
+msgstr "<em>Uwaga:</em>"
 
 msgid "Factor Loadings"
-msgstr ""
+msgstr "Ładunki czynnikowe"
 
 msgid "Factor %i"
-msgstr ""
+msgstr "Czynnik %i"
 
 msgid "Uniqueness"
 msgstr ""

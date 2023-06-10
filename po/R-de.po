@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2023-05-13 03:25+0000\n"
+"PO-Revision-Date: 2023-06-04 08:48+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "de/>\n"
@@ -350,7 +350,6 @@ msgstr "AVE"
 msgid "Heterotrait-monotrait ratio"
 msgstr "Heterotrait-Monotrait-Verhältnis"
 
-#, fuzzy
 msgid "Reliability"
 msgstr "Reliabilität"
 

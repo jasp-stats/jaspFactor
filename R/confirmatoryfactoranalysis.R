@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2013-2019 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
@@ -1032,7 +1031,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      type = "number")
 
   # add data
-  thdat <- pei[pei$op == "|", colSel[!colSel %in% c('rhs')]]
+  thdat <- pei[pei$op == "|", colSel[!colSel %in% 'rhs']]
   thdat$lhs <- thdat$lhs
   thdat$rhs <- pei$rhs[pei$op == "|"]
   if (options$group != "") {

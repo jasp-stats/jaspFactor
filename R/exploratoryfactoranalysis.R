@@ -172,8 +172,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 # Modification here: if the estimation of the polychoric/tetrachoric correlation matrix fails with this specific error,
 # JASP replaces the internal error message with a more informative one.
-  if (isTryError(efaResult) && options[["basedOn"]] == "mixed" && (.extractErrorMessage(efaResult) == "missing value where TRUE/FALSE needed"
-                                || .extractErrorMessage(efaResult) == "attempt to set 'rownames' on an object with no dimensions")) {
+  if (isTryError(efaResult) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix" &&
+      (.extractErrorMessage(efaResult) == "missing value where TRUE/FALSE needed" ||
+       .extractErrorMessage(efaResult) == "attempt to set 'rownames' on an object with no dimensions")) {
     errmsgPolyCor <- gettextf(
       "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.
       This might be due to a small sample size or variables not containing all response categories.
@@ -670,7 +671,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["screePlotParallelAnalysisResults"]]) {
 
     # Modification here:
-    # if "BasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
+    # if "analysisBasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
     # correlation matrix.
 
     if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {

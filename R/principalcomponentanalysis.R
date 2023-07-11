@@ -155,11 +155,16 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       scores   = TRUE,
       covar    = options$analysisBasedOn == "covarianceMatrix",
       cor      = corMethod
-    )
-  )
+    ))
 
   if (isTryError(pcaResult)) {
     errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(pcaResult))
+    # when polychoric corr matrix is used, the warning generated here is useful to know for the user
+    warns <- warnings()
+    warnmsg <- warns[grep("polychoric", warns)]
+    if (length(warnmsg) > 0) {
+      errmsg <- paste(errmsg, "\n Warning in: ", warnmsg, names(warnmsg))
+    }
     modelContainer$setError(errmsg)
   }
 

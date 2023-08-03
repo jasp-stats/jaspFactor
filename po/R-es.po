@@ -241,7 +241,7 @@ msgid "Indicator"
 msgstr "Indicador"
 
 msgid "Estimate"
-msgstr "Estimación"
+msgstr "Estimar"
 
 msgid "Std. Error"
 msgstr "Error Típico"

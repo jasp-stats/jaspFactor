@@ -79,21 +79,7 @@ Form
 		Group
 		{
 			title: qsTr("Model Options")
-			CheckBox 
-			{ 
-				label: qsTr("Include mean structure")      ; 
-				name: "meanStructure"   ; 
-				id: meanstructure 
-
-				RadioButtonGroup
-				{
-					// ChildrenOnSameRow: true
-					name: "interceptsFixedToZero"
-					RadioButton { label: qsTr("Fix latent intercepts to zero") ;	name: "latent"; checked: true}
-					RadioButton { label: qsTr("Fix manifest intercepts to zero"); name: "manifest"}
-				}
-			
-			}
+			CheckBox { label: qsTr("Include mean structure")      ; name: "meanStructure"   ; id: meanstructure }
 			CheckBox { label: qsTr("Assume factors uncorrelated") ; name: "factorsUncorrelated"    }
 			CheckBox { label: qsTr("Fix exogenous covariates")    ; name: "exogenousCovariatesFixed" ; checked: true ; visible: false }
 			DropDown

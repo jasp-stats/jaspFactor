@@ -79,6 +79,7 @@ Form
 		Group
 		{
 			title: qsTr("Model Options")
+<<<<<<< HEAD
 			CheckBox 
  			{ 
  				label: qsTr("Include mean structure")      ; 
@@ -95,6 +96,9 @@ Form
 
  				}
  			}
+=======
+			CheckBox { label: qsTr("Include mean structure")      ; name: "meanStructure"   ; id: meanstructure }
+>>>>>>> c28a02c (unstage the intercept stuff for now)
 			CheckBox { label: qsTr("Assume factors uncorrelated") ; name: "factorsUncorrelated"    }
 			CheckBox { label: qsTr("Fix exogenous covariates")    ; name: "exogenousCovariatesFixed" ; checked: true ; visible: false }
 			DropDown

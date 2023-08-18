@@ -744,8 +744,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   fl1dat$rhs <- fl1dat$rhs
   if (options$group != "") {
     groupLabs <- cfaResult[["lav"]]@Data@group.label
-    fl1dat$group <- rep(groupLabs, each = nrow(fl1dat) / 2)
+    fl1dat$group <- rep(groupLabs, each = nrow(fl1dat) / length(groupLabs))
   }
+
   fl1$setData(fl1dat)
   fl1$dependOn(optionsFromObject = jrobject)
 
@@ -815,7 +816,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                    colSel[!colSel %in% c('rhs')]]
   fvdat$lhs <- .translateFactorNames(fvdat$lhs, options)
   if (options$group != "") {
-    fvdat$group <- rep(groupLabs, each = nrow(fvdat) / 2)
+    fvdat$group <- rep(groupLabs, each = nrow(fvdat) / length(groupLabs))
   }
   fv$setData(fvdat)
   fv$dependOn(optionsFromObject = jrobject)
@@ -855,7 +856,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     fcdat$rhs <- .translateFactorNames(fcdat$rhs, options)
     fcdat$op  <- rep("\u2194", nrow(fcdat))
     if (options$group != "") {
-      fcdat$group <- rep(groupLabs, each = nrow(fcdat) / 2)
+      fcdat$group <- rep(groupLabs, each = nrow(fcdat) / length(groupLabs))
     }
     fc$setData(fcdat)
     fc$dependOn(optionsFromObject = jrobject)
@@ -891,7 +892,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                  pei$lhs == pei$rhs, colSel[!colSel %in% c('rhs')]]
   rvdat$lhs <- rvdat$lhs
   if (options$group != "") {
-    rvdat$group <- rep(groupLabs, each = nrow(rvdat) / 2)
+    rvdat$group <- rep(groupLabs, each = nrow(rvdat) / length(groupLabs))
   }
   rv$setData(rvdat)
   rv$dependOn(optionsFromObject = jrobject)
@@ -927,7 +928,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     rcdat <- pei[pei$op == "~~" & !pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
     rcdat$op  <- rep("\u2194", nrow(rcdat))
     if (options$group != "") {
-      rcdat$group <- rep(groupLabs, each = nrow(rcdat) / 2)
+      rcdat$group <- rep(groupLabs, each = nrow(rcdat) / length(groupLabs))
     }
     rc$setData(rcdat)
     rc$dependOn(optionsFromObject = jrobject)
@@ -960,7 +961,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       # add data
       fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[!colSel %in% 'rhs']]
       fidat$lhs <- .translateFactorNames(fidat$lhs, options)
-      fidat$group <- rep(groupLabs, each = nrow(fidat) / 2)
+      fidat$group <- rep(groupLabs, each = nrow(fidat) / length(groupLabs))
       fi$setData(fidat)
       fi$dependOn(optionsFromObject = jrobject)
     }
@@ -992,7 +993,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                  colSel[!colSel %in% c('rhs')]]
     vidat$lhs <- vidat$lhs
     if (options$group != "") {
-      vidat$group <- rep(groupLabs, each = nrow(vidat) / 2)
+      vidat$group <- rep(groupLabs, each = nrow(vidat) / length(groupLabs))
     }
     vi$setData(vidat)
     vi$dependOn(optionsFromObject = jrobject)
@@ -1036,7 +1037,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   thdat$rhs <- pei$rhs[pei$op == "|"]
   if (options$group != "") {
     groupLabs <- cfaResult[["lav"]]@Data@group.label
-    thdat$group <- rep(groupLabs, each = nrow(thdat) / 2)
+    thdat$group <- rep(groupLabs, each = nrow(thdat) / length(groupLabs))
   }
   th$setData(thdat)
   th$dependOn(optionsFromObject = jrobject)

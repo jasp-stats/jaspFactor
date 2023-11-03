@@ -79,21 +79,7 @@ Form
 		Group
 		{
 			title: qsTr("Model Options")
-			CheckBox 
-			{ 
-				label: qsTr("Include mean structure")      ; 
-				name: "meanStructure"   ; 
-				id: meanstructure 
-
-				RadioButtonGroup
-				{
-					// ChildrenOnSameRow: true
-					name: "interceptsFixedToZero"
-					RadioButton { label: qsTr("Fix latent intercepts to zero") ;	name: "latent"; checked: true}
-					RadioButton { label: qsTr("Fix manifest intercepts to zero"); name: "manifest"}
-				}
-			
-			}
+			CheckBox { label: qsTr("Include mean structure")      ; name: "meanStructure"   ; id: meanstructure }
 			CheckBox { label: qsTr("Assume factors uncorrelated") ; name: "factorsUncorrelated"    }
 			CheckBox { label: qsTr("Fix exogenous covariates")    ; name: "exogenousCovariatesFixed" ; checked: true ; visible: false }
 			DropDown
@@ -167,10 +153,11 @@ Form
 			label: qsTr("Invariance testing")
 			name: "invarianceTesting"
 			values: [
-				 { label: qsTr("Configural") , value: "configural"	},
+				 { label: qsTr("Configural") , value: "configural"},
 				 { label: qsTr("Metric")     , value: "metric"		},
 				 { label: qsTr("Scalar")     , value: "scalar"		},
-				 { label: qsTr("Strict")     , value: "strict"		}
+				 { label: qsTr("Strict")     , value: "strict"		}, 
+				 { label: qsTr("Structural") , value: "structural"}, 
 			]
 		}
 	}

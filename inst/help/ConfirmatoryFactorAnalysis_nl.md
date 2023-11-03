@@ -41,10 +41,13 @@ JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde 
 ------
 - Groepen: Selecteer hier een categorische variabele om CFA modellen voor iedere groep te creëren. 
 - Invariantie testen: Selecteer een niveau van beperkende parameters over de verschillende groepen. 
-  - Configureel: De verschilllende groepen hebben dezelfde CFA structuur.
-  - Metrisch: De factorladingen van de groepen zijn gelijk.
-  - Scalar: De factorladingen en gemiddeldes van de indicatoren van de groepen zijn gelijk.
-  - Strikt: De factorladingen, gemiddeldes van de indicatoren, residu varianties, en residu covarianties van de groepen zijn gelijk.
+  - configureel: De verschilllende groepen hebben dezelfde CFA structuur.
+  - metrisch: hetzelfde als configureel, maar de factorladingen moeten voor alle groepen gelijk zijn
+  - scalair: hetzelfde als metrisch en de gemiddelden van de indicatoren (intercepts) moeten voor alle groepen gelijk zijn
+  - strikt: hetzelfde als scalair en de restvarianties en restcovarianties moeten gelijk zijn voor alle groepen.
+  - structureel: hetzelfde als strikt en de latente gemiddelden, varianties en covarianties moeten voor alle groepen gelijk zijn.
+
+Vertaald met www.DeepL.com/Translator (gratis versie)
   
 ### Grafieken
 -------

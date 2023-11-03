@@ -43,9 +43,10 @@ JASP allows the factors in turn to be indicators of a second-order factor. This 
 - Grouping variable: Select a categorical variable here to create CFA models for each group 
 - Invariance testing: Select a level of constraining parameters over the different groups.
   - configural: the different groups have the same CFA structure
-  - metric: the factor loadings are constrained to be equal across groups
-  - scalar: the factor loadings and means of the indicators are constrained to be equal across groups
-  - strict: the factor loadings, means of the indicators, residual variances, and residual covariances are constrained to be equal across groups
+  - metric: same as configural and the factor loadings are constrained to be equal across groups
+  - scalar: same as metric and the means of the indicators (intercepts) are constrained to be equal across groups
+  - strict: same as scalar and the residual variances, and residual covariances are constrained to be equal across groups
+  - structural: same as strict and the latent means, variances, and covariances are constrained to be equal across groups
 
 ### Plots
 -------

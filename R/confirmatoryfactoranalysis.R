@@ -180,13 +180,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # define estimator from options
   estimator = switch(options[["estimator"]],
-                    "default"                         = "default",
-                    "maximumLikelihood"               = "ML",
-                    "generalizedLeastSquares"         = "GLS",
-                    "weightedLeastSquares"            = "WLS",
-                    "unweightedLeastSquares"          = "ULS",
-                    "diagonallyWeightedLeastSquares"  = "DWLS"
-                    )
+                     "default"                         = "default",
+                     "maximumLikelihood"               = "ML",
+                     "generalizedLeastSquares"         = "GLS",
+                     "weightedLeastSquares"            = "WLS",
+                     "unweightedLeastSquares"          = "ULS",
+                     "diagonallyWeightedLeastSquares"  = "DWLS"
+  )
 
   cfaResult[["lav"]] <- try(lavaan::lavaan(
     model           = mod,
@@ -210,7 +210,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     estimator       = estimator,
     missing         = ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
                              ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
-    ))
+  ))
 
   # are there ordered variables in the data?
   cfaResult[["orderedVariables"]] <- any(sapply(dataset, is.ordered))
@@ -386,8 +386,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     lvs <- c(cfaResult[["spec"]]$latents, cfaResult[["spec"]]$soLatents)
     for (i in seq_along(lvs)) {
       lm <- paste0(lm, '\n', lvs[i], " ~ c(0,",
-                  paste(rep(NA, length(unique(na.omit(dataset[[gv]]))) - 1), collapse = ","),
-                  ")*1")
+                   paste(rep(NA, length(unique(na.omit(dataset[[gv]]))) - 1), collapse = ","),
+                   ")*1")
     }
   } else {
     lm <- NULL
@@ -425,7 +425,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
          "configural" = return(""),
          "metric"     = return("loadings"),
          "scalar"     = return(c("loadings", "intercepts")),
-         "strict"     = return(c("loadings", "intercepts", "residuals", "residual.covariances"))
+         "strict"     = return(c("loadings", "intercepts", "residuals", "residual.covariances")),
+         "structural" = return(c("loadings", "intercepts", "residuals", "residual.covariances",
+                                 "means", "lv.variances", "lv.covariances"))
   )
 }
 
@@ -915,9 +917,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     rc$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
 
     rc$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number", format = "sf:4;dp:3",
-                         overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
     rc$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
-                         overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
 
     if (options$standardized != "none")
       rc$addColumnInfo(name   = paste0("std.", standardization),
@@ -950,13 +952,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       fi$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
 
       fi$addColumnInfo(name = "ci.lower", title = gettext("Lower"), type = "number", format = "sf:4;dp:3",
-                        overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+                       overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
       fi$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
-                        overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
+                       overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
 
       if (options$standardized != "none")
         fi$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                          type = "number", format = "sf:4;dp:3")
+                         type = "number", format = "sf:4;dp:3")
 
       # add data
       fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[!colSel %in% 'rhs']]
@@ -986,7 +988,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
     if (options$standardized != "none")
       vi$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                        type = "number", format = "sf:4;dp:3")
+                       type = "number", format = "sf:4;dp:3")
 
     # add data
     vidat <- pei[pei$op == "~1" & !pei$lhs == "SecondOrder" & !pei$lhs %in% facNames,
@@ -1049,8 +1051,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   mi <- try(lavaan::modindices(cfaResult[["lav"]]))
   jaspResults[["modind"]] <- mic <- createJaspContainer(gettext("Modification Indices"), position = 5)
   mic$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                        "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "modificationIndices",
-                        "modificationIndicesCutoff"))
+                 "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "modificationIndices",
+                 "modificationIndicesCutoff"))
 
   if (isTryError(mi)) {
     mic$setError(.extractErrorMessage(mi))
@@ -1410,7 +1412,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   htmtTable <- createJaspTable(gettext("Heterotrait-monotrait ratio"), position = 4.2)
   htmtTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt"))
+                       "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt"))
 
   if (options[["group"]] != "") {
     htmtTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)

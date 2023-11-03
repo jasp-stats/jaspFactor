@@ -16,13 +16,26 @@ JASP allows the factors in turn to be indicators of a second-order factor. This 
 
 ### Model options
 -------
-- Include mean structure: display means for the indicators and, in the case of multi-group CFA, the means of the latent variables.
+- Include mean structure: display means for the indicators and, in the case of multi-group CFA, the means of the latent variables. To identify the model, the following options can be selected:
+  - Fix latent intercepts to zero
+  - Fix manifest intercepts to zero
+  - Fix mean of manifest intercepts to zero: translates to effect coding
 - Assume factors uncorrelated: set the correlation between the different latent variables to 0.
 - Factor scaling: factors can be given a scale in one of three ways:
   - Factor variances (default): the factor has a fixed variance of 1
   - Marker variable: the factor has the same scale as its first indicator as its factor loading is fixed to 1
   - Effects coding: the mean of the factor loadings is fixed to 1. For more information on the interpretation of effects coding, see Veen (2018)
 - Residual covariances: to allow for covariance between indicators not explained by their respective factor, for example because questions were phrased in a similar way, drag two variables to the right-side assignment box.
+
+### Multigroup CFA
+------
+- Grouping variable: Select a categorical variable here to create CFA models for each group 
+- Invariance testing: Select a level of constraining parameters over the different groups.
+  - configural: the different groups have the same CFA structure
+  - metric: same as configural and the factor loadings are constrained to be equal across groups
+  - scalar: same as metric and the means of the indicators (intercepts) are constrained to be equal across groups
+  - strict: same as scalar and the residual variances, and residual covariances are constrained to be equal across groups
+  - structural: same as strict and the latent means, variances, and covariances are constrained to be equal across groups
 
 ### Additional output
 -------
@@ -38,15 +51,6 @@ JASP allows the factors in turn to be indicators of a second-order factor. This 
 - Modification indices: Display MIs with a minimum cutoff. A MI shows how much the chi-square value of overall fit would change if the parameter in question is freed up. EPC shows the expected change of the parameter itself.
 - Show lavaan syntax: Display the lavaan modeling syntax that would be needed to run the model in R
 
-### Multigroup CFA
-------
-- Grouping variable: Select a categorical variable here to create CFA models for each group 
-- Invariance testing: Select a level of constraining parameters over the different groups.
-  - configural: the different groups have the same CFA structure
-  - metric: same as configural and the factor loadings are constrained to be equal across groups
-  - scalar: same as metric and the means of the indicators (intercepts) are constrained to be equal across groups
-  - strict: same as scalar and the residual variances, and residual covariances are constrained to be equal across groups
-  - structural: same as strict and the latent means, variances, and covariances are constrained to be equal across groups
 
 ### Plots
 -------

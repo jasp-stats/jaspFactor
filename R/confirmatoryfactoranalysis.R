@@ -23,7 +23,6 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
-
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
 
@@ -188,6 +187,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      "diagonallyWeightedLeastSquares"  = "DWLS"
   )
 
+
   cfaResult[["lav"]] <- try(lavaan::lavaan(
     model           = mod,
     data            = dataset,
@@ -198,8 +198,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     std.lv          = options$modelIdentification == "factorVariance",
     auto.fix.first  = options$modelIdentification == "markerVariable",
     orthogonal      = options$factorsUncorrelated,
-    int.ov.free     = TRUE,
-    int.lv.free     = FALSE,
+    int.ov.free     = (options$interceptsFixedToZero == "latent" || options$interceptsFixedToZero == "meanManifest"),
+    int.lv.free     = (options$interceptsFixedToZero == "manifest" || options$interceptsFixedToZero == "meanManifest"),
+    effect.coding   = ifelse(options$modelIdentification == "effectsCoding", TRUE,
+                             ifelse(options$interceptsFixedToZero == "meanManifest", "intercepts", FALSE)),
     auto.fix.single = TRUE,
     auto.var        = TRUE,
     auto.cov.lv.x   = TRUE,
@@ -211,6 +213,31 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     missing         = ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
                              ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
   ))
+
+  # cfaResult[["lav"]] <- try(lavaan::lavaan(
+  #   model           = mod,
+  #   data            = dataset,
+  #   group           = grp,
+  #   group.equal     = geq,
+  #   meanstructure   = options$meanStructure,
+  #   se              = cfaResult[["spec"]]$se,
+  #   std.lv          = options$modelIdentification == "factorVariance",
+  #   auto.fix.first  = options$modelIdentification == "markerVariable",
+  #   orthogonal      = options$factorsUncorrelated,
+  #   effect.coding   = ifelse(options$modelIdentification == "effectsCoding", "loadings", FALSE),
+  #   int.ov.free     = TRUE,
+  #   int.lv.free     = FALSE,
+  #   auto.fix.single = TRUE,
+  #   auto.var        = TRUE,
+  #   auto.cov.lv.x   = TRUE,
+  #   auto.th         = TRUE,
+  #   auto.delta      = TRUE,
+  #   auto.cov.y      = TRUE,
+  #   mimic           = options$packageMimiced,
+  #   estimator       = estimator,
+  #   missing         = ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
+  #                            ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
+  # ))
 
   # are there ordered variables in the data?
   cfaResult[["orderedVariables"]] <- any(sapply(dataset, is.ordered))
@@ -264,7 +291,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["stateCFAResult"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
     "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-    "group", "invarianceTesting"
+    "group", "invarianceTesting", "interceptsFixedToZero"
 
   ))
 
@@ -378,45 +405,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     rc <- NULL
   }
 
-  #' I dont think we need this bit of code, as setting meanstructure to TRUE
-  #' does already fix the latent means to zero across groups,
-  #' which is exactly what this piece of code does
-  if (options$meanStructure && options$group != "") {
-    lm <- "# Latent means"
-    lvs <- c(cfaResult[["spec"]]$latents, cfaResult[["spec"]]$soLatents)
-    for (i in seq_along(lvs)) {
-      lm <- paste0(lm, '\n', lvs[i], " ~ c(0,",
-                   paste(rep(NA, length(unique(na.omit(dataset[[gv]]))) - 1), collapse = ","),
-                   ")*1")
-    }
-  } else {
-    lm <- NULL
-  }
-  # lm <- NULL
 
-  if (options$modelIdentification == "effectsCoding") {
-    ef <- "# effects coding restrictions"
-    for (i in 1:length(labels)) {
-      if (nchar(options$group) == 0 || options$invarianceTesting !="configural") {
-        restr <- paste0(labels[[i]][1], " == ",
-                        paste(c(length(labels[[i]]), labels[[i]][-1]),
-                              collapse = " - "))
-        ef <- paste0(ef, "\n", restr)
-      } else { # configural invarianceTesting
-        restr <- ""
-        for (j in 1:n_levels) {
-          restr <- paste0(restr, unlist(labels[[i]][1])[j], " == ",
-                          paste(c(length(labels[[i]]), lapply(labels[[i]][-1], function(x) x[j])),
-                                collapse = " - "), "\n")
-        }
-        ef <- paste0(ef, "\n", restr)
-      }
-    }
-  } else {
-    ef <- NULL
-  }
-
-  return(list(model = paste0(c(fo, so, rc, lm, ef), collapse = "\n\n"), simple_model = fo_simp))
+  return(list(model = paste0(c(fo, so, rc), collapse = "\n\n"), simple_model = fo_simp))
 }
 
 .CFAInvariance <- function(options) {
@@ -438,7 +428,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["maincontainer"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
     "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-    "group", "invarianceTesting"
+    "group", "invarianceTesting", "interceptsFixedToZero"
   ))
 }
 
@@ -495,7 +485,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   jaspResults[["maincontainer"]][["kmo"]] <- tabkmo <- createJaspTable(gettext("Kaiser-Meyer-Olkin (KMO) test"))
   tabkmo$addColumnInfo(name = "indicator", title = "Indicator", type = "string")
-  tabkmo$dependOn(c("factors", "naAction", "group", "kaiserMeyerOlkinTest"))
+  tabkmo$dependOn("kaiserMeyerOlkinTest")
   if (is.null(cfaResult)) return()
 
   cov_implied <- lavaan::fitted(cfaResult[["lav"]])
@@ -525,7 +515,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!options$bartlettTest || !is.null(jaspResults[["maincontainer"]][["bartlett"]])) return()
 
   jaspResults[["maincontainer"]][["bartlett"]] <- tabbartlett <- createJaspTable(gettext("Bartlett's test of sphericity"))
-  tabbartlett$dependOn(c("factors", "naAction", "group", "bartlettTest"))
+  tabbartlett$dependOn("bartlettTest")
   if (is.null(cfaResult)) return()
 
   cov_implied <- lavaan::fitted(cfaResult[["lav"]])
@@ -564,8 +554,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["maincontainer"]][["rSquared"]] <- tabr2 <- createJaspTable(gettext("R-Squared"))
   tabr2$addColumnInfo(name = "__var__", title = "", type = "string")
   tabr2$setExpectedSize(rows = 1, cols = 1)
-  tabr2$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                   "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "rSquared"))
+  tabr2$dependOn("rSquared")
 
   if (is.null(cfaResult)) return()
 
@@ -598,8 +587,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaTableFitMeasures <- function(jaspResults, options, cfaResult) {
   if (!options$fitMeasures || !is.null(jaspResults[["maincontainer"]][["fits"]])) return()
   jaspResults[["maincontainer"]][["fits"]] <- fitms <- createJaspContainer(gettext("Additional fit measures"))
-  fitms$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                   "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "fitMeasures"))
+  fitms$dependOn("fitMeasures")
 
   # Fit indices
   fitms[["indices"]] <- fitin <- createJaspTable(gettext("Fit indices"))
@@ -687,7 +675,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["estimates"]] <- ests <- createJaspContainer(gettext("Parameter estimates"), position = 2)
   ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
                   "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-                  "group", "invarianceTesting", "standardized", "ciLevel"))
+                  "group", "invarianceTesting", "standardized", "ciLevel", "interceptsFixedToZero"))
 
 
   footnote <- NULL
@@ -1004,12 +992,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # Thresholds
   if ("|" %in% pei$op) {
-    .thresholdsTable(jrobject, footnote, options, standardization, pei, colSel, cfaResult)
+    .cfaThresholdsTable(jrobject, footnote, options, standardization, pei, colSel, cfaResult)
   }
 
 }
 
-.thresholdsTable <- function(jrobject, footnote, options, standardization, pei, colSel, cfaResult) {
+.cfaThresholdsTable <- function(jrobject, footnote, options, standardization, pei, colSel, cfaResult) {
   # Manifest variable intercepts
   jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
   if (!is.null(footnote)) th$addFootnote(footnote)
@@ -1052,7 +1040,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["modind"]] <- mic <- createJaspContainer(gettext("Modification Indices"), position = 5)
   mic$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                  "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "modificationIndices",
-                 "modificationIndicesCutoff"))
+                 "modificationIndicesCutoff", "interceptsFixedToZero"))
 
   if (isTryError(mi)) {
     mic$setError(.extractErrorMessage(mi))
@@ -1187,7 +1175,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   icc$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
                  "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-                 "group", "invarianceTesting", "impliedCovarianceMatrix"))
+                 "group", "invarianceTesting", "impliedCovarianceMatrix", "interceptsFixedToZero"))
 }
 
 .cfaTableResCov <- function(jaspResults, options, cfaResult) {
@@ -1221,7 +1209,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   rcc$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                 "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "residualCovarianceMatrix"))
+                 "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting",
+                 "residualCovarianceMatrix", "interceptsFixedToZero"))
 }
 
 .cfaInitPlots <- function(jaspResults, options, cfaResult) {
@@ -1230,7 +1219,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["plots"]] <- createJaspContainer(gettext("Plots"), position = 6)
   jaspResults[["plots"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated", "packageMimiced",
-    "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting"
+    "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "interceptsFixedToZero"
   ))
 }
 
@@ -1387,7 +1376,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   aveTable$addColumnInfo(name = "factor", title = gettext("Factor"), type = "string")
   aveTable$addColumnInfo(name = "ave", title = gettext("AVE"), type = "number")
   aveTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "ave"))
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "ave", "interceptsFixedToZero"))
 
   if (options$group != "") {
     ave_result <- semTools::AVE(cfaResult[["lav"]])
@@ -1412,7 +1401,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   htmtTable <- createJaspTable(gettext("Heterotrait-monotrait ratio"), position = 4.2)
   htmtTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                       "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt"))
+                       "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt", "interceptsFixedToZero"))
 
   if (options[["group"]] != "") {
     htmtTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
@@ -1475,7 +1464,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   relTable$addColumnInfo(name = "rel", title = gettextf("Coefficient %s", "\u03C9"), type = "number")
   relTable$addColumnInfo(name = "alpha", title = gettextf("Coefficient %s", "\u03B1"), type = "number")
   relTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
-                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability"))
+                      "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability", "interceptsFixedToZero"))
 
   nfac <- length(cfaResult[["spec"]][["latents"]])
 

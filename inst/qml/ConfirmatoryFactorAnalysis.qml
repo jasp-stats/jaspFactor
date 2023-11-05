@@ -79,7 +79,22 @@ Form
 		Group
 		{
 			title: qsTr("Model Options")
-			CheckBox { label: qsTr("Include mean structure")      ; name: "meanStructure"   ; id: meanstructure }
+			CheckBox 
+ 			{ 
+ 				label: qsTr("Include mean structure")      ; 
+ 				name: "meanStructure"   ; 
+ 				id: meanstructure 
+
+ 				RadioButtonGroup
+ 				{
+ 					// ChildrenOnSameRow: true
+ 					name: "interceptsFixedToZero"
+ 					RadioButton { label: qsTr("Fix latent intercepts to zero") ;	value: "latent"; checked: true}
+ 					RadioButton { label: qsTr("Fix manifest intercepts to zero"); value: "manifest"}
+					RadioButton { label: qsTr("Fix mean of manifest intercepts to zero"); value: "meanManifest"}
+
+ 				}
+ 			}
 			CheckBox { label: qsTr("Assume factors uncorrelated") ; name: "factorsUncorrelated"    }
 			CheckBox { label: qsTr("Fix exogenous covariates")    ; name: "exogenousCovariatesFixed" ; checked: true ; visible: false }
 			DropDown
@@ -106,6 +121,31 @@ Form
 			}
 		}
 	}
+
+	Section
+	{
+		title: qsTr("Multigroup CFA")
+		DropDown
+		{
+			label: qsTr("Grouping variable") ;
+			name: "group";
+			showVariableTypeIcon: true;
+			addEmptyValue: true;
+		} // No model: it takes all variables per default
+		DropDown
+		{
+			label: qsTr("Invariance testing")
+			name: "invarianceTesting"
+			values: [
+				 { label: qsTr("Configural") , value: "configural"},
+				 { label: qsTr("Metric")     , value: "metric"		},
+				 { label: qsTr("Scalar")     , value: "scalar"		},
+				 { label: qsTr("Strict")     , value: "strict"		}, 
+				 { label: qsTr("Structural") , value: "structural"}, 
+			]
+		}
+	}
+
 
 	Section
 	{
@@ -138,28 +178,6 @@ Form
 		}
 	}
 
-	Section
-	{
-		title: qsTr("Multigroup CFA")
-		DropDown
-		{
-			label: qsTr("Grouping variable") ;
-			name: "group";
-			showVariableTypeIcon: true;
-			addEmptyValue: true;
-		} // No model: it takes all variables per default
-		DropDown
-		{
-			label: qsTr("Invariance testing")
-			name: "invarianceTesting"
-			values: [
-				 { label: qsTr("Configural") , value: "configural"	},
-				 { label: qsTr("Metric")     , value: "metric"		},
-				 { label: qsTr("Scalar")     , value: "scalar"		},
-				 { label: qsTr("Strict")     , value: "strict"		}
-			]
-		}
-	}
 
 	Section
 	{

@@ -15,13 +15,26 @@ JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde 
 
 ### Model opties
 -------
-- Voeg gemiddelde structuur toe: Toon gemiddeldes van de indicatoren en, in the geval van multi-groep CFA, de gemiddeldes van de latente variabelen.
+- Gemiddeldestructuur opnemen: gemiddelden weergeven voor de indicatoren en, in het geval van CFA voor meerdere groepen, de gemiddelden van de latente variabelen. Om het model te identificeren, kunnen de volgende opties worden geselecteerd:
+  - Fixeer latente intercepts op nul
+  - Fixeer manifeste intercepts op nul
+  - Zet gemiddelde van manifeste intercepts op nul: vertaalt zich naar effectcodering
 - Neem ongecorreleerde factoren aan: Zet de correlatie tussen verschillende latente variabelen op 0.
 - Factor schalen: Factoren kunnen op drie manier geschaald zijn:
   - Factor varianties (standaardoptie): De factor heeft een vaste variantie van 1.
   - Marker variabele: De factor heeft dezelfde schaal als zijn eerste indicator aangezien zijn factorlading 1 is.
   - Effecten coderen: Het gemiddelde van de factorlading is vastgezet op 1. Voor meer informatie over de interpretatie van effecten coderen, zie Veen (2018).
 - Residu covarianties: Om ook covariantie toe te staan tussen indicatoren die niet verklaard worden door hun respectieve factor, bijvoorbeeld omdat vragen in een vergelijkbare manier verwoord zijn, sleep twee variabelen naar het rechter invoerveld. 
+
+### Multigroep CFA
+------
+- Groepen: Selecteer hier een categorische variabele om CFA modellen voor iedere groep te creëren. 
+- Invariantie testen: Selecteer een niveau van beperkende parameters over de verschillende groepen. 
+  - configureel: De verschilllende groepen hebben dezelfde CFA structuur.
+  - metrisch: hetzelfde als configureel, maar de factorladingen moeten voor alle groepen gelijk zijn
+  - scalair: hetzelfde als metrisch en de gemiddelden van de indicatoren (intercepts) moeten voor alle groepen gelijk zijn
+  - strikt: hetzelfde als scalair en de restvarianties en restcovarianties moeten gelijk zijn voor alle groepen.
+  - structureel: hetzelfde als strikt en de latente gemiddelden, varianties en covarianties moeten voor alle groepen gelijk zijn.
 
 ### Aanvullende uitvoer
 -------
@@ -36,15 +49,6 @@ JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde 
 - Residu covariantiematrix: Toon de covarianties tussen indicatoren die behouden blijft met het model. Een perfect model toont enkel 0-en hier. 
 - Modificatie indices: Toont MIs met een minimum grens. Een MI toont hoeveel de chi-square waarde van de passing zou veranderen als de gespecificeerde parameter vrij zou zijn. EPC toont de verwachten verandering van de parameter zelf.
 - Toon lavaan syntax: Toon de lavaan modeleer syntax die nodig zou zijn om het model in R weer te geven.
-
-### Multigroep CFA
-------
-- Groepen: Selecteer hier een categorische variabele om CFA modellen voor iedere groep te creëren. 
-- Invariantie testen: Selecteer een niveau van beperkende parameters over de verschillende groepen. 
-  - Configureel: De verschilllende groepen hebben dezelfde CFA structuur.
-  - Metrisch: De factorladingen van de groepen zijn gelijk.
-  - Scalar: De factorladingen en gemiddeldes van de indicatoren van de groepen zijn gelijk.
-  - Strikt: De factorladingen, gemiddeldes van de indicatoren, residu varianties, en residu covarianties van de groepen zijn gelijk.
   
 ### Grafieken
 -------

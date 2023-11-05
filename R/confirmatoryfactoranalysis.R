@@ -214,31 +214,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                              ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
   ))
 
-  # cfaResult[["lav"]] <- try(lavaan::lavaan(
-  #   model           = mod,
-  #   data            = dataset,
-  #   group           = grp,
-  #   group.equal     = geq,
-  #   meanstructure   = options$meanStructure,
-  #   se              = cfaResult[["spec"]]$se,
-  #   std.lv          = options$modelIdentification == "factorVariance",
-  #   auto.fix.first  = options$modelIdentification == "markerVariable",
-  #   orthogonal      = options$factorsUncorrelated,
-  #   effect.coding   = ifelse(options$modelIdentification == "effectsCoding", "loadings", FALSE),
-  #   int.ov.free     = TRUE,
-  #   int.lv.free     = FALSE,
-  #   auto.fix.single = TRUE,
-  #   auto.var        = TRUE,
-  #   auto.cov.lv.x   = TRUE,
-  #   auto.th         = TRUE,
-  #   auto.delta      = TRUE,
-  #   auto.cov.y      = TRUE,
-  #   mimic           = options$packageMimiced,
-  #   estimator       = estimator,
-  #   missing         = ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
-  #                            ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
-  # ))
-
   # are there ordered variables in the data?
   cfaResult[["orderedVariables"]] <- any(sapply(dataset, is.ordered))
 

@@ -679,3 +679,11 @@ msgstr "Bartlett's toets"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
 msgstr "Mardia's toets"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix mean of manifest intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Structural"
+msgstr ""

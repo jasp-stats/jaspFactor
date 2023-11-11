@@ -678,3 +678,11 @@ msgstr "巴特利特检验(Bartlett's)"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
 msgstr "Mardia's 检验"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix mean of manifest intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Structural"
+msgstr ""

@@ -682,3 +682,11 @@ msgstr "Bartlettの検定"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
 msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix mean of manifest intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Structural"
+msgstr ""

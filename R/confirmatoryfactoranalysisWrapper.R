@@ -19,7 +19,8 @@
 
 confirmatoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.17.1",
+          version = "0.18.2",
+          ave = FALSE,
           bartlettTest = FALSE,
           bootstrapSamples = 1000,
           ciLevel = 0.95,
@@ -31,7 +32,9 @@ confirmatoryFactorAnalysis <- function(
           factorsUncorrelated = FALSE,
           fitMeasures = FALSE,
           group = "",
+          htmt = FALSE,
           impliedCovarianceMatrix = FALSE,
+          interceptsFixedToZero = "latent",
           invarianceTesting = "configural",
           kaiserMeyerOlkinTest = FALSE,
           latentInterceptsFixedToZero = TRUE,
@@ -54,6 +57,7 @@ confirmatoryFactorAnalysis <- function(
           plotHeight = 320,
           plotWidth = 480,
           rSquared = FALSE,
+          reliability = FALSE,
           residualCovarianceMatrix = FALSE,
           residualSingleIndicatorOmitted = TRUE,
           residualVariances = TRUE,

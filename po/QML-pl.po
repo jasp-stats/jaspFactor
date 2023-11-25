@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-18 03:25+0000\n"
+"PO-Revision-Date: 2023-11-20 23:04+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/pl/>\n"
@@ -328,7 +328,7 @@ msgstr "brak"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
-msgstr "Oblique"
+msgstr "Nieortogonalna"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
@@ -436,7 +436,7 @@ msgstr "brak"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
-msgstr "Oblique"
+msgstr "Nieortogonalna"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"

@@ -1,0 +1,688 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: br_FR\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Factor"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Explore hidden structure in the data"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Principal Component Analysis"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Exploratory Factor Analysis"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Confirmatory Factor Analysis"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order Factor"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model Options"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Include mean structure"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix latent intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix manifest intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix mean of manifest intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Assume factors uncorrelated"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix exogenous covariates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model identification"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Factor variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Marker variable"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Effects coding"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual Covariances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Multigroup CFA"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Grouping variable"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Invariance testing"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Configural"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Metric"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Scalar"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Strict"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Structural"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional Output"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional fit measures"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "R-Squared"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Average variance extracted (AVE)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Heterotrait-monotrait ratio (HTMT)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Reliability"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Implied covariance matrix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual covariance matrix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Modification indices"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Cutoff"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show lavaan syntax"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Misfit plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardized"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Font size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show means"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Advanced"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic package"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Lavaan"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mplus"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "EQS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Error calculation"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "CI level"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard error"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap samples"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Estimator"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Auto"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "GLS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DWLS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Missing data handling"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FIML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Listwise deletion"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Pairwise"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardization"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "None"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Latents"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "All"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No Exogenous Covariates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Options"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Omit residual single indicator"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate exogenous latents"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add thresholds"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add scalings parameters"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate dependent variables"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variables"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of Factors based on"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Eigenvalues"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Eigenvalues above"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Manual"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Number of factors"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factoring method"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum residual"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Maximum likelihood"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Principal axis factoring"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Ordinary least squares"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Weighted least squares"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Generalized least squares"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum chi-square"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Minimum rank"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Rotation"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Orthogonal"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "none"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Oblique"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Base analysis on"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Covariance matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Output Options"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Order factor loadings by"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor size"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Structure matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Factor correlations"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Additional fit indices"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Path diagram"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Scree plot"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Assumption checks"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "KMO test"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Bartlett's test"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Mardia's test"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Missing Values"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Exclude cases pairwise"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Exclude cases listwise"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variables"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of Components based on"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on principal components"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on factors"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Eigenvalues"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Eigenvalues above"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Manual"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Number of components"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Rotation"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Orthogonal"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "none"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Oblique"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Base decomposition on"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Correlation matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Covariance matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Output Options"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Order component loadings by"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component size"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Tables"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Component correlations"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on PC"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Based on FA"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Path diagram"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Scree plot"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Assumption checks"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "KMO test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Bartlett's test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Mardia's test"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Missing Values"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Exclude cases pairwise"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Exclude cases listwise"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Add PC scores to data"
+msgstr ""

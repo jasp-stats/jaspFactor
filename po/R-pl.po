@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2023-09-20 11:21+0000\n"
+"PO-Revision-Date: 2023-11-18 20:24+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "pl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2\n"
 
 msgid "Second-Order"
 msgstr "Drugi rząd"
@@ -100,6 +100,8 @@ msgid ""
 "The estimator is %1$s and the test statistic is %2$s because there are "
 "categorical variables in the data."
 msgstr ""
+"Estymator to %1$s a statystyka testu to %2$s ponieważ w danych znajdują się "
+"zmienne kategorialne."
 
 msgid "You may consider changing the standard error method to 'robust'."
 msgstr ""
@@ -215,6 +217,8 @@ msgstr ""
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
 msgstr ""
+"Wyniki RMSEA zostały przeskalowane ponieważ w danych znajdują się zmienne "
+"kategorialne."
 
 msgid "Parameter estimates"
 msgstr "Oszacowanie parametrów"
@@ -234,7 +238,7 @@ msgid "Factor"
 msgstr "Czynnik"
 
 msgid "Indicator"
-msgstr ""
+msgstr "Wskaźnik"
 
 msgid "Estimate"
 msgstr "Oszacowanie"
@@ -258,19 +262,19 @@ msgid "Std. Est. (%s)"
 msgstr "Stand. est. (%s)"
 
 msgid "Second-order factor loadings"
-msgstr ""
+msgstr "Ładunki czynnikowe drugiego rzędu"
 
 msgid "Factor variances"
 msgstr "Wariancja czynnika"
 
 msgid "Factor Covariances"
-msgstr ""
+msgstr "Kowariancje czynników"
 
 msgid "Residual variances"
 msgstr "Wariancje reszt"
 
 msgid "Residual covariances"
-msgstr ""
+msgstr "Kowariancje reszt"
 
 msgid "Factor Intercepts"
 msgstr "Wyrazy wolne czynnika"
@@ -303,40 +307,40 @@ msgid "Modification indices"
 msgstr "Indeksy modyfikacyjne"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "Brak wskaźników modyfikacyjnych powyżej wyznaczonego progu"
 
 msgid "Implied covariance matrices"
-msgstr ""
+msgstr "Implikowane macierze kowariancji"
 
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Implikowana macierz kowariancji"
 
 msgid "Residual covariance matrices"
-msgstr ""
+msgstr "Macierze kowariancji reszt"
 
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Macierz kowariancji reszt"
 
 msgid "Plots"
 msgstr "Wykresy"
 
 msgid "Model plots"
-msgstr ""
+msgstr "Wykresy dla modelu"
 
 msgid "Model plot"
-msgstr ""
+msgstr "Wykres dla modelu"
 
 msgid "Misfit plots"
-msgstr ""
+msgstr "Wykresy niedopasowania"
 
 msgid "Misfit plot"
-msgstr ""
+msgstr "Wykres niedopasowania"
 
 msgid "Model syntax"
 msgstr "Składnia modelu"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "Średnia wyodrębniona wariancja (AVE)"
 
 msgid "AVE"
 msgstr "AVE"
@@ -351,28 +355,28 @@ msgid "Coefficient %s"
 msgstr "Współczynnik %s"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr ""
+msgstr "Zażądano zbyt wielu czynników (%i) dla dostępnej liczby zmiennych"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "Zbyt mało ważnych obserwacji(%i), aby uruchomić tę analizę"
 
 msgid "Data not valid: variance is zero in each row"
-msgstr ""
+msgstr "Dane są niepoprawne: wariancja wynosi zero w każdym wierszu"
 
 msgid "Data not valid: there are more variables than observations"
 msgstr "Nieprawidłowe dane: występuje więcej zmiennych niż obserwacji"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr ""
+msgstr "Dane są niepoprawne: zbyt wiele braków danych w %s."
 
 msgid "Data not valid: all variables are collinear"
 msgstr "Nieprawidłowe dane: wszystkie zmienne są współliniowe"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr ""
+msgstr "Operacja nie udała się. Wiadomość błędu: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
-msgstr ""
+msgstr "Operacja nie udała się. Wiadomość błędu: %s"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
@@ -383,10 +387,10 @@ msgid ""
 msgstr ""
 
 msgid "No factors with an eigenvalue >"
-msgstr ""
+msgstr "Brak czynników o wartościach własnych >"
 
 msgid "Maximum observed eigenvalue equals"
-msgstr ""
+msgstr "Najwyższa obserwowana wartość własna wynosi"
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Test KMO"
@@ -398,18 +402,20 @@ msgid "Bartlett's Test"
 msgstr "Test Bartletta"
 
 msgid "Mardia's Test of Multivariate Normality"
-msgstr ""
+msgstr "Test wielowymiarowej normalności Mardiego"
 
 msgid "Statistic"
 msgstr "Statystyka"
 
 msgid "Mardia test failed. Internal error message: %s"
-msgstr ""
+msgstr "Nie udało się wykonać testu. Wiadomość błędu: %s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
 "statistic for kurtosis standard normal."
 msgstr ""
+"Przyjęto, że skośność ma rozkład Chi-kwadrat, a kurtoza standardowy rozkład "
+"normalny."
 
 msgid "Chi-squared Test"
 msgstr "Test chi kwadrat"
@@ -427,7 +433,7 @@ msgid "Factor %i"
 msgstr "Czynnik %i"
 
 msgid "Uniqueness"
-msgstr ""
+msgstr "Swoistość"
 
 msgid "No rotation method applied."
 msgstr "Nie zastosowano rotacji."

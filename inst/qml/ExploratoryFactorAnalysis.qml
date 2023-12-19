@@ -56,13 +56,13 @@ Form
 					RadioButton
 					{
 						value:		"principalComponentBased"
-						label:		qsTr("Based on PC")
+						label:		qsTr("Based on principal components")
 						checked:	true
 					}
 					RadioButton
 					{
 						value: "factorBased"
-						label: qsTr("Based on FA")
+						label: qsTr("Based on factors")
 					}
 				}
 				IntegerField

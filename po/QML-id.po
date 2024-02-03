@@ -1,31 +1,37 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-01-31 03:54+0000\n"
+"Last-Translator: Rania Rahida <raniarahida@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/id/>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.4-dev\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Factor"
-msgstr ""
+msgstr "Faktor"
 
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
-msgstr ""
+msgstr "Jelajahi struktur tersembunyi dalam data"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr ""
+msgstr "Analisis Komponen Utama"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
-msgstr ""
+msgstr "Analisis Faktor Eksplorasi"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
-msgstr ""
+msgstr "Analisis Faktor Konfirmatori"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
@@ -37,43 +43,43 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr ""
+msgstr "Opsi Model"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr ""
+msgstr "Sertakan struktur rata-rata"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr ""
+msgstr "Asumsikan faktor-faktor yang tidak berkorelasi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr ""
+msgstr "Memperbaiki kovariat eksogen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Varians faktor"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr ""
+msgstr "Variabel penanda"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
-msgstr ""
+msgstr "Pengkodean efek"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr ""
+msgstr "Kovariansi Sisa"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr ""
+msgstr "Output Tambahan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Tindakan kesesuaian tambahan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
@@ -81,19 +87,20 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Matriks kovarians tersirat"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Matriks kovariansi residual"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
-msgstr ""
+msgstr "Indeks modifikasi"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr ""
+msgstr "Batas waktu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
@@ -105,55 +112,55 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Variabel pengelompokan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr ""
+msgstr "Pengujian varians"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr ""
+msgstr "Konfigurasi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
-msgstr ""
+msgstr "Metrik"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Scalar"
-msgstr ""
+msgstr "Skalar"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Strict"
-msgstr ""
+msgstr "Ketat"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr ""
+msgstr "Plot yang tidak sesuai"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
-msgstr ""
+msgstr "Plot model"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
-msgstr ""
+msgstr "Terstandarisasi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
-msgstr ""
+msgstr "Tampilkan berarti"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
-msgstr ""
+msgstr "Lanjutan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
@@ -165,27 +172,27 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Error calculation"
-msgstr ""
+msgstr "Perhitungan kesalahan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
-msgstr ""
+msgstr "Standar"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr ""
+msgstr "Kuat"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap samples"
-msgstr ""
+msgstr "Sampel bootstrap"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr ""
+msgstr "Penaksir"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Auto"
-msgstr ""
+msgstr "Otomatis"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
@@ -209,84 +216,83 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
-msgstr ""
+msgstr "Standardisasi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
-msgstr ""
+msgstr "Laten"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
-msgstr ""
+msgstr "Pilihan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
-msgstr ""
+msgstr "Memperbaiki intersepsi manifes menjadi nol"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix latent intercepts to zero"
-msgstr ""
+msgstr "Memperbaiki intersepsi laten menjadi nol"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr ""
+msgstr "Menghilangkan indikator tunggal yang tersisa"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr ""
+msgstr "Varians residual"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
-msgstr ""
+msgstr "Mengkorelasikan laten eksogen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add thresholds"
-msgstr ""
+msgstr "Tambahkan ambang batas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
-msgstr ""
+msgstr "Menambahkan parameter penskalaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
-msgstr ""
+msgstr "Korelasi variabel dependen"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
-msgstr ""
+msgstr "variabel"
 
-#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis"
 msgstr "Analisis paralel"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues"
-msgstr ""
+msgstr "Nilai Eigen"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Nilai Eigen di atas"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of factors"
-msgstr ""
+msgstr "Jumlah faktor"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum residual"
-msgstr ""
+msgstr "Sisa minimum"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Maximum likelihood"
-msgstr ""
+msgstr "Kemungkinan maksimum"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Principal axis factoring"
@@ -294,119 +300,119 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Ordinary least squares"
-msgstr ""
+msgstr "Kuadrat terkecil biasa"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Weighted least squares"
-msgstr ""
+msgstr "Kuadrat terkecil tertimbang"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Generalized least squares"
-msgstr ""
+msgstr "Kuadrat terkecil umum"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum chi-square"
-msgstr ""
+msgstr "Chi-square minimum"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Minimum rank"
-msgstr ""
+msgstr "Peringkat minimum"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Rotation"
-msgstr ""
+msgstr "Rotasi"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Orthogonal"
-msgstr ""
+msgstr "Ortogonal"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "none"
-msgstr ""
+msgstr "tidak ada"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
-msgstr ""
+msgstr "Miring"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Base analysis on"
-msgstr ""
+msgstr "Analisis dasar pada"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Matriks korelasi"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "Matriks kovarians"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
-msgstr ""
+msgstr "Opsi Keluaran"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Order factor loadings by"
-msgstr ""
+msgstr "Pemuatan faktor pesanan oleh"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor size"
-msgstr ""
+msgstr "Ukuran faktor"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
-msgstr ""
+msgstr "Tabel"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Structure matrix"
-msgstr ""
+msgstr "Matriks struktur"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factor correlations"
-msgstr ""
+msgstr "Korelasi faktor"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
-msgstr ""
+msgstr "Indeks kesesuaian tambahan"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Diagram jalur"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Scree plot"
-msgstr ""
+msgstr "Plot Scree"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr ""
+msgstr "Pemeriksaan asumsi"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
-msgstr ""
+msgstr "Uji KMO"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
-msgstr ""
+msgstr "Uji Bartlett"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Nilai yang Hilang"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Mengecualikan kasus berpasangan"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Mengecualikan kasus menurut daftar"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
-msgstr ""
+msgstr "Variabel"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis"
@@ -414,155 +420,156 @@ msgstr "Analisis paralel"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues"
-msgstr ""
+msgstr "Nilai Eigen"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Nilai Eigen di atas"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of components"
-msgstr ""
+msgstr "Jumlah komponen"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Rotation"
-msgstr ""
+msgstr "Rotasi"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Orthogonal"
-msgstr ""
+msgstr "Ortogonal"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "none"
-msgstr ""
+msgstr "Tidak ada"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
-msgstr ""
+msgstr "Miring"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Base decomposition on"
-msgstr ""
+msgstr "Dekomposisi dasar pada"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Matriks korelasi"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "Matriks kovarians"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
-msgstr ""
+msgstr "Opsi Keluaran"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Order component loadings by"
-msgstr ""
+msgstr "Pemuatan komponen pesanan berdasarkan"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component size"
-msgstr ""
+msgstr "Ukuran komponen"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Path diagram"
-msgstr ""
+msgstr "Diagram jalur"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Scree plot"
-msgstr ""
+msgstr "Plot Scree"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Nilai yang Hilang"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Mengecualikan kasus berpasangan"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Mengecualikan kasus menurut daftar"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Add PC scores to data"
-msgstr ""
+msgstr "Menambahkan skor PC ke data"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
-msgstr ""
+msgstr "Berdasarkan PC"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on FA"
-msgstr ""
+msgstr "Berdasarkan FA"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "Hasil analisis paralel"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
-msgstr ""
+msgstr "Berdasarkan PC"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on FA"
-msgstr ""
+msgstr "Berdasarkan FA"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "Hasil analisis paralel"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "Matriks korelasi polikorelasi/tetrakorelasi"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
-msgstr ""
+msgstr "Tes Mardia"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "Matriks korelasi polikorelasi/tetrakorelasi"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
-msgstr ""
+msgstr "Ukuran font"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr ""
+msgstr "Tampilkan varians"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr ""
+msgstr "Putar plot"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
-msgstr ""
+msgstr "Menampilkan estimasi parameter"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model identification"
-msgstr ""
+msgstr "Identifikasi model"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr ""
+msgstr "Tes Kaiser-Meyer-Olkin (KMO)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr ""
+msgstr "Uji kebulatan Bartlett"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic package"
-msgstr ""
+msgstr "Paket meniru"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
@@ -570,47 +577,47 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "CI level"
-msgstr ""
+msgstr "Tingkat CI"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard error"
-msgstr ""
+msgstr "Kesalahan standar"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr ""
+msgstr "Langkah awal"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr ""
+msgstr "Penanganan data yang hilang"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr ""
+msgstr "FIML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr ""
+msgstr "Penghapusan menurut daftar"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr ""
+msgstr "Berpasangan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
-msgstr ""
+msgstr "Dua tahap"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
-msgstr ""
+msgstr "Dua tahap yang kuat"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr ""
+msgstr "Tidak ada Kovariat Eksogen"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors based on"
-msgstr ""
+msgstr "Jumlah Faktor berdasarkan"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factoring method"
@@ -618,39 +625,39 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "Menampilkan pemuatan di atas"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "Matriks sisa"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components based on"
-msgstr ""
+msgstr "Jumlah Komponen berdasarkan"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on principal components"
-msgstr ""
+msgstr "Berdasarkan komponen utama"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on factors"
-msgstr ""
+msgstr "Berdasarkan faktor"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "Menampilkan pemuatan di atas"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Tables"
-msgstr ""
+msgstr "Tabel"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component correlations"
-msgstr ""
+msgstr "Korelasi komponen"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "Matriks sisa"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Average variance extracted (AVE)"
@@ -662,28 +669,28 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
-msgstr ""
+msgstr "Keandalan"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Assumption checks"
-msgstr ""
+msgstr "Pemeriksaan asumsi"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "KMO test"
-msgstr ""
+msgstr "Tes KMO"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Bartlett's test"
-msgstr ""
+msgstr "Tes Bartlett"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
-msgstr ""
+msgstr "Tes Mardia"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix mean of manifest intercepts to zero"
-msgstr ""
+msgstr "Memperbaiki rata-rata intersepsi manifes menjadi nol"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
-msgstr ""
+msgstr "Struktural"

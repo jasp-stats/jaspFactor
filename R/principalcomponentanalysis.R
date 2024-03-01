@@ -646,22 +646,20 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
   baseNames <- gettextf("Component_%s", seq_len(ncol(scores)))
-  encodedNames <- jaspBase::createColumns(baseNames)
+  # encodedNames <- jaspBase::createColumns(baseNames)
 
   # print(length(container[[""]]))
-  if (length(encodedNames) == length(baseNames)) {
+  # if (length(encodedNames) == length(baseNames)) {
     for (i in seq_len(ncol(scores))) {
-      container[[encodedNames[i]]] <- jaspBase::createJaspColumn(encodedNames[i])
-      container[[encodedNames[i]]]$setScale(scores[, i])
+      container[[baseNames[i]]] <- jaspBase::createJaspColumn(baseNames[i])
+      container[[baseNames[i]]]$setScale(scores[, i])
     }
     jaspResults[["addedScoresContainer"]] <- container
 
-  } else {
-    container <- NULL
-    jaspResults[["addedScoresContainer"]] <- NULL
-  }
-
-
+  # } else {
+  #   container <- NULL
+  #   jaspResults[["addedScoresContainer"]] <- NULL
+  # }
 
   return()
 

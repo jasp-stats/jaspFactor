@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2024-04-06 03:26+0000\n"
+"PO-Revision-Date: 2024-04-07 21:01+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "fr/>\n"
@@ -76,7 +76,7 @@ msgid "# Factors"
 msgstr "Facteur"
 
 msgid "Model fit"
-msgstr ""
+msgstr "Ajustement du modèle"
 
 msgid "Chi-square test"
 msgstr "Test Chi-square"
@@ -84,7 +84,6 @@ msgstr "Test Chi-square"
 msgid "Model"
 msgstr "Modèle"
 
-#, fuzzy
 msgid "df"
 msgstr "ddl"
 

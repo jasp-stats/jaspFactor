@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2024-02-19 17:01+0000\n"
+"PO-Revision-Date: 2024-04-06 03:26+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "fr/>\n"
@@ -69,7 +69,7 @@ msgid "The model could not be estimated due to nonconvergence."
 msgstr ""
 
 msgid "The model could not be estimated: No degrees of freedom left."
-msgstr ""
+msgstr "Le modèle n'a pas pu être estimé : plus de degré de liberté."
 
 #, fuzzy
 msgid "# Factors"

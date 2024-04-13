@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2024-04-06 03:26+0000\n"
+"PO-Revision-Date: 2024-04-10 11:01+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "fr/>\n"
@@ -76,7 +76,7 @@ msgid "# Factors"
 msgstr "Facteur"
 
 msgid "Model fit"
-msgstr ""
+msgstr "Ajustement du modèle"
 
 msgid "Chi-square test"
 msgstr "Test Chi-square"
@@ -84,7 +84,6 @@ msgstr "Test Chi-square"
 msgid "Model"
 msgstr "Modèle"
 
-#, fuzzy
 msgid "df"
 msgstr "ddl"
 
@@ -101,12 +100,14 @@ msgid ""
 "The estimator is %1$s and the test statistic is %2$s because there are "
 "categorical variables in the data."
 msgstr ""
+"L'estimateur est %1$s et la statistique de test est %2$s car les données "
+"contiennent des variables catégorielles."
 
 msgid "You may consider changing the standard error method to 'robust'."
 msgstr ""
 
 msgid "The estimator is %s."
-msgstr ""
+msgstr "L'estimateur est %s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Test Kaiser-Meyer-Olkin (KMO)"

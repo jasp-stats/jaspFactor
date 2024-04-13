@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-04-03 03:22+0000\n"
+"PO-Revision-Date: 2024-04-11 15:17+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/pl/>\n"
@@ -392,7 +392,7 @@ msgstr "Braki danych"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Sprawdzaj oddzielnie dla każdej analizy"
+msgstr "Wyklucz oddzielnie dla każdej analizy"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases listwise"
@@ -472,7 +472,7 @@ msgstr "Braki danych"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
-msgstr "Sprawdzaj oddzielnie dla każdej analizy"
+msgstr "Wyklucz oddzielnie dla każdej analizy"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases listwise"

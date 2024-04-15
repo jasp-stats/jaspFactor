@@ -49,7 +49,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!is.null(dataset)) return(dataset)
 
   if (options[["naAction"]] == "listwise") {
-    return(.readDataSetToEnd(columns = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
+    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
   } else {
     return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
   }

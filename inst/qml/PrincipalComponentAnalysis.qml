@@ -242,14 +242,6 @@ Form
 			text: qsTr("Add PC scores to data")
 			enabled: variables.count > 1
 
-			// ComputedColumnField
-			// {
-			// 	name:					"addComponentScoresPrefix"
-			// 	text:					qsTr("Column prefix")
-			// 	placeholderText:		qsTr("Score_")
-			// 	fieldWidth:				120
-			// 	enabled:				addPC.checked
-			// }
 		}
 	}
 }

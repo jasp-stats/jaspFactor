@@ -635,31 +635,50 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 .pcaAddComponentsToData <- function(jaspResults, modelContainer, options, ready) {
 
   if (!ready ||
-      !options[["addComponentScores"]] ||
-      modelContainer$getError() ||
-      !is.null(jaspResults[["addedScoresContainer"]])) {
+      !is.null(jaspResults[["addedScoresContainer"]]) ||
+      modelContainer$getError())
+      {
     return()
   }
 
-  container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer)
+  colNamesR <- gettextf("Component_%s", seq_len(length(options$variables)))
 
-  scores <- modelContainer[["model"]][["object"]][["scores"]]
-  baseNames <- gettextf("Component_%s", seq_len(ncol(scores)))
-  # encodedNames <- jaspBase::createColumns(baseNames)
+  if (options[["addComponentScores"]]) {
 
-  # print(length(container[[""]]))
-  # if (length(encodedNames) == length(baseNames)) {
-    for (i in seq_len(ncol(scores))) {
-      container[[baseNames[i]]] <- jaspBase::createJaspColumn(baseNames[i])
-      container[[baseNames[i]]]$setScale(scores[, i])
+    container    <- createJaspContainer()
+    container$dependOn(optionsFromObject = modelContainer)
+
+    scores <- modelContainer[["model"]][["object"]][["scores"]]
+
+    for (ii in seq_len(ncol(scores))) {
+
+      colNameR <- colNamesR[ii]
+
+      if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
+        .quitAnalysis(gettext("Column name already exists in the dataset"))
+      }
+
+      container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
+      container[[colNameR]]$setScale(scores[, ii])
     }
+
     jaspResults[["addedScoresContainer"]] <- container
 
-  # } else {
-  #   container <- NULL
-  #   jaspResults[["addedScoresContainer"]] <- NULL
-  # }
+    # check if there are previous colNames that are not needed anymore and delete the cols
+    oldNames <- jaspResults[["createdColumnNames"]][["object"]]
+    newNames <- colNamesR[1:ii]
+    if (!is.null(oldNames)) {
+      noMatch <- which(!(oldNames %in% newNames))
+      if (length(noMatch) > 0) {
+        for (i in 1:length(noMatch)) {
+          jaspBase:::columnDelete(oldNames[noMatch[i]])
+        }
+      }
+    }
+
+    # save the created col names
+    jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
+  }
 
   return()
 

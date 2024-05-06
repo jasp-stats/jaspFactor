@@ -17,9 +17,6 @@
 
 principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
-  # sink(file="~/Downloads/log.txt")
-  # on.exit(sink(NULL))
-
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
@@ -636,49 +633,48 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||
-      modelContainer$getError())
+      modelContainer$getError() ||
+      !options[["addComponentScores"]])
       {
     return()
   }
 
   colNamesR <- gettextf("Component_%s", seq_len(length(options$variables)))
 
-  if (options[["addComponentScores"]]) {
+  container    <- createJaspContainer()
+  container$dependOn(optionsFromObject = modelContainer, options = "addComponentScores")
 
-    container    <- createJaspContainer()
-    container$dependOn(optionsFromObject = modelContainer)
+  scores <- modelContainer[["model"]][["object"]][["scores"]]
 
-    scores <- modelContainer[["model"]][["object"]][["scores"]]
+  for (ii in seq_len(ncol(scores))) {
 
-    for (ii in seq_len(ncol(scores))) {
+    colNameR <- colNamesR[ii]
 
-      colNameR <- colNamesR[ii]
-
-      if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
-        .quitAnalysis(gettext("Column name already exists in the dataset"))
-      }
-
-      container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
-      container[[colNameR]]$setScale(scores[, ii])
+    if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
+      .quitAnalysis(gettext("Column name already exists in the dataset"))
     }
 
-    jaspResults[["addedScoresContainer"]] <- container
-
-    # check if there are previous colNames that are not needed anymore and delete the cols
-    oldNames <- jaspResults[["createdColumnNames"]][["object"]]
-    newNames <- colNamesR[1:ii]
-    if (!is.null(oldNames)) {
-      noMatch <- which(!(oldNames %in% newNames))
-      if (length(noMatch) > 0) {
-        for (i in 1:length(noMatch)) {
-          jaspBase:::columnDelete(oldNames[noMatch[i]])
-        }
-      }
-    }
-
-    # save the created col names
-    jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
+    container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
+    container[[colNameR]]$setScale(scores[, ii])
   }
+
+  jaspResults[["addedScoresContainer"]] <- container
+
+  # check if there are previous colNames that are not needed anymore and delete the cols
+  oldNames <- jaspResults[["createdColumnNames"]][["object"]]
+  newNames <- colNamesR[1:ii]
+  if (!is.null(oldNames)) {
+    noMatch <- which(!(oldNames %in% newNames))
+    if (length(noMatch) > 0) {
+      for (i in 1:length(noMatch)) {
+        jaspBase:::columnDelete(oldNames[noMatch[i]])
+      }
+    }
+  }
+
+  # save the created col names
+  jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
+
 
   return()
 

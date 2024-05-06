@@ -68,6 +68,8 @@ With Exploratory Factor Analysis it is possible to identify one or more factors 
 - Missing values: 
     - Exclude cases pairwise: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. 
     - Exclude cases listwise: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
+- Add FA scores to data: Adds the estimated factor scores as new columns to the data set
+
 
 ### Output 
 ---

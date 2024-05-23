@@ -19,7 +19,7 @@
 
 principalComponentAnalysis <- function(
           data = NULL,
-          version = "0.18.2",
+          version = "0.19",
           addComponentScores = FALSE,
           analysisBasedOn = "correlationMatrix",
           bartlettTest = FALSE,

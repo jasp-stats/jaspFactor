@@ -45,7 +45,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaPathDiagram(       modelContainer, dataset, options, ready)
 
   # data saving
-  .efaAddFactorsToData(jaspResults, modelContainer, options, ready)
+  .commonAddScoresToData(jaspResults, modelContainer, options, ready)
 }
 
 
@@ -892,20 +892,21 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 }
 
-.efaAddFactorsToData <- function(jaspResults, modelContainer, options, ready) {
+
+.commonAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
 
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||
       modelContainer$getError() ||
-      !options[["addFactorScores"]])
+      !options[["addScores"]])
   {
     return()
   }
 
-  colNamesR <- gettextf("Factor_%s", seq_len(length(options$variables)))
+  colNamesR <- paste0(options[["addedScoresPrefix"]], "_", seq_len(length(options$variables)))
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = "addFactorScores")
+  container$dependOn(optionsFromObject = modelContainer, options = c("addScores", "addedScoresPrefix"))
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
 
@@ -914,7 +915,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     colNameR <- colNamesR[ii]
 
     if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
-      .quitAnalysis(gettext("Column name already exists in the dataset"))
+      .quitAnalysis(gettextf("Column name %s already exists in the dataset", colNameR))
     }
 
     container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)

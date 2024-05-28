@@ -264,11 +264,18 @@ Form
 
 		CheckBox
 		{
-			id: addFA
-			name: "addFactorScores"
-			text: qsTr("Add FA scores to data")
+			id: addScores
+			name: "addScores"
+			label: qsTr("Add FA scores to data")
 			enabled: variables.count > 1
 
+			TextField {
+				name: "addedScoresPrefix"
+				label: qsTr("Prefix")
+				defaultValue: "FA"
+				fieldWidth: 80
+				enabled: addScores.checked
+			}
 		}
 	}
 }

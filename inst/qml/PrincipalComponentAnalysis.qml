@@ -161,8 +161,6 @@ Form
 			value: 0.4
 		}
 
-		Group
-		{
 			RadioButtonGroup
 			{
 				name: "componentLoadingsOrder"
@@ -216,7 +214,6 @@ Form
 					}
 				}
 			}
-		}
 
 		Group
 		{
@@ -234,14 +231,21 @@ Form
 			RadioButton { value: "listwise";		label: qsTr("Exclude cases listwise")					}
 		}
 
-
 		CheckBox
 		{
-			id: addPC
-			name: "addComponentScores"
-			text: qsTr("Add PC scores to data")
+			id: addScores
+			name: "addScores"
+			label: qsTr("Add PC scores to data")
 			enabled: variables.count > 1
 
+			TextField {
+				name: "addedScoresPrefix"
+				label: qsTr("Prefix")
+				defaultValue: "PC"
+				fieldWidth: 80
+				enabled: addScores.checked
+			}
 		}
+
 	}
 }

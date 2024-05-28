@@ -42,7 +42,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAddComponentsToData(jaspResults, modelContainer, options, ready)
+  .commonAddScoresToData(jaspResults, modelContainer, options, ready)
+
 }
 
 # Preprocessing functions ----
@@ -626,57 +627,6 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     cut                 = options$loadingsDisplayLimit,
     bg                  = "transparent"
   ))
-
-}
-
-.pcaAddComponentsToData <- function(jaspResults, modelContainer, options, ready) {
-
-  if (!ready ||
-      !is.null(jaspResults[["addedScoresContainer"]]) ||
-      modelContainer$getError() ||
-      !options[["addComponentScores"]])
-      {
-    return()
-  }
-
-  colNamesR <- gettextf("Component_%s", seq_len(length(options$variables)))
-
-  container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = "addComponentScores")
-
-  scores <- modelContainer[["model"]][["object"]][["scores"]]
-
-  for (ii in seq_len(ncol(scores))) {
-
-    colNameR <- colNamesR[ii]
-
-    if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
-      .quitAnalysis(gettext("Column name already exists in the dataset"))
-    }
-
-    container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
-    container[[colNameR]]$setScale(scores[, ii])
-  }
-
-  jaspResults[["addedScoresContainer"]] <- container
-
-  # check if there are previous colNames that are not needed anymore and delete the cols
-  oldNames <- jaspResults[["createdColumnNames"]][["object"]]
-  newNames <- colNamesR[1:ii]
-  if (!is.null(oldNames)) {
-    noMatch <- which(!(oldNames %in% newNames))
-    if (length(noMatch) > 0) {
-      for (i in 1:length(noMatch)) {
-        jaspBase:::columnDelete(oldNames[noMatch[i]])
-      }
-    }
-  }
-
-  # save the created col names
-  jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
-
-
-  return()
 
 }
 

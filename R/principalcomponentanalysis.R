@@ -16,6 +16,7 @@
 #
 
 principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ...) {
+
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
@@ -41,7 +42,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAddComponentsToData(jaspResults, modelContainer, options, ready)
+  .commonAddScoresToData(jaspResults, modelContainer, options, ready)
+
 }
 
 # Preprocessing functions ----
@@ -245,8 +247,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     goodnessOfFitTable$addFootnote(message = gettext("Degrees of freedom below 0, model is unidentified."), symbol = gettext("<em>Warning:</em>"))
 }
 
+
 .pcaLoadingsTable <- function(modelContainer, dataset, options, ready) {
+
   if (!is.null(modelContainer[["loadingsTable"]])) return()
+
   loadingsTable <- createJaspTable(gettext("Component Loadings"))
   loadingsTable$dependOn(c("loadingsDisplayLimit", "componentLoadingsOrder"))
   loadingsTable$position <- 2
@@ -625,16 +630,3 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 }
 
-.pcaAddComponentsToData <- function(jaspResults, modelContainer, options, ready) {
-  if(!ready || !options[["addComponentScores"]] || options[["componentsPrefix"]] == "" || modelContainer$getError()) return()
-
-  scores <- modelContainer[["model"]][["object"]][["scores"]]
-  for (i in 1:ncol(scores)) {
-    scorename <- paste0(options[["componentsPrefix"]], "_", i)
-    if (is.null(jaspResults[[scorename]])) {
-      jaspResults[[scorename]] <- createJaspColumn(scorename)
-      jaspResults[[scorename]]$dependOn(optionsFromObject = modelContainer)
-      jaspResults[[scorename]]$setScale(scores[, i])
-    }
-  }
-}

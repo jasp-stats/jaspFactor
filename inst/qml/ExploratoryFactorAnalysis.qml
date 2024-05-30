@@ -261,5 +261,21 @@ Form
 			RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
 			RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}
 		}
+
+		CheckBox
+		{
+			id: addScores
+			name: "addScores"
+			label: qsTr("Add FA scores to data")
+			enabled: variables.count > 1
+
+			TextField {
+				name: "addedScoresPrefix"
+				label: qsTr("Prefix")
+				defaultValue: "FA"
+				fieldWidth: 80
+				enabled: addScores.checked
+			}
+		}
 	}
 }

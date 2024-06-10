@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2024-05-24 01:16+0000\n"
+"PO-Revision-Date: 2024-06-10 10:24+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "pl/>\n"
@@ -294,7 +294,7 @@ msgid "Modification Indices"
 msgstr "Indeksy modyfikacyjne"
 
 msgid "Cross-loadings"
-msgstr ""
+msgstr "Ładunki krzyżowe"
 
 msgid "Mod. Ind."
 msgstr "Ind. mod."
@@ -303,7 +303,7 @@ msgid "EPC"
 msgstr "EPC"
 
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "Ładunki krzyżowe drugiego poziomu"
 
 msgid "Modification indices"
 msgstr "Indeksy modyfikacyjne"
@@ -500,22 +500,26 @@ msgid "Residual Matrix"
 msgstr "Macierz reszt"
 
 msgid "Real data component eigenvalues"
-msgstr ""
+msgstr "Wartości własne składników dla rzeczywistych danych"
 
 msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
 msgstr ""
+"'*' = %s powinno być zachowane. Wyniki z analizy równoległej opartej na "
+"Głównych Składowych."
 
 msgid "Real data factor eigenvalues"
-msgstr ""
+msgstr "Wartości własne czynników dla rzeczywistych danych"
 
 msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
 msgstr ""
+"'*' = %s powinno być zachowane. Wyniki z analizy równoległej opartej na "
+"Analizie Czynnikowej."
 
 msgid "Parallel Analysis"
 msgstr "Analiza równoległa"
 
 msgid "Simulated data mean eigenvalues"
-msgstr ""
+msgstr "Średnie wartości własne symulowanych danych"
 
 msgid ""
 "Screeplot not available. \n"

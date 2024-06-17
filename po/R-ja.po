@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.13.0\n"
 "POT-Creation-Date: 2023-05-08 16:33\n"
-"PO-Revision-Date: 2023-04-21 17:51+0000\n"
+"PO-Revision-Date: 2024-06-18 16:09+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
-"r/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-r/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid "Second-Order"
 msgstr "二次"
@@ -30,19 +30,22 @@ msgstr ""
 "モデルを推定できませんでした。 2変数未満の因子が2次レベルで追加されました。"
 
 msgid "FIML missing data handling only available with ML-type estimators"
-msgstr ""
+msgstr "FIML の欠損値処理は，ML タイプの推定法でのみ使用可能です"
 
 msgid ""
 "Robust standard errors are not available with the GLS estimator. Try "
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
-msgstr ""
+msgstr "GLS推定法では、頑健標準誤差を利用できません. "
+"モデル当てはめの詳細設定内の標準誤差方法を変更してみてください."
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
 msgstr ""
+"欠測値処理 '%s' はカテゴリカルデータではサポートされていません. \n"
+" '詳細設定'のタブ内の'欠測値処理'内の別の方法を選択してください"
 
 msgid ""
 "The model could not be estimated. Error message: \n"
@@ -62,9 +65,8 @@ msgstr "収束しなかったため，モデルは推定できませんでした
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "モデルは推定できませんでした: 自由度が残っていません。"
 
-#, fuzzy
 msgid "# Factors"
-msgstr "要因"
+msgstr "# 因子"
 
 msgid "Model fit"
 msgstr "モデル適合"
@@ -90,19 +92,17 @@ msgstr "因子モデル"
 msgid ""
 "The estimator is %1$s and the test statistic is %2$s because there are "
 "categorical variables in the data."
-msgstr ""
+msgstr "データにカテゴリー変数があるので、推定量は %1$s 、検定統計量は %2$s である."
 
 msgid "You may consider changing the standard error method to 'robust'."
-msgstr ""
+msgstr "標準誤差の方法を'頑健(robust)'に変えることを検討してください."
 
 msgid "The estimator is %s."
-msgstr ""
+msgstr "推定量は %s です."
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin検定"
 
-#, fuzzy
 msgid "Bartlett's test of sphericity"
 msgstr "Bartlettの検定"
 
@@ -202,11 +202,11 @@ msgstr "期待される交差検証指数（ECVI）"
 msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
-msgstr ""
+msgstr "PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている."
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
-msgstr ""
+msgstr "データにはカテゴリー変数があるため、RMSEAは標準化されている."
 
 msgid "Parameter estimates"
 msgstr "パラメータ推定"
@@ -220,7 +220,7 @@ msgid "Factor loadings"
 msgstr "因子負荷量"
 
 msgid "Group"
-msgstr ""
+msgstr "群"
 
 msgid "Factor"
 msgstr "要因"
@@ -271,10 +271,10 @@ msgid "Intercepts"
 msgstr "切片"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "閾値"
 
 msgid "Threshold"
-msgstr ""
+msgstr "閾値"
 
 msgid "Modification Indices"
 msgstr "修正指数"
@@ -291,12 +291,11 @@ msgstr "EPC"
 msgid "Second-order cross-loadings"
 msgstr "2次のクロスした負荷量"
 
-#, fuzzy
 msgid "Modification indices"
 msgstr "修正指数"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "カットオフ値以上の修正指数はありません"
 
 msgid "Implied covariance matrices"
 msgstr "モデル共分散行列"
@@ -329,19 +328,19 @@ msgid "Model syntax"
 msgstr "モデルのシンタックス"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "平均分散抽出"
 
 msgid "AVE"
-msgstr ""
+msgstr "AVE"
 
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "Heterotrait-monotrait 比"
 
 msgid "Reliability"
-msgstr ""
+msgstr "信頼性"
 
 msgid "Coefficient %s"
-msgstr ""
+msgstr "係数 %s"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "含まれる変数の量に対して要求された因子 (%i) が多すぎます"
@@ -361,17 +360,11 @@ msgstr "データが無効です: 変数 %s の欠損値が多すぎます。"
 msgid "Data not valid: all variables are collinear"
 msgstr "データが無効: すべての変数が共線関係にあります"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr ""
-"推定に失敗しました。\n"
-"内部エラー メッセージ : %s"
+msgstr "推定に失敗しました. 内部エラー メッセージ: %1$s. %2$s"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %s"
-msgstr ""
-"推定に失敗しました。\n"
-"内部エラー メッセージ : %s"
+msgstr "推定に失敗しました. 内部エラー メッセージ: %s"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
@@ -380,41 +373,39 @@ msgid ""
 "all response categories.\n"
 "      Internal error message: %s"
 msgstr ""
+"残念ながら、ポリコリック/テトラコリック相関行列の推定に失敗しました.\n"
+"      これはサンプルサイズが小さいか、変数がすべての回答カテゴリーを含んでい"
+"ないことが原因かもしれない.\n"
+"      内部エラーメッセージ: %s"
 
 msgid "No factors with an eigenvalue >"
 msgstr "次より大きい固有値を持つ因子がありません >"
 
-#, fuzzy
 msgid "Maximum observed eigenvalue equals"
 msgstr "観測された最大の固有値:"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin検定"
 
 msgid "Overall MSA"
 msgstr "全体的な MSA"
 
-#, fuzzy
 msgid "Bartlett's Test"
 msgstr "Bartlettの検定"
 
 msgid "Mardia's Test of Multivariate Normality"
-msgstr ""
+msgstr "Mardiaの多変量正規性検定"
 
 msgid "Statistic"
-msgstr ""
+msgstr "統計量"
 
-#, fuzzy
 msgid "Mardia test failed. Internal error message: %s"
-msgstr ""
-"推定に失敗しました。\n"
-"内部エラー メッセージ : %s"
+msgstr "Mardia検定に失敗しました. 内部エラー メッセージ: %s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
 "statistic for kurtosis standard normal."
-msgstr ""
+msgstr "歪度の統計量はχ2分布、尖度の統計量は標準正規分布と仮定している."
 
 msgid "Chi-squared Test"
 msgstr "カイ二乗検定"
@@ -446,7 +437,6 @@ msgstr "因子負荷(構造行列)"
 msgid "Factor Characteristics"
 msgstr "因子特性"
 
-#, fuzzy
 msgid "Eigenvalues"
 msgstr "固有値"
 
@@ -478,41 +468,37 @@ msgid "RMSEA 90%% confidence"
 msgstr "RMSEA 90%%信頼度"
 
 msgid "SRMR"
-msgstr ""
+msgstr "SRMR"
 
 msgid "TLI"
 msgstr "TLI"
 
 msgid "CFI"
-msgstr ""
+msgstr "CFI"
 
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "Residual Matrix"
-msgstr "残差分散"
+msgstr "残差行列"
 
-#, fuzzy
 msgid "Real data component eigenvalues"
-msgstr "次より大きい固有値を持つコンポーネントがありません: >"
+msgstr "実データ成分の固有値"
 
 msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr ""
+msgstr "'*' = %s を保持すべきである. PCに基づく平行分析の結果."
 
-#, fuzzy
 msgid "Real data factor eigenvalues"
-msgstr "次より大きい固有値を持つ因子がありません >"
+msgstr "実データ因子固有値"
 
 msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr ""
+msgstr "'*' = %s を保持すべきである. FAに基づく平行分析の結果."
 
 msgid "Parallel Analysis"
-msgstr ""
+msgstr "平行分析"
 
-#, fuzzy
 msgid "Simulated data mean eigenvalues"
-msgstr "平行解析によるシミュレーションデータ"
+msgstr "シミュレーションデータ平均固有値"
 
 msgid ""
 "Screeplot not available. \n"
@@ -533,11 +519,8 @@ msgstr "固有値"
 msgid "Path Diagram"
 msgstr "パス図"
 
-#, fuzzy
 msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
-"推定に失敗しました。\n"
-"内部エラー メッセージ : %s"
+msgstr "平行分析に失敗しました. 内部エラー メッセージ: %s"
 
 msgid "No components with an eigenvalue >"
 msgstr "次より大きい固有値を持つコンポーネントがありません: >"

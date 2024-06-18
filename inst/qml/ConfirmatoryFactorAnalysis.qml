@@ -49,7 +49,6 @@ Form
 			{
 				title: qsTr("Second-Order")
 				name:  "secondOrder"
-				suggestedColumns: []
 			}
 			preferredHeight: jaspTheme.defaultVariablesFormHeight / 3
 		}

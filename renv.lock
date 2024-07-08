@@ -56,7 +56,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.12.8.4.0",
+      "Version": "14.0.0-1",
       "Source": "Repository"
     },
     "RcppEigen": {
@@ -66,7 +66,7 @@
     },
     "RcppParallel": {
       "Package": "RcppParallel",
-      "Version": "5.1.7",
+      "Version": "5.1.8",
       "Source": "Repository"
     },
     "Rcsdp": {
@@ -91,7 +91,7 @@
     },
     "XML": {
       "Package": "XML",
-      "Version": "3.99-0.16.1",
+      "Version": "3.99-0.17",
       "Source": "Repository"
     },
     "abind": {
@@ -226,7 +226,7 @@
     },
     "digest": {
       "Package": "digest",
-      "Version": "0.6.35",
+      "Version": "0.6.36",
       "Source": "Repository"
     },
     "dplyr": {
@@ -408,7 +408,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "HEAD",
-      "RemoteSha": "c5936d63c775841d2ebc6fc097fe96ff2b06d21b"
+      "RemoteSha": "e7b21a684768ac8853057a935ff21bcba3314212"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -419,7 +419,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
       "RemoteRef": "HEAD",
-      "RemoteSha": "09e2fecf1b921a00a203a442207591ecd3db2821"
+      "RemoteSha": "5c6cb6a4723197ca3befd3d0a5fab5b8291c08a2"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -430,7 +430,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
       "RemoteRef": "HEAD",
-      "RemoteSha": "5961a71014dacac9e334599a1c7de1b0ba30281e"
+      "RemoteSha": "65c8b9583f1e1036920ee10bdfd8d3faa3e6d649"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -449,7 +449,7 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.47",
+      "Version": "1.48",
       "Source": "Repository"
     },
     "kutils": {
@@ -489,7 +489,7 @@
     },
     "lme4": {
       "Package": "lme4",
-      "Version": "1.1-35.4",
+      "Version": "1.1-35.5",
       "Source": "Repository"
     },
     "magrittr": {
@@ -559,7 +559,7 @@
     },
     "nloptr": {
       "Package": "nloptr",
-      "Version": "2.1.0",
+      "Version": "2.1.1",
       "Source": "Repository"
     },
     "numDeriv": {
@@ -644,12 +644,12 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.7.6",
+      "Version": "1.7.7",
       "Source": "Repository"
     },
     "psych": {
       "Package": "psych",
-      "Version": "2.4.3",
+      "Version": "2.4.6.26",
       "Source": "Repository"
     },
     "purrr": {
@@ -884,7 +884,7 @@
     },
     "yaml": {
       "Package": "yaml",
-      "Version": "2.3.8",
+      "Version": "2.3.9",
       "Source": "Repository"
     },
     "zip": {

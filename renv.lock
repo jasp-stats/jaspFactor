@@ -86,7 +86,7 @@
     },
     "TruncatedNormal": {
       "Package": "TruncatedNormal",
-      "Version": "2.2.2",
+      "Version": "2.3",
       "Source": "Repository"
     },
     "XML": {
@@ -430,7 +430,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
       "RemoteRef": "HEAD",
-      "RemoteSha": "65c8b9583f1e1036920ee10bdfd8d3faa3e6d649"
+      "RemoteSha": "6a321e5a94ae037310459ed538975084cdb33cd8"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -662,6 +662,11 @@
       "Version": "1.9.8",
       "Source": "Repository"
     },
+    "qrng": {
+      "Package": "qrng",
+      "Version": "0.0-10",
+      "Source": "Repository"
+    },
     "quadprog": {
       "Package": "quadprog",
       "Version": "1.5-8",
@@ -670,11 +675,6 @@
     "ragg": {
       "Package": "ragg",
       "Version": "1.3.2",
-      "Source": "Repository"
-    },
-    "randtoolbox": {
-      "Package": "randtoolbox",
-      "Version": "2.0.4",
       "Source": "Repository"
     },
     "rappdirs": {
@@ -710,11 +710,6 @@
     "rmarkdown": {
       "Package": "rmarkdown",
       "Version": "2.27",
-      "Source": "Repository"
-    },
-    "rngWELL": {
-      "Package": "rngWELL",
-      "Version": "0.10-9",
       "Source": "Repository"
     },
     "rockchalk": {
@@ -770,6 +765,11 @@
     "sourcetools": {
       "Package": "sourcetools",
       "Version": "0.1.7-1",
+      "Source": "Repository"
+    },
+    "spacefillr": {
+      "Package": "spacefillr",
+      "Version": "0.3.3",
       "Source": "Repository"
     },
     "stringi": {

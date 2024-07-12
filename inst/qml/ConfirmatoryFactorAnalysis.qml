@@ -24,9 +24,11 @@ Form
 
 	FactorsForm
 	{
-		id: factors
-		name: "factors"
-		initNumberFactors: 1
+		id:					factors
+		name:				"factors"
+		initNumberFactors:	1
+		allowedColumns:		["ordinal", "scale"]
+		allowTypeChange:	true
 	}
 
 	Section

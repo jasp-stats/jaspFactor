@@ -66,12 +66,28 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaReadData <- function(dataset, options) {
   if (!is.null(dataset)) return(dataset)
 
-  vars <- unique(unlist(lapply(options$factors, function(x) x$indicators)))
-  if (options$group == "") {
-    return(.readDataSetToEnd(columns = vars))
-  } else {
-    return(.readDataSetToEnd(columns = vars, columns.as.factor = options$group))
-  }
+  # NOTE: The GUI does not yet allow for putting the same variable in different factors.
+  # if the same variable is used twice but with a different type then this would
+  # crash the R code. However, since this is not possible yet, this should be okay for now
+  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"),       use.names = FALSE)
+  types <- unlist(lapply(options[["factors"]], `[[`, "types"),            use.names = FALSE)
+
+  if (length(vars) == 0)
+    return(data.frame())
+
+  duplicateVars <- duplicated(vars)
+  vars  <- vars[!duplicateVars]
+  types <- types[!duplicateVars]
+
+  splitVars <- split(vars, types)
+  groupVar <- if (options[["group"]] == "") NULL else options[["group"]]
+
+  return(.readDataSetToEnd(
+    columns.as.numeric = splitVars[["scale"]],
+    columns.as.ordinal = splitVars[["ordinal"]],
+    columns.as.factor  = groupVar
+  ))
+
 }
 
 .cfaPreprocessOptions <- function(options) {

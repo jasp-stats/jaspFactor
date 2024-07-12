@@ -9,9 +9,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -119,9 +119,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -211,9 +211,9 @@ test_that("Bootstrapping works", {
   options$estimator <- "default"
   options$standardized <- "none"
   options$factors <- list(
-    list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1"),
-    list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2"),
-    list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3")
+    list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
+    list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
+    list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
   )
   options$modelIdentification <- "factorVariance"
   options$naAction <- "listwise"
@@ -269,9 +269,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "visual"),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "textual"),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "speed")
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "visual",  types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "textual", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "speed",   types = rep("scale", 3))
 )
 options$modelIdentification <- "effectsCoding"
 options$residualsCovarying <-  list(c("x7", "x8"))
@@ -431,10 +431,8 @@ options$packageMimiced <- "lavaan"
 options$seType <- "robust"
 options$estimator <- "default"
 options$factors <- list(
-  list(indicators = list("V1", "V2", "V3", "V4"),
-       name = "Factor1", title = "Factor 1"),
-  list(indicators = list("V5", "V6", "V7", "V8"),
-       name = "Factor2", title = "Factor 2")
+  list(indicators = list("V1", "V2", "V3", "V4"), name = "Factor1", title = "Factor 1", types = c("ordinal", rep("scale", 3))),
+  list(indicators = list("V5", "V6", "V7", "V8"), name = "Factor2", title = "Factor 2", types = c("ordinal", "scale", "scale", "ordinal"))
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "pairwise"
@@ -525,9 +523,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1"),
-  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2"),
-  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3")
+  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3", types = rep("scale", 3))
 )
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
 options$modelIdentification <- "factorVariance"
@@ -575,9 +573,9 @@ options$group <- "sex"
 options$invarianceTesting <- "structural"
 
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1"),
-  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2"),
-  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3")
+  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3", types = rep("scale", 3))
 )
 options$modelIdentification <- "markerVariable"
 set.seed(1)
@@ -626,9 +624,9 @@ options$meanStructure <- TRUE
 options$interceptsFixedToZero <- "manifest"
 
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1"),
-  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2"),
-  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3")
+  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3", types = rep("scale", 3))
 )
 options$modelIdentification <- "markerVariable"
 set.seed(1)

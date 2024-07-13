@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-05-08 16:33\n"
+"POT-Creation-Date: 2024-07-13 03:29\n"
 "PO-Revision-Date: 2023-04-16 13:59+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -544,6 +544,9 @@ msgstr "Autovalor"
 
 msgid "Path Diagram"
 msgstr "Diagrama de Ruta"
+
+msgid "Column name %s already exists in the dataset"
+msgstr ""
 
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Fallou a análise paralela. Mensaxe de fallo interno: %s"

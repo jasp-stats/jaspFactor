@@ -687,3 +687,15 @@ msgstr "Ustal średnie wyrazów wolnych wskaźników jako zero"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
 msgstr "Strukturalny"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Add FA scores to data"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Prefix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Prefix"
+msgstr ""

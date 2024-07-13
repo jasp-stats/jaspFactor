@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2023-05-08 16:33\n"
+"POT-Creation-Date: 2024-07-13 03:29\n"
 "PO-Revision-Date: 2024-05-19 20:45+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -533,6 +533,9 @@ msgid "Eigenvalue"
 msgstr "Eigenvalue"
 
 msgid "Path Diagram"
+msgstr ""
+
+msgid "Column name %s already exists in the dataset"
 msgstr ""
 
 msgid "Parallel analysis failed. Internal error message: %s"

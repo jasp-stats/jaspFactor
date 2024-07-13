@@ -686,3 +686,15 @@ msgstr "将外显截距的平均值固定为零"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
 msgstr "结构"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Add FA scores to data"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Prefix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Prefix"
+msgstr ""

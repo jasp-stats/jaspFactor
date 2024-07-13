@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2023-05-08 16:33\n"
+"POT-Creation-Date: 2024-07-13 03:29\n"
 "PO-Revision-Date: 2023-05-19 13:50+0000\n"
 "Last-Translator: Pr0ph3t <beomnyul@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -521,6 +521,9 @@ msgstr "特征值"
 
 msgid "Path Diagram"
 msgstr "路径图"
+
+msgid "Column name %s already exists in the dataset"
+msgstr ""
 
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平分析失败。内部错误消息：%s"

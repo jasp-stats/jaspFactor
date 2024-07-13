@@ -688,3 +688,15 @@ msgstr "Memperbaiki rata-rata intersepsi manifes menjadi nol"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
 msgstr "Struktural"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Add FA scores to data"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Prefix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Prefix"
+msgstr ""

@@ -29,6 +29,16 @@
       "Version": "5.1-3",
       "Source": "Repository"
     },
+    "MASS": {
+      "Package": "MASS",
+      "Version": "7.3-61",
+      "Source": "Repository"
+    },
+    "Matrix": {
+      "Package": "Matrix",
+      "Version": "1.7-0",
+      "Source": "Repository"
+    },
     "OpenMx": {
       "Package": "OpenMx",
       "Version": "2.21.11",
@@ -51,7 +61,7 @@
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.0.12",
+      "Version": "1.0.13",
       "Source": "Repository"
     },
     "RcppArmadillo": {
@@ -81,7 +91,7 @@
     },
     "StanHeaders": {
       "Package": "StanHeaders",
-      "Version": "2.32.9",
+      "Version": "2.32.10",
       "Source": "Repository"
     },
     "TruncatedNormal": {
@@ -129,6 +139,11 @@
       "Version": "0.1-3",
       "Source": "Repository"
     },
+    "boot": {
+      "Package": "boot",
+      "Version": "1.3-30",
+      "Source": "Repository"
+    },
     "bslib": {
       "Package": "bslib",
       "Version": "0.7.0",
@@ -164,9 +179,19 @@
       "Version": "3.6.3",
       "Source": "Repository"
     },
+    "cluster": {
+      "Package": "cluster",
+      "Version": "2.1.6",
+      "Source": "Repository"
+    },
     "coda": {
       "Package": "coda",
       "Version": "0.19-4.1",
+      "Source": "Repository"
+    },
+    "codetools": {
+      "Package": "codetools",
+      "Version": "0.2-20",
       "Source": "Repository"
     },
     "colorspace": {
@@ -201,12 +226,12 @@
     },
     "crul": {
       "Package": "crul",
-      "Version": "1.4.2",
+      "Version": "1.5.0",
       "Source": "Repository"
     },
     "cubature": {
       "Package": "cubature",
-      "Version": "2.1.0",
+      "Version": "2.1.1",
       "Source": "Repository"
     },
     "curl": {
@@ -289,6 +314,11 @@
       "Version": "1.0.0",
       "Source": "Repository"
     },
+    "foreign": {
+      "Package": "foreign",
+      "Version": "0.8-87",
+      "Source": "Repository"
+    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.4",
@@ -366,7 +396,7 @@
     },
     "htmlTable": {
       "Package": "htmlTable",
-      "Version": "2.4.2",
+      "Version": "2.4.3",
       "Source": "Repository"
     },
     "htmltools": {
@@ -430,7 +460,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
       "RemoteRef": "HEAD",
-      "RemoteSha": "6bdb86f4ecc75e1aa60c7ef6b603688ff63f7b7f"
+      "RemoteSha": "e18d0ddee35cc4a092f42acf82224e8d2588a552"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -465,6 +495,11 @@
     "later": {
       "Package": "later",
       "Version": "1.3.2",
+      "Source": "Repository"
+    },
+    "lattice": {
+      "Package": "lattice",
+      "Version": "0.22-6",
       "Source": "Repository"
     },
     "lavaan": {
@@ -512,6 +547,11 @@
       "Version": "2.0.1",
       "Source": "Repository"
     },
+    "mgcv": {
+      "Package": "mgcv",
+      "Version": "1.9-1",
+      "Source": "Repository"
+    },
     "mi": {
       "Package": "mi",
       "Version": "1.1",
@@ -557,9 +597,19 @@
       "Version": "3.3.5",
       "Source": "Repository"
     },
+    "nlme": {
+      "Package": "nlme",
+      "Version": "3.1-165",
+      "Source": "Repository"
+    },
     "nloptr": {
       "Package": "nloptr",
       "Version": "2.1.1",
+      "Source": "Repository"
+    },
+    "nnet": {
+      "Package": "nnet",
+      "Version": "7.3-19",
       "Source": "Repository"
     },
     "numDeriv": {
@@ -579,7 +629,7 @@
     },
     "openxlsx": {
       "Package": "openxlsx",
-      "Version": "4.2.5.2",
+      "Version": "4.2.6.1",
       "Source": "Repository"
     },
     "parallelly": {
@@ -717,6 +767,11 @@
       "Version": "1.8.157",
       "Source": "Repository"
     },
+    "rpart": {
+      "Package": "rpart",
+      "Version": "4.1.23",
+      "Source": "Repository"
+    },
     "rpf": {
       "Package": "rpf",
       "Version": "1.0.14",
@@ -824,7 +879,7 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.51",
+      "Version": "0.52",
       "Source": "Repository"
     },
     "triebeard": {
@@ -869,7 +924,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.45",
+      "Version": "0.46",
       "Source": "Repository"
     },
     "xml2": {
@@ -884,7 +939,7 @@
     },
     "yaml": {
       "Package": "yaml",
-      "Version": "2.3.9",
+      "Version": "2.3.10",
       "Source": "Repository"
     },
     "zip": {

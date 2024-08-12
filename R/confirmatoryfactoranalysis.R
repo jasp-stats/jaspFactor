@@ -14,11 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# This is a temporary fix
-# TODO: remove it when R will solve this problem!
-gettextf <- function(fmt, ..., domain = NULL)  {
-  return(sprintf(gettext(fmt, domain = domain), ...))
-}
+
 
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
@@ -203,6 +199,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      "diagonallyWeightedLeastSquares"  = "DWLS"
   )
 
+  if (anyNA(dataset)) {
+    naAction <- ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
+                       ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
+  } else {
+    naAction <- "default"
+  }
 
   cfaResult[["lav"]] <- try(lavaan::lavaan(
     model           = mod,
@@ -226,8 +228,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     auto.cov.y      = TRUE,
     mimic           = options$packageMimiced,
     estimator       = estimator,
-    missing         = ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
-                             ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
+    missing         = naAction
   ))
 
   # are there ordered variables in the data?

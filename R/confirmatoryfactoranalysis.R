@@ -19,6 +19,7 @@
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
+
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
 
@@ -189,21 +190,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   geq <- .CFAInvariance(options)
   if (options$group == "") grp <- NULL else grp <- options$group
 
-  # define estimator from options
-  estimator = switch(options[["estimator"]],
-                     "default"                         = "default",
-                     "maximumLikelihood"               = "ML",
-                     "generalizedLeastSquares"         = "GLS",
-                     "weightedLeastSquares"            = "WLS",
-                     "unweightedLeastSquares"          = "ULS",
-                     "diagonallyWeightedLeastSquares"  = "DWLS"
-  )
-
   if (anyNA(dataset)) {
     naAction <- ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
                        ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
   } else {
-    naAction <- "default"
+    naAction <- "listwise"
   }
 
   cfaResult[["lav"]] <- try(lavaan::lavaan(
@@ -227,7 +218,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     auto.delta      = TRUE,
     auto.cov.y      = TRUE,
     mimic           = options$packageMimiced,
-    estimator       = estimator,
+    estimator       = options[["estimator"]],
     missing         = naAction
   ))
 
@@ -275,7 +266,15 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # Bootstrapping with interruptible progress bar
   if (cfaResult[["spec"]]$bootstrap) {
-    cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples)
+    type <- switch(options[["standardized"]],
+                   "all" = "std.all",
+                   "latentVariables" = "std.lv",
+                   "noExogenousCovariates" = "std.nox")
+    # change this once jaspSem is merged
+    cfaResult[["lav"]] <- lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
+                                                standard = options[["standardized"]] != "none", typeStd = type)
+    # cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
+    #                                             standard = options[["standardized"]] != "none", typeStd = type)
   }
 
   # Save cfaResult as state so it's available even when opts don't change
@@ -283,7 +282,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["stateCFAResult"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
     "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-    "group", "invarianceTesting", "interceptsFixedToZero"
+    "group", "invarianceTesting", "interceptsFixedToZero", "standardized"
 
   ))
 
@@ -448,28 +447,38 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     # get the model fit
     fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
 
-    if (cfaResult[["orderedVariables"]] && options[["estimator"]] == "default") {
+    footnote <- ""
+    if (cfaResult[["orderedVariables"]]) {
       # when the estimator is not default lavaan does not use the robust test
       maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
       maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
       maintab[["df"]]     <- fitMeasures[c("baseline.df.scaled", "df.scaled")]
       maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue.scaled"])
-      footnote <- gettextf("The estimator is %1$s and the test statistic is %2$s because there are categorical variables in the data.",
-                           fitOptions$estimator, fitOptions$test)
+
       if (options[["seType"]] == "standard") {
-        footnote <- paste(footnote, gettext("You may consider changing the standard error method to 'robust'."))
+        footnote <- gettextf("%s You may consider changing the standard error method to 'robust'.", footnote)
       }
-      maintab$addFootnote(footnote)
+
     } else {
       maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
       maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq", "chisq")]
       maintab[["df"]]     <- fitMeasures[c("baseline.df", "df")]
       maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue"])
-      if (options[["estimator"]] == "default") {
-        maintab$addFootnote(gettextf("The estimator is %s.", fitOptions$estimator))
-      }
     }
+
+    if (options[["estimator"]] == "default") {
+      footnote <- gettextf("%1$s The estimator is %2$s. The test statistic is %3$s.",
+                           footnote, fitOptions$estimator, fitOptions$test)
+    }
+
+    if (options[["seType"]] == "default") {
+      footnote <- gettextf("%1$s The standard error method is %2$s.", footnote, fitOptions$se)
+    }
+
+    maintab$addFootnote(footnote)
+
   }
+  return()
 }
 
 .cfaTableKMO <- function(jaspResults, options, cfaResult) {
@@ -669,16 +678,31 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                   "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
                   "group", "invarianceTesting", "standardized", "ciLevel", "interceptsFixedToZero"))
 
-
   footnote <- NULL
   if (options[["seType"]] == "bootstrap" && nrow(cfaResult[["lav"]]@boot[["coef"]]) < options[["bootstrapSamples"]]) {
     footnote <- gettextf("Not all bootstrap samples were successful: CI based on %.0f samples.",
                          nrow(cfaResult[["lav"]]@boot[["coef"]]))
   }
 
-  pe <- lavaan::parameterEstimates(cfaResult[["lav"]], standardized = TRUE, remove.eq = FALSE, remove.system.eq = TRUE,
-                                   remove.ineq = FALSE, remove.def = FALSE, add.attributes = TRUE, boot.ci.type = "perc",
-                                   level = options$ciLevel)
+  #### TODO
+  # - Also check testing
+
+  if (options[["standardized"]] == "none" ||
+      (options[["standardized"]] != "none" && options[["seType"]] == "bootstrap")) {
+    pe <- lavaan::parameterEstimates(cfaResult[["lav"]], remove.eq = FALSE, remove.system.eq = TRUE,
+                                     remove.ineq = FALSE, remove.def = FALSE, add.attributes = TRUE, boot.ci.type = "perc",
+                                     level = options$ciLevel)
+  } else {
+    type <- switch(options[["standardized"]],
+                   "latentVariables" = "std.lv",
+                   "all" = "std.all",
+                   "noExogenousCovariates" = "std.nox")
+
+    pe <- lavaan::standardizedSolution(cfaResult[["lav"]], level = options[["ciLevel"]], type = type,
+                                       remove.eq = FALSE, remove.ineq = FALSE, remove.def = FALSE)
+    colnames(pe)[colnames(pe) == "est.std"] <- "est"
+  }
+
   .cfaParEstToTablesHelper(pe, options, cfaResult, ests, footnote)
 
 }
@@ -688,12 +712,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   facNames <- c(cfaResult[["spec"]]$latents)
 
   colSel <- c("lhs", "rhs", "est", "se", "z", "pvalue", "ci.lower", "ci.upper")
-  standardization <- switch(options$standardized,
-                            "none"                  = "none",
-                            "latentVariables"       = "lv",
-                            "all"                   = "all",
-                            "noExogenousCovariates" = "nox")
-  if (options$standardized != "none") colSel <- c(colSel, paste0("std.", standardization))
+
+  estTitle <- ifelse(options$standardized != "none", gettext("Std. estimate"), gettext("Estimate"))
 
   # First-order factor loadings ----
   # Set up table
@@ -706,7 +726,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   fl1$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
   fl1$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
 
-  fl1$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+  fl1$addColumnInfo(name = "est",    title  = estTitle,   type = "number", format = "sf:4;dp:3")
   fl1$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
   fl1$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
   fl1$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number", format = "dp:3;p:.001")
@@ -715,10 +735,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
   fl1$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                     overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-  if (options$standardized != "none")
-    fl1$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                      type = "number", format = "sf:4;dp:3")
 
   # add data
   fl1dat <- pei[pei$op == "=~" & !pei$rhs %in% facNames, colSel]
@@ -743,7 +759,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     fl2$addColumnInfo(name = "lhs",   title = gettext("Factor"),    type = "string", combine = TRUE)
     fl2$addColumnInfo(name = "rhs",   title = gettext("Indicator"), type = "string")
 
-    fl2$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+    fl2$addColumnInfo(name = "est",    title  = estTitle,   type = "number", format = "sf:4;dp:3")
     fl2$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
     fl2$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
     fl2$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number", format = "dp:3;p:.001")
@@ -752,10 +768,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                       overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
     fl2$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                       overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-    if (options$standardized != "none")
-      fl2$addColumnInfo(name = paste0("std.", options$standardized), title = gettextf("Std. Est. (%s)", options$standardized),
-                        type = "number", format = "sf:4;dp:3")
 
     # add data
     fl2dat <- pei[pei$op == "=~" & pei$rhs %in% facNames, colSel]
@@ -779,7 +791,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     fv$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
   }
   fv$addColumnInfo(name = "lhs",    title = gettext("Factor"),     type = "string", combine = TRUE)
-  fv$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format  = "sf:4;dp:3")
+  fv$addColumnInfo(name = "est",    title = estTitle,   type = "number", format  = "sf:4;dp:3")
   fv$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format  = "sf:4;dp:3")
   fv$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format  = "sf:4;dp:3")
   fv$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format  = "dp:3;p:.001")
@@ -788,10 +800,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                    overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
   fv$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                    overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-  if (options$standardized != "none")
-    fv$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                     type = "number", format = "sf:4;dp:3")
 
   # Add data
   fvdat     <- pei[pei$op == "~~" & pei$lhs %in% c(facNames, "SecondOrder") & pei$lhs == pei$rhs,
@@ -817,7 +825,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     fc$addColumnInfo(name = "lhs",    title = "",                    type = "string")
     fc$addColumnInfo(name = "op",     title = "",                    type = "string")
     fc$addColumnInfo(name = "rhs",    title = "",                    type = "string")
-    fc$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+    fc$addColumnInfo(name = "est",    title = estTitle,   type = "number", format = "sf:4;dp:3")
     fc$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
     fc$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
     fc$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
@@ -826,12 +834,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
     fc$addColumnInfo(name = "ci.upper", title = "Upper", type = "number", format = "sf:4;dp:3",
                      overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-    if (options$standardized != "none")
-      fc$addColumnInfo(name   = paste0("std.", standardization),
-                       title  = gettextf("Std. Est. (%s)", standardization),
-                       type   = "number",
-                       format = "sf:4;dp:3")
 
     fcdat <- pei[pei$op == "~~" & pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
     fcdat$lhs <- .translateFactorNames(fcdat$lhs, options)
@@ -853,7 +855,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     rv$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
   }
   rv$addColumnInfo(name = "lhs",    title = gettext("Indicator"),  type = "string", combine = TRUE)
-  rv$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format  = "sf:4;dp:3")
+  rv$addColumnInfo(name = "est",    title = estTitle,   type = "number", format  = "sf:4;dp:3")
   rv$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format  = "sf:4;dp:3")
   rv$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format  = "sf:4;dp:3")
   rv$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format  = "dp:3;p:.001")
@@ -862,12 +864,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                    overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
   rv$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                    overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-  if (options$standardized != "none")
-    rv$addColumnInfo(name   = paste0("std.", standardization),
-                     title  = gettextf("Std. Est. (%s)", standardization),
-                     type   = "number",
-                     format = "sf:4;dp:3")
 
   # add data
   rvdat <- pei[pei$op == "~~" & !pei$lhs %in% facNames & !pei$lhs == "SecondOrder" &
@@ -891,7 +887,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     rc$addColumnInfo(name = "lhs",    title = "",                    type = "string")
     rc$addColumnInfo(name = "op",     title = "",                    type = "string")
     rc$addColumnInfo(name = "rhs",    title = "",                    type = "string")
-    rc$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+    rc$addColumnInfo(name = "est",    title = estTitle,   type = "number", format = "sf:4;dp:3")
     rc$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
     rc$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
     rc$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
@@ -901,11 +897,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     rc$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                      overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
 
-    if (options$standardized != "none")
-      rc$addColumnInfo(name   = paste0("std.", standardization),
-                       title  = gettextf("Std. Est. (%s)", standardization),
-                       type   = "number",
-                       format = "sf:4;dp:3")
     # add data
     rcdat <- pei[pei$op == "~~" & !pei$lhs %in% facNames & pei$lhs != pei$rhs, colSel]
     rcdat$op  <- rep("\u2194", nrow(rcdat))
@@ -926,7 +917,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
       fi$addColumnInfo(name = "group",  title = gettext("Group"), type = "string", combine = TRUE)
       fi$addColumnInfo(name = "lhs",    title = gettext("Factor"),     type = "string", combine = TRUE)
-      fi$addColumnInfo(name = "est",    title = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+      fi$addColumnInfo(name = "est",    title = estTitle,   type = "number", format = "sf:4;dp:3")
       fi$addColumnInfo(name = "se",     title = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
       fi$addColumnInfo(name = "z",      title = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
       fi$addColumnInfo(name = "pvalue", title = gettext("p"),          type = "number", format = "dp:3;p:.001")
@@ -936,9 +927,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       fi$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                        overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
 
-      if (options$standardized != "none")
-        fi$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                         type = "number", format = "sf:4;dp:3")
 
       # add data
       fidat <- pei[pei$op == "~1" & pei$lhs %in% facNames, colSel[!colSel %in% 'rhs']]
@@ -956,7 +944,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       vi$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
     }
     vi$addColumnInfo(name = "lhs",    title  = gettext("Indicator"),  type = "string", combine = TRUE)
-    vi$addColumnInfo(name = "est",    title  = gettext("Estimate"),   type = "number", format = "sf:4;dp:3")
+    vi$addColumnInfo(name = "est",    title  = estTitle,   type = "number", format = "sf:4;dp:3")
     vi$addColumnInfo(name = "se",     title  = gettext("Std. Error"), type = "number", format = "sf:4;dp:3")
     vi$addColumnInfo(name = "z",      title  = gettext("z-value"),    type = "number", format = "sf:4;dp:3")
     vi$addColumnInfo(name = "pvalue", title  = gettext("p"),          type = "number", format = "dp:3;p:.001")
@@ -965,10 +953,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                      overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
     vi$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number", format = "sf:4;dp:3",
                      overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-    if (options$standardized != "none")
-      vi$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                       type = "number", format = "sf:4;dp:3")
 
     # add data
     vidat <- pei[pei$op == "~1" & !pei$lhs == "SecondOrder" & !pei$lhs %in% facNames,
@@ -984,12 +968,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # Thresholds
   if ("|" %in% pei$op) {
-    .cfaThresholdsTable(jrobject, footnote, options, standardization, pei, colSel, cfaResult)
+    .cfaThresholdsTable(jrobject, footnote, options, pei, colSel, cfaResult)
   }
 
 }
 
-.cfaThresholdsTable <- function(jrobject, footnote, options, standardization, pei, colSel, cfaResult) {
+.cfaThresholdsTable <- function(jrobject, footnote, options, pei, colSel, cfaResult) {
   # Manifest variable intercepts
   jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
   if (!is.null(footnote)) th$addFootnote(footnote)
@@ -1008,10 +992,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                    overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
   th$addColumnInfo(name = "ci.upper", title = gettext("Upper"), type = "number",
                    overtitle = gettextf("%s%% Confidence Interval", options$ciLevel * 100))
-
-  if (options$standardized != "none")
-    th$addColumnInfo(name = paste0("std.", standardization), title = gettextf("Std. Est. (%s)", standardization),
-                     type = "number")
 
   # add data
   thdat <- pei[pei$op == "|", colSel[!colSel %in% 'rhs']]
@@ -1488,4 +1468,71 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 }
 
+# delete once jaspSem is merged
+lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) {
+  # Run bootstrap, track progress with progress bar
+  # Notes: faulty runs are simply ignored
+  # recommended: add a warning if not all boot samples are successful
+  # fit <- lavBootstrap(fit, samples = 1000)
+  # if (nrow(fit@boot$coef) < 1000)
+  #  tab$addFootnote(gettextf("Not all bootstrap samples were successful: CI based on %.0f samples.", nrow(fit@boot$coef)),
+  #                  "<em>Note.</em>")
 
+
+  coef_with_callback <- function(lav_object) {
+    # Progress bar is ticked every time coef() is evaluated, which happens once on the main object:
+    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L107
+    # and then every time on a successful bootstrap:
+    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L375
+    # i.e., samples + 1 times
+    progressbarTick()
+
+    return(lavaan::coef(lav_object))
+  }
+
+  coef_with_callback_std <- function(lav_object, typeStd) {
+    std <- lavaan::standardizedSolution(lav_object, type = typeStd)
+    out <- std$est.std
+
+    progressbarTick()
+
+    return(out)
+  }
+
+  startProgressbar(samples + 1)
+
+  if (!standard) {
+    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coef_with_callback)
+  } else {
+    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coef_with_callback_std, typeStd = typeStd)
+  }
+
+  # Add the bootstrap samples to the fit object
+  fit@boot       <- list(coef = bootres)
+  fit@Options$se <- "bootstrap"
+
+  # exclude error bootstrap runs
+  err_id <- attr(fit@boot$coef, "error.idx")
+  if (length(err_id) > 0L) {
+    fit@boot$coef <- fit@boot$coef[-err_id, , drop = FALSE]
+  }
+
+  # we actually need the SEs from the bootstrap not the SEs from ML or something
+  N <- nrow(fit@boot$coef)
+
+  # we multiply the var by (n-1)/n because lavaan actually uses n for the variance instead of n-1
+  if (!standard) {
+    # for unstandardized
+    fit@ParTable$se[fit@ParTable$free != 0] <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
+  } else {
+    fit@ParTable$se <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
+    # the standardized solution gives all estimates not only the unconstrained, so we need to change
+    # the free prameters in the partable and also change the estimate
+    fit@ParTable$free <- seq_len(ncol(fit@boot$coef))
+    std <- lavaan::standardizedSolution(fit, type = typeStd)
+    fit@ParTable$est <- std$est.std
+  }
+
+
+  return(fit)
+}

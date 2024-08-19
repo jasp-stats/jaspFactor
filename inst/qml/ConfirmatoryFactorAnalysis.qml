@@ -102,8 +102,8 @@ Form
 				label: qsTr("Model identification")
 				name: "modelIdentification"
 				values: [
-					{ label: qsTr("Factor variances"),	value: "factorVariance" },
 					{ label: qsTr("Marker variable"),	value: "markerVariable" },
+					{ label: qsTr("Factor variances"),	value: "factorVariance" },
 					{ label: qsTr("Effects coding"),	value: "effectsCoding"  }
 				]
 			}
@@ -206,64 +206,88 @@ Form
 	Section
 	{
 		title: qsTr("Advanced")
-		RadioButtonGroup
-		{
-			title: qsTr("Mimic package")
-			name: "packageMimiced"
-			RadioButton { label: qsTr("Lavaan"); value: "lavaan"  ; checked: true }
-			RadioButton { label: qsTr("Mplus") ; value: "Mplus" }
-			RadioButton { label: qsTr("EQS")   ; value: "EQS"   }
-		}
 
-		Group
-		{
-			title: qsTr("Error calculation")
-			CIField { text: qsTr("CI level"); name: "ciLevel" }
-			RadioButtonGroup
+		Group {
+			DropDown
 			{
-				title: qsTr("Standard error")
-				name: "seType"
-				RadioButton { label: qsTr("Standard");	value: "standard"; checked: true}
-				RadioButton { label: qsTr("Robust");		value: "robust" }
-				RadioButton {
-					label: qsTr("Bootstrap")
-					value: "bootstrap"
-					IntegerField {
-						label: qsTr("Bootstrap samples")
-						name: "bootstrapSamples"
-						defaultValue: 1000
-						min: 100
-						max: 1000000
-					}
+				name: "packageMimiced"
+				label: qsTr("Mimic")
+				values: [
+					{ label: qsTr("Lavaan"), value: "lavaan" },
+					{ label: qsTr("Mplus"), value: "mplus" },
+					{ label: qsTr("EQS"), value: "eqs" }
+				]
+			}
+			RowLayout 
+			{
+				DropDown
+				{
+					name: "estimator"
+					label: qsTr("Estimator")
+					id: estimator
+					values: [
+						{ label: qsTr("Default"), value: "default" },
+						{ label: qsTr("ML"), value: "ml" },
+						{ label: qsTr("GLS"), value: "gls" },
+						{ label: qsTr("WLS"), value: "wls" },
+						{ label: qsTr("ULS"), value: "uls" },
+						{ label: qsTr("DWLS"), value: "dwls" },
+						{ label: qsTr("DLS"), value: "dls" },
+						{ label: qsTr("PML"), value: "pml" },
+						{ label: qsTr("MLM"), value: "mlm" },
+						{ label: qsTr("MLMV"), value: "mlmv" },
+						{ label: qsTr("MLMVS"), value: "mlmvs" },
+						{ label: qsTr("MLF"), value: "mlf" },
+						{ label: qsTr("MLR"), value: "mlr" },
+						{ label: qsTr("WLSM"), value: "wlsm" },
+						{ label: qsTr("WLSMV"), value: "wlsmv" },
+						{ label: qsTr("ULSM"), value: "ulsm" },
+						{ label: qsTr("ULSMV"), value: "ulsmv" }
+					]
+				}
+				HelpButton
+				{
+					toolTip: 					qsTr("Click for more information")
+					helpPage:					"forQml/tooltipEstimators"
 				}
 			}
-		}
-
-		RadioButtonGroup
-		{
-			title: qsTr("Estimator")
-			name: "estimator"
-			RadioButton { label: qsTr("Auto") ; value: "default"; checked: true }
-			RadioButton { label: qsTr("ML")   ; value: "maximumLikelihood"				}
-			RadioButton { label: qsTr("GLS")  ; value: "generalizedLeastSquares"		}
-			RadioButton { label: qsTr("WLS")  ; value: "weightedLeastSquares"			}
-			RadioButton { label: qsTr("ULS")  ; value: "unweightedLeastSquares"			}
-			RadioButton { label: qsTr("DWLS") ; value: "diagonallyWeightedLeastSquares"	}
-		}
-
-		DropDown
+			DropDown
+			{
+				label: qsTr("Standard errors")
+				name: "seType"
+				id: errorCalc
+				values: [
+					{ label: qsTr("Default"), 				value: "default"						},
+					{ label: qsTr("Standard"),  			value: "standard" 					},
+					{ label: qsTr("Robust"), 				value: "robust" 						},
+					{ label: qsTr("Bootstrap"), 			value: "bootstrap"					}
+				]
+			}
+			IntegerField
+			{
+				visible: errorCalc.value == "bootstrap"
+				name: "bootstrapSamples"
+				label: qsTr("     Bootstrap samples")
+				defaultValue: 1000
+				min: 100
+				max: 1000000
+			}
+			CIField { text: qsTr("     CI level"); name: "ciLevel" }
+			
+			DropDown
 			{
 				name: "naAction"
 				label: qsTr("Missing data handling")
 				values:
 				[
-					{ label: qsTr("FIML")				, value: "fiml"				},
 					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
+					{ label: qsTr("FIML")				, value: "fiml"				},
 					{ label: qsTr("Pairwise")			, value: "pairwise"			},
 					{ label: qsTr("Two-stage")			, value: "twoStage"			},
 					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
 				]
 			}
+		}
 
 		RadioButtonGroup
 		{

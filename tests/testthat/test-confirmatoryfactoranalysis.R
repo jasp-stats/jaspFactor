@@ -201,48 +201,44 @@ test_that("[CFA Second order] Chi-square test table results match", {
 })
 
 
-test_that("Bootstrapping works", {
-  options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
-  options$group <- ""
-  options$invarianceTesting <- "configural"
-  options$packageMimiced <- "lavaan"
-  options$seType <- "bootstrap"
-  options$bootstrapSamples <- 100
-  options$estimator <- "default"
-  options$standardized <- "none"
-  options$factors <- list(
-    list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-    list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-    list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
-  )
-  options$modelIdentification <- "factorVariance"
-  options$naAction <- "listwise"
-  set.seed(1)
-  results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+# factor loadings with bootstrapping are correct
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$group <- ""
+options$invarianceTesting <- "configural"
+options$packageMimiced <- "lavaan"
+options$seType <- "bootstrap"
+options$bootstrapSamples <- 100
+options$estimator <- "default"
+options$standardized <- "none"
+options$factors <- list(
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+)
+options$modelIdentification <- "factorVariance"
+options$naAction <- "listwise"
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 
+test_that("Factor loadings table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fl1"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.712022271311838, 1.11279383173753, 0.899620313867488,
-                                      "Factor 1", 0, "x1", 0.0808465333987386, 11.1275063512065, 0.339182433474584,
-                                      0.693156723678194, 0.49794051110941, "Factor 1",
-                                      1.28623778294923e-10, "x2", 0.0774547818506273, 6.42878979466621,
-                                      0.539990088382033, 0.805660643384033, 0.656156092628451,
-                                      "Factor 1", 0, "x3", 0.0744212256974568, 8.81678696472846, 0.856032790026098,
-                                      1.08543684864592, 0.989693449094392, "Factor 2",
-                                      0, "x4", 0.0566367179185465, 17.4744138690689, 0.954112872546464,
-                                      1.24054019999221, 1.10160465003145, "Factor 2",
-                                      0, "x5", 0.0626757561168699, 17.5762482701815, 0.803928010900409,
-                                      1.03630968014001, 0.916600977759373, "Factor 2",
-                                      0, "x6", 0.0536584940344529, 17.0821226769958, 0.375767927218761,
-                                      0.741040160352204, 0.619475433557926, "Factor 3",
-                                      0, "x7", 0.0695825769015842, 8.90273774186456, 0.506218568773711,
-                                      0.900974372672674, 0.730948802915075, "Factor 3",
-                                      0, "x8", 0.0659093164600047, 11.0902197469857, 0.498364732719689,
-                                      0.860170344673322, 0.669980108781259, "Factor 3",
-                                      0, "x9", 0.0650169734598685, 10.3046954222623))
-
-
-
+                                 list(0.712022271311838, 1.11279383173753, 0.899620313867488, "Factor 1",
+                                      0, "x1", 0.101880932132255, 8.8301146744482, 0.339182433474583,
+                                      0.693156723678194, 0.49794051110941, "Factor 1", 5.03185138001072e-09,
+                                      "x2", 0.0851745954124038, 5.84611536689373, 0.539990088382032,
+                                      0.805660643384033, 0.656156092628451, "Factor 1", 0, "x3", 0.0702283472359389,
+                                      9.34318004699771, 0.856032790026097, 1.08543684864592, 0.989693449094393,
+                                      "Factor 2", 0, "x4", 0.060824826209009, 16.2712088266979, 0.954112872546464,
+                                      1.24054019999221, 1.10160465003145, "Factor 2", 0, "x5", 0.0610564023902934,
+                                      18.042410081577, 0.803928010900409, 1.03630968014001, 0.916600977759372,
+                                      "Factor 2", 0, "x6", 0.0544830064226891, 16.8236123140528, 0.37576792721876,
+                                      0.741040160352204, 0.619475433557926, "Factor 3", 7.69848629289527e-11,
+                                      "x7", 0.0952105063825611, 6.50637683901018, 0.50621856877371,
+                                      0.900974372672673, 0.730948802915075, "Factor 3", 2.32125429988628e-12,
+                                      "x8", 0.104217630469302, 7.0136770489172, 0.498364732719688,
+                                      0.860170344673323, 0.669980108781259, "Factor 3", 5.52868861802835e-12,
+                                      "x9", 0.0972211926575642, 6.8912969535468))
 })
 
 

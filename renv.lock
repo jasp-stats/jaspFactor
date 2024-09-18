@@ -251,7 +251,7 @@
     },
     "evaluate": {
       "Package": "evaluate",
-      "Version": "0.24.0",
+      "Version": "1.0.0",
       "Source": "Repository"
     },
     "expm": {
@@ -422,7 +422,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-      "RemoteSha": "17b7eeaf2e0c589aa182f0db807054ca37cc2d51"
+      "RemoteSha": "b2e1799265a0741b49a1ca356f96448091dd8db0"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -432,7 +432,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "581104dfbc92580179baf43c13845729ad87d2fd"
+      "RemoteSha": "3f3f21448f3d76bd1b09f098f44366b192db3611"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -711,7 +711,7 @@
     },
     "rjson": {
       "Package": "rjson",
-      "Version": "0.2.22",
+      "Version": "0.2.23",
       "Source": "Repository"
     },
     "rlang": {

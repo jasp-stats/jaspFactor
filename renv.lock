@@ -231,7 +231,7 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.16.0",
+      "Version": "1.16.2",
       "Source": "Repository"
     },
     "desc": {
@@ -251,7 +251,7 @@
     },
     "evaluate": {
       "Package": "evaluate",
-      "Version": "1.0.0",
+      "Version": "1.0.1",
       "Source": "Repository"
     },
     "expm": {
@@ -432,7 +432,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "29c517f9ac11bfe01678b595022d7019b4fd1c63"
+      "RemoteSha": "c2e6dd28e25b027d452f8dc8eaef9af3615e9b0e"
     },
     "jpeg": {
       "Package": "jpeg",

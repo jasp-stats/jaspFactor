@@ -741,7 +741,7 @@ covMatrix <- cov(dt[, c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")])
 covMatrix <- as.data.frame(covMatrix)
 
 set.seed(1)
-results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", covMatrix , options, makeTests = F)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", covMatrix, options, makeTests = F)
 
 
 test_that("Chi-square test table results match", {

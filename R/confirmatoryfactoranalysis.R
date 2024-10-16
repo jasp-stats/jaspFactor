@@ -174,16 +174,19 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   var_idx  <- match(usedvars, colnames(dataset))
   mat <- try(as.matrix(dataset[var_idx, var_idx]))
   if (inherits(mat, "try-error") || any(is.na(mat)))
-    .quitAnalysis("Input data does not seem to be a covariance matrix! Please check the format of the input data.
-                   All cells must be numeric, and the number of rows must equal the number of columns.")
+    .quitAnalysis(gettext("Input data does not seem to be a covariance matrix! Please check the format of the input data.
+                   All cells must be numeric, and the number of rows must equal the number of columns."))
 
-  if (options[["group"]] != "") .quitAnalysis("Grouping variable not supported for covariance matrix input")
+  if (options[["group"]] != "") .quitAnalysis(gettext("Grouping variable not supported for covariance matrix input"))
 
-  if (options[["meanStructure"]]) .quitAnalysis("Mean structure not supported for covariance matrix input")
+  if (options[["meanStructure"]]) .quitAnalysis(gettext("Mean structure not supported for covariance matrix input"))
 
   .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
 
   colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
+
+  if (!isSymmetric(as.matrix(mat))) .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+
   if (anyNA(mat)) {
     inds <- which(is.na(mat))
     mat <- mat[-inds, -inds]
@@ -243,7 +246,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (anyNA(dataset)) {
     naAction <- switch(
-      options$naAction, 
+      options$naAction,
       "twoStageRobust" = "robust.two.stage",
       "twoStage"       = "two.stage",
       options$naAction)
@@ -345,7 +348,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                    "all" = "std.all",
                    "latentVariables" = "std.lv",
                    "noExogenousCovariates" = "std.nox")
-    
+
     if (options[["dataType"]] == "varianceCovariance") {
       .quitAnalysis(gettext("Bootstrapping is not available for variance-covariance matrix input."))
     }

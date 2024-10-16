@@ -29,6 +29,7 @@ Form
 		initNumberFactors:	1
 		allowedColumns:		["ordinal", "scale"]
 		allowTypeChange:	true
+		keepAvailableVariables: true
 	}
 
 	Section

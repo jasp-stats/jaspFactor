@@ -24,7 +24,7 @@ Form
 {
 	VariablesForm
 	{
-		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
+		// preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		AvailableVariablesList { name: "allVariablesList" }
 		AssignedVariablesList
 		{
@@ -32,6 +32,22 @@ Form
 			name: "variables"
 			title: qsTr("Variables")
 			allowedColumns: ["scale"]
+		}
+		Group 
+		{
+			// columns: 4
+			title: qsTr("Data")
+			RadioButtonGroup
+			{
+				name: "dataType"
+				columns: 2
+				RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
+				RadioButton
+				{
+					value: "varianceCovariance"; label: qsTr("Variance-covariance matrix")
+					IntegerField { name: "sampleSize"; label: qsTr("Sample size"); defaultValue: 200 }
+				}
+			}
 		}
 	}
 

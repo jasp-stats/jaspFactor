@@ -15,7 +15,6 @@
 #
 
 
-
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
@@ -29,23 +28,27 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # Error checking
   errors <- .cfaCheckErrors(dataset, options)
 
+  # covariance matrix
+  dataset <- .cfaDataCovariance(dataset, options)
+
   # Main table / model
   cfaResult <- .cfaComputeResults(jaspResults, dataset, options, errors)
 
   # Output tables
-  .cfaContainerMain(   jaspResults, options, cfaResult) # Main table container
-  .cfaTableMain(       jaspResults, options, cfaResult) # Main table with fit info
-  .cfaTableFitMeasures(jaspResults, options, cfaResult) # Additional fit indices
-  .cfaTableKMO(        jaspResults, options, cfaResult) # Kaiser-Meyer-Olkin test.
-  .cfaTableBartlett(   jaspResults, options, cfaResult) # Bartlett's test of sphericity
-  .cfaTableRsquared(   jaspResults, options, cfaResult) # R-squared of indicators
-  .cfaTableParEst(     jaspResults, options, cfaResult) # Parameter estimates tables
-  .cfaTableModIndices( jaspResults, options, cfaResult) # Modification Indices
-  .cfaTableImpliedCov( jaspResults, options, cfaResult) # Implied Covariance matrix
-  .cfaTableResCov(     jaspResults, options, cfaResult) # Residual Covariance Matrix
-  .cfaTableAve(        jaspResults, options, cfaResult) # Average variance explained table
-  .cfaTableHtmt(       jaspResults, options, cfaResult) # Heterotrait monotrait
-  .cfaTableReliability(jaspResults, options, cfaResult) # Reliability
+  .cfaContainerMain(   jaspResults, options, cfaResult          ) # Main table container
+  .cfaTableMain(       jaspResults, options, cfaResult          ) # Main table with fit info
+  .cfaTableFitMeasures(jaspResults, options, cfaResult          ) # Additional fit indices
+  .cfaTableKMO(        jaspResults, options, cfaResult          ) # Kaiser-Meyer-Olkin test.
+  .cfaTableBartlett(   jaspResults, options, cfaResult          ) # Bartlett's test of sphericity
+  .cfaTableRsquared(   jaspResults, options, cfaResult          ) # R-squared of indicators
+  .cfaTableParEst(     jaspResults, options, cfaResult          ) # Parameter estimates tables
+  .cfaTableModIndices( jaspResults, options, cfaResult          ) # Modification Indices
+  .cfaTableImpliedCov( jaspResults, options, cfaResult          ) # Implied Covariance matrix
+  .cfaTableResCov(     jaspResults, options, cfaResult          ) # Residual Covariance Matrix
+  .cfaTableAve(        jaspResults, options, cfaResult          ) # Average variance explained table
+  .cfaTableHtmt(       jaspResults, options, cfaResult, dataset ) # Heterotrait monotrait
+  # weirdly enough I cannot find the exact sample cov matrix in the lavaan output
+  .cfaTableReliability(jaspResults, options, cfaResult          ) # Reliability
 
 
   # Output plots
@@ -61,29 +64,32 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 # Preprocessing functions ----
 .cfaReadData <- function(dataset, options) {
+
   if (!is.null(dataset)) return(dataset)
 
   # NOTE: The GUI does not yet allow for putting the same variable in different factors.
   # if the same variable is used twice but with a different type then this would
   # crash the R code. However, since this is not possible yet, this should be okay for now
   vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"),       use.names = FALSE)
-  types <- unlist(lapply(options[["factors"]], `[[`, "types"),            use.names = FALSE)
 
   if (length(vars) == 0)
     return(data.frame())
 
   duplicateVars <- duplicated(vars)
   vars  <- vars[!duplicateVars]
-  types <- types[!duplicateVars]
 
-  splitVars <- split(vars, types)
-  groupVar <- if (options[["group"]] == "") NULL else options[["group"]]
+  if (options[["dataType"]] == "raw") {
+    # make sure on the qml side that groupVar is indeed a nominal variable
+    groupVar <- if (options[["group"]] == "") NULL else options[["group"]]
+    dataset <- .readDataSetToEnd(columns = c(vars, groupVar))
 
-  return(.readDataSetToEnd(
-    columns.as.numeric = splitVars[["scale"]],
-    columns.as.ordinal = splitVars[["ordinal"]],
-    columns.as.factor  = groupVar
-  ))
+  } else {
+
+    dataset <- .readDataSetToEnd(all.columns = TRUE)
+  }
+
+
+  return(dataset)
 
 }
 
@@ -100,9 +106,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   return(options)
 }
 
-.cfaCheckErrors <- function(dataset, options) {
 
-  # TODO (vankesteren) content error checks, e.g., posdef covmat
+.cfaCheckErrors <- function(dataset, options) {
 
   # Number of variables in the factors
   nVarsPerFactor <- unlist(lapply(options$factors, function(x) setNames(length(x$indicators), x$title)))
@@ -117,32 +122,78 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   vars <- unique(unlist(lapply(options$factors, function(x) x$indicators)))
 
-  if (options$group == "") {
+  if (options[["dataType"]] == "raw") {
 
-    .hasErrors(dataset[, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
-               varCovData.corFun = stats::cov)
+    # possible cov matrix:
+    if (ncol(dataset) > 0 && !nrow(dataset) > ncol(dataset)) {
+      .quitAnalysis(gettext("Not more cases than number of variables. Is your data a variance-covariance matrix?"))
+    }
 
-  } else {
+    if (options$group == "") {
 
-    .hasErrors(dataset, type = "factorLevels", factorLevels.target = options$group,
-               factorLevels.amount = '< 2', exitAnalysisIfErrors = TRUE)
 
-    for (group in levels(dataset[[options$group]])) {
+      .hasErrors(dataset[, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                 varCovData.corFun = stats::cov)
 
-      idx <- dataset[[options$group]] == group
+    } else {
 
-      if (any(sapply(dataset[, vars], is.ordered))) {
-        .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
-                   varCovData.corFun = lavaan::lavCor)
-      } else {
-        .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
-                   varCovData.corFun = stats::cov)
+      .hasErrors(dataset, type = "factorLevels", factorLevels.target = options$group,
+                 factorLevels.amount = '< 2', exitAnalysisIfErrors = TRUE)
+
+      for (group in levels(dataset[[options$group]])) {
+
+        idx <- dataset[[options$group]] == group
+
+        if (any(sapply(dataset[, vars], is.ordered))) {
+          .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                     varCovData.corFun = lavaan::lavCor)
+        } else {
+          .hasErrors(dataset[idx, vars], type = 'varCovData', exitAnalysisIfErrors = TRUE,
+                     varCovData.corFun = stats::cov)
+        }
       }
     }
   }
 
   return(NULL)
 }
+
+.cfaDataCovariance <- function(dataset, options) {
+
+  if (options[["dataType"]] == "raw") {
+    return(dataset)
+  }
+
+  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
+
+  if (length(vars) == 0)
+    return(data.frame())
+
+  duplicateVars <- duplicated(vars)
+  usedvars  <- vars[!duplicateVars]
+  var_idx  <- match(usedvars, colnames(dataset))
+  mat <- try(as.matrix(dataset[var_idx, var_idx]))
+  if (inherits(mat, "try-error") || any(is.na(mat)))
+    .quitAnalysis("Input data does not seem to be a covariance matrix! Please check the format of the input data.
+                   All cells must be numeric, and the number of rows must equal the number of columns.")
+
+  if (options[["group"]] != "") .quitAnalysis("Grouping variable not supported for covariance matrix input")
+
+  if (options[["meanStructure"]]) .quitAnalysis("Mean structure not supported for covariance matrix input")
+
+  .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
+
+  colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
+  if (anyNA(mat)) {
+    inds <- which(is.na(mat))
+    mat <- mat[-inds, -inds]
+    if (ncol(mat) < 3) {
+      .quitAnalysis("Not enough valid columns to run this analysis")
+    }
+  }
+  return(mat)
+}
+
 
 .translateFactorNames <- function(factor_name, options, back = FALSE) {
   # make dictionary
@@ -200,9 +251,30 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     naAction <- "listwise"
   }
 
+  # define estimator from options
+  estimator = switch(options[["estimator"]],
+                     "default"                         = "default",
+                     "maximumLikelihood"               = "ML",
+                     "generalizedLeastSquares"         = "GLS",
+                     "weightedLeastSquares"            = "WLS",
+                     "unweightedLeastSquares"          = "ULS",
+                     "diagonallyWeightedLeastSquares"  = "DWLS"
+  )
+
+  if (options[["dataType"]] == "raw") {
+    dt <- dataset
+    sampCov <- NULL
+    sampCovN <- NULL
+  } else {
+    dt <- NULL
+    sampCov <- dataset
+    sampCovN <- options[["sampleSize"]]
+  }
   cfaResult[["lav"]] <- try(lavaan::lavaan(
     model           = mod,
-    data            = dataset,
+    data            = dt,
+    sample.cov      = sampCov,
+    sample.nobs     = sampCovN,
     group           = grp,
     group.equal     = geq,
     meanstructure   = options$meanStructure,
@@ -273,11 +345,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
                    "all" = "std.all",
                    "latentVariables" = "std.lv",
                    "noExogenousCovariates" = "std.nox")
-    # change this once jaspSem is merged
-    cfaResult[["lav"]] <- lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
+    
+    if (options[["dataType"]] == "varianceCovariance") {
+      .quitAnalysis(gettext("Bootstrapping is not available for variance-covariance matrix input."))
+    }
+    cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
                                                 standard = options[["standardized"]] != "none", typeStd = type)
-    # cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
-    #                                             standard = options[["standardized"]] != "none", typeStd = type)
   }
 
   # Save cfaResult as state so it's available even when opts don't change
@@ -285,8 +358,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["stateCFAResult"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
     "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-    "group", "invarianceTesting", "interceptsFixedToZero", "standardized"
-
+    "group", "invarianceTesting", "interceptsFixedToZero", "standardized", "dataType", "sampleSize"
   ))
 
   return(cfaResult)
@@ -314,6 +386,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     spec$bootstrap <- TRUE
   } else {
     if (options$seType == "robust") {
+      if (options[["dataType"]] == "varianceCovariance") {
+        .quitAnalysis(gettext("Robust standard errors are not available for variance-covariance matrix input."))
+      }
       spec$se <- "robust.sem"
     } else {
       spec$se <- options$seType
@@ -422,7 +497,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["maincontainer"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
     "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
-    "group", "invarianceTesting", "interceptsFixedToZero"
+    "group", "invarianceTesting", "interceptsFixedToZero", "dataType", "sampleSize"
   ))
 }
 
@@ -1369,7 +1444,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 }
 
-.cfaTableHtmt <- function(jaspResults, options, cfaResult) {
+.cfaTableHtmt <- function(jaspResults, options, cfaResult, dataset) {
   #### this has an ordering argument that still needs to be implemented once the categorical data stuff is done
 
   if (is.null(cfaResult) || !options[["htmt"]] || !is.null(jaspResults[["resHtmtTable"]])) return()
@@ -1406,14 +1481,22 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     htmtTable$setData(tmp_dat)
 
   } else {
-    # get the dataset
-    dataset <- as.data.frame(lavaan::inspect(cfaResult[["lav"]], what = "data"))
-    colnames(dataset) <- cfaResult[["lav"]]@Data@ov.names[[1]]
+    if (options[["dataType"]] == "raw") {
+      # get the dataset
+      dataset <- as.data.frame(lavaan::inspect(cfaResult[["lav"]], what = "data"))
+      colnames(dataset) <- cfaResult[["lav"]]@Data@ov.names[[1]]
+      sampCov <- NULL
+    } else {
+      sampCov <- dataset
+      colnames(sampCov) <- rownames(sampCov) <- cfaResult[["lav"]]@Data@ov.names[[1]]
+      dataset <- NULL
+    }
+
     if (is.null(cfaResult[["spec"]][["soIndics"]])) {
-      htmt_result <- semTools::htmt(model = cfaResult[["model"]], data = dataset,
+      htmt_result <- semTools::htmt(model = cfaResult[["model"]], data = dataset, sample.cov = sampCov,
                                     missing = cfaResult[["lav"]]@Options[["missing"]])
     } else { # the htmt does not allow a second order factor, so we take the model syntax without the seco
-      htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataset,
+      htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataset, sample.cov = sampCov,
                                     missing = cfaResult[["lav"]]@Options[["missing"]])
     }
 
@@ -1425,6 +1508,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
   jaspResults[["resHtmtTable"]] <- htmtTable
 
+  return()
 }
 
 

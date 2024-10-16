@@ -60,7 +60,7 @@ JASP allows the factors in turn to be indicators of a second-order factor. This 
 ### Advanced
 -------
 - Emulation: Emulate results from different software
-- Error calculation: Change how standard errors for the parameters are computed
+- Error calculation: Change how standard errors for the parameters are computed, if bootstrap the CIs are percentile bootstrap type
 - Estimator: change the estimator for the CFA (Auto: ML if only scale variables used, WLS otherwise)
 - Standardization: display standardized parameters for different standardization schemes
 - Missing data handling: change the missing data handling method.

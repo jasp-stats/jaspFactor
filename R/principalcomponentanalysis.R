@@ -20,11 +20,14 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
-  dataset <- .pcaReadData(dataset, options)
+  dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
+
+  dataset <- .pcaAndEfaDataCovariance(dataset, options)
 
   if (ready)
     .pcaCheckErrors(dataset, options)
+
 
   modelContainer <- .pcaModelContainer(jaspResults)
 
@@ -47,17 +50,59 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 # Preprocessing functions ----
-.pcaReadData <- function(dataset, options) {
+.pcaAndEfaReadData <- function(dataset, options) {
+
+  # browser()
   if (!is.null(dataset)) return(dataset)
 
-  if (options[["naAction"]] == "listwise") {
-    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
-  } else {
-    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
+  if (options[["dataType"]] == "raw") {
+    if (options[["naAction"]] == "listwise") {
+      return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
+    } else {
+
+      return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
+    }
+  } else { # if variance covariance matrix as input
+    return(.readDataSetToEnd(all.columns = TRUE))
   }
+
 }
 
+
+.pcaAndEfaDataCovariance <- function(dataset, options) {
+
+  if (options[["dataType"]] == "raw") {
+    return(dataset)
+  }
+
+  # possible data matrix?
+  if ((nrow(dataset) != ncol(dataset)) && !all(dt[lower.tri(dt)] == t(dt)[lower.tri(dt)])) {
+    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+  }
+
+  usedvars <- unlist(options[["variables"]])
+  var_idx  <- match(usedvars, colnames(dataset))
+  mat <- try(as.matrix(dataset[var_idx, var_idx]))
+  if (inherits(mat, "try-error"))
+    .quitAnalysis(gettext("All cells must be numeric."))
+
+  .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
+
+  colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
+
+  if (anyNA(mat)) {
+    inds <- which(is.na(mat))
+    mat <- mat[-inds, -inds]
+    if (ncol(mat) < 3) {
+      .quitAnalysis("Not enough valid columns to run this analysis")
+    }
+  }
+  return(mat)
+}
+
+
 .pcaCheckErrors <- function(dataset, options) {
+
   customChecksPCAEFA <- list(
     function() {
       if (length(options$variables) > 0 && options$componentCountMethod == "manual" &&
@@ -99,10 +144,19 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       if (all(S == 1)) {
         return(gettext("Data not valid: all variables are collinear"))
       }
+    },
+    function() {
+      if (ncol(dataset) > 0 && !nrow(dataset) > ncol(dataset)) {
+        return(gettext("Not more cases than number of variables. Is your data a variance-covariance matrix?"))
+      }
     }
   )
-  error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksPCAEFA,
-                      exitAnalysisIfErrors = TRUE)
+
+  if (options[["dataType"]] == "raw") {
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksPCAEFA,
+                        exitAnalysisIfErrors = TRUE)
+  }
+
   return()
 }
 
@@ -113,7 +167,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "componentCountMethod",
                               "eigenValuesAbove", "manualNumberOfComponents", "naAction", "analysisBasedOn",
-                              "parallelAnalysisMethod"))
+                              "parallelAnalysisMethod", "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 
@@ -148,7 +202,6 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
                       "polyTetrachoricCorrelationMatrix" = "mixed")
-
   pcaResult <- try(
     psych::principal(
       r        = dataset,
@@ -156,7 +209,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       rotate   = rotate,
       scores   = TRUE,
       covar    = options$analysisBasedOn == "covarianceMatrix",
-      cor      = corMethod
+      cor      = corMethod,
+      n.obs    = ifelse(options[["dataType"]] == "raw", NULL, options[["sampleSize"]])
     ))
 
   if (isTryError(pcaResult)) {
@@ -210,10 +264,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
-      stop(
-        gettext("No components with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue equals "), round(max(parallelResult$pc.values), 3)
-      )
+      .quitAnalysis( gettextf("No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
+                              options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
 
@@ -237,11 +289,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   pcaResults <- .pcaComputeResults(modelContainer, dataset, options)
   if (modelContainer$getError()) return()
-
   goodnessOfFitTable[["model"]] <- "Model"
+
   goodnessOfFitTable[["chisq"]] <- pcaResults$STATISTIC
   goodnessOfFitTable[["df"]]    <- pcaResults$dof
   goodnessOfFitTable[["p"]]     <- pcaResults$PVAL
+
 
   if (pcaResults$dof < 0)
     goodnessOfFitTable$addFootnote(message = gettext("Degrees of freedom below 0, model is unidentified."), symbol = gettext("<em>Warning:</em>"))
@@ -629,4 +682,5 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   ))
 
 }
+
 

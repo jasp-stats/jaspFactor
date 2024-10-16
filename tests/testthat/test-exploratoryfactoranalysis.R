@@ -310,3 +310,69 @@ test_that("Parallel Analysis table results match", {
                                       0.676364280574212))
 })
 
+
+# variance covariance matrix input
+dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
+cdt <- as.data.frame(cov(dt[, 7:15]))
+options <- list(
+  addScores = FALSE,
+  addedScoresPrefix = "FA",
+  analysisBasedOn = "correlationMatrix",
+  bartlettTest = FALSE,
+  dataType = "varianceCovariance",
+  eigenValuesAbove = 1,
+  factorCorrelations = FALSE,
+  factorCountMethod = "manual",
+  factorLoadingsOrder = "sortByVariables",
+  factorStructure = FALSE,
+  factoringMethod = "minimumResidual",
+  fitIndices = FALSE,
+  kaiserMeyerOlkinTest = FALSE,
+  loadingsDisplayLimit = 0.1,
+  manualNumberOfFactors = 1,
+  mardiaTest = FALSE,
+  naAction = "pairwise",
+  obliqueSelector = "promax",
+  orthogonalSelector = "none",
+  parallelAnalysisMethod = "principalComponentBased",
+  parallelAnalysisSeed = 1234,
+  parallelAnalysisTable = FALSE,
+  parallelAnalysisTableMethod = "principalComponentBased",
+  pathDiagram = FALSE,
+  plotHeight = 320,
+  plotWidth = 480,
+  residualMatrix = FALSE,
+  rotationMethod = "orthogonal",
+  sampleSize = 200,
+  screePlot = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  variables = c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")
+)
+
+set.seed(1)
+results <- runAnalysis("exploratoryFactorAnalysis", cdt, options, makeTests = F)
+
+test_that("Factor Characteristics table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Factor 1", 0.292468690109419, 3.21634418143771, 0.292468690109419,
+                                      2.63221821098477))
+})
+
+test_that("Chi-squared Test table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(235.832782509408, 27, "Model", 3.1571356942318e-35))
+})
+
+test_that("Factor Loadings table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.558950485489651, 0.687574354770883, "x1", 0.30045377286727,
+                                      0.909727530369823, "x2", 0.365159382803395, 0.866658625150644,
+                                      "x3", 0.761746187230209, 0.41974274624024, "x4", 0.723809404128654,
+                                      0.476099946494923, "x5", 0.768996689601407, 0.408644091382077,
+                                      "x6", 0.25910333096785, 0.932865463881365, "x7", 0.339140545375525,
+                                      0.884983690482392, "x8", 0.467453266437421, 0.781487443696986,
+                                      "x9"))
+})

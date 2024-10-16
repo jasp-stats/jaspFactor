@@ -20,7 +20,7 @@ options$bartlettTest <- TRUE
 
 set.seed(1)
 
-results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options)
 
 
 test_that("[CFA 3-Factor] Factor Covariances table results match", {
@@ -713,4 +713,40 @@ test_that("Intercepts table results match", {
                                       -2.58679331205368, -0.231340407552876, -1.40906685980328, 2,
                                       "x9", 0.0190291696997005, 0.600891884514286, -2.34495904524032
                                  ))
+})
+
+
+# covariance matrix input
+# 3-factor run
+
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$group <- ""
+options$invarianceTesting <- "configural"
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
+options$estimator <- "default"
+options$standardized <- "none"
+options$factors <- list(
+  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
+  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
+  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+)
+options$modelIdentification <- "factorVariance"
+options$naAction <- "listwise"
+options$dataType <- "varianceCovariance"
+options$sampleSize <- 300
+
+dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
+covMatrix <- cov(dt[, c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")])
+covMatrix <- as.data.frame(covMatrix)
+
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", covMatrix, options, makeTests = F)
+
+
+test_that("Chi-square test table results match", {
+  table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_cfatab"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(915.798926205035, 36, "Baseline model", "", 85.0221147234242,
+                                      24, "Factor model", 9.45493439097334e-09))
 })

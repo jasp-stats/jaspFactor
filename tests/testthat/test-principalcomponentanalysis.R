@@ -340,3 +340,67 @@ test_that("Parallel Analysis table results match", {
                                       0.696170865182367, 0.806896345892467, "Component 6", 0.305503359590833,
                                       0.676364280574212))
 })
+
+
+# variance covariance matrix input
+dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
+cdt <- as.data.frame(cov(dt[, 7:15]))
+options <- list(
+  addScores = FALSE,
+  addedScoresPrefix = "PC",
+  analysisBasedOn = "correlationMatrix",
+  bartlettTest = FALSE,
+  componentCorrelations = FALSE,
+  componentCountMethod = "manual",
+  componentLoadingsOrder = "sortByVariables",
+  dataType = "varianceCovariance",
+  eigenValuesAbove = 1,
+  kaiserMeyerOlkinTest = FALSE,
+  loadingsDisplayLimit = 0.1,
+  manualNumberOfComponents = 1,
+  mardiaTest = FALSE,
+  naAction = "pairwise",
+  obliqueSelector = "promax",
+  orthogonalSelector = "none",
+  parallelAnalysisMethod = "principalComponentBased",
+  parallelAnalysisSeed = 1234,
+  parallelAnalysisTable = FALSE,
+  parallelAnalysisTableMethod = "principalComponentBased",
+  pathDiagram = FALSE,
+  plotHeight = 320,
+  plotWidth = 480,
+  residualMatrix = FALSE,
+  rotationMethod = "orthogonal",
+  sampleSize = 200,
+  screePlot = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  variables = c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")
+)
+
+set.seed(1)
+results <- runAnalysis("principalComponentAnalysis", cdt, options, makeTests = F)
+
+test_that("Component Characteristics table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Component 1", 0.357371575715301, 3.2163441814377, 0.357371575715301
+                                 ))
+})
+
+test_that("Chi-squared Test table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(268.944880177337, 27, "Model", 1.0379031932901e-41))
+})
+
+test_that("Component Loadings table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.658301970425138, 0.566638515734381, "x1", 0.389685299082607,
+                                      0.848145367678899, "x2", 0.477040613001908, 0.772432253546763,
+                                      "x3", 0.765811755326015, 0.413532355404489, "x4", 0.737544154070493,
+                                      0.456028620796441, "x5", 0.772162747894139, 0.403764690764573,
+                                      "x6", 0.348796474669525, 0.878341019258111, "x7", 0.454247183933516,
+                                      0.793659495888471, "x8", 0.590666149791766, 0.651113499490171,
+                                      "x9"))
+})

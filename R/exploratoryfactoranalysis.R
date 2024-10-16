@@ -19,8 +19,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
-  dataset <- .efaReadData(dataset, options)
+  dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
+  dataset <- .pcaAndEfaDataCovariance(dataset, options)
 
   if (ready)
     .efaCheckErrors(dataset, options)
@@ -48,16 +49,6 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .commonAddScoresToData(jaspResults, modelContainer, options, ready)
 }
 
-
-.efaReadData <- function(dataset, options) {
-  if (!is.null(dataset)) return(dataset)
-
-  if (options[["naAction"]] == "listwise") {
-    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
-  } else {
-    return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
-  }
-}
 
 .efaCheckErrors <- function(dataset, options) {
   customChecksEFA <- list(
@@ -101,10 +92,20 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       if (all(S == 1)) {
         return(gettext("Data not valid: all variables are collinear"))
       }
+    },
+    function() {
+      if (ncol(dataset) > 0 && !nrow(dataset) > ncol(dataset)) {
+        return(gettext("Not more cases than number of variables. Is your data a variance-covariance matrix?"))
+      }
     }
   )
-  error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksEFA,
-                      exitAnalysisIfErrors = TRUE)
+
+  if (options[["dataType"]] == "raw") {
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksEFA,
+                        exitAnalysisIfErrors = TRUE)
+  }
+
+
   return()
 }
 
@@ -115,7 +116,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorCountMethod",
                               "eigenValuesAbove", "manualNumberOfFactors", "naAction", "analysisBasedOn", "factoringMethod",
-                              "parallelAnalysisMethod"))
+                              "parallelAnalysisMethod", "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 
@@ -143,7 +144,6 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
                             "minimumChiSquare"        = "minchi",
                             "minimumRank"             = "minrank"
                             )
-
   efaResult <- try(
     psych::fa(
       r        = dataset,
@@ -152,7 +152,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       scores   = TRUE,
       covar    = options$analysisBasedOn == "covarianceMatrix",
       cor      = corMethod,
-      fm       = factoringMethod
+      fm       = factoringMethod,
+      n.obs    = ifelse(options[["dataType"]] == "raw", NULL, options[["sampleSize"]])
     )
   )
 
@@ -214,10 +215,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
-      stop(
-        gettext("No factors with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue equals "), round(max(parallelResult$fa.values), 3)
-      )
+      .quitAnalysis( gettextf("No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
+                              options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
 }

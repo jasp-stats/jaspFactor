@@ -164,6 +164,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     return(dataset)
   }
 
+  if (!isSymmetric(as.matrix(dataset))) .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+
   vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
 
   if (length(vars) == 0)
@@ -184,8 +186,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
 
   colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
-
-  if (!isSymmetric(as.matrix(mat))) .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
 
   if (anyNA(mat)) {
     inds <- which(is.na(mat))

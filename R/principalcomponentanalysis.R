@@ -74,6 +74,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (options[["dataType"]] == "raw") {
     return(dataset)
   }
+
+  if (!isSymmetric(as.matrix(dataset))) .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+
   usedvars <- unlist(options[["variables"]])
   var_idx  <- match(usedvars, colnames(dataset))
   mat <- try(as.matrix(dataset[var_idx, var_idx]))

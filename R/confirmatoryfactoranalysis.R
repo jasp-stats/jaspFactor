@@ -191,8 +191,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (options$group == "") grp <- NULL else grp <- options$group
 
   if (anyNA(dataset)) {
-    naAction <- ifelse(options$naAction == "twoStageRobust", "robust.two.stage",
-                       ifelse(options$naAction == "twoStage", "two.stage", options$naAction))
+    naAction <- switch(
+      options$naAction, 
+      "twoStageRobust" = "robust.two.stage",
+      "twoStage"       = "two.stage",
+      options$naAction)
   } else {
     naAction <- "listwise"
   }

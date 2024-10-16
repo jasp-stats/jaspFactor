@@ -164,7 +164,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     return(dataset)
   }
 
-  if (!isSymmetric(as.matrix(dataset))) .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+  # possible data matrix?
+  if ((nrow(dataset) != ncol(dataset)) && !all(dt[lower.tri(dt)] == t(dt)[lower.tri(dt)])) {
+    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+  }
 
   vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
 
@@ -175,9 +178,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   usedvars  <- vars[!duplicateVars]
   var_idx  <- match(usedvars, colnames(dataset))
   mat <- try(as.matrix(dataset[var_idx, var_idx]))
-  if (inherits(mat, "try-error") || any(is.na(mat)))
-    .quitAnalysis(gettext("Input data does not seem to be a covariance matrix! Please check the format of the input data.
-                   All cells must be numeric, and the number of rows must equal the number of columns."))
+  if (inherits(mat, "try-error"))
+    .quitAnalysis(gettext("All cells must be numeric."))
 
   if (options[["group"]] != "") .quitAnalysis(gettext("Grouping variable not supported for covariance matrix input"))
 

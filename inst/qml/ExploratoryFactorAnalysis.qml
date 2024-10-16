@@ -109,6 +109,8 @@ Form
 					label:			qsTr("Number of factors")
 					defaultValue:	1
 					min:			1
+					max: variables.count > 1 ? variables.count : 1
+
 				}
 			}
 		}

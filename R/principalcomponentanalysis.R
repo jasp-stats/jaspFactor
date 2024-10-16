@@ -75,14 +75,17 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     return(dataset)
   }
 
-  if (!isSymmetric(as.matrix(dataset))) .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+  # possible data matrix?
+  if ((nrow(dataset) != ncol(dataset)) && !all(dt[lower.tri(dt)] == t(dt)[lower.tri(dt)])) {
+    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+  }
 
   usedvars <- unlist(options[["variables"]])
   var_idx  <- match(usedvars, colnames(dataset))
   mat <- try(as.matrix(dataset[var_idx, var_idx]))
-  if (inherits(mat, "try-error") || any(is.na(mat)))
-    .quitAnalysis("Input data does not seem to be a covariance matrix! Please check the format of the input data.
-                   All cells must be numeric, and the number of rows must equal the number of columns.")
+  if (inherits(mat, "try-error"))
+    .quitAnalysis(gettext("All cells must be numeric."))
+
   .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
 
   colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
@@ -261,10 +264,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
-      stop(
-        gettext("No components with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue equals "), round(max(parallelResult$pc.values), 3)
-      )
+      .quitAnalysis( gettextf("No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
+                              options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
 

@@ -215,10 +215,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
-      stop(
-        gettext("No factors with an eigenvalue > "), options$eigenValuesBox, ". ",
-        gettext("Maximum observed eigenvalue equals "), round(max(parallelResult$fa.values), 3)
-      )
+      .quitAnalysis( gettextf("No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
+                              options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
 }

@@ -284,7 +284,7 @@ Form
 			id: addScores
 			name: "addScores"
 			label: qsTr("Add FA scores to data")
-			enabled: variables.count > 1
+			enabled: variables.count > 1 & dataType.value == "raw"
 
 			TextField {
 				name: "addedScoresPrefix"

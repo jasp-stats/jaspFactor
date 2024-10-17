@@ -40,6 +40,7 @@ Form
 			RadioButtonGroup
 			{
 				name: "dataType"
+				id: dataType
 				columns: 2
 				RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
 				RadioButton
@@ -252,7 +253,7 @@ Form
 			id: addScores
 			name: "addScores"
 			label: qsTr("Add PC scores to data")
-			enabled: variables.count > 1
+			enabled: variables.count > 1 & dataType.value == "raw"
 
 			TextField {
 				name: "addedScoresPrefix"

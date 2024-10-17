@@ -40,6 +40,7 @@ Form
 			RadioButtonGroup
 			{
 				name: "dataType"
+				id: dataType
 				columns: 2
 				RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
 				RadioButton

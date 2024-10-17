@@ -21,7 +21,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # Read dataset
   dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
-  dataset <- .pcaAndEfaDataCovariance(dataset, options)
+  dataset <- .pcaAndEfaDataCovariance(dataset, options, ready)
 
   if (ready)
     .efaCheckErrors(dataset, options)

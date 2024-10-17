@@ -160,19 +160,23 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 .cfaDataCovariance <- function(dataset, options) {
 
+
   if (options[["dataType"]] == "raw") {
     return(dataset)
   }
 
-  # possible data matrix?
-  if ((nrow(dataset) != ncol(dataset)) && !all(dt[lower.tri(dt)] == t(dt)[lower.tri(dt)])) {
-    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
-  }
-
   vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
 
+  # are there any variables specified at all?
   if (length(vars) == 0)
     return(data.frame())
+
+  # possible data matrix?
+  if ((nrow(dataset) != ncol(dataset)))
+    .quitAnalysis(gettext("Input data does not seem to be a square matrix! Please check the format of the input data."))
+
+  if (!all(dataset[lower.tri(dataset)] == t(dataset)[lower.tri(dataset)]))
+    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
 
   duplicateVars <- duplicated(vars)
   usedvars  <- vars[!duplicateVars]

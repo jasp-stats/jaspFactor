@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: 2024-05-19 20:45+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -29,6 +29,25 @@ msgid ""
 msgstr ""
 "Le modèle n'a pas pu être estimé. Un facteur ayant moins de deux variables a "
 "été ajouté au second ordre."
+
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
@@ -71,6 +90,14 @@ msgstr ""
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Le modèle n'a pas pu être estimé : plus de degré de liberté."
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 #, fuzzy
 msgid "# Factors"
 msgstr "Facteur"
@@ -96,18 +123,15 @@ msgstr ""
 msgid "Factor model"
 msgstr ""
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
-msgstr ""
-"L'estimateur est %1$s et la statistique de test est %2$s car les données "
-"contiennent des variables catégorielles."
-
-msgid "You may consider changing the standard error method to 'robust'."
+#, fuzzy
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr "La méthode 'robuste' pour l'erreur standard est conseillée."
 
-msgid "The estimator is %s."
-msgstr "L'estimateur est %s."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+msgstr ""
+
+msgid "%1$s The standard error method is %2$s."
+msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Test Kaiser-Meyer-Olkin (KMO)"
@@ -224,6 +248,13 @@ msgstr "Estimation des paramètres"
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 
+#, fuzzy
+msgid "Std. estimate"
+msgstr "Estimation"
+
+msgid "Estimate"
+msgstr "Estimation"
+
 msgid "Factor loadings"
 msgstr ""
 
@@ -235,9 +266,6 @@ msgstr "Facteur"
 
 msgid "Indicator"
 msgstr "Indicateur"
-
-msgid "Estimate"
-msgstr "Estimation"
 
 msgid "Std. Error"
 msgstr "Erreur standard"
@@ -253,9 +281,6 @@ msgstr "Intervalle de confiance %s%%"
 
 msgid "Upper"
 msgstr "Supérieur"
-
-msgid "Std. Est. (%s)"
-msgstr ""
 
 msgid "Second-order factor loadings"
 msgstr ""
@@ -388,10 +413,9 @@ msgid ""
 "      Internal error message: %s"
 msgstr ""
 
-msgid "No factors with an eigenvalue >"
-msgstr "Aucun facteur avec un eigenvalue >"
-
-msgid "Maximum observed eigenvalue equals"
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr ""
 
 #, fuzzy
@@ -541,9 +565,6 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
-msgid "No components with an eigenvalue >"
-msgstr "Aucune composante avec un eigenvalue >"
-
 msgid "Component Loadings"
 msgstr ""
 
@@ -558,6 +579,22 @@ msgstr ""
 
 msgid "Component"
 msgstr "Composante"
+
+#~ msgid ""
+#~ "The estimator is %1$s and the test statistic is %2$s because there are "
+#~ "categorical variables in the data."
+#~ msgstr ""
+#~ "L'estimateur est %1$s et la statistique de test est %2$s car les données "
+#~ "contiennent des variables catégorielles."
+
+#~ msgid "The estimator is %s."
+#~ msgstr "L'estimateur est %s."
+
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "Aucun facteur avec un eigenvalue >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "Aucune composante avec un eigenvalue >"
 
 #~ msgid "Symbol"
 #~ msgstr "Symbole"

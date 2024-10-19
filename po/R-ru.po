@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: 2023-02-18 03:28+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -30,6 +30,25 @@ msgid ""
 msgstr ""
 "Не удалось построить модель. Фактор, имеющий менее двух переменных, был "
 "добавлен как фактор второго порядка."
+
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
 
 #, fuzzy
 msgid "FIML missing data handling only available with ML-type estimators"
@@ -69,6 +88,14 @@ msgstr "Не удалось построить модель из-за несхо
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Не удалось построить модель: не осталось степеней свободы."
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 #, fuzzy
 msgid "# Factors"
 msgstr "Фактор"
@@ -95,15 +122,13 @@ msgstr "Базовая (нулевая) модель"
 msgid "Factor model"
 msgstr "Факторная модель"
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 
-msgid "You may consider changing the standard error method to 'robust'."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
 msgstr ""
 
-msgid "The estimator is %s."
+msgid "%1$s The standard error method is %2$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -221,6 +246,13 @@ msgstr "Оцениваемые параметры"
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "Не все выборки бутстрэпа были успешными: ДИ основан на %.0f выборках."
 
+#, fuzzy
+msgid "Std. estimate"
+msgstr "Оценка"
+
+msgid "Estimate"
+msgstr "Оценка"
+
 msgid "Factor loadings"
 msgstr "Факторные нагрузки"
 
@@ -233,9 +265,6 @@ msgstr "Фактор"
 #, fuzzy
 msgid "Indicator"
 msgstr "Индикатор"
-
-msgid "Estimate"
-msgstr "Оценка"
 
 msgid "Std. Error"
 msgstr "Стд. ошибка"
@@ -252,9 +281,6 @@ msgstr "%s%% Доверительный интервал"
 
 msgid "Upper"
 msgstr "Верхняя граница"
-
-msgid "Std. Est. (%s)"
-msgstr "Стд. оц. (%s)"
 
 msgid "Second-order factor loadings"
 msgstr "Факторные нагрузки второго порядка"
@@ -400,10 +426,10 @@ msgstr ""
 "с пропущенными значениями.\n"
 "Сообщение об ошибке: %s"
 
-msgid "No factors with an eigenvalue >"
-msgstr "Нет факторов с собственным значением >"
-
-msgid "Maximum observed eigenvalue equals"
+#, fuzzy
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr "Максимальное наблюдаемое собственное значение равно"
 
 #, fuzzy
@@ -563,9 +589,6 @@ msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 "Не удалось выполнить параллельный анализ. Внутреннее сообщение об ошибке: %s"
 
-msgid "No components with an eigenvalue >"
-msgstr "Нет компонентов с собственным значением >"
-
 msgid "Component Loadings"
 msgstr "Компонентные нагрузки"
 
@@ -580,6 +603,15 @@ msgstr "График каменистой осыпи"
 
 msgid "Component"
 msgstr "Компонент"
+
+#~ msgid "Std. Est. (%s)"
+#~ msgstr "Стд. оц. (%s)"
+
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "Нет факторов с собственным значением >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "Нет компонентов с собственным значением >"
 
 #~ msgid "Symbol"
 #~ msgstr "Символ"

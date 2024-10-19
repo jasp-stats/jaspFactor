@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: 2024-06-11 12:09+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -30,6 +30,25 @@ msgid ""
 msgstr ""
 "Model nie mógł zostać oszacowany. Jako czynnik drugorzędowy został dodany "
 "czynnik zawierający mniej niż 2 zmienne."
+
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
@@ -72,6 +91,14 @@ msgstr "Model nie mógł zostać oszacowany ze względu na brak konwergencji."
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Model nie mógł zostać oszacowany: brak wolnych stopni swobody."
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 msgid "# Factors"
 msgstr "# Czynniki"
 
@@ -96,19 +123,16 @@ msgstr "Model bazowy"
 msgid "Factor model"
 msgstr "Model czynnikowy"
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
-msgstr ""
-"Estymator to %1$s a statystyka testu to %2$s ponieważ w danych znajdują się "
-"zmienne kategorialne."
-
-msgid "You may consider changing the standard error method to 'robust'."
+#, fuzzy
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 "Należy rozważyć zmianę metody obliczania błędu standardowego na \"odporną\"."
 
-msgid "The estimator is %s."
-msgstr "Estymator to %s."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+msgstr ""
+
+msgid "%1$s The standard error method is %2$s."
+msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Test Kaisera-Meyera-Olkina (KMO)"
@@ -230,6 +254,13 @@ msgstr ""
 "Nie wszystkie powtórzenia bootstrapowe zakończyły się powodzeniem: PU bazują "
 "na %.0f próbkach."
 
+#, fuzzy
+msgid "Std. estimate"
+msgstr "Oszacowanie"
+
+msgid "Estimate"
+msgstr "Oszacowanie"
+
 msgid "Factor loadings"
 msgstr "Ładunki czynnikowe"
 
@@ -241,9 +272,6 @@ msgstr "Czynnik"
 
 msgid "Indicator"
 msgstr "Wskaźnik"
-
-msgid "Estimate"
-msgstr "Oszacowanie"
 
 msgid "Std. Error"
 msgstr "Błąd stand."
@@ -259,9 +287,6 @@ msgstr "%s%% Przedział ufności"
 
 msgid "Upper"
 msgstr "Górny"
-
-msgid "Std. Est. (%s)"
-msgstr "Stand. est. (%s)"
 
 msgid "Second-order factor loadings"
 msgstr "Ładunki czynnikowe drugiego rzędu"
@@ -393,10 +418,10 @@ msgstr ""
 "zawierają wszystkich kategorii odpowiedzi.\n"
 "      Oznaczenie błędu: %s"
 
-msgid "No factors with an eigenvalue >"
-msgstr "Brak czynników o wartościach własnych >"
-
-msgid "Maximum observed eigenvalue equals"
+#, fuzzy
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr "Najwyższa obserwowana wartość własna wynosi"
 
 msgid "Kaiser-Meyer-Olkin Test"
@@ -546,9 +571,6 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Nie udało się wykonać analizy równoległej. Komunikat o błędzie: %s"
 
-msgid "No components with an eigenvalue >"
-msgstr "Brak składowych o wartości własnej >"
-
 msgid "Component Loadings"
 msgstr "Ładunki czynnikowe"
 
@@ -563,3 +585,22 @@ msgstr "Wykres osypiska"
 
 msgid "Component"
 msgstr "Składowa"
+
+#~ msgid ""
+#~ "The estimator is %1$s and the test statistic is %2$s because there are "
+#~ "categorical variables in the data."
+#~ msgstr ""
+#~ "Estymator to %1$s a statystyka testu to %2$s ponieważ w danych znajdują "
+#~ "się zmienne kategorialne."
+
+#~ msgid "The estimator is %s."
+#~ msgstr "Estymator to %s."
+
+#~ msgid "Std. Est. (%s)"
+#~ msgstr "Stand. est. (%s)"
+
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "Brak czynników o wartościach własnych >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "Brak składowych o wartości własnej >"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: 2022-08-29 00:17+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -33,6 +33,25 @@ msgid ""
 msgstr ""
 "O modelo não pode ser estimado. Um fator com menos que 2 variáveis foi "
 "adicionado na Segunda Ordem."
+
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
@@ -67,6 +86,14 @@ msgstr "O modelo não pode ser estimado devido a não convergência."
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "O modelo não pode ser estimado: sem graus de liberdade restantes."
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 #, fuzzy
 msgid "# Factors"
 msgstr "Fator"
@@ -92,15 +119,13 @@ msgstr "Modelo de linha de base"
 msgid "Factor model"
 msgstr "Fatores"
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 
-msgid "You may consider changing the standard error method to 'robust'."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
 msgstr ""
 
-msgid "The estimator is %s."
+msgid "%1$s The standard error method is %2$s."
 msgstr ""
 
 #, fuzzy
@@ -221,6 +246,13 @@ msgstr ""
 "amostras."
 
 #, fuzzy
+msgid "Std. estimate"
+msgstr "Estimativa"
+
+msgid "Estimate"
+msgstr "Estimativa"
+
+#, fuzzy
 msgid "Factor loadings"
 msgstr "Cargas do fator"
 
@@ -232,9 +264,6 @@ msgstr "Fator"
 
 msgid "Indicator"
 msgstr "Indicador"
-
-msgid "Estimate"
-msgstr "Estimativa"
 
 msgid "Std. Error"
 msgstr "Erro padrão"
@@ -250,9 +279,6 @@ msgstr "%s%% Intervalo de Confiança"
 
 msgid "Upper"
 msgstr "Superior"
-
-msgid "Std. Est. (%s)"
-msgstr "Estimativa Padrão (%s)"
 
 msgid "Second-order factor loadings"
 msgstr "Cargas do fator de segunda ordem"
@@ -388,11 +414,9 @@ msgid ""
 msgstr ""
 
 #, fuzzy
-msgid "No factors with an eigenvalue >"
-msgstr "Nenhum componente com autovalor >"
-
-#, fuzzy
-msgid "Maximum observed eigenvalue equals"
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr "Autovalor máximo observado:"
 
 #, fuzzy
@@ -549,9 +573,6 @@ msgstr ""
 "A estimativa falhou. \n"
 "Mensagem de erro interna: %s"
 
-msgid "No components with an eigenvalue >"
-msgstr "Nenhum componente com autovalor >"
-
 msgid "Component Loadings"
 msgstr "Cargas dos componentes"
 
@@ -567,6 +588,16 @@ msgstr "Gráfico de sedimentação"
 
 msgid "Component"
 msgstr "Componentes"
+
+#~ msgid "Std. Est. (%s)"
+#~ msgstr "Estimativa Padrão (%s)"
+
+#, fuzzy
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "Nenhum componente com autovalor >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "Nenhum componente com autovalor >"
 
 #~ msgid "Symbol"
 #~ msgstr "Símbolo"

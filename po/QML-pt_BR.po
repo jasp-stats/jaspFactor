@@ -208,10 +208,6 @@ msgid "Advanced"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Mimic package"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
 msgstr ""
 
@@ -221,18 +217,6 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Error calculation"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "CI level"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Standard error"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -248,15 +232,7 @@ msgid "Bootstrap"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap samples"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr ""
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Auto"
 msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -697,4 +673,120 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Prefix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Data"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Default"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DLS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "PML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLM"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLMV"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLMVS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLF"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLR"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLSM"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLSMV"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULSM"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULSMV"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Click for more information"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard errors"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "     Bootstrap samples"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "     CI level"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Data"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Data"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Sample size"
 msgstr ""

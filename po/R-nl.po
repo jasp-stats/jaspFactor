@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: 2024-09-15 09:32+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -30,6 +30,25 @@ msgid ""
 msgstr ""
 "Het model kon niet geschat worden. Een factor met minder dan 2 variabelen "
 "was toegevoegd in Tweede-Orde."
+
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr "FIML missende dataverwerking alleen beschikbaar met ML-type schatters"
@@ -70,6 +89,14 @@ msgstr "Het model kon niet worden geschat door niet-convergentie."
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Het model kon niet worden geschat: Geen vrijheidsgraden over."
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 msgid "# Factors"
 msgstr "# Factoren"
 
@@ -94,18 +121,15 @@ msgstr "Baseline model"
 msgid "Factor model"
 msgstr "Factor model"
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
-msgstr ""
-"De schatter is %1$s en de teststatistiek is %2$s omdat de gegevens "
-"categorische variabelen bevatten."
-
-msgid "You may consider changing the standard error method to 'robust'."
+#, fuzzy
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr "U kunt overwegen de standaardfoutmethode te wijzigen in \"robuust\"."
 
-msgid "The estimator is %s."
-msgstr "De schatter is %s."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+msgstr ""
+
+msgid "%1$s The standard error method is %2$s."
+msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) toets"
@@ -228,6 +252,13 @@ msgstr ""
 "Niet alle bootstrap steekproeven waren succesvol. Betrouwbaarheidinterval is "
 "gebaseerd op %.0f steekproeven."
 
+#, fuzzy
+msgid "Std. estimate"
+msgstr "Schatting"
+
+msgid "Estimate"
+msgstr "Schatting"
+
 msgid "Factor loadings"
 msgstr "Factorladingen"
 
@@ -239,9 +270,6 @@ msgstr "Factor"
 
 msgid "Indicator"
 msgstr "Indicator"
-
-msgid "Estimate"
-msgstr "Schatting"
 
 msgid "Std. Error"
 msgstr "Std. fout"
@@ -257,9 +285,6 @@ msgstr "%s%% Betrouwbaarheidsinterval"
 
 msgid "Upper"
 msgstr "Boven"
-
-msgid "Std. Est. (%s)"
-msgstr "Std. Schatting (%s)"
 
 msgid "Second-order factor loadings"
 msgstr "Tweede-graad factor ladingen"
@@ -391,10 +416,10 @@ msgstr ""
 "alle antwoordcategorieën bevatten.\n"
 "      Interne foutmelding: %s"
 
-msgid "No factors with an eigenvalue >"
-msgstr "Geen factoren met een eigenwaarde >"
-
-msgid "Maximum observed eigenvalue equals"
+#, fuzzy
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr "Maximaal geobserveerde eigenwaarde is gelijk aan"
 
 msgid "Kaiser-Meyer-Olkin Test"
@@ -544,9 +569,6 @@ msgstr "Kolomnaam %s bestaat al in de dataset"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Parallelle analyse mislukt. Interne foutmelding: %s"
 
-msgid "No components with an eigenvalue >"
-msgstr "Geen componenten met een eigenwaarde >"
-
 msgid "Component Loadings"
 msgstr "Componentladingen"
 
@@ -561,6 +583,25 @@ msgstr "Scree plot"
 
 msgid "Component"
 msgstr "Component"
+
+#~ msgid ""
+#~ "The estimator is %1$s and the test statistic is %2$s because there are "
+#~ "categorical variables in the data."
+#~ msgstr ""
+#~ "De schatter is %1$s en de teststatistiek is %2$s omdat de gegevens "
+#~ "categorische variabelen bevatten."
+
+#~ msgid "The estimator is %s."
+#~ msgstr "De schatter is %s."
+
+#~ msgid "Std. Est. (%s)"
+#~ msgstr "Std. Schatting (%s)"
+
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "Geen factoren met een eigenwaarde >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "Geen componenten met een eigenwaarde >"
 
 #~ msgid "Coefficient α"
 #~ msgstr "Coëfficiënt α"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: 2023-05-19 13:50+0000\n"
 "Last-Translator: Pr0ph3t <beomnyul@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -25,6 +25,25 @@ msgid ""
 "The model could not be estimated. A factor with less than 2 variables was "
 "added in Second-Order."
 msgstr "模型无法估计。在二阶中添加了少于 2 个变量的因子。"
+
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr "FIML 缺失数据处理仅适用于 ML 类型的估计器"
@@ -61,6 +80,14 @@ msgstr "由于不收敛，该模型无法估计。"
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "无法估计模型：没有剩余的自由度。"
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 #, fuzzy
 msgid "# Factors"
 msgstr "因子"
@@ -86,15 +113,13 @@ msgstr "基准模型"
 msgid "Factor model"
 msgstr "因子模型"
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 
-msgid "You may consider changing the standard error method to 'robust'."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
 msgstr ""
 
-msgid "The estimator is %s."
+msgid "%1$s The standard error method is %2$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -211,6 +236,13 @@ msgstr "参数估计"
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "并非所有bootstrap样本都成功：CI 基于 %.0f 个样本。"
 
+#, fuzzy
+msgid "Std. estimate"
+msgstr "估计"
+
+msgid "Estimate"
+msgstr "估计"
+
 msgid "Factor loadings"
 msgstr "因子载荷"
 
@@ -222,9 +254,6 @@ msgstr "因子"
 
 msgid "Indicator"
 msgstr "指标"
-
-msgid "Estimate"
-msgstr "估计"
 
 msgid "Std. Error"
 msgstr "标准误"
@@ -240,9 +269,6 @@ msgstr "%s%% 置信区间"
 
 msgid "Upper"
 msgstr "上界"
-
-msgid "Std. Est. (%s)"
-msgstr "Std. Est. (%s)"
 
 msgid "Second-order factor loadings"
 msgstr "二阶因子载荷"
@@ -378,10 +404,10 @@ msgstr ""
 "      这可能是由于样本量小或变量不包含所有响应类别。\n"
 "      内部错误消息：%s"
 
-msgid "No factors with an eigenvalue >"
-msgstr "没有具有特征值的因子 >"
-
-msgid "Maximum observed eigenvalue equals"
+#, fuzzy
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr "最大观测到的特征值等于"
 
 #, fuzzy
@@ -528,9 +554,6 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平分析失败。内部错误消息：%s"
 
-msgid "No components with an eigenvalue >"
-msgstr "没有成分具有特征值 >"
-
 msgid "Component Loadings"
 msgstr "成分载荷"
 
@@ -545,6 +568,15 @@ msgstr "碎石图"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Std. Est. (%s)"
+#~ msgstr "Std. Est. (%s)"
+
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "没有具有特征值的因子 >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "没有成分具有特征值 >"
 
 #~ msgid "Symbol"
 #~ msgstr "符号"

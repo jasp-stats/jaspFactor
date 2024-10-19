@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspFactor 0.19.0\n"
-"POT-Creation-Date: 2024-07-13 03:29\n"
+"Project-Id-Version: jaspFactor 0.19.2\n"
+"POT-Creation-Date: 2024-10-19 03:31\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,21 @@ msgid "The model could not be estimated. Ensure that factors have at least 2 obs
 msgstr ""
 
 msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgstr ""
+
+msgid "Not more cases than number of variables. Is your data a variance-covariance matrix?"
+msgstr ""
+
+msgid "Input data does not seem to be a symmetric matrix! Please check the format of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
@@ -38,6 +53,12 @@ msgid "The model could not be estimated due to nonconvergence."
 msgstr ""
 
 msgid "The model could not be estimated: No degrees of freedom left."
+msgstr ""
+
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid "Robust standard errors are not available for variance-covariance matrix input."
 msgstr ""
 
 msgid "# Factors"
@@ -64,13 +85,13 @@ msgstr ""
 msgid "Factor model"
 msgstr ""
 
-msgid "The estimator is %1$s and the test statistic is %2$s because there are categorical variables in the data."
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 
-msgid "You may consider changing the standard error method to 'robust'."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
 msgstr ""
 
-msgid "The estimator is %s."
+msgid "%1$s The standard error method is %2$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -184,6 +205,12 @@ msgstr ""
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 
+msgid "Std. estimate"
+msgstr ""
+
+msgid "Estimate"
+msgstr ""
+
 msgid "Factor loadings"
 msgstr ""
 
@@ -194,9 +221,6 @@ msgid "Factor"
 msgstr ""
 
 msgid "Indicator"
-msgstr ""
-
-msgid "Estimate"
 msgstr ""
 
 msgid "Std. Error"
@@ -212,9 +236,6 @@ msgid "%s%% Confidence Interval"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
-
-msgid "Std. Est. (%s)"
 msgstr ""
 
 msgid "Second-order factor loadings"
@@ -337,10 +358,7 @@ msgstr ""
 msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.\n      This might be due to a small sample size or variables not containing all response categories.\n      Internal error message: %s"
 msgstr ""
 
-msgid "No factors with an eigenvalue >"
-msgstr ""
-
-msgid "Maximum observed eigenvalue equals"
+msgid "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin Test"
@@ -476,9 +494,6 @@ msgid "Column name %s already exists in the dataset"
 msgstr ""
 
 msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
-
-msgid "No components with an eigenvalue >"
 msgstr ""
 
 msgid "Component Loadings"

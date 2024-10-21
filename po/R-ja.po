@@ -30,6 +30,25 @@ msgid ""
 msgstr ""
 "モデルを推定できませんでした。 2変数未満の因子が2次レベルで追加されました。"
 
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr "FIML の欠損値処理は，ML タイプの推定法でのみ使用可能です"
 
@@ -67,6 +86,14 @@ msgstr "収束しなかったため，モデルは推定できませんでした
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "モデルは推定できませんでした: 自由度が残っていません。"
 
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
+msgstr ""
+
 msgid "# Factors"
 msgstr "# 因子"
 
@@ -91,17 +118,15 @@ msgstr "ベースラインモデル"
 msgid "Factor model"
 msgstr "因子モデル"
 
-msgid ""
-"The estimator is %1$s and the test statistic is %2$s because there are "
-"categorical variables in the data."
-msgstr ""
-"データにカテゴリー変数があるので、推定量は %1$s 、検定統計量は %2$s である."
-
-msgid "You may consider changing the standard error method to 'robust'."
+#, fuzzy
+msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr "標準誤差の方法を'頑健(robust)'に変えることを検討してください."
 
-msgid "The estimator is %s."
-msgstr "推定量は %s です."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+msgstr ""
+
+msgid "%1$s The standard error method is %2$s."
+msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin検定"
@@ -220,6 +245,13 @@ msgstr ""
 "すべてのブートストラップサンプルが成功したわけではありません。CIは%.0fのサン"
 "プルに基づいています。"
 
+#, fuzzy
+msgid "Std. estimate"
+msgstr "推定"
+
+msgid "Estimate"
+msgstr "推定"
+
 msgid "Factor loadings"
 msgstr "因子負荷量"
 
@@ -231,9 +263,6 @@ msgstr "要因"
 
 msgid "Indicator"
 msgstr "指標"
-
-msgid "Estimate"
-msgstr "推定"
 
 msgid "Std. Error"
 msgstr "標準誤差"
@@ -249,9 +278,6 @@ msgstr "%s%% 信頼区間"
 
 msgid "Upper"
 msgstr "上限"
-
-msgid "Std. Est. (%s)"
-msgstr "標準化推定値(%s)"
 
 msgid "Second-order factor loadings"
 msgstr "2次因子負荷量"
@@ -382,10 +408,10 @@ msgstr ""
 "ないことが原因かもしれない.\n"
 "      内部エラーメッセージ: %s"
 
-msgid "No factors with an eigenvalue >"
-msgstr "次より大きい固有値を持つ因子がありません >"
-
-msgid "Maximum observed eigenvalue equals"
+#, fuzzy
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr "観測された最大の固有値:"
 
 msgid "Kaiser-Meyer-Olkin Test"
@@ -529,9 +555,6 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平行分析に失敗しました. 内部エラー メッセージ: %s"
 
-msgid "No components with an eigenvalue >"
-msgstr "次より大きい固有値を持つコンポーネントがありません: >"
-
 msgid "Component Loadings"
 msgstr "成分負荷量"
 
@@ -546,6 +569,25 @@ msgstr "スクリープロット"
 
 msgid "Component"
 msgstr "コンポーネント"
+
+#~ msgid ""
+#~ "The estimator is %1$s and the test statistic is %2$s because there are "
+#~ "categorical variables in the data."
+#~ msgstr ""
+#~ "データにカテゴリー変数があるので、推定量は %1$s 、検定統計量は %2$s であ"
+#~ "る."
+
+#~ msgid "The estimator is %s."
+#~ msgstr "推定量は %s です."
+
+#~ msgid "Std. Est. (%s)"
+#~ msgstr "標準化推定値(%s)"
+
+#~ msgid "No factors with an eigenvalue >"
+#~ msgstr "次より大きい固有値を持つ因子がありません >"
+
+#~ msgid "No components with an eigenvalue >"
+#~ msgstr "次より大きい固有値を持つコンポーネントがありません: >"
 
 #~ msgid "Symbol"
 #~ msgstr "シンボル"

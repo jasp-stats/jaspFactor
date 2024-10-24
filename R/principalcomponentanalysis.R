@@ -23,7 +23,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
 
-  dataset <- .pcaAndEfaDataCovariance(dataset, options)
+  dataset <- .pcaAndEfaDataCovariance(dataset, options, ready)
 
   if (ready)
     .pcaCheckErrors(dataset, options)
@@ -69,16 +69,20 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 
-.pcaAndEfaDataCovariance <- function(dataset, options) {
+.pcaAndEfaDataCovariance <- function(dataset, options, ready) {
+
+  if (!ready) return()
 
   if (options[["dataType"]] == "raw") {
     return(dataset)
   }
 
   # possible data matrix?
-  if ((nrow(dataset) != ncol(dataset)) && !all(dt[lower.tri(dt)] == t(dt)[lower.tri(dt)])) {
+  if ((nrow(dataset) != ncol(dataset)))
+    .quitAnalysis(gettext("Input data does not seem to be a square matrix! Please check the format of the input data."))
+
+  if (!all(dataset[lower.tri(dataset)] == t(dataset)[lower.tri(dataset)]))
     .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
-  }
 
   usedvars <- unlist(options[["variables"]])
   var_idx  <- match(usedvars, colnames(dataset))

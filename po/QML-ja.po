@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-10-25 01:15+0000\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
 
@@ -201,7 +207,7 @@ msgstr "潜在変数"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "全変数"
+msgstr "すべて"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
@@ -745,11 +751,11 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"
-msgstr ""
+msgstr "詳しくはクリックしてください"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard errors"
-msgstr ""
+msgstr "標準誤差"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     Bootstrap samples"

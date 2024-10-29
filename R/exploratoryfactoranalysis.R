@@ -243,9 +243,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     kmo <- psych::KMO(polyTetraCor$rho)
-  }
-  else{
-    kmo <- psych::KMO(dataset)
+  } else {
+    if (options[["dataType"]] == "raw")
+      kmo <- psych::KMO(dataset)
+    else
+      kmo <- psych::KMO(cov2cor(as.matrix(dataset)))
   }
 
   kmoTable[["col"]] <- c(gettext("Overall MSA\n"), names(kmo$MSAi))
@@ -269,9 +271,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     bar <- psych::cortest.bartlett(polyTetraCor$rho, n = nrow(dataset))
-  }
-  else {
-    bar <- psych::cortest.bartlett(dataset)
+  } else {
+    if (options[["dataType"]] == "raw")
+      bar <- psych::cortest.bartlett(dataset)
+    else
+      bar <- psych::cortest.bartlett(cov2cor(as.matrix(dataset)))
   }
 
   bartlettTable[["chisq"]] <- bar[["chisq"]]

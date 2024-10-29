@@ -190,6 +190,7 @@ Form
 			}
 			RadioButton
 			{
+				enabled: dataType.value == "raw"
 				value: "polyTetrachoricCorrelationMatrix"
 				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
@@ -270,7 +271,7 @@ Form
 			title: qsTr("Assumption checks")
 			CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
 			CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
-			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  }
+			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  ; enabled: dataType.value == "raw" }
 		}
 		RadioButtonGroup
 		{

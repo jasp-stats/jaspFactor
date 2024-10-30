@@ -532,6 +532,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
   }
 
+  # add axis lines and better breaks
+  plt <- plt +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw() +
+    ggplot2::scale_x_continuous(breaks = seq(1:n_col))
+
   # theming with special legend thingy
   plt <- plt +
     jaspGraphs::themeJaspRaw() +

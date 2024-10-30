@@ -40,6 +40,7 @@ Form
 			RadioButtonGroup
 			{
 				name: "dataType"
+				id: dataType
 				columns: 2
 				RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
 				RadioButton
@@ -189,6 +190,7 @@ Form
 			}
 			RadioButton
 			{
+				enabled: dataType.value == "raw"
 				value: "polyTetrachoricCorrelationMatrix"
 				label: qsTr("Polychoric/tetrachoric correlation matrix")
 			}
@@ -269,7 +271,7 @@ Form
 			title: qsTr("Assumption checks")
 			CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
 			CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
-			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  }
+			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  ; enabled: dataType.value == "raw" }
 		}
 		RadioButtonGroup
 		{
@@ -284,7 +286,7 @@ Form
 			id: addScores
 			name: "addScores"
 			label: qsTr("Add FA scores to data")
-			enabled: variables.count > 1
+			enabled: variables.count > 1 & dataType.value == "raw"
 
 			TextField {
 				name: "addedScoresPrefix"

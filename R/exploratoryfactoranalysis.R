@@ -21,7 +21,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # Read dataset
   dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
-  dataset <- .pcaAndEfaDataCovariance(dataset, options)
+  dataset <- .pcaAndEfaDataCovariance(dataset, options, ready)
 
   if (ready)
     .efaCheckErrors(dataset, options)
@@ -243,9 +243,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     kmo <- psych::KMO(polyTetraCor$rho)
-  }
-  else{
-    kmo <- psych::KMO(dataset)
+  } else {
+    if (options[["dataType"]] == "raw")
+      kmo <- psych::KMO(dataset)
+    else
+      kmo <- psych::KMO(cov2cor(as.matrix(dataset)))
   }
 
   kmoTable[["col"]] <- c(gettext("Overall MSA\n"), names(kmo$MSAi))
@@ -269,9 +271,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
     bar <- psych::cortest.bartlett(polyTetraCor$rho, n = nrow(dataset))
-  }
-  else {
-    bar <- psych::cortest.bartlett(dataset)
+  } else {
+    if (options[["dataType"]] == "raw")
+      bar <- psych::cortest.bartlett(dataset)
+    else
+      bar <- psych::cortest.bartlett(cov2cor(as.matrix(dataset)))
   }
 
   bartlettTable[["chisq"]] <- bar[["chisq"]]
@@ -730,9 +734,14 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
   }
 
+  # add axis lines and better breaks
+  plt <- plt +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw() +
+    ggplot2::scale_x_continuous(breaks = seq(1:n_col))
+
   # theming with special legend thingy
   plt <- plt +
-    jaspGraphs::themeJaspRaw() +
     ggplot2::theme(
       legend.position      = c(0.99, 0.95),
       legend.justification = c(1, 1),

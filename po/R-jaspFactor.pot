@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.19.2\n"
-"POT-Creation-Date: 2024-10-19 03:31\n"
+"POT-Creation-Date: 2024-11-02 03:32\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,9 @@ msgid "The model could not be estimated. A factor with less than 2 variables was
 msgstr ""
 
 msgid "Not more cases than number of variables. Is your data a variance-covariance matrix?"
+msgstr ""
+
+msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
 msgstr ""
 
 msgid "Input data does not seem to be a symmetric matrix! Please check the format of the input data."

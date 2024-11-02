@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2024-10-19 03:31\n"
+"POT-Creation-Date: 2024-11-02 03:32\n"
 "PO-Revision-Date: 2023-12-16 01:08+0000\n"
 "Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -29,6 +29,11 @@ msgstr "模型無法估計。有個少於兩個變數的因素被設為二階因
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
 msgstr ""
 
 msgid ""

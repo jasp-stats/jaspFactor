@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,14 +19,15 @@
 
 principalComponentAnalysis <- function(
           data = NULL,
-          version = "0.19",
-          addComponentScores = FALSE,
+          version = "0.19.2",
+          addScores = FALSE,
+          addedScoresPrefix = "PC",
           analysisBasedOn = "correlationMatrix",
           bartlettTest = FALSE,
           componentCorrelations = FALSE,
           componentCountMethod = "parallelAnalysis",
           componentLoadingsOrder = "sortByComponentSize",
-          componentsPrefix = "",
+          dataType = "raw",
           eigenValuesAbove = 1,
           kaiserMeyerOlkinTest = FALSE,
           loadingsDisplayLimit = 0.4,
@@ -44,9 +45,10 @@ principalComponentAnalysis <- function(
           plotWidth = 480,
           residualMatrix = FALSE,
           rotationMethod = "oblique",
+          sampleSize = 200,
           screePlot = FALSE,
           screePlotParallelAnalysisResults = TRUE,
-          variables = list()) {
+          variables = list(types = list(), value = NULL)) {
 
    defaultArgCalls <- formals(jaspFactor::principalComponentAnalysis)
    defaultArgs <- lapply(defaultArgCalls, eval)

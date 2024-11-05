@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,11 +19,12 @@
 
 confirmatoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           ave = FALSE,
           bartlettTest = FALSE,
           bootstrapSamples = 1000,
           ciLevel = 0.95,
+          dataType = "raw",
           dependentVariablesCorrelated = TRUE,
           estimator = "default",
           exogenousCovariatesFixed = TRUE,
@@ -31,7 +32,7 @@ confirmatoryFactorAnalysis <- function(
           factors = list(list(indicators = list(), name = "Factor1", title = "Factor 1")),
           factorsUncorrelated = FALSE,
           fitMeasures = FALSE,
-          group = "",
+          group = list(types = "unknown", value = ""),
           htmt = FALSE,
           impliedCovarianceMatrix = FALSE,
           interceptsFixedToZero = "latent",
@@ -42,10 +43,10 @@ confirmatoryFactorAnalysis <- function(
           manifestInterceptsFixedToZero = FALSE,
           meanStructure = FALSE,
           misfitPlot = FALSE,
-          modelIdentification = "factorVariance",
+          modelIdentification = "markerVariable",
           modificationIndices = FALSE,
           modificationIndicesCutoff = 3.84,
-          naAction = "fiml",
+          naAction = "listwise",
           packageMimiced = "lavaan",
           pathPlot = FALSE,
           pathPlotFontSize = 0.9,
@@ -62,9 +63,10 @@ confirmatoryFactorAnalysis <- function(
           residualSingleIndicatorOmitted = TRUE,
           residualVariances = TRUE,
           residualsCovarying = list(),
+          sampleSize = 200,
           scalingParamaters = TRUE,
-          seType = "standard",
-          secondOrder = list(),
+          seType = "default",
+          secondOrder = list(types = list(), value = NULL),
           standardized = "none",
           thresholds = TRUE) {
 
@@ -77,7 +79,7 @@ confirmatoryFactorAnalysis <- function(
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
-   optionsWithFormula <- c("factors", "group", "invarianceTesting", "modelIdentification", "naAction", "residualsCovarying", "secondOrder")
+   optionsWithFormula <- c("estimator", "factors", "group", "invarianceTesting", "modelIdentification", "naAction", "packageMimiced", "residualsCovarying", "seType", "secondOrder")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 

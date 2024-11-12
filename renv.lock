@@ -972,7 +972,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "058e4271e16f0db160340411cd8cd400027e8720"
+      "RemoteSha": "00fd0aad92ebc7ab83b94a72b20edae1115e26c4"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -1000,7 +1000,7 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.48",
+      "Version": "1.49",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -1323,7 +1323,7 @@
     },
     "parallelly": {
       "Package": "parallelly",
-      "Version": "1.38.0",
+      "Version": "1.39.0",
       "Source": "Repository",
       "Requirements": [
         "parallel",

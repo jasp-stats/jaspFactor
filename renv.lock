@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.4.1",
+    "Version": "4.4.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -61,7 +61,7 @@
     },
     "MASS": {
       "Package": "MASS",
-      "Version": "7.3-60.2",
+      "Version": "7.3-61",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -74,7 +74,7 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.7-0",
+      "Version": "1.7-1",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -145,7 +145,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "14.0.2-1",
+      "Version": "14.2.0-1",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -184,7 +184,7 @@
     },
     "Rdpack": {
       "Package": "Rdpack",
-      "Version": "2.6.1",
+      "Version": "2.6.2",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -311,7 +311,7 @@
     },
     "boot": {
       "Package": "boot",
-      "Version": "1.3-30",
+      "Version": "1.3-31",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -617,7 +617,7 @@
     },
     "fontawesome": {
       "Package": "fontawesome",
-      "Version": "0.5.2",
+      "Version": "0.5.3",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -651,7 +651,7 @@
     },
     "foreign": {
       "Package": "foreign",
-      "Version": "0.8-86",
+      "Version": "0.8-87",
       "Source": "Repository",
       "Requirements": [
         "R",
@@ -972,7 +972,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "00fd0aad92ebc7ab83b94a72b20edae1115e26c4"
+      "RemoteSha": "81c6648e93f1a3a32ebe67655918c609277c8baf"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -1246,7 +1246,7 @@
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-164",
+      "Version": "3.1-166",
       "Source": "Repository",
       "Requirements": [
         "R",

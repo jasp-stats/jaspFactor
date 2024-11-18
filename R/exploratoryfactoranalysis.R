@@ -101,7 +101,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   )
 
   if (options[["dataType"]] == "raw") {
-    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksEFA,
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecksEFA,
                         exitAnalysisIfErrors = TRUE)
   }
 

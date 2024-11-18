@@ -78,15 +78,8 @@ Form
 					label: qsTr("Based on factors")
 				}
 			}
-			IntegerField
-			{
-				name: 			"parallelAnalysisSeed"
-				label: 			"Seed"
-				defaultValue: 	1234
-				fieldWidth: 	60
-				min: 			1
-				max: 			1e6
-			}
+			SetSeed{}
+
 		}
 		RadioButton
 		{

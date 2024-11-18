@@ -201,7 +201,7 @@ options$orthogonalSelector <- "none"
 options$rotationMethod <- "orthogonal"
 options$variables <- paste0("x", 1:9)
 set.seed(1)
-results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- runAnalysis("exploratoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options)
 
 
 test_that("Factor Characteristics table results match", {
@@ -257,13 +257,15 @@ options$factoringMethod <- "minimumResidual"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
 
 set.seed(1)
-results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
 
 test_that("Factor Characteristics table results match with poly cor", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.237661902584815, 0.237661825764328, 1.78311572348898,
-                                      0.237661902584815, 0.237661825764328, 1.42597141550889, 1.42597095458596
+                                 list("Factor 1", 0.237444621938795, 0.238183139137491, 1.78311572348898,
+                                      0.237444621938795, 0.238183139137491, 1.42466773163277, 1.42909883482494,
+                                      "Factor 2", 0.411139518227707, 0.411182023092321, 1.28924116893078,
+                                      0.173694896288912, 0.17299888395483, 1.04216937773347, 1.03799330372898
                                  ))
 })
 
@@ -280,11 +282,11 @@ test_that("Mardia's Test of Multivariate Normality table results match with poly
 test_that("Parallel Analysis table results match with poly cor", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1*", 1.78311572348898, 1.35019729324916, "Factor 2*",
-                                      1.28924116893078, 1.18561012192069, "Factor 3*", 1.08833059622023,
-                                      1.03479212515924, "Factor 4", 0.845932695389084, 0.916703296293484,
-                                      "Factor 5", 0.688011322780564, 0.816974205065407, "Factor 6",
-                                      0.305368493190363, 0.695722958312017))
+                                 list("Factor 1*", 1.78311572348898, 1.34293486623467, "Factor 2*",
+                                      1.28924116893078, 1.18287911279811, "Factor 3*", 1.08833059622023,
+                                      1.05066617046688, "Factor 4", 0.845932695389084, 0.925279735884113,
+                                      "Factor 5", 0.688011322780564, 0.809825771393728, "Factor 6",
+                                      0.305368493190363, 0.688414343222493))
 })
 
 
@@ -298,16 +300,16 @@ options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNor
 
 options("mc.cores" = 1L)
 set.seed(1)
-results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
 
 test_that("Parallel Analysis table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1*", 1.7795916550878, 1.3666469872842, "Factor 2*", 1.28644706023115,
-                                      1.16634731028432, "Factor 3*", 1.08333785331839, 1.04662919278838,
-                                      "Factor 4", 0.848949206589453, 0.937115883176427, "Factor 5",
-                                      0.696170865182367, 0.806896345892467, "Factor 6", 0.305503359590833,
-                                      0.676364280574212))
+                                 list("Factor 1*", 1.7795916550878, 1.33053625507377, "Factor 2*", 1.28644706023115,
+                                      1.17402737320915, "Factor 3*", 1.08333785331839, 1.0367445878489,
+                                      "Factor 4", 0.848949206589453, 0.923477592629848, "Factor 5",
+                                      0.696170865182367, 0.837720518530386, "Factor 6", 0.305503359590833,
+                                      0.697493672707948))
 })
 
 

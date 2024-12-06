@@ -157,7 +157,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   )
 
   if (options[["dataType"]] == "raw") {
-    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksPCAEFA,
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecksPCAEFA,
                         exitAnalysisIfErrors = TRUE)
   }
 

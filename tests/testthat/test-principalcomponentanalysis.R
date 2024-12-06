@@ -329,16 +329,16 @@ options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNor
 
 options("mc.cores" = 1L)
 set.seed(1)
-results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
+results <- runAnalysis("principalComponentAnalysis", "test.csv", options, makeTests = F)
 
 test_that("Parallel Analysis table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Component 1*", 1.7795916550878, 1.3666469872842, "Component 2*", 1.28644706023115,
-                                      1.16634731028432, "Component 3*", 1.08333785331839, 1.04662919278838,
-                                      "Component 4", 0.848949206589453, 0.937115883176427, "Component 5",
-                                      0.696170865182367, 0.806896345892467, "Component 6", 0.305503359590833,
-                                      0.676364280574212))
+                                 list("Component 1*", 1.7795916550878, 1.33053625507377, "Component 2*",
+                                      1.28644706023115, 1.17402737320915, "Component 3*", 1.08333785331839,
+                                      1.0367445878489, "Component 4", 0.848949206589453, 0.923477592629848,
+                                      "Component 5", 0.696170865182367, 0.837720518530386, "Component 6",
+                                      0.305503359590833, 0.697493672707948))
 })
 
 

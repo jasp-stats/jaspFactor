@@ -101,7 +101,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   )
 
   if (options[["dataType"]] == "raw") {
-    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance"), custom = customChecksEFA,
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecksEFA,
                         exitAnalysisIfErrors = TRUE)
   }
 
@@ -192,7 +192,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
-    set.seed(options[["parallelAnalysisSeed"]])
+    .setSeedJASP(options)
+
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
                                  fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
@@ -200,7 +201,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
                                  n.obs = nrow(dataset)))
   }
   else {
-    set.seed(options[["parallelAnalysisSeed"]])
+    .setSeedJASP(options)
+
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
                                                          "pc", "fa")))
@@ -600,14 +602,16 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- psych::mixedCor(dataset)
-    set.seed(options[["parallelAnalysisSeed"]])
+    .setSeedJASP(options)
+
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                              plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                          "pc", "fa"),
                                              n.obs = nrow(dataset)))
   } else {
-    set.seed(options[["parallelAnalysisSeed"]])
+    .setSeedJASP(options)
+
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                          "pc", "fa")))
@@ -628,7 +632,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   }
 
   parallelTable <- createJaspTable(gettext("Parallel Analysis"))
-  parallelTable$dependOn(c("parallelAnalysisTable", "parallelAnalysisTableMethod", "parallelAnalysisSeed"))
+  parallelTable$dependOn(c("parallelAnalysisTable", "parallelAnalysisTableMethod"))
   parallelTable$addColumnInfo(name = "col", title = "", type = "string")
 
   parallelTable$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
@@ -679,14 +683,16 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
     if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
       polyTetraCor <- psych::mixedCor(dataset)
-      set.seed(options[["parallelAnalysisSeed"]])
+      .setSeedJASP(options)
+
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,
                                    fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                "pc", "fa"),
                                    n.obs = nrow(dataset)))
     } else {
-      set.seed(options[["parallelAnalysisSeed"]])
+      .setSeedJASP(options)
+
       parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
                                                fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                            "pc", "fa")))

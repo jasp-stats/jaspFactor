@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2024-11-02 03:32\n"
-"PO-Revision-Date: 2023-12-16 01:08+0000\n"
-"Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"jasp/jaspfactor-r/zh_Hant/>\n"
+"PO-Revision-Date: 2024-12-17 13:00+0000\n"
+"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.9\n"
 
 msgid "Second-Order"
 msgstr "二階"
@@ -29,26 +29,26 @@ msgstr "模型無法估計。有個少於兩個變數的因素被設為二階因
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
+msgstr "資料數少於變數個數。資料是否為變異數-共變數矩陣？"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
-msgstr ""
+msgstr "輸入的資料並非方陣！請確認資料。"
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
 "of the input data."
-msgstr ""
+msgstr "輸入的資料並非對稱矩陣！請確認資料格式。"
 
 msgid "All cells must be numeric."
-msgstr ""
+msgstr "所有細格內容皆須為數字。"
 
 msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
+msgstr "以共變數矩陣資料分析時，不提供分群變數功能。"
 
 msgid "Mean structure not supported for covariance matrix input"
-msgstr ""
+msgstr "以共變數矩陣資料分析時，不提供平均數結構功能"
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
@@ -59,7 +59,8 @@ msgid ""
 "Robust standard errors are not available with the GLS estimator. Try "
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
-msgstr ""
+msgstr "以GLS估計法分析時，不提供穩健標準誤估計值。請在「進階」設定中修改標準誤方法之"
+"設定。"
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
@@ -88,12 +89,12 @@ msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "此模型無法估計: 自由度不足"
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
-msgstr ""
+msgstr "以變異數-共變數矩陣資料分析時，不提供拔靴法功能"
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
-msgstr ""
+msgstr "以變異數-共變數矩陣資料分析時，不提供穩健標準誤估計值"
 
 #, fuzzy
 msgid "# Factors"
@@ -121,13 +122,13 @@ msgid "Factor model"
 msgstr "因素模型"
 
 msgid "%s You may consider changing the standard error method to 'robust'."
-msgstr ""
+msgstr "％建議將標準誤估計法方法改為「穩健」"
 
 msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
-msgstr ""
+msgstr "%1$s 估計法為 %2$s. 考驗值為 %3$s."
 
 msgid "%1$s The standard error method is %2$s."
-msgstr ""
+msgstr "%1$s 標準誤估計法為 is %2$s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) 檢驗"
@@ -196,7 +197,7 @@ msgid "Bollen's Incremental Fit Index (IFI)"
 msgstr "增加適配指標 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr "相對非中心配適指標  (RNI)"
+msgstr "相對非中心配適指標 (RNI)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr "標準化均方根殘差值"
@@ -231,11 +232,11 @@ msgstr "Expected cross validation index (EVCI)"
 msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
-msgstr ""
+msgstr "因資料中有類別變數，適配指標皆為調整後之指標(除PNFI外)"
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
-msgstr ""
+msgstr "因資料中有類別變數，RMSEA為調整後之數值"
 
 msgid "Parameter estimates"
 msgstr "參數估計值"
@@ -257,7 +258,7 @@ msgid "Group"
 msgstr "群"
 
 msgid "Factor"
-msgstr "因子"
+msgstr "因素"
 
 msgid "Indicator"
 msgstr "指標"
@@ -299,10 +300,10 @@ msgid "Intercepts"
 msgstr "截距"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "閾限"
 
 msgid "Threshold"
-msgstr ""
+msgstr "閾限"
 
 msgid "Modification Indices"
 msgstr "修正指標"
@@ -324,7 +325,7 @@ msgid "Modification indices"
 msgstr "修正指標"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "無高於標準的修正指標"
 
 msgid "Implied covariance matrices"
 msgstr "模式共變數矩陣"
@@ -357,19 +358,19 @@ msgid "Model syntax"
 msgstr "模型語法"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "平均變異萃取量"
 
 msgid "AVE"
-msgstr ""
+msgstr "AVE"
 
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "異特質-同特質比率"
 
 msgid "Reliability"
-msgstr ""
+msgstr "信度"
 
 msgid "Coefficient %s"
-msgstr ""
+msgstr "係數 %s"
 
 msgid "Too many factors requested (%i) for the amount of included variables"
 msgstr "因素個數過多 (%i) 超過變項數"
@@ -407,11 +408,10 @@ msgstr ""
 "      可能原因為樣本數小，或是變數不含所有反應類別 \n"
 "      內在錯誤訊息: %s"
 
-#, fuzzy
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "觀察特徵值之最大值為"
+msgstr "沒有因素的特徵值大於1。觀察特徵值之最大值為"
 
 #, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
@@ -420,12 +420,11 @@ msgstr "Kaiser-Meyer-Olkin 檢驗"
 msgid "Overall MSA"
 msgstr "整體MSA"
 
-#, fuzzy
 msgid "Bartlett's Test"
-msgstr "Bartlett's檢定"
+msgstr "Bartlett's考驗"
 
 msgid "Mardia's Test of Multivariate Normality"
-msgstr "Mardia多變數常態檢定"
+msgstr "Mardia多變數常態考驗"
 
 msgid "Statistic"
 msgstr "統計"
@@ -555,7 +554,7 @@ msgid "Path Diagram"
 msgstr "路徑圖"
 
 msgid "Column name %s already exists in the dataset"
-msgstr ""
+msgstr "資料檔中已有此變數名稱"
 
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "無法進行平行分析。內部錯誤訊息: %s"

@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-12-17 13:00+0000\n"
+"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.9\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -485,123 +491,123 @@ msgstr "成分大小"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model identification"
-msgstr ""
+msgstr "模型辨識"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr ""
+msgstr "KMO檢定"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr ""
+msgstr "Bartlett 球形檢定"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
-msgstr ""
+msgstr "顯示參數估計值"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
-msgstr ""
+msgstr "字體大小"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr ""
+msgstr "顯示變異數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr ""
+msgstr "轉軸後圖形"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr ""
+msgstr "Lavaan 語法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr ""
+msgstr "拔靴法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr ""
+msgstr "遺漏值處理"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr ""
+msgstr "全訊息最大概似法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr ""
+msgstr "完全排除法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr ""
+msgstr "成對排除法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
-msgstr ""
+msgstr "兩階段"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
-msgstr ""
+msgstr "成對兩階段"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr ""
+msgstr "無外衍共變數"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors based on"
-msgstr ""
+msgstr "因素個數基於"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
-msgstr ""
+msgstr "基於主成份法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on FA"
-msgstr ""
+msgstr "基於因素分析法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factoring method"
-msgstr ""
+msgstr "因素萃取法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "多分差/四分差相關矩陣"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "顯示因素負荷量高於"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "殘差矩陣"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "平行分析結果"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
-msgstr ""
+msgstr "Mardia's 檢定"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components based on"
-msgstr ""
+msgstr "成份個數決定方式為"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on principal components"
-msgstr ""
+msgstr "基於主成份法"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on factors"
-msgstr ""
+msgstr "基於因素"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "多分差/四分差相關矩陣"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "顯示因素負荷量高於"
 
 #, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
@@ -610,35 +616,35 @@ msgstr "表格"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component correlations"
-msgstr ""
+msgstr "成份相關"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "殘差矩陣"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
-msgstr ""
+msgstr "基於主成份法"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on FA"
-msgstr ""
+msgstr "基於因素分析法"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "平行分析結果"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Average variance extracted (AVE)"
-msgstr ""
+msgstr "平均變異抽取量 (AVE)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Heterotrait-monotrait ratio (HTMT)"
-msgstr ""
+msgstr "多特質-單特質比例 (HTMT)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
-msgstr ""
+msgstr "信度"
 
 #, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
@@ -657,51 +663,51 @@ msgstr "Bartlett 球形考驗"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
-msgstr ""
+msgstr "Mardia's 考驗"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix mean of manifest intercepts to zero"
-msgstr ""
+msgstr "將觀察變數截距的平均數設為零"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
-msgstr ""
+msgstr "結構"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Add FA scores to data"
-msgstr ""
+msgstr "儲存因素分數"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Prefix"
-msgstr ""
+msgstr "字首"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Prefix"
-msgstr ""
+msgstr "字首"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "資料"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "原始"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "變異數-共變數矩陣"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "樣本數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr ""
+msgstr "多指標多前因模型(MIMIC)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"
-msgstr ""
+msgstr "預設"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
@@ -749,48 +755,48 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"
-msgstr ""
+msgstr "更多訊息"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard errors"
-msgstr ""
+msgstr "標準誤"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     Bootstrap samples"
-msgstr ""
+msgstr "     拔靴樣本數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     CI level"
-msgstr ""
+msgstr "     信賴區間"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "資料"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "原始"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "變異數-共變數矩陣"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "樣本數"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "資料"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "原始"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "變異數-共變數矩陣"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "樣本數"

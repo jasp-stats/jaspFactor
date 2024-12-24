@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-12-25 23:00+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -485,7 +491,7 @@ msgstr "成分大小"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model identification"
-msgstr "模型辨識"
+msgstr "模型識別"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
@@ -493,7 +499,7 @@ msgstr "KMO檢定"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr "Bartlett 球形檢定"
+msgstr "Bartlett's 球形檢定"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
@@ -509,67 +515,67 @@ msgstr "顯示變異數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr "轉軸後圖形"
+msgstr "轉軸圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr "Lavaan 語法"
+msgstr "Lavaan語法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr "拔靴法"
+msgstr "拔靴(Bootstrap)法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr "遺漏值處理"
+msgstr "遺漏值處理方式"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr "全訊息最大概似法"
+msgstr "全訊息最大概似法(FIML)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr "完全排除法"
+msgstr "列刪除法(Listwise)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr "成對排除法"
+msgstr "成對刪除(Pairwise)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
-msgstr "兩階段"
+msgstr "兩階段法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
-msgstr "成對兩階段"
+msgstr "穩健型兩階段法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr "無外衍共變數"
+msgstr "非外生共變量法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Number of Factors based on"
-msgstr "因素個數基於"
+msgstr "萃取因素個數基於"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
-msgstr "基於主成份法"
+msgstr "基於主成份"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on FA"
-msgstr "基於因素分析法"
+msgstr "基於因素"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Factoring method"
-msgstr "因素萃取法"
+msgstr "因素萃取方法"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr "多分差/四分差相關矩陣"
+msgstr "多項/四分的相關矩陣"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Display loadings above"
-msgstr "顯示因素負荷量高於"
+msgstr "因素負荷量高於...才顯示"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Residual matrix"
@@ -585,11 +591,11 @@ msgstr "Mardia's 檢定"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Number of Components based on"
-msgstr "成份個數決定方式為"
+msgstr "萃取成分個數基於"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on principal components"
-msgstr "基於主成份法"
+msgstr "基於主成分"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on factors"
@@ -597,11 +603,11 @@ msgstr "基於因素"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr "多分差/四分差相關矩陣"
+msgstr "多項/四分的相關矩陣"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
-msgstr "顯示因素負荷量高於"
+msgstr "因素負荷量高於...顯示"
 
 #, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
@@ -610,7 +616,7 @@ msgstr "表格"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Component correlations"
-msgstr "成份相關"
+msgstr "成分相關性"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Residual matrix"
@@ -618,11 +624,11 @@ msgstr "殘差矩陣"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on PC"
-msgstr "基於主成份法"
+msgstr "基於主成分"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Based on FA"
-msgstr "基於因素分析法"
+msgstr "基於因素"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Parallel analysis results"
@@ -634,26 +640,23 @@ msgstr "平均變異抽取量 (AVE)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Heterotrait-monotrait ratio (HTMT)"
-msgstr "多特質-單特質比例 (HTMT)"
+msgstr "異質性-單質性比 (HTMT)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
 msgstr "信度"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Assumption checks"
-msgstr "檢查假設"
+msgstr "前提假設檢查"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "KMO test"
-msgstr "KMO 考驗"
+msgstr "KMO 檢定"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Bartlett's test"
-msgstr "Bartlett 球形考驗"
+msgstr "Bartlett 球形檢定"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"

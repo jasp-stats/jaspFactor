@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-12-29 07:00+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -449,7 +455,7 @@ msgstr "陡坡圖"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr "遺漏職"
+msgstr "遺漏值"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"
@@ -513,11 +519,11 @@ msgstr "轉軸圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr "Lavaan語法"
+msgstr "Lavaan程式碼"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr "拔靴(Bootstrap)法"
+msgstr "拔靴法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
@@ -603,7 +609,6 @@ msgctxt "PrincipalComponentAnalysis|"
 msgid "Display loadings above"
 msgstr "因素負荷量高於...顯示"
 
-#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Tables"
 msgstr "表格"
@@ -702,47 +707,47 @@ msgstr "預設"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
-msgstr ""
+msgstr "對角加權最小平方法(DLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "PML"
-msgstr ""
+msgstr "擬最大概似法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLM"
-msgstr ""
+msgstr "多層次模型"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMV"
-msgstr ""
+msgstr "最大概似法的均值與變異數調整法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMVS"
-msgstr ""
+msgstr "最大概似法的均值與變異數調整及尺度修正法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLF"
-msgstr ""
+msgstr "固定效應最大概似法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLR"
-msgstr ""
+msgstr "具穩健標準誤的最大概似法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSM"
-msgstr ""
+msgstr "加權最小平方法的均值調整"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSMV"
-msgstr ""
+msgstr "加權最小平方法的均值與變異數調整"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSM"
-msgstr ""
+msgstr "未加權最小平方法的均值"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSMV"
-msgstr ""
+msgstr "未加權最小平方法的均值與變異數調整法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"

@@ -1,0 +1,554 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspFactor 0.19.2\n"
+"POT-Creation-Date: 2024-11-02 03:32\n"
+"PO-Revision-Date: 2025-01-04 03:30+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
+"ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
+
+msgid "Second-Order"
+msgstr "இரண்டாவது வரிசை"
+
+msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgstr ""
+"மாதிரியை மதிப்பிட முடியவில்லை. காரணிகள் குறைந்தது 2 கவனிக்கப்பட்ட மாறிகள் இருப்பதை "
+"உறுதிசெய்க."
+
+msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgstr ""
+"மாதிரியை மதிப்பிட முடியவில்லை. 2 க்கும் குறைவான மாறிகள் கொண்ட ஒரு காரணி இரண்டாவது "
+"வரிசையில் சேர்க்கப்பட்டது."
+
+msgid "Not more cases than number of variables. Is your data a variance-covariance matrix?"
+msgstr ""
+"மாறிகளின் எண்ணிக்கையை விட அதிகமான வழக்குகள் இல்லை. உங்கள் தரவு மாறுபாடு-கோவாரன்ச் "
+"மேட்ரிக்சா?"
+
+msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
+msgstr ""
+"உள்ளீட்டு தரவு ஒரு சதுர அணி என்று தெரியவில்லை! உள்ளீட்டு தரவின் வடிவமைப்பை சரிபார்க்கவும்."
+
+msgid "Input data does not seem to be a symmetric matrix! Please check the format of the input data."
+msgstr ""
+"உள்ளீட்டு தரவு ஒரு சமச்சீர் அணி என்று தெரியவில்லை! உள்ளீட்டு தரவின் வடிவமைப்பை "
+"சரிபார்க்கவும்."
+
+msgid "All cells must be numeric."
+msgstr "அனைத்து செல்கள் எண் இருக்க வேண்டும்."
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr "கோவாரன்ச் மேட்ரிக்ச் உள்ளீட்டிற்கு தொகுத்தல் மாறி ஆதரிக்கப்படவில்லை"
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr "கோவாரன்ச் மேட்ரிக்ச் உள்ளீட்டிற்கு சராசரி அமைப்பு ஆதரிக்கப்படவில்லை"
+
+msgid "FIML missing data handling only available with ML-type estimators"
+msgstr ""
+"FIML காணாமல் போன தரவு கையாளுதல் ML- வகை மதிப்பீட்டாளர்களுடன் மட்டுமே கிடைக்கிறது"
+
+msgid "Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."
+msgstr ""
+"சி.எல்.எச் மதிப்பீட்டாளருடன் வலுவான நிலையான பிழைகள் கிடைக்கவில்லை. மாதிரிக்கு ஏற்றவாறு "
+"'மேம்பட்ட' அமைப்புகளில் நிலையான பிழை முறையை மாற்ற முயற்சிக்கவும்."
+
+msgid "Missing data handling '%s' is not supported for categorical data. \n Please select another method under 'Missing data handling' within the 'Advanced' options tab"
+msgstr ""
+"தரவு கையாளுதல் '%s' காணாமல் போனது வகைப்படுத்தப்பட்ட தரவுகளுக்கு ஆதரிக்கப்படவில்லை.\n"
+" 'மேம்பட்ட' விருப்பங்கள் தாவலுக்குள் 'காணாமல் போன தரவு கையாளுதல்' இன் கீழ் மற்றொரு முறையைத்"
+" தேர்ந்தெடுக்கவும்"
+
+msgid "The model could not be estimated. Error message: \n\n %s"
+msgstr ""
+"மாதிரியை மதிப்பிட முடியவில்லை. பிழை செய்தி:\n"
+"\n"
+" %s"
+
+msgid "The model is not admissible: %s"
+msgstr "மாதிரி ஏற்றுக்கொள்ளப்படாது: %s"
+
+msgid "The model could not be estimated due to nonconvergence."
+msgstr "முரண்பாடு காரணமாக மாதிரியை மதிப்பிட முடியவில்லை."
+
+msgid "The model could not be estimated: No degrees of freedom left."
+msgstr "மாதிரியை மதிப்பிட முடியவில்லை: விடுதலை இல்லை."
+
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+"மாறுபாடு-கோவாரன்ச் மேட்ரிக்ச் உள்ளீட்டிற்கு பூட்ச்ட்ராப்பிங் கிடைக்கவில்லை."
+
+msgid "Robust standard errors are not available for variance-covariance matrix input."
+msgstr ""
+"மாறுபாடு-கோவாரன்ச் மேட்ரிக்ச் உள்ளீட்டிற்கு வலுவான நிலையான பிழைகள் கிடைக்கவில்லை."
+
+msgid "# Factors"
+msgstr "# காரணிகள்"
+
+msgid "Model fit"
+msgstr "மாதிரி பொருத்தம்"
+
+msgid "Chi-square test"
+msgstr "சி-சதுர சோதனை"
+
+msgid "Model"
+msgstr "மாதிரியுரு"
+
+msgid "df"
+msgstr ""
+
+msgid "p"
+msgstr ""
+
+msgid "Baseline model"
+msgstr "அடிப்படை மாதிரி"
+
+msgid "Factor model"
+msgstr "காரணி மாதிரி"
+
+msgid "%s You may consider changing the standard error method to 'robust'."
+msgstr "%s நிலையான பிழை முறையை 'வலுவானதாக' மாற்றுவதை நீங்கள் பரிசீலிக்கலாம்."
+
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+msgstr "%1$s மதிப்பீட்டாளர் %2$s. சோதனை புள்ளிவிவரம் %3$s."
+
+msgid "%1$s The standard error method is %2$s."
+msgstr "%1$s நிலையான பிழை முறை %2$s ஆகும்."
+
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr "கைசர்-மேயர்-ஓல்கின் (KMO) சோதனை"
+
+msgid "Bartlett's test of sphericity"
+msgstr "பார்ட்லெட்டின் கோளத்தின் சோதனை"
+
+msgid "R-Squared"
+msgstr "ஆர்-ச்கொயர்"
+
+msgid "Additional fit measures"
+msgstr "கூடுதல் பொருத்தம் நடவடிக்கைகள்"
+
+msgid "Fit indices"
+msgstr "பொருத்தப்பட்ட குறியீடுகள்"
+
+msgid "Index"
+msgstr "குறியெண்"
+
+msgid "Value"
+msgstr "மதிப்பு"
+
+msgid "Information criteria"
+msgstr "செய்தி அளவுகோல்கள்"
+
+msgid "Other fit measures"
+msgstr "பிற பொருத்தம் நடவடிக்கைகள்"
+
+msgid "Metric"
+msgstr "மெட்ரிக்"
+
+msgid "Log-likelihood"
+msgstr ""
+
+msgid "Number of free parameters"
+msgstr "இலவச அளவுருக்களின் எண்ணிக்கை"
+
+msgid "Akaike (AIC)"
+msgstr "Akaek (aic)"
+
+msgid "Bayesian (BIC)"
+msgstr "பேய்சியன் (பிக்)"
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr "மாதிரி அளவு சரிசெய்யப்பட்ட பேய்சியன் (SSABIC)"
+
+msgid "Comparative Fit Index (CFI)"
+msgstr "ஒப்பீட்டு பொருத்தம் குறியீட்டு (CFI)"
+
+msgid "Tucker-Lewis Index (TLI)"
+msgstr "டக்கர் லூயிச் இன்டெக்ச் (டி.எல்.ஐ)"
+
+msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
+msgstr "குறியீட்டில் பென்ட்லர்-நெர்ம்ட் போனெட் (என்.எஃப்.எஃப்.ஐ)"
+
+msgid "Bentler-Bonett Normed Fit Index (NFI)"
+msgstr "குறியீட்டில் (NFI)"
+
+msgid "Parsimony Normed Fit Index (PNFI)"
+msgstr "பார்சிமோனி விதிமுறை பொருத்தம் குறியீடு (பி.என்.எஃப்.ஐ)"
+
+msgid "Bollen's Relative Fit Index (RFI)"
+msgstr "பொலனின் உறவினர் பொருத்தம் குறியீடு (RFI)"
+
+msgid "Bollen's Incremental Fit Index (IFI)"
+msgstr "பொல்லனின் அதிகரிக்கும் பொருத்தம் குறியீடு (IFI)"
+
+msgid "Relative Noncentrality Index (RNI)"
+msgstr "உறவினர் அல்லாத சென்ட்ராலிட்டி இன்டெக்ச் (ஆர்.என்.ஐ)"
+
+msgid "Root mean square error of approximation (RMSEA)"
+msgstr "தோராயத்தின் ரூட் சராசரி சதுர பிழை (ஆர்.எம்.எச்.இ.ஏ)"
+
+msgid "RMSEA 90%% CI lower bound"
+msgstr "RMSEA 90 %% தொஒ குறைந்த எல்லை"
+
+msgid "RMSEA 90%% CI upper bound"
+msgstr "RMSEA 90 %% தொஒ மேல் எல்லை"
+
+msgid "RMSEA p-value"
+msgstr "Rmsea p- மதிப்பு"
+
+msgid "Standardized root mean square residual (SRMR)"
+msgstr "தரப்படுத்தப்பட்ட ரூட் சராசரி சதுர எச்சம் (எச்.ஆர்.எம்.ஆர்)"
+
+msgid "Hoelter's critical N (%s = .05)"
+msgstr "ஓல்டரின் முக்கியமான n (%s = .05)"
+
+msgid "Hoelter's critical N (%s = .01)"
+msgstr "ஓல்டரின் முக்கியமான n (%s = .01)"
+
+msgid "Goodness of fit index (GFI)"
+msgstr "பொருத்தம் குறியீட்டின் நன்மை (சி.எஃப்.ஐ)"
+
+msgid "McDonald fit index (MFI)"
+msgstr "மெக்டொனால்ட் ஃபிட் இன்டெக்ச் (எம்.எஃப்.ஐ)"
+
+msgid "Expected cross validation index (ECVI)"
+msgstr "எதிர்பார்க்கப்படும் குறுக்கு சரிபார்ப்பு அட்டவணை (ஈ.சி.வி.ஐ)"
+
+msgid "Except for the PNFI, the fit indices are scaled because of categorical variables in the data."
+msgstr ""
+"பி.என்.எஃப்.ஐ தவிர, தரவுகளில் வகைப்படுத்தப்பட்ட மாறிகள் காரணமாக பொருத்தம் குறியீடுகள் "
+"அளவிடப்படுகின்றன."
+
+msgid "The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+"தரவுகளில் வகைப்படுத்தப்பட்ட மாறிகள் காரணமாக RMSEA முடிவுகள் அளவிடப்படுகின்றன."
+
+msgid "Parameter estimates"
+msgstr "அளவுரு மதிப்பீடுகள்"
+
+msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
+msgstr ""
+
+msgid "Std. estimate"
+msgstr "Std. மதிப்பீடு"
+
+msgid "Estimate"
+msgstr ""
+
+msgid "Factor loadings"
+msgstr "காரணி ஏற்றுதல்"
+
+msgid "Group"
+msgstr "குழு"
+
+msgid "Factor"
+msgstr "காரணி"
+
+msgid "Indicator"
+msgstr "காட்டொளி"
+
+msgid "Std. Error"
+msgstr ""
+
+msgid "z-value"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "%s%% Confidence Interval"
+msgstr ""
+
+msgid "Upper"
+msgstr ""
+
+msgid "Second-order factor loadings"
+msgstr "இரண்டாவது வரிசை காரணி ஏற்றுதல்"
+
+msgid "Factor variances"
+msgstr "காரணி மாறுபாடுகள்"
+
+msgid "Factor Covariances"
+msgstr "காரணி கோவாரியன்ச்"
+
+msgid "Residual variances"
+msgstr "மீதமுள்ள மாறுபாடுகள்"
+
+msgid "Residual covariances"
+msgstr ""
+
+msgid "Factor Intercepts"
+msgstr "காரணி இடைமறிப்புகள்"
+
+msgid "Intercepts"
+msgstr "இடைமறிப்புகள்"
+
+msgid "Thresholds"
+msgstr "வாசல்கள்"
+
+msgid "Threshold"
+msgstr "வாசல்"
+
+msgid "Modification Indices"
+msgstr "மாற்றியமைக்கும் குறியீடுகள்"
+
+msgid "Cross-loadings"
+msgstr "குறுக்கு-ஏற்றுதல்"
+
+msgid "Mod. Ind."
+msgstr "எதிராக. இந்த்."
+
+msgid "EPC"
+msgstr "ஈபிசி"
+
+msgid "Second-order cross-loadings"
+msgstr "இரண்டாவது வரிசை குறுக்கு-ஏற்றுதல்"
+
+msgid "Modification indices"
+msgstr "மாற்றியமைக்கும் குறியீடுகள்"
+
+msgid "No modification index was above the cutoff"
+msgstr "எந்த மாற்றும் குறியீடும் வெட்டுக்கு மேலே இல்லை"
+
+msgid "Implied covariance matrices"
+msgstr "கோவாரன்ச் மெட்ரிக்குகள்"
+
+msgid "Implied covariance matrix"
+msgstr "கோவாரன்ச் மேட்ரிக்ச்"
+
+msgid "Residual covariance matrices"
+msgstr "மீதமுள்ள கோவாரன்ச் மெட்ரிக்குகள்"
+
+msgid "Residual covariance matrix"
+msgstr "மீதமுள்ள கோவாரன்ச் மேட்ரிக்ச்"
+
+msgid "Plots"
+msgstr "அடுக்கு"
+
+msgid "Model plots"
+msgstr "மாதிரி அடுக்கு"
+
+msgid "Model plot"
+msgstr "மாதிரி சூழ்ச்சி"
+
+msgid "Misfit plots"
+msgstr "தவறான அடுக்கு"
+
+msgid "Misfit plot"
+msgstr "தவறான சூழ்ச்சி"
+
+msgid "Model syntax"
+msgstr ""
+
+msgid "Average variance extracted"
+msgstr "சராசரி மாறுபாடு பிரித்தெடுக்கப்பட்டது"
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr "ஈட்டோரோட்ரெய்ட்-மோனோட்ரேட் விகிதம்"
+
+msgid "Reliability"
+msgstr "நம்பகத்தன்மை"
+
+msgid "Coefficient %s"
+msgstr "குணகம் %s"
+
+msgid "Too many factors requested (%i) for the amount of included variables"
+msgstr "சேர்க்கப்பட்ட மாறிகளின் அளவிற்கு பல காரணிகள் கோரப்பட்டவை (%i)"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "இந்த பகுப்பாய்வை இயக்க போதுமான செல்லுபடியாகும் வழக்குகள் (%i)"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "தரவு செல்லுபடியாகாது: ஒவ்வொரு வரிசையிலும் மாறுபாடு பூச்சியமாகும்"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr "தரவு செல்லுபடியாகாது: அவதானிப்புகளை விட அதிக மாறிகள் உள்ளன"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr "தரவு செல்லுபடியாகாது: மாறி (கள்) %s இல் காணாமல் போன மதிப்புகள் அதிகம்."
+
+msgid "Data not valid: all variables are collinear"
+msgstr "தரவு செல்லுபடியாகாது: அனைத்து மாறிகள் கோலைனியர்"
+
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
+msgstr "மதிப்பீடு தோல்வியடைந்தது. உள் பிழை செய்தி: %1$s. %2$s"
+
+msgid "Estimation failed. Internal error message: %s"
+msgstr "மதிப்பீடு தோல்வியடைந்தது. உள் பிழை செய்தி: %s"
+
+msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.\n      This might be due to a small sample size or variables not containing all response categories.\n      Internal error message: %s"
+msgstr ""
+"துரதிர்ச்டவசமாக, பாலிகோரிக்/டெட்ராச்சோரிக் தொடர்பு மேட்ரிக்சின் மதிப்பீடு தோல்வியடைந்தது.\n"
+" இது ஒரு சிறிய மாதிரி அளவு அல்லது அனைத்து மறுமொழி வகைகளையும் கொண்டிருக்காத மாறிகள் "
+"காரணமாக இருக்கலாம்.\n"
+" உள் பிழை செய்தி: %s"
+
+msgid "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
+msgstr ""
+"ஒரு ஈசென்வெல்யூ> %1$s உடன் எந்த காரணிகளும் இல்லை. அதிகபட்சமாக கவனிக்கப்பட்ட ஈசென்வெல்யூ "
+"%2$s க்கு சமம்."
+
+msgid "Kaiser-Meyer-Olkin Test"
+msgstr "கைசர்-மேயர்-ஓல்கின் சோதனை"
+
+msgid "Overall MSA"
+msgstr "ஒட்டுமொத்த எம்எச்ஏ"
+
+msgid "Bartlett's Test"
+msgstr "பார்ட்லெட்டின் சோதனை"
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr "மார்டியாவின் பன்முக இயல்புநிலை சோதனை"
+
+msgid "Statistic"
+msgstr ""
+
+msgid "Mardia test failed. Internal error message: %s"
+msgstr "மார்டியா சோதனை தோல்வியடைந்தது. உள் பிழை செய்தி: %s"
+
+msgid "The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."
+msgstr ""
+"வளைவுக்கான புள்ளிவிவரம் சி^2 விநியோகிக்கப்படுவதாகவும், கர்டோசிச் தரநிலை இயல்பான "
+"புள்ளிவிவரமாகவும் கருதப்படுகிறது."
+
+msgid "Chi-squared Test"
+msgstr "சி-ச்கொயர் டெச்ட்"
+
+msgid "Degrees of freedom below 0, model is unidentified."
+msgstr ""
+"0 க்குக் கீழே உள்ள சுதந்திரத்தின் அளவுகள், மாதிரி அடையாளம் காணப்படவில்லை."
+
+msgid "<em>Warning:</em>"
+msgstr "<em> எச்சரிக்கை: </em>"
+
+msgid "Factor Loadings"
+msgstr "காரணி ஏற்றுதல்"
+
+msgid "Factor %i"
+msgstr "காரணி %i"
+
+msgid "Uniqueness"
+msgstr "தனித்துவம்"
+
+msgid "No rotation method applied."
+msgstr "சுழற்சி முறை எதுவும் பயன்படுத்தப்படவில்லை."
+
+msgid "Applied rotation method is %s."
+msgstr "பயன்பாட்டு சுழற்சி முறை %s."
+
+msgid "Factor Loadings (Structure Matrix)"
+msgstr "காரணி ஏற்றுதல் (கட்டமைப்பு அணி)"
+
+msgid "Factor Characteristics"
+msgstr "காரணி பண்புகள்"
+
+msgid "Eigenvalues"
+msgstr "ஈசென்வெல்யூச்"
+
+msgid "Unrotated solution"
+msgstr "மதிப்பிடப்படாத தீர்வு"
+
+msgid "Rotated solution"
+msgstr "சுழலும் தீர்வு"
+
+msgid "SumSq. Loadings"
+msgstr "Sumsq. ஏற்றுதல்"
+
+msgid "Proportion var."
+msgstr "விகிதம்."
+
+msgid "Cumulative"
+msgstr "ஒட்டுமொத்த"
+
+msgid "Factor Correlations"
+msgstr "காரணி தொடர்புகள்"
+
+msgid "Additional fit indices"
+msgstr "கூடுதல் பொருத்தம் குறியீடுகள்"
+
+msgid "RMSEA"
+msgstr "Rmsea"
+
+msgid "RMSEA 90%% confidence"
+msgstr "RMSEA 90 %% நம்பிக்கை"
+
+msgid "SRMR"
+msgstr "எச்.ஆர்.எம்.ஆர்"
+
+msgid "TLI"
+msgstr "Tli"
+
+msgid "CFI"
+msgstr "சி.எஃப்.ஐ."
+
+msgid "BIC"
+msgstr "பிக்"
+
+msgid "Residual Matrix"
+msgstr "மீதமுள்ள அணி"
+
+msgid "Real data component eigenvalues"
+msgstr "உண்மையான தரவு கூறு ஈசென்வெல்யூச்"
+
+msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
+msgstr ""
+"'*' = %s தக்கவைக்கப்பட வேண்டும். பிசி அடிப்படையிலான இணையான பகுப்பாய்வின் முடிவுகள்."
+
+msgid "Real data factor eigenvalues"
+msgstr "உண்மையான தரவு காரணி ஈசென்வெல்யூக்கள்"
+
+msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
+msgstr ""
+"'*' = %s தக்கவைக்கப்பட வேண்டும். FA- அடிப்படையிலான இணையான பகுப்பாய்வின் முடிவுகள்."
+
+msgid "Parallel Analysis"
+msgstr "இணை பகுப்பாய்வு"
+
+msgid "Simulated data mean eigenvalues"
+msgstr "உருவகப்படுத்தப்பட்ட தரவு என்பது ஈசென்வெல்யூக்களைக் குறிக்கிறது"
+
+msgid "Screeplot not available. \nInternal error message: %s"
+msgstr ""
+"ச்க்ரீ பிளாட் கிடைக்கவில்லை.\n"
+" உள் பிழை செய்தி: %s"
+
+msgid "Data"
+msgstr "தகவல்கள்"
+
+msgid "Simulated data from parallel analysis"
+msgstr "இணையான பகுப்பாய்விலிருந்து உருவகப்படுத்தப்பட்ட தரவு"
+
+msgid "Eigenvalue"
+msgstr "ஈசென்வெல்யூ"
+
+msgid "Path Diagram"
+msgstr "பாதை வரைபடம்"
+
+msgid "Column name %s already exists in the dataset"
+msgstr "நெடுவரிசை பெயர் %s ஏற்கனவே தரவுத்தொகுப்பில் உள்ளன"
+
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "இணை பகுப்பாய்வு தோல்வியடைந்தது. உள் பிழை செய்தி: %s"
+
+msgid "Component Loadings"
+msgstr "கூறு ஏற்றுதல்"
+
+msgid "Component Characteristics"
+msgstr "கூறு பண்புகள்"
+
+msgid "Component Correlations"
+msgstr "கூறு தொடர்புகள்"
+
+msgid "Scree plot"
+msgstr "ச்க்ரீ சூழ்ச்சி"
+
+msgid "Component"
+msgstr "உறுப்பு"

@@ -1,0 +1,515 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspFactor 0.19.2\n"
+"POT-Creation-Date: 2024-11-02 03:32\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Second-Order"
+msgstr ""
+
+msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgstr ""
+
+msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgstr ""
+
+msgid "Not more cases than number of variables. Is your data a variance-covariance matrix?"
+msgstr ""
+
+msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
+msgstr ""
+
+msgid "Input data does not seem to be a symmetric matrix! Please check the format of the input data."
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
+msgid "FIML missing data handling only available with ML-type estimators"
+msgstr ""
+
+msgid "Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."
+msgstr ""
+
+msgid "Missing data handling '%s' is not supported for categorical data. \n Please select another method under 'Missing data handling' within the 'Advanced' options tab"
+msgstr ""
+
+msgid "The model could not be estimated. Error message: \n\n %s"
+msgstr ""
+
+msgid "The model is not admissible: %s"
+msgstr ""
+
+msgid "The model could not be estimated due to nonconvergence."
+msgstr ""
+
+msgid "The model could not be estimated: No degrees of freedom left."
+msgstr ""
+
+msgid "Bootstrapping is not available for variance-covariance matrix input."
+msgstr ""
+
+msgid "Robust standard errors are not available for variance-covariance matrix input."
+msgstr ""
+
+msgid "# Factors"
+msgstr ""
+
+msgid "Model fit"
+msgstr ""
+
+msgid "Chi-square test"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "df"
+msgstr ""
+
+msgid "p"
+msgstr ""
+
+msgid "Baseline model"
+msgstr ""
+
+msgid "Factor model"
+msgstr ""
+
+msgid "%s You may consider changing the standard error method to 'robust'."
+msgstr ""
+
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+msgstr ""
+
+msgid "%1$s The standard error method is %2$s."
+msgstr ""
+
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgid "R-Squared"
+msgstr ""
+
+msgid "Additional fit measures"
+msgstr ""
+
+msgid "Fit indices"
+msgstr ""
+
+msgid "Index"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Information criteria"
+msgstr ""
+
+msgid "Other fit measures"
+msgstr ""
+
+msgid "Metric"
+msgstr ""
+
+msgid "Log-likelihood"
+msgstr ""
+
+msgid "Number of free parameters"
+msgstr ""
+
+msgid "Akaike (AIC)"
+msgstr ""
+
+msgid "Bayesian (BIC)"
+msgstr ""
+
+msgid "Sample-size adjusted Bayesian (SSABIC)"
+msgstr ""
+
+msgid "Comparative Fit Index (CFI)"
+msgstr ""
+
+msgid "Tucker-Lewis Index (TLI)"
+msgstr ""
+
+msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
+msgstr ""
+
+msgid "Bentler-Bonett Normed Fit Index (NFI)"
+msgstr ""
+
+msgid "Parsimony Normed Fit Index (PNFI)"
+msgstr ""
+
+msgid "Bollen's Relative Fit Index (RFI)"
+msgstr ""
+
+msgid "Bollen's Incremental Fit Index (IFI)"
+msgstr ""
+
+msgid "Relative Noncentrality Index (RNI)"
+msgstr ""
+
+msgid "Root mean square error of approximation (RMSEA)"
+msgstr ""
+
+msgid "RMSEA 90%% CI lower bound"
+msgstr ""
+
+msgid "RMSEA 90%% CI upper bound"
+msgstr ""
+
+msgid "RMSEA p-value"
+msgstr ""
+
+msgid "Standardized root mean square residual (SRMR)"
+msgstr ""
+
+msgid "Hoelter's critical N (%s = .05)"
+msgstr ""
+
+msgid "Hoelter's critical N (%s = .01)"
+msgstr ""
+
+msgid "Goodness of fit index (GFI)"
+msgstr ""
+
+msgid "McDonald fit index (MFI)"
+msgstr ""
+
+msgid "Expected cross validation index (ECVI)"
+msgstr ""
+
+msgid "Except for the PNFI, the fit indices are scaled because of categorical variables in the data."
+msgstr ""
+
+msgid "The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
+msgid "Parameter estimates"
+msgstr ""
+
+msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
+msgstr ""
+
+msgid "Std. estimate"
+msgstr ""
+
+msgid "Estimate"
+msgstr ""
+
+msgid "Factor loadings"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Factor"
+msgstr ""
+
+msgid "Indicator"
+msgstr ""
+
+msgid "Std. Error"
+msgstr ""
+
+msgid "z-value"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "%s%% Confidence Interval"
+msgstr ""
+
+msgid "Upper"
+msgstr ""
+
+msgid "Second-order factor loadings"
+msgstr ""
+
+msgid "Factor variances"
+msgstr ""
+
+msgid "Factor Covariances"
+msgstr ""
+
+msgid "Residual variances"
+msgstr ""
+
+msgid "Residual covariances"
+msgstr ""
+
+msgid "Factor Intercepts"
+msgstr ""
+
+msgid "Intercepts"
+msgstr ""
+
+msgid "Thresholds"
+msgstr ""
+
+msgid "Threshold"
+msgstr ""
+
+msgid "Modification Indices"
+msgstr ""
+
+msgid "Cross-loadings"
+msgstr ""
+
+msgid "Mod. Ind."
+msgstr ""
+
+msgid "EPC"
+msgstr ""
+
+msgid "Second-order cross-loadings"
+msgstr ""
+
+msgid "Modification indices"
+msgstr ""
+
+msgid "No modification index was above the cutoff"
+msgstr ""
+
+msgid "Implied covariance matrices"
+msgstr ""
+
+msgid "Implied covariance matrix"
+msgstr ""
+
+msgid "Residual covariance matrices"
+msgstr ""
+
+msgid "Residual covariance matrix"
+msgstr ""
+
+msgid "Plots"
+msgstr ""
+
+msgid "Model plots"
+msgstr ""
+
+msgid "Model plot"
+msgstr ""
+
+msgid "Misfit plots"
+msgstr ""
+
+msgid "Misfit plot"
+msgstr ""
+
+msgid "Model syntax"
+msgstr ""
+
+msgid "Average variance extracted"
+msgstr ""
+
+msgid "AVE"
+msgstr ""
+
+msgid "Heterotrait-monotrait ratio"
+msgstr ""
+
+msgid "Reliability"
+msgstr ""
+
+msgid "Coefficient %s"
+msgstr ""
+
+msgid "Too many factors requested (%i) for the amount of included variables"
+msgstr ""
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr ""
+
+msgid "Data not valid: variance is zero in each row"
+msgstr ""
+
+msgid "Data not valid: there are more variables than observations"
+msgstr ""
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr ""
+
+msgid "Data not valid: all variables are collinear"
+msgstr ""
+
+msgid "Estimation failed. Internal error message: %1$s. %2$s"
+msgstr ""
+
+msgid "Estimation failed. Internal error message: %s"
+msgstr ""
+
+msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed.\n      This might be due to a small sample size or variables not containing all response categories.\n      Internal error message: %s"
+msgstr ""
+
+msgid "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
+msgstr ""
+
+msgid "Kaiser-Meyer-Olkin Test"
+msgstr ""
+
+msgid "Overall MSA"
+msgstr ""
+
+msgid "Bartlett's Test"
+msgstr ""
+
+msgid "Mardia's Test of Multivariate Normality"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid "Mardia test failed. Internal error message: %s"
+msgstr ""
+
+msgid "The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."
+msgstr ""
+
+msgid "Chi-squared Test"
+msgstr ""
+
+msgid "Degrees of freedom below 0, model is unidentified."
+msgstr ""
+
+msgid "<em>Warning:</em>"
+msgstr ""
+
+msgid "Factor Loadings"
+msgstr ""
+
+msgid "Factor %i"
+msgstr ""
+
+msgid "Uniqueness"
+msgstr ""
+
+msgid "No rotation method applied."
+msgstr ""
+
+msgid "Applied rotation method is %s."
+msgstr ""
+
+msgid "Factor Loadings (Structure Matrix)"
+msgstr ""
+
+msgid "Factor Characteristics"
+msgstr ""
+
+msgid "Eigenvalues"
+msgstr ""
+
+msgid "Unrotated solution"
+msgstr ""
+
+msgid "Rotated solution"
+msgstr ""
+
+msgid "SumSq. Loadings"
+msgstr ""
+
+msgid "Proportion var."
+msgstr ""
+
+msgid "Cumulative"
+msgstr ""
+
+msgid "Factor Correlations"
+msgstr ""
+
+msgid "Additional fit indices"
+msgstr ""
+
+msgid "RMSEA"
+msgstr ""
+
+msgid "RMSEA 90%% confidence"
+msgstr ""
+
+msgid "SRMR"
+msgstr ""
+
+msgid "TLI"
+msgstr ""
+
+msgid "CFI"
+msgstr ""
+
+msgid "BIC"
+msgstr ""
+
+msgid "Residual Matrix"
+msgstr ""
+
+msgid "Real data component eigenvalues"
+msgstr ""
+
+msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
+msgstr ""
+
+msgid "Real data factor eigenvalues"
+msgstr ""
+
+msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+msgid "Simulated data mean eigenvalues"
+msgstr ""
+
+msgid "Screeplot not available. \nInternal error message: %s"
+msgstr ""
+
+msgid "Data"
+msgstr ""
+
+msgid "Simulated data from parallel analysis"
+msgstr ""
+
+msgid "Eigenvalue"
+msgstr ""
+
+msgid "Path Diagram"
+msgstr ""
+
+msgid "Column name %s already exists in the dataset"
+msgstr ""
+
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr ""
+
+msgid "Component Loadings"
+msgstr ""
+
+msgid "Component Characteristics"
+msgstr ""
+
+msgid "Component Correlations"
+msgstr ""
+
+msgid "Scree plot"
+msgstr ""
+
+msgid "Component"
+msgstr ""

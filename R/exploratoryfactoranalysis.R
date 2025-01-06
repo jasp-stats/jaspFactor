@@ -920,7 +920,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   colNamesR <- paste0(options[["addedScoresPrefix"]], "_", seq_len(length(options$variables)))
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = c("addScores", "addedScoresPrefix"))
+  container$dependOn(optionsFromObject = modelContainer, options = c("addScores", "addedScoresPrefix", "naAction"))
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
 
@@ -933,7 +933,17 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     }
 
     container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
-    container[[colNameR]]$setScale(scores[, ii])
+    if (options[["naAction"]] == "pairwise") {
+      container[[colNameR]]$setScale(scores[, ii])
+    } else { # for listwise we need to identify the complete cases
+      # so we need to temporarily load the raw data with the NAs
+      dataTmp <- .readDataSetToEnd(columns.as.numeric = unlist(options$variables))
+      scoresTmp <- rep(NA, nrow(dataTmp))
+      scoresTmp[complete.cases(dataTmp)] <- scores[, ii]
+      container[[colNameR]]$setScale(scoresTmp)
+
+    }
+
   }
 
   jaspResults[["addedScoresContainer"]] <- container

@@ -116,7 +116,7 @@ Upgrades
 		ChangeRename
 		{
 			from:	"componentLoadingsSort"
-			to:		"componentLoadingsOrder"
+			to:		"loadingsOrder"
 		}
 		ChangeRename
 		{
@@ -230,7 +230,7 @@ Upgrades
 		ChangeRename
 		{
 			from:	"factorLoadingsSort"
-			to:		"factorLoadingsOrder"
+			to:		"loadingsOrder"
 		}
 		ChangeRename
 		{

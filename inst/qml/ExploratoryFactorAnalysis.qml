@@ -15,9 +15,12 @@
 // License along with this program.  If not, see
 // <http://www.gnu.org/licenses/>.
 //
+
 import QtQuick
+import QtQuick.Layouts
 import JASP
 import JASP.Controls
+import "./common" as Common
 
 Form
 {
@@ -52,243 +55,21 @@ Form
 		}
 	}
 
-	Group
-	{
-		RadioButtonGroup
-		{
-			name: "factorCountMethod"
-			title: qsTr("Number of Factors based on")
-			RadioButton
-			{
-				value:      "parallelAnalysis";
-				label:      qsTr("Parallel analysis");
-				checked:    true
-
-				RadioButtonGroup
-				{
-					name:   "parallelAnalysisMethod"
-					title:  ""
-
-					RadioButton
-					{
-						value:		"principalComponentBased"
-						label:		qsTr("Based on PC")
-						checked:	true
-					}
-					RadioButton
-					{
-						value: "factorBased"
-						label: qsTr("Based on FA")
-					}
-				}
-				
-				SetSeed{}
-
-			}
-
-			RadioButton
-			{
-				value: "eigenValues"; label: qsTr("Eigenvalues")
-				DoubleField {
-					name:			"eigenValuesAbove"
-					label:			qsTr("Eigenvalues above")
-					defaultValue:	1
-					decimals:		1
-				}
-			}
-			RadioButton
-			{
-				value: "manual"; label: qsTr("Manual")
-				IntegerField {
-					name:			"manualNumberOfFactors"
-					label:			qsTr("Number of factors")
-					defaultValue:	1
-					min:			1
-					max: variables.count > 1 ? variables.count : 1
-
-				}
-			}
-		}
-
-		Group
-		{
-			title: qsTr("Factoring method")
-			DropDown
-			{
-				name: "factoringMethod"
-				indexDefaultValue: 0
-				values:
-				[
-					{ label: qsTr("Minimum residual"),			value: "minimumResidual"		},
-					{ label: qsTr("Maximum likelihood"),		value: "maximumLikelihood"		},
-					{ label: qsTr("Principal axis factoring"),	value: "principalAxis"			},
-					{ label: qsTr("Ordinary least squares"),	value: "ordinaryLeastSquares"	},
-					{ label: qsTr("Weighted least squares"),	value: "weightedLeastSquares"	},
-					{ label: qsTr("Generalized least squares"), value: "generalizedLeastSquares"},
-					{ label: qsTr("Minimum chi-square"),		value: "minimumChiSquare"		},
-					{ label: qsTr("Minimum rank"),				value: "minimumRank"			}
-				]
-			}
-		}
-
+	Common.NumberFactors{
+		pca: false
+		variablesCount: variables.count
 	}
 
-
-
-	Group
-	{
-		RadioButtonGroup
-		{
-			name: "rotationMethod"
-			title: qsTr("Rotation")
-			RadioButton
-			{
-				value	: "orthogonal"
-				label	: qsTr("Orthogonal")
-				DropDown
-				{
-					name: "orthogonalSelector"
-					values: [
-						{ label: qsTr("none")	, value: "none"			},
-						{ label: "varimax"		, value: "varimax"		},
-						{ label: "quartimax"	, value: "quartimax"	},
-						{ label: "bentlerT"		, value: "bentlerT"		},
-						{ label: "equamax"		, value: "equamax"		},
-						{ label: "geominT"		, value: "geominT"		}
-					]
-				}
-			}
-			RadioButton
-			{
-				value	: "oblique"
-				label	: qsTr("Oblique")
-				checked	: true
-				DropDown { name: "obliqueSelector"; values: [ "promax", "oblimin", "simplimax", "bentlerQ", "cluster", "geominQ" ] }
-			}
-		}
-
-		RadioButtonGroup
-		{
-			name: "analysisBasedOn"
-			title: qsTr("Base analysis on")
-			RadioButton
-			{
-				value: "correlationMatrix"
-				label: qsTr("Correlation matrix")
-				checked: true
-			}
-			RadioButton
-			{
-				value: "covarianceMatrix"
-				label: qsTr("Covariance matrix")
-			}
-			RadioButton
-			{
-				enabled: dataType.value == "raw"
-				value: "polyTetrachoricCorrelationMatrix"
-				label: qsTr("Polychoric/tetrachoric correlation matrix")
-			}
-		}
+	Common.AnalysisOptions{
+		pca: false
+		dataRaw: dataType.value == "raw"
 	}
 
-	Section
-	{
-		title: qsTr("Output Options")
-		Group
-		{
-			Slider {
-				name: "loadingsDisplayLimit"
-				label: qsTr("Display loadings above")
-				value: 0.4
-			}
-			RadioButtonGroup
-			{
-				name: "factorLoadingsOrder"
-				title: qsTr("Order factor loadings by")
-				RadioButton	{ name: "sortByFactorSize";		label: qsTr("Factor size");		checked: true		}
-				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
-			}
-		}
+	Common.OutputOptions{
+		pca: false
+		dataRaw: dataType.value == "raw"
+		variablesCount: variables.count
 
-		Group
-		{
-			Group
-			{
-				title: qsTr("Tables")
-				CheckBox { name: "factorStructure";			label: qsTr("Structure matrix")				}
-				CheckBox { name: "factorCorrelations";	label: qsTr("Factor correlations")		}
-				CheckBox { name: "fitIndices";					label: qsTr("Additional fit indices")	}
-				CheckBox { name: "residualMatrix";			label: qsTr("Residual matrix")				}
-				CheckBox {
-					name:	"parallelAnalysisTable";
-					label:	qsTr("Parallel analysis")
-					RadioButtonGroup
-					{
-						name:   "parallelAnalysisTableMethod"
-						title:  ""
-
-						RadioButton
-						{
-							value:      "principalComponentBased"
-							label:      qsTr("Based on PC")
-							checked:    true
-						}
-						RadioButton
-						{
-							value: "factorBased"
-							label: qsTr("Based on FA")
-						}
-					}
-				}
-			}
-
-			Group
-			{
-				title: qsTr("Plots")
-				CheckBox { name: "pathDiagram";	label: qsTr("Path diagram")				}
-				CheckBox {
-					name:  "screePlot";
-					label: qsTr("Scree plot")
-
-					CheckBox {
-						name:		"screePlotParallelAnalysisResults"
-						label:		qsTr("Parallel analysis results")
-						checked:	true
-					}
-				}
-			}
-		}
-
-
-		Group
-		{
-			title: qsTr("Assumption checks")
-			CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
-			CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
-			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  ; enabled: dataType.value == "raw" }
-		}
-		RadioButtonGroup
-		{
-			name: "naAction"
-			title: qsTr("Missing Values")
-			RadioButton { value: "pairwise";	label: qsTr("Exclude cases pairwise"); checked: true	}
-			RadioButton { value: "listwise";	label: qsTr("Exclude cases listwise")					}
-		}
-
-		CheckBox
-		{
-			id: addScores
-			name: "addScores"
-			label: qsTr("Add FA scores to data")
-			enabled: variables.count > 1 & dataType.value == "raw"
-
-			TextField {
-				name: "addedScoresPrefix"
-				label: qsTr("Prefix")
-				defaultValue: "FA"
-				fieldWidth: 80
-				enabled: addScores.checked
-			}
-		}
 	}
+	
 }

@@ -25,6 +25,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   dataset <- .pcaAndEfaDataCovariance(dataset, options, ready)
 
+
   if (ready)
     .pcaCheckErrors(dataset, options)
 
@@ -59,7 +60,6 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     if (options[["naAction"]] == "listwise") {
       return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
     } else {
-
       return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
     }
   } else { # if variance covariance matrix as input

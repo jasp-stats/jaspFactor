@@ -7,8 +7,42 @@ context("Exploratory Factor Analysis -- Verification project")
 # - contents of screeplot (set.seed does not work)
 
 ## Testing Questionnaire data
-
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+defaultOptions <- list(
+  variables = list(),
+  sampleSize = 200,
+  eigenValuesAbove = 1,
+  manualNumberOfFactors = 1,
+  factoringMethod = "minimumResidual",
+  orthogonalSelector = "none",
+  obliqueSelector = "promax",
+  loadingsDisplayLimit = 0,
+  factorStructure = FALSE,
+  factorCorrelations = FALSE,
+  fitIndices = FALSE,
+  residualMatrix = FALSE,
+  parallelAnalysisTable = FALSE,
+  pathDiagram = FALSE,
+  screePlot = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  kaiserMeyerOlkinTest = FALSE,
+  bartlettTest = FALSE,
+  mardiaTest = FALSE,
+  addScores = FALSE,
+  addedScoresPrefix = "",
+  dataType = "raw",
+  factorCountMethod = "parallelAnalysis",
+  parallelAnalysisMethod = "principalComponentBased",
+  rotationMethod = "orthogonal",
+  analysisBasedOn = "correlationMatrix",
+  loadingsOrder = "sortByVariables",
+  parallelAnalysisTableMethod = "principalComponentBased",
+  naAction = "pairwise",
+  plotWidth = 480,
+  plotHeight = 320,
+  setSeed = FALSE,
+  seed = 1
+)
+options <- defaultOptions
 options$factorCountMethod <- "manual"
 options$rotationMethod <- "orthogonal"
 options$orthogonalSelector <- "varimax"
@@ -124,7 +158,7 @@ test_that("Factor Characteristics table results match", {
 #   # jaspTools::expect_equal_plots(testPlot, "scree-plot")
 # })
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "manual"
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
@@ -207,7 +241,7 @@ test_that("Factor Loadings (Structure Matrix) table results match", {
 })
 
 test_that("Missing values works", {
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$factorCorrelations <- TRUE
 

@@ -13,6 +13,7 @@ Description
 	website		: "jasp-stats.org"
 	license		: "GPL (>= 2)"
 	hasWrappers	: true
+	preloadData	: false
 
 	Analysis
 	{
@@ -31,7 +32,7 @@ Description
 	Analysis
 	{
 		title:	qsTr("Confirmatory Factor Analysis")
-		func:	"confirmatoryFactorAnalysis"
+		func:		"confirmatoryFactorAnalysis"
 		qml:    "ConfirmatoryFactorAnalysis.qml"
 	}
 }

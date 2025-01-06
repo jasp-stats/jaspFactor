@@ -6,11 +6,43 @@ context("Principal Component Analysis -- Verification project")
 # - Parallel analysis / manual
 # - slider
 
-
+defaultOptions <- list(
+  variables = list(),
+  sampleSize = 200,
+  eigenValuesAbove = 1,
+  manualNumberOfComponents = 1,
+  orthogonalSelector = "none",
+  obliqueSelector = "promax",
+  loadingsDisplayLimit = 0,
+  componentCorrelations = FALSE,
+  residualMatrix = FALSE,
+  parallelAnalysisTable = FALSE,
+  pathDiagram = FALSE,
+  screePlot = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  kaiserMeyerOlkinTest = FALSE,
+  bartlettTest = FALSE,
+  mardiaTest = FALSE,
+  addScores = FALSE,
+  addedScoresPrefix = "",
+  dataType = "raw",
+  componentCountMethod = "parallelAnalysis",
+  parallelAnalysisMethod = "principalComponentBased",
+  rotationMethod = "orthogonal",
+  analysisBasedOn = "correlationMatrix",
+  loadingsOrder = "sortByVariables",
+  parallelAnalysisTableMethod = "principalComponentBased",
+  naAction = "pairwise",
+  plotWidth = 480,
+  plotHeight = 320,
+  setSeed = FALSE,
+  seed = 1
+)
+options <- defaultOptions
 ## Testing Questionnaire data
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
-options <- jaspTools::analysisOptions("principalComponentAnalysis")
+options <- defaultOptions
 options$PCPrefix <- ""
 options$loadingsDisplayLimit <- 0.4
 options$orthogonalSelector <- "varimax"

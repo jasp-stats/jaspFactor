@@ -6,7 +6,42 @@ context("Exploratory Factor Analysis")
 # - Eigen values above / manual
 # - contents of screeplot (set.seed does not work)
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+defaultOptions <- list(
+  variables = list(),
+  sampleSize = 200,
+  eigenValuesAbove = 1,
+  manualNumberOfFactors = 1,
+  factoringMethod = "minimumResidual",
+  orthogonalSelector = "none",
+  obliqueSelector = "promax",
+  loadingsDisplayLimit = 0,
+  factorStructure = FALSE,
+  factorCorrelations = FALSE,
+  fitIndices = FALSE,
+  residualMatrix = FALSE,
+  parallelAnalysisTable = FALSE,
+  pathDiagram = FALSE,
+  screePlot = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  kaiserMeyerOlkinTest = FALSE,
+  bartlettTest = FALSE,
+  mardiaTest = FALSE,
+  addScores = FALSE,
+  addedScoresPrefix = "",
+  dataType = "raw",
+  factorCountMethod = "parallelAnalysis",
+  parallelAnalysisMethod = "principalComponentBased",
+  rotationMethod = "orthogonal",
+  analysisBasedOn = "correlationMatrix",
+  loadingsOrder = "sortByVariables",
+  parallelAnalysisTableMethod = "principalComponentBased",
+  naAction = "pairwise",
+  plotWidth = 480,
+  plotHeight = 320,
+  setSeed = FALSE,
+  seed = 1
+)
+options <- defaultOptions
 options$factorCountMethod <- "manual"
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
@@ -19,7 +54,7 @@ options$residualMatrix <- TRUE
 options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
-options$factorLoadingsOrder <- "sortByVariables"
+options$loadingsOrder <- "sortByVariables"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
@@ -108,7 +143,7 @@ test_that("Factor Loadings (Structure Matrix) table results match", {
 })
 
 test_that("Missing values works", {
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$factorCorrelations <- TRUE
 
@@ -125,18 +160,18 @@ test_that("Missing values works", {
 
 
 
-options$factorLoadingsOrder <- "sortByVariables"
+options$loadingsOrder <- "sortByVariables"
 
 
-test_that("factorLoadingsOrder sort the factor loadings table", {
+test_that("loadingsOrder sort the factor loadings table", {
 
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$orthogonalSelector <- "varimax"
   options$loadingsDisplayLimit <- 0.2
   options$variables <- paste0("x", 1:9)
 
   reference <- list(
-    sortByFactorSize = list(
+    sortBySize = list(
       0.859092745287366, "", "", 0.246269423771584, "x5", 0.832032514222841,
       "", "", 0.27206434823954, "x4", 0.798985079015342, 0.213747389751454,
       "", 0.308644745749111, "x6", 0.279356098904291, 0.612821903382293,
@@ -158,20 +193,20 @@ test_that("factorLoadingsOrder sort the factor loadings table", {
     )
   )
 
-  for (factorLoadingsOrder in c("sortByFactorSize", "sortByVariables")) {
-    options$factorLoadingsOrder <- factorLoadingsOrder
+  for (loadingsOrder in c("sortBySize", "sortByVariables")) {
+    options$loadingsOrder <- loadingsOrder
 
     set.seed(123)
     results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
     table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
-    jaspTools::expect_equal_tables(table, reference[[factorLoadingsOrder]], label = sprintf("factorLoadingsOrder = %s", factorLoadingsOrder))
+    jaspTools::expect_equal_tables(table, reference[[loadingsOrder]], label = sprintf("loadingsOrder = %s", loadingsOrder))
   }
 
 })
 
 test_that("Estimation options do not crash", {
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$variables <- paste0("Q0", 1:9)
 
   for(factoringMethod in c("minimumResidual",
@@ -190,7 +225,7 @@ test_that("Estimation options do not crash", {
 })
 
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$factoringMethod <- "minimumResidual"
@@ -245,7 +280,7 @@ test_that("Scree plot matches", {
 })
 
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$loadingsDisplayLimit <- 0.1
@@ -291,7 +326,7 @@ test_that("Parallel Analysis table results match with poly cor", {
 
 
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$parallelAnalysisTable <- TRUE
@@ -325,7 +360,7 @@ options <- list(
   eigenValuesAbove = 1,
   factorCorrelations = FALSE,
   factorCountMethod = "manual",
-  factorLoadingsOrder = "sortByVariables",
+  loadingsOrder = "sortByVariables",
   factorStructure = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,

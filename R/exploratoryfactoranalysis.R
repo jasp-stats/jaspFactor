@@ -46,7 +46,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaPathDiagram(       modelContainer, dataset, options, ready)
 
   # data saving
-  .commonAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
 }
 
 
@@ -357,7 +357,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     return()
 
   loadingsTable <- createJaspTable(gettext("Factor Loadings"))
-  loadingsTable$dependOn(c("loadingsDisplayLimit", "factorLoadingsOrder"))
+  loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingsOrder"))
   loadingsTable$position <- 2
 
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
@@ -394,7 +394,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
   # "sortByVariables" is the default output
-  if (options[["factorLoadingsOrder"]] == "sortByFactorSize")
+  if (options[["loadingsOrder"]] == "sortBySize")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)
@@ -906,55 +906,4 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 }
 
-
-.commonAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
-
-  if (!ready ||
-      !is.null(jaspResults[["addedScoresContainer"]]) ||
-      modelContainer$getError() ||
-      !options[["addScores"]])
-  {
-    return()
-  }
-
-  colNamesR <- paste0(options[["addedScoresPrefix"]], "_", seq_len(length(options$variables)))
-
-  container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = c("addScores", "addedScoresPrefix"))
-
-  scores <- modelContainer[["model"]][["object"]][["scores"]]
-
-  for (ii in seq_len(ncol(scores))) {
-
-    colNameR <- colNamesR[ii]
-
-    if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
-      .quitAnalysis(gettextf("Column name %s already exists in the dataset", colNameR))
-    }
-
-    container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
-    container[[colNameR]]$setScale(scores[, ii])
-  }
-
-  jaspResults[["addedScoresContainer"]] <- container
-
-  # check if there are previous colNames that are not needed anymore and delete the cols
-  oldNames <- jaspResults[["createdColumnNames"]][["object"]]
-  newNames <- colNamesR[1:ii]
-  if (!is.null(oldNames)) {
-    noMatch <- which(!(oldNames %in% newNames))
-    if (length(noMatch) > 0) {
-      for (i in 1:length(noMatch)) {
-        jaspBase:::columnDelete(oldNames[noMatch[i]])
-      }
-    }
-  }
-
-  # save the created col names
-  jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
-
-
-  return()
-
-}
 

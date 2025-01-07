@@ -16,6 +16,7 @@
 
 
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
+
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
 
@@ -58,6 +59,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # Output model syntax
   .cfaSyntax(jaspResults, options, dataset, cfaResult) # Output model syntax to user
+
+  # add factor scores to data
+  .cfaAddScoresToData(jaspResults, options, cfaResult, dataset)
 
   return()
 }
@@ -637,6 +641,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaTableRsquared <- function(jaspResults, options, cfaResult) {
+
   if (!options$rSquared || !is.null(jaspResults[["maincontainer"]][["rSquared"]])) return()
 
   jaspResults[["maincontainer"]][["rSquared"]] <- tabr2 <- createJaspTable(gettext("R-Squared"))
@@ -795,6 +800,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaParEstToTablesHelper <- function(pei, options, cfaResult, jrobject, footnote) {
+
   pei <- as.data.frame(pei)
   facNames <- c(cfaResult[["spec"]]$latents)
 
@@ -1631,4 +1637,83 @@ lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) 
 
 
   return(fit)
+}
+
+
+.cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {
+
+  if (!is.null(jaspResults[["addedScoresContainer"]]) ||
+      is.null(cfaResult) ||
+      !options[["addScores"]] ||
+      options[["dataType"]] == "varianceCovariance")
+  {
+    return()
+  }
+
+
+  container    <- createJaspContainer()
+  container$dependOn(optionsFromObject = jaspResults[["maincontainer"]], options = c("addScores", "addedScoresPrefix",
+                                                                                     "naAction", "factors",
+                                                                                     "secondOrder"))
+
+  scores <- lavaan::lavPredict(cfaResult[["lav"]])
+  facNames <- cfaResult[["spec"]]$latents
+  facNames <- .translateFactorNames(facNames, options)
+  if (length(options$secondOrder) > 0)
+    facNames <- c(facNames, gettext("Second-Order"))
+
+  if (options$group != "") {
+    groupLabs <- cfaResult[["lav"]]@Data@group.label
+    colNamesR <- paste0(rep(groupLabs, each = ncol(scores[[1]])), "_", options[["addedScoresPrefix"]], "_", facNames)
+  } else {
+    colNamesR <- paste0(options[["addedScoresPrefix"]], "_", facNames)
+    scores <- list(scores)
+  }
+
+  z <- 1
+  for (ll in seq_len(length(scores))) {
+    for (ii in seq_len(ncol(scores[[ll]]))) {
+
+      colNameR <- colNamesR[z]
+      scoresTmp <- scores[[ll]]
+      if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
+        .quitAnalysis(gettextf("Column name %s already exists in the dataset", colNameR))
+      }
+
+      container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
+      if (options[["naAction"]] != "listwise") {
+        container[[colNameR]]$setScale(scoresTmp[, ii])
+      } else { # for listwise we need to identify the complete cases
+        # so we need to temporarily load the raw data with the NAs
+        dataTmp <- dataset
+        scoresTmpTmp <- rep(NA, nrow(dataTmp))
+        scoresTmpTmp[complete.cases(dataTmp)] <- scoresTmp[, ii]
+        container[[colNameR]]$setScale(scoresTmpTmp)
+
+      }
+      z <- z + 1
+
+    }
+  }
+
+  jaspResults[["addedScoresContainer"]] <- container
+
+  # check if there are previous colNames that are not needed anymore and delete the cols
+  oldNames <- jaspResults[["createdColumnNames"]][["object"]]
+  newNames <- colNamesR[1:z]
+  if (!is.null(oldNames)) {
+    noMatch <- which(!(oldNames %in% newNames))
+    if (length(noMatch) > 0) {
+      for (i in 1:length(noMatch)) {
+        jaspBase:::columnDelete(oldNames[noMatch[i]])
+      }
+    }
+  }
+
+  # save the created col names
+  jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
+
+
+  return()
+
 }

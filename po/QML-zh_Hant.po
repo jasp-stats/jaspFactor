@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-01-09 14:00+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -29,7 +35,7 @@ msgstr "二階因素"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
-msgstr "二階"
+msgstr "二階構面"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
@@ -97,7 +103,7 @@ msgstr "顯示 lavaan 語法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
-msgstr "多群體驗證性因素分析"
+msgstr "多群組驗證性因素分析"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
@@ -105,7 +111,7 @@ msgstr "分群變項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr "恆等性考驗"
+msgstr "恆等性檢驗"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
@@ -153,11 +159,11 @@ msgstr "無"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
-msgstr "Mplus 程式"
+msgstr "Mplus 套裝軟體"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
-msgstr "EQS 程式"
+msgstr "EQS 套裝軟體"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
@@ -201,11 +207,11 @@ msgstr "潛在變項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "所有"
+msgstr "所有參數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
-msgstr "設定"
+msgstr "選項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"

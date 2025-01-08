@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2024-11-02 03:32\n"
-"PO-Revision-Date: 2024-12-17 13:00+0000\n"
-"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"PO-Revision-Date: 2025-01-09 09:01+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.9\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid "Second-Order"
-msgstr "二階"
+msgstr "二階構面"
 
 msgid ""
 "The model could not be estimated. Ensure that factors have at least 2 "
@@ -83,7 +83,7 @@ msgid "The model is not admissible: %s"
 msgstr "此模型無法執行: %s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr "此模型無法估計: 迭代結果無法聚合"
+msgstr "由於無法收斂，該模型無法估計。"
 
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "此模型無法估計: 自由度不足"
@@ -96,9 +96,8 @@ msgid ""
 "input."
 msgstr "以變異數-共變數矩陣資料分析時，不提供穩健標準誤估計值"
 
-#, fuzzy
 msgid "# Factors"
-msgstr "因子"
+msgstr "# 因素"
 
 msgid "Model fit"
 msgstr "模型適配度"
@@ -182,25 +181,25 @@ msgid "Tucker-Lewis Index (TLI)"
 msgstr "Tucker-Lewis Index (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr "非常態適配指標 (NNFI)"
+msgstr "非規範適配指標 (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr "常態適配指標 (NFI)"
+msgstr "規範配適指標 (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr "簡約常態適配指標 (PFI)"
+msgstr "精簡規範配適指標 (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
 msgstr "相對適配指標 (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr "增加適配指標 (IFI)"
+msgstr "增量配適指標 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "相對非中心配適指標 (RNI)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr "標準化均方根殘差值"
+msgstr "近似均方根誤差 (RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
 msgstr "RMSEA 90%% 信賴區間下界"
@@ -212,16 +211,16 @@ msgid "RMSEA p-value"
 msgstr "RMSEA p值"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr "標準化均方根殘差 (SRMR)"
+msgstr "標準化殘差均方根 (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
-msgstr "Hoelter 關鍵N (%s = .05)"
+msgstr "Hoelter 臨界樣本數(CN) (%s = .05)"
 
 msgid "Hoelter's critical N (%s = .01)"
-msgstr "Hoelter 關鍵N (%s = .01)"
+msgstr "Hoelter 臨界樣本數(CN) (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr "適合度適配指標 (GFI)"
+msgstr "配適度指標 (GFI)"
 
 msgid "McDonald fit index (MFI)"
 msgstr "McDonald 適配指標 (IFI)"
@@ -242,11 +241,10 @@ msgid "Parameter estimates"
 msgstr "參數估計值"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
-msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間是基於 %.0f的樣本"
+msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間是基於 %.0f的樣本。"
 
-#, fuzzy
 msgid "Std. estimate"
-msgstr "估計"
+msgstr "標準差估計"
 
 msgid "Estimate"
 msgstr "估計"
@@ -320,7 +318,6 @@ msgstr "期望參數變動"
 msgid "Second-order cross-loadings"
 msgstr "二階因素交叉因素負荷量"
 
-#, fuzzy
 msgid "Modification indices"
 msgstr "修正指標"
 
@@ -390,9 +387,8 @@ msgstr "資料無效: %s 變數的遺漏值過多"
 msgid "Data not valid: all variables are collinear"
 msgstr "資料無效: 所有變數互為共線性"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr "無法估計. 內部錯誤訊息: %s. %s"
+msgstr "估計失敗， 內部錯誤訊息: %s. %s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr "無法估計. 內部錯誤訊息: %s"
@@ -413,9 +409,8 @@ msgid ""
 "%2$s."
 msgstr "沒有因素的特徵值大於1。觀察特徵值之最大值為"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
-msgstr "Kaiser-Meyer-Olkin 檢驗"
+msgstr "KMO值檢驗"
 
 msgid "Overall MSA"
 msgstr "整體MSA"
@@ -435,7 +430,7 @@ msgstr "無法進行Mardia 檢定。內部錯誤訊息: %s"
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
 "statistic for kurtosis standard normal."
-msgstr "偏度統計數是基於卡方分配，峰度統計數是基於標準常態分配"
+msgstr "偏度統計數是基於卡方分配，峰度統計數是基於標準常態分配。"
 
 msgid "Chi-squared Test"
 msgstr "卡方檢定"
@@ -467,7 +462,6 @@ msgstr "因素負荷量(結構矩陣)"
 msgid "Factor Characteristics"
 msgstr "因素特徵"
 
-#, fuzzy
 msgid "Eigenvalues"
 msgstr "特徵值"
 
@@ -516,11 +510,8 @@ msgstr "殘差變異數矩陣"
 msgid "Real data component eigenvalues"
 msgstr "真實資料的成分特徵值"
 
-#, fuzzy
 msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr ""
-"'*'為應保留之因素. \n"
-"基於主成份模型的平行分析結果"
+msgstr "'*'為應保留之因素. 該結果基於主成分分析(PC)的平行分析"
 
 msgid "Real data factor eigenvalues"
 msgstr "真實資料特徵值"

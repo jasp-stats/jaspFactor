@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-09 14:00+0000\n"
+"PO-Revision-Date: 2025-01-10 19:00+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-qml/zh_Hant/>\n"
@@ -175,7 +175,7 @@ msgstr "穩健"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr "估計法"
+msgstr "估計方法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
@@ -363,7 +363,7 @@ msgstr "陡坡圖"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr "檢查假設"
+msgstr "前提假設的檢驗"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
@@ -647,7 +647,7 @@ msgstr "信度"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Assumption checks"
-msgstr "前提假設檢查"
+msgstr "前提假設的檢驗"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "KMO test"
@@ -699,7 +699,7 @@ msgstr "樣本數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr "多指標多前因模型(MIMIC)"
+msgstr "模擬"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"

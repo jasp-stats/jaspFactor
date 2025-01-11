@@ -1,19 +1,25 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-01-11 03:30+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Factor"
-msgstr "因素"
+msgstr "因素分析"
 
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr "主成份分析"
+msgstr "主成分分析"
 
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
@@ -33,19 +39,19 @@ msgstr "二階"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr "模式設定"
+msgstr "模型選項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr "含平均數結構"
+msgstr "包含均值結構"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr "假設因素間無關"
+msgstr "假設因素間不相關"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr "固定外衍共變項"
+msgstr "固定外生共變項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
@@ -53,7 +59,7 @@ msgstr "因素變異數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr "標識變數"
+msgstr "標記變數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
@@ -69,15 +75,15 @@ msgstr "其他分析報表"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr "其他適配指標"
+msgstr "其他配適指標"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr "R平方(解釋變異量)"
+msgstr "R平方"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr "模式隱含之共變數矩陣"
+msgstr "隱含共變數矩陣"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
@@ -89,7 +95,7 @@ msgstr "修正指標"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr "切分標準"
+msgstr "閾值"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
@@ -97,7 +103,7 @@ msgstr "顯示 lavaan 語法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
-msgstr "多群體驗證性因素分析"
+msgstr "多群組驗證性因素分析"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
@@ -105,27 +111,27 @@ msgstr "分群變項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr "恆等性考驗"
+msgstr "恆等性檢驗"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr "因素型態"
+msgstr "型態恆等"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
-msgstr "量尺"
+msgstr "量尺恆等"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Scalar"
-msgstr "純量"
+msgstr "純量恆等"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Strict"
-msgstr "嚴格的"
+msgstr "嚴格恆等"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr "圖形"
+msgstr "圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
@@ -133,7 +139,7 @@ msgstr "不適配圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
-msgstr "模式圖"
+msgstr "模型圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
@@ -145,7 +151,7 @@ msgstr "顯示平均數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
-msgstr "進階"
+msgstr "進階設定"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
@@ -153,11 +159,11 @@ msgstr "無"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
-msgstr "Mplus 程式"
+msgstr "Mplus 套裝軟體"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
-msgstr "EQS 程式"
+msgstr "EQS 套裝軟體"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
@@ -169,7 +175,7 @@ msgstr "穩健"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator"
-msgstr "估計法"
+msgstr "估計方法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
@@ -201,11 +207,11 @@ msgstr "潛在變項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr "所有"
+msgstr "所有參數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
-msgstr "設定"
+msgstr "選項"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
@@ -325,7 +331,7 @@ msgstr "共變數矩陣"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Output Options"
-msgstr "報表設定"
+msgstr "輸出選項"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Tables"
@@ -341,7 +347,7 @@ msgstr "因素相關係數"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Additional fit indices"
-msgstr "其他適配指標"
+msgstr "其他配適指標"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Plots"
@@ -357,7 +363,7 @@ msgstr "陡坡圖"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Assumption checks"
-msgstr "檢查假設"
+msgstr "前提假設的檢驗"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "KMO test"
@@ -365,7 +371,7 @@ msgstr "KMO 考驗"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Bartlett's test"
-msgstr "Bartlett 球形考驗"
+msgstr "Bartlett's 球形檢定"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
@@ -433,7 +439,7 @@ msgstr "共變數矩陣"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Output Options"
-msgstr "報表設定"
+msgstr "輸出選項"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Plots"
@@ -489,7 +495,7 @@ msgstr "模型識別"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr "KMO檢定"
+msgstr "KMO 檢定"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
@@ -553,7 +559,7 @@ msgstr "萃取因素個數基於"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on PC"
-msgstr "基於主成份"
+msgstr "基於主成分"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Based on FA"
@@ -641,7 +647,7 @@ msgstr "信度"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Assumption checks"
-msgstr "前提假設檢查"
+msgstr "前提假設的檢驗"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "KMO test"
@@ -649,7 +655,7 @@ msgstr "KMO 檢定"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Bartlett's test"
-msgstr "Bartlett 球形檢定"
+msgstr "Bartlett's 球形檢定"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Mardia's test"
@@ -693,7 +699,7 @@ msgstr "樣本數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr "多指標多前因模型(MIMIC)"
+msgstr "模擬"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"

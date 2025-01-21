@@ -31,19 +31,20 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   modelContainer <- .efaModelContainer(jaspResults)
 
   # output functions
-  .efaKMOtest(           modelContainer, dataset, options, ready)
-  .efaBartlett(          modelContainer, dataset, options, ready)
-  .efaMardia(            modelContainer, dataset, options, ready)
-  .efaGoodnessOfFitTable(modelContainer, dataset, options, ready)
-  .efaLoadingsTable(     modelContainer, dataset, options, ready)
-  .efaStructureTable(    modelContainer, dataset, options, ready)
-  .efaEigenTable(        modelContainer, dataset, options, ready)
-  .efaCorrTable(         modelContainer, dataset, options, ready)
-  .efaAdditionalFitTable(modelContainer, dataset, options, ready)
-  .efaResidualTable(     modelContainer,          options, ready)
-  .parallelAnalysisTable(modelContainer, dataset, options, ready, name = "Factor")
-  .efaScreePlot(         modelContainer, dataset, options, ready)
-  .efaPathDiagram(       modelContainer, dataset, options, ready)
+  .efaKMOtest(              modelContainer, dataset, options, ready)
+  .efaBartlett(             modelContainer, dataset, options, ready)
+  .efaMardia(               modelContainer, dataset, options, ready)
+  .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
+  .efaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
+  .efaLoadingsTable(        modelContainer, dataset, options, ready)
+  .efaStructureTable(       modelContainer, dataset, options, ready)
+  .efaEigenTable(           modelContainer, dataset, options, ready)
+  .efaCorrTable(            modelContainer, dataset, options, ready)
+  .efaAdditionalFitTable(   modelContainer, dataset, options, ready)
+  .efaResidualTable(        modelContainer,          options, ready)
+  .parallelAnalysisTable(   modelContainer, dataset, options, ready, name = "Factor")
+  .efaScreePlot(            modelContainer, dataset, options, ready)
+  .efaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
   .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
@@ -323,6 +324,41 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   mardiaTable[["pval"]] <- c(mar[["p.skew"]], mar[["p.small"]], mar[["p.kurt"]])
 
    mardiaTable$addFootnote(message = gettext("The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."))
+}
+
+.efaAntiImageCorrelation <- function(modelContainer, dataset, options, ready) {
+
+  if (!options[["antiImageCorrelationMatrix"]] || !is.null(modelContainer[["antiMatrix"]])) return()
+
+  antiMatrix <- createJaspTable(gettext("Anti-Image Correlation Matrix"))
+  antiMatrix$dependOn("antiImageCorrelationMatrix")
+  antiMatrix$addColumnInfo(name = "col1", title = "", type = "string")
+  antiMatrix$position <- 0.9
+  modelContainer[["antiMatrix"]] <- antiMatrix
+
+  if (!ready) return()
+
+  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+    polyTetraCor <- psych::mixedCor(dataset)
+    kmo <- psych::KMO(polyTetraCor$rho)
+  } else {
+    if (options[["dataType"]] == "raw")
+      kmo <- psych::KMO(dataset)
+    else
+      kmo <- psych::KMO(cov2cor(as.matrix(dataset)))
+  }
+
+  imCor <- kmo$ImCov
+  cols <- ncol(imCor)
+  antiMatrix[["col1"]] <- options[["variables"]] # fill the rows
+
+  for (i in 1:cols) {
+    value <- paste0("value", i)
+    antiMatrix$addColumnInfo(name = value, title = options[["variables"]][i], type = "number", format = "dp:3")
+    antiMatrix[[value]] <- imCor[, i]
+  }
+
+  return()
 }
 
 .efaGoodnessOfFitTable <- function(modelContainer, dataset, options, ready) {

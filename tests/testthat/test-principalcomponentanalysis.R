@@ -36,6 +36,7 @@ defaultOptions <- list(
   setSeed = FALSE,
   seed = 1
 )
+
 options <- defaultOptions
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$eigenValuesAbove <- 0.95

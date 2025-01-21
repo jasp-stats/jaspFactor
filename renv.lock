@@ -512,7 +512,7 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.6",
+      "Version": "2.1.8",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -522,7 +522,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "0aaa05204035dc43ea0004b9c76611dd"
+      "Hash": "b361779da7f8b129a1859b6cf243ba58"
     },
     "coda": {
       "Package": "coda",
@@ -1117,7 +1117,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "d3a42428674d84b91281634562e9ac4bd03b82f1",
+      "RemoteSha": "2011f4c6415e5ece2fc948a9ec7b51ab23eff529",
       "Requirements": [
         "R6",
         "Rcpp",
@@ -1146,7 +1146,7 @@
         "systemfonts",
         "withr"
       ],
-      "Hash": "73d8859bc2f782a6064644f3afe5af80"
+      "Hash": "d2282122e7c15810907b25d8d0a38c0b"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -1157,7 +1157,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
       "RemoteRef": "master",
-      "RemoteSha": "c73a76cd55a7f15ccbace1f7eb3b04a5209197ee",
+      "RemoteSha": "9bd1fdafc6bf6a04451f982e6c6dd9002524dbcb",
       "Requirements": [
         "R6",
         "RColorBrewer",
@@ -1170,7 +1170,7 @@
         "scales",
         "viridisLite"
       ],
-      "Hash": "1cee96422b3c4101b702520eb8eaa501"
+      "Hash": "1eacba557c12ef472e122cc9445cb134"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -1181,7 +1181,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
       "RemoteRef": "master",
-      "RemoteSha": "63a4cb29469ad694189b1b528db01a49d42091c9",
+      "RemoteSha": "6354213b2936955b5294d9a2664bad5b9ba722f8",
       "Requirements": [
         "SEMsens",
         "cSEM",
@@ -1197,7 +1197,7 @@
         "tibble",
         "tidyr"
       ],
-      "Hash": "def8eaa2a0a17f2d2b413168573efb52"
+      "Hash": "5f8de6896f8e5bd831981b6669a192da"
     },
     "jaspTools": {
       "Package": "jaspTools",
@@ -1568,7 +1568,7 @@
     },
     "nnet": {
       "Package": "nnet",
-      "Version": "7.3-19",
+      "Version": "7.3-20",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1576,7 +1576,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "2c797b46eea7fb58ede195bc0b1f1138"
+      "Hash": "c955edf99ff24a32e96bd0a22645af60"
     },
     "numDeriv": {
       "Package": "numDeriv",

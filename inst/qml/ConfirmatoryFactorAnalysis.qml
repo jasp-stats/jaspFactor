@@ -313,13 +313,31 @@ Form
 				label: qsTr("Missing data handling")
 				values:
 				[
-					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
-					{ label: qsTr("FIML")				, value: "fiml"				},
+
+					{ label: qsTr("Listwise deletion"), value: "listwise"},
+					{ label: qsTr("FIML")	, value: "fiml"},
 					{ label: qsTr("Pairwise")			, value: "pairwise"			},
 					{ label: qsTr("Two-stage")			, value: "twoStage"			},
 					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
 				]
 			}
+			// DropDown
+			// {
+			// 	name: "naAction"
+			// 	label: qsTr("Missing data handling")
+			// 	values:
+			// 	[
+			// 		{ factors.columnsTypes.includes("ordinal") ? 
+			// 			{label: qsTr("Listwise deletion"), value: "listwise"} : {label: qsTr("FIML"), value: "fiml"}
+			// 		},
+			// 		{ factors.columnsTypes.includes("ordinal") ?
+			// 			{label: qsTr("FIML")	, value: "fiml"} : {label: qsTr("Listwise deletion"), value: "listwise"}
+			// 		},
+			// 		{ label: qsTr("Pairwise")			, value: "pairwise"			},
+			// 		{ label: qsTr("Two-stage")			, value: "twoStage"			},
+			// 		{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
+			// 	]
+			// }
 		}
 
 		RadioButtonGroup

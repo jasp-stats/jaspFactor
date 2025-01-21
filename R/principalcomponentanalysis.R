@@ -310,7 +310,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!is.null(modelContainer[["loadingsTable"]])) return()
 
   loadingsTable <- createJaspTable(gettext("Component Loadings"))
-  loadingsTable$dependOn(c("loadingsDisplayLimit", "componentLoadingsOrder"))
+  loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingsOrder"))
   loadingsTable$position <- 2
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["loadingsTable"]] <- loadingsTable
@@ -347,7 +347,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
   # "sortByVariables" is the default output
-  if (options[["componentLoadingsOrder"]] == "sortByComponentSize")
+  if (options[["loadingsOrder"]] == "sortBySize")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)

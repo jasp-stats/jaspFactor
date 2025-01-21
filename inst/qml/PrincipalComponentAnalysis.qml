@@ -24,48 +24,20 @@ import "./common" as Common
 
 Form
 {
-	VariablesForm
-	{
-		// preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-		AvailableVariablesList { name: "allVariablesList" }
-		AssignedVariablesList
-		{
-			id: variables
-			name: "variables"
-			title: qsTr("Variables")
-			allowedColumns: ["scale"]
-		}
-		Group 
-		{
-			// columns: 4
-			title: qsTr("Data")
-			RadioButtonGroup
-			{
-				name: "dataType"
-				id: dataType
-				columns: 2
-				RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
-				RadioButton
-				{
-					value: "varianceCovariance"; label: qsTr("Variance-covariance matrix")
-					IntegerField { name: "sampleSize"; label: qsTr("Sample size"); defaultValue: 200 }
-				}
-			}
-		}
-	}
 
+	Common.PcaEfaVariables{}
 
-	Common.NumberFactors{
+	Common.PcaEfaNumberFactors{
 		pca: true
 		variablesCount: variables.count
 	}
 
-	Common.AnalysisOptions{
+	Common.PcaEfaAnalysisOptions{
 		pca: true
 		dataRaw: dataType.value == "raw"
 	}
 
-	Common.OutputOptions{
+	Common.PcaEfaOutputOptions{
 		pca: true
 		dataRaw: dataType.value == "raw"
 		variablesCount: variables.count

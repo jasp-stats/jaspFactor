@@ -105,6 +105,7 @@ Section
 		CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
 		CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
 		CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  ; enabled: dataType.value == "raw" }
+		CheckBox { name: "antiImageCorrelationMatrix"; label: qsTr("Anti-image correlation matrix") }
 	}
 
 	RadioButtonGroup

@@ -41,6 +41,7 @@ defaultOptions <- list(
   setSeed = FALSE,
   seed = 1
 )
+
 options <- defaultOptions
 options$factorCountMethod <- "manual"
 options$factoringMethod <- "minimumResidual"
@@ -286,6 +287,8 @@ options$parallelAnalysisMethod <- "principalComponentBased"
 options$loadingsDisplayLimit <- 0.1
 options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
 options$mardiaTest <- TRUE
+options$kaiserMeyerOlkinTest <- TRUE
+options$antiImageCorrelationMatrix <- TRUE
 options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
 options$factoringMethod <- "minimumResidual"
@@ -322,6 +325,33 @@ test_that("Parallel Analysis table results match with poly cor", {
                                       1.05066617046688, "Factor 4", 0.845932695389084, 0.925279735884113,
                                       "Factor 5", 0.688011322780564, 0.809825771393728, "Factor 6",
                                       0.305368493190363, 0.688414343222493))
+})
+
+test_that("Anti-Image Correlation Matrix table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_antiMatrix"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("contcor1", 0.526769012560228, -0.349928022246483, -0.0495141274829718,
+                                      -0.0235032435133578, -0.151773130509214, 0.119020060433437,
+                                      "contcor2", -0.349928022246483, 0.536914874583069, 0.141029603183427,
+                                      -0.0413441408044983, 0.0953706562127194, -0.0506637821973096,
+                                      "facFifty", -0.0495141274829718, 0.141029603183427, 0.92874615606032,
+                                      -0.121232372980545, 0.114039732481935, 0.00516964114483341,
+                                      "facFive", -0.0235032435133578, -0.0413441408044983, -0.121232372980544,
+                                      0.940662798594682, -0.119269468551279, 0.130933606652162, "contNormal",
+                                      -0.151773130509214, 0.0953706562127195, 0.114039732481935, -0.119269468551279,
+                                      0.872517077527576, -0.238333749371856, "debMiss1", 0.119020060433437,
+                                      -0.0506637821973096, 0.00516964114483342, 0.130933606652162,
+                                      -0.238333749371856, 0.893766605969346))
+})
+
+test_that("Kaiser-Meyer-Olkin Test table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_kmoTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Overall MSA
+		", 0.472338374588124, "contcor1", 0.490151695858873,
+                                      "contcor2", 0.49029987989214, "facFifty", 0.473417708976819,
+                                      "facFive", 0.515909446356412, "contNormal", 0.364284277677057,
+                                      "debMiss1", 0.421070371345991))
 })
 
 

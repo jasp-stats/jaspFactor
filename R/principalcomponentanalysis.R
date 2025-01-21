@@ -42,6 +42,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .efaKMOtest(            modelContainer, dataset, options, ready)
   .efaBartlett(           modelContainer, dataset, options, ready)
   .efaMardia(             modelContainer, dataset, options, ready)
+  .efaAntiImageCorrelation(modelContainer, dataset, options, ready)
   .pcaScreePlot(          modelContainer, dataset, options, ready)
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
@@ -280,7 +281,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 .pcaGoodnessOfFitTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["goodnessOfFitTable"]])) return()
 
-  goodnessOfFitTable <- createJaspTable(title = gettext("Chi-squared Test"))
+  goodnessOfFitTable <- createJaspTable(title = gettext("Chi-Squared Test"))
   goodnessOfFitTable$addColumnInfo(name = "model", title = "",               type = "string")
   goodnessOfFitTable$addColumnInfo(name = "chisq", title = gettext("Value"), type = "number", format = "dp:3")
   goodnessOfFitTable$addColumnInfo(name = "df",    title = gettext("df"),    type = "integer")

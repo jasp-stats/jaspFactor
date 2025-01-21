@@ -22,6 +22,7 @@ defaultOptions <- list(
   bartlettTest = FALSE,
   mardiaTest = FALSE,
   addScores = FALSE,
+  antiImageCorrelationMatrix = FALSE,
   addedScoresPrefix = "",
   dataType = "raw",
   componentCountMethod = "parallelAnalysis",
@@ -36,6 +37,7 @@ defaultOptions <- list(
   setSeed = FALSE,
   seed = 1
 )
+
 options <- defaultOptions
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$eigenValuesAbove <- 0.95
@@ -397,6 +399,7 @@ options <- list(
   parallelAnalysisMethod = "principalComponentBased",
   parallelAnalysisSeed = 1234,
   parallelAnalysisTable = FALSE,
+  antiImageCorrelationMatrix = FALSE,
   parallelAnalysisTableMethod = "principalComponentBased",
   pathDiagram = FALSE,
   plotHeight = 320,

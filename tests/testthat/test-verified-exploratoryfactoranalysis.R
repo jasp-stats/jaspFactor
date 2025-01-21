@@ -24,6 +24,7 @@ defaultOptions <- list(
   pathDiagram = FALSE,
   screePlot = FALSE,
   screePlotParallelAnalysisResults = TRUE,
+  antiImageCorrelationMatrix = FALSE,
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
@@ -56,7 +57,7 @@ options$loadingsDisplayLimit <- 0.4
 options$obliqueSelector <- "oblimin"
 
 set.seed(1)
-results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "EFA.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", testthat::test_path("EFA.csv"), options, makeTests = F)
 
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html#exploratory-factor-analysis
@@ -65,8 +66,7 @@ test_that("Kaiser-Meyer-Olkin test match R, SPSS, SAS, MiniTab", {
   resultTable <- results$results$modelContainer$collection$modelContainer_kmoTable$data
   jaspTools::expect_equal_tables(
     "test"=resultTable,
-    "ref"=list("Overall MSA
-", 0.930224499116479, "Question_01", 0.929761029851962,
+    "ref"=list("Overall MSA", 0.930224499116479, "Question_01", 0.929761029851962,
                "Question_02", 0.87477543869641, "Question_03", 0.951037837608159,
                "Question_04", 0.955340346281847, "Question_05", 0.960089249619342,
                "Question_06", 0.891331391519047, "Question_07", 0.941679983971416,
@@ -139,14 +139,13 @@ test_that("Factor Loadings table results match R, SPSS, SAS, MiniTab", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.131897550845728, 0.293227816104412, 7.29004706361899,
-                                      0.131897550845728, 0.293227816104412, 3.03364366945174, 6.74423977040149,
-                                      "Factor 2", 0.256005905753789, 0.342246352158825, 1.73882874685703,
-                                      0.124108354908061, 0.0490185360544126, 2.85449216288541, 1.12742632925149,
-                                      "Factor 3", 0.342351093761207, 0.377617942230257, 1.31675152787573,
-                                      0.0863451880074178, 0.0353715900714321, 1.98593932417061, 0.813546571642938,
-                                      "Factor 4", 0.404746469846354, 0.404746469846354, 1.22719815361453,
-                                      0.0623953760851471, 0.0271285276160969, 1.43509364995838, 0.623956135170229
+                                 list("Factor 1", 0.131897550845728, 0.293227816104414, 0.131897550845728,
+                                      0.293227816104414, 3.03364366945174, 6.74423977040153, "Factor 2",
+                                      0.25600590575379, 0.342246352158826, 0.124108354908063, 0.0490185360544119,
+                                      2.85449216288545, 1.12742632925147, "Factor 3", 0.342351093761208,
+                                      0.377617942230258, 0.0863451880074171, 0.035371590071432, 1.98593932417059,
+                                      0.813546571642936, "Factor 4", 0.404746469846355, 0.404746469846355,
+                                      0.0623953760851476, 0.0271285276160967, 1.43509364995839, 0.623956135170225
                                  ))
 })
 
@@ -173,7 +172,7 @@ options$rotationMethod <- "oblique"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
-results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
 
 
 
@@ -187,11 +186,10 @@ test_that("Factor Correlations table results match", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.211560139237577, 0.21520386846338, 1.76545396982125,
-                                      0.211560139237577, 0.21520386846338, 1.48092097466304, 1.50642707924366,
-                                      "Factor 2", 0.366100386048402, 0.366966592875575, 1.31015305219849,
-                                      0.154540246810825, 0.151762724412195, 1.08178172767577, 1.06233907088537
-                                 ))
+                                 list("Factor 1", 0.211560139237578, 0.215203868463381, 0.211560139237578,
+                                      0.215203868463381, 1.48092097466305, 1.50642707924367, "Factor 2",
+                                      0.366100386048402, 0.366966592875577, 0.154540246810824, 0.151762724412196,
+                                      1.08178172767577, 1.06233907088537))
 })
 
 test_that("Additional fit indices table results match", {

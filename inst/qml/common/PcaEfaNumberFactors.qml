@@ -29,17 +29,18 @@ Section
 	id: numberof
 	title: 	pca ? qsTr("Number of Components") : qsTr("Number of Factors")
 	expanded: true
-
+	info: qsTr("Here, the number of components/factors that are used in the analysis is determined. Several methods to determine this number can be chosen from:")
 
 	RadioButtonGroup
 	{
 		name: pca ? "componentCountMethod" : "factorCountMethod"
-		title: pca ? qsTr("Number of Components Based on") : qsTr("Number of Factors Based on")
+		title: pca ? qsTr("Based on") : qsTr("Based on")
 		RadioButton
 		{
 			value:      "parallelAnalysis";
 			label:      qsTr("Parallel analysis");
 			checked:    true
+			info: qsTr("Components/factors are selected on the basis of parallel analysis. With this method, factors are selected when their eigenvalue is greater than the parallel average random eigenvalue. This method is selected by default. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). A seed (1234) is chosen by default so that the results from the parallel analysis are equal across the PCA")
 
 			RadioButtonGroup
 			{
@@ -64,7 +65,9 @@ Section
 		}
 		RadioButton
 		{
-			value: "eigenValues"; label: qsTr("Eigenvalues")
+			value: "eigenValues"
+			label: qsTr("Eigenvalues")
+			info: qsTr("Components are selected when they have a certain eigenvalue. By default components are selected that have an eigenvalue above 1.")
 			DoubleField {
 				name:			"eigenValuesAbove"
 				label:			qsTr("Eigenvalues above")
@@ -74,7 +77,9 @@ Section
 		}
 		RadioButton
 		{
-			value: "manual"; label: qsTr("Manual")
+			value: "manual"
+			label: qsTr("Manual")
+			info: qsTr("The number of components can be specified manually. By default this is set to 1.")
 			IntegerField {
 				name:						pca ? "manualNumberOfComponents" : "manualNumberOfFactors"
 				label:					pca? qsTr("Number of components") : qsTr("Number of factors")

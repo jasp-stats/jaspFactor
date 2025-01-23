@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2024-11-02 03:32\n"
-"PO-Revision-Date: 2025-01-23 16:01+0000\n"
+"PO-Revision-Date: 2025-01-24 23:01+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hant/>\n"
@@ -80,7 +80,7 @@ msgstr ""
 " %s"
 
 msgid "The model is not admissible: %s"
-msgstr "此模型不具合理性: %s"
+msgstr "此模型無法執行： %s"
 
 msgid "The model could not be estimated due to nonconvergence."
 msgstr "此模型無法估計: 迭代結果無法收斂。"
@@ -142,7 +142,7 @@ msgid "Additional fit measures"
 msgstr "其他配適指標"
 
 msgid "Fit indices"
-msgstr "適配指標"
+msgstr "配適指標"
 
 msgid "Index"
 msgstr "指標"
@@ -160,13 +160,13 @@ msgid "Metric"
 msgstr "量尺"
 
 msgid "Log-likelihood"
-msgstr "對數似然"
+msgstr "對數概似值"
 
 msgid "Number of free parameters"
 msgstr "自由估計參數之個數"
 
 msgid "Akaike (AIC)"
-msgstr "赤池資訊量準則(AIC)"
+msgstr "赤池資訊量準則 (AIC)"
 
 msgid "Bayesian (BIC)"
 msgstr "貝氏資訊量準則 (BIC)"
@@ -175,13 +175,13 @@ msgid "Sample-size adjusted Bayesian (SSABIC)"
 msgstr "依照樣本大小校正之貝氏資訊量準則 (SSABIC)"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr "比較適配指標 (CFI)"
+msgstr "比較配適指標 (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
 msgstr "Tucker-Lewis 配適指標 (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr "非規範適配指標 (NNFI)"
+msgstr "非規範配適指標 (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
 msgstr "規範配適指標 (NFI)"
@@ -190,13 +190,13 @@ msgid "Parsimony Normed Fit Index (PNFI)"
 msgstr "精簡規範配適指標 (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr "相對適配指標 (RFI)"
+msgstr "相對配適指標 (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
 msgstr "增量配適指標 (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr "相對非中心配適指標 (RNI)"
+msgstr "相對非中心性配適指標 (RNI)"
 
 msgid "Root mean square error of approximation (RMSEA)"
 msgstr "近似均方根誤差 (RMSEA)"
@@ -244,7 +244,7 @@ msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "無法成功分析所有拔靴法之抽樣樣本: 報告之信賴區間是基於 %.0f的樣本。"
 
 msgid "Std. estimate"
-msgstr "標準差估計"
+msgstr "標準化估計"
 
 msgid "Estimate"
 msgstr "估計"

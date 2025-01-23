@@ -29,7 +29,7 @@ Section
 	id: analysisoptions
 	title: qsTr("Analysis Options")
 	info: qsTr("Here, options for the analysis can be specified.")
-	expanded: true
+	expanded: false
 
 
 	RadioButtonGroup

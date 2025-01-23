@@ -711,10 +711,6 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (options[["screePlotParallelAnalysisResults"]]) {
 
-    # Modification here:
-    # if "analysisBasedOn = mixed", parallel analysis here will be based on the polychoric/tetrachoric
-    # correlation matrix.
-
     if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
       polyTetraCor <- psych::mixedCor(dataset)
       .setSeedJASP(options)

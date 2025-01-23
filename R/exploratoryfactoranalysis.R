@@ -253,7 +253,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       kmo <- psych::KMO(cov2cor(as.matrix(dataset)))
   }
 
-  kmoTable[["col"]] <- c(gettext("Overall MSA\n"), names(kmo$MSAi))
+  kmoTable[["col"]] <- c(gettext("Overall MSA"), names(kmo$MSAi))
   kmoTable[["val"]] <- c(kmo$MSA, kmo$MSAi)
 }
 
@@ -364,7 +364,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 .efaGoodnessOfFitTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["goodnessOfFitTable"]])) return()
 
-  goodnessOfFitTable <- createJaspTable(title = gettext("Chi-squared Test"))
+  goodnessOfFitTable <- createJaspTable(title = gettext("Chi-Squared Test"))
   goodnessOfFitTable$addColumnInfo(name = "model", title = "",                 type = "string")
   goodnessOfFitTable$addColumnInfo(name = "chisq", title = gettext("Value"),   type = "number", format = "dp:3")
   goodnessOfFitTable$addColumnInfo(name = "df",    title = gettext("df"),      type = "integer")
@@ -482,11 +482,10 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   # if a rotation is used, the table needs more columns
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
-  eigenTable$addColumnInfo(name = "eigen", title = gettext("Eigenvalues"),  type = "number")
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
-    eigenTable$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
+    eigenTable$addColumnInfo(name = "sslU", title = gettext("Eigenvalue"),  type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "sslR", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleB)
@@ -512,7 +511,6 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   Vaccounted <- efaResults[["Vaccounted"]]
   idx <- seq_len(efaResults[["factors"]])
 
-  eigenTable[["eigen"]] <- eigv_init[idx]
   eigenTable[["comp"]] <- paste("Factor", idx)
   eigenTable[["sslU"]] <- eigv[idx]
   eigenTable[["propU"]] <- eigv[idx] / sum(eigv_init)

@@ -169,13 +169,13 @@ Form
 		title: qsTr("Additional Output")
 		Group
 		{
-			CheckBox { name: "fitMeasures"; 					label: qsTr("Additional fit measures") 						}
-			CheckBox { name: "kaiserMeyerOlkinTest"; 	label: qsTr("Kaiser-Meyer-Olkin (KMO) test") 			}
-			CheckBox { name: "bartlettTest"; 					label: qsTr("Bartlett's test of sphericity")	 		}
-			CheckBox { name: "rSquared"; 							label: qsTr("R-Squared")										      }
-			CheckBox { name: "ave";										label: qsTr("Average variance extracted (AVE)")		}
-			CheckBox { name: "htmt";									label: qsTr("Heterotrait-monotrait ratio (HTMT)")	}
-			CheckBox { name: "reliability";						label: qsTr("Reliability")												}
+			CheckBox { label: qsTr("Additional fit measures")   ; name: "fitMeasures"   }
+			CheckBox { label: qsTr("Kaiser-Meyer-Olkin (KMO) test"); name: "kaiserMeyerOlkinTest"}
+			CheckBox { label: qsTr("Bartlett's test of sphericity"); name: "bartlettTest"}
+			CheckBox { label: qsTr("R-Squared")                 ; name: "rSquared"         }
+			CheckBox { name: "ave";						label: qsTr("Average variance extracted (AVE)")		}
+			CheckBox { name: "htmt";					label: qsTr("Heterotrait-monotrait ratio (HTMT)")	}
+			CheckBox { name: "reliability";		label: qsTr("Reliability")					}
 		}
 		Group
 		{
@@ -191,23 +191,7 @@ Form
 					defaultValue: 3.84
 				}
 			}
-			CheckBox { name: "lavaanSyntax"; label: qsTr("Show lavaan syntax") }
-
-			CheckBox
-			{
-				id: addScores
-				name: "addScores"
-				label: qsTr("Add factor scores to data")
-				enabled: variables.count > 1 & dataType.value == "raw"
-
-				TextField {
-					name: "addedScoresPrefix"
-					label: qsTr("Prefix")
-					defaultValue: "FS"
-					fieldWidth: 80
-					enabled: addScores.checked
-				}
-			}
+			CheckBox { label: qsTr("Show lavaan syntax")         ; name: "lavaanSyntax" }
 		}
 	}
 
@@ -313,31 +297,13 @@ Form
 				label: qsTr("Missing data handling")
 				values:
 				[
-
-					{ label: qsTr("Listwise deletion"), value: "listwise"},
-					{ label: qsTr("FIML")	, value: "fiml"},
+					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
+					{ label: qsTr("FIML")				, value: "fiml"				},
 					{ label: qsTr("Pairwise")			, value: "pairwise"			},
 					{ label: qsTr("Two-stage")			, value: "twoStage"			},
 					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
 				]
 			}
-			// DropDown
-			// {
-			// 	name: "naAction"
-			// 	label: qsTr("Missing data handling")
-			// 	values:
-			// 	[
-			// 		{ factors.columnsTypes.includes("ordinal") ? 
-			// 			{label: qsTr("Listwise deletion"), value: "listwise"} : {label: qsTr("FIML"), value: "fiml"}
-			// 		},
-			// 		{ factors.columnsTypes.includes("ordinal") ?
-			// 			{label: qsTr("FIML")	, value: "fiml"} : {label: qsTr("Listwise deletion"), value: "listwise"}
-			// 		},
-			// 		{ label: qsTr("Pairwise")			, value: "pairwise"			},
-			// 		{ label: qsTr("Two-stage")			, value: "twoStage"			},
-			// 		{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
-			// 	]
-			// }
 		}
 
 		RadioButtonGroup

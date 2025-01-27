@@ -78,6 +78,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     return(dataset)
   }
 
+  # it seems the column names are sorted alphabetically when all columns are read
+  # so we need to sort the column names to match the order of the variables
+  sortedIndices <- sort(as.numeric(gsub(".*_(\\d+)_.*", "\\1", colnames(dataset))))
+  sortedNames <- paste0("JaspColumn_", sortedIndices, "_Encoded")
+  dataset <- dataset[, sortedNames]
+
   # possible data matrix?
   if ((nrow(dataset) != ncol(dataset)))
     .quitAnalysis(gettext("Input data does not seem to be a square matrix! Please check the format of the input data."))
@@ -87,6 +93,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   usedvars <- unlist(options[["variables"]])
   var_idx  <- match(usedvars, colnames(dataset))
+
   mat <- try(as.matrix(dataset[var_idx, var_idx]))
   if (inherits(mat, "try-error"))
     .quitAnalysis(gettext("All cells must be numeric."))
@@ -102,9 +109,10 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       .quitAnalysis("Not enough valid columns to run this analysis")
     }
   }
+
+
   return(mat)
 }
-
 
 .pcaCheckErrors <- function(dataset, options) {
 

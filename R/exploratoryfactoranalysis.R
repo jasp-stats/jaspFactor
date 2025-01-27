@@ -18,6 +18,9 @@
 exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
+  # sink(file="~/Downloads/log.txt")
+  # on.exit(sink(NULL))
+
   # Read dataset
   dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
@@ -415,7 +418,14 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
     loadingsTable$addFootnote(message = gettext("No rotation method applied."))
   } else {
-    loadingsTable$addFootnote(message = gettextf("Applied rotation method is %s.", options[[if(options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]))
+    rotationSelector <- if (options[["rotationMethod"]] == "orthogonal") {
+      "orthogonalSelector"
+    } else {
+      "obliqueSelector"
+    }
+
+    message <- gettextf("Applied rotation method is %1$s.", options[[rotationSelector]])
+    loadingsTable$addFootnote(message = message)
   }
 
   loadings <- unclass(loads)
@@ -453,9 +463,14 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none") {
     structureTable$addFootnote(message = gettext("No rotation method applied."))
   } else {
-    structureTable$addFootnote(
-      message = gettextf("Applied rotation method is %s.", ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector))
-    )
+    rotationSelector <- if (options[["rotationMethod"]] == "orthogonal") {
+      "orthogonalSelector"
+    } else {
+      "obliqueSelector"
+    }
+
+    message <- gettextf("Applied rotation method is %1$s.", options[[rotationSelector]])
+    structureTable$addFootnote(message = message)
   }
 
   loads <- efaResults$Structure

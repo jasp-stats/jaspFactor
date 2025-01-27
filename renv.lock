@@ -1080,7 +1080,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "d3a42428674d84b91281634562e9ac4bd03b82f1",
+      "RemoteSha": "cf7c84b877e1af958dd0d5b228d9a81831002bdd",
       "Requirements": [
         "R6",
         "Rcpp",

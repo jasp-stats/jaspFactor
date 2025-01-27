@@ -61,15 +61,16 @@ Section
 			label	: qsTr("Oblique")
 			info: qsTr("This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.")
 			checked	: true
-			DropDown { name: "obliqueSelector";
+			DropDown { 
+				name: "obliqueSelector"
 				values: [ 
-					{ name: "promax", label: "promax", info: qsTr("Starts with Varimax and applies a power transformation to allow correlated factors.")},
-					{ name: "oblimin", label: "oblimin", info: qsTr("An oblique rotation that minimizes the correlation among factors while allowing flexibility.")},
-					{ name: "simplimax", label: "simplimax", info: qsTr("Aims to simplify factor loadings by minimizing nonzero entries.") },
-					{ name: "bentlerQ", label: "bentlerQ", info: qsTr("Oblique rotation by Bentler, simplifying factor correlations.")},
-					{ name: "biquartimin", label: "biquartimin", info: qsTr("An oblique rotation balancing between simple and interpretable factor loadings.")},
-					{ name: "cluster", label: "cluster", info: qsTr("Targets a cluster rotation for factor analysis, emphasizing group separation.") },
-					{ name: "geominQ", label: "geominQ", info: qsTr("An oblique version of Geomin, allowing factor correlations and reducing complex loadings.")}
+					{ value: "promax", label: "promax", info: qsTr("Starts with Varimax and applies a power transformation to allow correlated factors.")},
+					{ value: "oblimin", label: "oblimin", info: qsTr("An oblique rotation that minimizes the correlation among factors while allowing flexibility.")},
+					{ value: "simplimax", label: "simplimax", info: qsTr("Aims to simplify factor loadings by minimizing nonzero entries.") },
+					{ value: "bentlerQ", label: "bentlerQ", info: qsTr("Oblique rotation by Bentler, simplifying factor correlations.")},
+					{ value: "biquartimin", label: "biquartimin", info: qsTr("An oblique rotation balancing between simple and interpretable factor loadings.")},
+					{ value: "cluster", label: "cluster", info: qsTr("Targets a cluster rotation for factor analysis, emphasizing group separation.") },
+					{ value: "geominQ", label: "geominQ", info: qsTr("An oblique version of Geomin, allowing factor correlations and reducing complex loadings.")}
 				]
 			}
 		}

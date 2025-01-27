@@ -468,7 +468,7 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.8.1",
+      "Version": "2.1.8",
       "Source": "Repository",
       "Requirements": [
         "graphics",

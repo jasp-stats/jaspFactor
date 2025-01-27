@@ -19,6 +19,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
 
+  # Read dataset
+  dataset <- .pcaAndEfaReadData(dataset, options)
   ready   <- length(options$variables) > 1
   # Handle dataset
   dataset <- .pcaAndEfaHandleData(dataset, options, ready)
@@ -74,7 +76,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 # depending on the number of response categories of the ordinal variables.
 .efaComputeResults <- function(modelContainer, dataset, options, ready) {
 
-  corMethod <- switch(options[["baseDecompositionOn"]],
+  corMethod <- switch(options[["analysisBasedOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
                       "polyTetrachoricCorrelationMatrix" = "mixed")

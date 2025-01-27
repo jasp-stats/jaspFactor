@@ -419,7 +419,7 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.8.1",
+      "Version": "2.1.8",
       "Source": "Repository",
       "Requirements": [
         "graphics",
@@ -1413,7 +1413,7 @@
     },
     "psych": {
       "Package": "psych",
-      "Version": "2.5.3",
+      "Version": "2.4.12",
       "Source": "Repository",
       "Requirements": [
         "GPArotation",

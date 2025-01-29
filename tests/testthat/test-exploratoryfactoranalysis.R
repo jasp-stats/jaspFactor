@@ -6,7 +6,44 @@ context("Exploratory Factor Analysis")
 # - Eigen values above / manual
 # - contents of screeplot (set.seed does not work)
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+defaultOptions <- list(
+  variables = list(),
+  sampleSize = 200,
+  eigenValuesAbove = 1,
+  manualNumberOfFactors = 1,
+  factoringMethod = "minimumResidual",
+  orthogonalSelector = "none",
+  obliqueSelector = "promax",
+  loadingsDisplayLimit = 0,
+  factorStructure = FALSE,
+  factorCorrelations = FALSE,
+  fitIndices = FALSE,
+  residualMatrix = FALSE,
+  parallelAnalysisTable = FALSE,
+  pathDiagram = FALSE,
+  screePlot = FALSE,
+  antiImageCorrelationMatrix = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  kaiserMeyerOlkinTest = FALSE,
+  bartlettTest = FALSE,
+  mardiaTest = FALSE,
+  addScores = FALSE,
+  addedScoresPrefix = "",
+  dataType = "raw",
+  factorCountMethod = "parallelAnalysis",
+  parallelAnalysisMethod = "principalComponentBased",
+  rotationMethod = "orthogonal",
+  analysisBasedOn = "correlationMatrix",
+  loadingsOrder = "sortByVariables",
+  parallelAnalysisTableMethod = "principalComponentBased",
+  naAction = "pairwise",
+  plotWidth = 480,
+  plotHeight = 320,
+  setSeed = FALSE,
+  seed = 1
+)
+
+options <- defaultOptions
 options$factorCountMethod <- "manual"
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
@@ -19,11 +56,11 @@ options$residualMatrix <- TRUE
 options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
-options$factorLoadingsOrder <- "sortByVariables"
+options$loadingsOrder <- "sortByVariables"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
-results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options)
+results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
 
 
 test_that("Factor Correlations table results match", {
@@ -35,11 +72,10 @@ test_that("Factor Correlations table results match", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.211560139237577, 0.21520386846338, 1.76545396982125,
-                                      0.211560139237577, 0.21520386846338, 1.48092097466304, 1.50642707924366,
-                                      "Factor 2", 0.366100386048402, 0.366966592875575, 1.31015305219849,
-                                      0.154540246810825, 0.151762724412195, 1.08178172767577, 1.06233907088537
-                                 ))
+                                 list("Factor 1", 0.211560139237578, 0.215203868463381, 0.211560139237578,
+                                      0.215203868463381, 1.48092097466305, 1.50642707924367, "Factor 2",
+                                      0.366100386048402, 0.366966592875577, 0.154540246810824, 0.151762724412196,
+                                      1.08178172767577, 1.06233907088537))
 })
 
 test_that("Additional fit indices table results match", {
@@ -108,7 +144,7 @@ test_that("Factor Loadings (Structure Matrix) table results match", {
 })
 
 test_that("Missing values works", {
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
   options$factorCorrelations <- TRUE
 
@@ -125,18 +161,17 @@ test_that("Missing values works", {
 
 
 
-options$factorLoadingsOrder <- "sortByVariables"
+options$loadingsOrder <- "sortByVariables"
 
+test_that("loadingsOrder sort the factor loadings table", {
 
-test_that("factorLoadingsOrder sort the factor loadings table", {
-
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$orthogonalSelector <- "varimax"
   options$loadingsDisplayLimit <- 0.2
   options$variables <- paste0("x", 1:9)
 
   reference <- list(
-    sortByFactorSize = list(
+    sortBySize = list(
       0.859092745287366, "", "", 0.246269423771584, "x5", 0.832032514222841,
       "", "", 0.27206434823954, "x4", 0.798985079015342, 0.213747389751454,
       "", 0.308644745749111, "x6", 0.279356098904291, 0.612821903382293,
@@ -158,20 +193,20 @@ test_that("factorLoadingsOrder sort the factor loadings table", {
     )
   )
 
-  for (factorLoadingsOrder in c("sortByFactorSize", "sortByVariables")) {
-    options$factorLoadingsOrder <- factorLoadingsOrder
+  for (loadingsOrder in c("sortBySize", "sortByVariables")) {
+    options$loadingsOrder <- loadingsOrder
 
     set.seed(123)
     results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
     table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
-    jaspTools::expect_equal_tables(table, reference[[factorLoadingsOrder]], label = sprintf("factorLoadingsOrder = %s", factorLoadingsOrder))
+    jaspTools::expect_equal_tables(table, reference[[loadingsOrder]], label = sprintf("loadingsOrder = %s", loadingsOrder))
   }
 
 })
 
 test_that("Estimation options do not crash", {
-  options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+  options <- defaultOptions
   options$variables <- paste0("Q0", 1:9)
 
   for(factoringMethod in c("minimumResidual",
@@ -190,7 +225,7 @@ test_that("Estimation options do not crash", {
 })
 
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$factoringMethod <- "minimumResidual"
@@ -201,16 +236,15 @@ options$orthogonalSelector <- "none"
 options$rotationMethod <- "orthogonal"
 options$variables <- paste0("x", 1:9)
 set.seed(1)
-results <- runAnalysis("exploratoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options)
-
+results <- runAnalysis("exploratoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options, makeTests = F)
 
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.314163998816933, 3.21634418143771, 0.314163998816933,
-                                      2.8274759893524, "Factor 2", 0.449126711506194, 1.63871322152606,
-                                      0.134962712689261, 1.21466441420335, "Factor 3", 0.539738017727465,
-                                      1.36515934778625, 0.0906113062212709, 0.815501755991438))
+                                 list("Factor 1", 0.314163998816934, 0.314163998816934, 2.8274759893524,
+                                      "Factor 2", 0.449126711506193, 0.13496271268926, 1.21466441420334,
+                                      "Factor 3", 0.539738017727469, 0.090611306221276, 0.815501755991485
+                                 ))
 })
 
 test_that("Chi-squared Test table results match with parallel analysis based on PCs", {
@@ -245,28 +279,30 @@ test_that("Scree plot matches", {
 })
 
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$loadingsDisplayLimit <- 0.1
 options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
 options$mardiaTest <- TRUE
+options$kaiserMeyerOlkinTest <- TRUE
+options$antiImageCorrelationMatrix <- TRUE
 options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
 options$factoringMethod <- "minimumResidual"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
 
 set.seed(1)
 results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
 
-test_that("Factor Characteristics table results match with poly cor", {
+test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.237444621938795, 0.238183139137491, 1.78311572348898,
-                                      0.237444621938795, 0.238183139137491, 1.42466773163277, 1.42909883482494,
-                                      "Factor 2", 0.411139518227707, 0.411182023092321, 1.28924116893078,
-                                      0.173694896288912, 0.17299888395483, 1.04216937773347, 1.03799330372898
-                                 ))
+                                 list("Factor 1", 0.237444621938795, 0.238183139137491, 0.237444621938795,
+                                      0.238183139137491, 1.42466773163277, 1.42909883482494, "Factor 2",
+                                      0.411139518227707, 0.411182023092321, 0.173694896288912, 0.17299888395483,
+                                      1.04216937773347, 1.03799330372898))
 })
 
 test_that("Mardia's Test of Multivariate Normality table results match with poly cor", {
@@ -289,9 +325,31 @@ test_that("Parallel Analysis table results match with poly cor", {
                                       0.305368493190363, 0.688414343222493))
 })
 
+test_that("Anti-Image Correlation Matrix table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_antiMatrix"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("contcor1", 0.526769012560228, "", "", "", "", "", "contcor2",
+                                      -0.349928022246483, 0.536914874583069, "", "", "", "", "facFifty",
+                                      -0.0495141274829718, 0.141029603183427, 0.92874615606032, "",
+                                      "", "", "facFive", -0.0235032435133578, -0.0413441408044983,
+                                      -0.121232372980544, 0.940662798594682, "", "", "contNormal",
+                                      -0.151773130509214, 0.0953706562127195, 0.114039732481935, -0.119269468551279,
+                                      0.872517077527576, "", "debMiss1", 0.119020060433437, -0.0506637821973096,
+                                      0.00516964114483342, 0.130933606652162, -0.238333749371856,
+                                      0.893766605969346))
+})
+
+test_that("Kaiser-Meyer-Olkin Test table results match", {
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_kmoTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Overall MSA", 0.472338374588124, "contcor1", 0.490151695858873,
+                                      "contcor2", 0.49029987989214, "facFifty", 0.473417708976819,
+                                      "facFive", 0.515909446356412, "contNormal", 0.364284277677057,
+                                      "debMiss1", 0.421070371345991))
+})
 
 
-options <- jaspTools::analysisOptions("exploratoryFactorAnalysis")
+options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$parallelAnalysisTable <- TRUE
@@ -314,6 +372,7 @@ test_that("Parallel Analysis table results match", {
 
 
 # variance covariance matrix input
+# this test fails because the column names are not encoded when run through jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
@@ -325,7 +384,7 @@ options <- list(
   eigenValuesAbove = 1,
   factorCorrelations = FALSE,
   factorCountMethod = "manual",
-  factorLoadingsOrder = "sortByVariables",
+  loadingsOrder = "sortByVariables",
   factorStructure = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
@@ -347,6 +406,7 @@ options <- list(
   rotationMethod = "orthogonal",
   sampleSize = 200,
   screePlot = FALSE,
+  antiImageCorrelationMatrix = FALSE,
   screePlotParallelAnalysisResults = TRUE,
   variables = c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")
 )
@@ -357,8 +417,8 @@ results <- runAnalysis("exploratoryFactorAnalysis", cdt, options, makeTests = F)
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.292468690109419, 3.21634418143771, 0.292468690109419,
-                                      2.63221821098477))
+                                 list("Factor 1", 0.292468690109419, 0.292468690109419, 2.63221821098477
+                                 ))
 })
 
 test_that("Chi-squared Test table results match", {

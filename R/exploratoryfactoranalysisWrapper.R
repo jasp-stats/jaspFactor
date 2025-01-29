@@ -28,7 +28,7 @@ exploratoryFactorAnalysis <- function(
           eigenValuesAbove = 1,
           factorCorrelations = FALSE,
           factorCountMethod = "parallelAnalysis",
-          factorLoadingsOrder = "sortByFactorSize",
+          loadingsOrder = "sortBySize",
           factorStructure = FALSE,
           factoringMethod = "minimumResidual",
           fitIndices = FALSE,

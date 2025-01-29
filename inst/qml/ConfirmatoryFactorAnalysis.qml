@@ -295,13 +295,18 @@ Form
 			{
 				name: "naAction"
 				label: qsTr("Missing data handling")
-				values:
-				[
+				values: factors.columnsTypes.includes("ordinal") ? [
 					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
 					{ label: qsTr("FIML")				, value: "fiml"				},
 					{ label: qsTr("Pairwise")			, value: "pairwise"			},
 					{ label: qsTr("Two-stage")			, value: "twoStage"			},
-					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
+					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	}
+				] : [
+					{ label: qsTr("FIML")				, value: "fiml"				},
+					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
+					{ label: qsTr("Pairwise")			, value: "pairwise"			},
+					{ label: qsTr("Two-stage")			, value: "twoStage"			},
+					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	}
 				]
 			}
 		}
@@ -316,6 +321,22 @@ Form
 			RadioButton { label: qsTr("No Exogenous Covariates");	value: "noExogenousCovariates"	}
 		}
 
+		CheckBox
+		{
+			id: addScores
+			name: "addScores"
+			label: qsTr("Add factor scores to data")
+			info: qsTr("Adds the estimated factor scores as new columns to the data set")
+			enabled: variablesCount > 1 & dataRaw
+
+			TextField {
+				name: "addedScoresPrefix"
+				label: qsTr("Prefix")
+				defaultValue: qsTr("FS")
+				fieldWidth: 80
+				enabled: addScores.checked
+			}
+		}
 		Group
 		{
 			title: qsTr("Options")

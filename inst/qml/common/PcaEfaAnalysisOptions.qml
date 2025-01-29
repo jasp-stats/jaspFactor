@@ -25,6 +25,7 @@ Section
 {
 	property bool pca: true
 	property bool dataRaw: true
+	property bool nonScale: false
 
 	id: analysisoptions
 	title: qsTr("Analysis Options")
@@ -86,7 +87,7 @@ Section
 			value: "correlationMatrix"
 			label: qsTr("Correlation matrix")
 			info: qsTr("The correlation matrix is used to decompose the data into components/factors.")
-			checked: true
+			checked: !nonScale
 		}
 		RadioButton
 		{
@@ -96,10 +97,11 @@ Section
 		}
 		RadioButton
 		{
-			enabled: dataRaw
+			enabled: dataRaw && nonScale
 			value: "polyTetrachoricCorrelationMatrix"
 			label: qsTr("Polychoric/tetrachoric correlation matrix")
 			info: qsTr("The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories")
+			checked: nonScale
 		}
 	}
 

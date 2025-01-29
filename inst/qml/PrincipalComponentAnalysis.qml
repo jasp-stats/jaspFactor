@@ -25,7 +25,37 @@ import "./common" as Common
 Form
 {
 
-	Common.PcaEfaVariables{}
+	// Common.PcaEfaVariables{}
+	VariablesForm
+	{
+		// property alias variables: variables
+
+		AvailableVariablesList { name: "allVariablesList" }
+		AssignedVariablesList
+		{
+			id: variables
+			name: "variables"
+			title: qsTr("Variables")
+			allowedColumns: ["scale", "ordinal", "nominal"]
+			allowTypeChange: true
+			info: qsTr("In this box, the variables to perform the analysis on are selected")
+		}
+
+		RadioButtonGroup
+		{
+			name: "dataType"
+			title: qsTr("Data")
+			id: dataType
+			columns: 2
+			info: qsTr("Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.")
+			RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
+			RadioButton
+			{
+				value: "varianceCovariance"; label: qsTr("Variance-covariance matrix")
+				IntegerField { name: "sampleSize"; label: qsTr("Sample size"); defaultValue: 200 }
+			}
+		}
+	}
 
 	Common.PcaEfaNumberFactors{
 		pca: true
@@ -35,6 +65,7 @@ Form
 	Common.PcaEfaAnalysisOptions{
 		pca: true
 		dataRaw: dataType.value == "raw"
+		nonScale: variables.count > 0 && (variables.columnsTypes.includes("ordinal") || variables.columnsTypes.includes("nominal"))
 	}
 
 	Common.PcaEfaOutputOptions{

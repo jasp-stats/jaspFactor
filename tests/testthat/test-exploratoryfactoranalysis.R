@@ -291,6 +291,7 @@ options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
 options$factoringMethod <- "minimumResidual"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
 
 set.seed(1)
 results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
@@ -324,21 +325,17 @@ test_that("Parallel Analysis table results match with poly cor", {
                                       0.305368493190363, 0.688414343222493))
 })
 
+# might have to change this once psych is updated on CRAN so the diagonals are replced with MSA values
 test_that("Anti-Image Correlation Matrix table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_antiMatrix"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("contcor1", 0.526769012560228, -0.349928022246483, -0.0495141274829718,
-                                      -0.0235032435133578, -0.151773130509214, 0.119020060433437,
-                                      "contcor2", -0.349928022246483, 0.536914874583069, 0.141029603183427,
-                                      -0.0413441408044983, 0.0953706562127194, -0.0506637821973096,
-                                      "facFifty", -0.0495141274829718, 0.141029603183427, 0.92874615606032,
-                                      -0.121232372980545, 0.114039732481935, 0.00516964114483341,
-                                      "facFive", -0.0235032435133578, -0.0413441408044983, -0.121232372980544,
-                                      0.940662798594682, -0.119269468551279, 0.130933606652162, "contNormal",
-                                      -0.151773130509214, 0.0953706562127195, 0.114039732481935, -0.119269468551279,
-                                      0.872517077527576, -0.238333749371856, "debMiss1", 0.119020060433437,
-                                      -0.0506637821973096, 0.00516964114483342, 0.130933606652162,
-                                      -0.238333749371856, 0.893766605969346))
+                                 list("contcor1", 1, "", "", "", "", "", "contcor2", -0.657984850645737,
+                                      1, "", "", "", "", "facFifty", -0.0707897707888168, 0.19971424893446,
+                                      1, "", "", "", "facFive", -0.0333887919581817, -0.0581760551284757,
+                                      -0.129703921537719, 1, "", "", "contNormal", -0.223870987183178,
+                                      0.139339768605635, 0.126683690677884, -0.131651354480395, 1,
+                                      "", "debMiss1", 0.17345946187078, -0.0731362735186656, 0.00567413704057278,
+                                      0.142797986754177, -0.26988982715786, 1))
 })
 
 test_that("Kaiser-Meyer-Olkin Test table results match", {
@@ -374,6 +371,7 @@ test_that("Parallel Analysis table results match", {
 
 
 # variance covariance matrix input
+# this test fails because the column names are not encoded when run through jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
@@ -417,7 +415,7 @@ results <- runAnalysis("exploratoryFactorAnalysis", cdt, options, makeTests = F)
 
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
+   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.292468690109419, 0.292468690109419, 2.63221821098477
                                  ))
 })

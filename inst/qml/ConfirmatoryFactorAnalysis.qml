@@ -146,8 +146,9 @@ Form
 		{
 			label: qsTr("Grouping variable") ;
 			name: "group";
-			showVariableTypeIcon: true;
-			addEmptyValue: true;
+			showVariableTypeIcon: true
+			addEmptyValue: true
+			allowedColumns: ["nominal"]
 		} // No model: it takes all variables per default
 		DropDown
 		{
@@ -297,10 +298,7 @@ Form
 				label: qsTr("Missing data handling")
 				values: factors.columnsTypes.includes("ordinal") ? [
 					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
-					{ label: qsTr("FIML")				, value: "fiml"				},
 					{ label: qsTr("Pairwise")			, value: "pairwise"			},
-					{ label: qsTr("Two-stage")			, value: "twoStage"			},
-					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	}
 				] : [
 					{ label: qsTr("FIML")				, value: "fiml"				},
 					{ label: qsTr("Listwise deletion")	, value: "listwise"			},

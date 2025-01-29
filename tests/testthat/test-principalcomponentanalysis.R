@@ -322,6 +322,7 @@ test_that("Component Loadings table results match", {
 # results for PCA based on mixed matrix (poly or tetrachoric)
 options <- defaultOptions
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
+options$variables.types <- list("scale", "scale", "scale", "scale", "ordinal")
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "parallelAnalysis"
@@ -377,6 +378,7 @@ test_that("Parallel Analysis table results match", {
 
 
 # variance covariance matrix input
+# this test fails because the column names are not encoded when run through jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(

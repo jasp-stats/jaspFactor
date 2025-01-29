@@ -19,18 +19,17 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
-
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
 
   # Read dataset
-  dataset <- .cfaReadData(dataset, options)
+  dataset <- .cfaHandleData(dataset, options)
 
   # Error checking
   errors <- .cfaCheckErrors(dataset, options)
 
-  # covariance matrix
-  dataset <- .cfaDataCovariance(dataset, options)
+  # possibly check cov matrix
+  .pcaAndEfaDataCovarianceCheck(dataset, options, ready = TRUE, cfa = TRUE)
 
   # Main table / model
   cfaResult <- .cfaComputeResults(jaspResults, dataset, options, errors)
@@ -67,35 +66,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 # Preprocessing functions ----
-.cfaReadData <- function(dataset, options) {
-
-  if (!is.null(dataset)) return(dataset)
-
-  # NOTE: The GUI does not yet allow for putting the same variable in different factors.
-  # if the same variable is used twice but with a different type then this would
-  # crash the R code. However, since this is not possible yet, this should be okay for now
-  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"),       use.names = FALSE)
-
-  if (length(vars) == 0)
-    return(data.frame())
-
-  duplicateVars <- duplicated(vars)
-  vars  <- vars[!duplicateVars]
-
-  if (options[["dataType"]] == "raw") {
-    # make sure on the qml side that groupVar is indeed a nominal variable
-    groupVar <- if (options[["group"]] == "") NULL else options[["group"]]
-    dataset <- .readDataSetToEnd(columns = c(vars, groupVar))
-
-  } else {
-
-    dataset <- .readDataSetToEnd(all.columns = TRUE)
-  }
-
-
-  return(dataset)
-
-}
 
 .cfaPreprocessOptions <- function(options) {
   # Remove empty factors
@@ -108,6 +78,34 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     options$secondOrder <- list(list(indicators = options$secondOrder, name = "SecondOrder", title = gettext("Second-Order")))
   }
   return(options)
+}
+
+.cfaHandleData <- function(dataset, options) {
+
+  # NOTE: The GUI does not yet allow for putting the same variable in different factors.
+  # if the same variable is used twice but with a different type then this would
+  # crash the R code. However, since this is not possible yet, this should be okay for now
+  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
+  if (options[["group"]] != "")
+    vars <- c(vars, options[["group"]])
+
+  if (length(vars) == 0)
+    return(data.frame())
+
+  duplicateVars <- duplicated(vars)
+  vars  <- vars[!duplicateVars]
+
+  if (options[["dataType"]] == "raw") {
+    dataset <- dataset[, vars]
+
+  } else {
+    colInds <- which(colnames(dataset) == vars)
+    dataset <- dataset[colInds, colInds]
+    rownames(dataset) <- colnames(dataset)
+  }
+
+  return(dataset)
+
 }
 
 
@@ -124,7 +122,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       if (!factor %in% names(nVarsPerFactor) || nVarsPerFactor[factor] <= 0)
         jaspBase:::.quitAnalysis(gettext("The model could not be estimated. A factor with less than 2 variables was added in Second-Order."))
 
-  vars <- unique(unlist(lapply(options$factors, function(x) x$indicators)))
+  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
+
+  if (options[["group"]] != "")
+    vars <- c(vars, options[["group"]])
+
+  duplicateVars <- duplicated(vars)
+  vars  <- vars[!duplicateVars]
 
   if (options[["dataType"]] == "raw") {
 
@@ -159,52 +163,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     }
   }
 
-  return(NULL)
-}
-
-.cfaDataCovariance <- function(dataset, options) {
-
-
-  if (options[["dataType"]] == "raw") {
-    return(dataset)
-  }
-
-  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
-
-  # are there any variables specified at all?
-  if (length(vars) == 0)
-    return(data.frame())
-
-  # possible data matrix?
-  if ((nrow(dataset) != ncol(dataset)))
-    .quitAnalysis(gettext("Input data does not seem to be a square matrix! Please check the format of the input data."))
-
-  if (!all(dataset[lower.tri(dataset)] == t(dataset)[lower.tri(dataset)]))
-    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
-
-  duplicateVars <- duplicated(vars)
-  usedvars  <- vars[!duplicateVars]
-  var_idx  <- match(usedvars, colnames(dataset))
-  mat <- try(as.matrix(dataset[var_idx, var_idx]))
-  if (inherits(mat, "try-error"))
-    .quitAnalysis(gettext("All cells must be numeric."))
-
-  if (options[["group"]] != "") .quitAnalysis(gettext("Grouping variable not supported for covariance matrix input"))
-
-  if (options[["meanStructure"]]) .quitAnalysis(gettext("Mean structure not supported for covariance matrix input"))
-
-  .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
-
-  colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
-
-  if (anyNA(mat)) {
-    inds <- which(is.na(mat))
-    mat <- mat[-inds, -inds]
-    if (ncol(mat) < 3) {
-      .quitAnalysis("Not enough valid columns to run this analysis")
-    }
-  }
-  return(mat)
+  return()
 }
 
 
@@ -280,9 +239,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     sampCovN <- NULL
   } else {
     dt <- NULL
-    sampCov <- dataset
+    sampCov <- as.matrix(dataset)
     sampCovN <- options[["sampleSize"]]
   }
+
   cfaResult[["lav"]] <- try(lavaan::lavaan(
     model           = mod,
     data            = dt,

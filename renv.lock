@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.0",
+    "Version": "4.4.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -48,18 +48,17 @@
         "R",
         "base64enc",
         "cluster",
-        "colorspace",
-        "data.table",
+        "rpart",
+        "nnet",
         "foreign",
-        "ggplot2",
+        "gtable",
         "grid",
         "gridExtra",
         "gtable",
         "htmlTable",
         "htmltools",
-        "knitr",
-        "methods",
-        "nnet",
+        "base64enc",
+        "colorspace",
         "rmarkdown",
         "rpart",
         "viridis"
@@ -72,10 +71,10 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
+        "methods",
         "R",
         "grDevices",
         "graphics",
-        "methods",
         "stats",
         "utils"
       ],
@@ -92,7 +91,6 @@
         "graphics",
         "grid",
         "lattice",
-        "methods",
         "stats",
         "utils"
       ],
@@ -336,12 +334,10 @@
         "R",
         "abind",
         "coda",
-        "grDevices",
         "graphics",
-        "lme4",
+        "grDevices",
         "methods",
         "nlme",
-        "stats",
         "utils"
       ],
       "Hash": "4f37635d4d4315785c975b0d89fb8a39"
@@ -407,13 +403,13 @@
         "R",
         "base64enc",
         "cachem",
-        "fastmap",
+        "fastmap (>= 1.1.1)",
         "grDevices",
-        "htmltools",
-        "jquerylib",
+        "htmltools (>= 0.5.8)",
+        "jquerylib (>= 0.1.3)",
         "jsonlite",
         "lifecycle",
-        "memoise",
+        "memoise (>= 2.0.1)",
         "mime",
         "rlang",
         "sass"
@@ -440,12 +436,15 @@
         "lavaan",
         "lifecycle",
         "magrittr",
-        "matrixStats",
+        "MASS",
+        "Matrix",
         "matrixcalc",
+        "matrixStats",
         "polycor",
         "progressr",
         "psych",
         "purrr",
+        "Rdpack",
         "rlang",
         "stats",
         "symmoments",
@@ -512,13 +511,14 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.6",
+      "Version": "2.1.8",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "grDevices",
         "graphics",
+        "grDevices",
         "stats",
         "utils"
       ],
@@ -579,7 +579,7 @@
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.5.0",
+      "Version": "0.5.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -639,6 +639,7 @@
         "R",
         "R6",
         "cli",
+        "R6",
         "utils"
       ],
       "Hash": "99b79fcbd6c4d1ce087f5c5c758b384f"
@@ -679,9 +680,9 @@
         "R6",
         "cli",
         "generics",
-        "glue",
-        "lifecycle",
-        "magrittr",
+        "glue (>= 1.3.2)",
+        "lifecycle (>= 1.0.3)",
+        "magrittr (>= 1.5)",
         "methods",
         "pillar",
         "rlang",
@@ -748,6 +749,7 @@
         "R",
         "grDevices",
         "graphics",
+        "grDevices",
         "stats"
       ],
       "Hash": "d2a06fbed1234e31c6a872aebbf30057"
@@ -807,7 +809,7 @@
         "glue",
         "lifecycle",
         "magrittr",
-        "rlang",
+        "rlang (>= 1.0.0)",
         "tibble"
       ],
       "Hash": "1a0a9a3d5083d0d573c4214576f1e690"
@@ -844,10 +846,10 @@
       "Requirements": [
         "R",
         "digest",
-        "globals",
-        "listenv",
+        "globals (>= 0.16.1)",
+        "listenv (>= 0.8.0)",
         "parallel",
-        "parallelly",
+        "parallelly (>= 1.38.0)",
         "utils"
       ],
       "Hash": "475771e3edb711591476be387c9a8c2e"
@@ -904,12 +906,12 @@
         "glue",
         "grDevices",
         "grid",
-        "gtable",
+        "gtable (>= 0.1.1)",
         "isoband",
         "lifecycle",
         "mgcv",
-        "rlang",
-        "scales",
+        "rlang (>= 1.1.0)",
+        "scales (>= 1.3.0)",
         "stats",
         "tibble",
         "vctrs",
@@ -954,8 +956,6 @@
       "Requirements": [
         "grDevices",
         "graphics",
-        "grid",
-        "gtable",
         "utils"
       ],
       "Hash": "7d7f283939f563670a697165b2cf5560"
@@ -983,7 +983,7 @@
         "glue",
         "grid",
         "lifecycle",
-        "rlang",
+        "rlang (>= 1.1.0)",
         "stats"
       ],
       "Hash": "de949855009e2d4d0e52a844e30617ae"
@@ -1038,9 +1038,9 @@
         "R",
         "base64enc",
         "digest",
-        "fastmap",
+        "fastmap (>= 1.1.0)",
         "grDevices",
-        "rlang",
+        "rlang (>= 1.0.0)",
         "utils"
       ],
       "Hash": "81d371a9cc60640e74e4ab6ac46dcedc"
@@ -1052,9 +1052,9 @@
       "Repository": "CRAN",
       "Requirements": [
         "grDevices",
-        "htmltools",
-        "jsonlite",
-        "knitr",
+        "htmltools (>= 0.5.7)",
+        "jsonlite (>= 0.9.16)",
+        "knitr (>= 1.8)",
         "rmarkdown",
         "yaml"
       ],
@@ -1077,16 +1077,15 @@
     },
     "igraph": {
       "Package": "igraph",
-      "Version": "2.1.1",
+      "Version": "2.1.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "Matrix",
         "R",
         "cli",
-        "cpp11",
-        "grDevices",
         "graphics",
+        "grDevices",
         "lifecycle",
         "magrittr",
         "methods",
@@ -1118,7 +1117,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "cf7c84b877e1af958dd0d5b228d9a81831002bdd",
+      "RemoteSha": "d3a42428674d84b91281634562e9ac4bd03b82f1",
       "Requirements": [
         "R6",
         "Rcpp",
@@ -1208,7 +1207,7 @@
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "2.0.0",
+      "Version": "1.8.9",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1270,7 +1269,6 @@
         "R",
         "grDevices",
         "graphics",
-        "grid",
         "stats",
         "utils"
       ],
@@ -1286,8 +1284,12 @@
         "R",
         "graphics",
         "methods",
+        "stats4",
+        "stats",
+        "utils",
+        "graphics",
+        "MASS",
         "mnormt",
-        "numDeriv",
         "pbivnorm",
         "quadprog",
         "stats",
@@ -1406,8 +1408,6 @@
         "R",
         "graphics",
         "methods",
-        "nlme",
-        "splines",
         "stats",
         "utils"
       ],
@@ -1530,7 +1530,8 @@
     },
     "nnet": {
       "Package": "nnet",
-      "Version": "7.3-20",
+      "Version": "7.3-19",
+      "Version": "7.3-19",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1558,9 +1559,10 @@
       "Requirements": [
         "R6",
         "cli",
-        "grDevices",
         "graphics",
+        "grDevices",
         "openssl",
+        "R6",
         "ragg",
         "stats",
         "utils",
@@ -1572,7 +1574,7 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "2.3.0",
+      "Version": "2.3.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1590,6 +1592,7 @@
         "Rcpp",
         "grDevices",
         "methods",
+        "Rcpp",
         "stats",
         "stringi",
         "utils",
@@ -1634,10 +1637,11 @@
       "Repository": "CRAN",
       "Requirements": [
         "cli",
+        "fansi",
         "glue",
         "lifecycle",
-        "rlang",
-        "utf8",
+        "rlang (>= 1.0.2)",
+        "utf8 (>= 1.1.0)",
         "utils",
         "vctrs"
       ],
@@ -1645,7 +1649,7 @@
     },
     "pkgbuild": {
       "Package": "pkgbuild",
-      "Version": "1.4.7",
+      "Version": "1.4.5",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1721,6 +1725,7 @@
         "R",
         "admisc",
         "mvtnorm",
+        "Matrix",
         "parallel",
         "stats"
       ],
@@ -1778,9 +1783,9 @@
         "GPArotation",
         "grDevices",
         "graphics",
-        "lattice",
+        "grDevices",
         "methods",
-        "mnormt",
+        "lattice",
         "nlme",
         "parallel",
         "stats"
@@ -1814,16 +1819,13 @@
         "Rcpp",
         "abind",
         "colorspace",
+        "Matrix",
         "corpcor",
-        "fdrtool",
+        "reshape2",
         "ggplot2",
         "glasso",
-        "grDevices",
+        "fdrtool",
         "gtools",
-        "igraph",
-        "jpeg",
-        "lavaan",
-        "methods",
         "parallel",
         "pbapply",
         "plyr",
@@ -1893,6 +1895,8 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
+        "R",
+        "methods",
         "stats",
         "tools",
         "utils"
@@ -1956,9 +1960,9 @@
         "htmltools",
         "jquerylib",
         "jsonlite",
-        "knitr",
+        "knitr (>= 1.43)",
         "methods",
-        "tinytex",
+        "tinytex (>= 0.31)",
         "tools",
         "utils",
         "xfun",
@@ -1976,7 +1980,7 @@
         "R",
         "carData",
         "grDevices",
-        "kutils",
+        "methods",
         "lme4",
         "methods"
       ],
@@ -2068,7 +2072,7 @@
         "R6",
         "RColorBrewer",
         "cli",
-        "farver",
+        "farver (>= 2.0.3)",
         "glue",
         "labeling",
         "lifecycle",
@@ -2117,7 +2121,7 @@
     },
     "semTools": {
       "Package": "semTools",
-      "Version": "0.5-7",
+      "Version": "0.5-6",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2162,8 +2166,8 @@
       "Requirements": [
         "R",
         "cli",
-        "glue",
-        "lifecycle",
+        "glue (>= 1.6.1)",
+        "lifecycle (>= 1.0.3)",
         "magrittr",
         "rlang",
         "stringi",
@@ -2255,9 +2259,9 @@
         "lifecycle",
         "magrittr",
         "methods",
-        "pillar",
+        "pillar (>= 1.8.1)",
         "pkgconfig",
-        "rlang",
+        "rlang (>= 1.0.2)",
         "utils",
         "vctrs"
       ],
@@ -2274,13 +2278,13 @@
         "cpp11",
         "dplyr",
         "glue",
-        "lifecycle",
+        "lifecycle (>= 1.0.3)",
         "magrittr",
-        "purrr",
-        "rlang",
-        "stringr",
-        "tibble",
-        "tidyselect",
+        "purrr (>= 1.0.1)",
+        "rlang (>= 1.1.1)",
+        "stringr (>= 1.5.0)",
+        "tibble (>= 2.1.1)",
+        "tidyselect (>= 1.2.0)",
         "utils",
         "vctrs"
       ],
@@ -2430,7 +2434,7 @@
     },
     "xml2": {
       "Package": "xml2",
-      "Version": "1.3.8",
+      "Version": "1.3.6",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [

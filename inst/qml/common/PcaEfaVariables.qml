@@ -23,14 +23,16 @@ import JASP.Controls
 
 VariablesForm
 {
-	// preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
+	property alias variables: variables
+	
 	AvailableVariablesList { name: "allVariablesList" }
 	AssignedVariablesList
 	{
 		id: variables
 		name: "variables"
 		title: qsTr("Variables")
-		allowedColumns: ["scale"]
+		allowedColumns: ["scale", "ordinal", "nominal"]
+		allowTypeChange: true
 		info: qsTr("In this box, the variables to perform the analysis on are selected")
 	}
 

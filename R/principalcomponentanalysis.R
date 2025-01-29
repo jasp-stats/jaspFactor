@@ -118,38 +118,35 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   return(mat)
 }
 
-.pcaCheckErrors <- function(dataset, options) {
+.pcaCheckErrors <- function(dataset, options, method = "pca") {
 
-  customChecksPCAEFA <- list(
+  customChecks <- list(
     function() {
-      if (length(options$variables) > 0 && options$componentCountMethod == "manual" &&
-          options$manualNumberOfComponents > length(options$variables)) {
-        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$manualNumberOfComponents))
+      countMethod <- ifelse(method == "efa", options$factorCountMethod, options$componentCountMethod)
+      manualCount <- ifelse(method == "efa", options$manualNumberOfFactors, options$manualNumberOfComponents)
+
+      if (length(options$variables) > 0 && countMethod == "manual" && manualCount > length(options$variables)) {
+        return(gettextf("Too many %s requested (%i) for the amount of included variables",
+                        ifelse(method == "efa", "factors", "components"), manualCount))
       }
     },
     function() {
-      if(nrow(dataset) < 3){
+      if (nrow(dataset) < 3) {
         return(gettextf("Not enough valid cases (%i) to run this analysis", nrow(dataset)))
       }
     },
-    # check whether all row variance == 0
     function() {
-      varianceZero <- 0
-      for (i in 1:nrow(dataset)){
-        if(sd(dataset[i,], na.rm = TRUE) == 0) varianceZero <- varianceZero + 1
-      }
-      if(varianceZero == nrow(dataset)){
+      varianceZero <- sum(apply(dataset, 1, function(row) sd(row, na.rm = TRUE) == 0))
+      if (varianceZero == nrow(dataset)) {
         return(gettext("Data not valid: variance is zero in each row"))
       }
     },
-    # Check for correlation anomalies
     function() {
       P <- ncol(dataset)
-      # the checks below also fail when n < p but this provides a more accurate error message
-      if (ncol(dataset) > nrow(dataset))
+      if (P > nrow(dataset)) {
         return(gettext("Data not valid: there are more variables than observations"))
+      }
 
-      # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
       error_variables <- names(Np)[Np < P]
       if (length(error_variables) > 0) {
@@ -157,20 +154,20 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
                         paste(error_variables, collapse = ", ")))
       }
 
-      S <- cor(dataset)
-      if (all(S == 1)) {
+      S <- cor(dataset, use = "pairwise.complete.obs")
+      if (all(S == 1, na.rm = TRUE)) {
         return(gettext("Data not valid: all variables are collinear"))
       }
     },
     function() {
-      if (ncol(dataset) > 0 && !nrow(dataset) > ncol(dataset)) {
+      if (ncol(dataset) > 0 && nrow(dataset) <= ncol(dataset)) {
         return(gettext("Not more cases than number of variables. Is your data a variance-covariance matrix?"))
       }
     }
   )
 
   if (options[["dataType"]] == "raw") {
-    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecksPCAEFA,
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecks,
                         exitAnalysisIfErrors = TRUE)
   }
 

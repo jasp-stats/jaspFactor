@@ -18,8 +18,8 @@
 exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
-  # sink(file="~/Downloads/log.txt")
-  # on.exit(sink(NULL))
+  sink(file="~/Downloads/log.txt")
+  on.exit(sink(NULL))
 
   # Read dataset
   dataset <- .pcaReadData(dataset, options)
@@ -27,7 +27,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   dataset <- .pcaDataCovariance(dataset, options, ready)
 
   if (ready)
-    .efaCheckErrors(dataset, options)
+    .pcaCheckErrors(dataset, options, method = "efa")
 
   options(mc.cores = 1) # prevent the fa.parallel function using mutlitple cores by default
 
@@ -53,65 +53,6 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .pcaAddScoresToData(jaspResults, modelContainer, options, ready)
 }
 
-
-.efaCheckErrors <- function(dataset, options) {
-  customChecksEFA <- list(
-    function() {
-      if (length(options$variables) > 0 && options$factorCountMethod == "manual" &&
-          options$manualNumberOfFactors > length(options$variables)) {
-        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$manualNumberOfFactors))
-      }
-    },
-    function() {
-      if(nrow(dataset) < 3){
-        return(gettextf("Not enough valid cases (%i) to run this analysis", nrow(dataset)))
-      }
-    },
-    # check whether all row variance == 0
-    function() {
-      varianceZero <- 0
-      for (i in 1:nrow(dataset)){
-        if(sd(dataset[i,], na.rm = TRUE) == 0) varianceZero <- varianceZero + 1
-      }
-      if(varianceZero == nrow(dataset)){
-        return(gettext("Data not valid: variance is zero in each row"))
-      }
-    },
-    # Check for correlation anomalies
-    function() {
-      P <- ncol(dataset)
-      # the checks below also fail when n < p but this provides a more accurate error message
-      if (ncol(dataset) > nrow(dataset))
-        return(gettext("Data not valid: there are more variables than observations"))
-
-      # check whether a variable has too many missing values to compute the correlations
-      Np <- colSums(!is.na(dataset))
-      error_variables <- names(Np)[Np < P]
-      if (length(error_variables) > 0) {
-        return(gettextf("Data not valid: too many missing values in variable(s) %s.",
-                        paste(error_variables, collapse = ", ")))
-      }
-
-      S <- cor(dataset)
-      if (all(S == 1)) {
-        return(gettext("Data not valid: all variables are collinear"))
-      }
-    },
-    function() {
-      if (ncol(dataset) > 0 && !nrow(dataset) > ncol(dataset)) {
-        return(gettext("Not more cases than number of variables. Is your data a variance-covariance matrix?"))
-      }
-    }
-  )
-
-  if (options[["dataType"]] == "raw") {
-    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecksEFA,
-                        exitAnalysisIfErrors = TRUE)
-  }
-
-
-  return()
-}
 
 .efaModelContainer <- function(jaspResults, options) {
   if (!is.null(jaspResults[["modelContainer"]])) {

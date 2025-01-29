@@ -24,7 +24,7 @@ import JASP.Controls
 VariablesForm
 {
 	property alias variables: variables
-	
+
 	AvailableVariablesList { name: "allVariablesList" }
 	AssignedVariablesList
 	{
@@ -50,5 +50,4 @@ VariablesForm
 			IntegerField { name: "sampleSize"; label: qsTr("Sample size"); defaultValue: 200 }
 		}
 	}
-	
 }

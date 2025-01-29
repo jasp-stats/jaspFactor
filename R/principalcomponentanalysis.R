@@ -19,11 +19,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
-  # Read dataset
-  dataset <- .pcaReadData(dataset, options)
   ready   <- length(options$variables) > 1
 
-  dataset <- .pcaDataCovariance(dataset, options, ready)
+  # handle dataset
+  dataset <- .pcaAndEfaHandleData(dataset, options, ready)
+
+  .pcaAndEfaDataCovarianceCheck(dataset, options, ready)
 
 
   if (ready)
@@ -53,40 +54,41 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 # Preprocessing functions ----
 
-.pcaReadData <- function(dataset, options) {
+.pcaAndEfaHandleData <- function(dataset, options, ready) {
 
-  # browser()
-  if (!is.null(dataset)) return(dataset)
+  if (!ready) return()
 
   if (options[["dataType"]] == "raw") {
     if (options[["naAction"]] == "listwise") {
-      return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables), exclude.na.listwise = unlist(options$variables)))
+      dataset <- dataset[complete.cases(dataset), ]
+      dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
+      return(dataset)
     } else {
-      return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
+      dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x)))
+      return(dataset)
     }
   } else { # if variance covariance matrix as input
-    return(.readDataSetToEnd(all.columns = TRUE))
+    columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
+    # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,
+    # meaning the loaded data columns are ordered somewhat alphabetically
+    dataset <- dataset[, names(columnIndices)]
+    dataset <- dataset[columnIndices, ]
+    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x)))
+    rownames(dataset) <- colnames(dataset)
+    return(dataset)
   }
 }
 
 
 
 
-.pcaDataCovariance <- function(dataset, options, ready) {
+.pcaAndEfaDataCovarianceCheck <- function(dataset, options, ready, cfa = FALSE) {
 
   if (!ready) return()
 
   if (options[["dataType"]] == "raw") {
     return(dataset)
   }
-
-  # it seems the column names are sorted alphabetically when all columns are read
-  # so we need to sort the column names to match the order of the variables
-  # this should be changed eventually anyways, because the alphabetic ordering makes no sense
-  # it should just be ordered the same as the options$variables
-  sortedIndices <- sort(as.numeric(gsub(".*_(\\d+)_.*", "\\1", colnames(dataset))))
-  sortedNames <- paste0("JaspColumn_", sortedIndices, "_Encoded")
-  dataset <- dataset[, sortedNames]
 
   # possible data matrix?
   if ((nrow(dataset) != ncol(dataset)))
@@ -95,16 +97,16 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!all(dataset[lower.tri(dataset)] == t(dataset)[lower.tri(dataset)]))
     .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
 
-  usedvars <- unlist(options[["variables"]])
-  var_idx  <- match(usedvars, colnames(dataset))
+  if (cfa) {
+    if (options[["group"]] != "") .quitAnalysis(gettext("Grouping variable not supported for covariance matrix input"))
+    if (options[["meanStructure"]]) .quitAnalysis(gettext("Mean structure not supported for covariance matrix input"))
+  }
 
-  mat <- try(as.matrix(dataset[var_idx, var_idx]))
+  mat <- try(as.matrix(dataset))
   if (inherits(mat, "try-error"))
     .quitAnalysis(gettext("All cells must be numeric."))
 
   .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
-
-  colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
 
   if (anyNA(mat)) {
     inds <- which(is.na(mat))
@@ -113,43 +115,38 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       .quitAnalysis("Not enough valid columns to run this analysis")
     }
   }
-
-
-  return(mat)
+  return()
 }
 
-.pcaCheckErrors <- function(dataset, options) {
+.pcaCheckErrors <- function(dataset, options, method = "pca") {
 
-  customChecksPCAEFA <- list(
+  customChecks <- list(
     function() {
-      if (length(options$variables) > 0 && options$componentCountMethod == "manual" &&
-          options$manualNumberOfComponents > length(options$variables)) {
-        return(gettextf("Too many factors requested (%i) for the amount of included variables", options$manualNumberOfComponents))
+      countMethod <- ifelse(method == "efa", options$factorCountMethod, options$componentCountMethod)
+      manualCount <- ifelse(method == "efa", options$manualNumberOfFactors, options$manualNumberOfComponents)
+
+      if (length(options$variables) > 0 && countMethod == "manual" && manualCount > length(options$variables)) {
+        return(gettextf("Too many %s requested (%i) for the amount of included variables",
+                        ifelse(method == "efa", "factors", "components"), manualCount))
       }
     },
     function() {
-      if(nrow(dataset) < 3){
+      if (nrow(dataset) < 3) {
         return(gettextf("Not enough valid cases (%i) to run this analysis", nrow(dataset)))
       }
     },
-    # check whether all row variance == 0
     function() {
-      varianceZero <- 0
-      for (i in 1:nrow(dataset)){
-        if(sd(dataset[i,], na.rm = TRUE) == 0) varianceZero <- varianceZero + 1
-      }
-      if(varianceZero == nrow(dataset)){
+      varianceZero <- sum(apply(dataset, 1, function(row) sd(row, na.rm = TRUE) == 0))
+      if (varianceZero == nrow(dataset)) {
         return(gettext("Data not valid: variance is zero in each row"))
       }
     },
-    # Check for correlation anomalies
     function() {
       P <- ncol(dataset)
-      # the checks below also fail when n < p but this provides a more accurate error message
-      if (ncol(dataset) > nrow(dataset))
+      if (P > nrow(dataset)) {
         return(gettext("Data not valid: there are more variables than observations"))
+      }
 
-      # check whether a variable has too many missing values to compute the correlations
       Np <- colSums(!is.na(dataset))
       error_variables <- names(Np)[Np < P]
       if (length(error_variables) > 0) {
@@ -157,20 +154,20 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
                         paste(error_variables, collapse = ", ")))
       }
 
-      S <- cor(dataset)
-      if (all(S == 1)) {
+      S <- cor(dataset, use = "pairwise.complete.obs")
+      if (all(S == 1, na.rm = TRUE)) {
         return(gettext("Data not valid: all variables are collinear"))
       }
     },
     function() {
-      if (ncol(dataset) > 0 && !nrow(dataset) > ncol(dataset)) {
+      if (ncol(dataset) > 0 && nrow(dataset) <= ncol(dataset)) {
         return(gettext("Not more cases than number of variables. Is your data a variance-covariance matrix?"))
       }
     }
   )
 
   if (options[["dataType"]] == "raw") {
-    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecksPCAEFA,
+    error <- .hasErrors(dataset = dataset, type = c("infinity", "variance", "varCovData"), custom = customChecks,
                         exitAnalysisIfErrors = TRUE)
   }
 
@@ -232,6 +229,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     dtUse <- dataset
   }
 
+
   if (isTryError(dtUse)) {
     errTxt <- .extractErrorMessage(dtUse)
     if (errTxt == "missing value where TRUE/FALSE needed" ||
@@ -254,7 +252,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       modelContainer$setError(errmsgPolyCor)
     }
 
-    efaResult <- NA
+    pcaResult <- NA
 
   } else {
     pcaResult <- try(

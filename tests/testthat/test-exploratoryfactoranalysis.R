@@ -291,6 +291,7 @@ options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
 options$factoringMethod <- "minimumResidual"
 options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
 
 set.seed(1)
 results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
@@ -327,18 +328,15 @@ test_that("Parallel Analysis table results match with poly cor", {
 test_that("Anti-Image Correlation Matrix table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_antiMatrix"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("contcor1", 0.526769012560228, -0.349928022246483, -0.0495141274829718,
-                                      -0.0235032435133578, -0.151773130509214, 0.119020060433437,
-                                      "contcor2", -0.349928022246483, 0.536914874583069, 0.141029603183427,
-                                      -0.0413441408044983, 0.0953706562127194, -0.0506637821973096,
-                                      "facFifty", -0.0495141274829718, 0.141029603183427, 0.92874615606032,
-                                      -0.121232372980545, 0.114039732481935, 0.00516964114483341,
-                                      "facFive", -0.0235032435133578, -0.0413441408044983, -0.121232372980544,
-                                      0.940662798594682, -0.119269468551279, 0.130933606652162, "contNormal",
+                                 list("contcor1", 0.526769012560228, "", "", "", "", "", "contcor2",
+                                      -0.349928022246483, 0.536914874583069, "", "", "", "", "facFifty",
+                                      -0.0495141274829718, 0.141029603183427, 0.92874615606032, "",
+                                      "", "", "facFive", -0.0235032435133578, -0.0413441408044983,
+                                      -0.121232372980544, 0.940662798594682, "", "", "contNormal",
                                       -0.151773130509214, 0.0953706562127195, 0.114039732481935, -0.119269468551279,
-                                      0.872517077527576, -0.238333749371856, "debMiss1", 0.119020060433437,
-                                      -0.0506637821973096, 0.00516964114483342, 0.130933606652162,
-                                      -0.238333749371856, 0.893766605969346))
+                                      0.872517077527576, "", "debMiss1", 0.119020060433437, -0.0506637821973096,
+                                      0.00516964114483342, 0.130933606652162, -0.238333749371856,
+                                      0.893766605969346))
 })
 
 test_that("Kaiser-Meyer-Olkin Test table results match", {
@@ -374,6 +372,7 @@ test_that("Parallel Analysis table results match", {
 
 
 # variance covariance matrix input
+# this test fails because the column names are not encoded when run through jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(

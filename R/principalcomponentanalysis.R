@@ -20,10 +20,10 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
   # Read dataset
-  dataset <- .pcaAndEfaReadData(dataset, options)
+  dataset <- .pcaReadData(dataset, options)
   ready   <- length(options$variables) > 1
 
-  dataset <- .pcaAndEfaDataCovariance(dataset, options, ready)
+  dataset <- .pcaDataCovariance(dataset, options, ready)
 
 
   if (ready)
@@ -33,26 +33,27 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   modelContainer <- .pcaModelContainer(jaspResults)
 
   # output functions
-  .pcaGoodnessOfFitTable( modelContainer, dataset, options, ready)
-  .pcaLoadingsTable(      modelContainer, dataset, options, ready)
-  .pcaEigenTable(         modelContainer, dataset, options, ready)
-  .pcaCorrTable(          modelContainer, dataset, options, ready)
-  .pcaResidualTable(      modelContainer, dataset, options, ready)
-  .parallelAnalysisTable( modelContainer, dataset, options, ready, name = "Component")
-  .efaKMOtest(            modelContainer, dataset, options, ready)
-  .efaBartlett(           modelContainer, dataset, options, ready)
-  .efaMardia(             modelContainer, dataset, options, ready)
-  .efaAntiImageCorrelation(modelContainer, dataset, options, ready)
-  .pcaScreePlot(          modelContainer, dataset, options, ready)
-  .pcaPathDiagram(        modelContainer, dataset, options, ready)
+  .pcaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
+  .pcaLoadingsTable(        modelContainer, dataset, options, ready)
+  .pcaEigenTable(           modelContainer, dataset, options, ready)
+  .pcaCorrTable(            modelContainer, dataset, options, ready)
+  .pcaResidualTable(        modelContainer, dataset, options, ready)
+  .parallelAnalysisTable(   modelContainer, dataset, options, ready, name = "Component")
+  .efaKMOtest(              modelContainer, dataset, options, ready)
+  .efaBartlett(             modelContainer, dataset, options, ready)
+  .efaMardia(               modelContainer, dataset, options, ready)
+  .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
+  .pcaScreePlot(            modelContainer, dataset, options, ready)
+  .pcaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAddScoresToData(jaspResults, modelContainer, options, ready)
 
 }
 
 # Preprocessing functions ----
-.pcaAndEfaReadData <- function(dataset, options) {
+
+.pcaReadData <- function(dataset, options) {
 
   # browser()
   if (!is.null(dataset)) return(dataset)
@@ -66,11 +67,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   } else { # if variance covariance matrix as input
     return(.readDataSetToEnd(all.columns = TRUE))
   }
-
 }
 
 
-.pcaAndEfaDataCovariance <- function(dataset, options, ready) {
+
+
+.pcaDataCovariance <- function(dataset, options, ready) {
 
   if (!ready) return()
 
@@ -80,6 +82,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # it seems the column names are sorted alphabetically when all columns are read
   # so we need to sort the column names to match the order of the variables
+  # this should be changed eventually anyways, because the alphabetic ordering makes no sense
+  # it should just be ordered the same as the options$variables
   sortedIndices <- sort(as.numeric(gsub(".*_(\\d+)_.*", "\\1", colnames(dataset))))
   sortedNames <- paste0("JaspColumn_", sortedIndices, "_Encoded")
   dataset <- dataset[, sortedNames]
@@ -215,26 +219,65 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
                       "polyTetrachoricCorrelationMatrix" = "mixed")
-  pcaResult <- try(
-    psych::principal(
-      r        = dataset,
-      nfactors = .pcaGetNComp(dataset, options, modelContainer),
-      rotate   = rotate,
-      scores   = TRUE,
-      covar    = options$analysisBasedOn == "covarianceMatrix",
-      cor      = corMethod,
-      n.obs    = ifelse(options[["dataType"]] == "raw", NULL, options[["sampleSize"]])
-    ))
+  # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
+  # the scaling level, and that is error-prone
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+    varTypes <- options$variables.types
+    vars <- options$variables
+    scales <- vars[varTypes == "scale"]
+    ordinals <- vars[varTypes == "ordinal"]
+    nominals <- vars[varTypes == "nominal"]
+    dtUse <- try(psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)$rho)
+  } else {
+    dtUse <- dataset
+  }
 
-  if (isTryError(pcaResult)) {
-    errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(pcaResult))
-    # when polychoric corr matrix is used, the warning generated here is useful to know for the user
-    warns <- warnings()
-    warnmsg <- warns[grep("polychoric", warns)]
-    if (length(warnmsg) > 0) {
-      errmsg <- paste(errmsg, "\n Warning in: ", warnmsg, names(warnmsg))
+  if (isTryError(dtUse)) {
+    errTxt <- .extractErrorMessage(dtUse)
+    if (errTxt == "missing value where TRUE/FALSE needed" ||
+        errTxt == "attempt to set 'rownames' on an object with no dimensions") {
+
+      numLevels <- sapply(dataset, function(x) length(unique(x)))
+      allSameLevels <- length(unique(numLevels)) == 1
+
+      if (allSameLevels) {
+        errmsgPolyCor <- gettextf(
+          "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s",
+          .errTxt)
+      } else {
+        maxLevels <- max(numLevels)
+        restrictedLevels <- which(numLevels < maxLevels)
+        restricedItems <- decodeColNames(colnames(dataset)[restrictedLevels])
+        errmsgPolyCor <- gettextf("Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s",
+                                  restricedItems, errTxt)
+      }
+      modelContainer$setError(errmsgPolyCor)
     }
-    modelContainer$setError(errmsg)
+
+    efaResult <- NA
+
+  } else {
+    pcaResult <- try(
+      psych::principal(
+        r        = dataset,
+        nfactors = .pcaGetNComp(dataset, options, modelContainer),
+        rotate   = rotate,
+        scores   = TRUE,
+        covar    = options$analysisBasedOn == "covarianceMatrix",
+        cor      = corMethod,
+        n.obs    = ifelse(options[["dataType"]] == "raw", nrow(dataset), options[["sampleSize"]])
+      ))
+
+    if (isTryError(pcaResult)) {
+      errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(pcaResult))
+      # when polychoric corr matrix is used, the warning generated here is useful to know for the user
+      warns <- warnings()
+      warnmsg <- warns[grep("polychoric", warns)]
+      if (length(warnmsg) > 0) {
+        errmsg <- paste(errmsg, "\n Warning in: ", warnmsg, names(warnmsg))
+      }
+      modelContainer$setError(errmsg)
+    }
   }
 
   modelContainer[["model"]] <- createJaspState(pcaResult)
@@ -245,8 +288,18 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (options$componentCountMethod == "manual") return(options$manualNumberOfComponents)
 
-  if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
-    polyTetraCor <- psych::mixedCor(dataset)
+
+
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+    varTypes <- options$variables.types
+    vars <- options$variables
+    scales <- vars[varTypes == "scale"]
+    ordinals <- vars[varTypes == "ordinal"]
+    nominals <- vars[varTypes == "nominal"]
+    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
+
+    .setSeedJASP(options)
+
     parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                  plot = FALSE,
                                  fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
@@ -273,14 +326,19 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   if (options$componentCountMethod == "eigenValues") {
-    ncomp <- sum(parallelResult$pc.values > options$eigenValuesAbove)
+    if (!isTryError(parallelResult)) {
+      ncomp <- sum(parallelResult$pc.values > options$eigenValuesAbove)
+    } else {
+      ncomp <- 1
+    }
     # I can use stop() because it's caught by the try and the message is put on
     # on the modelcontainer.
     if (ncomp == 0)
-      .quitAnalysis( gettextf("No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
+      .quitAnalysis( gettextf("No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
                               options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
+
 
 }
 
@@ -486,8 +544,15 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (options[["screePlotParallelAnalysisResults"]]) {
 
-    if (options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
-      polyTetraCor <- psych::mixedCor(dataset)
+
+    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+      varTypes <- options$variables.types
+      vars <- options$variables
+      scales <- vars[varTypes == "scale"]
+      ordinals <- vars[varTypes == "ordinal"]
+      nominals <- vars[varTypes == "nominal"]
+      polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
+
       parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
                                    plot = FALSE,
                                    fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
@@ -703,7 +768,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 
-.pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
+.pcaAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
 
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||

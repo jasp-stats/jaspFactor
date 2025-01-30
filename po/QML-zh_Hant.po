@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-25 20:47+0000\n"
+"PO-Revision-Date: 2025-01-31 15:02+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-qml/zh_Hant/>\n"
@@ -539,7 +539,7 @@ msgstr "列刪除法(Listwise)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr "成對刪除(Pairwise)"
+msgstr "成對排除法"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"

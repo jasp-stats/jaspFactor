@@ -359,7 +359,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       kmo <- psych::KMO(cov2cor(as.matrix(dataset)))
   }
 
-  imCor <- kmo$ImCov
+  imCor <- kmo$Image
   imCor[upper.tri(imCor)] <- NA
   cols <- ncol(imCor)
   antiMatrix[["col1"]] <- options[["variables"]] # fill the rows

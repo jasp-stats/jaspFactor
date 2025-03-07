@@ -13,7 +13,7 @@ Description
 	website		: "jasp-stats.org"
 	license		: "GPL (>= 2)"
 	hasWrappers	: true
-	preloadData	: false
+	preloadData	: true
 
 	Analysis
 	{

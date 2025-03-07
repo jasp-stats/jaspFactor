@@ -415,7 +415,7 @@ results <- runAnalysis("exploratoryFactorAnalysis", cdt, options, makeTests = F)
 
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
+   jaspTools::expect_equal_tables(table,
                                  list("Factor 1", 0.292468690109419, 0.292468690109419, 2.63221821098477
                                  ))
 })

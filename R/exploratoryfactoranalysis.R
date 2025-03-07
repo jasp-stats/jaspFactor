@@ -18,13 +18,11 @@
 exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
-  sink(file="~/Downloads/log.txt")
-  on.exit(sink(NULL))
 
-  # Read dataset
-  dataset <- .pcaReadData(dataset, options)
   ready   <- length(options$variables) > 1
-  dataset <- .pcaDataCovariance(dataset, options, ready)
+  # Handle dataset
+  dataset <- .pcaAndEfaHandleData(dataset, options, ready)
+  .pcaAndEfaDataCovarianceCheck(dataset, options, ready)
 
   if (ready)
     .pcaCheckErrors(dataset, options, method = "efa")

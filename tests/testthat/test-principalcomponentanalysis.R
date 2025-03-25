@@ -4,8 +4,41 @@ context("Principal Component Analysis")
 # - error handling
 # - slider
 
+defaultOptions <- list(
+  variables = list(),
+  sampleSize = 200,
+  eigenValuesAbove = 1,
+  manualNumberOfComponents = 1,
+  orthogonalSelector = "none",
+  obliqueSelector = "promax",
+  loadingsDisplayLimit = 0,
+  componentCorrelations = FALSE,
+  residualMatrix = FALSE,
+  parallelAnalysisTable = FALSE,
+  pathDiagram = FALSE,
+  screePlot = FALSE,
+  screePlotParallelAnalysisResults = TRUE,
+  kaiserMeyerOlkinTest = FALSE,
+  bartlettTest = FALSE,
+  mardiaTest = FALSE,
+  addScores = FALSE,
+  antiImageCorrelationMatrix = FALSE,
+  addedScoresPrefix = "",
+  dataType = "raw",
+  componentCountMethod = "parallelAnalysis",
+  parallelAnalysisMethod = "principalComponentBased",
+  rotationMethod = "orthogonal",
+  analysisBasedOn = "correlationMatrix",
+  loadingsOrder = "sortByVariables",
+  parallelAnalysisTableMethod = "principalComponentBased",
+  naAction = "pairwise",
+  plotWidth = 480,
+  plotHeight = 320,
+  setSeed = FALSE,
+  seed = 1
+)
 
-options <- jaspTools::analysisOptions("principalComponentAnalysis")
+options <- defaultOptions
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
@@ -13,6 +46,7 @@ options$pathDiagram <- TRUE
 options$screePlot <- TRUE
 options$residualMatrix <- TRUE
 options$componentCountMethod <- "eigenValues"
+
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
@@ -78,7 +112,7 @@ rotationOptions <- list(
   "oblique"    = c("promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ")
 )
 
-options <- analysisOptions("principalComponentAnalysis")
+options <- defaultOptions
 options$componentCountMethod <- "eigenValues"
 options$variables <- c("contNormal", "contGamma", "contExpon", "contWide", "contNarrow", "contOutlier", "contcor1", "contcor2", "debMiss1", "debCollin1")
 jaspTableToRTable <- function(x) do.call(rbind, lapply(x, do.call, what = cbind.data.frame))
@@ -253,7 +287,7 @@ test_that("rotation methods match", {
 
 
 # results for PCA based on covariance
-options <- analysisOptions("principalComponentAnalysis")
+options <- defaultOptions
 options$variables <- list("contNormal", "contGamma", "contcor1", "contcor2")
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "manual"
@@ -286,8 +320,9 @@ test_that("Component Loadings table results match", {
 
 
 # results for PCA based on mixed matrix (poly or tetrachoric)
-options <- jaspTools::analysisOptions("principalComponentAnalysis")
+options <- defaultOptions
 options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
+options$variables.types <- list("scale", "scale", "scale", "scale", "ordinal")
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "parallelAnalysis"
@@ -320,7 +355,7 @@ test_that("Component Loadings table results match for mixed based", {
 })
 
 
-options <- jaspTools::analysisOptions("principalComponentAnalysis")
+options <- defaultOptions
 options$componentCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$parallelAnalysisTable <- TRUE
@@ -343,6 +378,7 @@ test_that("Parallel Analysis table results match", {
 
 
 # variance covariance matrix input
+# this test fails because the column names are not encoded when run through jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
@@ -352,7 +388,7 @@ options <- list(
   bartlettTest = FALSE,
   componentCorrelations = FALSE,
   componentCountMethod = "manual",
-  componentLoadingsOrder = "sortByVariables",
+  loadingsOrder = "sortByVariables",
   dataType = "varianceCovariance",
   eigenValuesAbove = 1,
   kaiserMeyerOlkinTest = FALSE,
@@ -365,6 +401,7 @@ options <- list(
   parallelAnalysisMethod = "principalComponentBased",
   parallelAnalysisSeed = 1234,
   parallelAnalysisTable = FALSE,
+  antiImageCorrelationMatrix = FALSE,
   parallelAnalysisTableMethod = "principalComponentBased",
   pathDiagram = FALSE,
   plotHeight = 320,
@@ -404,3 +441,4 @@ test_that("Component Loadings table results match", {
                                       0.793659495888471, "x8", 0.590666149791766, 0.651113499490171,
                                       "x9"))
 })
+

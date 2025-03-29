@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-03-30 12:00+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/pl/>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.11-dev\n"
 "X-Language: pl\n"
 "X-Qt-Contexts: true\n"
 
@@ -678,7 +684,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "Dane"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Raw"
@@ -690,7 +696,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "Wielkość próby"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
@@ -762,7 +768,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "Dane"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Raw"
@@ -774,11 +780,11 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "Wielkość próby"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "Dane"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Raw"
@@ -790,4 +796,4 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "Wielkość próby"

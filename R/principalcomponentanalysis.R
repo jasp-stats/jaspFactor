@@ -68,6 +68,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       return(dataset)
     }
   } else { # if variance covariance matrix as input
+    print(str(dataset))
     columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
     # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,
     # meaning the loaded data columns are ordered somewhat alphabetically
@@ -126,7 +127,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       manualCount <- ifelse(method == "efa", options$manualNumberOfFactors, options$manualNumberOfComponents)
 
       if (length(options$variables) > 0 && countMethod == "manual" && manualCount > length(options$variables)) {
-        return(gettextf("Too many %s requested (%i) for the amount of included variables",
+        return(gettextf("Too many %1$s requested (%2$i) for the amount of included variables",
                         ifelse(method == "efa", "factors", "components"), manualCount))
       }
     },

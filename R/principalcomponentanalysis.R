@@ -68,6 +68,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       return(dataset)
     }
   } else { # if variance covariance matrix as input
+    print(str(dataset))
     columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
     # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,
     # meaning the loaded data columns are ordered somewhat alphabetically

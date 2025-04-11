@@ -25,6 +25,5 @@ Imports:
 Remotes:
   jasp-stats/jaspBase,
   jasp-stats/jaspGraphs,
-  jasp-stats/jaspSem,
-  simsem/semTools/semTools
+  jasp-stats/jaspSem
   

@@ -39,7 +39,7 @@ defaultOptions <- list(
 )
 
 options <- defaultOptions
-options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
+options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$pathDiagram <- TRUE
@@ -288,7 +288,7 @@ test_that("rotation methods match", {
 
 # results for PCA based on covariance
 options <- defaultOptions
-options$variables <- list("contNormal", "contGamma", "contcor1", "contcor2")
+options$variables <- c("contNormal", "contGamma", "contcor1", "contcor2")
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "manual"
 options$analysisBasedOn <- "covarianceMatrix"
@@ -321,7 +321,7 @@ test_that("Component Loadings table results match", {
 
 # results for PCA based on mixed matrix (poly or tetrachoric)
 options <- defaultOptions
-options$variables <- list("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
+options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
 options$variables.types <- list("scale", "scale", "scale", "scale", "ordinal")
 options$eigenValuesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
@@ -360,7 +360,7 @@ options$componentCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
-options$variables <- list("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
+options$variables <- c("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
 
 options("mc.cores" = 1L)
 set.seed(1)
@@ -378,7 +378,7 @@ test_that("Parallel Analysis table results match", {
 
 
 # variance covariance matrix input
-# this test fails because the column names are not encoded when run through jaspTools
+# this test fails because columnIndexInData does not play nice with jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
@@ -418,6 +418,7 @@ set.seed(1)
 results <- runAnalysis("principalComponentAnalysis", cdt, options, makeTests = F)
 
 test_that("Component Characteristics table results match", {
+  skip("Skip test because columnIndexInData does not play nice with jaspTools yet")
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Component 1", 0.357371575715301, 3.2163441814377, 0.357371575715301
@@ -425,12 +426,14 @@ test_that("Component Characteristics table results match", {
 })
 
 test_that("Chi-squared Test table results match", {
+  skip("Skip test because columnIndexInData does not play nice with jaspTools yet")
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(268.944880177337, 27, "Model", 1.0379031932901e-41))
 })
 
 test_that("Component Loadings table results match", {
+  skip("Skip test because columnIndexInData does not play nice with jaspTools yet")
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(0.658301970425138, 0.566638515734381, "x1", 0.389685299082607,

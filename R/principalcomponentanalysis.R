@@ -46,7 +46,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .pcaPathDiagram(        modelContainer, dataset, options, ready)
 
   # data saving
-  .commonAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
 
 }
 
@@ -690,6 +690,69 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     cut                 = options$loadingsDisplayLimit,
     bg                  = "transparent"
   ))
+
+}
+
+
+.pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
+
+  if (!ready ||
+      !is.null(jaspResults[["addedScoresContainer"]]) ||
+      modelContainer$getError() ||
+      !options[["addScores"]] ||
+      options[["dataType"]] == "varianceCovariance")
+  {
+    return()
+  }
+
+  colNamesR <- paste0(options[["addedScoresPrefix"]], "_", seq_len(length(options$variables)))
+
+  container    <- createJaspContainer()
+  container$dependOn(optionsFromObject = modelContainer, options = c("addScores", "addedScoresPrefix", "naAction"))
+
+  scores <- modelContainer[["model"]][["object"]][["scores"]]
+
+  for (ii in seq_len(ncol(scores))) {
+
+    colNameR <- colNamesR[ii]
+
+    if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
+      .quitAnalysis(gettextf("Column name %s already exists in the dataset", colNameR))
+    }
+
+    container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
+    if (options[["naAction"]] == "pairwise") {
+      container[[colNameR]]$setScale(scores[, ii])
+    } else { # for listwise we need to identify the complete cases
+      # so we need to temporarily load the raw data with the NAs
+      dataTmp <- .readDataSetToEnd(columns.as.numeric = unlist(options$variables))
+      scoresTmp <- rep(NA, nrow(dataTmp))
+      scoresTmp[complete.cases(dataTmp)] <- scores[, ii]
+      container[[colNameR]]$setScale(scoresTmp)
+
+    }
+
+  }
+
+  jaspResults[["addedScoresContainer"]] <- container
+
+  # check if there are previous colNames that are not needed anymore and delete the cols
+  oldNames <- jaspResults[["createdColumnNames"]][["object"]]
+  newNames <- colNamesR[1:ii]
+  if (!is.null(oldNames)) {
+    noMatch <- which(!(oldNames %in% newNames))
+    if (length(noMatch) > 0) {
+      for (i in 1:length(noMatch)) {
+        jaspBase:::columnDelete(oldNames[noMatch[i]])
+      }
+    }
+  }
+
+  # save the created col names
+  jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
+
+
+  return()
 
 }
 

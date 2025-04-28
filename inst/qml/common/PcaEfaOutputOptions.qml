@@ -160,7 +160,7 @@ Section
 		id: addScores
 		name: "addScores"
 		label: pca ? qsTr("Add PC scores to data") : qsTr("Add FA scores to data")
-		info: qsTr("Adds the estimated component/factor scores as new columns to the data set")
+		info: qsTr("Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.")
 		enabled: variablesCount > 1 & dataRaw
 
 		TextField {

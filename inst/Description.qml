@@ -7,11 +7,7 @@ Description
 	title		: qsTr("Factor")
 	icon		: "analysis-classical-sem.svg"
 	description	: qsTr("Explore hidden structure in the data")
-<<<<<<< HEAD
 	version			: "0.20.0"
-=======
-	version			: "0.19.3"
->>>>>>> f0fbe94 (update renv)
 	author		: "JASP Team"
 	maintainer	: "JASP Team <info@jasp-stats.org>"
 	website		: "jasp-stats.org"

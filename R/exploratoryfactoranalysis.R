@@ -48,7 +48,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
 }
 
 

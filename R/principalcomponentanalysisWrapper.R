@@ -26,7 +26,7 @@ principalComponentAnalysis <- function(
           bartlettTest = FALSE,
           componentCorrelations = FALSE,
           componentCountMethod = "parallelAnalysis",
-          componentLoadingsOrder = "sortByComponentSize",
+          loadingsOrder = "sortBySize",
           dataType = "raw",
           eigenValuesAbove = 1,
           kaiserMeyerOlkinTest = FALSE,

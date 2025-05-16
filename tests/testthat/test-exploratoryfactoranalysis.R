@@ -9,7 +9,7 @@ context("Exploratory Factor Analysis")
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenValuesAbove = 1,
+  eigenvaluesAbove = 1,
   manualNumberOfFactors = 1,
   factoringMethod = "minimumResidual",
   orthogonalSelector = "none",
@@ -27,14 +27,14 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScores = FALSE,
-  addedScoresPrefix = "",
+  addScoresToData = FALSE,
+  addScoresToDataPrefix = "",
   dataType = "raw",
   factorCountMethod = "parallelAnalysis",
   parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
-  analysisBasedOn = "correlationMatrix",
-  loadingsOrder = "sortByVariables",
+  baseDecompositionOn = "correlationMatrix",
+  orderLoadingsBy = "variables",
   parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
@@ -56,7 +56,7 @@ options$residualMatrix <- TRUE
 options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
 options$rotationMethod <- "oblique"
-options$loadingsOrder <- "sortByVariables"
+options$orderLoadingsBy <- "variables"
 options$variables <- c("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
@@ -161,9 +161,9 @@ test_that("Missing values works", {
 
 
 
-options$loadingsOrder <- "sortByVariables"
+options$orderLoadingsBy <- "variables"
 
-test_that("loadingsOrder sort the factor loadings table", {
+test_that("orderLoadingsBy sort the factor loadings table", {
 
   options <- defaultOptions
   options$orthogonalSelector <- "varimax"
@@ -171,7 +171,7 @@ test_that("loadingsOrder sort the factor loadings table", {
   options$variables <- paste0("x", 1:9)
 
   reference <- list(
-    sortBySize = list(
+    size = list(
       0.859092745287366, "", "", 0.246269423771584, "x5", 0.832032514222841,
       "", "", 0.27206434823954, "x4", 0.798985079015342, 0.213747389751454,
       "", 0.308644745749111, "x6", 0.279356098904291, 0.612821903382293,
@@ -181,7 +181,7 @@ test_that("loadingsOrder sort the factor loadings table", {
       "", "", 0.709321543667037, 0.481445404925259, "x7", "", "",
       0.698776373366381, 0.479827748357628, "x8"
     ),
-    sortByVariables = list(
+    variables = list(
       0.279356098904291, 0.612821903382293, "", 0.523245992219826, "x1",
       "", 0.493809804203504, "", 0.744772821204617, "x2", "", 0.659769507411633,
       "", 0.546549851738645, "x3", 0.832032514222841, "", "", 0.27206434823954,
@@ -193,14 +193,14 @@ test_that("loadingsOrder sort the factor loadings table", {
     )
   )
 
-  for (loadingsOrder in c("sortBySize", "sortByVariables")) {
-    options$loadingsOrder <- loadingsOrder
+  for (orderLoadingsBy in c("size", "variables")) {
+    options$orderLoadingsBy <- orderLoadingsBy
 
     set.seed(123)
     results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
     table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
-    jaspTools::expect_equal_tables(table, reference[[loadingsOrder]], label = sprintf("loadingsOrder = %s", loadingsOrder))
+    jaspTools::expect_equal_tables(table, reference[[orderLoadingsBy]], label = sprintf("orderLoadingsBy = %s", orderLoadingsBy))
   }
 
 })
@@ -283,7 +283,7 @@ options <- defaultOptions
 options$factorCountMethod <- "parallelAnalysis"
 options$parallelAnalysisMethod <- "principalComponentBased"
 options$loadingsDisplayLimit <- 0.1
-options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
+options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
 options$mardiaTest <- TRUE
 options$kaiserMeyerOlkinTest <- TRUE
 options$antiImageCorrelationMatrix <- TRUE
@@ -375,15 +375,15 @@ test_that("Parallel Analysis table results match", {
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
-  addScores = FALSE,
-  addedScoresPrefix = "FA",
-  analysisBasedOn = "correlationMatrix",
+  addScoresToData = FALSE,
+  addScoresToDataPrefix = "FA",
+  baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   dataType = "varianceCovariance",
-  eigenValuesAbove = 1,
+  eigenvaluesAbove = 1,
   factorCorrelations = FALSE,
   factorCountMethod = "manual",
-  loadingsOrder = "sortByVariables",
+  orderLoadingsBy = "variables",
   factorStructure = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,

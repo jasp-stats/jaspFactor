@@ -458,3 +458,122 @@ Upgrades
 	}
 }
 
+Upgrade
+{
+	functionName: "confirmatoryFactorAnalysis"
+	fromVersion: "0.19.3"
+	toVersion:   "0.20.0"
+
+	ChangeRename {
+		from: "addScores"
+		to:   "addFactorScoresToData"
+	}
+	ChangeRename {
+		from: "addedScoresPrefix"
+		to:   "addFactorScoresToDataPrefix"
+	}
+	ChangeJS {
+		name: "naAction"
+		jsFunction: function(options) {
+			switch(options["naAction"]) {
+				case "twoStageRobust": return "robustTwoStage";
+				default: return options["naAction"];
+			}
+		}
+	}
+}
+
+Upgrade
+{
+	functionName: "principalComponentAnalysis"
+	fromVersion: "0.19.3"
+	toVersion:   "0.20.0"
+
+	ChangeRename {
+		from: "analysisBasedOn"
+		to:   "baseDecompositionOn"
+	}
+	ChangeRename {
+		from: "eigenValuesAbove"
+		to:   "eigenvaluesAbove"
+	}
+	ChangeRename {
+		from: "loadingsOrder"
+		to:   "orderLoadingsBy"
+	}
+	ChangeRename {
+		from: "addScores"
+		to:   "addScoresToData"
+	}
+	ChangeRename {
+		from: "addedScoresPrefix"
+		to:   "addScoresToDataPrefix"
+	}
+	ChangeJS {
+		name: "componentCountMethod"
+		jsFunction: function(options) {
+			switch(options["componentCountMethod"]) {
+				case "eigenValues": return "eigenvalues";
+				default: return options["componentCountMethod"];
+			}
+		}
+	}
+	ChangeJS {
+		name: "orderLoadingsBy"
+		jsFunction: function(options) {
+			switch(options["orderLoadingsBy"]) {
+				case "sortBySize":      return "size";
+				case "sortByVariables": return "variables";
+				default:                return options["orderLoadingsBy"];
+			}
+		}
+	}
+}
+
+
+Upgrade
+{
+	functionName: "exploratoryFactorAnalysis"
+	fromVersion: "0.19.3"
+	toVersion:   "0.20.0"
+
+	ChangeRename {
+		from: "analysisBasedOn"
+		to:   "baseDecompositionOn"
+	}
+	ChangeRename {
+		from: "eigenValuesAbove"
+		to:   "eigenvaluesAbove"
+	}
+	ChangeRename {
+		from: "loadingsOrder"
+		to:   "orderLoadingsBy"
+	}
+	ChangeRename {
+		from: "addScores"
+		to:   "addScoresToData"
+	}
+	ChangeRename {
+		from: "addedScoresPrefix"
+		to:   "addScoresToDataPrefix"
+	}
+	ChangeJS {
+		name: "factorCountMethod"
+		jsFunction: function(options) {
+			switch(options["factorCountMethod"]) {
+				case "eigenValues": return "eigenvalues";
+				default: return options["factorCountMethod"];
+			}
+		}
+	}
+	ChangeJS {
+		name: "orderLoadingsBy"
+		jsFunction: function(options) {
+			switch(options["orderLoadingsBy"]) {
+				case "sortBySize":      return "size";
+				case "sortByVariables": return "variables";
+				default:                return options["orderLoadingsBy"];
+			}
+		}
+	}
+}

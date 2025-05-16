@@ -65,11 +65,11 @@ Section
 		}
 		RadioButton
 		{
-			value: "eigenValues"
+			value: "eigenvalues"
 			label: qsTr("Eigenvalues")
 			info: qsTr("Components are selected when they have a certain eigenvalue. By default components are selected that have an eigenvalue above 1.")
 			DoubleField {
-				name:			"eigenValuesAbove"
+				name:			"eigenvaluesAbove"
 				label:			qsTr("Eigenvalues above")
 				defaultValue:	1
 				decimals:		1

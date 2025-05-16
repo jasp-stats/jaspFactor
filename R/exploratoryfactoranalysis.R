@@ -58,7 +58,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorCountMethod",
-                              "eigenValuesAbove", "manualNumberOfFactors", "naAction", "analysisBasedOn", "factoringMethod",
+                              "eigenvaluesAbove", "manualNumberOfFactors", "naAction", "baseDecompositionOn", "factoringMethod",
                               "parallelAnalysisMethod", "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
@@ -69,11 +69,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 # Results functions ----
 # Modification here: added "cor" argument to the fa function.
-# If analysisBasedOn == polyTetrachoricCorrelationMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
+# If baseDecompositionOn == polyTetrachoricCorrelationMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
 # depending on the number of response categories of the ordinal variables.
 .efaComputeResults <- function(modelContainer, dataset, options, ready) {
 
-  corMethod <- switch(options[["analysisBasedOn"]],
+  corMethod <- switch(options[["baseDecompositionOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
                       "polyTetrachoricCorrelationMatrix" = "mixed")
@@ -91,7 +91,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -133,7 +133,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
         nfactors = .efaGetNComp(dataset, options),
         rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
         scores   = TRUE,
-        covar    = options$analysisBasedOn == "covarianceMatrix",
+        covar    = options$baseDecompositionOn == "covarianceMatrix",
         cor      = corMethod,
         fm       = factoringMethod,
         n.obs    = ifelse(options[["dataType"]] == "raw", nrow(dataset), options[["sampleSize"]])
@@ -166,7 +166,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options$factorCountMethod == "manual") return(options$manualNumberOfFactors)
 
   # parallel analysis method (do always)
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -201,9 +201,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   }
 
   # eigenValue method
-  if (options$factorCountMethod == "eigenValues") {
+  if (options$factorCountMethod == "eigenvalues") {
     if (!isTryError(parallelResult)) {
-      ncomp <- sum(parallelResult$pc.values > options$eigenValuesAbove)
+      ncomp <- sum(parallelResult$pc.values > options$eigenvaluesAbove)
     } else {
       ncomp  <- 1
     }
@@ -211,7 +211,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     # on the modelcontainer.
     if (ncomp == 0)
       .quitAnalysis( gettextf("No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
-                              options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
+                              options$eigenvaluesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
 
@@ -237,7 +237,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # If a polychoric/tetrachoric-correlation-based FA is requested, then compute the KMO values
   # based on said correlation matrix:
   # else: analysis carries on as usual
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -270,7 +270,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (!ready) return()
 
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -342,7 +342,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (!ready) return()
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -403,7 +403,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     return()
 
   loadingsTable <- createJaspTable(gettext("Factor Loadings"))
-  loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingsOrder"))
+  loadingsTable$dependOn(c("loadingsDisplayLimit", "orderLoadingsBy"))
   loadingsTable$position <- 2
 
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
@@ -446,8 +446,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   rownames(df) <- NULL
   colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
-  # "sortByVariables" is the default output
-  if (options[["loadingsOrder"]] == "sortBySize")
+  # "variables" is the default output
+  if (options[["orderLoadingsBy"]] == "size")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)
@@ -656,7 +656,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (!ready || modelContainer$getError()) return()
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -738,7 +738,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (options[["screePlotParallelAnalysisResults"]]) {
 
-    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
       varTypes <- options$variables.types
       vars <- options$variables
       scales <- vars[varTypes == "scale"]
@@ -789,7 +789,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
     ggplot2::labs(x = gettext("Factor"), y = gettext("Eigenvalue")) +
-    ggplot2::geom_hline(yintercept = options$eigenValuesAbove)
+    ggplot2::geom_hline(yintercept = options$eigenvaluesAbove)
 
 
   # dynamic function for point size:

@@ -180,7 +180,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   } else {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "componentCountMethod",
-                              "eigenValuesAbove", "manualNumberOfComponents", "naAction", "analysisBasedOn",
+                              "eigenvaluesAbove", "manualNumberOfComponents", "naAction", "baseDecompositionOn",
                               "parallelAnalysisMethod", "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
@@ -212,13 +212,13 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       }
     })
   }
-  corMethod <- switch(options[["analysisBasedOn"]],
+  corMethod <- switch(options[["baseDecompositionOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
                       "polyTetrachoricCorrelationMatrix" = "mixed")
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -261,7 +261,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
         nfactors = .pcaGetNComp(dataset, options, modelContainer),
         rotate   = rotate,
         scores   = TRUE,
-        covar    = options$analysisBasedOn == "covarianceMatrix",
+        covar    = options$baseDecompositionOn == "covarianceMatrix",
         cor      = corMethod,
         n.obs    = ifelse(options[["dataType"]] == "raw", nrow(dataset), options[["sampleSize"]])
       ))
@@ -288,7 +288,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -323,9 +323,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     }
   }
 
-  if (options$componentCountMethod == "eigenValues") {
+  if (options$componentCountMethod == "eigenvalues") {
     if (!isTryError(parallelResult)) {
-      ncomp <- sum(parallelResult$pc.values > options$eigenValuesAbove)
+      ncomp <- sum(parallelResult$pc.values > options$eigenvaluesAbove)
     } else {
       ncomp <- 1
     }
@@ -333,7 +333,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     # on the modelcontainer.
     if (ncomp == 0)
       .quitAnalysis( gettextf("No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
-                              options$eigenValuesAbove, round(max(parallelResult$fa.values), 3)))
+                              options$eigenvaluesAbove, round(max(parallelResult$fa.values), 3)))
     return(ncomp)
   }
 
@@ -375,7 +375,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!is.null(modelContainer[["loadingsTable"]])) return()
 
   loadingsTable <- createJaspTable(gettext("Component Loadings"))
-  loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingsOrder"))
+  loadingsTable$dependOn(c("loadingsDisplayLimit", "orderLoadingsBy"))
   loadingsTable$position <- 2
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["loadingsTable"]] <- loadingsTable
@@ -411,8 +411,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   rownames(df) <- NULL
   colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
-  # "sortByVariables" is the default output
-  if (options[["loadingsOrder"]] == "sortBySize")
+  # "variables" is the default output
+  if (options[["orderLoadingsBy"]] == "size")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)
@@ -543,7 +543,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (options[["screePlotParallelAnalysisResults"]]) {
 
 
-    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["analysisBasedOn"]] == "polyTetrachoricCorrelationMatrix") {
+    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
       varTypes <- options$variables.types
       vars <- options$variables
       scales <- vars[varTypes == "scale"]
@@ -591,7 +591,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
     ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
-    ggplot2::geom_hline(yintercept = options$eigenValuesAbove)
+    ggplot2::geom_hline(yintercept = options$eigenvaluesAbove)
 
 
   # dynamic function for point size:
@@ -771,16 +771,16 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||
       modelContainer$getError() ||
-      !options[["addScores"]] ||
+      !options[["addScoresToData"]] ||
       options[["dataType"]] == "varianceCovariance")
   {
     return()
   }
 
-  colNamesR <- paste0(options[["addedScoresPrefix"]], "_", seq_len(length(options$variables)))
+  colNamesR <- paste0(options[["addScoresToDataPrefix"]], "_", seq_len(length(options$variables)))
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = c("addScores", "addedScoresPrefix", "naAction"))
+  container$dependOn(optionsFromObject = modelContainer, options = c("addScoresToData", "addScoresToDataPrefix", "naAction"))
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
 

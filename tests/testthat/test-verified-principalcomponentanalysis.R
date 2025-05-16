@@ -9,7 +9,7 @@ context("Principal Component Analysis -- Verification project")
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenValuesAbove = 1,
+  eigenvaluesAbove = 1,
   manualNumberOfComponents = 1,
   orthogonalSelector = "none",
   obliqueSelector = "promax",
@@ -23,14 +23,14 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScores = FALSE,
-  addedScoresPrefix = "",
+  addScoresToData = FALSE,
+  addScoresToDataPrefix = "",
   dataType = "raw",
   componentCountMethod = "parallelAnalysis",
   parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
-  analysisBasedOn = "correlationMatrix",
-  loadingsOrder = "sortByVariables",
+  baseDecompositionOn = "correlationMatrix",
+  orderLoadingsBy = "variables",
   parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
@@ -49,7 +49,7 @@ options$orthogonalSelector <- "varimax"
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$componentCountMethod <- "parallelAnalysis"
 options$rotationMethod <- "orthogonal"
-options$analysisBasedOn <- "correlationMatrix"
+options$baseDecompositionOn <- "correlationMatrix"
 options$naAction <- "pairwise"
 options$screePlot <- TRUE
 

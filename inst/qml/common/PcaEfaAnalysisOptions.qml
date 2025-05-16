@@ -36,7 +36,7 @@ Section
 	RadioButtonGroup
 	{
 		name: "rotationMethod"
-		title: qsTr("Rotation")
+		title: qsTr("Rotation Method")
 		info: qsTr("Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.")
 		RadioButton
 		{
@@ -79,7 +79,7 @@ Section
 
 	RadioButtonGroup
 	{
-		name: "analysisBasedOn"
+		name: "baseDecompositionOn"
 		title: qsTr("Base Decomposition on")
 		info: qsTr("What to base the decomposition of the data into components/factors on.")
 		RadioButton

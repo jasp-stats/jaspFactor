@@ -7,7 +7,7 @@ context("Principal Component Analysis")
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenValuesAbove = 1,
+  eigenvaluesAbove = 1,
   manualNumberOfComponents = 1,
   orthogonalSelector = "none",
   obliqueSelector = "promax",
@@ -21,15 +21,15 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScores = FALSE,
+  addScoresToData = FALSE,
   antiImageCorrelationMatrix = FALSE,
-  addedScoresPrefix = "",
+  addScoresToDataPrefix = "",
   dataType = "raw",
   componentCountMethod = "parallelAnalysis",
   parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
-  analysisBasedOn = "correlationMatrix",
-  loadingsOrder = "sortByVariables",
+  baseDecompositionOn = "correlationMatrix",
+  orderLoadingsBy = "variables",
   parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
@@ -40,12 +40,12 @@ defaultOptions <- list(
 
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
-options$eigenValuesAbove <- 0.95
+options$eigenvaluesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$pathDiagram <- TRUE
 options$screePlot <- TRUE
 options$residualMatrix <- TRUE
-options$componentCountMethod <- "eigenValues"
+options$componentCountMethod <- "eigenvalues"
 
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -113,7 +113,7 @@ rotationOptions <- list(
 )
 
 options <- defaultOptions
-options$componentCountMethod <- "eigenValues"
+options$componentCountMethod <- "eigenvalues"
 options$variables <- c("contNormal", "contGamma", "contExpon", "contWide", "contNarrow", "contOutlier", "contcor1", "contcor2", "debMiss1", "debCollin1")
 jaspTableToRTable <- function(x) do.call(rbind, lapply(x, do.call, what = cbind.data.frame))
 
@@ -291,7 +291,7 @@ options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "contcor1", "contcor2")
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "manual"
-options$analysisBasedOn <- "covarianceMatrix"
+options$baseDecompositionOn <- "covarianceMatrix"
 set.seed(1)
 results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
 
@@ -323,12 +323,12 @@ test_that("Component Loadings table results match", {
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
 options$variables.types <- list("scale", "scale", "scale", "scale", "ordinal")
-options$eigenValuesAbove <- 0.95
+options$eigenvaluesAbove <- 0.95
 options$orthogonalSelector <- "varimax"
 options$componentCountMethod <- "parallelAnalysis"
 options$parallelAnalysisTable <- TRUE
 options$parallelAnalysisSeed <- 1234
-options$analysisBasedOn <- "polyTetrachoricCorrelationMatrix"
+options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
@@ -382,15 +382,15 @@ test_that("Parallel Analysis table results match", {
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
-  addScores = FALSE,
-  addedScoresPrefix = "PC",
-  analysisBasedOn = "correlationMatrix",
+  addScoresToData = FALSE,
+  addScoresToDataPrefix = "PC",
+  baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   componentCorrelations = FALSE,
   componentCountMethod = "manual",
-  loadingsOrder = "sortByVariables",
+  orderLoadingsBy = "variables",
   dataType = "varianceCovariance",
-  eigenValuesAbove = 1,
+  eigenvaluesAbove = 1,
   kaiserMeyerOlkinTest = FALSE,
   loadingsDisplayLimit = 0.1,
   manualNumberOfComponents = 1,

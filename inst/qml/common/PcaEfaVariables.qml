@@ -39,7 +39,7 @@ VariablesForm
 	RadioButtonGroup
 	{
 		name: "dataType"
-		title: qsTr("Data")
+		title: qsTr("Data Type")
 		id: dataType
 		columns: 2
 		info: qsTr("Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.")

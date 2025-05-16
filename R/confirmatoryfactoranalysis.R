@@ -216,7 +216,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (anyNA(dataset)) {
     naAction <- switch(
       options$naAction,
-      "twoStageRobust" = "robust.two.stage",
+      "robustTwoStage" = "robust.two.stage",
       "twoStage"       = "two.stage",
       options$naAction)
   } else {
@@ -1604,7 +1604,7 @@ lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) 
 
   if (!is.null(jaspResults[["addedScoresContainer"]]) ||
       is.null(cfaResult) ||
-      !options[["addScores"]] ||
+      !options[["addFactorScoresToData"]] ||
       options[["dataType"]] == "varianceCovariance")
   {
     return()
@@ -1612,7 +1612,7 @@ lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) 
 
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = jaspResults[["maincontainer"]], options = c("addScores", "addedScoresPrefix",
+  container$dependOn(optionsFromObject = jaspResults[["maincontainer"]], options = c("addFactorScoresToData", "addFactorScoresToDataPrefix",
                                                                                      "naAction", "factors",
                                                                                      "secondOrder"))
 
@@ -1624,9 +1624,9 @@ lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) 
 
   if (options$group != "") {
     groupLabs <- cfaResult[["lav"]]@Data@group.label
-    colNamesR <- paste0(rep(groupLabs, each = ncol(scores[[1]])), "_", options[["addedScoresPrefix"]], "_", facNames)
+    colNamesR <- paste0(rep(groupLabs, each = ncol(scores[[1]])), "_", options[["addFactorScoresToDataPrefix"]], "_", facNames)
   } else {
-    colNamesR <- paste0(options[["addedScoresPrefix"]], "_", facNames)
+    colNamesR <- paste0(options[["addFactorScoresToDataPrefix"]], "_", facNames)
     scores <- list(scores)
   }
 

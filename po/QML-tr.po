@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-05-16 23:05+0000\n"
+"Last-Translator: Ertuğrul Uyar <ertugruluyar.academic@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
@@ -153,7 +159,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
-msgstr ""
+msgstr "Hiçbiri"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
@@ -309,7 +315,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "none"
-msgstr ""
+msgstr "hiçbiri"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Oblique"
@@ -374,7 +380,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Eksik Değerler"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Exclude cases pairwise"
@@ -418,7 +424,7 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "none"
-msgstr ""
+msgstr "hiçbiri"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Oblique"
@@ -455,7 +461,7 @@ msgstr ""
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Eksik Değerler"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Exclude cases pairwise"

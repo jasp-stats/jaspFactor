@@ -68,6 +68,7 @@ JASP staat toe dat factoren op hun beurt indicatoren worden van een tweede-orde 
 - Brown, T. A. (2014). *Confirmatory factor analysis for applied research*. Guilford Press. 
 - Henseler, J., Ringle, C. M. & Sarstedt, M. (2015). A new criterion for assessing discriminant validity in variance-based structural equation modeling. *Journal of the Academy of Marketing Science, 43*, 115–135 (2015). https://doi.org/10.1007/s11747-014-0403-8
 - Kline, R. B. (2015). *Principles and practice of structural equation modeling* (4th ed.). Guilford Press.
+- Rogers, P. (2024). Best practices for your confirmatory factor analysis: A JASP and *lavaan* tutorial. *Behavior Research Methods, 56*, 6634–6654. https://doi.org/10.3758/s13428-024-02375-7
 - Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. *Journal of Statistical Software, 48*(2), 1-36. https://doi.org/10.18637/jss.v048.i02
 
 ### R Packages

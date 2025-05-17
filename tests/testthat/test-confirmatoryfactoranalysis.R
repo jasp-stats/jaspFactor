@@ -243,20 +243,6 @@ test_that("Factor loadings table results match", {
 
 
 
-# # validate the following tests with:
-# library(lavaan)
-#
-# HS.model <- '
-# visual  =~ x1 + x2 + x3
-# textual =~ x4 + x5 + x6
-# speed   =~ x7 + x8 + x9
-# x7 ~~ x8
-# g =~ visual + textual + speed
-# '
-# # Configural model
-# fit <- cfa(HS.model, data = HolzingerSwineford1939, effect.coding = TRUE, <- = "school")
-# summary(fit)
-
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$group <- "school"
 options$invarianceTesting <- "configural"
@@ -274,8 +260,7 @@ options$residualsCovarying <-  list(c("x7", "x8"))
 options$naAction <- "listwise"
 options$secondOrder <- list("visual", "textual", "speed")
 set.seed(1)
-
-results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options)
 
 
 test_that("Factor loadings table results match for multiple groups and effects coding", {
@@ -750,3 +735,4 @@ test_that("Chi-square test table results match", {
                                  list(915.798926205035, 36, "Baseline model", "", 85.0221147234242,
                                       24, "Factor model", 9.45493439097334e-09))
 })
+

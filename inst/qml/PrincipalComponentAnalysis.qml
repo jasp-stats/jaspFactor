@@ -17,246 +17,62 @@
 //
 
 import QtQuick
+import QtQuick.Layouts
 import JASP
 import JASP.Controls
+import "./common" as Common
 
 Form
 {
+
+	// Common.PcaEfaVariables{}
 	VariablesForm
 	{
-		// preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
+		// property alias variables: variables
+
 		AvailableVariablesList { name: "allVariablesList" }
 		AssignedVariablesList
 		{
 			id: variables
 			name: "variables"
 			title: qsTr("Variables")
-			allowedColumns: ["scale"]
+			allowedColumns: ["scale", "ordinal", "nominal"]
+			allowTypeChange: true
+			info: qsTr("In this box, the variables to perform the analysis on are selected")
 		}
-		Group 
+
+		RadioButtonGroup
 		{
-			// columns: 4
+			name: "dataType"
 			title: qsTr("Data")
-			RadioButtonGroup
+			id: dataType
+			columns: 2
+			info: qsTr("Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.")
+			RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
+			RadioButton
 			{
-				name: "dataType"
-				id: dataType
-				columns: 2
-				RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
-				RadioButton
-				{
-					value: "varianceCovariance"; label: qsTr("Variance-covariance matrix")
-					IntegerField { name: "sampleSize"; label: qsTr("Sample size"); defaultValue: 200 }
-				}
+				value: "varianceCovariance"; label: qsTr("Variance-covariance matrix")
+				IntegerField { name: "sampleSize"; label: qsTr("Sample size"); defaultValue: 200 }
 			}
 		}
 	}
 
-
-	RadioButtonGroup
-	{
-		name: "componentCountMethod"
-		title: qsTr("Number of Components based on")
-		RadioButton
-		{
-			value: "parallelAnalysis"; label: qsTr("Parallel analysis"); checked: true
-
-			RadioButtonGroup
-			{
-				name:  "parallelAnalysisMethod"
-				title: ""
-
-				RadioButton
-				{
-					value:		"principalComponentBased"
-					label:		qsTr("Based on principal components")
-					checked:	true
-				}
-				RadioButton
-				{
-					value: "factorBased"
-					label: qsTr("Based on factors")
-				}
-			}
-			SetSeed{}
-
-		}
-		RadioButton
-		{
-			value: "eigenValues"; label: qsTr("Eigenvalues")
-			DoubleField {
-				name:			"eigenValuesAbove"
-				label:			qsTr("Eigenvalues above")
-				defaultValue:	1
-				decimals:		1
-			}
-		}
-		RadioButton
-		{
-			value: "manual"; label: qsTr("Manual")
-			IntegerField {
-				name:			"manualNumberOfComponents"
-				label:			qsTr("Number of components")
-				defaultValue:	1
-				min:			1
-				max: variables.count > 1 ? variables.count : 1
-			}
-		}
+	Common.PcaEfaNumberFactors{
+		pca: true
+		variablesCount: variables.count
 	}
 
-	Group
-	{
-		RadioButtonGroup
-		{
-			name: "rotationMethod"
-			title: qsTr("Rotation")
-			RadioButton
-			{
-				value	: "orthogonal"
-				label	: qsTr("Orthogonal")
-				DropDown
-				{
-					name: "orthogonalSelector"
-					values: [
-						{ label: qsTr("none")	, value: "none"			},
-						{ label: "varimax"		, value: "varimax"		},
-						{ label: "quartimax"	, value: "quartimax"	},
-						{ label: "bentlerT"		, value: "bentlerT"		},
-						{ label: "equamax"		, value: "equamax"		},
-						{ label: "geominT"		, value: "geominT"		}
-					]
-				}
-			}
-			RadioButton
-			{
-				value	: "oblique"
-				label	: qsTr("Oblique")
-				checked	: true
-				DropDown { name: "obliqueSelector";
-					values: [ "promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ" ] }
-			}
-		}
-
-		RadioButtonGroup
-		{
-			name: "analysisBasedOn"
-			title: qsTr("Base decomposition on")
-			RadioButton
-			{
-				value: "correlationMatrix"
-				label: qsTr("Correlation matrix")
-				checked: true
-			}
-			RadioButton
-			{
-				value: "covarianceMatrix"
-				label: qsTr("Covariance matrix")
-			}
-			RadioButton
-			{
-				enabled: dataType.value == "raw"
-				value: "polyTetrachoricCorrelationMatrix"
-				label: qsTr("Polychoric/tetrachoric correlation matrix")
-			}
-		}
+	Common.PcaEfaAnalysisOptions{
+		pca: true
+		dataRaw: dataType.value == "raw"
+		nonScale: variables.count > 0 && (variables.columnsTypes.includes("ordinal") || variables.columnsTypes.includes("nominal"))
 	}
 
-	Section
-	{
-		title: qsTr("Output Options")
-
-		Slider
-		{
-			name: "loadingsDisplayLimit"
-			label: qsTr("Display loadings above")
-			value: 0.4
-		}
-
-			RadioButtonGroup
-			{
-				name: "componentLoadingsOrder"
-				title: qsTr("Order component loadings by")
-				RadioButton	{ name: "sortByComponentSize";	label: qsTr("Component size");	checked: true		}
-				RadioButton	{ name: "sortByVariables";		label: qsTr("Variables")							}
-			}
-
-			Group
-			{
-				title: qsTr("Tables")
-				CheckBox { name: "componentCorrelations";	label: qsTr("Component correlations")		}
-				CheckBox { name: "residualMatrix";				label: qsTr("Residual matrix")					}
-				CheckBox {
-					name:	"parallelAnalysisTable";
-					label:	qsTr("Parallel analysis")
-					RadioButtonGroup
-					{
-						name:   "parallelAnalysisTableMethod"
-						title:  ""
-
-						RadioButton
-						{
-							value:      "principalComponentBased"
-							label:      qsTr("Based on PC")
-							checked:    true
-						}
-						RadioButton
-						{
-							value: "factorBased"
-							label: qsTr("Based on FA")
-						}
-					}
-				}
-			}
-			Group
-			{
-				title: qsTr("Plots")
-				CheckBox {
-					name: "pathDiagram"
-					label: qsTr("Path diagram")
-				}
-				CheckBox {
-					name:  "screePlot";
-					label: qsTr("Scree plot")
-
-					CheckBox {
-						name:		"screePlotParallelAnalysisResults"
-						label:		qsTr("Parallel analysis results")
-						checked:	true
-					}
-				}
-			}
-
-		Group
-		{
-			title: qsTr("Assumption checks")
-			CheckBox { name: "kaiserMeyerOlkinTest";	label: qsTr("KMO test")					}
-			CheckBox { name: "bartlettTest";			label: qsTr("Bartlett's test")	}
-			CheckBox { name: "mardiaTest";				label: qsTr("Mardia's test")	  ; enabled: dataType.value == "raw" }
-		}
-
-		RadioButtonGroup
-		{
-			name: "naAction"
-			title: qsTr("Missing Values")
-			RadioButton { value: "pairwise";		label: qsTr("Exclude cases pairwise"); checked: true	}
-			RadioButton { value: "listwise";		label: qsTr("Exclude cases listwise")					}
-		}
-
-		CheckBox
-		{
-			id: addScores
-			name: "addScores"
-			label: qsTr("Add PC scores to data")
-			enabled: variables.count > 1 & dataType.value == "raw"
-
-			TextField {
-				name: "addedScoresPrefix"
-				label: qsTr("Prefix")
-				defaultValue: "PC"
-				fieldWidth: 80
-				enabled: addScores.checked
-			}
-		}
+	Common.PcaEfaOutputOptions{
+		pca: true
+		dataRaw: dataType.value == "raw"
+		variablesCount: variables.count
 
 	}
+
 }

@@ -16,20 +16,20 @@
 
 
 confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...) {
-  jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
+  jaspResults$addCitation("Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36. URL http://www.jstatsoft.org/v48/i02/")
 
   # Preprocess options
   options <- .cfaPreprocessOptions(options)
 
   # Read dataset
-  dataset <- .cfaReadData(dataset, options)
+  dataset <- .cfaHandleData(dataset, options)
 
   # Error checking
   errors <- .cfaCheckErrors(dataset, options)
 
-  # covariance matrix
-  dataset <- .cfaDataCovariance(dataset, options)
+  # possibly check cov matrix
+  .pcaAndEfaDataCovarianceCheck(dataset, options, ready = TRUE, cfa = TRUE)
 
   # Main table / model
   cfaResult <- .cfaComputeResults(jaspResults, dataset, options, errors)
@@ -59,39 +59,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # Output model syntax
   .cfaSyntax(jaspResults, options, dataset, cfaResult) # Output model syntax to user
 
+  # add factor scores to data
+  .cfaAddScoresToData(jaspResults, options, cfaResult, dataset)
+
   return()
 }
 
 # Preprocessing functions ----
-.cfaReadData <- function(dataset, options) {
-
-  if (!is.null(dataset)) return(dataset)
-
-  # NOTE: The GUI does not yet allow for putting the same variable in different factors.
-  # if the same variable is used twice but with a different type then this would
-  # crash the R code. However, since this is not possible yet, this should be okay for now
-  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"),       use.names = FALSE)
-
-  if (length(vars) == 0)
-    return(data.frame())
-
-  duplicateVars <- duplicated(vars)
-  vars  <- vars[!duplicateVars]
-
-  if (options[["dataType"]] == "raw") {
-    # make sure on the qml side that groupVar is indeed a nominal variable
-    groupVar <- if (options[["group"]] == "") NULL else options[["group"]]
-    dataset <- .readDataSetToEnd(columns = c(vars, groupVar))
-
-  } else {
-
-    dataset <- .readDataSetToEnd(all.columns = TRUE)
-  }
-
-
-  return(dataset)
-
-}
 
 .cfaPreprocessOptions <- function(options) {
   # Remove empty factors
@@ -104,6 +78,34 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     options$secondOrder <- list(list(indicators = options$secondOrder, name = "SecondOrder", title = gettext("Second-Order")))
   }
   return(options)
+}
+
+.cfaHandleData <- function(dataset, options) {
+
+  # NOTE: The GUI does not yet allow for putting the same variable in different factors.
+  # if the same variable is used twice but with a different type then this would
+  # crash the R code. However, since this is not possible yet, this should be okay for now
+  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
+  if (options[["group"]] != "")
+    vars <- c(vars, options[["group"]])
+
+  if (length(vars) == 0)
+    return(data.frame())
+
+  duplicateVars <- duplicated(vars)
+  vars  <- vars[!duplicateVars]
+
+  if (options[["dataType"]] == "raw") {
+    dataset <- dataset[, vars]
+
+  } else {
+    colInds <- which(colnames(dataset) == vars)
+    dataset <- dataset[colInds, colInds]
+    rownames(dataset) <- colnames(dataset)
+  }
+
+  return(dataset)
+
 }
 
 
@@ -120,7 +122,13 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       if (!factor %in% names(nVarsPerFactor) || nVarsPerFactor[factor] <= 0)
         jaspBase:::.quitAnalysis(gettext("The model could not be estimated. A factor with less than 2 variables was added in Second-Order."))
 
-  vars <- unique(unlist(lapply(options$factors, function(x) x$indicators)))
+  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
+
+  if (options[["group"]] != "")
+    vars <- c(vars, options[["group"]])
+
+  duplicateVars <- duplicated(vars)
+  vars  <- vars[!duplicateVars]
 
   if (options[["dataType"]] == "raw") {
 
@@ -155,52 +163,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     }
   }
 
-  return(NULL)
-}
-
-.cfaDataCovariance <- function(dataset, options) {
-
-
-  if (options[["dataType"]] == "raw") {
-    return(dataset)
-  }
-
-  vars  <- unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE)
-
-  # are there any variables specified at all?
-  if (length(vars) == 0)
-    return(data.frame())
-
-  # possible data matrix?
-  if ((nrow(dataset) != ncol(dataset)))
-    .quitAnalysis(gettext("Input data does not seem to be a square matrix! Please check the format of the input data."))
-
-  if (!all(dataset[lower.tri(dataset)] == t(dataset)[lower.tri(dataset)]))
-    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
-
-  duplicateVars <- duplicated(vars)
-  usedvars  <- vars[!duplicateVars]
-  var_idx  <- match(usedvars, colnames(dataset))
-  mat <- try(as.matrix(dataset[var_idx, var_idx]))
-  if (inherits(mat, "try-error"))
-    .quitAnalysis(gettext("All cells must be numeric."))
-
-  if (options[["group"]] != "") .quitAnalysis(gettext("Grouping variable not supported for covariance matrix input"))
-
-  if (options[["meanStructure"]]) .quitAnalysis(gettext("Mean structure not supported for covariance matrix input"))
-
-  .hasErrors(mat, type = "varCovMatrix", message='default', exitAnalysisIfErrors = TRUE)
-
-  colnames(mat) <- rownames(mat) <- colnames(dataset)[var_idx]
-
-  if (anyNA(mat)) {
-    inds <- which(is.na(mat))
-    mat <- mat[-inds, -inds]
-    if (ncol(mat) < 3) {
-      .quitAnalysis("Not enough valid columns to run this analysis")
-    }
-  }
-  return(mat)
+  return()
 }
 
 
@@ -253,7 +216,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (anyNA(dataset)) {
     naAction <- switch(
       options$naAction,
-      "twoStageRobust" = "robust.two.stage",
+      "robustTwoStage" = "robust.two.stage",
       "twoStage"       = "two.stage",
       options$naAction)
   } else {
@@ -276,9 +239,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     sampCovN <- NULL
   } else {
     dt <- NULL
-    sampCov <- dataset
+    sampCov <- as.matrix(dataset)
     sampCovN <- options[["sampleSize"]]
   }
+
   cfaResult[["lav"]] <- try(lavaan::lavaan(
     model           = mod,
     data            = dt,
@@ -637,6 +601,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaTableRsquared <- function(jaspResults, options, cfaResult) {
+
   if (!options$rSquared || !is.null(jaspResults[["maincontainer"]][["rSquared"]])) return()
 
   jaspResults[["maincontainer"]][["rSquared"]] <- tabr2 <- createJaspTable(gettext("R-Squared"))
@@ -795,6 +760,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaParEstToTablesHelper <- function(pei, options, cfaResult, jrobject, footnote) {
+
   pei <- as.data.frame(pei)
   facNames <- c(cfaResult[["spec"]]$latents)
 
@@ -1631,4 +1597,83 @@ lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) 
 
 
   return(fit)
+}
+
+
+.cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {
+
+  if (!is.null(jaspResults[["addedScoresContainer"]]) ||
+      is.null(cfaResult) ||
+      !options[["addFactorScoresToData"]] ||
+      options[["dataType"]] == "varianceCovariance")
+  {
+    return()
+  }
+
+
+  container    <- createJaspContainer()
+  container$dependOn(optionsFromObject = jaspResults[["maincontainer"]], options = c("addFactorScoresToData", "addFactorScoresToDataPrefix",
+                                                                                     "naAction", "factors",
+                                                                                     "secondOrder"))
+
+  scores <- lavaan::lavPredict(cfaResult[["lav"]])
+  facNames <- cfaResult[["spec"]]$latents
+  facNames <- .translateFactorNames(facNames, options)
+  if (length(options$secondOrder) > 0)
+    facNames <- c(facNames, gettext("Second-Order"))
+
+  if (options$group != "") {
+    groupLabs <- cfaResult[["lav"]]@Data@group.label
+    colNamesR <- paste0(rep(groupLabs, each = ncol(scores[[1]])), "_", options[["addFactorScoresToDataPrefix"]], "_", facNames)
+  } else {
+    colNamesR <- paste0(options[["addFactorScoresToDataPrefix"]], "_", facNames)
+    scores <- list(scores)
+  }
+
+  z <- 1
+  for (ll in seq_len(length(scores))) {
+    for (ii in seq_len(ncol(scores[[ll]]))) {
+
+      colNameR <- colNamesR[z]
+      scoresTmp <- scores[[ll]]
+      if (jaspBase:::columnExists(colNameR) && !jaspBase:::columnIsMine(colNameR)) {
+        .quitAnalysis(gettextf("Column name %s already exists in the dataset", colNameR))
+      }
+
+      container[[colNameR]] <- jaspBase::createJaspColumn(colNameR)
+      if (options[["naAction"]] != "listwise") {
+        container[[colNameR]]$setScale(scoresTmp[, ii])
+      } else { # for listwise we need to identify the complete cases
+        # so we need to temporarily load the raw data with the NAs
+        dataTmp <- dataset
+        scoresTmpTmp <- rep(NA, nrow(dataTmp))
+        scoresTmpTmp[complete.cases(dataTmp)] <- scoresTmp[, ii]
+        container[[colNameR]]$setScale(scoresTmpTmp)
+
+      }
+      z <- z + 1
+
+    }
+  }
+
+  jaspResults[["addedScoresContainer"]] <- container
+
+  # check if there are previous colNames that are not needed anymore and delete the cols
+  oldNames <- jaspResults[["createdColumnNames"]][["object"]]
+  newNames <- colNamesR[1:z]
+  if (!is.null(oldNames)) {
+    noMatch <- which(!(oldNames %in% newNames))
+    if (length(noMatch) > 0) {
+      for (i in 1:length(noMatch)) {
+        jaspBase:::columnDelete(oldNames[noMatch[i]])
+      }
+    }
+  }
+
+  # save the created col names
+  jaspResults[["createdColumnNames"]] <- createJaspState(newNames)
+
+
+  return()
+
 }

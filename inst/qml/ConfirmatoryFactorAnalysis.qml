@@ -34,7 +34,7 @@ Form
 	Group 
 	{
 		// columns: 4
-		title: qsTr("Data")
+		title: qsTr("Data Type")
 		RadioButtonGroup
 		{
 			name: "dataType"
@@ -146,8 +146,9 @@ Form
 		{
 			label: qsTr("Grouping variable") ;
 			name: "group";
-			showVariableTypeIcon: true;
-			addEmptyValue: true;
+			showVariableTypeIcon: true
+			addEmptyValue: true
+			allowedColumns: ["nominal"]
 		} // No model: it takes all variables per default
 		DropDown
 		{
@@ -235,12 +236,13 @@ Form
 					{ label: qsTr("EQS"), value: "eqs" }
 				]
 			}
-			RowLayout 
+
+			RowLayout
 			{
 				DropDown
 				{
 					name: "estimator"
-					label: qsTr("Estimator")
+					label: qsTr("Estimator	             ")
 					id: estimator
 					values: [
 						{ label: qsTr("Default"), value: "default" },
@@ -262,12 +264,16 @@ Form
 						{ label: qsTr("ULSMV"), value: "ulsmv" }
 					]
 				}
+
 				HelpButton
 				{
 					toolTip: 					qsTr("Click for more information")
 					helpPage:					"forQml/tooltipEstimators"
 				}
 			}
+			
+
+			
 			DropDown
 			{
 				label: qsTr("Standard errors")
@@ -295,13 +301,15 @@ Form
 			{
 				name: "naAction"
 				label: qsTr("Missing data handling")
-				values:
-				[
+				values: factors.columnsTypes.includes("ordinal") ? [
 					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
+					{ label: qsTr("Pairwise")			, value: "pairwise"			},
+				] : [
 					{ label: qsTr("FIML")				, value: "fiml"				},
+					{ label: qsTr("Listwise deletion")	, value: "listwise"			},
 					{ label: qsTr("Pairwise")			, value: "pairwise"			},
 					{ label: qsTr("Two-stage")			, value: "twoStage"			},
-					{ label: qsTr("Robust two-stage")	, value: "twoStageRobust"	},
+					{ label: qsTr("Robust two-stage")	, value: "robustTwoStage"	}
 				]
 			}
 		}
@@ -316,6 +324,22 @@ Form
 			RadioButton { label: qsTr("No Exogenous Covariates");	value: "noExogenousCovariates"	}
 		}
 
+		CheckBox
+		{
+			id: addScores
+			name: "addFactorScoresToData"
+			label: qsTr("Add factor scores to data")
+			info: qsTr("Adds the estimated factor scores as new columns to the data set")
+			enabled: variablesCount > 1 & dataRaw
+
+			TextField {
+				name: "addFactorScoresToDataPrefix"
+				label: qsTr("Prefix")
+				defaultValue: qsTr("FS")
+				fieldWidth: 80
+				enabled: addScores.checked
+			}
+		}
 		Group
 		{
 			title: qsTr("Options")

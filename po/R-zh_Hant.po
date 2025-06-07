@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2024-11-02 03:32\n"
+"POT-Creation-Date: 2025-06-07 03:40\n"
 "PO-Revision-Date: 2025-04-05 03:34+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -31,25 +31,6 @@ msgid ""
 "matrix?"
 msgstr "資料個數少於變數個數，你是以變異數-共變數矩陣為資料進行分析嗎？"
 
-msgid ""
-"Input data does not seem to be a square matrix! Please check the format of "
-"the input data."
-msgstr "輸入的資料並非方陣！請確認資料。"
-
-msgid ""
-"Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr "輸入的資料並非對稱矩陣！請確認資料格式。"
-
-msgid "All cells must be numeric."
-msgstr "所有細格內容皆須為數字。"
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr "以共變數矩陣當輸入資料而進行分析時，不提供群組變數功能"
-
-msgid "Mean structure not supported for covariance matrix input"
-msgstr "以共變數矩陣當輸入資料而進行分析時，不提供平均數結構功能"
-
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
 "只有使用最大概似法 (ML)類的估計法時，才能使用完全訊息最大概似法的方式來處理遺"
@@ -59,7 +40,8 @@ msgid ""
 "Robust standard errors are not available with the GLS estimator. Try "
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
-msgstr "以GLS估計法分析時，不提供穩健標準誤估計值。請在「進階」設定中修改標準誤方法之"
+msgstr ""
+"以GLS估計法分析時，不提供穩健標準誤估計值。請在「進階」設定中修改標準誤方法之"
 "設定。"
 
 msgid ""
@@ -94,7 +76,8 @@ msgstr "以變異數-共變數矩陣為輸入資料而進行分析時，無法�
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
-msgstr "以變異數-共變數矩陣為輸入資料而進行分析時，無法提供穩健的標準誤估計值。"
+msgstr ""
+"以變異數-共變數矩陣為輸入資料而進行分析時，無法提供穩健的標準誤估計值。"
 
 msgid "# Factors"
 msgstr "# 因素"
@@ -369,23 +352,28 @@ msgstr "信度"
 msgid "Coefficient %s"
 msgstr "係數 %s"
 
-msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr "因素個數過多 (%i) 超過變項數量"
+msgid "Column name %s already exists in the dataset"
+msgstr "變數名稱%s 已存在於資料檔中"
 
-msgid "Not enough valid cases (%i) to run this analysis"
-msgstr "因樣本數不足 (%i) 而無法執行此分析"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
+msgstr ""
+"無法估計多元/四項相關矩陣.\n"
+"      可能原因為樣本數小，或是變數不含所有反應類別 \n"
+"      內在錯誤訊息: %s"
 
-msgid "Data not valid: variance is zero in each row"
-msgstr "無效資料: 每列的變異數皆為零"
-
-msgid "Data not valid: there are more variables than observations"
-msgstr "無效資料: 變項數多於樣本數"
-
-msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr "資料無效: %s 變數的遺漏值過多。"
-
-msgid "Data not valid: all variables are collinear"
-msgstr "資料無效: 所有變數互為共線性"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
+msgstr ""
+"無法估計多元/四項相關矩陣.\n"
+"      可能原因為樣本數小，或是變數不含所有反應類別 \n"
+"      內在錯誤訊息: %s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "估計失敗， 內部錯誤訊息: %s. %s"
@@ -393,16 +381,8 @@ msgstr "估計失敗， 內部錯誤訊息: %s. %s"
 msgid "Estimation failed. Internal error message: %s"
 msgstr "無法估計. 內部錯誤訊息: %s"
 
-msgid ""
-"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
-"matrix failed.\n"
-"      This might be due to a small sample size or variables not containing "
-"all response categories.\n"
-"      Internal error message: %s"
-msgstr ""
-"無法估計多元/四項相關矩陣.\n"
-"      可能原因為樣本數小，或是變數不含所有反應類別 \n"
-"      內在錯誤訊息: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "無法進行平行分析。內部錯誤訊息: %s"
 
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
@@ -432,7 +412,11 @@ msgid ""
 "statistic for kurtosis standard normal."
 msgstr "偏態統計量被假定為卡方分配，而峰度統計量則被假定為標準常態分配。"
 
-msgid "Chi-squared Test"
+msgid "Anti-Image Correlation Matrix"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-Squared Test"
 msgstr "卡方檢定"
 
 msgid "Degrees of freedom below 0, model is unidentified."
@@ -453,7 +437,8 @@ msgstr "獨特性"
 msgid "No rotation method applied."
 msgstr "不進行轉軸。"
 
-msgid "Applied rotation method is %s."
+#, fuzzy
+msgid "Applied rotation method is %1$s."
 msgstr "轉軸法為%s。"
 
 msgid "Factor Loadings (Structure Matrix)"
@@ -462,23 +447,23 @@ msgstr "因素負荷量(結構矩陣)"
 msgid "Factor Characteristics"
 msgstr "因素特徵"
 
-msgid "Eigenvalues"
-msgstr "特徵值"
-
 msgid "Unrotated solution"
 msgstr "未轉軸解"
 
 msgid "Rotated solution"
 msgstr "轉軸解"
 
-msgid "SumSq. Loadings"
-msgstr "負荷量平方和(特徵值)"
+msgid "Eigenvalue"
+msgstr "特徵值"
 
 msgid "Proportion var."
 msgstr "可解釋變異量之百分比."
 
 msgid "Cumulative"
 msgstr "累積"
+
+msgid "SumSq. Loadings"
+msgstr "負荷量平方和(特徵值)"
 
 msgid "Factor Correlations"
 msgstr "因素相關"
@@ -538,20 +523,58 @@ msgstr "資料集"
 msgid "Simulated data from parallel analysis"
 msgstr "平行分析的模擬資料"
 
-msgid "Eigenvalue"
-msgstr "特徵值"
-
 msgid "Path Diagram"
 msgstr "路徑圖"
 
-msgid "Column name %s already exists in the dataset"
-msgstr "變數名稱%s 已存在於資料檔中"
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
+msgstr "輸入的資料並非方陣！請確認資料。"
 
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr "無法進行平行分析。內部錯誤訊息: %s"
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr "輸入的資料並非對稱矩陣！請確認資料格式。"
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr "以共變數矩陣當輸入資料而進行分析時，不提供群組變數功能"
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr "以共變數矩陣當輸入資料而進行分析時，不提供平均數結構功能"
+
+msgid "All cells must be numeric."
+msgstr "所有細格內容皆須為數字。"
+
+#, fuzzy
+msgid "Too many %1$s requested (%2$i) for the amount of included variables"
+msgstr "因素個數過多 (%i) 超過變項數量"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "因樣本數不足 (%i) 而無法執行此分析"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "無效資料: 每列的變異數皆為零"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr "無效資料: 變項數多於樣本數"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr "資料無效: %s 變數的遺漏值過多。"
+
+msgid "Data not valid: all variables are collinear"
+msgstr "資料無效: 所有變數互為共線性"
+
+#, fuzzy
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
+msgstr "沒有因素的特徵值大於 %1$s ，觀察特徵值之最大值為 %2$s.。"
 
 msgid "Component Loadings"
 msgstr "成分負荷量"
+
+msgid "Applied rotation method is %s."
+msgstr "轉軸法為%s。"
 
 msgid "Component Characteristics"
 msgstr "成分特徵"
@@ -564,6 +587,9 @@ msgstr "陡坡圖"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Eigenvalues"
+#~ msgstr "特徵值"
 
 #~ msgid "Std. Est. (%s)"
 #~ msgstr "標準化解 (%s)"

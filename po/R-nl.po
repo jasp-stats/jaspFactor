@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-11-02 03:32\n"
+"POT-Creation-Date: 2025-06-07 03:40\n"
 "PO-Revision-Date: 2025-04-19 11:43+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -34,25 +34,6 @@ msgstr ""
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a square matrix! Please check the format of "
-"the input data."
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "All cells must be numeric."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
@@ -384,23 +365,32 @@ msgstr "Betrouwbaarheid"
 msgid "Coefficient %s"
 msgstr "Coëfficiënt %s"
 
-msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr "Teveel factoren gevraagd (%i) voor het aantal meegenomen variabelen"
+msgid "Column name %s already exists in the dataset"
+msgstr "Kolomnaam %s bestaat al in de dataset"
 
-msgid "Not enough valid cases (%i) to run this analysis"
-msgstr "Niet genoeg valide waarnemingen (%i) om de analyse uit te voeren"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
+msgstr ""
+"Helaas, de schatting van de polychorische/tetrachorische correlatie matrix "
+"is mislukt.\n"
+"      Dit kan komen door de kleine steekproefomvang of variabelen die niet "
+"alle antwoordcategorieën bevatten.\n"
+"      Interne foutmelding: %s"
 
-msgid "Data not valid: variance is zero in each row"
-msgstr "Data niet valide: variantie is nul in iedere rij"
-
-msgid "Data not valid: there are more variables than observations"
-msgstr "Data niet valide: er zijn meer variabelen dan observaties"
-
-msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
-
-msgid "Data not valid: all variables are collinear"
-msgstr "Data niet valide: alle variabelen zijn collineair"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
+msgstr ""
+"Helaas, de schatting van de polychorische/tetrachorische correlatie matrix "
+"is mislukt.\n"
+"      Dit kan komen door de kleine steekproefomvang of variabelen die niet "
+"alle antwoordcategorieën bevatten.\n"
+"      Interne foutmelding: %s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "Schatting mislukt. Interne foutmelding: %1$s. %2$s"
@@ -408,18 +398,8 @@ msgstr "Schatting mislukt. Interne foutmelding: %1$s. %2$s"
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Schatting mislukt. Interne foutmelding: %s"
 
-msgid ""
-"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
-"matrix failed.\n"
-"      This might be due to a small sample size or variables not containing "
-"all response categories.\n"
-"      Internal error message: %s"
-msgstr ""
-"Helaas, de schatting van de polychorische/tetrachorische correlatie matrix "
-"is mislukt.\n"
-"      Dit kan komen door de kleine steekproefomvang of variabelen die niet "
-"alle antwoordcategorieën bevatten.\n"
-"      Interne foutmelding: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "Parallelle analyse mislukt. Interne foutmelding: %s"
 
 #, fuzzy
 msgid ""
@@ -452,7 +432,11 @@ msgstr ""
 "De statistiek voor scheefheid wordt verondersteld Chi^2 verdeeld te zijn en "
 "de statistiek voor kurtosis standaard normaal."
 
-msgid "Chi-squared Test"
+msgid "Anti-Image Correlation Matrix"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-Squared Test"
 msgstr "Chikwadraattoets"
 
 msgid "Degrees of freedom below 0, model is unidentified."
@@ -473,7 +457,8 @@ msgstr "Uniciteit"
 msgid "No rotation method applied."
 msgstr "Geen rotatiemethode toegepast."
 
-msgid "Applied rotation method is %s."
+#, fuzzy
+msgid "Applied rotation method is %1$s."
 msgstr "Toegepaste rotatiemethode is %s."
 
 msgid "Factor Loadings (Structure Matrix)"
@@ -482,23 +467,23 @@ msgstr "Factorladingen (Structuurmatrix)"
 msgid "Factor Characteristics"
 msgstr "Factorkarakteristieken"
 
-msgid "Eigenvalues"
-msgstr "Eigenwaarden"
-
 msgid "Unrotated solution"
 msgstr "Niet-geroteerde oplossing"
 
 msgid "Rotated solution"
 msgstr "Geroteerde oplossing"
 
-msgid "SumSq. Loadings"
-msgstr "Kwadratensom Ladingen"
+msgid "Eigenvalue"
+msgstr "Eigenwaarde"
 
 msgid "Proportion var."
 msgstr "Proportievar."
 
 msgid "Cumulative"
 msgstr "Cumulatief"
+
+msgid "SumSq. Loadings"
+msgstr "Kwadratensom Ladingen"
 
 msgid "Factor Correlations"
 msgstr "Factorcorrelaties"
@@ -562,20 +547,58 @@ msgstr "Data"
 msgid "Simulated data from parallel analysis"
 msgstr "Gesimuleerde data van parallelle analyse"
 
-msgid "Eigenvalue"
-msgstr "Eigenwaarde"
-
 msgid "Path Diagram"
 msgstr "Paddiagram"
 
-msgid "Column name %s already exists in the dataset"
-msgstr "Kolomnaam %s bestaat al in de dataset"
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
+msgstr ""
 
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr "Parallelle analyse mislukt. Interne foutmelding: %s"
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+#, fuzzy
+msgid "Too many %1$s requested (%2$i) for the amount of included variables"
+msgstr "Teveel factoren gevraagd (%i) voor het aantal meegenomen variabelen"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "Niet genoeg valide waarnemingen (%i) om de analyse uit te voeren"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "Data niet valide: variantie is nul in iedere rij"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr "Data niet valide: er zijn meer variabelen dan observaties"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
+
+msgid "Data not valid: all variables are collinear"
+msgstr "Data niet valide: alle variabelen zijn collineair"
+
+#, fuzzy
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
+msgstr "Maximaal geobserveerde eigenwaarde is gelijk aan"
 
 msgid "Component Loadings"
 msgstr "Componentladingen"
+
+msgid "Applied rotation method is %s."
+msgstr "Toegepaste rotatiemethode is %s."
 
 msgid "Component Characteristics"
 msgstr "Factorkarakteristieken"
@@ -588,6 +611,9 @@ msgstr "Scree plot"
 
 msgid "Component"
 msgstr "Component"
+
+#~ msgid "Eigenvalues"
+#~ msgstr "Eigenwaarden"
 
 #~ msgid ""
 #~ "The estimator is %1$s and the test statistic is %2$s because there are "

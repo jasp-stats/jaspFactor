@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-11-02 03:32\n"
+"POT-Creation-Date: 2025-06-07 03:40\n"
 "PO-Revision-Date: 2022-08-29 00:17+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -37,25 +37,6 @@ msgstr ""
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a square matrix! Please check the format of "
-"the input data."
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "All cells must be numeric."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
@@ -379,24 +360,20 @@ msgstr ""
 msgid "Coefficient %s"
 msgstr ""
 
-msgid "Too many factors requested (%i) for the amount of included variables"
+msgid "Column name %s already exists in the dataset"
 msgstr ""
-"Muitos fatores solicitados (%i) para a quantidade de variáveis incluídas"
 
-msgid "Not enough valid cases (%i) to run this analysis"
-msgstr "Não há casos válidos suficientes (%i) para executar esta análise"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
+msgstr ""
 
-msgid "Data not valid: variance is zero in each row"
-msgstr "Dados inválidos: a variância é zero em cada linha"
-
-msgid "Data not valid: there are more variables than observations"
-msgstr "Os dados não são válidos: há mais variáveis do que observações"
-
-msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr "Dados inválidos: muitos valores ausentes em variável(is) %s."
-
-msgid "Data not valid: all variables are collinear"
-msgstr "Dados inválidos: todas as variáveis são colineares"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
+msgstr ""
 
 #, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
@@ -410,13 +387,11 @@ msgstr ""
 "A estimativa falhou. \n"
 "Mensagem de erro interna: %s"
 
-msgid ""
-"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
-"matrix failed.\n"
-"      This might be due to a small sample size or variables not containing "
-"all response categories.\n"
-"      Internal error message: %s"
+#, fuzzy
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
+"A estimativa falhou. \n"
+"Mensagem de erro interna: %s"
 
 #, fuzzy
 msgid ""
@@ -451,8 +426,11 @@ msgid ""
 "statistic for kurtosis standard normal."
 msgstr ""
 
+msgid "Anti-Image Correlation Matrix"
+msgstr ""
+
 #, fuzzy
-msgid "Chi-squared Test"
+msgid "Chi-Squared Test"
 msgstr "Teste qui-quadrado"
 
 msgid "Degrees of freedom below 0, model is unidentified."
@@ -473,7 +451,8 @@ msgstr "Singularidade"
 msgid "No rotation method applied."
 msgstr "Nenhum método de rotação foi aplicado."
 
-msgid "Applied rotation method is %s."
+#, fuzzy
+msgid "Applied rotation method is %1$s."
 msgstr "O método de rotação aplicado é %s."
 
 msgid "Factor Loadings (Structure Matrix)"
@@ -482,24 +461,23 @@ msgstr "Cargas dos fatores (Matriz estruturada)"
 msgid "Factor Characteristics"
 msgstr "Características do fator"
 
-#, fuzzy
-msgid "Eigenvalues"
-msgstr "Autovalor"
-
 msgid "Unrotated solution"
 msgstr ""
 
 msgid "Rotated solution"
 msgstr ""
 
-msgid "SumSq. Loadings"
-msgstr "Soma das cargas ao quadrado"
+msgid "Eigenvalue"
+msgstr "Autovalor"
 
 msgid "Proportion var."
 msgstr "Variável proporcional"
 
 msgid "Cumulative"
 msgstr "Cumulativo"
+
+msgid "SumSq. Loadings"
+msgstr "Soma das cargas ao quadrado"
 
 msgid "Factor Correlations"
 msgstr "Correlação de fatores"
@@ -563,23 +541,59 @@ msgstr "Dados"
 msgid "Simulated data from parallel analysis"
 msgstr ""
 
-msgid "Eigenvalue"
-msgstr "Autovalor"
-
 msgid "Path Diagram"
 msgstr "Diagrama de caminhos"
 
-msgid "Column name %s already exists in the dataset"
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
+msgid "All cells must be numeric."
 msgstr ""
 
 #, fuzzy
-msgid "Parallel analysis failed. Internal error message: %s"
+msgid "Too many %1$s requested (%2$i) for the amount of included variables"
 msgstr ""
-"A estimativa falhou. \n"
-"Mensagem de erro interna: %s"
+"Muitos fatores solicitados (%i) para a quantidade de variáveis incluídas"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "Não há casos válidos suficientes (%i) para executar esta análise"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "Dados inválidos: a variância é zero em cada linha"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr "Os dados não são válidos: há mais variáveis do que observações"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr "Dados inválidos: muitos valores ausentes em variável(is) %s."
+
+msgid "Data not valid: all variables are collinear"
+msgstr "Dados inválidos: todas as variáveis são colineares"
+
+#, fuzzy
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
+msgstr "Autovalor máximo observado:"
 
 msgid "Component Loadings"
 msgstr "Cargas dos componentes"
+
+msgid "Applied rotation method is %s."
+msgstr "O método de rotação aplicado é %s."
 
 #, fuzzy
 msgid "Component Characteristics"
@@ -593,6 +607,10 @@ msgstr "Gráfico de sedimentação"
 
 msgid "Component"
 msgstr "Componentes"
+
+#, fuzzy
+#~ msgid "Eigenvalues"
+#~ msgstr "Autovalor"
 
 #~ msgid "Std. Est. (%s)"
 #~ msgstr "Estimativa Padrão (%s)"

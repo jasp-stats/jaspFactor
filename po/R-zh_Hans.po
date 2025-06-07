@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2024-11-02 03:32\n"
+"POT-Creation-Date: 2025-06-07 03:40\n"
 "PO-Revision-Date: 2023-05-19 13:50+0000\n"
 "Last-Translator: Pr0ph3t <beomnyul@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -29,25 +29,6 @@ msgstr "模型无法估计。在二阶中添加了少于 2 个变量的因子。
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a square matrix! Please check the format of "
-"the input data."
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "All cells must be numeric."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
@@ -369,23 +350,28 @@ msgstr ""
 msgid "Coefficient %s"
 msgstr ""
 
-msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr "对包含的变量数量，请求的因子过多 (%i)"
+msgid "Column name %s already exists in the dataset"
+msgstr ""
 
-msgid "Not enough valid cases (%i) to run this analysis"
-msgstr "没有足够的有效个案 (%i) 来运行此分析"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
+msgstr ""
+"糟糕，多色/四色相关矩阵的估计失败了。\n"
+"      这可能是由于样本量小或变量不包含所有响应类别。\n"
+"      内部错误消息：%s"
 
-msgid "Data not valid: variance is zero in each row"
-msgstr "数据无效：每行的方差为零"
-
-msgid "Data not valid: there are more variables than observations"
-msgstr "数据无效：变量多于观测"
-
-msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr "数据无效：变量 %s 中的缺失值太多。"
-
-msgid "Data not valid: all variables are collinear"
-msgstr "数据无效：所有变量共线"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
+msgstr ""
+"糟糕，多色/四色相关矩阵的估计失败了。\n"
+"      这可能是由于样本量小或变量不包含所有响应类别。\n"
+"      内部错误消息：%s"
 
 #, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
@@ -398,16 +384,8 @@ msgstr ""
 "估计失败。\n"
 "内部错误消息： %s"
 
-msgid ""
-"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
-"matrix failed.\n"
-"      This might be due to a small sample size or variables not containing "
-"all response categories.\n"
-"      Internal error message: %s"
-msgstr ""
-"糟糕，多色/四色相关矩阵的估计失败了。\n"
-"      这可能是由于样本量小或变量不包含所有响应类别。\n"
-"      内部错误消息：%s"
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "平分析失败。内部错误消息：%s"
 
 #, fuzzy
 msgid ""
@@ -440,7 +418,11 @@ msgid ""
 "statistic for kurtosis standard normal."
 msgstr "偏度的统计量假定为 Chi^2 分布，峰度标准正态的统计量。"
 
-msgid "Chi-squared Test"
+msgid "Anti-Image Correlation Matrix"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-Squared Test"
 msgstr "卡方检验"
 
 msgid "Degrees of freedom below 0, model is unidentified."
@@ -461,7 +443,8 @@ msgstr "独特性(Uniqueness)"
 msgid "No rotation method applied."
 msgstr "未应用旋转方法。"
 
-msgid "Applied rotation method is %s."
+#, fuzzy
+msgid "Applied rotation method is %1$s."
 msgstr "应用的旋转方法为%s."
 
 msgid "Factor Loadings (Structure Matrix)"
@@ -470,24 +453,23 @@ msgstr "因子载荷（结构矩阵）"
 msgid "Factor Characteristics"
 msgstr "因素特征"
 
-#, fuzzy
-msgid "Eigenvalues"
-msgstr "特征值"
-
 msgid "Unrotated solution"
 msgstr "未旋转的方案"
 
 msgid "Rotated solution"
 msgstr "已旋转的方案"
 
-msgid "SumSq. Loadings"
-msgstr "SumSq. Loadings"
+msgid "Eigenvalue"
+msgstr "特征值"
 
 msgid "Proportion var."
 msgstr "比例变量."
 
 msgid "Cumulative"
 msgstr "累积"
+
+msgid "SumSq. Loadings"
+msgstr "SumSq. Loadings"
 
 msgid "Factor Correlations"
 msgstr "因子相关性"
@@ -547,20 +529,58 @@ msgstr "数据"
 msgid "Simulated data from parallel analysis"
 msgstr "来自平行分析的模拟数据"
 
-msgid "Eigenvalue"
-msgstr "特征值"
-
 msgid "Path Diagram"
 msgstr "路径图"
 
-msgid "Column name %s already exists in the dataset"
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
 msgstr ""
 
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr "平分析失败。内部错误消息：%s"
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+#, fuzzy
+msgid "Too many %1$s requested (%2$i) for the amount of included variables"
+msgstr "对包含的变量数量，请求的因子过多 (%i)"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "没有足够的有效个案 (%i) 来运行此分析"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "数据无效：每行的方差为零"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr "数据无效：变量多于观测"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr "数据无效：变量 %s 中的缺失值太多。"
+
+msgid "Data not valid: all variables are collinear"
+msgstr "数据无效：所有变量共线"
+
+#, fuzzy
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
+msgstr "最大观测到的特征值等于"
 
 msgid "Component Loadings"
 msgstr "成分载荷"
+
+msgid "Applied rotation method is %s."
+msgstr "应用的旋转方法为%s."
 
 msgid "Component Characteristics"
 msgstr "成分特征"
@@ -573,6 +593,10 @@ msgstr "碎石图"
 
 msgid "Component"
 msgstr "成分"
+
+#, fuzzy
+#~ msgid "Eigenvalues"
+#~ msgstr "特征值"
 
 #~ msgid "Std. Est. (%s)"
 #~ msgstr "Std. Est. (%s)"

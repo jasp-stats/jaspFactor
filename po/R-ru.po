@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2024-11-02 03:32\n"
+"POT-Creation-Date: 2025-06-07 03:40\n"
 "PO-Revision-Date: 2025-04-14 14:03+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
-"jaspfactor-r/ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/jaspfactor-"
+"r/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,25 +34,6 @@ msgstr ""
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a square matrix! Please check the format of "
-"the input data."
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "All cells must be numeric."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
 
 #, fuzzy
@@ -392,24 +373,32 @@ msgstr ""
 msgid "Coefficient %s"
 msgstr ""
 
-msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr "Указано слишком много факторов (%i) для переменных"
-
-msgid "Not enough valid cases (%i) to run this analysis"
-msgstr "Недостаточно существующих случаев (%i) для выполнения этого анализа"
-
-msgid "Data not valid: variance is zero in each row"
-msgstr "Недопустимые данные: дисперсия равна нулю в каждой строке"
-
-msgid "Data not valid: there are more variables than observations"
-msgstr "Недопустимые данные: переменных больше, чем наблюдений"
-
-msgid "Data not valid: too many missing values in variable(s) %s."
+msgid "Column name %s already exists in the dataset"
 msgstr ""
-"Недопустимые данные: слишком много пропущенных значений в переменной(ых) %s."
 
-msgid "Data not valid: all variables are collinear"
-msgstr "Недопустимые данные: все переменные коллинеарны"
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
+msgstr ""
+"К сожалению, расчет полихорической/тетрахорической корреляционной матрицы не "
+"удался.\n"
+"Это может быть связано с небольшим размером выборки или наличием переменных "
+"с пропущенными значениями.\n"
+"Сообщение об ошибке: %s"
+
+#, fuzzy
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
+msgstr ""
+"К сожалению, расчет полихорической/тетрахорической корреляционной матрицы не "
+"удался.\n"
+"Это может быть связано с небольшим размером выборки или наличием переменных "
+"с пропущенными значениями.\n"
+"Сообщение об ошибке: %s"
 
 #, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
@@ -418,18 +407,9 @@ msgstr "Не удалось выполнить оценку. Внутренне�
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Не удалось выполнить оценку. Внутреннее сообщение об ошибке: %s"
 
-msgid ""
-"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
-"matrix failed.\n"
-"      This might be due to a small sample size or variables not containing "
-"all response categories.\n"
-"      Internal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
-"К сожалению, расчет полихорической/тетрахорической корреляционной матрицы не "
-"удался.\n"
-"Это может быть связано с небольшим размером выборки или наличием переменных "
-"с пропущенными значениями.\n"
-"Сообщение об ошибке: %s"
+"Не удалось выполнить параллельный анализ. Внутреннее сообщение об ошибке: %s"
 
 #, fuzzy
 msgid ""
@@ -464,8 +444,11 @@ msgstr ""
 "Предполагается, что асимметрия соответствует с Chi ^ 2-распределению, а "
 "эксцесс - нормальному распределению."
 
+msgid "Anti-Image Correlation Matrix"
+msgstr ""
+
 #, fuzzy
-msgid "Chi-squared Test"
+msgid "Chi-Squared Test"
 msgstr "Критерий X^2"
 
 msgid "Degrees of freedom below 0, model is unidentified."
@@ -486,7 +469,8 @@ msgstr "Уникальность"
 msgid "No rotation method applied."
 msgstr "Метод вращения не применялся."
 
-msgid "Applied rotation method is %s."
+#, fuzzy
+msgid "Applied rotation method is %1$s."
 msgstr "Применяемый метод вращения равен %s."
 
 msgid "Factor Loadings (Structure Matrix)"
@@ -496,18 +480,14 @@ msgid "Factor Characteristics"
 msgstr "Характеристики факторов"
 
 #, fuzzy
-msgid "Eigenvalues"
-msgstr "Собственное значение"
-
-#, fuzzy
 msgid "Unrotated solution"
 msgstr "Решение без вращения"
 
 msgid "Rotated solution"
 msgstr "Решение с вращением"
 
-msgid "SumSq. Loadings"
-msgstr "Сумма квадратов нагрузок"
+msgid "Eigenvalue"
+msgstr "Собственное значение"
 
 msgid "Proportion var."
 msgstr "Доля дисп."
@@ -515,6 +495,9 @@ msgstr "Доля дисп."
 #, fuzzy
 msgid "Cumulative"
 msgstr "Кумулятивная доля дисп."
+
+msgid "SumSq. Loadings"
+msgstr "Сумма квадратов нагрузок"
 
 msgid "Factor Correlations"
 msgstr "Корреляции факторов"
@@ -580,22 +563,60 @@ msgstr "Данные"
 msgid "Simulated data from parallel analysis"
 msgstr "Смоделированные данные из параллельного анализа"
 
-msgid "Eigenvalue"
-msgstr "Собственное значение"
-
 #, fuzzy
 msgid "Path Diagram"
 msgstr "Диаграмма путей"
 
-msgid "Column name %s already exists in the dataset"
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
 msgstr ""
 
-msgid "Parallel analysis failed. Internal error message: %s"
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
 msgstr ""
-"Не удалось выполнить параллельный анализ. Внутреннее сообщение об ошибке: %s"
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+#, fuzzy
+msgid "Too many %1$s requested (%2$i) for the amount of included variables"
+msgstr "Указано слишком много факторов (%i) для переменных"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "Недостаточно существующих случаев (%i) для выполнения этого анализа"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "Недопустимые данные: дисперсия равна нулю в каждой строке"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr "Недопустимые данные: переменных больше, чем наблюдений"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr ""
+"Недопустимые данные: слишком много пропущенных значений в переменной(ых) %s."
+
+msgid "Data not valid: all variables are collinear"
+msgstr "Недопустимые данные: все переменные коллинеарны"
+
+#, fuzzy
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
+msgstr "Максимальное наблюдаемое собственное значение равно"
 
 msgid "Component Loadings"
 msgstr "Компонентные нагрузки"
+
+msgid "Applied rotation method is %s."
+msgstr "Применяемый метод вращения равен %s."
 
 msgid "Component Characteristics"
 msgstr "Характеристики компонентов"
@@ -608,6 +629,10 @@ msgstr "График каменистой осыпи"
 
 msgid "Component"
 msgstr "Компонент"
+
+#, fuzzy
+#~ msgid "Eigenvalues"
+#~ msgstr "Собственное значение"
 
 #~ msgid "Std. Est. (%s)"
 #~ msgstr "Стд. оц. (%s)"

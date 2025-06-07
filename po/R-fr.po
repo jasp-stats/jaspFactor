@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2024-11-02 03:32\n"
+"POT-Creation-Date: 2025-06-07 03:40\n"
 "PO-Revision-Date: 2024-05-19 20:45+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -33,25 +33,6 @@ msgstr ""
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a square matrix! Please check the format of "
-"the input data."
-msgstr ""
-
-msgid ""
-"Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "All cells must be numeric."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
@@ -382,26 +363,20 @@ msgstr ""
 msgid "Coefficient %s"
 msgstr ""
 
-msgid "Too many factors requested (%i) for the amount of included variables"
-msgstr "Trop de facteurs demandés (%i) pour le nombre de variables incluses"
-
-msgid "Not enough valid cases (%i) to run this analysis"
-msgstr "Pas suffisamment de cas valide (%i) pour effectuer cette analyse"
-
-msgid "Data not valid: variance is zero in each row"
-msgstr "Données pas valides : variance est zéro pour chaque rangée"
-
-msgid "Data not valid: there are more variables than observations"
+msgid "Column name %s already exists in the dataset"
 msgstr ""
-"Données pas valides : il y a plus de variables qu'il y a d'observations"
 
-msgid "Data not valid: too many missing values in variable(s) %s."
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
 msgstr ""
-"Données pas valides : il y a trop de données manquantes dans la ou les "
-"variable(s) %s."
 
-msgid "Data not valid: all variables are collinear"
-msgstr "Données pas valides : toutes les variables sont collinéaires"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
+msgstr ""
 
 #, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
@@ -410,12 +385,7 @@ msgstr "Échec d'estimation. Message d'erreur interne : %s. %s"
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Échec d'estimation. Message d'erreur interne : %s"
 
-msgid ""
-"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
-"matrix failed.\n"
-"      This might be due to a small sample size or variables not containing "
-"all response categories.\n"
-"      Internal error message: %s"
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
 msgid ""
@@ -451,7 +421,11 @@ msgstr ""
 "La statistique de l'asymétrie est présumée être distribuée selon la loi du "
 "Chi^2 et celle de l'aplatissement selon la loi normale."
 
-msgid "Chi-squared Test"
+msgid "Anti-Image Correlation Matrix"
+msgstr ""
+
+#, fuzzy
+msgid "Chi-Squared Test"
 msgstr "Test du Chi-carré"
 
 msgid "Degrees of freedom below 0, model is unidentified."
@@ -473,7 +447,8 @@ msgstr "Caractère unique"
 msgid "No rotation method applied."
 msgstr "Aucune méthode de rotation appliquée."
 
-msgid "Applied rotation method is %s."
+#, fuzzy
+msgid "Applied rotation method is %1$s."
 msgstr "La méthode de rotation appliquée est %s."
 
 msgid "Factor Loadings (Structure Matrix)"
@@ -482,24 +457,23 @@ msgstr ""
 msgid "Factor Characteristics"
 msgstr "Caractéristiques du facteur"
 
-#, fuzzy
-msgid "Eigenvalues"
-msgstr "Eigenvalue"
-
 msgid "Unrotated solution"
 msgstr "Solution sans rotation"
 
 msgid "Rotated solution"
 msgstr "Solution avec rotation"
 
-msgid "SumSq. Loadings"
-msgstr ""
+msgid "Eigenvalue"
+msgstr "Eigenvalue"
 
 msgid "Proportion var."
 msgstr "Proportion var."
 
 msgid "Cumulative"
 msgstr "Cumulatif"
+
+msgid "SumSq. Loadings"
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr ""
@@ -558,20 +532,60 @@ msgstr "Données"
 msgid "Simulated data from parallel analysis"
 msgstr ""
 
-msgid "Eigenvalue"
-msgstr "Eigenvalue"
-
 msgid "Path Diagram"
 msgstr ""
 
-msgid "Column name %s already exists in the dataset"
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
 msgstr ""
 
-msgid "Parallel analysis failed. Internal error message: %s"
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data."
+msgstr ""
+
+msgid "Grouping variable not supported for covariance matrix input"
+msgstr ""
+
+msgid "Mean structure not supported for covariance matrix input"
+msgstr ""
+
+msgid "All cells must be numeric."
+msgstr ""
+
+#, fuzzy
+msgid "Too many %1$s requested (%2$i) for the amount of included variables"
+msgstr "Trop de facteurs demandés (%i) pour le nombre de variables incluses"
+
+msgid "Not enough valid cases (%i) to run this analysis"
+msgstr "Pas suffisamment de cas valide (%i) pour effectuer cette analyse"
+
+msgid "Data not valid: variance is zero in each row"
+msgstr "Données pas valides : variance est zéro pour chaque rangée"
+
+msgid "Data not valid: there are more variables than observations"
+msgstr ""
+"Données pas valides : il y a plus de variables qu'il y a d'observations"
+
+msgid "Data not valid: too many missing values in variable(s) %s."
+msgstr ""
+"Données pas valides : il y a trop de données manquantes dans la ou les "
+"variable(s) %s."
+
+msgid "Data not valid: all variables are collinear"
+msgstr "Données pas valides : toutes les variables sont collinéaires"
+
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr ""
 
 msgid "Component Loadings"
 msgstr ""
+
+msgid "Applied rotation method is %s."
+msgstr "La méthode de rotation appliquée est %s."
 
 msgid "Component Characteristics"
 msgstr "Caractéristiques des composantes"
@@ -584,6 +598,10 @@ msgstr ""
 
 msgid "Component"
 msgstr "Composante"
+
+#, fuzzy
+#~ msgid "Eigenvalues"
+#~ msgstr "Eigenvalue"
 
 #~ msgid ""
 #~ "The estimator is %1$s and the test statistic is %2$s because there are "

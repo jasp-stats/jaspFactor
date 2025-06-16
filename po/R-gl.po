@@ -395,7 +395,7 @@ msgid ""
 "range of response categories. Internal error message: %2$s"
 msgstr ""
 "Por desgraza, fallou a estimación da matriz de correlacións policórica/"
-"tetracórica. Isto pode deberse a non conter a(s) variable(s) todas as "
+"tetracórica. Isto pode deberse a non conter a(s) variable(s) %1$s todas as "
 "categorías de resposta. Mensaxe de fallo interno: %2$s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"

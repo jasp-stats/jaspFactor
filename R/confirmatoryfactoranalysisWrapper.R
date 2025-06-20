@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2024 University of Amsterdam
+# Copyright (C) 2013-2025 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,11 +15,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# This is a generated file. Don't change it
+# This is a generated file. Don't change it!
 
+#' confirmatoryFactorAnalysis
+#'
+#' @param addFactorScoresToData, Adds the estimated factor scores as new columns to the data set
+#'    Defaults to \code{FALSE}.
 confirmatoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.19.2",
+          version = "0.95",
+          addFactorScoresToData = FALSE,
+          addFactorScoresToDataPrefix = "FS",
           ave = FALSE,
           bartlettTest = FALSE,
           bootstrapSamples = 1000,
@@ -46,7 +52,7 @@ confirmatoryFactorAnalysis <- function(
           modelIdentification = "markerVariable",
           modificationIndices = FALSE,
           modificationIndicesCutoff = 3.84,
-          naAction = "listwise",
+          naAction = "fiml",
           packageMimiced = "lavaan",
           pathPlot = FALSE,
           pathPlotFontSize = 0.9,
@@ -66,7 +72,7 @@ confirmatoryFactorAnalysis <- function(
           sampleSize = 200,
           scalingParamaters = TRUE,
           seType = "default",
-          secondOrder = list(types = list(), value = NULL),
+          secondOrder = list(types = list(), value = list()),
           standardized = "none",
           thresholds = TRUE) {
 
@@ -79,9 +85,14 @@ confirmatoryFactorAnalysis <- function(
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
+
+   if (!jaspBase::jaspResultsCalledFromJasp() && !is.null(data)) {
+      jaspBase::storeDataSet(data)
+   }
+
    optionsWithFormula <- c("estimator", "factors", "group", "invarianceTesting", "modelIdentification", "naAction", "packageMimiced", "residualsCovarying", "seType", "secondOrder")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
-   return(jaspBase::runWrappedAnalysis("jaspFactor::confirmatoryFactorAnalysis", data, options, version))
+   return(jaspBase::runWrappedAnalysis("jaspFactor", "confirmatoryFactorAnalysis", "ConfirmatoryFactorAnalysis.qml", options, version, TRUE))
 }

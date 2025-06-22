@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2025-06-07 03:40\n"
-"PO-Revision-Date: 2025-04-19 11:43+0000\n"
+"PO-Revision-Date: 2025-06-22 22:02+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "nl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 5.11.1-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 msgid "Second-Order"
 msgstr "Tweede-Orde"
@@ -35,6 +35,8 @@ msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
 msgstr ""
+"Niet meer gevallen dan het aantal variabelen. Hebben je gegevens een "
+"variantie-covariantiematrix?"
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr "FIML missende dataverwerking alleen beschikbaar met ML-type schatters"
@@ -77,11 +79,14 @@ msgstr "Het model kon niet worden geschat: Geen vrijheidsgraden over."
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
 msgstr ""
+"Bootstrapping is niet beschikbaar voor variantie-covariantie matrixinvoer."
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
 msgstr ""
+"Robuuste standaardfouten zijn niet beschikbaar voor variantie-"
+"covariantiematrixinvoer."
 
 msgid "# Factors"
 msgstr "# Factoren"
@@ -107,15 +112,15 @@ msgstr "Baseline model"
 msgid "Factor model"
 msgstr "Factor model"
 
-#, fuzzy
 msgid "%s You may consider changing the standard error method to 'robust'."
-msgstr "U kunt overwegen de standaardfoutmethode te wijzigen in \"robuust\"."
+msgstr ""
+"%s U kunt overwegen om de standaardfoutmethode te wijzigen in ‘robuust’."
 
 msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
-msgstr ""
+msgstr "%1$s De schatter is %2$s. De teststatistiek is %3$s."
 
 msgid "%1$s The standard error method is %2$s."
-msgstr ""
+msgstr "%1$s De standaardfoutmethode is %2$s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) toets"
@@ -238,9 +243,8 @@ msgstr ""
 "Niet alle bootstrap steekproeven waren succesvol. Betrouwbaarheidinterval is "
 "gebaseerd op %.0f steekproeven."
 
-#, fuzzy
 msgid "Std. estimate"
-msgstr "Schatting"
+msgstr "Std. schatting"
 
 msgid "Estimate"
 msgstr "Schatting"
@@ -368,29 +372,23 @@ msgstr "Coëfficiënt %s"
 msgid "Column name %s already exists in the dataset"
 msgstr "Kolomnaam %s bestaat al in de dataset"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This is likely due to a small sample size. Internal error "
 "message: %s"
 msgstr ""
-"Helaas, de schatting van de polychorische/tetrachorische correlatie matrix "
-"is mislukt.\n"
-"      Dit kan komen door de kleine steekproefomvang of variabelen die niet "
-"alle antwoordcategorieën bevatten.\n"
-"      Interne foutmelding: %s"
+"Helaas mislukte de schatting van de polychorische/tetrachorische "
+"correlatiematrix. Dit komt waarschijnlijk door een kleine steekproefomvang. "
+"Interne foutmelding: %s"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
 msgstr ""
-"Helaas, de schatting van de polychorische/tetrachorische correlatie matrix "
-"is mislukt.\n"
-"      Dit kan komen door de kleine steekproefomvang of variabelen die niet "
-"alle antwoordcategorieën bevatten.\n"
-"      Interne foutmelding: %s"
+"Helaas mislukte de schatting van de polychorische/tetrachorische "
+"correlatiematrix. Dit kan komen doordat variabele(n) %1$s niet het volledige "
+"bereik van antwoordcategorieën hebben. Interne foutmelding: %2$s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "Schatting mislukt. Interne foutmelding: %1$s. %2$s"
@@ -401,11 +399,12 @@ msgstr "Schatting mislukt. Interne foutmelding: %s"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Parallelle analyse mislukt. Interne foutmelding: %s"
 
-#, fuzzy
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "Maximaal geobserveerde eigenwaarde is gelijk aan"
+msgstr ""
+"Geen factoren met een eigenwaarde > %1$s. Maximale waargenomen eigenwaarde "
+"is gelijk aan %2$s."
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin toets"
@@ -433,9 +432,8 @@ msgstr ""
 "de statistiek voor kurtosis standaard normaal."
 
 msgid "Anti-Image Correlation Matrix"
-msgstr ""
+msgstr "Anti-Afbeelding Correlatie Matrix"
 
-#, fuzzy
 msgid "Chi-Squared Test"
 msgstr "Chikwadraattoets"
 
@@ -457,9 +455,8 @@ msgstr "Uniciteit"
 msgid "No rotation method applied."
 msgstr "Geen rotatiemethode toegepast."
 
-#, fuzzy
 msgid "Applied rotation method is %1$s."
-msgstr "Toegepaste rotatiemethode is %s."
+msgstr "Toegepaste rotatiemethode is %1$s."
 
 msgid "Factor Loadings (Structure Matrix)"
 msgstr "Factorladingen (Structuurmatrix)"
@@ -554,24 +551,27 @@ msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
 msgstr ""
+"De invoergegevens lijken geen vierkante matrix te zijn! Controleer het "
+"formaat van de invoergegevens."
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
 "of the input data."
 msgstr ""
+"De invoergegevens lijken geen symmetrische matrix te zijn! Controleer het "
+"formaat van de invoergegevens."
 
 msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
+msgstr "Groepsvariabele niet ondersteund voor covariantiematrixinvoer"
 
 msgid "Mean structure not supported for covariance matrix input"
-msgstr ""
+msgstr "Mean-structuur niet ondersteund voor covariantiematrixinvoer"
 
 msgid "All cells must be numeric."
-msgstr ""
+msgstr "Alle cellen moeten numeriek zijn."
 
-#, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
-msgstr "Teveel factoren gevraagd (%i) voor het aantal meegenomen variabelen"
+msgstr "Te veel %1$s aangevraagd (%2$i) voor het aantal opgenomen variabelen"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "Niet genoeg valide waarnemingen (%i) om de analyse uit te voeren"
@@ -588,11 +588,12 @@ msgstr "Data niet valide: teveel ontbrekende waarden in variabele(n) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Data niet valide: alle variabelen zijn collineair"
 
-#, fuzzy
 msgid ""
 "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "Maximaal geobserveerde eigenwaarde is gelijk aan"
+msgstr ""
+"Geen componenten met een eigenwaarde > %1$s. Maximale waargenomen "
+"eigenwaarde is gelijk aan %2$s."
 
 msgid "Component Loadings"
 msgstr "Componentladingen"

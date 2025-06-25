@@ -959,7 +959,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "8ece82653a1d7c03fde2cacdc59e5d81849b1c6f"
+      "RemoteSha": "707ee21791a5391bc9e1462cab986f1a69660d32"
     },
     "jpeg": {
       "Package": "jpeg",

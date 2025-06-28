@@ -237,7 +237,7 @@ msgid "Std. estimate"
 msgstr "Std. மதிப்பீடு"
 
 msgid "Estimate"
-msgstr "மதிப்பீடு"
+msgstr "மதிப்பிடு"
 
 msgid "Factor loadings"
 msgstr "காரணி ஏற்றுதல்"

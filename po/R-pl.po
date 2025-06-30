@@ -437,7 +437,7 @@ msgid "Anti-Image Correlation Matrix"
 msgstr "Macierz korelacji resztowych"
 
 msgid "Chi-Squared Test"
-msgstr "Test chi kwadrat"
+msgstr "Testy chi-kwadrat"
 
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "Liczba stopni swobody poniżej 0; model nie jest zdefiniowany."
@@ -457,7 +457,6 @@ msgstr "Swoistość"
 msgid "No rotation method applied."
 msgstr "Nie zastosowano rotacji."
 
-#, fuzzy
 msgid "Applied rotation method is %1$s."
 msgstr "Zastosowano metodę rotacji %s."
 
@@ -554,24 +553,32 @@ msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
 msgstr ""
+"Dane wejściowe nie wydają się być macierzą kwadratową. Proszę sprawdzić "
+"format danych wejściowych."
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
 "of the input data."
 msgstr ""
+"Dane wejściowe nie wydają się być macierzą symetryczną. Proszę sprawdzić "
+"format danych wejściowych."
 
 msgid "Grouping variable not supported for covariance matrix input"
 msgstr ""
+"Zmienna grupująca nie jest obsługiwana dla danych w postaci macierzy "
+"kowariancji"
 
 msgid "Mean structure not supported for covariance matrix input"
 msgstr ""
+"Struktura średnich nie jest obsługiwana dla danych w postaci macierzy "
+"kowariancji"
 
 msgid "All cells must be numeric."
-msgstr ""
+msgstr "Wszystkie komórki muszą zawierać wartości liczbowe."
 
-#, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
-msgstr "Zażądano zbyt wielu czynników (%i) dla dostępnej liczby zmiennych"
+msgstr ""
+"Zbyt wiele żądanych %1$s (%2$i) w stosunku do liczby uwzględnionych zmiennych"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "Zbyt mało ważnych obserwacji(%i), aby uruchomić tę analizę"
@@ -592,6 +599,8 @@ msgid ""
 "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
 msgstr ""
+"Brak składników o wartości własnej większej niż %1$s. Maksymalna "
+"zaobserwowana wartość własna wynosi %2$s."
 
 msgid "Component Loadings"
 msgstr "Ładunki czynnikowe"

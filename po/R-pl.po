@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
 "POT-Creation-Date: 2025-06-07 03:40\n"
-"PO-Revision-Date: 2025-06-01 21:05+0000\n"
+"PO-Revision-Date: 2025-06-30 11:54+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "pl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 msgid "Second-Order"
 msgstr "Drugi rząd"
@@ -35,6 +35,8 @@ msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
 msgstr ""
+"Liczba przypadków nie może być mniejsza niż liczba zmiennych. Czy Twoje dane "
+"to macierz wariancji-kowariancji?"
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
@@ -79,11 +81,15 @@ msgstr "Model nie mógł zostać oszacowany: brak wolnych stopni swobody."
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
 msgstr ""
+"Bootstrapping nie jest dostępny dla danych w postaci macierzy wariancji-"
+"kowariancji."
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
 msgstr ""
+"Odporne błędy standardowe nie są dostępne dla danych w postaci macierzy "
+"wariancji-kowariancji."
 
 msgid "# Factors"
 msgstr "# Czynniki"
@@ -109,16 +115,16 @@ msgstr "Model bazowy"
 msgid "Factor model"
 msgstr "Model czynnikowy"
 
-#, fuzzy
 msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
-"Należy rozważyć zmianę metody obliczania błędu standardowego na \"odporną\"."
+"%s Należy rozważyć zmianę metody obliczania błędu standardowego na "
+"\"odporną\"."
 
 msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
-msgstr ""
+msgstr "%1$s Estymator to %2$s. Statystyka testowa to %3$s."
 
 msgid "%1$s The standard error method is %2$s."
-msgstr ""
+msgstr "%1$s Metoda obliczania błędu standardowego: %2$s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Test Kaisera-Meyera-Olkina (KMO)"
@@ -240,9 +246,8 @@ msgstr ""
 "Nie wszystkie powtórzenia bootstrapowe zakończyły się powodzeniem: PU bazują "
 "na %.0f próbkach."
 
-#, fuzzy
 msgid "Std. estimate"
-msgstr "Oszacowanie"
+msgstr "Estymator stand."
 
 msgid "Estimate"
 msgstr "Oszacowanie"
@@ -368,7 +373,7 @@ msgid "Coefficient %s"
 msgstr "Współczynnik %s"
 
 msgid "Column name %s already exists in the dataset"
-msgstr ""
+msgstr "Nazwa kolumny %s już istnieje w zbiorze danych."
 
 #, fuzzy
 msgid ""

@@ -1027,17 +1027,17 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
-msgstr "附加各成分得分於原始資料檔中"
+msgstr "附加各成分之得分至原始資料檔中"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add FA scores to data"
-msgstr "附加各因素得分於原始資料檔中"
+msgstr "附加各因素之得分至原始資料檔中"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Adds the estimated component/factor scores as new columns to the data set. "
 "The scores are regression scores."
-msgstr ""
+msgstr "將估計出的成分得分/因素得分新增為資料集中的新欄位。這些分數為迴歸分數。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1101,7 +1101,7 @@ msgstr "附加各因素之得分至原始資料檔中"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
-msgstr ""
+msgstr "將估計出的因素得分新增為資料集中的新欄位"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"

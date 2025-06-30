@@ -373,31 +373,24 @@ msgid "Coefficient %s"
 msgstr "Współczynnik %s"
 
 msgid "Column name %s already exists in the dataset"
-msgstr "Nazwa kolumny %s już istnieje w zbiorze danych."
+msgstr "Nazwa kolumny %s już istnieje w zbiorze danych"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This is likely due to a small sample size. Internal error "
 "message: %s"
 msgstr ""
-"Oszacowanie matrycy korelacji polichorycznej/tetrachorycznej nie powiodło "
-"się.\n"
-"      Może być to spowodowane zbyt małą wielkością próby lub zmienne nie "
-"zawierają wszystkich kategorii odpowiedzi.\n"
-"      Oznaczenie błędu: %s"
+"Estymacja macierzy korelacji poli-/tetrachoricznych nie powiodła się. "
+"Prawdopodobną przyczyną jest zbyt mała liczebność próby. Komunikat błędu: %s"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
 msgstr ""
-"Oszacowanie matrycy korelacji polichorycznej/tetrachorycznej nie powiodło "
-"się.\n"
-"      Może być to spowodowane zbyt małą wielkością próby lub zmienne nie "
-"zawierają wszystkich kategorii odpowiedzi.\n"
-"      Oznaczenie błędu: %s"
+"Estymacja macierzy korelacji poli-/tetrachoricznych nie powiodła się. "
+"Przyczyną może być to, że zmienne %1$s nie obejmują pełnego zakresu "
+"kategorii odpowiedzi. Komunikat błędu: %2$s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "Operacja nie udała się. Wiadomość błędu: %1$s. %2$s"
@@ -412,6 +405,8 @@ msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
 msgstr ""
+"Brak czynników z wartością własną większą niż %1$s. Maksymalna zaobserwowana "
+"wartość własna wynosi %2$s."
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Test KMO"
@@ -439,9 +434,8 @@ msgstr ""
 "normalny."
 
 msgid "Anti-Image Correlation Matrix"
-msgstr ""
+msgstr "Macierz korelacji resztowych"
 
-#, fuzzy
 msgid "Chi-Squared Test"
 msgstr "Test chi kwadrat"
 

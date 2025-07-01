@@ -756,19 +756,16 @@ msgstr ""
 "z analizy równoległej na losowych danych. Metoda te jest wybrana domyślnie. "
 "Może opierać się na wartościach własnych głównych składowych (PC) lub "
 "czynników (FA). Domyślnie ziarno generatora zostało ustalone (na 1234), aby "
-"zachować powtarzalność wyników analizy."
+"zachować powtarzalność wyników"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on PC"
 msgstr "W oparciu o główne składowe"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr "W oparciu o czynniki"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues"
 msgstr "Wartości własne"
@@ -778,13 +775,13 @@ msgid ""
 "Components are selected when they have a certain eigenvalue. By default "
 "components are selected that have an eigenvalue above 1."
 msgstr ""
+"Składniki są wybierane, gdy ich wartość własna przekracza określony próg. "
+"Domyślnie wybierane są składniki o wartości własnej powyżej 1."
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
 msgstr "Wartości własne powyżej"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Manual"
 msgstr "Ręcznie"
@@ -794,64 +791,61 @@ msgid ""
 "The number of components can be specified manually. By default this is set "
 "to 1."
 msgstr ""
+"Liczbę składników można określić ręcznie. Domyślnie ustawiona jest wartość 1."
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of components"
 msgstr "Liczba składowych"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of factors"
 msgstr "Liczba czynników"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Output Options"
 msgstr "Opcje wyników"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
-msgstr ""
+msgstr "Dodatkowe opcje wyników dla analizy PCA/EFA."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
 msgstr "Wyświetl ładunki powyżej"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
-msgstr ""
+msgstr "Ładunki poniżej tej wartości nie będą wyświetlane w tabeli wyników."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Order Loadings By"
-msgstr ""
+msgstr "Sortuj ładunki według"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Either order the loadings by their size from large to small, or by "
 "variables, meaning according to their occurence in the variables list."
 msgstr ""
+"Ładunki mogą być posortowane według ich wielkości od największych do "
+"najmniejszych lub według zmiennych, czyli zgodnie z ich kolejnością na "
+"liście zmiennych."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
-msgstr ""
+msgstr "Rozmiar"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
 msgstr "Zmienne"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
 msgstr "Tabele"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
-msgstr ""
+msgstr "Wyświetl dodatkowe tabele w wynikach."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Structure matrix"
 msgstr "Macierz struktury"
@@ -861,13 +855,13 @@ msgid ""
 "An item by factor structure matrix. This is just the loadings (pattern) "
 "matrix times the factor intercorrelation matrix."
 msgstr ""
+"Macierz struktury pozycja × czynnik. To macierz ładunków (wzorcowa) "
+"pomnożona przez macierz korelacji między czynnikami."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
 msgstr "Korelacje składowych"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
 msgstr "Korelacje pomiędzy czynnikami"

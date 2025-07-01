@@ -652,7 +652,7 @@ msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
 msgstr ""
-"Wykonaj analizę czynnikową metodą minimalnych reszt (minres) z "
+"Wykonuje analizę czynnikową metodą minimalnych reszt (minres) z "
 "wykorzystaniem pierwszej pochodnej."
 
 msgctxt "PcaEfaAnalysisOptions|"
@@ -661,7 +661,7 @@ msgstr "Największa wiarygodność"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr "Wykonaj analizę czynnikową metodą największej wiarygodności (ML)."
+msgstr "Wykonuje analizę czynnikową metodą największej wiarygodności (ML)."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
@@ -669,7 +669,7 @@ msgstr "Osie główne"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr "Wykonaj analizę czynnikową metodą głównych czynników (PA)."
+msgstr "Wykonuje analizę czynnikową metodą głównych czynników (PA)."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
@@ -685,11 +685,11 @@ msgstr ""
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
-msgstr "Ważone najmniejszee kwadraty"
+msgstr "Ważone najmniejsze kwadraty"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
-msgstr ""
+msgstr "Wykonuje analizę metodą ważonych najmniejszych kwadratów (WLS)."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -997,7 +997,6 @@ msgid ""
 "correlation matrix is unlike the identity matrix."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Mardia's test"
 msgstr "Test Mardii"
@@ -1011,7 +1010,7 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr ""
+msgstr "Macierz korelacji resztowych"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""

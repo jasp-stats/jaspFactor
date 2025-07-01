@@ -1068,7 +1068,7 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
-msgstr "Załącz ładunki czynnikowe"
+msgstr "Dołącz ładunki czynnikowe"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add FA scores to data"

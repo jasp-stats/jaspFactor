@@ -657,7 +657,7 @@ msgstr ""
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
-msgstr "Największej wiarygodności"
+msgstr "Największa wiarygodność"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
@@ -665,27 +665,27 @@ msgstr "Wykonaj analizę czynnikową metodą największej wiarygodności (ML)."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
-msgstr "Osi głównych (PA)"
+msgstr "Osie główne"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
 msgstr "Wykonaj analizę czynnikową metodą głównych czynników (PA)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
-msgstr "Metoda najmniejszych kwadratów"
+msgstr "Najmniejsze kwadraty"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
 msgstr ""
+"Minimalizuje macierz reszt za pomocą metody najmniejszych kwadratów (OLS), "
+"która jest wolniejsza, ale wykorzystuje empiryczną pierwszą pochodną."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
-msgstr "Ważona metoda najmniejszych kwadratów"
+msgstr "Ważone najmniejszee kwadraty"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."

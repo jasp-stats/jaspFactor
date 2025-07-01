@@ -864,15 +864,16 @@ msgstr "Korelacje składowych"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
-msgstr "Korelacje pomiędzy czynnikami"
+msgstr "Korelacje czynników"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "When selecting this option, a table with the correlations between the "
 "components/factors will be displayed."
 msgstr ""
+"Po zaznaczeniu tej opcji zostanie wyświetlona tabela z korelacjami między skł"
+"adnikami/czynnikami."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional fit indices"
 msgstr "Dodatkowe miary dopasowania"
@@ -883,8 +884,10 @@ msgid ""
 "with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
 "Information Criterion (BIC) to test the fit of the model."
 msgstr ""
+"Ta opcja wyświetla pierwiastek błędu średniokwadratowego (RMSEA) z 90% "
+"przedziałem ufności, wskaźnik Tuckera-Lewisa (TLI) oraz informacyjny "
+"kryterium Bayesa (BIC)."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Residual matrix"
 msgstr "Macierz reszt"
@@ -892,8 +895,8 @@ msgstr "Macierz reszt"
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
 msgstr ""
+"Wyświetla tabelę zawierającą wariancje resztowe oraz korelacje resztowe."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
 msgstr "Analiza równoległa"
@@ -905,27 +908,28 @@ msgid ""
 "eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
 "parallel analysis for determining the number of components/factors above."
 msgstr ""
+"Po zaznaczeniu tej opcji zostanie wygenerowana tabela z szczegółowymi "
+"wynikami analizy równoległej. Może ona opierać się na wartościach własnych "
+"komponentów głównych (PC) lub czynników (FA). Ziarno generatora jest "
+"pobierane z analizy równoległej, która określa liczbę składników/czynników "
+"powyżej."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on PC"
 msgstr "W oparciu o główne składowe"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr "W oparciu o czynniki"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
 msgstr "Wykresy"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
-msgstr ""
+msgstr "Wyświetla wykresy."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Path diagram"
 msgstr "Diagram ścieżkowy"
@@ -935,8 +939,9 @@ msgid ""
 "By selecting this option, a visual representation of the direction and "
 "strength of the relation between the variable and factor will be displayed."
 msgstr ""
+"Po zaznaczeniu tej opcji zostanie wyświetlona wizualizacja kierunku i siły "
+"związku między zmienną a czynnikiem."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Scree plot"
 msgstr "Wykres osypiska"
@@ -948,8 +953,11 @@ msgid ""
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
 msgstr ""
+"Po zaznaczeniu tej opcji zostanie wyświetlony wykres osypiska (scree plot). "
+"Wykres ten przedstawia, jaka część wariancji danych, wskazywana przez "
+"wartość własną, jest wyjaśniana przez każdy czynnik. Wykres osypiska może "
+"być używany do ustalenia liczby czynników."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis results"
 msgstr "Wyniki analizy równoległej"
@@ -960,8 +968,10 @@ msgid ""
 "analysis will be based on PC or FA as defined by the option for the parallel "
 "analysis table."
 msgstr ""
+"Wyświetla wyniki analizy równoległej na wykresie osypiska. Analiza "
+"równoległa będzie oparta na komponentach głównych (PC) lub czynnikach (FA), "
+"zgodnie z ustawieniami dla tabeli analizy równoległej."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
 msgstr "Weryfikacja założeń"
@@ -971,8 +981,9 @@ msgid ""
 "Assumptions: The variables included in the analysis are correlated; the "
 "variables included in the analysis are linearly related (Shlens, 2014)"
 msgstr ""
+"Założenia: Zmienne uwzględnione w analizie są skorelowane, a zależność "
+"pomiędzy nimi jest liniowa (Shlens, 2014)."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "KMO test"
 msgstr "Test KMO"
@@ -984,8 +995,11 @@ msgid ""
 "sampling adequacy (MSA) as the proportion of common variance among variables "
 "is computed for all variables; values closer to 1 are desired."
 msgstr ""
+"Określa, jak dobrze zmienne nadają się do analizy czynnikowej, poprzez "
+"obliczenie udziału wariancji wspólnej między zmiennymi. Generuje wskaźnik "
+"adekwatności próby jako proporcję wariancji wspólnej obliczaną dla "
+"wszystkich zmiennych. Pożądane są wartości bliższe 1."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Bartlett's test"
 msgstr "Test Bartletta"
@@ -1020,16 +1034,14 @@ msgid ""
 "be redundant or have too much shared variance with other variables."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Missing Values"
 msgstr "Braki danych"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
-msgstr ""
+msgstr "Wybierz sposób obsługi braków danych."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases pairwise"
 msgstr "Wyklucz oddzielnie dla każdej analizy"
@@ -1042,10 +1054,9 @@ msgid ""
 "to include the case in the analysis. This option is selected by default."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases listwise"
-msgstr "Wyklucz obserwacje ze wszystkich analiz"
+msgstr "Wyklucz obserwacje"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -1055,7 +1066,6 @@ msgid ""
 "case in the analysis. "
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
 msgstr "Załącz ładunki czynnikowe"

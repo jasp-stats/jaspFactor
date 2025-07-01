@@ -691,14 +691,13 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
 msgstr "Wykonuje analizę metodą ważonych najmniejszych kwadratów (WLS)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
-msgstr "Uogólniona metoda najmniejszych kwadratów"
+msgstr "Uogólnione najmniejsze kwadraty"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "Wykonuje metodę uogólnioną najmniejszych kwadratów (GLS)."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -1010,7 +1009,7 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr "Odwrócona macierz korelacji"
+msgstr "Macierz przeciwobrazów korelacji"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""

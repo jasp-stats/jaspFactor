@@ -1163,19 +1163,20 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
 msgstr ""
 "Wstawia do zbioru danych oszacowane wartości ładunków czynników jako nowe "
-"kolumny."
+"kolumny"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Prefix"
-msgstr ""
+msgstr "Prefiks"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FS"
-msgstr ""
+msgstr "FS"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
 msgstr ""
+"W tym polu wybiera się zmienne, na których zostanie przeprowadzona analiza."
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""

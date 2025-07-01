@@ -1133,36 +1133,37 @@ msgid ""
 msgstr ""
 "Określa, czy dane mają postać surową — obserwacje w wierszach, a zmienne w "
 "kolumnach — czy też stanowią macierz wariancji-kowariancji. W tym drugim "
-"przypadku wymagane jest podanie liczby obserwacji."
+"przypadku wymagane jest podanie wielkości próby."
 
 msgctxt "PcaEfaVariables|"
 msgid "Raw"
-msgstr ""
+msgstr "Surowy"
 
 msgctxt "PcaEfaVariables|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "Macierz wariancji-kowariancji"
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Sample size"
 msgstr "Wielkość próby"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data Type"
-msgstr ""
+msgstr "Typ danych"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator\t             "
-msgstr ""
+msgstr "Estymator\t             "
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add factor scores to data"
-msgstr ""
+msgstr "Dołącz ładunki czynnikowe do danych"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
 msgstr ""
+"Wstawia do zbioru danych oszacowane wartości ładunków czynników jako nowe "
+"kolumny."
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Prefix"

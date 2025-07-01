@@ -633,44 +633,43 @@ msgstr ""
 "Do dekompozycji danych na składniki/czynniki użyta zostanie macierz "
 "korelacji polichorycznej/tekachorycznej. Metoda ta bywa niestabilna przy "
 "małej liczbie obserwacji oraz gdy niektóre zmienne nie zawierają wszystkich "
-"kategorii odpowiedzi."
+"kategorii odpowiedzi"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "Metoda faktoryzacji"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "Metoda faktoryzacji stosowana do dekompozycji."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
-msgstr "Minimalna reszta"
+msgstr "Minimalne reszty"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
 msgstr ""
+"Wykonaj analizę czynnikową metodą minimalnych reszt (minres) z "
+"wykorzystaniem pierwszej pochodnej."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
 msgstr "Metoda największej wiarygodności"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "Wykonaj analizę czynnikową metodą największej wiarygodności (ML)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
 msgstr "Metoda osi głównych (PAF)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "Wykonaj analizę czynnikową metodą głównych czynników (PA)."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"

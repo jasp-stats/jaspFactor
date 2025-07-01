@@ -693,13 +693,12 @@ msgstr "Wykonuje analizę metodą ważonych najmniejszych kwadratów (WLS)."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
-msgstr "Uogólnione najmniejsze kwadraty"
+msgstr "Uogólniona najmniejszych kwadratów"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
 msgstr "Wykonuje metodę uogólnioną najmniejszych kwadratów (GLS)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
 msgstr "Minimalne chi-kwadrat"
@@ -708,23 +707,24 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr ""
+"Minimalizuje ważoną statystykę chi-kwadrat, wykorzystując korelacje na "
+"danych z brakami usuwanymi parami."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
 msgstr "Minimalna ranga"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "Wykonuje analizę czynnikową metodą minimalnej rangi (minrank)."
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
-msgstr ""
+msgstr "Liczba składników"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Factors"
-msgstr ""
+msgstr "Liczba czynników"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid ""

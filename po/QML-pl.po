@@ -720,7 +720,7 @@ msgstr "Wykonuje analizę czynnikową metodą minimalnej rangi (minrank)."
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
-msgstr "Liczba składników"
+msgstr "Liczba składowych"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Factors"
@@ -731,12 +731,13 @@ msgid ""
 "Here, the number of components/factors that are used in the analysis is "
 "determined. Several methods to determine this number can be chosen from:"
 msgstr ""
+"Tutaj określa się liczbę składowych/czynników używanych w analizie. Można "
+"wybrać spośród kilku metod ustalania tej liczby:"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
-msgstr ""
+msgstr "W oparciu o"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "Analiza równoległa"
@@ -750,6 +751,12 @@ msgid ""
 "A seed (1234) is chosen by default so that the results from the parallel "
 "analysis are equal across the PCA"
 msgstr ""
+"Składowe/czynniki są wybierane na podstawie analizy równoległej. Metoda ta "
+"wybiera czynniki o wartościach własnych większych niż średnia wartość własna "
+"z analizy równoległej na losowych danych. Metoda te jest wybrana domyślnie. "
+"Może opierać się na wartościach własnych głównych składowych (PC) lub "
+"czynników (FA). Domyślnie ziarno generatora zostało ustalone (na 1234), aby "
+"zachować powtarzalność wyników analizy."
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"

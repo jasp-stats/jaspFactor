@@ -657,7 +657,7 @@ msgstr ""
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
-msgstr "Metoda największej wiarygodności"
+msgstr "Największej wiarygodności"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
@@ -665,7 +665,7 @@ msgstr "Wykonaj analizę czynnikową metodą największej wiarygodności (ML)."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
-msgstr "Metoda osi głównych (PAF)"
+msgstr "Osi głównych (PA)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."

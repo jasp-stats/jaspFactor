@@ -1010,7 +1010,7 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr "Macierz korelacji resztowych"
+msgstr "Odwrócona macierz korelacji"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""

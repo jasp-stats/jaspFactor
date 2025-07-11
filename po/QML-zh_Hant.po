@@ -1090,7 +1090,7 @@ msgstr "樣本數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data Type"
-msgstr "資料 型態"
+msgstr "資料型態"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator\t             "

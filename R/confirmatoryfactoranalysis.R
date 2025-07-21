@@ -228,10 +228,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   cfaResult <- list()
 
-  cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
+  cfaResult[["spec"]] <- jaspSem:::.cfaCalcSpecs(dataset, options)
   # Recalculate the model
 
-  modObj <- .optionsToCFAMod(options, dataset, cfaResult)
+  modObj <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult)
   mod <- modObj$model
   cfaResult[["model"]] <- mod
   cfaResult[["model_simple"]] <- modObj$simple_model
@@ -1413,7 +1413,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaSyntax <- function(jaspResults, options, dataset, cfaResult) {
   if (is.null(cfaResult) || !options$lavaanSyntax || !is.null(jaspResults[["syntax"]])) return()
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
+  mod <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
 
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
@@ -1558,76 +1558,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["resRelTable"]] <- relTable
 
 }
-
-# delete once jaspSem is merged
-lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) {
-  # Run bootstrap, track progress with progress bar
-  # Notes: faulty runs are simply ignored
-  # recommended: add a warning if not all boot samples are successful
-  # fit <- lavBootstrap(fit, samples = 1000)
-  # if (nrow(fit@boot$coef) < 1000)
-  #  tab$addFootnote(gettextf("Not all bootstrap samples were successful: CI based on %.0f samples.", nrow(fit@boot$coef)),
-  #                  "<em>Note.</em>")
-
-
-  coef_with_callback <- function(lav_object) {
-    # Progress bar is ticked every time coef() is evaluated, which happens once on the main object:
-    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L107
-    # and then every time on a successful bootstrap:
-    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L375
-    # i.e., samples + 1 times
-    progressbarTick()
-
-    return(lavaan::coef(lav_object))
-  }
-
-  coef_with_callback_std <- function(lav_object, typeStd) {
-    std <- lavaan::standardizedSolution(lav_object, type = typeStd)
-    out <- std$est.std
-
-    progressbarTick()
-
-    return(out)
-  }
-
-  startProgressbar(samples + 1)
-
-  if (!standard) {
-    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coef_with_callback)
-  } else {
-    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coef_with_callback_std, typeStd = typeStd)
-  }
-
-  # Add the bootstrap samples to the fit object
-  fit@boot       <- list(coef = bootres)
-  fit@Options$se <- "bootstrap"
-
-  # exclude error bootstrap runs
-  err_id <- attr(fit@boot$coef, "error.idx")
-  if (length(err_id) > 0L) {
-    fit@boot$coef <- fit@boot$coef[-err_id, , drop = FALSE]
-  }
-
-  # we actually need the SEs from the bootstrap not the SEs from ML or something
-  N <- nrow(fit@boot$coef)
-
-  # we multiply the var by (n-1)/n because lavaan actually uses n for the variance instead of n-1
-  if (!standard) {
-    # for unstandardized
-    fit@ParTable$se[fit@ParTable$free != 0] <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
-  } else {
-    fit@ParTable$se <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
-    # the standardized solution gives all estimates not only the unconstrained, so we need to change
-    # the free prameters in the partable and also change the estimate
-    fit@ParTable$free <- seq_len(ncol(fit@boot$coef))
-    std <- lavaan::standardizedSolution(fit, type = typeStd)
-    fit@ParTable$est <- std$est.std
-  }
-
-
-  return(fit)
-}
-
 
 .cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {
 

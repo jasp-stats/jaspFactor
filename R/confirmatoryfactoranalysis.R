@@ -228,10 +228,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   cfaResult <- list()
 
-  cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
+  cfaResult[["spec"]] <- jaspSem:::.cfaCalcSpecs(dataset, options)
   # Recalculate the model
 
-  modObj <- .optionsToCFAMod(options, dataset, cfaResult)
+  modObj <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult)
   mod <- modObj$model
   cfaResult[["model"]] <- mod
   cfaResult[["model_simple"]] <- modObj$simple_model
@@ -1439,7 +1439,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaSyntax <- function(jaspResults, options, dataset, cfaResult) {
   if (is.null(cfaResult) || !options$lavaanSyntax || !is.null(jaspResults[["syntax"]])) return()
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
+  mod <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
 
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
@@ -1584,7 +1584,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["resRelTable"]] <- relTable
 
 }
-
 
 .cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {
 

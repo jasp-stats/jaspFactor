@@ -348,11 +348,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       .quitAnalysis(gettext("Bootstrapping is not available for variance-covariance matrix input."))
     }
 
-    # cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
-    #                                             standard = options[["standardized"]] != "none", typeStd = type)
+    cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
+                                                standard = options[["standardized"]] != "none", typeStd = type)
 
-    cfaResult[["lav"]] <- lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
-                                       standard = options[["standardized"]] != "none", typeStd = type)
   }
 
   # Save cfaResult as state so it's available even when opts don't change
@@ -1561,67 +1559,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
   jaspResults[["resRelTable"]] <- relTable
 
-}
-
-# delete this once jaspSem is merged
-lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL, iseed = NULL) {
-
-  coefWithCallback <- function(lav_object) {
-    # Progress bar is ticked every time coef() is evaluated, which happens once on the main object:
-    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L107
-    # and then every time on a successful bootstrap:
-    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L375
-    # i.e., samples + 1 times
-    progressbarTick()
-    return(lavaan::coef(lav_object))
-  }
-
-  coefWithCallbackStd <- function(lav_object, typeStd) {
-    std <- lavaan::standardizedSolution(lav_object, type = typeStd)
-    out <- std$est.std
-
-    progressbarTick()
-
-    return(out)
-  }
-
-  startProgressbar(samples + 1)
-
-  if (!standard) {
-    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coefWithCallback, iseed = iseed)
-  } else {
-    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coefWithCallbackStd, typeStd = typeStd, iseed = iseed)
-  }
-
-  # Add the bootstrap samples to the fit object
-  fit@boot       <- list(coef = bootres)
-  fit@Options$se <- "bootstrap"
-
-  # exclude error bootstrap runs
-  errId <- attr(fit@boot$coef, "error.idx")
-  if (length(errId) > 0L) {
-    fit@boot$coef <- fit@boot$coef[-errId, , drop = FALSE]
-  }
-
-  # we actually need the SEs from the bootstrap not the SEs from ML or some other estimator
-  N <- nrow(fit@boot$coef)
-  P <- ncol(fit@boot$coef)
-  freePars <- which(fit@ParTable$free != 0)
-
-  # we multiply the var by (n-1)/n because lavaan actually uses n for the variance instead of n-1
-  if (!standard) {
-    # for unstandardized
-    fit@ParTable$se[freePars] <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
-  } else {
-    # when there are contraints the parameterestimates() function expects a boot sample for the free parameters only
-    fit@ParTable$se[1:P] <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
-    fit@boot$coef <- fit@boot$coef[, freePars, drop = FALSE]
-    std <- lavaan::standardizedSolution(fit, type = typeStd)
-    # for the standardized output we also replace some constrained elements
-    fit@ParTable$est[1:P] <- std$est.std
-  }
-
-  return(fit)
 }
 
 

@@ -125,7 +125,7 @@
     },
     "RUnit": {
       "Package": "RUnit",
-      "Version": "0.4.33",
+      "Version": "0.4.33.1",
       "Source": "Repository",
       "Requirements": [
         "graphics",
@@ -136,7 +136,7 @@
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.0.14",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Requirements": [
         "methods",
@@ -176,7 +176,7 @@
     },
     "Rcsdp": {
       "Package": "Rcsdp",
-      "Version": "0.1.57.5",
+      "Version": "0.1.57.6",
       "Source": "Repository",
       "Requirements": [
         "methods"
@@ -551,7 +551,7 @@
     },
     "evaluate": {
       "Package": "evaluate",
-      "Version": "1.0.3",
+      "Version": "1.0.4",
       "Source": "Repository",
       "Requirements": [
         "R"
@@ -1303,7 +1303,7 @@
     },
     "pbapply": {
       "Package": "pbapply",
-      "Version": "1.7-2",
+      "Version": "1.7-4",
       "Source": "Repository",
       "Requirements": [
         "parallel",
@@ -1318,7 +1318,7 @@
     },
     "pillar": {
       "Package": "pillar",
-      "Version": "1.10.2",
+      "Version": "1.11.0",
       "Source": "Repository",
       "Requirements": [
         "cli",
@@ -1413,7 +1413,7 @@
     },
     "psych": {
       "Package": "psych",
-      "Version": "2.5.3",
+      "Version": "2.5.6",
       "Source": "Repository",
       "Requirements": [
         "GPArotation",
@@ -1429,7 +1429,7 @@
     },
     "purrr": {
       "Package": "purrr",
-      "Version": "1.0.4",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Requirements": [
         "cli",

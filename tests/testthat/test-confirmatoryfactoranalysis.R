@@ -1010,3 +1010,4 @@ test_that("Chi-square test table results match", {
   jaspTools::expect_equal_tables(table,
                                  list(957.769050808683, 72, "Baseline model", "", 164.102830926985,
                                       60, "Factor model", 0.0000000000129614097232889))
+})

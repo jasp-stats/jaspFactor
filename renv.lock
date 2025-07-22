@@ -389,7 +389,7 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.8",
+      "Version": "2.1.8.1",
       "Source": "Repository",
       "Requirements": [
         "R",

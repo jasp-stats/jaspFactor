@@ -25,6 +25,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # Read dataset
   dataset <- .cfaHandleData(dataset, options)
 
+  # temporary fix
+  options <- .temporaryHandleResidualCorrelations(dataset, options)
+
   # Error checking
   errors <- .cfaCheckErrors(dataset, options)
 
@@ -107,6 +110,28 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   return(dataset)
 
 }
+
+.temporaryHandleResidualCorrelations <- function(dataset, options) {
+  # right now the residual correlations variables are read always as scale-level variables, so when
+  # the actual data variables are ordinal, the preloadData assumes they are new variables and does not
+  # recognize them as the same variables as are already in the factorsForm
+  # so we match them as decoded names with the data variables
+
+  if (length(options[["residualsCovarying"]]) > 0) {
+
+    dataColNamesEncoded <- colnames(dataset)
+    dataColNamesDecoded <- decodeColNames(dataColNamesEncoded)
+
+    for (i in 1:length(options[["residualsCovarying"]])) {
+      oNames <- decodeColNames(options[["residualsCovarying"]][[i]])
+      pos <- which(dataColNamesDecoded %in% oNames)
+      options[["residualsCovarying"]][[i]] <- dataColNamesEncoded[pos]
+    }
+  }
+
+  return(options)
+}
+
 
 
 .cfaCheckErrors <- function(dataset, options) {
@@ -441,7 +466,11 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (length(options$residualsCovarying) > 0) {
     rc <- "# Residual Correlations"
     for (rcv in options$residualsCovarying) {
-      rc <- paste0(rc, "\n", rcv[1], " ~~ ", rcv[2])
+      if (length(rcv) > 1) {
+        rc <- paste0(rc, "\n", rcv[1], " ~~ ", rcv[2])
+      } else {
+        rc <- paste(rc, "")
+      }
     }
   } else {
     rc <- NULL

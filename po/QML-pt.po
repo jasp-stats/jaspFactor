@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-08-06 07:43+0000\n"
+"Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
 "X-Language: pt\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -463,7 +469,6 @@ msgid ""
 "Rotation ensures a simpler understanding of the data structure."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Orthogonal"
 msgstr "Ortogonal"
@@ -474,7 +479,6 @@ msgid ""
 "there are several possibilities that can be selected."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "none"
 msgstr "nenhum"
@@ -511,7 +515,6 @@ msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique"
 msgstr "Oblíqua"
@@ -568,7 +571,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Correlation matrix"
 msgstr "Matriz de correlação"
@@ -578,7 +580,6 @@ msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
 msgstr "Matriz de covariância"
@@ -607,7 +608,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
 msgstr "Resíduo mínimo"
@@ -618,7 +618,6 @@ msgid ""
 "derivative."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
 msgstr "Máxima verossimilhança"
@@ -627,7 +626,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
 msgstr "Fatoração do eixo principal"
@@ -636,7 +634,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
 msgstr "Mínimos quadrados ordinários"
@@ -647,7 +644,6 @@ msgid ""
 "empirical first derivative."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
 msgstr "Mínimos quadrados ponderados"
@@ -656,7 +652,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
 msgstr "Mínimos quadrados generalizados"
@@ -665,7 +660,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
 msgstr "Qui-quadrado mínimo"
@@ -675,7 +669,6 @@ msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
 msgstr "Classificação mínima"
@@ -702,7 +695,6 @@ msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "Análise paralela"
@@ -725,7 +717,6 @@ msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues"
 msgstr "Autovalores"
@@ -736,12 +727,10 @@ msgid ""
 "components are selected that have an eigenvalue above 1."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
 msgstr "Autovalores acima"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Manual"
 msgstr "Manual"
@@ -752,20 +741,17 @@ msgid ""
 "to 1."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of components"
 msgstr "Número de componentes"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of factors"
 msgstr "Número de fatores"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Output Options"
-msgstr "Opções de saída"
+msgstr "Opções de Saída"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
@@ -793,12 +779,10 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
 msgstr "Variáveis"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
 msgstr "Tabelas"
@@ -807,7 +791,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Structure matrix"
 msgstr "Matriz de estrutura"
@@ -822,7 +805,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
 msgstr "Correlação de fatores"
@@ -833,7 +815,6 @@ msgid ""
 "components/factors will be displayed."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional fit indices"
 msgstr "Índices de ajuste adicionais"
@@ -853,7 +834,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
 msgstr "Análise paralela"
@@ -874,16 +854,14 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
-msgstr "Diagramas"
+msgstr "Gráficos"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Path diagram"
 msgstr "Diagrama de caminhos"
@@ -894,7 +872,6 @@ msgid ""
 "strength of the relation between the variable and factor will be displayed."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Scree plot"
 msgstr "Gráfico de sedimentação"
@@ -918,7 +895,6 @@ msgid ""
 "analysis table."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
 msgstr "Verificação dos pressupostos"
@@ -929,7 +905,6 @@ msgid ""
 "variables included in the analysis are linearly related (Shlens, 2014)"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "KMO test"
 msgstr "Teste KMO"
@@ -942,7 +917,6 @@ msgid ""
 "is computed for all variables; values closer to 1 are desired."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Bartlett's test"
 msgstr "Teste de Bartlett"
@@ -977,16 +951,14 @@ msgid ""
 "be redundant or have too much shared variance with other variables."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Missing Values"
-msgstr "Valores ausentes"
+msgstr "Valores Ausentes"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases pairwise"
 msgstr "Excluir casos em pares"
@@ -999,7 +971,6 @@ msgid ""
 "to include the case in the analysis. This option is selected by default."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases listwise"
 msgstr "Excluir casos em lista"
@@ -1012,7 +983,6 @@ msgid ""
 "case in the analysis. "
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
 msgstr "Adicionar pontuações de PC aos dados"
@@ -1039,7 +1009,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Variables"
 msgstr "Variáveis"

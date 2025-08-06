@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2025-06-07 03:40\n"
-"PO-Revision-Date: 2025-08-04 22:02+0000\n"
+"PO-Revision-Date: 2025-08-06 03:01+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/pt/>\n"
@@ -43,18 +43,26 @@ msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
+"O tratamento de dados ausentes FIML está disponível apenas com estimadores "
+"do tipo ML"
 
 msgid ""
 "Robust standard errors are not available with the GLS estimator. Try "
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
 msgstr ""
+"Erros padrões robustos não estão disponíveis no estimador MQG. Tente alterar "
+"o método de cálculo do erro padrão nas opções 'Avançadas' para se ajustar ao "
+"modelo."
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
 msgstr ""
+"O tratamento de dados ausentes '%s' não é suportado para dados categóricos.\n"
+"Por favor, selecione outro método em 'Tratamento de dados ausentes' na aba "
+"de opções 'Avançado'"
 
 msgid ""
 "The model could not be estimated. Error message: \n"
@@ -76,11 +84,15 @@ msgstr "O modelo não pode ser estimado: sem graus de liberdade restantes."
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
 msgstr ""
+"Bootstrapping não está disponível para a entrada da matriz de variância-"
+"covariância."
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
 msgstr ""
+"Erros padrões robustos não estão disponíveis para a entrada da matriz de "
+"variância-covariância."
 
 msgid "# Factors"
 msgstr "# de Fatores"
@@ -89,7 +101,7 @@ msgid "Model fit"
 msgstr "Ajuste do modelo"
 
 msgid "Chi-square test"
-msgstr "Teste qui-quadrado"
+msgstr "Teste Qui-Quadrado"
 
 msgid "Model"
 msgstr "Modelo"
@@ -179,7 +191,7 @@ msgid "Bollen's Relative Fit Index (RFI)"
 msgstr "Índice de ajuste relativo de Bollen (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr "Bollen's Incremental Fit Index (IFI)"
+msgstr "Índice de ajuste incremental de Bollen (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
 msgstr "Índice relativo de não-centralidade (RNI)"
@@ -231,16 +243,14 @@ msgstr ""
 "Nem todas as amostras de bootstrap foram bem sucedidas: IC com base em %.0f "
 "amostras."
 
-#, fuzzy
 msgid "Std. estimate"
-msgstr "Estimativa"
+msgstr "Estimativa Pad."
 
 msgid "Estimate"
 msgstr "Estimativa"
 
-#, fuzzy
 msgid "Factor loadings"
-msgstr "Cargas do fator"
+msgstr "Cargas fatoriais"
 
 msgid "Group"
 msgstr ""
@@ -308,7 +318,6 @@ msgstr "EPC"
 msgid "Second-order cross-loadings"
 msgstr "Cargas cruzadas de segunda ordem"
 
-#, fuzzy
 msgid "Modification indices"
 msgstr "Índices de modificação"
 
@@ -355,7 +364,7 @@ msgid "Heterotrait-monotrait ratio"
 msgstr ""
 
 msgid "Reliability"
-msgstr ""
+msgstr "Confiabilidade"
 
 msgid "Coefficient %s"
 msgstr ""
@@ -391,9 +400,8 @@ msgstr ""
 "Nenhum fator com autovalor > %1$s. O autovalor máximo observado é igual a "
 "%2$s."
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
-msgstr "Teste Kaiser-Meyer-Olkin"
+msgstr "Teste de Kaiser-Meyer-Olkin"
 
 msgid "Overall MSA"
 msgstr "MSA geral"
@@ -418,9 +426,8 @@ msgstr ""
 msgid "Anti-Image Correlation Matrix"
 msgstr ""
 
-#, fuzzy
 msgid "Chi-Squared Test"
-msgstr "Teste qui-quadrado"
+msgstr "Teste Qui-quadrado"
 
 msgid "Degrees of freedom below 0, model is unidentified."
 msgstr "Graus de liberdade abaixo de 0, modelo não identificado."
@@ -440,9 +447,8 @@ msgstr "Singularidade"
 msgid "No rotation method applied."
 msgstr "Nenhum método de rotação foi aplicado."
 
-#, fuzzy
 msgid "Applied rotation method is %1$s."
-msgstr "O método de rotação aplicado é %s."
+msgstr "O método de rotação aplicado é %1$s."
 
 msgid "Factor Loadings (Structure Matrix)"
 msgstr "Cargas dos fatores (Matriz estruturada)"
@@ -548,10 +554,9 @@ msgstr ""
 msgid "All cells must be numeric."
 msgstr ""
 
-#, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
 msgstr ""
-"Muitos fatores solicitados (%i) para a quantidade de variáveis incluídas"
+"Muitos fatores solicitados (%2$i) para a quantidade de variáveis incluídas"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "Não há casos válidos suficientes (%i) para executar esta análise"
@@ -581,9 +586,8 @@ msgstr "Cargas dos componentes"
 msgid "Applied rotation method is %s."
 msgstr "O método de rotação aplicado é %s."
 
-#, fuzzy
 msgid "Component Characteristics"
-msgstr "Características do fator"
+msgstr "Características do Componente"
 
 msgid "Component Correlations"
 msgstr "Correlações de componentes"

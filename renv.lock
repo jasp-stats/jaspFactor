@@ -468,7 +468,7 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.8",
+      "Version": "2.1.8.1",
       "Source": "Repository",
       "Requirements": [
         "graphics",
@@ -1068,8 +1068,7 @@
         "SEMsens"
       ],
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "juliuspfadt",
+      "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
       "RemoteSha": "5d787a50ed9cfe40ac08f98411ccbe6cec2b012d"
     },

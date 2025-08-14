@@ -59,13 +59,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!ready) return()
 
   if (options[["dataType"]] == "raw") {
+    dataset <- dataset[, unlist(options[["variables"]])] # reorder the columns to equal the order in the variables list, otherwise they will be sorted somewhat alphabetically
     if (options[["naAction"]] == "listwise") {
       dataset <- dataset[complete.cases(dataset), ]
-      dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
-      return(dataset)
-    } else {
-      return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
     }
+    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
+    return(dataset)
   } else { # if variance covariance matrix as input
     columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
     # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,

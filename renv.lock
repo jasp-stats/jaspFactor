@@ -2892,7 +2892,8 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
       "RemoteRef": "master",
-      "RemoteSha": "e721a631c8357d42c1371a978db7cb5765bc7044"
+      "RemoteSha": "c0e432beff14069454c53d611fdcc063184b4c68",
+      "RemoteHost": "api.github.com"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -2923,10 +2924,11 @@
         "SEMsens"
       ],
       "RemoteType": "github",
-      "RemoteUsername": "jasp-stats",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "juliuspfadt",
       "RemoteRepo": "jaspSem",
-      "RemoteRef": "master",
-      "RemoteSha": "3f9adf12219141b612f72e6e97c05041fca27a5f",
+      "RemoteRef": "df8af7f556a16a2de4ddfa50b3f100d4717d43d3",
+      "RemoteSha": "df8af7f556a16a2de4ddfa50b3f100d4717d43d3",
       "Remotes": "jasp-stats/jaspBase, jasp-stats/jaspGraphs"
     },
     "jaspTools": {

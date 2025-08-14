@@ -1046,7 +1046,9 @@
       "RemoteType": "github",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-      "RemoteSha": "db2ef8b8a74c9ce63a11002f3dd32073d67b18ad"
+      "RemoteRef": "master",
+      "RemoteSha": "c0e432beff14069454c53d611fdcc063184b4c68",
+      "RemoteHost": "api.github.com"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -1068,9 +1070,48 @@
         "SEMsens"
       ],
       "RemoteType": "github",
-      "RemoteUsername": "jasp-stats",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "juliuspfadt",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "5d787a50ed9cfe40ac08f98411ccbe6cec2b012d"
+      "RemoteRef": "df8af7f556a16a2de4ddfa50b3f100d4717d43d3",
+      "RemoteSha": "df8af7f556a16a2de4ddfa50b3f100d4717d43d3",
+      "Remotes": "jasp-stats/jaspBase, jasp-stats/jaspGraphs"
+    },
+    "jaspTools": {
+      "Package": "jaspTools",
+      "Version": "0.20.0",
+      "Source": "GitHub",
+      "Type": "Package",
+      "Title": "Helps Preview and Debug JASP Analyses",
+      "Authors@R": "c( person(\"Tim\", \"de Jong\", role = \"aut\"), person(\"Don\", \"van den Bergh\", role = c(\"ctb\", \"cre\"), email = \"d.vandenbergh@uva.nl\"))",
+      "Maintainer": "Don van den Bergh <d.vandenbergh@uva.nl>",
+      "Description": "This package assists JASP developers when writing R code. It removes the necessity of building JASP every time a change is made. Rather, analyses can be called directly in R and be debugged interactively.",
+      "License": "GNU General Public License",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "Imports": [
+        "archive (>= 1.1.6)",
+        "data.table",
+        "httr",
+        "jsonlite",
+        "lifecycle",
+        "pkgload",
+        "remotes",
+        "rjson",
+        "stringi",
+        "stringr",
+        "testthat (>= 3.0.3)",
+        "vdiffr (>= 1.0.7)"
+      ],
+      "RoxygenNote": "7.3.2",
+      "Roxygen": "list(markdown = TRUE)",
+      "Author": "Tim de Jong [aut], Don van den Bergh [ctb, cre]",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspTools",
+      "RemoteRef": "master",
+      "RemoteSha": "8a5cf998d43d08f0925ae7bb6083242e0bc6e0ce"
     },
     "jpeg": {
       "Package": "jpeg",

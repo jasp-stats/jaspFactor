@@ -3,6 +3,7 @@ on:
     paths: ['**.R', 'tests/**', '**.Rd', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win', '**.yml']
   pull_request:
     paths: ['**.R', 'tests/**', '**.Rd', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win']
+  workflow_dispatch:
   schedule:
     - cron:  '13 12 * * 1-5'
 
@@ -15,4 +16,4 @@ jobs:
     uses: jasp-stats/jasp-actions/.github/workflows/unittests.yml@master
     with:
       needs_JAGS:   false
-      needs_igraph: true
+      needs_igraph: false

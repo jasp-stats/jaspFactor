@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-08-25 03:01+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.13\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -445,23 +451,22 @@ msgstr "樣本數"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Analysis Options"
-msgstr ""
+msgstr "分析選項"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Here, options for the analysis can be specified."
-msgstr ""
+msgstr "這裡可以指定分析的選項。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Rotation Method"
-msgstr ""
+msgstr "轉軸方式"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Here, the rotation method to apply to the components can be specified. "
 "Rotation ensures a simpler understanding of the data structure."
-msgstr ""
+msgstr "這裡可以指定應用於各成分的旋轉方法。旋轉能夠讓資料結構的理解更加簡單明確。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Orthogonal"
 msgstr "直交"
@@ -560,11 +565,11 @@ msgstr ""
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "依據...，而分解資料"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "將資料分解而成為萃取成分／因素時所依據的基礎。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -600,11 +605,11 @@ msgstr ""
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "萃取方法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "用於分解資料的因素萃取方法。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -685,7 +690,7 @@ msgstr ""
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
-msgstr ""
+msgstr "成分的個數"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Factors"
@@ -695,11 +700,11 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Here, the number of components/factors that are used in the analysis is "
 "determined. Several methods to determine this number can be chosen from:"
-msgstr ""
+msgstr "這裡將決定在分析中所使用的成分／因素數量。可從多種方法中選擇來決定這個數量："
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
-msgstr ""
+msgstr "基於何種方法："
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -774,25 +779,26 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "負荷量高於此數值，才予以顯示"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
-msgstr ""
+msgstr "低於此數值的負荷量將不會顯示在輸出表格中。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Order Loadings By"
-msgstr ""
+msgstr "負荷量將依據...排序"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Either order the loadings by their size from large to small, or by "
 "variables, meaning according to their occurence in the variables list."
-msgstr ""
+msgstr "可以將負荷量依大小由大到小排序，或依變數排序，也就是按照變數清單中的出現順序"
+"排列。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
-msgstr ""
+msgstr "負荷量大小"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -974,7 +980,7 @@ msgstr ""
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr ""
+msgstr "反映像相關矩陣"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""

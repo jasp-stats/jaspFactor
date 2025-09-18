@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-15 00:01+0000\n"
-"Last-Translator: hakan dokumuş <dokumushakan@gmail.com>\n"
+"PO-Revision-Date: 2025-09-19 21:01+0000\n"
+"Last-Translator: Tahir Enes Gedik <tegedik@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/tr/>\n"
 "Language: tr\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Faktör varyansları"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"

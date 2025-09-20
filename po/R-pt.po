@@ -576,7 +576,7 @@ msgstr "Todas as células devem ser numéricas."
 
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
 msgstr ""
-"Muitos fatores solicitados (%2$i) para a quantidade de variáveis incluídas"
+"Muitos fatores %1$s solicitados (%2$i) para a quantidade de variáveis incluídas"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "Não há casos válidos suficientes (%i) para executar esta análise"

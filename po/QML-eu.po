@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-22 08:01+0000\n"
+"PO-Revision-Date: 2025-09-23 14:14+0000\n"
 "Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/eu/>\n"
@@ -294,12 +294,11 @@ msgstr "Lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr "Bootstrap"
+msgstr "Bootstrapa"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr "Datuak falta direnean kudeatzea"
+msgstr "Falta diren datuak kudeatzea"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
@@ -754,7 +753,6 @@ msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "Analisi paraleloa"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Components/factors are selected on the basis of parallel analysis. With this "
@@ -769,14 +767,12 @@ msgstr ""
 "balio propio paraleloa baino handiagoa denean. Metodo hau lehenespenez "
 "hautatzen da. Osagai nagusien balio propioetan (PC) edo faktoreen balio "
 "propioetan (FA) oinarritu daiteke. Hazi bat (1234) lehenespenez hautatzen "
-"da, analisi paraleloaren emaitzak PCA osoan berdinak izan daitezen."
+"da, analisi paraleloaren emaitzak PCA osoan berdinak izan daitezen"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on PC"
 msgstr "PC-n oinarrituta"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr "FA-n oinarrituta"
@@ -969,7 +965,7 @@ msgid ""
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
 msgstr ""
-"Aukera hau hautatzean, harri grafiko??(scree plot) ???  bat bistaratuko da. "
+"Aukera hau hautatzean, harri grafiko??(scree plot) ??? bat bistaratuko da. "
 "Grafikoak faktore bakoitzak datuetan zenbat aldakuntza azaltzen duen "
 "informazioa ematen du, Eigen balioak adierazita. Grafiko bat erabil daiteke "
 "zenbat faktore hautatu behar diren erabakitzeko."

@@ -181,10 +181,10 @@ msgid "Root mean square error of approximation (RMSEA)"
 msgstr "Hurbilketaren erro karratu ertainaren errorea (RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr "RMSEA %90eko CI beheko muga"
+msgstr "RMSEA %%90eko CI beheko muga"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr "RMSEA %90eko CI goiko muga"
+msgstr "RMSEA %%90eko CI goiko muga"
 
 msgid "RMSEA p-value"
 msgstr "RMSEA p-balioa"
@@ -478,7 +478,7 @@ msgid "RMSEA"
 msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
-msgstr "RMSEA %90eko konfiantza"
+msgstr "RMSEA %%90eko konfiantza"
 
 msgid "SRMR"
 msgstr "SRMR"

@@ -1,0 +1,1217 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-09-23 14:14+0000\n"
+"Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/eu/>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Factor"
+msgstr "Factorea"
+
+msgctxt "Description|"
+msgid "Principal Component Analysis"
+msgstr "Osagai Nagusien Analisia"
+
+msgctxt "Description|"
+msgid "Exploratory Factor Analysis"
+msgstr "Faktoreen Analisia Esploratzailea"
+
+msgctxt "Description|"
+msgid "Confirmatory Factor Analysis"
+msgstr "Faktoreen Analisia Berreslea"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order Factor"
+msgstr "Bigarren Mailako Faktorea"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Second-Order"
+msgstr "Bigarren Mailako"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model Options"
+msgstr "Eredu Aukerak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Include mean structure"
+msgstr "Batez besteko egitura sartu"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Assume factors uncorrelated"
+msgstr "Faktoreak korrelaziorik gabe daudela suposatu"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix exogenous covariates"
+msgstr "Kobariante exogenoak konpondu??"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Factor variances"
+msgstr "Faktoreen bariantzak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Marker variable"
+msgstr "Markatzaile aldagaia"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Effects coding"
+msgstr "Efektuen kodeketa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual Covariances"
+msgstr "Hondar Kobariantziak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional Output"
+msgstr "Emaitza Gehigarria"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Additional fit measures"
+msgstr "Egokitzapen neurri gehigarriak??"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "R-Squared"
+msgstr "R-Karratua"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Implied covariance matrix"
+msgstr "Kobariantza matrizea inplizitua"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual covariance matrix"
+msgstr "Hondarren kobariantza matrizea"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Modification indices"
+msgstr "Aldaketa indizeak"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Cutoff"
+msgstr "Ebakidura??"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show lavaan syntax"
+msgstr "Erakutsi lavaan sintaxia"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Multigroup CFA"
+msgstr "Talde anitzeko FAB (CFA)"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Grouping variable"
+msgstr "Taldekatze aldagaia"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Invariance testing"
+msgstr "Aldaezintasun-probak?"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Configural"
+msgstr "Konfiguragarria?"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Metric"
+msgstr "Metrikoa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Scalar"
+msgstr "Eskalarra"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Strict"
+msgstr "Zortza"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Plots"
+msgstr "Grafikoak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Misfit plot"
+msgstr "Desegokitze grafikoa?"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model plot"
+msgstr "Eredu grafikoa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardized"
+msgstr "Estandarizatua"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show means"
+msgstr "Erakutsi batez bestekoak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Advanced"
+msgstr "Aurreratua"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "None"
+msgstr "Bat ere ez"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mplus"
+msgstr "Mplus"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "EQS"
+msgstr "EQS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard"
+msgstr "Estandarra"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust"
+msgstr "Sendoa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ML"
+msgstr "ML"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "GLS"
+msgstr "GLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLS"
+msgstr "WLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULS"
+msgstr "ULS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DWLS"
+msgstr "DWLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standardization"
+msgstr "Estandarizazioa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Latents"
+msgstr "Latenteak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "All"
+msgstr "Guztiak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Options"
+msgstr "Aukerak"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix manifest intercepts to zero"
+msgstr "Manifestuaren ebakidurak?? zerora finkatu"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix latent intercepts to zero"
+msgstr "Latentearen ebakidurak??? zerora finkatu"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Omit residual single indicator"
+msgstr "Hondar-adierazle bakarra ezabatzen"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Residual variances"
+msgstr "Hondar-bariantziak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate exogenous latents"
+msgstr "Kanpoko latenteak korrelazionatzen"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add thresholds"
+msgstr "Gehitu atalaseak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add scalings parameters"
+msgstr "Gehitu eskalatze-parametroak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Correlate dependent variables"
+msgstr "Korrelatu menpeko aldagaiak"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variables"
+msgstr "Aldagaiak"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variables"
+msgstr "Aldagaiak"
+
+msgctxt "Description|"
+msgid "Explore hidden structure in the data"
+msgstr "Arakatu datuetako egitura ezkutua"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Font size"
+msgstr "Letra-tamaina"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show variances"
+msgstr "Bariantzak erakutsi"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Rotate plot"
+msgstr "Grafikoa biratu"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
+msgstr "Parametroen estimazioak erakutsi"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model identification"
+msgstr "Ereduaren identifikazioa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr "Kaiser-Meyer-Olkin (KMO) testa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bartlett's test of sphericity"
+msgstr "Bartlett-en esferizitate testa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Lavaan"
+msgstr "Lavaan"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap"
+msgstr "Bootstrapa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Missing data handling"
+msgstr "Falta diren datuak kudeatzea"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FIML"
+msgstr "FIML"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Listwise deletion"
+msgstr "Zerrendaka ezabatzea"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Pairwise"
+msgstr "Bikoteka"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Two-stage"
+msgstr "Bi etapa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust two-stage"
+msgstr "Bi etapa sendoa"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No Exogenous Covariates"
+msgstr "Kobariante Exogenorik Ez"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Average variance extracted (AVE)"
+msgstr "Ateratako batez besteko bariantza (ABB)(AVE)"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Heterotrait-monotrait ratio (HTMT)"
+msgstr "Heteroezaugarri-monoezaugarri ratioa (HMR) (HTMT)"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Reliability"
+msgstr "Fidagarritasuna"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix mean of manifest intercepts to zero"
+msgstr "Ageriko ebakiduren? batez bestekoa zerora finkatu"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Structural"
+msgstr "Egiturazko"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Raw"
+msgstr "Gordina"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr "Bariantza-kobariantza matrizea"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Sample size"
+msgstr "Laginaren tamaina"
+
+#, fuzzy
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic"
+msgstr "Mimika?"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Default"
+msgstr "Lehenetsia"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DLS"
+msgstr "DLS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "PML"
+msgstr "PML"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLM"
+msgstr "MLM"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLMV"
+msgstr "MLMV"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLMVS"
+msgstr "MLMVS"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLF"
+msgstr "MLF"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLR"
+msgstr "MLR"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLSM"
+msgstr "WLSM"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLSMV"
+msgstr "WLSMV"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULSM"
+msgstr "ULSM"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULSMV"
+msgstr "ULSMV"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Click for more information"
+msgstr "Egin klik informazio gehiago lortzeko"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard errors"
+msgstr "Errore estandarrak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "     Bootstrap samples"
+msgstr "     Bootstrap laginak"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "     CI level"
+msgstr "     KT maila"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Data"
+msgstr "Datuak"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Raw"
+msgstr "Gordina"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr "Bariantza-kobariantza matrizea"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Sample size"
+msgstr "Laginaren tamaina"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Data"
+msgstr "Datuak"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Raw"
+msgstr "Gordina"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr "Bariantza-kobariantza matrizea"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Sample size"
+msgstr "Laginaren tamaina"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Analysis Options"
+msgstr "Analisiaren Aukerak"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Here, options for the analysis can be specified."
+msgstr "Hemen, analisirako aukerak zehaztu daitezke."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Rotation Method"
+msgstr "Errotazio Metodoa"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Here, the rotation method to apply to the components can be specified. "
+"Rotation ensures a simpler understanding of the data structure."
+msgstr ""
+"Hemen, osagaiei aplikatuko zaien errotazio metodoa zehaztu daiteke. "
+"Errotazioak datu-egituraren ulermen errazagoa bermatzen du."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Orthogonal"
+msgstr "Ortogonala"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"This method produces components that are uncorrelated. For this method, "
+"there are several possibilities that can be selected."
+msgstr ""
+"Metodo honek korrelaziorik gabeko osagaiak sortzen ditu. Metodo honetarako, "
+"hainbat aukera hauta daitezke."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "none"
+msgstr "bat ere ez"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "No rotation method is selected."
+msgstr "Ez da biraketa-metodorik hautatu."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Maximizes the variance of squared loadings for each factor, simplifying "
+"interpretations."
+msgstr ""
+"Faktore bakoitzerako karratu-kargen bariantza maximizatzen du, "
+"interpretazioak sinplifikatuz."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Minimizes the number of factors needed to explain each variable, simplifying "
+"structure."
+msgstr ""
+"Aldagai bakoitza azaltzeko behar diren faktore kopurua minimizatzen du, "
+"egitura sinplifikatuz."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Orthogonal rotation method by Bentler, used for simplifying factor loadings."
+msgstr ""
+"Bentler-en biraketa ortogonalaren metodoa, faktoreen kargak sinplifikatzeko "
+"erabiltzen dena."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Combines Varimax and Quartimax to balance factor simplicity and variable "
+"explanations."
+msgstr ""
+"Varimax eta Quartimax konbinatzen ditu faktoreen sinpletasuna eta aldagaien "
+"azalpenak orekatzeko."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
+msgstr ""
+"Karga karratuen batura haztatua minimizatuz errotazio ortogonal bat "
+"aplikatzen du."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Oblique"
+msgstr "Zeiharra"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"This method produces components that allow for correlation between the "
+"components. This method is selected by default. Several possibilities are "
+"available. The default is promax."
+msgstr ""
+"Metodo honek osagaien arteko korrelazioa ahalbidetzen duten osagaiak sortzen "
+"ditu. Metodo hau lehenespenez hautatzen da. Hainbat aukera daude "
+"eskuragarri. Lehenespena promax da."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Starts with Varimax and applies a power transformation to allow correlated "
+"factors."
+msgstr ""
+"Varimax-ekin hasten da eta potentzia-eraldaketa bat aplikatzen du faktore "
+"korrelatuak ahalbidetzeko."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"An oblique rotation that minimizes the correlation among factors while "
+"allowing flexibility."
+msgstr ""
+"Faktoreen arteko korrelazioa minimizatzen duen zeihar errotazio bat, "
+"malgutasuna ahalbidetuz."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Aims to simplify factor loadings by minimizing nonzero entries."
+msgstr ""
+"Faktoreen kargak sinplifikatzea du helburu, zero ez diren sarrerak "
+"minimizatuz."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Oblique rotation by Bentler, simplifying factor correlations."
+msgstr ""
+"Bentler-en zeihar errotazioa, faktoreen korrelazioak sinplifikatzen dituena."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"An oblique rotation balancing between simple and interpretable factor "
+"loadings."
+msgstr ""
+"Faktore-karga sinple eta interpretagarrien arteko oreka duen errotazio "
+"zeihar bat."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Targets a cluster rotation for factor analysis, emphasizing group separation."
+msgstr ""
+"Faktore-analisirako kluster-errotazio bat du helburu, taldeen bereizketa "
+"azpimarratuz."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"An oblique version of Geomin, allowing factor correlations and reducing "
+"complex loadings."
+msgstr ""
+"Geomin-en bertsio zeihar bat, faktore-korrelazioak ahalbidetzen eta karga "
+"konplexuak murrizten dituena."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Base Decomposition on"
+msgstr "Deskonposizioa oinarritzat hartu???"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "What to base the decomposition of the data into components/factors on."
+msgstr "Datuen osagai/faktoreetan deskonposizioa zertan oinarritu."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Correlation matrix"
+msgstr "Korrelazio-matrizea"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"The correlation matrix is used to decompose the data into components/factors."
+msgstr ""
+"Korrelazio-matrizea datuak osagai/faktoreetan deskonposatzeko erabiltzen da."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Covariance matrix"
+msgstr "Kobariantza-matrizea"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"The covariance matrix is used to decompose the data into components/factors."
+msgstr ""
+"Kobariantza-matrizea datuak osagai/faktoreetan deskonposatzeko erabiltzen da."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Polychoric/tetrachoric correlation matrix"
+msgstr "Korrelazio-matrize polikoriko/tetrakorikoa"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"The polychoric/tetrachoric correlation matrix is used to decompose the data "
+"into components/factors. This is sometimes unstable when sample size is "
+"small and when some variables do not contain all response categories"
+msgstr ""
+"Korrelazio-matrize polikoriko/tetrakorikoa datuak osagai/faktoreetan "
+"deskonposatzeko erabiltzen da. Batzuetan ezegonkorra da laginaren tamaina "
+"txikia denean eta aldagai batzuek ez dituztenean erantzun-kategoria guztiak"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Factoring Method"
+msgstr "Faktorizazio-Metodoa"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Which factoring method to use for the decomposition."
+msgstr "Zein faktorizazio metodo erabili deskonposiziorako."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Minimum residual"
+msgstr "Hondar minimoa"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Perform a minimum residual factor analysis (minres) using the first "
+"derivative."
+msgstr ""
+"Egin hondar minimoaren faktore-analisi bat (minres) lehen deribatua erabiliz."
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Maximum likelihood"
+msgstr "Probabilitate?? maximoa"
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a maximum likelihood factor analysis (ml)."
+msgstr "Egin probabilitate maximoaren faktore-analisi bat (ml)."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Principal axis factoring"
+msgstr "Ardatz nagusien faktorizazioa"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a principal factor solution (pa)."
+msgstr "Egin faktore nagusiaren soluzio bat (pa)."
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Ordinary least squares"
+msgstr "Karratu minimo arruntak???"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Minimize the residual matrix using an OLS procedure, slower but uses the "
+"empirical first derivative."
+msgstr ""
+"Minimizatu hondar matrizea OLS prozedura bat erabiliz, motelagoa baina lehen "
+"deribatu enpirikoa erabiltzen duena."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Weighted least squares"
+msgstr "Karratu minimo haztatuak"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a weighted least squares (WLS) solution."
+msgstr "Karratu txikienen haztatutako (WLS) soluzio bat egin."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Generalized least squares"
+msgstr "Karratu txikienen orokortuak"
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a generalized least squares (GLS) solution."
+msgstr "Karratu txikienen orokortuen (GLS) soluzio bat egin."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Minimum chi-square"
+msgstr "Khi-karratu minimoa"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Minimize the sample size-weighted chi-square using pairwise correlations."
+msgstr ""
+"Laginaren tamainaren arabera haztatutako khi-karratua bikoteka korrelazioak "
+"erabiliz minimizatu."
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Minimum rank"
+msgstr "Maila?? minimoa"
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a minimum rank factor analysis (minrank)."
+msgstr "Maila minimoaren faktore-analisi bat egin (minirank)"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of Components"
+msgstr "Osagai kopurua"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of Factors"
+msgstr "Faktore kopurua"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"Here, the number of components/factors that are used in the analysis is "
+"determined. Several methods to determine this number can be chosen from:"
+msgstr ""
+"Hemen, analisian erabiltzen diren osagai/faktore kopurua zehazten da. "
+"Zenbaki hau zehazteko hainbat metodo aukera daitezke:"
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Based on"
+msgstr "Honen arabera"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Parallel analysis"
+msgstr "Analisi paraleloa"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"Components/factors are selected on the basis of parallel analysis. With this "
+"method, factors are selected when their eigenvalue is greater than the "
+"parallel average random eigenvalue. This method is selected by default. Can "
+"be based on principal component eigenvalues (PC) or factor eigenvalues (FA). "
+"A seed (1234) is chosen by default so that the results from the parallel "
+"analysis are equal across the PCA"
+msgstr ""
+"Osagaiak/faktoreak analisi paraleloaren arabera hautatzen dira. Metodo "
+"honekin, faktoreak hautatzen dira haien balio propioa ausazko batez besteko "
+"balio propio paraleloa baino handiagoa denean. Metodo hau lehenespenez "
+"hautatzen da. Osagai nagusien balio propioetan (PC) edo faktoreen balio "
+"propioetan (FA) oinarritu daiteke. Hazi bat (1234) lehenespenez hautatzen "
+"da, analisi paraleloaren emaitzak PCA osoan berdinak izan daitezen"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Based on PC"
+msgstr "PC-n oinarrituta"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Based on FA"
+msgstr "FA-n oinarrituta"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Eigenvalues"
+msgstr "Eigenbalioak"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"Components are selected when they have a certain eigenvalue. By default "
+"components are selected that have an eigenvalue above 1."
+msgstr ""
+"Osagaiak balio propio jakin bat dutenean hautatzen dira. Lehenespenez, 1etik "
+"gorako balio propioa duten osagaiak hautatzen dira."
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Eigenvalues above"
+msgstr "Eigenbalioak goian"
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Manual"
+msgstr "Eskuzkoa"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"The number of components can be specified manually. By default this is set "
+"to 1."
+msgstr "Osagaien kopurua eskuz zehaztu daiteke. Lehenespenez, hau 1 da."
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of components"
+msgstr "Osagaien kopurua"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of factors"
+msgstr "Faktoreen kopurua"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Output Options"
+msgstr "Emaitza Aukerak"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Additional output options for the PCA/EFA analysis."
+msgstr "PCA/EFA analisirako irteera aukera gehigarriak."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Display loadings above"
+msgstr "Kargak erakutsi goian"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Loadings below this value will not be displayed in the output table."
+msgstr "Balio honen azpitik dauden kargak ez dira irteera taulan bistaratuko."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Order Loadings By"
+msgstr "Kargak Ordenatu Honela"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Either order the loadings by their size from large to small, or by "
+"variables, meaning according to their occurence in the variables list."
+msgstr ""
+"Kargak tamainaren arabera ordenatu, handienetik txikienera, edo aldagaien "
+"arabera, hau da, aldagaien zerrendan duten agerpenaren arabera."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Size"
+msgstr "Tamaina"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Variables"
+msgstr "Aldagaiak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Tables"
+msgstr "Taulak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Display addition tables in the output."
+msgstr "Irteeran batuketa taulak erakutsi."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Structure matrix"
+msgstr "Egitura matrizea"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"An item by factor structure matrix. This is just the loadings (pattern) "
+"matrix times the factor intercorrelation matrix."
+msgstr ""
+"Faktore egitura matrizearen araberako elementu bat. Karga (eredu) matrizea "
+"bider faktoreen arteko korrelazio matrizea besterik ez da."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Component correlations"
+msgstr "Osagaien korrelazioak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Factor correlations"
+msgstr "Faktoreen korrelazioak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"When selecting this option, a table with the correlations between the "
+"components/factors will be displayed."
+msgstr ""
+"Aukera hau hautatzean, osagaien/faktoreen arteko korrelazioekin taula bat "
+"bistaratuko da."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Additional fit indices"
+msgstr "Egokitzapen indize gehigarriak"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"This option displays the Root Mean Squared Error of Approximation (RMSEA) "
+"with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
+"Information Criterion (BIC) to test the fit of the model."
+msgstr ""
+"Aukera honek % 90eko konfiantza-tartearekin Hurbilketaren Erro Batez Besteko "
+"Karratu Errorea (RMSEA), Tucker Lewis Indizea (TLI) eta Bayesiar Informazio "
+"Irizpidea (BIC) erakusten ditu ereduaren doikuntza probatzeko."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Residual matrix"
+msgstr "Hondar-matrizea"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Displays a table containing the residual variances and correlations."
+msgstr "Hondar-bariantzak eta korrelazioak dituen taula bat erakusten du."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Parallel analysis"
+msgstr "Analisi paraleloa"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"If this option is selected, a table will be generated exhibiting a detailed "
+"output of the parallel analysis. Can be based on principal component "
+"eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
+"parallel analysis for determining the number of components/factors above."
+msgstr ""
+"Aukera hau hautatzen bada, analisi paraleloaren irteera zehatza erakusten "
+"duen taula bat sortuko da. Osagai nagusien balio propioetan (PC) edo "
+"faktoreen balio propioetan (FA) oinarritu daiteke. Goiko osagai/faktore "
+"kopurua zehazteko hazia analisi paralelotik hartzen da."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Based on PC"
+msgstr "PC-n oinarrituta"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Based on FA"
+msgstr "FA-n oinarrituta"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Plots"
+msgstr "Grafikoak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Display plots."
+msgstr "Grafikoak erakutsi."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Path diagram"
+msgstr "Bide-grafikoa"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"By selecting this option, a visual representation of the direction and "
+"strength of the relation between the variable and factor will be displayed."
+msgstr ""
+"Aukera hau hautatuta, aldagaiaren eta faktorearen arteko erlazioaren "
+"norabidearen eta indarraren irudikapen bisuala bistaratuko da."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Scree plot"
+msgstr "¿Pantaila?-diagrama"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"When selecting this option, a scree plot will be displayed. The scree plot "
+"provides information on how much variance in the data, indicated by the "
+"eigenvalue, is explained by each factor. A scree plot can be used to decide "
+"how many factors should be selected."
+msgstr ""
+"Aukera hau hautatzean, harri grafiko??(scree plot) ??? bat bistaratuko da. "
+"Grafikoak faktore bakoitzak datuetan zenbat aldakuntza azaltzen duen "
+"informazioa ematen du, Eigen balioak adierazita. Grafiko bat erabil daiteke "
+"zenbat faktore hautatu behar diren erabakitzeko."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Parallel analysis results"
+msgstr "Analisi paraleloaren emaitzak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Display the results of the parallel analysis in the scree plot. The parallel "
+"analysis will be based on PC or FA as defined by the option for the parallel "
+"analysis table."
+msgstr ""
+"Analisi paraleloaren emaitzak bistaratu grafikoan. Analisi paraleloa PC edo "
+"FA-n oinarrituko da, analisi paraleloaren taularen aukerak definitzen duen "
+"bezala."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Assumption checks"
+msgstr "Suposizio-egiaztapenak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Assumptions: The variables included in the analysis are correlated; the "
+"variables included in the analysis are linearly related (Shlens, 2014)"
+msgstr ""
+"Suposizioak: Analisian sartutako aldagaiak korrelazionatuta daude; analisian "
+"sartutako aldagaiak linealki erlazionatuta daude (Shlens, 2014)"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "KMO test"
+msgstr "KMO proba"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Determines how well variables are suited for factor analysis by computing "
+"the proportion of common variance between variables. Produces a measure of "
+"sampling adequacy (MSA) as the proportion of common variance among variables "
+"is computed for all variables; values closer to 1 are desired."
+msgstr ""
+"Aldagaiak faktore-analisirako zein egokiak diren zehazten du, aldagaien "
+"arteko bariantza komunaren proportzioa kalkulatuz. Laginketa-egokitasunaren "
+"(MSA) neurria sortzen du, aldagai guztien arteko bariantza komunaren "
+"proportzioa kalkulatzen baita; 1etik hurbilago dauden balioak nahi dira."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Bartlett's test"
+msgstr "Bartlett-en proba"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Determines if the data correlation matrix is the identity matrix, meaning, "
+"if the variables are related or not. A significant result means the "
+"correlation matrix is unlike the identity matrix."
+msgstr ""
+"Datuen korrelazio-matrizea identitate-matrizea den zehazten du, hau da, "
+"aldagaiak erlazionatuta dauden ala ez. Emaitza esanguratsu batek korrelazio-"
+"matrizea identitate-matrizearen desberdina dela esan nahi du."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Mardia's test"
+msgstr "Mardiaren proba"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Assesses the degree of the departure from multivariate normality of the "
+"included variables in terms of multivariate skewness and kurtosis. The "
+"Mardia's test will always include the listwise complete cases."
+msgstr ""
+"Sartutako aldagaien normaltasun multibariabletik aldentze-maila ebaluatzen "
+"du, asimetria multibariablearen eta kurtosiaren arabera. Mardiaren probak "
+"beti zerrenda osoko kasuak barne hartuko ditu."
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Anti-image correlation matrix"
+msgstr "Irudiaren aurkako korrelazio-matrizea"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Contains the negative partial correlations between pairs of variables after "
+"accounting for the effects of all other variables in the dataset. High "
+"values in the anti-image correlation matrix indicate that a variable might "
+"be redundant or have too much shared variance with other variables."
+msgstr ""
+"Datu-multzoko beste aldagai guztien efektuak kontuan hartu ondoren aldagai "
+"bikoteen arteko korrelazio partzial negatiboak ditu. Irudiaren aurkako "
+"korrelazio matrizearen balio altuek aldagai bat erredundantea izan "
+"daitekeela edo beste aldagaiekin bariantza partekatu handiegia izan "
+"dezakeela adierazten dute."
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Missing Values"
+msgstr "Balio Faltak"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Select how to handle missing values."
+msgstr "Hautatu nola kudeatu falta diren balioak."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Exclude cases pairwise"
+msgstr "Kasuak binaka baztertu"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"If one observation from a variable is missing, all the other variable "
+"observations from the same case will still be used for the analysis. In this "
+"scenario, it is not necessary to have an observation for all the variables "
+"to include the case in the analysis. This option is selected by default."
+msgstr ""
+"Aldagai bateko behaketa bat falta bada, kasu osoa, beraz, konektatutako "
+"beste aldagaien behaketa guztiak, analisitik baztertuko dira. Egoera "
+"honetan, aldagai guztien behaketak beharrezkoak dira kasua analisian "
+"sartzeko."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Exclude cases listwise"
+msgstr "Baztertu kasuak zerrendaka"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"If one observation from a variable is missing, the whole case, so all the "
+"other connected variable observations, will be dismissed from the analysis. "
+"In this scenario, observations for every variable are needed to include the "
+"case in the analysis. "
+msgstr ""
+"Aldagai bateko behaketa bat falta bada, kasu osoa, beraz, konektatutako "
+"beste aldagaien behaketa guztiak, analisitik baztertuko dira. Egoera "
+"honetan, aldagai guztien behaketak beharrezkoak dira kasua analisian "
+"sartzeko. "
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Add PC scores to data"
+msgstr "Gehitu PC puntuazioak datuetara"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Add FA scores to data"
+msgstr "Gehitu PC puntuazioak datuetara"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Adds the estimated component/factor scores as new columns to the data set. "
+"The scores are regression scores."
+msgstr ""
+"Osagai/faktore puntuazio estimatuak zutabe berri gisa gehitzen ditu datu "
+"multzoari. Puntuazioak erregresio puntuazioak dira."
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Prefix"
+msgstr "Aurrizkia"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "PC"
+msgstr "PC"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "FA"
+msgstr "FA"
+
+msgctxt "PcaEfaVariables|"
+msgid "Variables"
+msgstr "Aldagaiak"
+
+msgctxt "PcaEfaVariables|"
+msgid "In this box, the variables to perform the analysis on are selected"
+msgstr "Kutxa honetan, analisia egiteko aldagaiak hautatzen dira"
+
+msgctxt "PcaEfaVariables|"
+msgid "Data Type"
+msgstr "Datu Mota"
+
+msgctxt "PcaEfaVariables|"
+msgid ""
+"Specifies whether the data is raw, meaning observations in rows and "
+"variables in columns, or whether the data is a variance-covariance matrix. "
+"For the latter, the sample size is required."
+msgstr ""
+"Datuak gordinak diren zehazten du, hau da, errenkada eta zutabeetako "
+"aldagaiak, edo datuak bariantza-kobariantza matrizea diren. Azken "
+"horretarako, laginaren tamaina beharrezkoa da."
+
+msgctxt "PcaEfaVariables|"
+msgid "Raw"
+msgstr "Gordina"
+
+msgctxt "PcaEfaVariables|"
+msgid "Variance-covariance matrix"
+msgstr "Bariantza-kobariantza matrizea"
+
+msgctxt "PcaEfaVariables|"
+msgid "Sample size"
+msgstr "Laginaren tamaina"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Data Type"
+msgstr "Datu Mota"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Estimator\t             "
+msgstr "Estimatzailea\t             "
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add factor scores to data"
+msgstr "Faktoreen puntuazioak datuei gehitu"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Adds the estimated factor scores as new columns to the data set"
+msgstr ""
+"Faktoreen puntuazio estimatuak datu multzoari zutabe berri gisa gehitzen "
+"dizkio"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Prefix"
+msgstr "Aurrizkia"
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FS"
+msgstr "FS"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "In this box, the variables to perform the analysis on are selected"
+msgstr "Kutxa honetan, analisia egiteko aldagaiak hautatzen dira"
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid ""
+"Specifies whether the data is raw, meaning observations in rows and "
+"variables in columns, or whether the data is a variance-covariance matrix. "
+"For the latter, the sample size is required."
+msgstr ""
+"Datuak gordinak diren zehazten du, hau da, errenkada eta aldagaiak "
+"zutabeetan, edo datuak bariantza-kobariantza matrizea diren. Azken "
+"horretarako, laginaren tamaina beharrezkoa da."
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "In this box, the variables to perform the analysis on are selected"
+msgstr "Koadro honetan, analisia egiteko aldagaiak hautatzen dira"
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
+"Specifies whether the data is raw, meaning observations in rows and "
+"variables in columns, or whether the data is a variance-covariance matrix. "
+"For the latter, the sample size is required."
+msgstr ""
+"Datuak gordinak diren zehazten du, hau da, errenkadatan dauden behaketak eta "
+"zutabeetan dauden aldagaiak, edo datuak bariantza-kobariantza matrizea "
+"diren. Azken horretarako, laginaren tamaina beharrezkoa da."

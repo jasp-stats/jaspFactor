@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.0\n"
 "POT-Creation-Date: 2025-06-21 03:40\n"
-"PO-Revision-Date: 2025-09-23 10:01+0000\n"
-"Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
+"PO-Revision-Date: 2025-10-01 11:01+0000\n"
+"Last-Translator: Ángel Prieto <angel.prieto.fi@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
 "eu/>\n"
 "Language: eu\n"
@@ -86,10 +86,10 @@ msgid "Model"
 msgstr "Eredua"
 
 msgid "df"
-msgstr "ag"
+msgstr "df"
 
 msgid "p"
-msgstr "p"
+msgstr "or"
 
 msgid "Baseline model"
 msgstr "Oinarrizko eredua"
@@ -250,13 +250,13 @@ msgid "z-value"
 msgstr "z-balioa"
 
 msgid "Lower"
-msgstr "Behekoa"
+msgstr "Beheko"
 
 msgid "%s%% Confidence Interval"
 msgstr "%s%% Konfiantza-tartea"
 
 msgid "Upper"
-msgstr "Goikoa"
+msgstr "Goiko"
 
 msgid "Second-order factor loadings"
 msgstr "Bigarren mailako faktoreen kargak"
@@ -402,7 +402,7 @@ msgid "Mardia's Test of Multivariate Normality"
 msgstr "Mardiaren Normaltasun Multibariablearen Proba"
 
 msgid "Statistic"
-msgstr "Estatistikoa"
+msgstr "Estatistika"
 
 msgid "Mardia test failed. Internal error message: %s"
 msgstr "Mardiaren proba huts egin du. Barne errore mezua: %s"
@@ -524,9 +524,8 @@ msgstr "Datuak"
 msgid "Simulated data from parallel analysis"
 msgstr "Analisi paraleloaren datu simulatuak"
 
-#, fuzzy
 msgid "Path Diagram"
-msgstr "Bide Diagrama"
+msgstr "Bide-diagrama"
 
 msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
 msgstr ""

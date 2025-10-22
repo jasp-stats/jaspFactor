@@ -3,17 +3,10 @@ import JASP.Module
 
 Description
 {
-	name		: "jaspFactor"
 	title		: qsTr("Factor")
 	icon		: "analysis-classical-sem.svg"
 	description	: qsTr("Explore hidden structure in the data")
-	version			: "0.95.0"
-	author		: "JASP Team"
-	maintainer	: "JASP Team <info@jasp-stats.org>"
-	website		: "jasp-stats.org"
-	license		: "GPL (>= 2)"
 	hasWrappers	: true
-	preloadData	: true
 
 	Analysis
 	{

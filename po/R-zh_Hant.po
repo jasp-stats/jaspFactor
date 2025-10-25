@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2025-06-07 03:40\n"
-"PO-Revision-Date: 2025-04-05 03:34+0000\n"
+"PO-Revision-Date: 2025-10-24 11:02+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 msgid "Second-Order"
 msgstr "二階"
@@ -415,7 +415,6 @@ msgstr "偏態統計量被假定為卡方分配，而峰度統計量則被假定
 msgid "Anti-Image Correlation Matrix"
 msgstr ""
 
-#, fuzzy
 msgid "Chi-Squared Test"
 msgstr "卡方檢定"
 

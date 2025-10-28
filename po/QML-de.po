@@ -590,6 +590,3 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Mardia's test"
 msgstr "Mardias Test"
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid ""
-msgstr " "

@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-02-19 10:50+0000\n"
-"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-"
-"qml/de/>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -53,10 +47,6 @@ msgstr "Annahme: Unkorrelierte Faktoren"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
 msgstr "Exogene Kovariaten fixiert"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Factor Scaling"
-msgstr "Faktorskalierung"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
@@ -147,10 +137,6 @@ msgid "Model plot"
 msgstr "Modelldiagramm"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Show parameters"
-msgstr "Parameter anzeigen"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
 msgstr "Standardisiert"
 
@@ -161,10 +147,6 @@ msgstr "Mittelwerte anzeigen"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
 msgstr "Weiteres"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Emulation"
-msgstr "Emulation"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
@@ -179,40 +161,12 @@ msgid "EQS"
 msgstr "EQS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Error calculation"
-msgstr "Fehlerberechnung"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "CI width"
-msgstr "KI-Breite"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Method"
-msgstr "Methode"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
 msgstr "Standard"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
 msgstr "Robust"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap CI"
-msgstr "Bootstrap KI"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Bootstrap samples"
-msgstr "Bootstrap-Stichprobe"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Estimator"
-msgstr "Schätzer"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "Auto"
-msgstr "Auto"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
@@ -245,10 +199,6 @@ msgstr "Latente Variablen"
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
 msgstr "Alle"
-
-msgctxt "ConfirmatoryFactorAnalysis|"
-msgid "No X"
-msgstr "Kein X"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
@@ -290,306 +240,883 @@ msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
 msgstr "Variablen"
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Number of Factors"
-msgstr "Faktorenanzahl"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Parallel analysis"
-msgstr "Parallel-Analyse"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Eigenvalues"
-msgstr "Eigenwerte"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Eigenvalues above"
-msgstr "Eigenwaarden boven"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Manual"
-msgstr "Manuell"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Number of factors"
-msgstr "Faktorenanzahl"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Estimation method"
-msgstr "Schätzmethode"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Minimum residual"
-msgstr "Minimum Residuum"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Maximum likelihood"
-msgstr "Maximum-Likelihood"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Principal axis factoring"
-msgstr "Hauptachsenmethode"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Ordinary least squares"
-msgstr "Methode der kleinsten Quadrate"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Weighted least squares"
-msgstr "Gewichtete kleinste Quadrate"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Generalized least squares"
-msgstr "Generalisierte kleinste Quadrate"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Minimum chi-square"
-msgstr "Minimum Chi-Quadrat"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Minimum rank"
-msgstr "Minimum Rang"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Rotation"
-msgstr "Rotation"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Orthogonal"
-msgstr "Orthogonal"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "none"
-msgstr "keine"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Oblique"
-msgstr "Schief"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Base analysis on"
-msgstr "Basiere Analyse auf"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Correlation matrix"
-msgstr "Korrelationsmatrix"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Covariance matrix"
-msgstr "Kovarianzmatrix"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Output Options"
-msgstr "Ausgabeoptionen"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Highlight"
-msgstr "Markieren"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Tables"
-msgstr "Tabellen"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Structure matrix"
-msgstr "Strukturmatrix"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Factor correlations"
-msgstr "Faktorkorrelationen"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Additional fit indices"
-msgstr "Weitere Anpassungsindizes"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Plots"
-msgstr "Diagramme"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Path diagram"
-msgstr "Pfaddiagramm"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Scree plot"
-msgstr "Screeplot"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Assumption checks"
-msgstr "Annahmeprüfungen"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "KMO test"
-msgstr "KMO-Test"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Bartlett's test"
-msgstr "Bartletts Test"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Missing Values"
-msgstr "Fehlende Werte"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Exclude cases pairwise"
-msgstr "Fälle paarweise ausschließen"
-
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Exclude cases listwise"
-msgstr "Fälle listenweise ausschließen"
-
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
 msgstr "Variablen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Number of Components"
-msgstr "Anzahl Komponenten"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Parallel analysis"
-msgstr "Parallel analyse"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Eigenvalues"
-msgstr "Eigenwerte"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Eigenvalues above"
-msgstr "Eigenwerte über"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Manual"
-msgstr "Manuell"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Number of components"
-msgstr "Anzahl Komponenten"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Rotation"
-msgstr "Rotation"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Orthogonal"
-msgstr "Orthogonal"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "none"
-msgstr "keine"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Oblique"
-msgstr "Schief"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Base decomposition on"
-msgstr "Basiere Dekomposition auf"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Correlation matrix"
-msgstr "Korrelationsmatrix"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Covariance matrix"
-msgstr "Kovarianzmatrix"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Output Options"
-msgstr "Ausgabeoptionen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Highlight"
-msgstr "Markieren"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Table"
-msgstr "Tabelle"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Factor correlations"
-msgstr "Faktorkorrelationen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Plots"
-msgstr "Diagramme"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Path diagram"
-msgstr "Pfaddiagramm"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Scree plot"
-msgstr "Screeplot"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Missing Values"
-msgstr "Fehlende Werte"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Exclude cases pairwise"
-msgstr "Fälle paarweise ausschließen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Exclude cases listwise"
-msgstr "Fälle listenweise ausschließen"
-
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Add PC scores to data"
-msgstr "PC-Scores zu Daten hinzufügen"
 
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
 msgstr "Erforsche verborgene Struktur in den Daten"
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Order factor loadings by"
-msgstr "Faktorladungen sortieren nach"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Analysis Options"
+msgstr ""
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Factor size"
-msgstr "Faktorgröße"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Here, options for the analysis can be specified."
+msgstr ""
 
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Order component loadings by"
-msgstr "Komponentenladungen sortieren nach"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Rotation Method"
+msgstr ""
 
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Component size"
-msgstr "Komponentengröße"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Here, the rotation method to apply to the components can be specified. "
+"Rotation ensures a simpler understanding of the data structure."
+msgstr ""
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Based on PC"
-msgstr "Basierend auf PC"
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Orthogonal"
+msgstr "Orthogonal"
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Based on FA"
-msgstr "Basierend auf FA"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"This method produces components that are uncorrelated. For this method, "
+"there are several possibilities that can be selected."
+msgstr ""
 
-msgctxt "ExploratoryFactorAnalysis|"
-msgid "Parallel analysis results"
-msgstr "Ergebnisse der Parallelanalyse"
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "none"
+msgstr "keine"
 
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Based on PC"
-msgstr "Basierend auf PC"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "No rotation method is selected."
+msgstr ""
 
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Based on FA"
-msgstr "Basierend auf FA"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Maximizes the variance of squared loadings for each factor, simplifying "
+"interpretations."
+msgstr ""
 
-msgctxt "PrincipalComponentAnalysis|"
-msgid "Parallel analysis results"
-msgstr "Ergebnisse Parallelanalyse"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Minimizes the number of factors needed to explain each variable, simplifying "
+"structure."
+msgstr ""
 
-msgctxt "ExploratoryFactorAnalysis|"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Orthogonal rotation method by Bentler, used for simplifying factor loadings."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Combines Varimax and Quartimax to balance factor simplicity and variable "
+"explanations."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Oblique"
+msgstr "Schief"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"This method produces components that allow for correlation between the "
+"components. This method is selected by default. Several possibilities are "
+"available. The default is promax."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Starts with Varimax and applies a power transformation to allow correlated "
+"factors."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"An oblique rotation that minimizes the correlation among factors while "
+"allowing flexibility."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Aims to simplify factor loadings by minimizing nonzero entries."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Oblique rotation by Bentler, simplifying factor correlations."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"An oblique rotation balancing between simple and interpretable factor "
+"loadings."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Targets a cluster rotation for factor analysis, emphasizing group separation."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"An oblique version of Geomin, allowing factor correlations and reducing "
+"complex loadings."
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Base Decomposition on"
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "What to base the decomposition of the data into components/factors on."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Correlation matrix"
+msgstr "Korrelationsmatrix"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"The correlation matrix is used to decompose the data into components/factors."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Covariance matrix"
+msgstr "Kovarianzmatrix"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"The covariance matrix is used to decompose the data into components/factors."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
 msgid "Polychoric/tetrachoric correlation matrix"
 msgstr "Polychorische/tetrachorische Korrelationsmatrix"
 
-msgctxt "ExploratoryFactorAnalysis|"
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"The polychoric/tetrachoric correlation matrix is used to decompose the data "
+"into components/factors. This is sometimes unstable when sample size is "
+"small and when some variables do not contain all response categories"
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Factoring Method"
+msgstr ""
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Which factoring method to use for the decomposition."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Minimum residual"
+msgstr "Minimum Residuum"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Perform a minimum residual factor analysis (minres) using the first "
+"derivative."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Maximum likelihood"
+msgstr "Maximum-Likelihood"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a maximum likelihood factor analysis (ml)."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Principal axis factoring"
+msgstr "Hauptachsenmethode"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a principal factor solution (pa)."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Ordinary least squares"
+msgstr "Methode der kleinsten Quadrate"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Minimize the residual matrix using an OLS procedure, slower but uses the "
+"empirical first derivative."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Weighted least squares"
+msgstr "Gewichtete kleinste Quadrate"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a weighted least squares (WLS) solution."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Generalized least squares"
+msgstr "Generalisierte kleinste Quadrate"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a generalized least squares (GLS) solution."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Minimum chi-square"
+msgstr "Minimum Chi-Quadrat"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid ""
+"Minimize the sample size-weighted chi-square using pairwise correlations."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Minimum rank"
+msgstr "Minimum Rang"
+
+msgctxt "PcaEfaAnalysisOptions|"
+msgid "Perform a minimum rank factor analysis (minrank)."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of Components"
+msgstr "Anzahl Komponenten"
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of Factors"
+msgstr "Faktorenanzahl"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"Here, the number of components/factors that are used in the analysis is "
+"determined. Several methods to determine this number can be chosen from:"
+msgstr ""
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Based on"
+msgstr ""
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Parallel analysis"
+msgstr ""
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"Components/factors are selected on the basis of parallel analysis. With this "
+"method, factors are selected when their eigenvalue is greater than the "
+"parallel average random eigenvalue. This method is selected by default. Can "
+"be based on principal component eigenvalues (PC) or factor eigenvalues (FA). "
+"A seed (1234) is chosen by default so that the results from the parallel "
+"analysis are equal across the PCA"
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Based on PC"
+msgstr "Basierend auf PC"
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Based on FA"
+msgstr "Basierend auf FA"
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Eigenvalues"
+msgstr "Eigenwerte"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"Components are selected when they have a certain eigenvalue. By default "
+"components are selected that have an eigenvalue above 1."
+msgstr ""
+
+msgctxt "PcaEfaNumberFactors|"
+msgid "Eigenvalues above"
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Manual"
+msgstr "Manuell"
+
+msgctxt "PcaEfaNumberFactors|"
+msgid ""
+"The number of components can be specified manually. By default this is set "
+"to 1."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of components"
+msgstr "Anzahl Komponenten"
+
+#, fuzzy
+msgctxt "PcaEfaNumberFactors|"
+msgid "Number of factors"
+msgstr "Faktorenanzahl"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Output Options"
+msgstr "Ausgabeoptionen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Additional output options for the PCA/EFA analysis."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Display loadings above"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Loadings below this value will not be displayed in the output table."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Order Loadings By"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Either order the loadings by their size from large to small, or by "
+"variables, meaning according to their occurence in the variables list."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Size"
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Variables"
+msgstr "Variablen"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Tables"
+msgstr "Tabellen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Display addition tables in the output."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Structure matrix"
+msgstr "Strukturmatrix"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"An item by factor structure matrix. This is just the loadings (pattern) "
+"matrix times the factor intercorrelation matrix."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Component correlations"
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Factor correlations"
+msgstr "Faktorkorrelationen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"When selecting this option, a table with the correlations between the "
+"components/factors will be displayed."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Additional fit indices"
+msgstr "Weitere Anpassungsindizes"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"This option displays the Root Mean Squared Error of Approximation (RMSEA) "
+"with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
+"Information Criterion (BIC) to test the fit of the model."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Residual matrix"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Displays a table containing the residual variances and correlations."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Parallel analysis"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"If this option is selected, a table will be generated exhibiting a detailed "
+"output of the parallel analysis. Can be based on principal component "
+"eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
+"parallel analysis for determining the number of components/factors above."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Based on PC"
+msgstr "Basierend auf PC"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Based on FA"
+msgstr "Basierend auf FA"
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Plots"
+msgstr "Diagramme"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Display plots."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Path diagram"
+msgstr "Pfaddiagramm"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"By selecting this option, a visual representation of the direction and "
+"strength of the relation between the variable and factor will be displayed."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Scree plot"
+msgstr "Screeplot"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"When selecting this option, a scree plot will be displayed. The scree plot "
+"provides information on how much variance in the data, indicated by the "
+"eigenvalue, is explained by each factor. A scree plot can be used to decide "
+"how many factors should be selected."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Parallel analysis results"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Display the results of the parallel analysis in the scree plot. The parallel "
+"analysis will be based on PC or FA as defined by the option for the parallel "
+"analysis table."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Assumption checks"
+msgstr "Annahmeprüfungen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Assumptions: The variables included in the analysis are correlated; the "
+"variables included in the analysis are linearly related (Shlens, 2014)"
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "KMO test"
+msgstr "KMO-Test"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Determines how well variables are suited for factor analysis by computing "
+"the proportion of common variance between variables. Produces a measure of "
+"sampling adequacy (MSA) as the proportion of common variance among variables "
+"is computed for all variables; values closer to 1 are desired."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Bartlett's test"
+msgstr "Bartletts Test"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Determines if the data correlation matrix is the identity matrix, meaning, "
+"if the variables are related or not. A significant result means the "
+"correlation matrix is unlike the identity matrix."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
 msgid "Mardia's test"
 msgstr "Mardias Test"
 
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Assesses the degree of the departure from multivariate normality of the "
+"included variables in terms of multivariate skewness and kurtosis. The "
+"Mardia's test will always include the listwise complete cases."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Anti-image correlation matrix"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Contains the negative partial correlations between pairs of variables after "
+"accounting for the effects of all other variables in the dataset. High "
+"values in the anti-image correlation matrix indicate that a variable might "
+"be redundant or have too much shared variance with other variables."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Missing Values"
+msgstr "Fehlende Werte"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Select how to handle missing values."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Exclude cases pairwise"
+msgstr "Fälle paarweise ausschließen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"If one observation from a variable is missing, all the other variable "
+"observations from the same case will still be used for the analysis. In this "
+"scenario, it is not necessary to have an observation for all the variables "
+"to include the case in the analysis. This option is selected by default."
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Exclude cases listwise"
+msgstr "Fälle listenweise ausschließen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"If one observation from a variable is missing, the whole case, so all the "
+"other connected variable observations, will be dismissed from the analysis. "
+"In this scenario, observations for every variable are needed to include the "
+"case in the analysis. "
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaOutputOptions|"
+msgid "Add PC scores to data"
+msgstr "PC-Scores zu Daten hinzufügen"
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Add FA scores to data"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid ""
+"Adds the estimated component/factor scores as new columns to the data set. "
+"The scores are regression scores."
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "Prefix"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "PC"
+msgstr ""
+
+msgctxt "PcaEfaOutputOptions|"
+msgid "FA"
+msgstr ""
+
+#, fuzzy
+msgctxt "PcaEfaVariables|"
+msgid "Variables"
+msgstr "Variablen"
+
+msgctxt "PcaEfaVariables|"
+msgid "In this box, the variables to perform the analysis on are selected"
+msgstr ""
+
+msgctxt "PcaEfaVariables|"
+msgid "Data Type"
+msgstr ""
+
+msgctxt "PcaEfaVariables|"
+msgid ""
+"Specifies whether the data is raw, meaning observations in rows and "
+"variables in columns, or whether the data is a variance-covariance matrix. "
+"For the latter, the sample size is required."
+msgstr ""
+
+msgctxt "PcaEfaVariables|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "PcaEfaVariables|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "PcaEfaVariables|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Data Type"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Fix mean of manifest intercepts to zero"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Model identification"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Structural"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Kaiser-Meyer-Olkin (KMO) test"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Average variance extracted (AVE)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Heterotrait-monotrait ratio (HTMT)"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Reliability"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show parameter estimates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Font size"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Show variances"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Rotate plot"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Mimic"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Lavaan"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Estimator\t             "
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Default"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "DLS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "PML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLM"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLMV"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLMVS"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLF"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "MLR"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLSM"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "WLSMV"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULSM"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "ULSMV"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Click for more information"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Standard errors"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Bootstrap"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "     Bootstrap samples"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "     CI level"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Missing data handling"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Listwise deletion"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Pairwise"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FIML"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Robust two-stage"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "No Exogenous Covariates"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Add factor scores to data"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Adds the estimated factor scores as new columns to the data set"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "Prefix"
+msgstr ""
+
+msgctxt "ConfirmatoryFactorAnalysis|"
+msgid "FS"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "In this box, the variables to perform the analysis on are selected"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Data"
+msgstr ""
+
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
-msgstr " "
+"Specifies whether the data is raw, meaning observations in rows and "
+"variables in columns, or whether the data is a variance-covariance matrix. "
+"For the latter, the sample size is required."
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "ExploratoryFactorAnalysis|"
+msgid "Sample size"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "In this box, the variables to perform the analysis on are selected"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Data"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid ""
+"Specifies whether the data is raw, meaning observations in rows and "
+"variables in columns, or whether the data is a variance-covariance matrix. "
+"For the latter, the sample size is required."
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Variance-covariance matrix"
+msgstr ""
+
+msgctxt "PrincipalComponentAnalysis|"
+msgid "Sample size"
+msgstr ""

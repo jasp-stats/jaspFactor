@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-11-02 11:51+0000\n"
+"PO-Revision-Date: 2025-11-05 11:52+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-qml/es/>\n"
@@ -343,53 +343,69 @@ msgid ""
 "components. This method is selected by default. Several possibilities are "
 "available. The default is promax."
 msgstr ""
+"Este método genera componentes que permiten correlación entre esas "
+"componentes; y se selecciona por defecto. Hay disponibles varias "
+"posibilidades; la predeterminada es promax."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
 msgstr ""
+"Empieza con Varimax y aplica una transformación potencial para permitir "
+"factores correlacionados."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
 msgstr ""
+"Una rotación oblicua que minimiza la correlación entre factores, mientras "
+"permite flexibilidad."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
 msgstr ""
+"Ayuda a simplificar las cargas de los factores minimizando las entradas no "
+"nulas."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
 msgstr ""
+"Rotación oblicua de Bentler, simplificando las correlaciones entre los "
+"factores."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
 msgstr ""
+"Una rotación oblicua, equilibrando que las cargas de los factores sean "
+"simples e interpretanbles."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
 msgstr ""
+"Pretende una rotación de conglomerados para análisis factorial, enfatizando "
+"la separación de los grupos."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
 msgstr ""
+"Una versión oblicua de Geomin, que permite correlaciones entre factores y "
+"reducir cargas complejas."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "Basar la descomposición en"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "En qué basar la descomposición de los datos en componentes/factores."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Correlation matrix"
 msgstr "Matriz de correlaciones"
@@ -398,8 +414,9 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
 msgstr ""
+"La matriz de correlaciones se utiliza para descomponer los datos en "
+"componentes/factores."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
 msgstr "Matriz de covarianzas"
@@ -408,8 +425,9 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
 msgstr ""
+"La matriz de covarianzas se utiliza para descomponer los datos en "
+"componentes/factores."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Polychoric/tetrachoric correlation matrix"
 msgstr "Matriz de correlaciones policórica/tetracórica"
@@ -420,16 +438,19 @@ msgid ""
 "into components/factors. This is sometimes unstable when sample size is "
 "small and when some variables do not contain all response categories"
 msgstr ""
+"La matriz de correlaciones policórica/tetracórica se utiliza para "
+"descomponer los datos en componentes/factores. A veces esto es inestable "
+"cuando el tamaño de la muestra es pequeño y cuando algunas variables no "
+"incluyen todas las categorías de respuesta"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "Método de factorización"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "Qué método de factorización se utiliza para la descomposición."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
 msgstr "Error mínimo"
@@ -439,55 +460,53 @@ msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
 msgstr ""
+"Realizar un Análisis Factorial de Error Mínimo (minres), utilizando la "
+"primera derivada."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
 msgstr "Máxima-Verosimilitud"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "Realizar un Análisis Factorial de Máxima-Verosimilitud (MV)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
 msgstr "Factorización del eje principal"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "Alcanzar una solución de factores principales (pa)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
-msgstr "Mínimos cuadrados ordinarios"
+msgstr "Mínimos Cuadrados Ordinarios"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
 msgstr ""
+"Minimizar la matriz de errores utilizando el método MCO, más lento pero "
+"utiliza la primera derivada empírica."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
-msgstr "Mínimos cuadrados ponderados"
+msgstr "Mínimos Cuadrados Ponderados"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
-msgstr ""
+msgstr "Alcanzar una solución de Mínimos Cuadrados Ponderados (MCP)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
-msgstr "Mínimos cuadrados generalizados"
+msgstr "Mínimos Cuadrados Generalizados"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "Alcanzar una solución de Mínimos Cuadrados Generalizados (MCG)."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
 msgstr "Chi-cuadrado mínimo"
@@ -496,22 +515,21 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr ""
+"Minimizar el chi-cuadrado muestral ponderado por el tamaño, utilizando las "
+"correlaciones por pares."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
 msgstr "Rango mínimo"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "Realizar un Análisis Factorial de Rango Mínimo (minrank)."
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
 msgstr "Número de componentes"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Factors"
 msgstr "Número de factores"

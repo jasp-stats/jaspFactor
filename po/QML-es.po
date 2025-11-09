@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-11-09 10:52+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15-dev\n"
 "X-Language: es\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -533,12 +539,13 @@ msgid ""
 "Here, the number of components/factors that are used in the analysis is "
 "determined. Several methods to determine this number can be chosen from:"
 msgstr ""
+"Aquí se determina el número de componentes/factores que se utilizan en el "
+"análisis. Se pueden elegir varios métodos para determinar ese número de:"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
-msgstr ""
+msgstr "Basado en"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "Análisis paralelo"
@@ -552,18 +559,22 @@ msgid ""
 "A seed (1234) is chosen by default so that the results from the parallel "
 "analysis are equal across the PCA"
 msgstr ""
+"Las componentes/factores se seleccionan en base al análisis paralelo. Con "
+"este método, los factores se seleccionan cuando su autovalor es mayor que el "
+"autovalor aleatorio medio paralelo. Este método se selecciona por defecto. "
+"Se puede basar en los autovalores de las Componentes Principales (CP) o en "
+"los autovalores de los factores (AF). Se elige una semilla (1234) por "
+"defecto, de modo que los resultados del análisis paralelo sean iguales a "
+"través del APC"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on PC"
 msgstr "Basado en CP"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr "Basado en AF"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues"
 msgstr "Autovalores"
@@ -573,13 +584,13 @@ msgid ""
 "Components are selected when they have a certain eigenvalue. By default "
 "components are selected that have an eigenvalue above 1."
 msgstr ""
+"Las componentes se seleccionan cuando tienen un determinado autovalor. Por "
+"defecto, se seleccionan las componentes que tienen un autovalor superior a 1."
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
 msgstr "Autovalores superiores a"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Manual"
 msgstr "Manual"
@@ -589,18 +600,17 @@ msgid ""
 "The number of components can be specified manually. By default this is set "
 "to 1."
 msgstr ""
+"El número de componentes se puede especificar manualmente. Por defecto, está "
+"fijado en 1."
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of components"
 msgstr "Número de componentes"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of factors"
 msgstr "Número de factores"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Output Options"
 msgstr "Opciones de salida"
@@ -608,44 +618,46 @@ msgstr "Opciones de salida"
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
 msgstr ""
+"Opciones adicionales de la salida de resultados para el análisis ACP/AFE."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "Presentar las cargas por arriba"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
 msgstr ""
+"Las cargas por debajo de este valor no se van a presentar en la tabla de "
+"resultados."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Order Loadings By"
-msgstr ""
+msgstr "Ordenar las cargas según"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Either order the loadings by their size from large to small, or by "
 "variables, meaning according to their occurence in the variables list."
 msgstr ""
+"Ordenar las cargas según su tamaño, de mayor a menor; o según las variables, "
+"es decir conforme a su posición en la lista de variables."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
-msgstr ""
+msgstr "Tamaño"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
 msgstr "Variables"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
 msgstr "Tablas"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
-msgstr ""
+msgstr "Presentar tablas adicionales en los resultados."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Structure matrix"
 msgstr "Matriz de estructura"
@@ -655,23 +667,25 @@ msgid ""
 "An item by factor structure matrix. This is just the loadings (pattern) "
 "matrix times the factor intercorrelation matrix."
 msgstr ""
+"Un elemento por matriz de estructura de factores. Esto es justo la matriz "
+"(patrón) de cargas por la matriz de intercorrelaciones de factores."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
-msgstr ""
+msgstr "Correlaciones de Componentes"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
-msgstr "Correlaciones de factores"
+msgstr "Correlaciones de Factores"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "When selecting this option, a table with the correlations between the "
 "components/factors will be displayed."
 msgstr ""
+"Cuando se selecciona esta opción, se va a presentar una tabla con las "
+"correlaciones entre componentes/factores."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional fit indices"
 msgstr "Índices de ajuste adicionales"
@@ -682,16 +696,20 @@ msgid ""
 "with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
 "Information Criterion (BIC) to test the fit of the model."
 msgstr ""
+"Esta opción presenta la Raíz del Error de Aproximación Cuadrado Medio "
+"(REACM, RMSEA) con el intervalo con el 90% de confianza, el Índice de Lewis "
+"Tucker (ILT, TLI) y el Criterio de Información Bayesiano (BIC) para "
+"comprobar el ajuste del modelo."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "Matriz de los Errores"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
 msgstr ""
+"Presenta una tabla que contiene las varianzas y correlaciones de los errores."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
 msgstr "Análisis paralelo"
@@ -703,27 +721,28 @@ msgid ""
 "eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
 "parallel analysis for determining the number of components/factors above."
 msgstr ""
+"Cuando se selecciona esta opción, se va a generar una tabla que muestra un "
+"resultado detallado del análisis paralelo. Se puede basar en los autovalores "
+"de las Componentes Principales (CP) o en los autovalores del Análisis "
+"Factorial (AF). La semilla se toma del análisis paralelo, para determinar el "
+"número de componentes/factores por arriba."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on PC"
 msgstr "Basado en CP"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr "Basado en AF"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
 msgstr "Gráficos"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
-msgstr ""
+msgstr "Presentar gráficos."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Path diagram"
 msgstr "Diagrama de ruta"
@@ -733,8 +752,9 @@ msgid ""
 "By selecting this option, a visual representation of the direction and "
 "strength of the relation between the variable and factor will be displayed."
 msgstr ""
+"Seleccionando esta opción, se va a presentar una representación visual de la "
+"dirección y de la fuerza de la relación entre la variable y el factor."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Scree plot"
 msgstr "Gráfico de sedimentación"
@@ -746,11 +766,15 @@ msgid ""
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
 msgstr ""
+"Cuando se selecciona esta opción, se va a presentar un gráfico de "
+"sedimentación. Un gráfico de sedimentación proporciona información sobre "
+"cuanta varianza en los datos (indicada por el autovalor) está explicada por "
+"cada factor. Un gráfico de sedimentación se puede usar para decidir cuantos "
+"factores deberían seleccionarse."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis results"
-msgstr "Resultados de análisis paralelos"
+msgstr "Resultados del análisis paralelo"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -758,8 +782,10 @@ msgid ""
 "analysis will be based on PC or FA as defined by the option for the parallel "
 "analysis table."
 msgstr ""
+"Presentar los resultados del análisis paralelo en el gráfico de "
+"sedimentación. El análisis paralelo se va a basar en CP o AF, según se "
+"defina en la opción para la tabla del análisis paralelo."
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
 msgstr "Verificaciones de supuestos"
@@ -769,8 +795,10 @@ msgid ""
 "Assumptions: The variables included in the analysis are correlated; the "
 "variables included in the analysis are linearly related (Shlens, 2014)"
 msgstr ""
+"Supuestos: Las variables incluidas en el análisis están correlacionadas; las "
+"variables incluidas en el análisis están linealmente correlacionadas "
+"(Shlens, 2014)"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "KMO test"
 msgstr "Contraste de KMO"

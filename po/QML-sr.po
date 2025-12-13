@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-12-05 22:00+0000\n"
+"PO-Revision-Date: 2025-12-09 00:00+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/jaspfactor-"
 "qml/sr/>\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
-msgstr ""
+msgstr "Други ред"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
@@ -139,7 +139,7 @@ msgstr ""
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr "Додатне мере приступа"
+msgstr "Додатне мере прилагођавања"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"

@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-01-03 03:45+0000\n"
+"Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-"
+"qml/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Language: fr\n"
 "X-Qt-Contexts: true\n"
 
@@ -41,7 +47,7 @@ msgstr "Inclure la structure moyenne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr ""
+msgstr "Suppose des facteurs non corrélés"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
@@ -49,7 +55,7 @@ msgstr "Covariables exogènes fixes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Variances des facteurs"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
@@ -65,23 +71,23 @@ msgstr "Covariances Résiduelles"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr ""
+msgstr "Résultat additionnel"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Mesures d'ajustement additionnelles"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr ""
+msgstr "R carré"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Matrice de covariance implicite"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Matrice de covariance des résidus"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
@@ -101,15 +107,15 @@ msgstr "AFC Multigroupes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Variable de regroupement"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr ""
+msgstr "Test d'invariance"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr ""
+msgstr "Configurable"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
@@ -125,7 +131,7 @@ msgstr "Stricte"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Graphiques"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"

@@ -1,209 +1,260 @@
 msgid ""
 msgstr ""
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-01-06 14:01+0000\n"
+"Last-Translator: Zev Oster <zevelijah@gmail.com>\n"
+"Language-Team: Tibetan <https://hosted.weblate.org/projects/jasp/jaspfactor-"
+"qml/bo/>\n"
 "Language: bo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Qt-Contexts: true\n"
 
+#, fuzzy
 msgctxt "Description|"
 msgid "Factor"
-msgstr ""
+msgstr "བགོད་གྲངས།"
 
+#, fuzzy
 msgctxt "Description|"
 msgid "Principal Component Analysis"
-msgstr ""
+msgstr "གཙོ་བོའི་ཆ་ཤས་དབྱེ་ཞིབ།"
 
+#, fuzzy
 msgctxt "Description|"
 msgid "Exploratory Factor Analysis"
-msgstr ""
+msgstr "འཚོལ་ཞིབ་བགོད་གྲངས་དབྱེ་ཞིབ།"
 
 msgctxt "Description|"
 msgid "Confirmatory Factor Analysis"
 msgstr ""
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order Factor"
-msgstr ""
+msgstr "གཉིས་པའི་རིམ་པའི་བགོད་གྲངས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Second-Order"
-msgstr ""
+msgstr "གཉིས་པའི་རིམ་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model Options"
-msgstr ""
+msgstr "དཔེ་དབྱིབས་འདེམས་ཀ"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Include mean structure"
-msgstr ""
+msgstr "ཆ་སྙོམས་གྲུབ་ཚུལ་ཚུད་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr ""
+msgstr "བགོད་གྲངས་དག་ལྟོས་འབྲེལ་མེད་པར་ཆ་འཇོག་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
-msgstr ""
+msgstr "ཕྱི་ངོས་ཀྱི་མཉམ་འགྱུར་ཚད་དག་གཏན་འཁེལ་བཟོ་བ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "བགོད་གྲངས་ཀྱི་འགྱུར་ཚད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
-msgstr ""
+msgstr "རྟགས་འགྱུར་ཚད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Effects coding"
-msgstr ""
+msgstr "ཕན་ནུས་ཨང་རྟགས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual Covariances"
-msgstr ""
+msgstr "ལྷག་མའི་མཉམ་འགྱུར་ཚད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr ""
+msgstr "ཕྱིར་འདོན་ཁ་སྣོན།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr ""
+msgstr "སྒྲིག་པའི་ཚད་འཇལ་ཁ་སྣོན།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr ""
+msgstr "R-Squared"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Implied covariance matrix"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "ལྷག་མའི་མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
-msgstr ""
+msgstr "བཟོ་བཅོས་དཀར་ཆག"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr ""
+msgstr "གཅོད་མཚམས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
-msgstr ""
+msgstr "lavaan syntax སྟོན་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Multigroup CFA"
-msgstr ""
+msgstr "Multigroup CFA"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "ཚོགས་སྡེ་འགྱུར་ཚད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr ""
+msgstr "Invariance ཚོད་ལྟ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr ""
+msgstr "Configural"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
-msgstr ""
+msgstr "Metric"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Scalar"
-msgstr ""
+msgstr "Scalar"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Strict"
-msgstr ""
+msgstr "ནན་པོ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "དཔེ་རིས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
-msgstr ""
+msgstr "མི་སྒྲིག་པའི་དཔེ་རིས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model plot"
-msgstr ""
+msgstr "དཔེ་དབྱིབས་དཔེ་རིས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardized"
-msgstr ""
+msgstr "ཚད་ལྡན་དུ་བཏང་བ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show means"
-msgstr ""
+msgstr "ཆ་སྙོམས་སྟོན་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Advanced"
-msgstr ""
+msgstr "མཐོ་རིམ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "None"
-msgstr ""
+msgstr "མེད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mplus"
-msgstr ""
+msgstr "Mplus"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "EQS"
-msgstr ""
+msgstr "EQS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard"
-msgstr ""
+msgstr "ཚད་ལྡན།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust"
-msgstr ""
+msgstr "བརྟན་པོ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ML"
-msgstr ""
+msgstr "ML"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "GLS"
-msgstr ""
+msgstr "GLS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLS"
-msgstr ""
+msgstr "WLS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULS"
-msgstr ""
+msgstr "ULS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DWLS"
-msgstr ""
+msgstr "DWLS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standardization"
-msgstr ""
+msgstr "ཚད་ལྡན་དུ་བསྒྱུར་བ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Latents"
-msgstr ""
+msgstr "Latents"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "All"
-msgstr ""
+msgstr "ཚང་མ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Options"
-msgstr ""
+msgstr "འདེམས་ཀ"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix manifest intercepts to zero"
@@ -213,93 +264,114 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix latent intercepts to zero"
 msgstr ""
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Omit residual single indicator"
-msgstr ""
+msgstr "ལྷག་མའི་རྟགས་མཚན་རྐྱང་པ་དོར་བ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual variances"
-msgstr ""
+msgstr "ལྷག་མའི་འགྱུར་ཚད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate exogenous latents"
-msgstr ""
+msgstr "ཕྱི་ངོས་ཀྱི་ latents དག་ལྟོས་འབྲེལ་བཟོ་བ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add thresholds"
-msgstr ""
+msgstr "thresholds ཁ་སྣོན་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add scalings parameters"
-msgstr ""
+msgstr "scalings ཞུགས་གྲངས་ཁ་སྣོན་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Correlate dependent variables"
-msgstr ""
+msgstr "ལྟོས་བཅས་འགྱུར་ཚད་དག་ལྟོས་འབྲེལ་བཟོ་བ།"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variables"
-msgstr ""
+msgstr "འགྱུར་གྲངས།"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variables"
-msgstr ""
+msgstr "འགྱུར་གྲངས།"
 
+#, fuzzy
 msgctxt "Description|"
 msgid "Explore hidden structure in the data"
-msgstr ""
+msgstr "གཞི་གྲངས་ནང་གི་སྦས་པའི་གྲུབ་ཚུལ་འཚོལ་ཞིབ་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
-msgstr ""
+msgstr "ཡིག་གཟུགས་ཆེ་ཆུང་།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr ""
+msgstr "འགྱུར་ཚད་སྟོན་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr ""
+msgstr "དཔེ་རིས་འཁོར་བ།"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
 msgstr ""
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model identification"
-msgstr ""
+msgstr "དཔེ་དབྱིབས་ངོས་འཛིན།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr ""
+msgstr "Kaiser-Meyer-Olkin (KMO) ཚོད་ལྟ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr ""
+msgstr "Bartlett's test of sphericity"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr ""
+msgstr "Lavaan"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr ""
+msgstr "ཆད་པའི་གཞི་གྲངས་ཐག་གཅོད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr ""
+msgstr "FIML"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr ""
+msgstr "ཐོ་གཞུང་ལྟར་སུབ་པ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr ""
+msgstr "ཆ་སྒྲིག"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
@@ -309,163 +381,202 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
 msgstr ""
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr ""
+msgstr "ཕྱི་ངོས་ཀྱི་མཉམ་འགྱུར་ཚད་མེད།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Average variance extracted (AVE)"
-msgstr ""
+msgstr "ཆ་སྙོམས་འགྱུར་ཚད་ཕྱུང་བ། (AVE)"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Heterotrait-monotrait ratio (HTMT)"
-msgstr ""
+msgstr "Heterotrait-monotrait བསྡུར་ཚད། (HTMT)"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
-msgstr ""
+msgstr "ཡིད་རྟོན་རུང་བའི་རང་བཞིན།"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix mean of manifest intercepts to zero"
 msgstr ""
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
-msgstr ""
+msgstr "གྲུབ་ཚུལ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "མ་བཅོས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "འགྱུར་ཚད་-མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "མ་དཔེའི་ཆེ་ཆུང་།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr ""
+msgstr "ལད་ཟློས།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"
-msgstr ""
+msgstr "སྔོན་བཀོད"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
-msgstr ""
+msgstr "DLS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "PML"
-msgstr ""
+msgstr "PML"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLM"
-msgstr ""
+msgstr "MLM"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMV"
-msgstr ""
+msgstr "MLMV"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMVS"
-msgstr ""
+msgstr "MLMVS"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLF"
-msgstr ""
+msgstr "MLF"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLR"
-msgstr ""
+msgstr "MLR"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSM"
-msgstr ""
+msgstr "WLSM"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSMV"
-msgstr ""
+msgstr "WLSMV"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSM"
-msgstr ""
+msgstr "ULSM"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSMV"
-msgstr ""
+msgstr "ULSMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"
 msgstr ""
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard errors"
-msgstr ""
+msgstr "ཚད་ལྡན་འཁྲུལ་བ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     Bootstrap samples"
-msgstr ""
+msgstr "     Bootstrap མ་དཔེ།"
 
+#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     CI level"
-msgstr ""
+msgstr "     CI རིམ་པ།"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "གཞི་གྲངས།"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "མ་བཅོས།"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "འགྱུར་ཚད་-མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 
+#, fuzzy
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "མ་དཔེའི་ཆེ་ཆུང་།"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "གཞི་གྲངས།"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "མ་བཅོས།"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "འགྱུར་ཚད་-མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 
+#, fuzzy
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "མ་དཔེའི་ཆེ་ཆུང་།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Analysis Options"
-msgstr ""
+msgstr "དབྱེ་ཞིབ་འདེམས་ཀ"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Here, options for the analysis can be specified."
-msgstr ""
+msgstr "འདིར། དབྱེ་ཞིབ་ཀྱི་འདེམས་ཀ་དག་གསལ་བཀོད་བྱེད་ཐུབ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Rotation Method"
-msgstr ""
+msgstr "འཁོར་ཐབས།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Here, the rotation method to apply to the components can be specified. "
 "Rotation ensures a simpler understanding of the data structure."
 msgstr ""
+"འདིར། ཆ་ཤས་དག་ལ་སྤྱོད་རྒྱུའི་འཁོར་ཐབས་གསལ་བཀོད་བྱེད་ཐུབ། འཁོར་བས་གཞི་གྲངས་གྲུབ་ཚུལ་གྱི་གོ་བ་ལེན་སླ་རུ་"
+"གཏོང་ངེས།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Orthogonal"
-msgstr ""
+msgstr "Orthogonal"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
@@ -473,30 +584,40 @@ msgid ""
 "there are several possibilities that can be selected."
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "none"
-msgstr ""
+msgstr "མེད།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "No rotation method is selected."
-msgstr ""
+msgstr "འཁོར་ཐབས་གང་ཡང་བདམས་མེད།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Maximizes the variance of squared loadings for each factor, simplifying "
 "interpretations."
 msgstr ""
+"བགོད་གྲངས་རེ་རེའི་ squared loadings གི་འགྱུར་ཚད་ཆེ་ཤོས་བཟོ་བ་དང་། འགྲེལ་བརྗོད་དག་སྟབས་བདེ་བཟོ་བ"
+"།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimizes the number of factors needed to explain each variable, simplifying "
 "structure."
 msgstr ""
+"འགྱུར་ཚད་རེ་རེ་འགྲེལ་བརྗོད་བྱེད་པར་དགོས་པའི་བགོད་གྲངས་ཀྱི་གྲངས་ཉུང་ཤོས་བཟོ་བ་དང་། གྲུབ་ཚུལ་སྟབས་བདེ་བཟོ"
+"་བ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Orthogonal rotation method by Bentler, used for simplifying factor loadings."
 msgstr ""
+"Bentler གྱི་ Orthogonal འཁོར་ཐབས། བགོད་གྲངས་ཀྱི་ loadings སྟབས་བདེ་བཟོ་བར་བེད་སྤྱོད་བྱེད།"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
@@ -509,9 +630,10 @@ msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique"
-msgstr ""
+msgstr "Oblique"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
@@ -520,123 +642,165 @@ msgid ""
 "available. The default is promax."
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
 msgstr ""
+"Varimax ནས་འགོ་འཛུགས་པ་དང་། ལྟོས་འབྲེལ་ཡོད་པའི་བགོད་གྲངས་དག་ཆོག་པར་ནུས་པའི་བརྗེ་འགྱུར་ཞིག་སྤྱོད་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
 msgstr ""
+"བབ་བསྟུན་རུང་བ་དང་ལྡན་པའི་བགོད་གྲངས་དག་བར་གྱི་ལྟོས་འབྲེལ་ཉུང་ཤོས་བཟོ་བའི་ oblique འཁོར་བ་ཞིག"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
 msgstr ""
+"nonzero ནང་འཇུག་དག་ཉུང་ཤོས་བཟོས་ནས་བགོད་གྲངས་ཀྱི་ loadings སྟབས་བདེ་བཟོ་བར་དམིགས་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
 msgstr ""
+"Bentler གྱི་ Oblique འཁོར་བ། བགོད་གྲངས་ཀྱི་ལྟོས་འབྲེལ་དག་སྟབས་བདེ་བཟོ་བ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
 msgstr ""
+"སྟབས་བདེ་དང་འགྲེལ་བརྗོད་རུང་བའི་བགོད་གྲངས་ཀྱི་ loadings བར་གྱི་ oblique འཁོར་བ་ཞིག"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
 msgstr ""
+"བགོད་གྲངས་དབྱེ་ཞིབ་ཀྱི་ཆེད་དུ་ cluster འཁོར་བ་ཞིག་ལ་དམིགས་པ་དང་། ཚོགས་པའི་དབྱེ་འབྱེད་ལ་ནན་ཏན་བྱེད"
+"་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
 msgstr ""
+"Geomin གྱི་ oblique པར་གཞི། བགོད་གྲངས་ཀྱི་ལྟོས་འབྲེལ་དག་ཆོག་པ་དང་། རྙོག་འཛིང་གི་ loadings དག་"
+"ཉུང་དུ་གཏོང་བ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "Base Decomposition on"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པའི་གཞི་རྩ་གང་ཡིན་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "ལྟོས་འབྲེལ་གྱི་ matrix"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
 msgstr ""
+"ལྟོས་འབྲེལ་གྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པར་བེད་སྤྱོད་བྱེད།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
 msgstr ""
+"མཉམ་འགྱུར་ཚད་ཀྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པར་བེད་སྤྱོད་བྱེད།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr ""
+msgstr "Polychoric/tetrachoric ལྟོས་འབྲེལ་གྱི་ matrix"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The polychoric/tetrachoric correlation matrix is used to decompose the data "
 "into components/factors. This is sometimes unstable when sample size is "
 "small and when some variables do not contain all response categories"
 msgstr ""
+"polychoric/tetrachoric ལྟོས་འབྲེལ་གྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་"
+"པར་བེད་སྤྱོད་བྱེད། འདི་སྐབས་རེ་མ་དཔེའི་ཆེ་ཆུང་ཆུང་བ་དང་། འགྱུར་ཚད་འགའ་ཤས་ལ་ལན་འདེབས་དབྱེ་རིགས་ཚང་"
+"མ་མེད་དུས་བརྟན་པོ་མེད།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "བགོད་གྲངས་ཐབས་ལམ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "དབྱེ་འབྱེད་བྱེད་པར་བགོད་གྲངས་ཐབས་ལམ་གང་བེད་སྤྱོད་བྱེད་དགོས་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
-msgstr ""
+msgstr "ལྷག་མ་ཆུང་ཤོས།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
 msgstr ""
+"derivative དང་པོ་བེད་སྤྱད་ནས་ལྷག་མ་ཆུང་ཤོས་ཀྱི་བགོད་གྲངས་དབྱེ་ཞིབ་ (minres) བྱེད་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
-msgstr ""
+msgstr "ཆེས་མཐོའི་སྲིད་ཕྱོད།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "ཆེས་མཐོའི་སྲིད་ཕྱོད་ཀྱི་བགོད་གྲངས་དབྱེ་ཞིབ་ (ml) བྱེད་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
-msgstr ""
+msgstr "གཙོ་བོའི་མདའ་བགོད་གྲངས།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "གཙོ་བོའི་བགོད་གྲངས་ཐག་གཅོད་ (pa) བྱེད་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
-msgstr ""
+msgstr "སྤྱིར་བཏང་གི་ཆུང་ཤོས་ཀྱི་གྲུ་བཞི།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
 msgstr ""
+"OLS ལས་རིམ་བེད་སྤྱད་ནས་ལྷག་མའི་ matrix ཉུང་ཤོས་བཟོ་བ། དལ་བ་ཡིན་ཡང་ empirical first "
+"derivative བེད་སྤྱོད་བྱེད།"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
@@ -646,30 +810,35 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
-msgstr ""
+msgstr "སྤྱིར་བཏང་བཟོས་པའི་ཆུང་ཤོས་ཀྱི་གྲུ་བཞི།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "སྤྱིར་བཏང་བཟོས་པའི་ཆུང་ཤོས་ཀྱི་གྲུ་བཞི། (GLS) ཐག་གཅོད་བྱེད་པ།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
-msgstr ""
+msgstr "ཆུང་ཤོས་ཀྱི་ chi-square"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
-msgstr ""
+msgstr "གོ་རིམ་ཆུང་ཤོས།"
 
+#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "གོ་རིམ་ཆུང་ཤོས་ཀྱི་བགོད་གྲངས་དབྱེ་ཞིབ་ (minrank) བྱེད་པ།"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
@@ -773,9 +942,10 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
-msgstr ""
+msgstr "འགྱུར་གྲངས།"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
@@ -848,9 +1018,10 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
-msgstr ""
+msgstr "དཔེ་རིས།"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
@@ -1003,9 +1174,10 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Variables"
-msgstr ""
+msgstr "འགྱུར་གྲངས།"
 
 msgctxt "PcaEfaVariables|"
 msgid "In this box, the variables to perform the analysis on are selected"
@@ -1022,17 +1194,20 @@ msgid ""
 "For the latter, the sample size is required."
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Raw"
-msgstr ""
+msgstr "མ་བཅོས།"
 
+#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "འགྱུར་ཚད་-མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 
+#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Sample size"
-msgstr ""
+msgstr "མ་དཔེའི་ཆེ་ཆུང་།"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data Type"

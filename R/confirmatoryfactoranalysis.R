@@ -249,14 +249,18 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   # define estimator from options
-  estimator = switch(options[["estimator"]],
-                     "default"                         = "default",
-                     "maximumLikelihood"               = "ML",
-                     "generalizedLeastSquares"         = "GLS",
-                     "weightedLeastSquares"            = "WLS",
-                     "unweightedLeastSquares"          = "ULS",
-                     "diagonallyWeightedLeastSquares"  = "DWLS"
-  )
+  # the old option values used camelCase, but now we use the lavaan estimator names directly
+  # keeping the switch for backwards compatibility with old analysis files
+  # estimator = switch(options[["estimator"]],
+  #                    "default"                         = "default",
+  #                    "maximumLikelihood"               = "ML",
+  #                    "generalizedLeastSquares"         = "GLS",
+  #                    "weightedLeastSquares"            = "WLS",
+  #                    "unweightedLeastSquares"          = "ULS",
+  #                    "diagonallyWeightedLeastSquares"  = "DWLS",
+  #                    toupper(options[["estimator"]])  # new option values are lowercase lavaan names, convert to uppercase
+  # )
+  estimator = options[["estimator"]]
 
   if (options[["dataType"]] == "raw") {
     dt <- dataset
@@ -291,7 +295,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     auto.delta      = TRUE,
     auto.cov.y      = TRUE,
     mimic           = options$packageMimiced,
-    estimator       = options[["estimator"]],
+    estimator       = estimator,
     missing         = naAction
   ))
 
@@ -530,14 +534,19 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
 
     footnote <- ""
-    if (cfaResult[["orderedVariables"]]) {
-      # when the estimator is not default lavaan does not use the robust test
+    # use scaled fit measures when available (robust estimators or ordered variables)
+    # fitOptions$test can be a vector (e.g., c("standard", "satorra.bentler"))
+    hasRobustTest <- !all(fitOptions$test == "standard")
+    useScaled <- !is.na(fitMeasures["chisq.scaled"]) && 
+                 (cfaResult[["orderedVariables"]] || hasRobustTest)
+    
+    if (useScaled) {
       maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
       maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
       maintab[["df"]]     <- fitMeasures[c("baseline.df.scaled", "df.scaled")]
       maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue.scaled"])
 
-      if (options[["seType"]] == "standard") {
+      if (options[["seType"]] == "standard" && cfaResult[["orderedVariables"]]) {
         footnote <- gettextf("%s You may consider changing the standard error method to 'robust'.", footnote)
       }
 
@@ -695,6 +704,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # actually compute the fit measures
   fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
+  fitOptions <- lavaan::inspect(cfaResult[["lav"]], what = "options")
 
   # information criteria
   fitic[["index"]] <- c(
@@ -734,14 +744,28 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     gettext("Expected cross validation index (ECVI)")
   )
 
-  if (cfaResult[["orderedVariables"]] && !is.na(fitMeasures["chisq.scaled"])) {
+  # use scaled fit measures when available (robust estimators or ordered variables)
+  # fitOptions$test can be a vector (e.g., c("standard", "satorra.bentler"))
+  hasRobustTest <- !all(fitOptions$test == "standard")
+  useScaled <- !is.na(fitMeasures["chisq.scaled"]) && 
+               (cfaResult[["orderedVariables"]] || hasRobustTest)
+
+  if (useScaled) {
     fitin[["value"]] <- fitMeasures[c("cfi.scaled", "tli.scaled", "nnfi.scaled", "nfi.scaled", "pnfi",
                                       "rfi.scaled", "ifi.scaled", "rni.scaled")]
-    fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because of categorical variables in the data."))
+    if (cfaResult[["orderedVariables"]]) {
+      fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because of categorical variables in the data."))
+    } else {
+      fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because a robust estimator was used."))
+    }
 
     fitot[["value"]] <- fitMeasures[c("rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled",
                                       "rmsea.pvalue.scaled", "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
-    fitot$addFootnote(gettext("The RMSEA results are scaled because of categorical variables in the data."))
+    if (cfaResult[["orderedVariables"]]) {
+      fitot$addFootnote(gettext("The RMSEA results are scaled because of categorical variables in the data."))
+    } else {
+      fitot$addFootnote(gettext("The RMSEA results are scaled because a robust estimator was used."))
+    }
   } else {
     fitin[["value"]] <- fitMeasures[c("cfi", "tli", "nnfi", "nfi", "pnfi", "rfi", "ifi", "rni")]
     fitot[["value"]] <- fitMeasures[c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue",

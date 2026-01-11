@@ -134,7 +134,7 @@ Form
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 				AvailableVariablesList 		 {	name: "observedVarsForResidualCov";	source: factors.name}
-				AssignedPairsVariablesList {	name: "residualsCovarying"}
+				AssignedPairsVariablesList {	name: "residualsCovarying" }
 			}
 		}
 	}

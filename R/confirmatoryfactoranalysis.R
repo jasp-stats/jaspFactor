@@ -32,7 +32,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   errors <- .cfaCheckErrors(dataset, options)
 
   # possibly check cov matrix
-  .pcaAndEfaDataCovarianceCheck(dataset, options, ready = TRUE, cfa = TRUE)
+  .pcaAndEfaDataCovarianceCheck(dataset, options,
+                                ready = length(unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE) > 0),
+                                cfa = TRUE)
 
   # Main table / model
   cfaResult <- .cfaComputeResults(jaspResults, dataset, options, errors)
@@ -102,8 +104,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     dataset <- dataset[, vars]
 
   } else {
-    colInds <- which(colnames(dataset) == vars)
-    dataset <- dataset[colInds, colInds]
+    columnIndices <- sapply(vars, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
+    # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,
+    # meaning the loaded data columns are ordered somewhat alphabetically
+    dataset <- dataset[, names(columnIndices)]
+    dataset <- dataset[columnIndices, ]
+    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x)))
     rownames(dataset) <- colnames(dataset)
   }
 
@@ -131,7 +137,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   return(options)
 }
-
 
 
 .cfaCheckErrors <- function(dataset, options) {
@@ -228,10 +233,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   cfaResult <- list()
 
-  cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
+  cfaResult[["spec"]] <- jaspSem:::.cfaCalcSpecs(dataset, options)
   # Recalculate the model
 
-  modObj <- .optionsToCFAMod(options, dataset, cfaResult)
+  modObj <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult)
   mod <- modObj$model
   cfaResult[["model"]] <- mod
   cfaResult[["model_simple"]] <- modObj$simple_model
@@ -1439,7 +1444,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaSyntax <- function(jaspResults, options, dataset, cfaResult) {
   if (is.null(cfaResult) || !options$lavaanSyntax || !is.null(jaspResults[["syntax"]])) return()
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
+  mod <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
 
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
@@ -1584,7 +1589,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["resRelTable"]] <- relTable
 
 }
-
 
 .cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {
 

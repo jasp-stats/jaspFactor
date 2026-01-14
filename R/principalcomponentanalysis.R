@@ -19,6 +19,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
 
+
   ready   <- length(options$variables) > 1
 
   # handle dataset
@@ -59,13 +60,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!ready) return()
 
   if (options[["dataType"]] == "raw") {
+    dataset <- dataset[, unlist(options[["variables"]])] # reorder the columns to equal the order in the variables list, otherwise they will be sorted somewhat alphabetically
     if (options[["naAction"]] == "listwise") {
       dataset <- dataset[complete.cases(dataset), ]
-      dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
-      return(dataset)
-    } else {
-      return(.readDataSetToEnd(columns.as.numeric = unlist(options$variables)))
     }
+    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
+    return(dataset)
   } else { # if variance covariance matrix as input
     columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
     # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,
@@ -89,23 +89,14 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     return(dataset)
   }
 
-  # it seems the column names are sorted alphabetically when all columns are read
-  # so we need to sort the column names to match the order of the variables
-  sortedIndices <- sort(as.numeric(gsub(".*_(\\d+)_.*", "\\1", colnames(dataset))))
-  sortedNames <- paste0("JaspColumn_", sortedIndices, "_Encoded")
-  dataset <- dataset[, sortedNames]
-
   # possible data matrix?
   if ((nrow(dataset) != ncol(dataset)))
     .quitAnalysis(gettext("Input data does not seem to be a square matrix! Please check the format of the input data."))
 
   if (!all(dataset[lower.tri(dataset)] == t(dataset)[lower.tri(dataset)]))
-    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data."))
+    .quitAnalysis(gettext("Input data does not seem to be a symmetric matrix! Please check the format of the input data and possibly the order of the variables."))
 
-  usedvars <- unlist(options[["variables"]])
-  var_idx  <- match(usedvars, colnames(dataset))
-
-  mat <- try(as.matrix(dataset[var_idx, var_idx]))
+  mat <- try(as.matrix(dataset))
   if (inherits(mat, "try-error"))
     .quitAnalysis(gettext("All cells must be numeric."))
 
@@ -118,7 +109,6 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       .quitAnalysis("Not enough valid columns to run this analysis")
     }
   }
-
 
   return(mat)
 }

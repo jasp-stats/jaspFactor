@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2025-06-07 03:40\n"
+"POT-Creation-Date: 2026-01-17 03:46\n"
 "PO-Revision-Date: 2025-12-23 10:37+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -229,8 +229,22 @@ msgstr ""
 "Außer den PNFI sind die Anpassungsindizes skaliert, weil die Daten "
 "kategoriale Variablen enthalten."
 
+#, fuzzy
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
+msgstr ""
+"Außer den PNFI sind die Anpassungsindizes skaliert, weil die Daten "
+"kategoriale Variablen enthalten."
+
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+"Die RMSEA-Ergebnisse sind aufgrund kategorialer Variablen in den Daten "
+"skaliert."
+
+#, fuzzy
+msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr ""
 "Die RMSEA-Ergebnisse sind aufgrund kategorialer Variablen in den Daten "
 "skaliert."
@@ -556,18 +570,13 @@ msgstr ""
 "Eingabedaten scheinen keine quadratische Matrix zu sein! Bitte überprüfen "
 "Sie das Format der Eingabedaten."
 
+#, fuzzy
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
+"of the input data and possibly the order of the variables."
 msgstr ""
 "Eingabedaten scheinen keine symmetrische Matrix zu sein! Bitte überprüfen "
 "Sie das Format der Eingabedaten."
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr "Gruppierungsvariable nicht unterstützt für Kovarianzmatrix-Eingabe"
-
-msgid "Mean structure not supported for covariance matrix input"
-msgstr "Mittelwertstruktur nicht unterstützt für Kovarianzmatrix-Eingabe"
 
 msgid "All cells must be numeric."
 msgstr "Alle Zellen müssen numerisch sein."
@@ -616,6 +625,12 @@ msgstr "Scree-Plot"
 
 msgid "Component"
 msgstr "Komponente"
+
+#~ msgid "Grouping variable not supported for covariance matrix input"
+#~ msgstr "Gruppierungsvariable nicht unterstützt für Kovarianzmatrix-Eingabe"
+
+#~ msgid "Mean structure not supported for covariance matrix input"
+#~ msgstr "Mittelwertstruktur nicht unterstützt für Kovarianzmatrix-Eingabe"
 
 #~ msgid "Eigenvalues"
 #~ msgstr "Eigenwerte"

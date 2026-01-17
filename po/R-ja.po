@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2025-06-07 03:40\n"
+"POT-Creation-Date: 2026-01-17 03:46\n"
 "PO-Revision-Date: 2024-11-11 02:00+0000\n"
 "Last-Translator: 小林　大地 <d.koba.0127@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -219,8 +219,19 @@ msgid ""
 msgstr ""
 "PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている."
 
+#, fuzzy
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
+msgstr ""
+"PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている."
+
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
+msgstr "データにはカテゴリー変数があるため、RMSEAは標準化されている."
+
+#, fuzzy
+msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr "データにはカテゴリー変数があるため、RMSEAは標準化されている."
 
 msgid "Parameter estimates"
@@ -541,13 +552,7 @@ msgstr ""
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
+"of the input data and possibly the order of the variables."
 msgstr ""
 
 msgid "All cells must be numeric."

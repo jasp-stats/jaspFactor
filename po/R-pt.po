@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2025-06-07 03:40\n"
+"POT-Creation-Date: 2026-01-17 03:46\n"
 "PO-Revision-Date: 2025-08-09 03:42+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -119,7 +119,8 @@ msgid "Factor model"
 msgstr "Fatores"
 
 msgid "%s You may consider changing the standard error method to 'robust'."
-msgstr "%s Você pode considerar alterar o método do erro padrão para 'robusto'."
+msgstr ""
+"%s Você pode considerar alterar o método do erro padrão para 'robusto'."
 
 msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
 msgstr "%1$s O estimador é %2$s. A estatística de teste é %3$s."
@@ -233,8 +234,22 @@ msgstr ""
 "Exceto para o PNFI, os índices de ajuste são escalonados porque há variáveis "
 "categóricas nos dados."
 
+#, fuzzy
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
+msgstr ""
+"Exceto para o PNFI, os índices de ajuste são escalonados porque há variáveis "
+"categóricas nos dados."
+
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+"Os resultados de REQMA são escalonados porque há variáveis categóricas nos "
+"dados."
+
+#, fuzzy
+msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr ""
 "Os resultados de REQMA são escalonados porque há variáveis categóricas nos "
 "dados."
@@ -556,27 +571,21 @@ msgstr ""
 "Os dados de entrada não parecem ser uma matriz quadrada! Por favor, "
 "verifique o formato dos dados de entrada."
 
+#, fuzzy
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
+"of the input data and possibly the order of the variables."
 msgstr ""
 "Os dados de entrada não parecem ser uma matriz simétrica! Por favor, "
 "verifique o formato dos dados de entrada."
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-"A variável de agrupamento não é suportada como entrada da matriz de "
-"covariância"
-
-msgid "Mean structure not supported for covariance matrix input"
-msgstr "A estrutura média não é suportada como entrada da matriz de covariância"
 
 msgid "All cells must be numeric."
 msgstr "Todas as células devem ser numéricas."
 
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
 msgstr ""
-"Muitos fatores %1$s solicitados (%2$i) para a quantidade de variáveis incluídas"
+"Muitos fatores %1$s solicitados (%2$i) para a quantidade de variáveis "
+"incluídas"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "Não há casos válidos suficientes (%i) para executar esta análise"
@@ -617,6 +626,15 @@ msgstr "Gráfico de sedimentação"
 
 msgid "Component"
 msgstr "Componentes"
+
+#~ msgid "Grouping variable not supported for covariance matrix input"
+#~ msgstr ""
+#~ "A variável de agrupamento não é suportada como entrada da matriz de "
+#~ "covariância"
+
+#~ msgid "Mean structure not supported for covariance matrix input"
+#~ msgstr ""
+#~ "A estrutura média não é suportada como entrada da matriz de covariância"
 
 #, fuzzy
 #~ msgid "Eigenvalues"

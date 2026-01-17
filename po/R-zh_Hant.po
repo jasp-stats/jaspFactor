@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2025-06-07 03:40\n"
+"POT-Creation-Date: 2026-01-17 03:46\n"
 "PO-Revision-Date: 2025-10-24 11:02+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -216,8 +216,18 @@ msgid ""
 "variables in the data."
 msgstr "除了 PNFI外，其餘的配適度指標因數據中的類別變數而進行了調整。"
 
+#, fuzzy
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
+msgstr "除了 PNFI外，其餘的配適度指標因數據中的類別變數而進行了調整。"
+
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
+msgstr "因資料中有類別變數，RMSEA為調整後的數值。"
+
+#, fuzzy
+msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr "因資料中有類別變數，RMSEA為調整後的數值。"
 
 msgid "Parameter estimates"
@@ -530,16 +540,11 @@ msgid ""
 "the input data."
 msgstr "輸入的資料並非方陣！請確認資料。"
 
+#, fuzzy
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
+"of the input data and possibly the order of the variables."
 msgstr "輸入的資料並非對稱矩陣！請確認資料格式。"
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr "以共變數矩陣當輸入資料而進行分析時，不提供群組變數功能"
-
-msgid "Mean structure not supported for covariance matrix input"
-msgstr "以共變數矩陣當輸入資料而進行分析時，不提供平均數結構功能"
 
 msgid "All cells must be numeric."
 msgstr "所有細格內容皆須為數字。"
@@ -586,6 +591,12 @@ msgstr "陡坡圖"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "Grouping variable not supported for covariance matrix input"
+#~ msgstr "以共變數矩陣當輸入資料而進行分析時，不提供群組變數功能"
+
+#~ msgid "Mean structure not supported for covariance matrix input"
+#~ msgstr "以共變數矩陣當輸入資料而進行分析時，不提供平均數結構功能"
 
 #~ msgid "Eigenvalues"
 #~ msgstr "特徵值"

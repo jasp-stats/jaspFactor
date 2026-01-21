@@ -1,11 +1,11 @@
 on:
   push:
-    paths: ['**.R', 'tests/**', '**.Rd', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win', '**.yml']
+    paths: ['**.R', 'tests/**', '**.Rd', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win', '**.yml', 'renv.lock']
   pull_request:
-    paths: ['**.R', 'tests/**', '**.Rd', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win']
+    paths: ['**.R', 'tests/**', '**.Rd', '**.c', '**.cpp', '**.h', '**.hpp', 'DESCRIPTION', 'NAMESPACE', 'MAKEVARS', 'MAKEVARS.win', 'renv.lock']
   workflow_dispatch:
   schedule:
-    - cron:  '13 12 * * 1-5'
+    - cron: '13 12 * * 1-5'
 
 name: unit-tests
 
@@ -15,5 +15,5 @@ jobs:
 
     uses: jasp-stats/jasp-actions/.github/workflows/unittests.yml@master
     with:
-      needs_JAGS:   false
+      needs_JAGS: false
       needs_igraph: false

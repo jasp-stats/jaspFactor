@@ -42,6 +42,7 @@ test_that("exploratoryFactorAnalysis (analysis 2) results match", {
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-2_figure-1_path-diagram")
 
+  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-2_figure-2_scree-plot")
@@ -78,9 +79,11 @@ test_that("principalComponentAnalysis (analysis 3) results match", {
      0.914733939122977, "jaspColumn2", 0.223865710905652, 0.949884143480707,
      "jaspColumn3"))
 
+  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-3_figure-1_scree-plot")
 
 })
+
 

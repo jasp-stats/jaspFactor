@@ -55,6 +55,25 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 # Preprocessing functions ----
 
+.pcaAndEfaCoerceToNumeric <- function(x, variableType = NULL) {
+
+  xNumeric <- suppressWarnings(as.numeric(as.character(x)))
+  conversionIntroducedNA <- any(is.na(xNumeric) & !is.na(x))
+
+  isTypeCategorical <- !is.null(variableType) && variableType %in% c("ordinal", "nominal")
+  isCategorical <- isTypeCategorical || is.factor(x) || is.ordered(x)
+
+  if (conversionIntroducedNA && isCategorical) {
+    if (is.factor(x) || is.ordered(x)) {
+      return(as.numeric(x))
+    }
+
+    return(as.numeric(factor(x)))
+  }
+
+  return(xNumeric)
+}
+
 .pcaAndEfaHandleData <- function(dataset, options, ready) {
 
   if (!ready) return()
@@ -64,7 +83,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     if (options[["naAction"]] == "listwise") {
       dataset <- dataset[complete.cases(dataset), ]
     }
-    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
+    variableTypes <- options[["variables.types"]]
+    dataset[] <- lapply(seq_along(dataset), function(i) {
+      currentType <- if (!is.null(variableTypes) && length(variableTypes) >= i) variableTypes[[i]] else NULL
+      .pcaAndEfaCoerceToNumeric(dataset[[i]], currentType)
+    })
     return(dataset)
   } else { # if variance covariance matrix as input
     columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
@@ -822,5 +845,3 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   return()
 
 }
-
-

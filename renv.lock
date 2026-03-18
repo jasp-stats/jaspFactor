@@ -3150,6 +3150,7 @@
         "vdiffr"
       ],
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
       "RemoteSha": "5c68ba4b81afc55e2092e733fe334819c85e354a"

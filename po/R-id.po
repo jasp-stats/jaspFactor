@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
 "POT-Creation-Date: 2026-01-17 03:46\n"
-"PO-Revision-Date: 2026-03-18 03:09+0000\n"
+"PO-Revision-Date: 2026-03-21 04:06+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/id/>\n"
@@ -68,7 +68,7 @@ msgid "df"
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "Baseline model"
 msgstr ""
@@ -206,7 +206,7 @@ msgid "Std. estimate"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimasi"
 
 msgid "Factor loadings"
 msgstr ""
@@ -227,13 +227,13 @@ msgid "z-value"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "Bawah"
 
 msgid "%s%% Confidence Interval"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "Atas"
 
 msgid "Second-order factor loadings"
 msgstr ""
@@ -362,7 +362,7 @@ msgid "Mardia's Test of Multivariate Normality"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Statistik"
 
 msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
@@ -443,7 +443,7 @@ msgid "CFI"
 msgstr ""
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "Residual Matrix"
 msgstr ""

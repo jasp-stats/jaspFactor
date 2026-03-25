@@ -515,7 +515,7 @@ options$ave <- TRUE
 options$htmt <- TRUE
 options$reliability <- TRUE
 set.seed(1)
-results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options, makeTests = F)
 
 test_that("Average variance extracted table results match", {
   table <- results[["results"]][["resAveTable"]][["data"]]

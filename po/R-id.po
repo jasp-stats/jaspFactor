@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
 "POT-Creation-Date: 2026-01-17 03:46\n"
-"PO-Revision-Date: 2026-03-21 04:06+0000\n"
+"PO-Revision-Date: 2026-03-28 01:09+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/id/>\n"
@@ -62,10 +62,10 @@ msgid "Chi-square test"
 msgstr ""
 
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgid "p"
 msgstr "p"
@@ -104,7 +104,7 @@ msgid "Index"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Nilai"
 
 msgid "Information criteria"
 msgstr ""
@@ -116,7 +116,7 @@ msgid "Metric"
 msgstr ""
 
 msgid "Log-likelihood"
-msgstr ""
+msgstr "Log-kemungkinan"
 
 msgid "Number of free parameters"
 msgstr ""
@@ -215,7 +215,7 @@ msgid "Group"
 msgstr "Grup"
 
 msgid "Factor"
-msgstr ""
+msgstr "Faktor"
 
 msgid "Indicator"
 msgstr ""
@@ -476,7 +476,7 @@ msgid "Simulated data from parallel analysis"
 msgstr ""
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "Diagram Jalur"
 
 msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
 msgstr ""

@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-04-02 05:09+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -470,7 +476,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "This method produces components that are uncorrelated. For this method, "
 "there are several possibilities that can be selected."
-msgstr ""
+msgstr "此方法產出之成分間互不相關。針對此方法，可選用多種不同選項。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -479,35 +485,35 @@ msgstr "無"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "No rotation method is selected."
-msgstr ""
+msgstr "未選取任何轉軸方法。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Maximizes the variance of squared loadings for each factor, simplifying "
 "interpretations."
-msgstr ""
+msgstr "最大化各因子平方負荷量之變異數，以簡化解釋。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimizes the number of factors needed to explain each variable, simplifying "
 "structure."
-msgstr ""
+msgstr "最小化解釋各變項所需之因子數，以簡化結構。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Orthogonal rotation method by Bentler, used for simplifying factor loadings."
-msgstr ""
+msgstr "Bentler 提出之直交轉軸法，用於簡化因子負荷量。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Combines Varimax and Quartimax to balance factor simplicity and variable "
 "explanations."
-msgstr ""
+msgstr "結合 Varimax 與 Quartimax，以平衡因子簡潔性與變項解釋力。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
-msgstr ""
+msgstr "應用直交轉軸，最小化負荷量平方之加權和。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -519,44 +525,44 @@ msgid ""
 "This method produces components that allow for correlation between the "
 "components. This method is selected by default. Several possibilities are "
 "available. The default is promax."
-msgstr ""
+msgstr "此方法產出之成分間允許相關。此選項為預設選取，並提供多種選項，預設為 promax。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
-msgstr ""
+msgstr "始於 Varimax，再應用冪次轉換以允許因素間相關。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
-msgstr ""
+msgstr "斜交轉軸法，在允許彈性之同時最小化因素間相關。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
-msgstr ""
+msgstr "旨在透過最小化非零元素以簡化因素負荷量。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
-msgstr ""
+msgstr "Bentler 提出之斜交轉軸法，用於簡化因素相關。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
-msgstr ""
+msgstr "斜交轉軸法，在簡潔性與可解釋性之因素負荷量間取得平衡。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
-msgstr ""
+msgstr "針對因素分析進行集群轉軸，強調群組分離。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
-msgstr ""
+msgstr "Geomin 之斜交版本，允許因素相關並減少複雜負荷量。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
@@ -574,7 +580,7 @@ msgstr "相關矩陣"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "使用相關矩陣將資料分解為成分／因素。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -584,12 +590,11 @@ msgstr "共變數矩陣"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "使用共變數矩陣將資料分解為成分／因素。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr "多項/四分的相關矩陣"
+msgstr "多序列相關／四分相關矩陣"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
@@ -597,6 +602,8 @@ msgid ""
 "into components/factors. This is sometimes unstable when sample size is "
 "small and when some variables do not contain all response categories"
 msgstr ""
+"使用多序列相關／四分相關矩陣將資料分解為成分／因素。此方法在樣本數較小，或部"
+"分變項未包含所有反應類別時，可能出現不穩定之情況"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
@@ -615,7 +622,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
-msgstr ""
+msgstr "使用一階導數進行最小殘差因素分析（minres）。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -624,16 +631,15 @@ msgstr "最大概似法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "執行最大概似因素分析（ml）。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
 msgstr "主軸因素法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "執行主因素解法（pa）。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -644,7 +650,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
-msgstr ""
+msgstr "使用普通最小平方法最小化殘差矩陣，速度較慢但採用實證一階導數。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -653,7 +659,7 @@ msgstr "加權最小平方法 (WLS)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
-msgstr ""
+msgstr "執行加權最小平方法（WLS）解法。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -662,7 +668,7 @@ msgstr "廣義最小平方法 (GLS)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "執行一般化最小平方法（GLS）解法。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -672,7 +678,7 @@ msgstr "最小卡方法"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
-msgstr ""
+msgstr "使用成對相關最小化樣本數加權之卡方值。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -681,7 +687,7 @@ msgstr "最小秩序法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "執行最小秩因素分析（minrank）。"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
@@ -716,6 +722,9 @@ msgid ""
 "A seed (1234) is chosen by default so that the results from the parallel "
 "analysis are equal across the PCA"
 msgstr ""
+"成分／因素之選取係依據平行分析。此方法選取特徵值大於平行平均隨機特徵值之因素"
+"，為預設選項。可依據主成分特徵值（PC）或因素特徵值（FA）進行選取。預設種子數"
+"（1234）可確保平行分析結果在主成分分析中具有可重複性"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -736,7 +745,7 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Components are selected when they have a certain eigenvalue. By default "
 "components are selected that have an eigenvalue above 1."
-msgstr ""
+msgstr "成分選取係基於特定特徵值門檻。預設選取特徵值大於 1 之成分。"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -752,7 +761,7 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "The number of components can be specified manually. By default this is set "
 "to 1."
-msgstr ""
+msgstr "可手動指定成分個數。預設值為 1。"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -770,7 +779,7 @@ msgstr "輸出選項"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
-msgstr ""
+msgstr "主成分分析／探索性因素分析之額外輸出選項。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
@@ -808,7 +817,7 @@ msgstr "表格"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
-msgstr ""
+msgstr "於輸出結果中顯示額外表格。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -819,7 +828,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "An item by factor structure matrix. This is just the loadings (pattern) "
 "matrix times the factor intercorrelation matrix."
-msgstr ""
+msgstr "項目與因素之結構矩陣。此為負荷量（型態）矩陣乘以因子間相關矩陣之結果。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -835,7 +844,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "When selecting this option, a table with the correlations between the "
 "components/factors will be displayed."
-msgstr ""
+msgstr "選取此選項時，將顯示成分／因素間之相關矩陣表格。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -848,6 +857,8 @@ msgid ""
 "with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
 "Information Criterion (BIC) to test the fit of the model."
 msgstr ""
+"此選項顯示模型適配度檢定指標，包括均方根誤差近似值（RMSEA）及其90%信賴區間、"
+"Tucker-Lewis指數（TLI）以及貝葉斯資訊準則（BIC）。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -856,7 +867,7 @@ msgstr "殘差矩陣"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
-msgstr ""
+msgstr "顯示包含殘差變異數與相關係數之表格。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -870,6 +881,8 @@ msgid ""
 "eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
 "parallel analysis for determining the number of components/factors above."
 msgstr ""
+"勾選此選項後，將生成一個表格，顯示平行分析的詳細輸出。可基於主成分特徵值（PC"
+"）或因子特徵值（FA）。隨機種子取自上述用於決定成分／因子數量的平行分析。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -888,7 +901,7 @@ msgstr "圖"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
-msgstr ""
+msgstr "顯示圖形。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -899,7 +912,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "By selecting this option, a visual representation of the direction and "
 "strength of the relation between the variable and factor will be displayed."
-msgstr ""
+msgstr "選取此選項時，將顯示變數與因子間關係方向與強度之視覺化呈現。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -913,6 +926,8 @@ msgid ""
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
 msgstr ""
+"選取此選項時，將顯示陡坡圖。陡坡圖提供各因素所解釋之資料變異量（以特徵值表示"
+"）之資訊，可用於決定應選取之因素個數。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -925,6 +940,8 @@ msgid ""
 "analysis will be based on PC or FA as defined by the option for the parallel "
 "analysis table."
 msgstr ""
+"於陡坡圖中顯示平行分析之結果。平行分析將依據平行分析表格選項所定義之 PC 或 "
+"FA 進行。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -936,6 +953,8 @@ msgid ""
 "Assumptions: The variables included in the analysis are correlated; the "
 "variables included in the analysis are linearly related (Shlens, 2014)"
 msgstr ""
+"假設條件：納入分析之變項間具有相關；納入分析之變項間呈線性關係（Shlens, 2014"
+"）"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -949,6 +968,8 @@ msgid ""
 "sampling adequacy (MSA) as the proportion of common variance among variables "
 "is computed for all variables; values closer to 1 are desired."
 msgstr ""
+"透過計算變項間共同變異之比例，評估變項是否適合進行因素分析。計算所有變項之取"
+"樣適切性量數（MSA），即變項間共同變異之比例，數值越接近 1 越理想。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -961,6 +982,8 @@ msgid ""
 "if the variables are related or not. A significant result means the "
 "correlation matrix is unlike the identity matrix."
 msgstr ""
+"檢定資料之相關矩陣是否為單元矩陣，即判斷變項間是否存在關聯。檢定結果達顯著，"
+"表示相關矩陣異於單元矩陣。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -973,6 +996,8 @@ msgid ""
 "included variables in terms of multivariate skewness and kurtosis. The "
 "Mardia's test will always include the listwise complete cases."
 msgstr ""
+"以多變量偏度與峰度評估納入變項偏離多變量常態分配之程度。Mardia 檢定將始終採用"
+"完整案例進行分析。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
@@ -985,6 +1010,8 @@ msgid ""
 "values in the anti-image correlation matrix indicate that a variable might "
 "be redundant or have too much shared variance with other variables."
 msgstr ""
+"包含在控制資料集中所有其他變項之影響後，各變項對之間的反向偏相關。反映像相關"
+"矩陣中數值較高，表示該變項可能與其他變項存在重疊或共享過多變異。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -993,7 +1020,7 @@ msgstr "遺漏值"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
-msgstr ""
+msgstr "選擇缺失值之處理方式。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1007,6 +1034,8 @@ msgid ""
 "scenario, it is not necessary to have an observation for all the variables "
 "to include the case in the analysis. This option is selected by default."
 msgstr ""
+"若某個變項的觀測值遺失，該案例中其他變項的觀測值仍會被用於分析。在此情況下，"
+"不需要所有變項皆有觀測值即可將該案例納入分析。此選項為預設選取。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1020,6 +1049,8 @@ msgid ""
 "In this scenario, observations for every variable are needed to include the "
 "case in the analysis. "
 msgstr ""
+"若某變項之任一觀察值缺失，則該案例（即該案例所有其他相關變項之觀察值）將自分"
+"析中排除。在此情況下，需所有變項均有觀察值，該案例方能納入分析。 "
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
@@ -1043,11 +1074,11 @@ msgstr "欄位名稱的頭文字"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "PC"
-msgstr ""
+msgstr "主成分"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
-msgstr ""
+msgstr "因素"
 
 #, fuzzy
 msgctxt "PcaEfaVariables|"
@@ -1056,7 +1087,7 @@ msgstr "變項"
 
 msgctxt "PcaEfaVariables|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "於此方框中選取欲進行分析之變項"
 
 msgctxt "PcaEfaVariables|"
 msgid "Data Type"
@@ -1068,6 +1099,8 @@ msgid ""
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
 msgstr ""
+"指定資料為原始資料（即觀察值於列、變項於欄），或為變異數-共變數矩陣。若為後者"
+"，則需提供樣本數。"
 
 #, fuzzy
 msgctxt "PcaEfaVariables|"
@@ -1111,7 +1144,7 @@ msgstr ""
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "於此方框中選取欲進行分析之變項"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
@@ -1119,10 +1152,12 @@ msgid ""
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
 msgstr ""
+"指定資料為原始資料（即觀察值於列、變項於欄），或為變異數-共變數矩陣。若為後者"
+"，則需提供樣本數。"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "於此方框中選取欲進行分析之變項"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid ""
@@ -1130,3 +1165,5 @@ msgid ""
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
 msgstr ""
+"指定資料為原始資料（即觀察值於列、變項於欄），或為變異數-共變數矩陣。若為後者"
+"，則需提供樣本數。"

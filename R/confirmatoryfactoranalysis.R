@@ -563,7 +563,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     }
 
     # always print these things, lavaan has too many hidden rules.
-    if (hasRobustTest) {
+    if (length(fitOptions$test) > 1) {
       fitOptions$test <- fitOptions$test[fitOptions$test != "standard"]
     }
     # quick note: there is a case when useScaled can be false but the test is still not standard.

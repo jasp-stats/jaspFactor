@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-04-12 13:09+0000\n"
+"PO-Revision-Date: 2026-04-14 14:09+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-qml/zh_Hant/>\n"
@@ -279,7 +279,7 @@ msgstr "顯示變異數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr "轉軸圖"
+msgstr "旋轉模型圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"

@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-04-14 14:09+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspfactor-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -273,7 +279,7 @@ msgstr "顯示變異數"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr "轉軸圖"
+msgstr "旋轉模型圖"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
@@ -353,47 +359,47 @@ msgstr "預設"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
-msgstr "對角加權最小平方法(DLS)"
+msgstr "分配加權最小平方法 (DLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "PML"
-msgstr "擬最大概似法"
+msgstr "成對最大概似法 (PML)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLM"
-msgstr "多層次模型"
+msgstr "穩健最大概似法 (MLM)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMV"
-msgstr "最大概似法的均值與變異數調整法"
+msgstr "最大概似法的均值與變異數調整法 (MLMV)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMVS"
-msgstr "最大概似法的均值與變異數調整及尺度修正法"
+msgstr "最大概似法的均值與變異數調整及尺度修正法 (MLMVS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLF"
-msgstr "固定效應最大概似法"
+msgstr "一階導數標準誤之最大概似估計 (MLF)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLR"
-msgstr "具穩健標準誤的最大概似法"
+msgstr "具穩健標準誤的最大概似法 (MLR)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSM"
-msgstr "加權最小平方法的均值調整"
+msgstr "加權最小平方法的均值調整 (WLSM)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSMV"
-msgstr "加權最小平方法的均值與變異數調整"
+msgstr "加權最小平方法的均值與變異數調整 (WLSMV)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSM"
-msgstr "未加權最小平方法的均值"
+msgstr "未加權最小平方法的均值 (ULSM)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSMV"
-msgstr "未加權最小平方法的均值與變異數調整法"
+msgstr "未加權最小平方法的均值與變異數調整法 (ULSMV)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"

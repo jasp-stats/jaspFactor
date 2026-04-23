@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2025-06-07 03:40\n"
+"POT-Creation-Date: 2026-01-17 03:46\n"
 "PO-Revision-Date: 2025-06-22 22:02+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -229,8 +229,22 @@ msgstr ""
 "Met uitzondering van de PNFI worden de fit-indices geschaald vanwege "
 "categorische variabelen in de data."
 
+#, fuzzy
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
+msgstr ""
+"Met uitzondering van de PNFI worden de fit-indices geschaald vanwege "
+"categorische variabelen in de data."
+
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+"De RMSEA-resultaten zijn geschaald vanwege de categorische variabelen in de "
+"data."
+
+#, fuzzy
+msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr ""
 "De RMSEA-resultaten zijn geschaald vanwege de categorische variabelen in de "
 "data."
@@ -554,18 +568,13 @@ msgstr ""
 "De invoergegevens lijken geen vierkante matrix te zijn! Controleer het "
 "formaat van de invoergegevens."
 
+#, fuzzy
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
+"of the input data and possibly the order of the variables."
 msgstr ""
 "De invoergegevens lijken geen symmetrische matrix te zijn! Controleer het "
 "formaat van de invoergegevens."
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr "Groepsvariabele niet ondersteund voor covariantiematrixinvoer"
-
-msgid "Mean structure not supported for covariance matrix input"
-msgstr "Mean-structuur niet ondersteund voor covariantiematrixinvoer"
 
 msgid "All cells must be numeric."
 msgstr "Alle cellen moeten numeriek zijn."
@@ -612,6 +621,12 @@ msgstr "Scree plot"
 
 msgid "Component"
 msgstr "Component"
+
+#~ msgid "Grouping variable not supported for covariance matrix input"
+#~ msgstr "Groepsvariabele niet ondersteund voor covariantiematrixinvoer"
+
+#~ msgid "Mean structure not supported for covariance matrix input"
+#~ msgstr "Mean-structuur niet ondersteund voor covariantiematrixinvoer"
 
 #~ msgid "Eigenvalues"
 #~ msgstr "Eigenwaarden"

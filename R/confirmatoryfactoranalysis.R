@@ -32,7 +32,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   errors <- .cfaCheckErrors(dataset, options)
 
   # possibly check cov matrix
-  .pcaAndEfaDataCovarianceCheck(dataset, options, ready = TRUE, cfa = TRUE)
+  .pcaAndEfaDataCovarianceCheck(dataset, options,
+                                ready = length(unlist(lapply(options[["factors"]], `[[`, "indicators"), use.names = FALSE) > 0),
+                                cfa = TRUE)
 
   # Main table / model
   cfaResult <- .cfaComputeResults(jaspResults, dataset, options, errors)
@@ -102,8 +104,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     dataset <- dataset[, vars]
 
   } else {
-    colInds <- which(colnames(dataset) == vars)
-    dataset <- dataset[colInds, colInds]
+    columnIndices <- sapply(vars, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
+    # reorder the dataset columns because the columnIndices are determined based on the "unloaded" data,
+    # meaning the loaded data columns are ordered somewhat alphabetically
+    dataset <- dataset[, names(columnIndices)]
+    dataset <- dataset[columnIndices, ]
+    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x)))
     rownames(dataset) <- colnames(dataset)
   }
 
@@ -131,7 +137,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   return(options)
 }
-
 
 
 .cfaCheckErrors <- function(dataset, options) {
@@ -228,10 +233,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   cfaResult <- list()
 
-  cfaResult[["spec"]] <- .cfaCalcSpecs(dataset, options)
+  cfaResult[["spec"]] <- jaspSem:::.cfaCalcSpecs(dataset, options)
   # Recalculate the model
 
-  modObj <- .optionsToCFAMod(options, dataset, cfaResult)
+  modObj <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult)
   mod <- modObj$model
   cfaResult[["model"]] <- mod
   cfaResult[["model_simple"]] <- modObj$simple_model
@@ -249,14 +254,18 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   # define estimator from options
-  estimator = switch(options[["estimator"]],
-                     "default"                         = "default",
-                     "maximumLikelihood"               = "ML",
-                     "generalizedLeastSquares"         = "GLS",
-                     "weightedLeastSquares"            = "WLS",
-                     "unweightedLeastSquares"          = "ULS",
-                     "diagonallyWeightedLeastSquares"  = "DWLS"
-  )
+  # the old option values used camelCase, but now we use the lavaan estimator names directly
+  # keeping the switch for backwards compatibility with old analysis files
+  # estimator = switch(options[["estimator"]],
+  #                    "default"                         = "default",
+  #                    "maximumLikelihood"               = "ML",
+  #                    "generalizedLeastSquares"         = "GLS",
+  #                    "weightedLeastSquares"            = "WLS",
+  #                    "unweightedLeastSquares"          = "ULS",
+  #                    "diagonallyWeightedLeastSquares"  = "DWLS",
+  #                    toupper(options[["estimator"]])  # new option values are lowercase lavaan names, convert to uppercase
+  # )
+  estimator = options[["estimator"]]
 
   if (options[["dataType"]] == "raw") {
     dt <- dataset
@@ -291,7 +300,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     auto.delta      = TRUE,
     auto.cov.y      = TRUE,
     mimic           = options$packageMimiced,
-    estimator       = options[["estimator"]],
+    estimator       = estimator,
     missing         = naAction
   ))
 
@@ -347,8 +356,10 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     if (options[["dataType"]] == "varianceCovariance") {
       .quitAnalysis(gettext("Bootstrapping is not available for variance-covariance matrix input."))
     }
+
     cfaResult[["lav"]] <- jaspSem::lavBootstrap(cfaResult[["lav"]], options$bootstrapSamples,
                                                 standard = options[["standardized"]] != "none", typeStd = type)
+
   }
 
   # Save cfaResult as state so it's available even when opts don't change
@@ -528,14 +539,19 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
 
     footnote <- ""
-    if (cfaResult[["orderedVariables"]]) {
-      # when the estimator is not default lavaan does not use the robust test
+    # use scaled fit measures when available (robust estimators or ordered variables)
+    # fitOptions$test can be a vector (e.g., c("standard", "satorra.bentler"))
+    hasRobustTest <- !all(fitOptions$test == "standard")
+    useScaled <- !is.na(fitMeasures["chisq.scaled"]) && 
+                 (cfaResult[["orderedVariables"]] || hasRobustTest)
+    
+    if (useScaled) {
       maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
       maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
       maintab[["df"]]     <- fitMeasures[c("baseline.df.scaled", "df.scaled")]
       maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue.scaled"])
 
-      if (options[["seType"]] == "standard") {
+      if (options[["seType"]] == "standard" && cfaResult[["orderedVariables"]]) {
         footnote <- gettextf("%s You may consider changing the standard error method to 'robust'.", footnote)
       }
 
@@ -693,6 +709,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # actually compute the fit measures
   fitMeasures <- lavaan::fitmeasures(cfaResult[["lav"]])
+  fitOptions <- lavaan::inspect(cfaResult[["lav"]], what = "options")
 
   # information criteria
   fitic[["index"]] <- c(
@@ -732,14 +749,28 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     gettext("Expected cross validation index (ECVI)")
   )
 
-  if (cfaResult[["orderedVariables"]] && !is.na(fitMeasures["chisq.scaled"])) {
+  # use scaled fit measures when available (robust estimators or ordered variables)
+  # fitOptions$test can be a vector (e.g., c("standard", "satorra.bentler"))
+  hasRobustTest <- !all(fitOptions$test == "standard")
+  useScaled <- !is.na(fitMeasures["chisq.scaled"]) && 
+               (cfaResult[["orderedVariables"]] || hasRobustTest)
+
+  if (useScaled) {
     fitin[["value"]] <- fitMeasures[c("cfi.scaled", "tli.scaled", "nnfi.scaled", "nfi.scaled", "pnfi",
                                       "rfi.scaled", "ifi.scaled", "rni.scaled")]
-    fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because of categorical variables in the data."))
+    if (cfaResult[["orderedVariables"]]) {
+      fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because of categorical variables in the data."))
+    } else {
+      fitin$addFootnote(gettext("Except for the PNFI, the fit indices are scaled because a robust estimator was used."))
+    }
 
     fitot[["value"]] <- fitMeasures[c("rmsea.scaled", "rmsea.ci.lower.scaled", "rmsea.ci.upper.scaled",
                                       "rmsea.pvalue.scaled", "srmr", "cn_05", "cn_01", "gfi", "mfi", "ecvi")]
-    fitot$addFootnote(gettext("The RMSEA results are scaled because of categorical variables in the data."))
+    if (cfaResult[["orderedVariables"]]) {
+      fitot$addFootnote(gettext("The RMSEA results are scaled because of categorical variables in the data."))
+    } else {
+      fitot$addFootnote(gettext("The RMSEA results are scaled because a robust estimator was used."))
+    }
   } else {
     fitin[["value"]] <- fitMeasures[c("cfi", "tli", "nnfi", "nfi", "pnfi", "rfi", "ifi", "rni")]
     fitot[["value"]] <- fitMeasures[c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "rmsea.pvalue",
@@ -990,7 +1021,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   # Intercepts ----
-  if (options$meanStructure) {
+  if (options$meanStructure || options$group != "") {
 
     if (options$group != "") {
 
@@ -1413,7 +1444,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaSyntax <- function(jaspResults, options, dataset, cfaResult) {
   if (is.null(cfaResult) || !options$lavaanSyntax || !is.null(jaspResults[["syntax"]])) return()
 
-  mod <- .optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
+  mod <- jaspSem:::.optionsToCFAMod(options, dataset, cfaResult, FALSE)$model
 
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
@@ -1558,76 +1589,6 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["resRelTable"]] <- relTable
 
 }
-
-# delete once jaspSem is merged
-lavBootstrap <- function(fit, samples = 1000, standard = FALSE, typeStd = NULL) {
-  # Run bootstrap, track progress with progress bar
-  # Notes: faulty runs are simply ignored
-  # recommended: add a warning if not all boot samples are successful
-  # fit <- lavBootstrap(fit, samples = 1000)
-  # if (nrow(fit@boot$coef) < 1000)
-  #  tab$addFootnote(gettextf("Not all bootstrap samples were successful: CI based on %.0f samples.", nrow(fit@boot$coef)),
-  #                  "<em>Note.</em>")
-
-
-  coef_with_callback <- function(lav_object) {
-    # Progress bar is ticked every time coef() is evaluated, which happens once on the main object:
-    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L107
-    # and then every time on a successful bootstrap:
-    # https://github.com/yrosseel/lavaan/blob/77a568a574e4113245e2f6aff1d7c3120a26dd90/R/lav_bootstrap.R#L375
-    # i.e., samples + 1 times
-    progressbarTick()
-
-    return(lavaan::coef(lav_object))
-  }
-
-  coef_with_callback_std <- function(lav_object, typeStd) {
-    std <- lavaan::standardizedSolution(lav_object, type = typeStd)
-    out <- std$est.std
-
-    progressbarTick()
-
-    return(out)
-  }
-
-  startProgressbar(samples + 1)
-
-  if (!standard) {
-    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coef_with_callback)
-  } else {
-    bootres <- lavaan::bootstrapLavaan(object = fit, R = samples, FUN = coef_with_callback_std, typeStd = typeStd)
-  }
-
-  # Add the bootstrap samples to the fit object
-  fit@boot       <- list(coef = bootres)
-  fit@Options$se <- "bootstrap"
-
-  # exclude error bootstrap runs
-  err_id <- attr(fit@boot$coef, "error.idx")
-  if (length(err_id) > 0L) {
-    fit@boot$coef <- fit@boot$coef[-err_id, , drop = FALSE]
-  }
-
-  # we actually need the SEs from the bootstrap not the SEs from ML or something
-  N <- nrow(fit@boot$coef)
-
-  # we multiply the var by (n-1)/n because lavaan actually uses n for the variance instead of n-1
-  if (!standard) {
-    # for unstandardized
-    fit@ParTable$se[fit@ParTable$free != 0] <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
-  } else {
-    fit@ParTable$se <- apply(fit@boot$coef, 2, sd) * sqrt((N-1)/N)
-    # the standardized solution gives all estimates not only the unconstrained, so we need to change
-    # the free prameters in the partable and also change the estimate
-    fit@ParTable$free <- seq_len(ncol(fit@boot$coef))
-    std <- lavaan::standardizedSolution(fit, type = typeStd)
-    fit@ParTable$est <- std$est.std
-  }
-
-
-  return(fit)
-}
-
 
 .cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {
 

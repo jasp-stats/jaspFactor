@@ -41,7 +41,7 @@ msgstr "Inclure la structure moyenne"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Assume factors uncorrelated"
-msgstr ""
+msgstr "Suppose des facteurs non corrélés"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix exogenous covariates"
@@ -49,7 +49,7 @@ msgstr "Covariables exogènes fixes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Factor variances"
-msgstr ""
+msgstr "Variances des facteurs"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Marker variable"
@@ -65,23 +65,23 @@ msgstr "Covariances Résiduelles"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional Output"
-msgstr ""
+msgstr "Résultat additionnel"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Mesures d'ajustement additionnelles"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr ""
+msgstr "R carré"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Matrice de covariance implicite"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Matrice de covariance des résidus"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
@@ -101,15 +101,15 @@ msgstr "AFC Multigroupes"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Grouping variable"
-msgstr ""
+msgstr "Variable de regroupement"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Invariance testing"
-msgstr ""
+msgstr "Test d'invariance"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Configural"
-msgstr ""
+msgstr "Configurable"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Metric"
@@ -125,7 +125,7 @@ msgstr "Stricte"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Plots"
-msgstr ""
+msgstr "Graphiques"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Misfit plot"
@@ -846,9 +846,10 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr ""
 
+#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
-msgstr ""
+msgstr "Graphiques"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."

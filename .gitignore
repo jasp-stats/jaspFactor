@@ -56,3 +56,8 @@ Rproj.user
 # linter
 .lintr
 _processedLockFile.lock
+
+# Agent/Claude Code local config (not committed, module-specific)
+.mcp.json
+.claude/settings.local.json
+.codex/config.toml

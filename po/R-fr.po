@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.17.0\n"
-"POT-Creation-Date: 2025-06-07 03:40\n"
+"POT-Creation-Date: 2026-01-17 03:46\n"
 "PO-Revision-Date: 2024-05-19 20:45+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -224,7 +224,15 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
+msgstr ""
+
+msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
+msgstr ""
+
+msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr ""
 
 #, fuzzy
@@ -542,13 +550,7 @@ msgstr ""
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
-"of the input data."
-msgstr ""
-
-msgid "Grouping variable not supported for covariance matrix input"
-msgstr ""
-
-msgid "Mean structure not supported for covariance matrix input"
+"of the input data and possibly the order of the variables."
 msgstr ""
 
 msgid "All cells must be numeric."

@@ -77,7 +77,7 @@ msgstr "Tindakan kesesuaian tambahan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "R-Squared"
-msgstr ""
+msgstr "Dipersegi-R"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Implied covariance matrix"
@@ -278,7 +278,7 @@ msgstr "Uji kebulatan Bartlett"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr ""
+msgstr "Lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"

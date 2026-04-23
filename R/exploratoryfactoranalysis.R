@@ -141,7 +141,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   efaResult <- try(
     psych::fa(
       r        = dtUse,
-      nfactors = .efaGetNComp(dataset, options),
+      nfactors = .efaGetNComp(dataset, options, modelContainer),
       rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
       scores   = TRUE,
       covar    = options$baseDecompositionOn == "covarianceMatrix",

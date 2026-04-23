@@ -3159,7 +3159,8 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "0f9bd7d846d8432301ccf7bbdcdadcb350df0704"
+      "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4",
+      "Remotes": "jasp-stats/jaspGraphs"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",

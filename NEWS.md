@@ -11,13 +11,28 @@
 >   * **Fixed:** Bug fixes in the build pipeline, R wrappers, or QML layouts.
 >   * **Deprecated / Removed:** Outdated template components or legacy code.
 
-
 ---
 
 # jaspFactor (development version)
 
 ## Added
 * Latent Class Analysis ([PR #346](https://github.com/jasp-stats/jaspFactor/pull/346)).
+
+## Fixed
+* EFA: polychoric/tetrachoric correlation matrix errors are now caught and shown as a user-friendly message, including which variables have missing response categories.
+* EFA, PCA: ordinal variables with value labels (e.g., from SPSS) were incorrectly treated as having missing values when computing polychoric correlations; fixed by improving factor/ordered-to-numeric coercion ([jasp-issues#4129](https://github.com/jasp-stats/jasp-issues/issues/4129), [jasp-issues#4224](https://github.com/jasp-stats/jasp-issues/issues/4224)) ([PR #336](https://github.com/jasp-stats/jaspFactor/pull/336)).
+* CFA: Chi-square table footnote now always reports the estimator, test statistic, and standard error method, making it clear which defaults lavaan applied (e.g., Browne.residual.nt when DWLS is used on continuous data) ([jasp-issues#4157](https://github.com/jasp-stats/jasp-issues/issues/4157), [jasp-issues#4171](https://github.com/jasp-stats/jasp-issues/issues/4171)) ([PR #336](https://github.com/jasp-stats/jaspFactor/pull/336)).
+
+---
+
+# jaspFactor 0.19.2
+
+## Added
+* CFA: added more estimators to allow robust estimation; ordinal data fully supported ([PR #235](https://github.com/jasp-stats/jaspFactor/pull/235)).
+* CFA, EFA, PCA: added covariance matrix input option ([PR #239](https://github.com/jasp-stats/jaspFactor/pull/239)).
+
+## Changed
+* CFA: standardized output restructured; standardization now also applied to bootstrapped estimates ([PR #235](https://github.com/jasp-stats/jaspFactor/pull/235)).
 
 ---
 

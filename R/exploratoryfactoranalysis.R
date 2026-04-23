@@ -72,6 +72,45 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 # Modification here: added "cor" argument to the fa function.
 # If baseDecompositionOn == polyTetrachoricCorrelationMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
 # depending on the number of response categories of the ordinal variables.
+.efaComputePolyCorMatrix <- function(modelContainer, dataset, options) {
+  # Return cached result if available
+  if (!is.null(modelContainer[["polyCorState"]])) {
+    return(modelContainer[["polyCorState"]][["object"]])
+  }
+
+  varTypes <- options$variables.types
+  vars <- options$variables
+  scales <- vars[varTypes == "scale"]
+  ordinals <- vars[varTypes == "ordinal"]
+  nominals <- vars[varTypes == "nominal"]
+
+  polyCorResult <- try(psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals))
+
+  if (isTryError(polyCorResult)) {
+    errTxt <- .extractErrorMessage(polyCorResult)
+    numLevels <- sapply(dataset, function(x) length(unique(na.omit(x))))
+    maxLevels <- max(numLevels)
+    restrictedIdx <- which(numLevels < maxLevels)
+
+    if (length(restrictedIdx) == 0) {
+      errmsgPolyCor <- gettextf(
+        "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s",
+        errTxt)
+    } else {
+      restrictedNames <- paste(decodeColNames(colnames(dataset)[restrictedIdx]), collapse = ", ")
+      errmsgPolyCor <- gettextf(
+        "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s",
+        restrictedNames, errTxt)
+    }
+    modelContainer$setError(errmsgPolyCor)
+    modelContainer[["polyCorState"]] <- createJaspState(NULL)
+    return(NULL)
+  }
+
+  modelContainer[["polyCorState"]] <- createJaspState(polyCorResult$rho)
+  return(polyCorResult$rho)
+}
+
 .efaComputeResults <- function(modelContainer, dataset, options, ready) {
 
   corMethod <- switch(options[["baseDecompositionOn"]],
@@ -93,69 +132,38 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    dtUse <- try(psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)$rho)
+    dtUse <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+    if (is.null(dtUse)) return(NA)
   } else {
     dtUse <- dataset
   }
 
-  if (isTryError(dtUse)) {
-    errTxt <- .extractErrorMessage(dtUse)
-    if (errTxt == "missing value where TRUE/FALSE needed" ||
-        errTxt == "attempt to set 'rownames' on an object with no dimensions") {
-
-      numLevels <- sapply(dataset, function(x) length(unique(x)))
-      allSameLevels <- length(unique(numLevels)) == 1
-
-      if (allSameLevels) {
-        errmsgPolyCor <- gettextf(
-          "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s",
-          .errTxt)
-      } else {
-        maxLevels <- max(numLevels)
-        restrictedLevels <- which(numLevels < maxLevels)
-        restricedItems <- decodeColNames(colnames(dataset)[restrictedLevels])
-        errmsgPolyCor <- gettextf("Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s",
-                                  restricedItems, errTxt)
-      }
-      modelContainer$setError(errmsgPolyCor)
-    }
-
-    efaResult <- NA
-
-  } else {
-    efaResult <- try(
-      psych::fa(
-        r        = dtUse,
-        nfactors = .efaGetNComp(dataset, options),
-        rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
-        scores   = TRUE,
-        covar    = options$baseDecompositionOn == "covarianceMatrix",
-        cor      = corMethod,
-        fm       = factoringMethod,
-        n.obs    = ifelse(options[["dataType"]] == "raw", nrow(dataset), options[["sampleSize"]])
-      )
+  efaResult <- try(
+    psych::fa(
+      r        = dtUse,
+      nfactors = .efaGetNComp(dataset, options),
+      rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
+      scores   = TRUE,
+      covar    = options$baseDecompositionOn == "covarianceMatrix",
+      cor      = corMethod,
+      fm       = factoringMethod,
+      n.obs    = ifelse(options[["dataType"]] == "raw", nrow(dataset), options[["sampleSize"]])
     )
+  )
 
-    if (isTryError(efaResult)) {
-      errtxt <- .extractErrorMessage(efaResult)
-      errcodes <- c("L-BFGS-B needs finite values of 'fn'", "missing value where TRUE/FALSE needed",
-                    "reciprocal condition number = 0", "infinite or missing values in 'x'")
-      if (errtxt %in% errcodes) {
-        errmsg <- gettextf("Estimation failed. Internal error message: %1$s. %2$s", .extractErrorMessage(efaResult),
-                           "Try basing the analysis on a different type of matrix or change the factoring method.")
-      } else {
-        errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(efaResult))
-      }
-      modelContainer$setError(errmsg)
+  if (isTryError(efaResult)) {
+    errtxt <- .extractErrorMessage(efaResult)
+    errcodes <- c("L-BFGS-B needs finite values of 'fn'", "missing value where TRUE/FALSE needed",
+                  "reciprocal condition number = 0", "infinite or missing values in 'x'")
+    if (errtxt %in% errcodes) {
+      errmsg <- gettextf("Estimation failed. Internal error message: %1$s. %2$s", .extractErrorMessage(efaResult),
+                         "Try basing the analysis on a different type of matrix or change the factoring method.")
+    } else {
+      errmsg <- gettextf("Estimation failed. Internal error message: %s", .extractErrorMessage(efaResult))
     }
-
-
+    modelContainer$setError(errmsg)
   }
+
   modelContainer[["model"]] <- createJaspState(efaResult)
   return(efaResult)
 
@@ -168,15 +176,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   # parallel analysis method (do always)
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
+    polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+    if (is.null(polyTetraCor)) return(1)
 
     .setSeedJASP(options)
-    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+    parallelResult <- try(psych::fa.parallel(polyTetraCor,
                                              plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
                                                          "pc", "fa"),
@@ -239,13 +243,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # based on said correlation matrix:
   # else: analysis carries on as usual
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
-    kmo <- psych::KMO(polyTetraCor$rho)
+    polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+    if (is.null(polyTetraCor)) return()
+    kmo <- psych::KMO(polyTetraCor)
   } else {
     if (options[["dataType"]] == "raw")
       kmo <- psych::KMO(dataset)
@@ -272,13 +272,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
-    bar <- psych::cortest.bartlett(polyTetraCor$rho, n = nrow(dataset))
+    polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+    if (is.null(polyTetraCor)) return()
+    bar <- psych::cortest.bartlett(polyTetraCor, n = nrow(dataset))
   } else {
     if (options[["dataType"]] == "raw")
       bar <- psych::cortest.bartlett(dataset)
@@ -344,13 +340,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (!ready) return()
 
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
-    kmo <- psych::KMO(polyTetraCor$rho)
+    polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+    if (is.null(polyTetraCor)) return()
+    kmo <- psych::KMO(polyTetraCor)
   } else {
     if (options[["dataType"]] == "raw")
       kmo <- psych::KMO(dataset)
@@ -658,15 +650,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (!ready || modelContainer$getError()) return()
 
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
+    polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+    if (is.null(polyTetraCor)) return()
     .setSeedJASP(options)
 
-    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+    parallelResult <- try(psych::fa.parallel(polyTetraCor,
                                              plot = FALSE,
                                              fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                          "pc", "fa"),
@@ -740,15 +728,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (options[["screePlotParallelAnalysisResults"]]) {
 
     if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-      varTypes <- options$variables.types
-      vars <- options$variables
-      scales <- vars[varTypes == "scale"]
-      ordinals <- vars[varTypes == "ordinal"]
-      nominals <- vars[varTypes == "nominal"]
-      polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
+      polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
+      if (is.null(polyTetraCor)) return()
       .setSeedJASP(options)
 
-      parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
+      parallelResult <- try(psych::fa.parallel(polyTetraCor,
                                    plot = FALSE,
                                    fa = ifelse(options[["parallelAnalysisTableMethod"]] == "principalComponentBased",
                                                "pc", "fa"),

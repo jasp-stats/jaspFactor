@@ -3157,13 +3157,9 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
-<<<<<<< HEAD
-      "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4"
-=======
       "RemoteRef": "master",
       "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4",
       "Remotes": "jasp-stats/jaspGraphs"
->>>>>>> 82e39dd (adjust news)
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -3200,15 +3196,12 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-<<<<<<< HEAD
-=======
       "RemoteRef": "master",
->>>>>>> 82e39dd (adjust news)
       "RemoteSha": "1eb48e7e0fe9559bbd15da25f30703c7cca246bb"
     },
     "jaspSem": {
       "Package": "jaspSem",
-      "Version": "0.96.4",
+      "Version": "0.95.5",
       "Source": "GitHub",
       "Type": "Package",
       "Title": "SEM Module for JASP",
@@ -3240,9 +3233,6 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-<<<<<<< HEAD
-      "RemoteSha": "78ce378f4cba0a26ee594e586393299400635fce"
-=======
       "RemoteRef": "master",
       "RemoteSha": "db4c0acbd9724f83624ef1528110945140b80232",
       "Remotes": "jasp-stats/jaspBase, jasp-stats/jaspGraphs"
@@ -3288,7 +3278,6 @@
       "RemoteRepo": "jaspTools",
       "RemoteRef": "master",
       "RemoteSha": "4de898283e3817fdb072733f642ba5711897a592"
->>>>>>> 82e39dd (adjust news)
     },
     "jpeg": {
       "Package": "jpeg",
@@ -4895,10 +4884,10 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.9.1",
+      "Version": "1.9.3",
       "Source": "Repository",
       "Title": "List, Query, Manipulate System Processes",
-      "Authors@R": "c( person(\"Jay\", \"Loden\", role = \"aut\"), person(\"Dave\", \"Daeschler\", role = \"aut\"), person(\"Giampaolo\", \"Rodola'\", role = \"aut\"), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
+      "Authors@R": "c( person(\"Jay\", \"Loden\", role = \"aut\"), person(\"Dave\", \"Daeschler\", role = \"aut\"), person(\"Giampaolo\", \"Rodola'\", role = \"aut\"), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "List, query and manipulate all system processes, on 'Windows', 'Linux' and 'macOS'.",
       "License": "MIT + file LICENSE",
       "URL": "https://github.com/r-lib/ps, https://ps.r-lib.org/",
@@ -4925,10 +4914,11 @@
       "Biarch": "true",
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
+      "Config/usethis/last-upkeep": "2025-04-28",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "NeedsCompilation": "yes",
-      "Author": "Jay Loden [aut], Dave Daeschler [aut], Giampaolo Rodola' [aut], Gábor Csárdi [aut, cre], Posit Software, PBC [cph, fnd]",
+      "Author": "Jay Loden [aut], Dave Daeschler [aut], Giampaolo Rodola' [aut], Gábor Csárdi [aut, cre], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
       "Repository": "CRAN"
     },

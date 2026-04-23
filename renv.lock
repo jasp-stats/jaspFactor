@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.2",
+    "Version": "4.5.3",
     "Repositories": [
       {
         "Name": "RSPM",
@@ -3111,40 +3111,76 @@
       "Package": "jaspBase",
       "Version": "0.20.4",
       "Source": "GitHub",
-      "Requirements": [
+      "Type": "Package",
+      "Title": "JASP Base",
+      "Author": "JASP Team",
+      "Maintainer": "Bruno Boutin <B.Boutin@uva.nl>",
+      "Description": "Package contains the JASP Bayesian and Frequentist analyses. See <https://jasp-stats.org> for more details.",
+      "License": "GPL2+",
+      "Imports": [
         "cli",
         "codetools",
+        "compiler",
         "ggplot2",
+        "grDevices",
+        "grid",
         "gridExtra",
         "gridGraphics",
         "jaspGraphs",
         "jsonlite",
         "lifecycle",
+        "methods",
         "officer",
         "pkgbuild",
         "plyr",
         "ragg",
         "R6",
-        "Rcpp",
+        "Rcpp (>= 0.12.14)",
         "rvg",
         "svglite",
         "systemfonts",
-        "withr",
-        "testthat"
+        "withr"
       ],
+      "RoxygenNote": "7.3.3",
+      "Roxygen": "list(markdown = TRUE)",
+      "Encoding": "UTF-8",
+      "LinkingTo": [
+        "Rcpp"
+      ],
+      "RcppModules": "jaspResults",
+      "NeedsCompilation": "yes",
+      "Suggests": [
+        "testthat (>= 3.0.0)"
+      ],
+      "Config/testthat/edition": "3",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
+<<<<<<< HEAD
       "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4"
+=======
+      "RemoteRef": "master",
+      "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4",
+      "Remotes": "jasp-stats/jaspGraphs"
+>>>>>>> 82e39dd (adjust news)
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
       "Version": "0.20.0",
       "Source": "GitHub",
-      "Requirements": [
+      "Type": "Package",
+      "Title": "Custom Graphs for JASP",
+      "Author": "Don van den Bergh",
+      "Maintainer": "JASP-team <info@jasp-stats.nl>",
+      "Description": "Graph making functions and wrappers for JASP.",
+      "License": "GPL",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.3",
+      "Imports": [
         "cli",
-        "ggplot2",
+        "ggplot2 (>= 3.0.0)",
         "gridExtra",
         "gtable",
         "htmlwidgets",
@@ -3153,21 +3189,37 @@
         "plotly",
         "R6",
         "rlang",
-        "scales",
+        "scales"
+      ],
+      "Suggests": [
         "testthat",
         "vdiffr"
       ],
+      "Roxygen": "list(markdown = TRUE)",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
+<<<<<<< HEAD
+=======
+      "RemoteRef": "master",
+>>>>>>> 82e39dd (adjust news)
       "RemoteSha": "1eb48e7e0fe9559bbd15da25f30703c7cca246bb"
     },
     "jaspSem": {
       "Package": "jaspSem",
       "Version": "0.96.4",
       "Source": "GitHub",
-      "Requirements": [
+      "Type": "Package",
+      "Title": "SEM Module for JASP",
+      "Date": "2025-05-08",
+      "Author": "JASP Team",
+      "Website": "https://github.com/jasp-stats/jaspSem/",
+      "Maintainer": "JASP Team <info@jasp-stats.org>",
+      "Description": "Evaluate latent data structures",
+      "License": "GPL (>= 2)",
+      "Encoding": "UTF-8",
+      "Imports": [
         "forcats",
         "ggplot2",
         "lavaan",
@@ -3188,7 +3240,55 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
+<<<<<<< HEAD
       "RemoteSha": "78ce378f4cba0a26ee594e586393299400635fce"
+=======
+      "RemoteRef": "master",
+      "RemoteSha": "db4c0acbd9724f83624ef1528110945140b80232",
+      "Remotes": "jasp-stats/jaspBase, jasp-stats/jaspGraphs"
+    },
+    "jaspTools": {
+      "Package": "jaspTools",
+      "Version": "0.20.1",
+      "Source": "GitHub",
+      "Type": "Package",
+      "Title": "Helps Preview and Debug JASP Analyses",
+      "Authors@R": "c( person(\"Tim\", \"de Jong\", role = \"aut\"), person(\"Don\", \"van den Bergh\", role = c(\"ctb\", \"cre\"), email = \"d.vandenbergh@uva.nl\"), person(\"František\", \"Bartoš\", role = \"ctb\"))",
+      "Maintainer": "Don van den Bergh <d.vandenbergh@uva.nl>",
+      "Description": "This package assists JASP developers when writing R code. It removes the necessity of building JASP every time a change is made. Rather, analyses can be called directly in R and be debugged interactively.",
+      "License": "GNU General Public License",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "Imports": [
+        "archive (>= 1.1.6)",
+        "cli",
+        "data.table",
+        "DBI",
+        "httr",
+        "jsonlite",
+        "lifecycle",
+        "pkgload",
+        "remotes",
+        "rjson",
+        "RSQLite",
+        "stringi",
+        "stringr",
+        "testthat (>= 3.2.2)",
+        "vdiffr (>= 1.0.7)"
+      ],
+      "Suggests": [
+        "ggplot2"
+      ],
+      "RoxygenNote": "7.3.3",
+      "Roxygen": "list(markdown = TRUE)",
+      "Author": "Tim de Jong [aut], Don van den Bergh [ctb, cre], František Bartoš [ctb]",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspTools",
+      "RemoteRef": "master",
+      "RemoteSha": "4de898283e3817fdb072733f642ba5711897a592"
+>>>>>>> 82e39dd (adjust news)
     },
     "jpeg": {
       "Package": "jpeg",
@@ -4834,9 +4934,9 @@
     },
     "psych": {
       "Package": "psych",
-      "Version": "2.6.1",
+      "Version": "2.6.3",
       "Source": "Repository",
-      "Date": "2026-01-31",
+      "Date": "2026-03-21",
       "Title": "Procedures for Psychological, Psychometric, and Personality Research",
       "Authors@R": "person(\"William\", \"Revelle\", role =c(\"aut\",\"cre\"), email=\"revelle@northwestern.edu\", comment=c(ORCID  = \"0000-0003-4880-9610\") )",
       "Description": "A general purpose toolbox developed originally for personality, psychometric theory and experimental psychology.  Functions are primarily for multivariate analysis and scale construction using factor analysis, principal component analysis, cluster analysis and reliability analysis, although others provide basic descriptive statistics. Item Response Theory is done using  factor analysis of tetrachoric and polychoric correlations. Functions for analyzing data at multiple levels include within and between group statistics, including correlations and factor analysis.  Validation and cross validation of scales developed using basic machine learning algorithms are provided, as are functions for simulating and testing particular item and test structures. Several functions  serve as a useful front end for structural equation modeling.  Graphical displays of path diagrams, including mediation models, factor analysis and structural equation models are created using basic graphics. Some of the functions are written to support a book on psychometric theory as well as publications in personality research. For more information, see the <https://personality-project.org/r/> web page.",
@@ -5188,7 +5288,7 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.1.7",
+      "Version": "1.2.2",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Project Environments",

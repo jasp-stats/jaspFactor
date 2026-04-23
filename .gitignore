@@ -61,3 +61,4 @@ _processedLockFile.lock
 .mcp.json
 .claude/settings.local.json
 .codex/config.toml
+.positai

@@ -35,6 +35,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # output functions
   .efaKMOtest(              modelContainer, dataset, options, ready)
   .efaBartlett(             modelContainer, dataset, options, ready)
+  .efaCorrelationDeterminant(modelContainer, dataset, options, ready)
   .efaMardia(               modelContainer, dataset, options, ready)
   .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
   .efaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
@@ -289,6 +290,35 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   bartlettTable[["chisq"]] <- bar[["chisq"]]
   bartlettTable[["df"]]    <- bar[["df"]]
   bartlettTable[["pval"]]  <- bar[["p.value"]]
+}
+
+.efaCorrelationDeterminant <- function(modelContainer, dataset, options, ready) {
+  if (!isTRUE(options[["correlationMatrixDeterminant"]]) || !is.null(modelContainer[["determinantTable"]])) return()
+
+  determinantTable <- createJaspTable(gettext("Correlation Matrix Determinant"))
+  determinantTable$dependOn("correlationMatrixDeterminant")
+  determinantTable$addColumnInfo(name = "determinant", title = gettext("Determinant"), type = "number", format = "sf:4")
+  determinantTable$position <- 0.25
+  modelContainer[["determinantTable"]] <- determinantTable
+
+  if (!ready) return()
+
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+    varTypes <- options$variables.types
+    vars <- options$variables
+    scales <- vars[varTypes == "scale"]
+    ordinals <- vars[varTypes == "ordinal"]
+    nominals <- vars[varTypes == "nominal"]
+    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
+    corMatrix <- polyTetraCor$rho
+  } else {
+    if (options[["dataType"]] == "raw")
+      corMatrix <- stats::cor(dataset, use = "pairwise.complete.obs")
+    else
+      corMatrix <- stats::cov2cor(as.matrix(dataset))
+  }
+
+  determinantTable[["determinant"]] <- det(corMatrix)
 }
 
 
@@ -968,5 +998,4 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   ))
 
 }
-
 

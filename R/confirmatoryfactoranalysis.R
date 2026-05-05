@@ -542,9 +542,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     # use scaled fit measures when available (robust estimators or ordered variables)
     # fitOptions$test can be a vector (e.g., c("standard", "satorra.bentler"))
     hasRobustTest <- !all(fitOptions$test == "standard")
-    useScaled <- !is.na(fitMeasures["chisq.scaled"]) && 
+    useScaled <- !is.na(fitMeasures["chisq.scaled"]) &&
                  (cfaResult[["orderedVariables"]] || hasRobustTest)
-    
+
     if (useScaled) {
       maintab[["mod"]]    <- c(gettext("Baseline model"), gettext("Factor model"))
       maintab[["chisq"]]  <- fitMeasures[c("baseline.chisq.scaled", "chisq.scaled")]
@@ -562,14 +562,17 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       maintab[["pvalue"]] <- c(NA, fitMeasures["pvalue"])
     }
 
-    if (options[["estimator"]] == "default") {
-      footnote <- gettextf("%1$s The estimator is %2$s. The test statistic is %3$s.",
-                           footnote, fitOptions$estimator, fitOptions$test)
+    # always print these things, lavaan has too many hidden rules.
+    if (length(fitOptions$test) > 1) {
+      fitOptions$test <- fitOptions$test[fitOptions$test != "standard"]
     }
+    # quick note: there is a case when useScaled can be false but the test is still not standard.
+    # that happens when lavaan uses browne.residual.nt as the test, which it does not mark as "scaled" internally.
+    # in that case there is no scaled test statistic but the regular test statistic is replaced with the browne residual
+    # yes... kill me now.
 
-    if (options[["seType"]] == "default") {
-      footnote <- gettextf("%1$s The standard error method is %2$s.", footnote, fitOptions$se)
-    }
+    footnote <- gettextf("%1$s The estimator is %2$s. The test statistic is %3$s. The standard error method is %4$s.",
+                         footnote, fitOptions$estimator, fitOptions$test, fitOptions$se)
 
     maintab$addFootnote(footnote)
 
@@ -752,7 +755,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # use scaled fit measures when available (robust estimators or ordered variables)
   # fitOptions$test can be a vector (e.g., c("standard", "satorra.bentler"))
   hasRobustTest <- !all(fitOptions$test == "standard")
-  useScaled <- !is.na(fitMeasures["chisq.scaled"]) && 
+  useScaled <- !is.na(fitMeasures["chisq.scaled"]) &&
                (cfaResult[["orderedVariables"]] || hasRobustTest)
 
   if (useScaled) {

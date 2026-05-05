@@ -64,7 +64,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     if (options[["naAction"]] == "listwise") {
       dataset <- dataset[complete.cases(dataset), ]
     }
-    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x))) # the psych-package wants data to be numeric
+    dataset[] <- lapply(dataset, .pcaAndEfaCoerceToNumeric) # the psych-package wants data to be numeric
     return(dataset)
   } else { # if variance covariance matrix as input
     columnIndices <- sapply(options$variables, jaspBase:::columnIndexInData) + 1 # cpp starts at 0
@@ -72,10 +72,30 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     # meaning the loaded data columns are ordered somewhat alphabetically
     dataset <- dataset[, names(columnIndices)]
     dataset <- dataset[columnIndices, ]
-    dataset[] <- lapply(dataset, function(x) as.numeric(as.character(x)))
+    dataset[] <- lapply(dataset, .pcaAndEfaCoerceToNumeric)
     rownames(dataset) <- colnames(dataset)
     return(dataset)
   }
+}
+
+.pcaAndEfaCoerceToNumeric <- function(x) {
+
+  if (is.numeric(x))
+    return(as.numeric(x))
+
+  xChar <- as.character(x)
+  xNum  <- suppressWarnings(as.numeric(xChar))
+
+  if (is.factor(x) || is.ordered(x)) {
+    nonMissing <- !is.na(xChar)
+
+    if (all(!is.na(xNum[nonMissing])))
+      return(xNum)
+
+    return(as.numeric(x))
+  }
+
+  return(xNum)
 }
 
 
@@ -822,5 +842,4 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   return()
 
 }
-
 

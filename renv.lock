@@ -4700,6 +4700,26 @@
       "NeedsCompilation": "yes",
       "Repository": "CRAN"
     },
+    "poLCA": {
+      "Package": "poLCA",
+      "Version": "1.6.0.2",
+      "Source": "Repository",
+      "Date": "2026-02-07",
+      "Title": "Polytomous Variable Latent Class Analysis",
+      "Authors@R": "c(person(given = \"Drew\", family = \"Linzer\", role = c(\"aut\", \"cre\"), email = \"drew@votamatic.org\"), person(given = \"Jeffrey\", family = \"Lewis\", role = \"aut\", email = \"jblewis@ucla.edu\"))",
+      "Author": "Drew Linzer [aut, cre], Jeffrey Lewis [aut]",
+      "Maintainer": "Drew Linzer <drew@votamatic.org>",
+      "Depends": [
+        "scatterplot3d",
+        "MASS"
+      ],
+      "Description": "Latent class analysis and latent class regression models  for polytomous outcome variables. Also known as latent structure analysis.",
+      "License": "GPL (>= 2)",
+      "URL": "https://github.com/dlinzer/poLCA",
+      "NeedsCompilation": "yes",
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
+    },
     "polycor": {
       "Package": "polycor",
       "Version": "0.8-2",
@@ -5783,6 +5803,29 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut], Thomas Lin Pedersen [cre, aut] (<https://orcid.org/0000-0002-5147-4711>), Dana Seidel [aut], Posit Software, PBC [cph, fnd] (03wc8by49)",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
+      "Repository": "CRAN"
+    },
+    "scatterplot3d": {
+      "Package": "scatterplot3d",
+      "Version": "0.3-45",
+      "Source": "Repository",
+      "Date": "2026-02-23",
+      "Title": "3D Scatter Plot",
+      "Authors@R": "c(person(given = \"Uwe\", family = \"Ligges\", role = c(\"aut\", \"cre\"), email = \"ligges@statistik.tu-dortmund.de\"), person(given = \"Martin\", family = \"Maechler\", role = \"aut\"), person(given = \"Sarah\", family = \"Schnackenberg\", role = \"aut\"))",
+      "Description": "Plots a three dimensional (3D) point cloud.",
+      "Depends": [
+        "R (>= 2.7.0)"
+      ],
+      "License": "GPL-2",
+      "Encoding": "UTF-8",
+      "Imports": [
+        "grDevices",
+        "graphics",
+        "stats"
+      ],
+      "NeedsCompilation": "no",
+      "Author": "Uwe Ligges [aut, cre], Martin Maechler [aut], Sarah Schnackenberg [aut]",
+      "Maintainer": "Uwe Ligges <ligges@statistik.tu-dortmund.de>",
       "Repository": "CRAN"
     },
     "sem": {

@@ -15,6 +15,7 @@ Imports:
   jaspGraphs,
   jaspSem,
   lavaan,
+  poLCA,
   psych,
   qgraph,
   reshape2,

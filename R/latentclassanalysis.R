@@ -27,6 +27,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   .lcaFitTable(modelContainer, options, ready)
   .lcaClassPrevalencesTable(modelContainer, options, ready)
   .lcaItemProbabilitiesContainer(modelContainer, dataset, options, ready)
+  .lcaItemProbabilitiesPlot(modelContainer, dataset, options, ready)
 }
 
 
@@ -132,9 +133,10 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
 
 .lcaItemProbabilitiesContainer <- function(modelContainer, dataset, options, ready) {
-  if (!is.null(modelContainer[["probsContainer"]])) return()
+  if (!options[["itemResponseProbabilities"]] || !is.null(modelContainer[["probsContainer"]])) return()
 
   outer <- createJaspContainer(gettext("Item-Response Probabilities"))
+  outer$dependOn("itemResponseProbabilities")
   outer$position <- 3
   modelContainer[["probsContainer"]] <- outer
 
@@ -151,7 +153,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
     lvls    <- levels(droplevels(as.factor(dataset[[v]])))
     probMat <- fit$probs[[v]]   # nclass x ncategories matrix
 
-    t <- createJaspTable(title = v)
+    t <- createJaspTable(title = jaspBase::decodeColNames(v))
     t$position <- i
     t$addColumnInfo("class", type = "string", title = gettext("Class"))
     for (j in seq_along(lvls))
@@ -163,4 +165,74 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
     t$setData(df)
     outer[[v]] <- t
   }
+}
+
+
+.lcaItemProbabilitiesPlot <- function(modelContainer, dataset, options, ready) {
+  if (!options[["itemResponseProbabilitiesPlot"]] || !is.null(modelContainer[["itemProbsPlot"]]))
+    return()
+
+  nIndicators <- length(options[["indicators"]])
+  nclass      <- options[["numberOfClasses"]]
+  width       <- max(400, 120 * nIndicators * min(nclass, 3))
+  height      <- 320
+
+  p <- createJaspPlot(
+    title  = gettext("Item-Response Probabilities"),
+    width  = width,
+    height = height
+  )
+  p$dependOn(c("itemResponseProbabilitiesPlot", "rotatePlotLabels"))
+  p$position <- 4
+  modelContainer[["itemProbsPlot"]] <- p
+
+  if (!ready) return()
+
+  fit <- modelContainer[["model"]]$object
+  if (is.null(fit) || jaspBase::isTryError(fit)) return()
+
+  plotObj <- try(.lcaBuildItemProbsPlot(fit, dataset, options))
+  if (jaspBase::isTryError(plotObj)) {
+    p$setError(.extractErrorMessage(plotObj))
+    return()
+  }
+  p$plotObject <- plotObj
+}
+
+
+.lcaBuildItemProbsPlot <- function(fit, dataset, options) {
+  indicators        <- options[["indicators"]]
+  nclass            <- options[["numberOfClasses"]]
+  decodedIndicators <- jaspBase::decodeColNames(indicators)
+
+  df <- do.call(rbind, lapply(seq_along(indicators), function(i) {
+    v       <- indicators[i]
+    lvls    <- levels(droplevels(as.factor(dataset[[v]])))
+    probMat <- fit$probs[[v]]
+    do.call(rbind, lapply(seq_len(nclass), function(k) {
+      data.frame(
+        indicator   = decodedIndicators[i],
+        class       = gettextf("Class %d", k),
+        category    = lvls,
+        probability = probMat[k, ],
+        stringsAsFactors = FALSE
+      )
+    }))
+  }))
+
+  df$indicator <- factor(df$indicator, levels = decodedIndicators)
+  df$category  <- factor(df$category)
+
+  p <- ggplot2::ggplot(df, ggplot2::aes(x = indicator, y = probability, fill = category)) +
+    ggplot2::geom_col(position = "dodge", color = "white", linewidth = 0.3) +
+    ggplot2::facet_wrap(~class) +
+    ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
+    ggplot2::labs(x = "", y = gettext("Probability"), fill = gettext("Category")) +
+    jaspGraphs::geom_rangeframe(sides = "bl") +
+    jaspGraphs::themeJaspRaw()
+
+  if (options[["rotatePlotLabels"]])
+    p <- p + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1))
+
+  p
 }

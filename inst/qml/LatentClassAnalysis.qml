@@ -96,6 +96,37 @@ Form
 	{
 		title: qsTr("Output Options")
 
-		
+		Group 
+		{
+			title: qsTr("Tables")
+			CheckBox
+			{
+				name:    "itemResponseProbabilities"
+				label:   qsTr("Item-response probabilities")
+				checked: true
+				info:    qsTr("Show a table of item-response probabilities for each indicator and latent class.")
+			}
+		}
+
+		Group
+		{
+			title: qsTr("Plots")
+			CheckBox
+			{
+				id:    itemResponseProbabilitiesPlot
+				name:  "itemResponseProbabilitiesPlot"
+				label: qsTr("Item-response probabilities")
+				info:  qsTr("Show a grouped bar chart of item-response probabilities, with one panel per latent class.")
+
+				CheckBox
+				{
+					name:    "rotatePlotLabels"
+					label:   qsTr("Rotate x-axis labels 45°")
+					enabled: itemResponseProbabilitiesPlot.checked
+					info:    qsTr("Rotate the indicator names on the x-axis by 45 degrees to prevent overlapping.")
+				}
+			}
+		}
+
 	}
 }

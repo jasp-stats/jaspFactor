@@ -32,14 +32,17 @@
 #' @param seed, Random seed for reproducibility.
 #'    Defaults to \code{1}.
 latentClassAnalysis <- function(
-      data            = NULL,
-      version         = "0.96",
-      indicators      = list(types = list(), value = list()),
-      maxIterations   = 1000,
-      missingValues   = "listwise",
-      nrep            = 1,
-      numberOfClasses = 2,
-      seed            = 1) {
+      data                          = NULL,
+      version                       = "0.96",
+      indicators                    = list(types = list(), value = list()),
+      itemResponseProbabilities     = TRUE,
+      itemResponseProbabilitiesPlot = FALSE,
+      rotatePlotLabels              = FALSE,
+      maxIterations                 = 1000,
+      missingValues                 = "listwise",
+      nrep                          = 1,
+      numberOfClasses               = 2,
+      seed                          = 1) {
 
    defaultArgCalls <- formals(jaspFactor::latentClassAnalysis)
    defaultArgs     <- lapply(defaultArgCalls, eval)

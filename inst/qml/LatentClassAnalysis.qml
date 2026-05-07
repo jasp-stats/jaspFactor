@@ -36,18 +36,25 @@ Form
 		}
 	}
 
-	Group
+	ComponentsList
 	{
-		title:   qsTr("Model")
-		columns: 1
+		name:            "models"
+		title:           qsTr("Models")
+		addItemManually: true
+		minimumItems:    1
+		preferredWidth:  240 * jaspTheme.uiScale
+		info:            qsTr("Each row specifies a latent class model to fit. Add rows to compare models with different numbers of classes.")
 
-		IntegerField
+		rowComponent: Row
 		{
-			name:         "numberOfClasses"
-			label:        qsTr("Number of classes")
-			defaultValue: 2
-			min:          1
-			info:         qsTr("Number of latent classes to estimate.")
+			IntegerField
+			{
+				name:         "numberOfClasses"
+				label:        qsTr("Number of classes")
+				defaultValue: 2
+				min:          1
+				info:         qsTr("Number of latent classes to estimate for this model.")
+			}
 		}
 	}
 
@@ -87,8 +94,8 @@ Form
 			title: qsTr("Missing values")
 			info:  qsTr("How to handle rows with missing values on any indicator.")
 
-			RadioButton { value: "listwise"; label: qsTr("Listwise deletion"); checked: true }
-			RadioButton { value: "include";  label: qsTr("Include") }
+			RadioButton { value: "include";  label: qsTr("Include");          checked: true }
+			RadioButton { value: "listwise"; label: qsTr("Listwise deletion") }
 		}
 	}
 

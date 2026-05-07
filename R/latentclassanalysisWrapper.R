@@ -37,11 +37,11 @@ latentClassAnalysis <- function(
       indicators                    = list(types = list(), value = list()),
       itemResponseProbabilities     = TRUE,
       itemResponseProbabilitiesPlot = FALSE,
-      rotatePlotLabels              = FALSE,
       maxIterations                 = 1000,
-      missingValues                 = "listwise",
+      missingValues                 = "include",
+      models                        = list(list(numberOfClasses = 2)),
       nrep                          = 1,
-      numberOfClasses               = 2,
+      rotatePlotLabels              = FALSE,
       seed                          = 1) {
 
    defaultArgCalls <- formals(jaspFactor::latentClassAnalysis)

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2026-01-17 03:46\n"
-"PO-Revision-Date: 2026-04-21 05:09+0000\n"
+"PO-Revision-Date: 2026-05-10 06:11+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17.1-dev\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 msgid "Second-Order"
 msgstr "二階"
@@ -273,7 +273,6 @@ msgstr "二階因素負荷量"
 msgid "Factor variances"
 msgstr "因素變異數"
 
-#, fuzzy
 msgid "Factor Covariances"
 msgstr "因素共變數"
 
@@ -361,9 +360,8 @@ msgstr "信度指標 (Cronbach's α 與 CR值)"
 msgid "Coefficient %s"
 msgstr "係數 %s"
 
-#, fuzzy
 msgid "Column name %s already exists in the dataset"
-msgstr "資料中已有命名為'%s'之變數"
+msgstr "資料集中已存在欄位名稱 %s"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "

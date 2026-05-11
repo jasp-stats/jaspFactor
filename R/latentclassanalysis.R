@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-.lcaModelDeps <- c("indicators", "models", "seed", "nrep", "maxIterations", "missingValues")
+.lcaModelDeps <- c("indicators", "models", "setSeed", "seed", "nrep", "maxIterations", "missingValues")
 
 latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Linzer, D.A. & Lewis, J.B. (2011). poLCA: An R Package for Polytomous Variable Latent Class Analysis. Journal of Statistical Software, 42(10), 1-29.")
@@ -60,7 +60,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   models <- options[["models"]]
   fits   <- lapply(seq_along(models), function(i) {
     nclass <- models[[i]][["numberOfClasses"]]
-    set.seed(options[["seed"]])
+    .setSeedJASP(options)
     try(poLCA::poLCA(
       formula = f,
       data    = lcaData,
@@ -190,7 +190,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
     lvls    <- levels(droplevels(as.factor(dataset[[v]])))
     probMat <- fit$probs[[v]]
 
-    tab <- createJaspTable(title = jaspBase::decodeColNames(v))
+    tab <- createJaspTable(title = v)
     tab$position <- i
     tab$addColumnInfo("class", type = "string", title = gettext("Class"))
     for (j in seq_along(lvls))
@@ -236,7 +236,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
 .lcaBuildItemProbsPlot <- function(fit, dataset, options, nclass) {
   indicators        <- options[["indicators"]]
-  decodedIndicators <- jaspBase::decodeColNames(indicators)
+  decodedIndicators <- indicators
 
   df <- do.call(rbind, lapply(seq_along(indicators), function(i) {
     v       <- indicators[i]

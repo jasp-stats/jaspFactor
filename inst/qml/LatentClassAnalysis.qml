@@ -62,31 +62,29 @@ Form
 	{
 		title: qsTr("Estimation Options")
 
-		IntegerField
+		Group
 		{
-			name:         "seed"
-			label:        qsTr("Seed")
-			defaultValue: 1
-			info:         qsTr("Random seed for reproducibility.")
+			IntegerField
+			{
+				name:         "nrep"
+				label:        qsTr("Number of random starts")
+				defaultValue: 1
+				min:          1
+				info:         qsTr("Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.")
+			}
+
+			IntegerField
+			{
+				name:         "maxIterations"
+				label:        qsTr("Maximum iterations")
+				defaultValue: 1000
+				min:          1
+				info:         qsTr("Maximum iterations for the EM algorithm.")
+			}
+
+			SetSeed {}
 		}
 
-		IntegerField
-		{
-			name:         "nrep"
-			label:        qsTr("Number of random starts")
-			defaultValue: 1
-			min:          1
-			info:         qsTr("Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.")
-		}
-
-		IntegerField
-		{
-			name:         "maxIterations"
-			label:        qsTr("Maximum iterations")
-			defaultValue: 1000
-			min:          1
-			info:         qsTr("Maximum iterations for the EM algorithm.")
-		}
 
 		RadioButtonGroup
 		{

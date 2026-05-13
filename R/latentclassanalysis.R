@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-.lcaModelDeps <- c("indicators", "models", "setSeed", "seed", "nrep", "maxIterations", "missingValues")
+.lcaModelDeps <- c("indicators", "numberOfClasses", "setSeed", "seed", "nrep", "maxIterations", "missingValues")
 
 latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Linzer, D.A. & Lewis, J.B. (2011). poLCA: An R Package for Polytomous Variable Latent Class Analysis. Journal of Statistical Software, 42(10), 1-29.")
@@ -26,6 +26,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   .lcaComputeResults(modelContainer, dataset, options, ready)
   .lcaFitTable(modelContainer, options, ready)
   .lcaPerModelContainers(modelContainer, dataset, options, ready)
+  .lcaSaveToData(jaspResults, modelContainer, dataset, options, ready)
 }
 
 
@@ -57,14 +58,13 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
   f <- as.formula(paste0("cbind(", paste(indicators, collapse = ", "), ") ~ 1"))
 
-  models <- options[["models"]]
-  fits   <- lapply(seq_along(models), function(i) {
-    nclass <- models[[i]][["numberOfClasses"]]
+  K    <- options[["numberOfClasses"]]
+  fits <- lapply(seq_len(K), function(k) {
     .setSeedJASP(options)
     try(poLCA::poLCA(
       formula = f,
       data    = lcaData,
-      nclass  = nclass,
+      nclass  = k,
       maxiter = options[["maxIterations"]],
       nrep    = options[["nrep"]],
       na.rm   = options[["missingValues"]] == "listwise",
@@ -96,18 +96,16 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
   if (!ready) return()
 
-  fits   <- modelContainer[["model"]]$object
-  models <- options[["models"]]
+  fits <- modelContainer[["model"]]$object
   if (is.null(fits)) return()
 
-  df <- do.call(rbind, lapply(seq_along(fits), function(i) {
-    fit    <- fits[[i]]
-    nclass <- models[[i]][["numberOfClasses"]]
+  df <- do.call(rbind, lapply(seq_along(fits), function(k) {
+    fit <- fits[[k]]
     if (jaspBase::isTryError(fit))
-      return(data.frame(classes = nclass, aic = NA_real_, bic = NA_real_, llik = NA_real_,
+      return(data.frame(classes = k, aic = NA_real_, bic = NA_real_, llik = NA_real_,
                         gsq = NA_real_, df = NA_integer_, nobs = NA_integer_))
     data.frame(
-      classes = nclass,
+      classes = k,
       aic     = fit$aic,
       bic     = fit$bic,
       llik    = fit$llik,
@@ -121,13 +119,14 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
 
 .lcaPerModelContainers <- function(modelContainer, dataset, options, ready) {
-  fits   <- if (ready) modelContainer[["model"]]$object else NULL
-  models <- options[["models"]]
+  if (!ready) return()
 
-  for (i in seq_along(models)) {
-    key    <- paste0("model_", i)
-    nclass <- models[[i]][["numberOfClasses"]]
-    title  <- gettextf("Model %1$d: %2$d Classes", i, nclass)
+  K    <- options[["numberOfClasses"]]
+  fits <- modelContainer[["model"]]$object
+
+  for (k in seq_len(K)) {
+    key   <- paste0("model_", k)
+    title <- gettextf("%d Classes", k)
 
     if (is.null(modelContainer[[key]])) {
       mc <- createJaspContainer(title)
@@ -135,17 +134,17 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
                     "itemResponseProbabilities",
                     "itemResponseProbabilitiesPlot",
                     "rotatePlotLabels"))
-      mc$position       <- i + 1
-      mc$initCollapsed  <- length(models) > 1
+      mc$position      <- k + 1
+      mc$initCollapsed <- K > 1
       modelContainer[[key]] <- mc
     } else {
       mc <- modelContainer[[key]]
     }
 
-    fit <- if (!is.null(fits) && i <= length(fits)) fits[[i]] else NULL
-    .lcaClassPrevalencesTable(mc, fit, nclass, ready)
-    .lcaItemProbabilitiesContainer(mc, dataset, fit, nclass, options, ready)
-    .lcaItemProbabilitiesPlot(mc, dataset, fit, nclass, options, ready)
+    fit <- if (!is.null(fits) && k <= length(fits)) fits[[k]] else NULL
+    .lcaClassPrevalencesTable(mc, fit, k, ready)
+    .lcaItemProbabilitiesContainer(mc, dataset, fit, k, options, ready)
+    .lcaItemProbabilitiesPlot(mc, dataset, fit, k, options, ready)
   }
 }
 
@@ -209,9 +208,13 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   if (!options[["itemResponseProbabilitiesPlot"]] || !is.null(mc[["itemProbsPlot"]]))
     return()
 
-  nIndicators <- length(options[["indicators"]])
-  width       <- max(400, 120 * nIndicators)
-  height      <- 220 * nclass
+  nIndicators  <- length(options[["indicators"]])
+  showLegend   <- isTRUE(options[["showLevelsLegend"]])
+  nLevels      <- if (showLegend) length(unique(unlist(lapply(options[["indicators"]], function(v)
+    levels(droplevels(as.factor(dataset[[v]]))))))) else 0
+  legendHeight <- nLevels * 22 + 50
+  width        <- max(400, 120 * nIndicators) + if (showLegend) 160 else 0
+  height       <- max(220 * nclass + if (options[["rotatePlotLabels"]]) 60 else 0, legendHeight)
 
   p <- createJaspPlot(
     title  = gettext("Item-Response Probabilities"),
@@ -219,7 +222,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
     height = height
   )
   p$info <- gettext("Grouped bar chart of item-response probabilities. Each panel shows one latent class; bars within each panel show the probability of each response category for every indicator. Taller bars indicate response categories more characteristic of that class.")
-  p$dependOn(c("itemResponseProbabilitiesPlot", "rotatePlotLabels"))
+  p$dependOn(c("itemResponseProbabilitiesPlot", "rotatePlotLabels", "showLevelsLegend"))
   p$position <- 3
   mc[["itemProbsPlot"]] <- p
 
@@ -254,18 +257,84 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   }))
 
   df$indicator <- factor(df$indicator, levels = decodedIndicators)
-  df$category  <- factor(df$category)
+
+  # order levels by first appearance across indicators (not alphabetically)
+  allLevels    <- unique(unlist(lapply(indicators, function(v)
+    levels(droplevels(as.factor(dataset[[v]]))))))
+  df$category  <- factor(df$category, levels = allLevels)
 
   p <- ggplot2::ggplot(df, ggplot2::aes(x = indicator, y = probability, fill = category)) +
     ggplot2::geom_col(position = "dodge", color = "white", linewidth = 0.3) +
     ggplot2::facet_wrap(~class, ncol = 1) +
     ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
-    ggplot2::labs(x = "", y = gettext("Probability"), fill = gettext("Category")) +
+    jaspGraphs::scale_JASPfill_discrete(name = gettext("Level")) +
+    ggplot2::labs(x = "", y = gettext("Probability")) +
     jaspGraphs::geom_rangeframe(sides = "bl") +
-    jaspGraphs::themeJaspRaw()
+    jaspGraphs::themeJaspRaw(legend.position = if (options[["showLevelsLegend"]]) "right" else "none") +
+    ggplot2::theme(legend.key.height = ggplot2::unit(0.35, "cm"),
+                  legend.key.width  = ggplot2::unit(0.5,  "cm"))
 
   if (options[["rotatePlotLabels"]])
     p <- p + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1))
 
   p
+}
+
+
+.lcaSaveToData <- function(jaspResults, modelContainer, dataset, options, ready) {
+  wantProbs <- options[["saveClassProbabilities"]]
+  wantClass <- options[["saveClassification"]]
+  if (!wantProbs && !wantClass) return()
+
+  saveDeps <- c(.lcaModelDeps, "saveForClasses",
+                "saveClassProbabilities",   "saveClassProbabilitiesPrefix",
+                "saveClassification",       "saveClassificationColumn")
+
+  if (!is.null(jaspResults[["savedColumnsContainer"]])) return()
+
+  container <- createJaspContainer()
+  container$dependOn(saveDeps)
+  jaspResults[["savedColumnsContainer"]] <- container
+
+  if (!ready) return()
+
+  fits <- modelContainer[["model"]]$object
+  k    <- options[["saveForClasses"]]
+  if (is.null(fits) || k > length(fits)) return()
+
+  fit <- fits[[k]]
+  if (jaspBase::isTryError(fit)) return()
+
+  indicators <- options[["indicators"]]
+  n          <- nrow(dataset)
+  complete   <- if (options[["missingValues"]] == "listwise")
+    complete.cases(dataset[, indicators, drop = FALSE])
+  else
+    rep(TRUE, n)
+
+  if (wantProbs) {
+    prefix    <- options[["saveClassProbabilitiesPrefix"]]
+    posterior <- fit$posterior
+    for (j in seq_len(k)) {
+      colName <- paste0(prefix, "_C", j)
+      if (jaspBase:::columnExists(colName) && !jaspBase:::columnIsMine(colName))
+        .quitAnalysis(gettextf("Column '%s' already exists in the dataset.", colName))
+      col             <- jaspBase::createJaspColumn(colName)
+      vals            <- rep(NA_real_, n)
+      vals[complete]  <- posterior[, j]
+      col$setScale(vals)
+      container[[colName]] <- col
+    }
+  }
+
+  if (wantClass) {
+    colName <- options[["saveClassificationColumn"]]
+    if (jaspBase:::columnExists(colName) && !jaspBase:::columnIsMine(colName))
+      .quitAnalysis(gettextf("Column '%s' already exists in the dataset.", colName))
+    col            <- jaspBase::createJaspColumn(colName)
+    vals           <- rep(NA_character_, n)
+    vals[complete] <- paste0("Class ", fit$predclass)
+    col$setNominal(vals)
+    container[[colName]] <- col
+  }
 }

@@ -208,11 +208,16 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   if (!options[["itemResponseProbabilitiesPlot"]] || !is.null(mc[["itemProbsPlot"]]))
     return()
 
-  nIndicators  <- length(options[["indicators"]])
-  showLegend   <- isTRUE(options[["showLevelsLegend"]])
-  nLevels      <- if (showLegend) length(unique(unlist(lapply(options[["indicators"]], function(v)
-    levels(droplevels(as.factor(dataset[[v]]))))))) else 0
-  legendHeight <- nLevels * 22 + 50
+  nIndicators        <- length(options[["indicators"]])
+  showLegend         <- isTRUE(options[["showLevelsLegend"]])
+  allCatsByIndicator <- lapply(options[["indicators"]], function(v)
+    levels(droplevels(as.factor(dataset[[v]]))))
+  allSame      <- length(allCatsByIndicator) <= 1 ||
+    all(sapply(allCatsByIndicator[-1], identical, allCatsByIndicator[[1]]))
+  nLevels      <- length(unique(unlist(allCatsByIndicator)))
+  nHeaders     <- if (!allSame) length(options[["indicators"]]) else 0L
+  nSpacers     <- if (!allSame) max(0L, length(options[["indicators"]]) - 1L) else 0L
+  legendHeight <- if (showLegend) (nLevels + nHeaders + nSpacers) * 22 + 50 else 0
   width        <- max(400, 120 * nIndicators) + if (showLegend) 160 else 0
   height       <- max(220 * nclass + if (options[["rotatePlotLabels"]]) 60 else 0, legendHeight)
 
@@ -240,6 +245,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 .lcaBuildItemProbsPlot <- function(fit, dataset, options, nclass) {
   indicators        <- options[["indicators"]]
   decodedIndicators <- indicators
+  displayNames      <- jaspBase::decodeColNames(indicators)
 
   df <- do.call(rbind, lapply(seq_along(indicators), function(i) {
     v       <- indicators[i]
@@ -258,21 +264,79 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
 
   df$indicator <- factor(df$indicator, levels = decodedIndicators)
 
-  # order levels by first appearance across indicators (not alphabetically)
-  allLevels    <- unique(unlist(lapply(indicators, function(v)
-    levels(droplevels(as.factor(dataset[[v]]))))))
-  df$category  <- factor(df$category, levels = allLevels)
+  allCatsByIndicator <- lapply(indicators, function(v)
+    levels(droplevels(as.factor(dataset[[v]]))))
+  names(allCatsByIndicator) <- decodedIndicators
+  allLevels  <- unique(unlist(allCatsByIndicator))
+  df$category <- factor(df$category, levels = allLevels)
 
-  p <- ggplot2::ggplot(df, ggplot2::aes(x = indicator, y = probability, fill = category)) +
+  showLegend <- isTRUE(options[["showLevelsLegend"]])
+  allSame    <- length(allCatsByIndicator) <= 1 ||
+    all(sapply(allCatsByIndicator[-1], identical, allCatsByIndicator[[1]]))
+
+  if (!showLegend || allSame) {
+    fillAes <- ggplot2::aes(x = indicator, y = probability, fill = category)
+  } else {
+    df$fillKey <- paste0(df$indicator, ": ", df$category)
+    fillAes    <- ggplot2::aes(x = indicator, y = probability, fill = fillKey)
+  }
+
+  p <- ggplot2::ggplot(df, fillAes) +
     ggplot2::geom_col(position = "dodge", color = "white", linewidth = 0.3) +
     ggplot2::facet_wrap(~class, ncol = 1) +
     ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
-    jaspGraphs::scale_JASPfill_discrete(name = gettext("Level")) +
     ggplot2::labs(x = "", y = gettext("Probability")) +
     jaspGraphs::geom_rangeframe(sides = "bl") +
-    jaspGraphs::themeJaspRaw(legend.position = if (options[["showLevelsLegend"]]) "right" else "none") +
+    jaspGraphs::themeJaspRaw(legend.position = if (showLegend) "right" else "none") +
     ggplot2::theme(legend.key.height = ggplot2::unit(0.35, "cm"),
                   legend.key.width  = ggplot2::unit(0.5,  "cm"))
+
+  if (!showLegend || allSame) {
+    p <- p + jaspGraphs::scale_JASPfill_discrete(name = gettext("Level"))
+  } else {
+    colorFun  <- jaspGraphs::JASPcolors(asFunction = TRUE)
+    catColors <- setNames(colorFun(length(allLevels)), allLevels)
+
+    # fillKey → color: same category name gets same color across indicators
+    allFillKeys   <- unlist(lapply(decodedIndicators, function(ind)
+      paste0(ind, ": ", allCatsByIndicator[[ind]])))
+    fillKeyColors <- setNames(
+      catColors[unlist(allCatsByIndicator)],
+      allFillKeys
+    )
+
+    legendBreaks <- character(0)
+    legendLabels <- list()
+    for (i in seq_along(decodedIndicators)) {
+      indName     <- decodedIndicators[i]
+      displayName <- displayNames[i]
+      cats        <- allCatsByIndicator[[indName]]
+      if (i > 1) {
+        legendBreaks <- c(legendBreaks, paste0(".spc.", i))
+        legendLabels <- c(legendLabels, list(""))
+      }
+      legendBreaks <- c(legendBreaks, paste0(".hdr.", indName),
+                       paste0(indName, ": ", cats))
+      legendLabels <- c(legendLabels, list(bquote(bold(.(displayName)))), as.list(paste0("  ", cats)))
+    }
+
+    isHeader  <- startsWith(legendBreaks, ".hdr.") | startsWith(legendBreaks, ".spc.")
+    valueMap  <- c(setNames(rep("transparent", sum(isHeader)), legendBreaks[isHeader]),
+                   fillKeyColors)
+    overrideFill <- ifelse(isHeader, "transparent", fillKeyColors[legendBreaks])
+
+    p <- p + ggplot2::scale_fill_manual(
+      name   = "",
+      limits = legendBreaks,
+      breaks = legendBreaks,
+      labels = legendLabels,
+      values = valueMap,
+      guide  = ggplot2::guide_legend(override.aes = list(
+        fill   = overrideFill,
+        colour = ifelse(isHeader, "transparent", "white")
+      ))
+    )
+  }
 
   if (options[["rotatePlotLabels"]])
     p <- p + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1))

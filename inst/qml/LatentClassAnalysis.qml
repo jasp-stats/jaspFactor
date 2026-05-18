@@ -41,7 +41,7 @@ Form
 		id:           numberOfClassesField
 		name:         "numberOfClasses"
 		label:        qsTr("Maximum number of classes")
-		defaultValue: 3
+		value:        indicators.count > 1 ? Math.floor(indicators.count / 2) : 1
 		min:          1
 		max:          indicators.count > 0 ? indicators.count : 9999
 		info:         qsTr("Models with 1, 2, …, K classes are fitted and compared.")
@@ -136,50 +136,54 @@ Form
 	{
 		title: qsTr("Save to Data")
 
-		IntegerField
+		Group 
 		{
-			name:         "saveForClasses"
-			label:        qsTr("Number of classes")
-			defaultValue: 2
-			min:          1
-			max:          numberOfClassesField.value
-			info:         qsTr("Which fitted model's results to save.")
-		}
-
-		CheckBox
-		{
-			id:    saveProbs
-			name:  "saveClassProbabilities"
-			label: qsTr("Class probabilities")
-			info:  qsTr("Saves K columns of posterior class-membership probabilities (one per class) to the dataset.")
-
-			TextField
+			IntegerField
 			{
-				name:         "saveClassProbabilitiesPrefix"
-				label:        qsTr("Column prefix")
-				defaultValue: "classProb"
-				fieldWidth:   120
-				enabled:      saveProbs.checked
-				info:         qsTr("Columns are named prefix_C1, prefix_C2, …")
+				name:         "saveForClasses"
+				label:        qsTr("Number of classes")
+				defaultValue: indicators.count > 1 ? Math.floor(indicators.count / 2) : 1
+				min:          1
+				max:          numberOfClassesField.value
+				info:         qsTr("Which fitted model's results to save.")
+			}
+
+			CheckBox
+			{
+				id:    saveProbs
+				name:  "saveClassProbabilities"
+				label: qsTr("Class probabilities")
+				info:  qsTr("Saves K columns of posterior class-membership probabilities (one per class) to the dataset.")
+
+				TextField
+				{
+					name:         "saveClassProbabilitiesPrefix"
+					label:        qsTr("Column prefix")
+					defaultValue: "classProb"
+					fieldWidth:   120
+					enabled:      saveProbs.checked
+					info:         qsTr("Columns are named prefix_C1, prefix_C2, …")
+				}
+			}
+
+			CheckBox
+			{
+				id:    saveClass
+				name:  "saveClassification"
+				label: qsTr("Class classification")
+				info:  qsTr("Saves the modal class assignment for each observation as a new nominal column.")
+
+				TextField
+				{
+					name:         "saveClassificationColumn"
+					label:        qsTr("Column name")
+					defaultValue: "classAssignment"
+					fieldWidth:   120
+					enabled:      saveClass.checked
+					info:         qsTr("Name of the column holding the most-likely class label for each observation.")
+				}
 			}
 		}
-
-		CheckBox
-		{
-			id:    saveClass
-			name:  "saveClassification"
-			label: qsTr("Class classification")
-			info:  qsTr("Saves the modal class assignment for each observation as a new nominal column.")
-
-			TextField
-			{
-				name:         "saveClassificationColumn"
-				label:        qsTr("Column name")
-				defaultValue: "classAssignment"
-				fieldWidth:   120
-				enabled:      saveClass.checked
-				info:         qsTr("Name of the column holding the most-likely class label for each observation.")
-			}
-		}
+		
 	}
 }

@@ -28,4 +28,11 @@ Description
 		func:		"confirmatoryFactorAnalysis"
 		qml:    "ConfirmatoryFactorAnalysis.qml"
 	}
+
+	Analysis
+	{
+		title: qsTr("Latent Class Analysis")
+		func:  "latentClassAnalysis"
+		qml:   "LatentClassAnalysis.qml"
+	}
 }

@@ -810,7 +810,7 @@
     },
     "XML": {
       "Package": "XML",
-      "Version": "3.99-0.22",
+      "Version": "3.99-0.23",
       "Source": "Repository",
       "Authors@R": "c(person(\"CRAN Team\", role = \"ctb\", email = \"CRAN@r-project.org\", comment = \"de facto maintainer in 2013-2026\"), person(\"Duncan\", \"Temple Lang\", role = \"aut\", email = \"duncan@r-project.org\", comment = c(ORCID = \"0000-0003-0159-1546\")), person(\"Tomas\", \"Kalibera\", role = \"ctb\"), person(\"Ivan\", \"Krylov\", email = \"ikrylov@disroot.org\", role = \"cre\"))",
       "Title": "Tools for Parsing and Generating XML Within R and S-Plus",

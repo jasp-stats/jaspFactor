@@ -810,7 +810,7 @@
     },
     "XML": {
       "Package": "XML",
-      "Version": "3.99-0.22",
+      "Version": "3.99-0.23",
       "Source": "Repository",
       "Authors@R": "c(person(\"CRAN Team\", role = \"ctb\", email = \"CRAN@r-project.org\", comment = \"de facto maintainer in 2013-2026\"), person(\"Duncan\", \"Temple Lang\", role = \"aut\", email = \"duncan@r-project.org\", comment = c(ORCID = \"0000-0003-0159-1546\")), person(\"Tomas\", \"Kalibera\", role = \"ctb\"), person(\"Ivan\", \"Krylov\", email = \"ikrylov@disroot.org\", role = \"cre\"))",
       "Title": "Tools for Parsing and Generating XML Within R and S-Plus",
@@ -1496,10 +1496,10 @@
     },
     "cluster": {
       "Package": "cluster",
-      "Version": "2.1.8.2",
+      "Version": "2.1.8.1",
       "Source": "Repository",
-      "VersionNote": "Last CRAN: 2.1.8.1 on 2025-03-11; 2.1.8 on 2024-12-10; 2.1.7 on 2024-12-06; 2.1.6 on 2023-11-30;",
-      "Date": "2026-02-03",
+      "VersionNote": "Last CRAN: 2.1.8 on 2024-12-10; 2.1.7 on 2024-12-06; 2.1.6 on 2023-11-30; 2.1.5 on 2023-11-27",
+      "Date": "2025-03-11",
       "Priority": "recommended",
       "Title": "\"Finding Groups in Data\": Cluster Analysis Extended Rousseeuw et al.",
       "Description": "Methods for Cluster analysis.  Much extended the original from Peter Rousseeuw, Anja Struyf and Mia Hubert, based on Kaufman and Rousseeuw (1990) \"Finding Groups in Data\".",
@@ -1533,7 +1533,7 @@
       "License": "GPL (>= 2)",
       "URL": "https://svn.r-project.org/R-packages/trunk/cluster/",
       "NeedsCompilation": "yes",
-      "Author": "Martin Maechler [aut, cre] (ORCID: <https://orcid.org/0000-0002-8685-9910>), Peter Rousseeuw [aut] (Fortran original, ORCID: <https://orcid.org/0000-0002-3807-5353>), Anja Struyf [aut] (S original), Mia Hubert [aut] (S original, ORCID: <https://orcid.org/0000-0001-6398-4850>), Kurt Hornik [trl, ctb] (port to R; maintenance(1999-2000), ORCID: <https://orcid.org/0000-0003-4198-9911>), Matthias Studer [ctb], Pierre Roudier [ctb], Juan Gonzalez [ctb], Kamil Kozlowski [ctb], Erich Schubert [ctb] (fastpam options for pam(), ORCID: <https://orcid.org/0000-0001-9143-4880>), Keefe Murphy [ctb] (volume.ellipsoid({d >= 3}))",
+      "Author": "Martin Maechler [aut, cre] (<https://orcid.org/0000-0002-8685-9910>), Peter Rousseeuw [aut] (Fortran original, <https://orcid.org/0000-0002-3807-5353>), Anja Struyf [aut] (S original), Mia Hubert [aut] (S original, <https://orcid.org/0000-0001-6398-4850>), Kurt Hornik [trl, ctb] (port to R; maintenance(1999-2000), <https://orcid.org/0000-0003-4198-9911>), Matthias Studer [ctb], Pierre Roudier [ctb], Juan Gonzalez [ctb], Kamil Kozlowski [ctb], Erich Schubert [ctb] (fastpam options for pam(), <https://orcid.org/0000-0001-9143-4880>), Keefe Murphy [ctb] (volume.ellipsoid({d >= 3}))",
       "Repository": "CRAN"
     },
     "coda": {
@@ -2310,10 +2310,10 @@
     },
     "foreign": {
       "Package": "foreign",
-      "Version": "0.8-91",
+      "Version": "0.8-90",
       "Source": "Repository",
       "Priority": "recommended",
-      "Date": "2026-01-29",
+      "Date": "2025-03-31",
       "Title": "Read Data Stored by 'Minitab', 'S', 'SAS', 'SPSS', 'Stata', 'Systat', 'Weka', 'dBase', ...",
       "Depends": [
         "R (>= 4.0.0)"
@@ -2334,7 +2334,7 @@
       "MailingList": "R-help@r-project.org",
       "URL": "https://svn.r-project.org/R-packages/trunk/foreign/",
       "NeedsCompilation": "yes",
-      "Author": "R Core Team [aut, cph, cre] (ROR: <https://ror.org/02zz1nj61>), Roger Bivand [ctb, cph], Vincent J. Carey [ctb, cph], Saikat DebRoy [ctb, cph], Stephen Eglen [ctb, cph], Rajarshi Guha [ctb, cph], Swetlana Herbrandt [ctb], Nicholas Lewin-Koh [ctb, cph], Mark Myatt [ctb, cph], Michael Nelson [ctb], Ben Pfaff [ctb], Brian Quistorff [ctb], Frank Warmerdam [ctb, cph], Stephen Weigand [ctb, cph], Free Software Foundation, Inc. [cph]",
+      "Author": "R Core Team [aut, cph, cre] (02zz1nj61), Roger Bivand [ctb, cph], Vincent J. Carey [ctb, cph], Saikat DebRoy [ctb, cph], Stephen Eglen [ctb, cph], Rajarshi Guha [ctb, cph], Swetlana Herbrandt [ctb], Nicholas Lewin-Koh [ctb, cph], Mark Myatt [ctb, cph], Michael Nelson [ctb], Ben Pfaff [ctb], Brian Quistorff [ctb], Frank Warmerdam [ctb, cph], Stephen Weigand [ctb, cph], Free Software Foundation, Inc. [cph]",
       "Maintainer": "R Core Team <R-core@R-project.org>",
       "Repository": "CRAN"
     },
@@ -3111,40 +3111,72 @@
       "Package": "jaspBase",
       "Version": "0.20.4",
       "Source": "GitHub",
-      "Requirements": [
+      "Type": "Package",
+      "Title": "JASP Base",
+      "Author": "JASP Team",
+      "Maintainer": "Bruno Boutin <B.Boutin@uva.nl>",
+      "Description": "Package contains the JASP Bayesian and Frequentist analyses. See <https://jasp-stats.org> for more details.",
+      "License": "GPL2+",
+      "Imports": [
         "cli",
         "codetools",
+        "compiler",
         "ggplot2",
+        "grDevices",
+        "grid",
         "gridExtra",
         "gridGraphics",
         "jaspGraphs",
         "jsonlite",
         "lifecycle",
+        "methods",
         "officer",
         "pkgbuild",
         "plyr",
         "ragg",
         "R6",
-        "Rcpp",
+        "Rcpp (>= 0.12.14)",
         "rvg",
         "svglite",
         "systemfonts",
-        "withr",
-        "testthat"
+        "withr"
       ],
+      "RoxygenNote": "7.3.3",
+      "Roxygen": "list(markdown = TRUE)",
+      "Encoding": "UTF-8",
+      "LinkingTo": [
+        "Rcpp"
+      ],
+      "RcppModules": "jaspResults",
+      "NeedsCompilation": "yes",
+      "Suggests": [
+        "testthat (>= 3.0.0)"
+      ],
+      "Config/testthat/edition": "3",
       "RemoteType": "github",
+      "Remotes": "jasp-stats/jaspGraphs",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
-      "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4"
+      "RemoteRef": "master",
+      "RemoteSha": "0f9bd7d846d8432301ccf7bbdcdadcb350df0704"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
       "Version": "0.20.0",
       "Source": "GitHub",
-      "Requirements": [
+      "Type": "Package",
+      "Title": "Custom Graphs for JASP",
+      "Author": "Don van den Bergh",
+      "Maintainer": "JASP-team <info@jasp-stats.nl>",
+      "Description": "Graph making functions and wrappers for JASP.",
+      "License": "GPL",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "RoxygenNote": "7.3.3",
+      "Imports": [
         "cli",
-        "ggplot2",
+        "ggplot2 (>= 3.0.0)",
         "gridExtra",
         "gtable",
         "htmlwidgets",
@@ -3153,21 +3185,34 @@
         "plotly",
         "R6",
         "rlang",
-        "scales",
+        "scales"
+      ],
+      "Suggests": [
         "testthat",
         "vdiffr"
       ],
+      "Roxygen": "list(markdown = TRUE)",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
+      "RemoteRef": "master",
       "RemoteSha": "1eb48e7e0fe9559bbd15da25f30703c7cca246bb"
     },
     "jaspSem": {
       "Package": "jaspSem",
-      "Version": "0.96.4",
+      "Version": "0.95.5",
       "Source": "GitHub",
-      "Requirements": [
+      "Type": "Package",
+      "Title": "SEM Module for JASP",
+      "Date": "2025-05-08",
+      "Author": "JASP Team",
+      "Website": "https://github.com/jasp-stats/jaspSem/",
+      "Maintainer": "JASP Team <info@jasp-stats.org>",
+      "Description": "Evaluate latent data structures",
+      "License": "GPL (>= 2)",
+      "Encoding": "UTF-8",
+      "Imports": [
         "forcats",
         "ggplot2",
         "lavaan",
@@ -3188,7 +3233,51 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspSem",
-      "RemoteSha": "78ce378f4cba0a26ee594e586393299400635fce"
+      "RemoteRef": "master",
+      "RemoteSha": "db4c0acbd9724f83624ef1528110945140b80232",
+      "Remotes": "jasp-stats/jaspBase, jasp-stats/jaspGraphs"
+    },
+    "jaspTools": {
+      "Package": "jaspTools",
+      "Version": "0.20.1",
+      "Source": "GitHub",
+      "Type": "Package",
+      "Title": "Helps Preview and Debug JASP Analyses",
+      "Authors@R": "c( person(\"Tim\", \"de Jong\", role = \"aut\"), person(\"Don\", \"van den Bergh\", role = c(\"ctb\", \"cre\"), email = \"d.vandenbergh@uva.nl\"), person(\"František\", \"Bartoš\", role = \"ctb\"))",
+      "Maintainer": "Don van den Bergh <d.vandenbergh@uva.nl>",
+      "Description": "This package assists JASP developers when writing R code. It removes the necessity of building JASP every time a change is made. Rather, analyses can be called directly in R and be debugged interactively.",
+      "License": "GNU General Public License",
+      "Encoding": "UTF-8",
+      "LazyData": "true",
+      "Imports": [
+        "archive (>= 1.1.6)",
+        "cli",
+        "data.table",
+        "DBI",
+        "httr",
+        "jsonlite",
+        "lifecycle",
+        "pkgload",
+        "remotes",
+        "rjson",
+        "RSQLite",
+        "stringi",
+        "stringr",
+        "testthat (>= 3.2.2)",
+        "vdiffr (>= 1.0.7)"
+      ],
+      "Suggests": [
+        "ggplot2"
+      ],
+      "RoxygenNote": "7.3.3",
+      "Roxygen": "list(markdown = TRUE)",
+      "Author": "Tim de Jong [aut], Don van den Bergh [ctb, cre], František Bartoš [ctb]",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspTools",
+      "RemoteRef": "master",
+      "RemoteSha": "4de898283e3817fdb072733f642ba5711897a592"
     },
     "jpeg": {
       "Package": "jpeg",
@@ -3421,9 +3510,9 @@
     },
     "lattice": {
       "Package": "lattice",
-      "Version": "0.22-9",
+      "Version": "0.22-7",
       "Source": "Repository",
-      "Date": "2026-02-03",
+      "Date": "2025-03-31",
       "Priority": "recommended",
       "Title": "Trellis Graphics for R",
       "Authors@R": "c(person(\"Deepayan\", \"Sarkar\", role = c(\"aut\", \"cre\"), email = \"deepayan.sarkar@r-project.org\", comment = c(ORCID = \"0000-0003-4107-1553\")), person(\"Felix\", \"Andrews\", role = \"ctb\"), person(\"Kevin\", \"Wright\", role = \"ctb\", comment = \"documentation\"), person(\"Neil\", \"Klepeis\", role = \"ctb\"), person(\"Johan\", \"Larsson\", role = \"ctb\", comment = \"miscellaneous improvements\"), person(\"Zhijian (Jason)\", \"Wen\", role = \"cph\", comment = \"filled contour code\"), person(\"Paul\", \"Murrell\", role = \"ctb\", email = \"paul@stat.auckland.ac.nz\"), person(\"Stefan\", \"Eng\", role = \"ctb\", comment = \"violin plot improvements\"), person(\"Achim\", \"Zeileis\", role = \"ctb\", comment = \"modern colors\"), person(\"Alexandre\", \"Courtiol\", role = \"ctb\", comment = \"generics for larrows, lpolygon, lrect and lsegments\") )",
@@ -3454,7 +3543,7 @@
       "URL": "https://lattice.r-forge.r-project.org/",
       "BugReports": "https://github.com/deepayan/lattice/issues",
       "NeedsCompilation": "yes",
-      "Author": "Deepayan Sarkar [aut, cre] (ORCID: <https://orcid.org/0000-0003-4107-1553>), Felix Andrews [ctb], Kevin Wright [ctb] (documentation), Neil Klepeis [ctb], Johan Larsson [ctb] (miscellaneous improvements), Zhijian (Jason) Wen [cph] (filled contour code), Paul Murrell [ctb], Stefan Eng [ctb] (violin plot improvements), Achim Zeileis [ctb] (modern colors), Alexandre Courtiol [ctb] (generics for larrows, lpolygon, lrect and lsegments)",
+      "Author": "Deepayan Sarkar [aut, cre] (<https://orcid.org/0000-0003-4107-1553>), Felix Andrews [ctb], Kevin Wright [ctb] (documentation), Neil Klepeis [ctb], Johan Larsson [ctb] (miscellaneous improvements), Zhijian (Jason) Wen [cph] (filled contour code), Paul Murrell [ctb], Stefan Eng [ctb] (violin plot improvements), Achim Zeileis [ctb] (modern colors), Alexandre Courtiol [ctb] (generics for larrows, lpolygon, lrect and lsegments)",
       "Maintainer": "Deepayan Sarkar <deepayan.sarkar@r-project.org>",
       "Repository": "CRAN"
     },
@@ -4611,6 +4700,26 @@
       "NeedsCompilation": "yes",
       "Repository": "CRAN"
     },
+    "poLCA": {
+      "Package": "poLCA",
+      "Version": "1.6.0.2",
+      "Source": "Repository",
+      "Date": "2026-02-07",
+      "Title": "Polytomous Variable Latent Class Analysis",
+      "Authors@R": "c(person(given = \"Drew\", family = \"Linzer\", role = c(\"aut\", \"cre\"), email = \"drew@votamatic.org\"), person(given = \"Jeffrey\", family = \"Lewis\", role = \"aut\", email = \"jblewis@ucla.edu\"))",
+      "Author": "Drew Linzer [aut, cre], Jeffrey Lewis [aut]",
+      "Maintainer": "Drew Linzer <drew@votamatic.org>",
+      "Depends": [
+        "scatterplot3d",
+        "MASS"
+      ],
+      "Description": "Latent class analysis and latent class regression models  for polytomous outcome variables. Also known as latent structure analysis.",
+      "License": "GPL (>= 2)",
+      "URL": "https://github.com/dlinzer/poLCA",
+      "NeedsCompilation": "yes",
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
+    },
     "polycor": {
       "Package": "polycor",
       "Version": "0.8-2",
@@ -4795,10 +4904,10 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.9.1",
+      "Version": "1.9.3",
       "Source": "Repository",
       "Title": "List, Query, Manipulate System Processes",
-      "Authors@R": "c( person(\"Jay\", \"Loden\", role = \"aut\"), person(\"Dave\", \"Daeschler\", role = \"aut\"), person(\"Giampaolo\", \"Rodola'\", role = \"aut\"), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
+      "Authors@R": "c( person(\"Jay\", \"Loden\", role = \"aut\"), person(\"Dave\", \"Daeschler\", role = \"aut\"), person(\"Giampaolo\", \"Rodola'\", role = \"aut\"), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "List, query and manipulate all system processes, on 'Windows', 'Linux' and 'macOS'.",
       "License": "MIT + file LICENSE",
       "URL": "https://github.com/r-lib/ps, https://ps.r-lib.org/",
@@ -4825,18 +4934,19 @@
       "Biarch": "true",
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
+      "Config/usethis/last-upkeep": "2025-04-28",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "NeedsCompilation": "yes",
-      "Author": "Jay Loden [aut], Dave Daeschler [aut], Giampaolo Rodola' [aut], Gábor Csárdi [aut, cre], Posit Software, PBC [cph, fnd]",
+      "Author": "Jay Loden [aut], Dave Daeschler [aut], Giampaolo Rodola' [aut], Gábor Csárdi [aut, cre], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
       "Repository": "CRAN"
     },
     "psych": {
       "Package": "psych",
-      "Version": "2.6.1",
+      "Version": "2.6.3",
       "Source": "Repository",
-      "Date": "2026-01-31",
+      "Date": "2026-03-21",
       "Title": "Procedures for Psychological, Psychometric, and Personality Research",
       "Authors@R": "person(\"William\", \"Revelle\", role =c(\"aut\",\"cre\"), email=\"revelle@northwestern.edu\", comment=c(ORCID  = \"0000-0003-4880-9610\") )",
       "Description": "A general purpose toolbox developed originally for personality, psychometric theory and experimental psychology.  Functions are primarily for multivariate analysis and scale construction using factor analysis, principal component analysis, cluster analysis and reliability analysis, although others provide basic descriptive statistics. Item Response Theory is done using  factor analysis of tetrachoric and polychoric correlations. Functions for analyzing data at multiple levels include within and between group statistics, including correlations and factor analysis.  Validation and cross validation of scales developed using basic machine learning algorithms are provided, as are functions for simulating and testing particular item and test structures. Several functions  serve as a useful front end for structural equation modeling.  Graphical displays of path diagrams, including mediation models, factor analysis and structural equation models are created using basic graphics. Some of the functions are written to support a book on psychometric theory as well as publications in personality research. For more information, see the <https://personality-project.org/r/> web page.",
@@ -5188,7 +5298,7 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.1.7",
+      "Version": "1.2.2",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Project Environments",
@@ -5693,6 +5803,29 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut], Thomas Lin Pedersen [cre, aut] (<https://orcid.org/0000-0002-5147-4711>), Dana Seidel [aut], Posit Software, PBC [cph, fnd] (03wc8by49)",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
+      "Repository": "CRAN"
+    },
+    "scatterplot3d": {
+      "Package": "scatterplot3d",
+      "Version": "0.3-45",
+      "Source": "Repository",
+      "Date": "2026-02-23",
+      "Title": "3D Scatter Plot",
+      "Authors@R": "c(person(given = \"Uwe\", family = \"Ligges\", role = c(\"aut\", \"cre\"), email = \"ligges@statistik.tu-dortmund.de\"), person(given = \"Martin\", family = \"Maechler\", role = \"aut\"), person(given = \"Sarah\", family = \"Schnackenberg\", role = \"aut\"))",
+      "Description": "Plots a three dimensional (3D) point cloud.",
+      "Depends": [
+        "R (>= 2.7.0)"
+      ],
+      "License": "GPL-2",
+      "Encoding": "UTF-8",
+      "Imports": [
+        "grDevices",
+        "graphics",
+        "stats"
+      ],
+      "NeedsCompilation": "no",
+      "Author": "Uwe Ligges [aut, cre], Martin Maechler [aut], Sarah Schnackenberg [aut]",
+      "Maintainer": "Uwe Ligges <ligges@statistik.tu-dortmund.de>",
       "Repository": "CRAN"
     },
     "sem": {

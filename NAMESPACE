@@ -1,4 +1,6 @@
 import(jaspBase)
+export(latentClassAnalysis)
+export(latentClassAnalysisInternal)
 export(principalComponentAnalysisInternal)
 export(exploratoryFactorAnalysisInternal)
 export(confirmatoryFactorAnalysisInternal)

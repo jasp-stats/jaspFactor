@@ -16,7 +16,8 @@
 
 # jaspFactor (development version)
 
-
+## Added
+* Latent Class Analysis ([PR #346](https://github.com/jasp-stats/jaspFactor/pull/346)).
 
 ---
 

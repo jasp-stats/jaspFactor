@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
-"POT-Creation-Date: 2026-01-17 03:46\n"
+"POT-Creation-Date: 2026-05-23 04:37\n"
 "PO-Revision-Date: 2026-05-17 06:11+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
@@ -16,25 +16,40 @@ msgstr ""
 msgid "Second-Order"
 msgstr ""
 
-msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgid ""
+"The model could not be estimated. Ensure that factors have at least 2 "
+"observed variables."
 msgstr ""
 
-msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgid ""
+"The model could not be estimated. A factor with less than 2 variables was "
+"added in Second-Order."
 msgstr ""
 
-msgid "Not more cases than number of variables. Is your data a variance-covariance matrix?"
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
 
-msgid "Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."
+msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
 msgstr ""
 
-msgid "Missing data handling '%s' is not supported for categorical data. \n Please select another method under 'Missing data handling' within the 'Advanced' options tab"
+msgid ""
+"Missing data handling '%s' is not supported for categorical data. \n"
+" Please select another method under 'Missing data handling' within the "
+"'Advanced' options tab"
 msgstr ""
 
-msgid "The model could not be estimated. Error message: \n\n %s"
+msgid ""
+"The model could not be estimated. Error message: \n"
+"\n"
+" %s"
 msgstr ""
 
 msgid "The model is not admissible: %s"
@@ -49,7 +64,9 @@ msgstr ""
 msgid "Bootstrapping is not available for variance-covariance matrix input."
 msgstr ""
 
-msgid "Robust standard errors are not available for variance-covariance matrix input."
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
 msgstr ""
 
 msgid "# Factors"
@@ -184,13 +201,18 @@ msgstr ""
 msgid "Expected cross validation index (ECVI)"
 msgstr ""
 
-msgid "Except for the PNFI, the fit indices are scaled because of categorical variables in the data."
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
 msgstr ""
 
-msgid "Except for the PNFI, the fit indices are scaled because a robust estimator was used."
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
 msgstr ""
 
-msgid "The RMSEA results are scaled because of categorical variables in the data."
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
 msgstr ""
 
 msgid "The RMSEA results are scaled because a robust estimator was used."
@@ -331,10 +353,16 @@ msgstr ""
 msgid "Column name %s already exists in the dataset"
 msgstr ""
 
-msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
 msgstr ""
 
-msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
 msgstr ""
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
@@ -346,7 +374,9 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
-msgid "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
+msgid ""
+"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin Test"
@@ -367,7 +397,9 @@ msgstr "Statistik"
 msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
 
-msgid "The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
 msgstr ""
 
 msgid "Anti-Image Correlation Matrix"
@@ -466,7 +498,9 @@ msgstr ""
 msgid "Simulated data mean eigenvalues"
 msgstr ""
 
-msgid "Screeplot not available. \nInternal error message: %s"
+msgid ""
+"Screeplot not available. \n"
+"Internal error message: %s"
 msgstr ""
 
 msgid "Data"
@@ -478,10 +512,90 @@ msgstr ""
 msgid "Path Diagram"
 msgstr "Diagram Jalur"
 
-msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
+#, fuzzy
+msgid "Model Fit"
+msgstr "Model"
+
+msgid ""
+"Fit statistics for each model. AIC and BIC penalize the log-likelihood for "
+"model complexity and can be used to compare models with different numbers of "
+"classes (lower is better). G² is the likelihood-ratio goodness-of-fit "
+"statistic; a non-significant p-value indicates adequate fit, though this "
+"test is sensitive to sparse cells and small samples."
 msgstr ""
 
-msgid "Input data does not seem to be a symmetric matrix! Please check the format of the input data and possibly the order of the variables."
+msgid "Classes"
+msgstr ""
+
+msgid "G²"
+msgstr ""
+
+msgid "N"
+msgstr ""
+
+msgid "%d Classes"
+msgstr ""
+
+msgid "Class Prevalences"
+msgstr ""
+
+msgid ""
+"Estimated sizes of the latent classes. Proportion is the model-estimated "
+"mixing weight (the probability that a randomly drawn observation belongs to "
+"each class), with its standard error. Modal proportion is the fraction of "
+"observations assigned to each class by their highest posterior probability; "
+"it may differ from the model proportion because modal assignment discretizes "
+"the continuous posterior."
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+msgid "Proportion"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "Modal proportion"
+msgstr ""
+
+msgid "Class %d"
+msgstr ""
+
+msgid "Item-Response Probabilities"
+msgstr ""
+
+msgid ""
+"Estimated probability of each response category for each indicator, "
+"conditional on class membership. Each row is a latent class; each column is "
+"a response category of the indicator. Probabilities within a row sum to 1."
+msgstr ""
+
+msgid ""
+"Grouped bar chart of item-response probabilities. Each panel shows one "
+"latent class; bars within each panel show the probability of each response "
+"category for every indicator. Taller bars indicate response categories more "
+"characteristic of that class."
+msgstr ""
+
+msgid "Probability"
+msgstr ""
+
+msgid "Level"
+msgstr ""
+
+msgid "Column '%s' already exists in the dataset."
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data and possibly the order of the variables."
 msgstr ""
 
 msgid "All cells must be numeric."
@@ -505,7 +619,9 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
+msgid ""
+"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+"%2$s."
 msgstr ""
 
 msgid "Component Loadings"

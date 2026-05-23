@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-01-17 03:46\n"
+"POT-Creation-Date: 2026-05-23 04:37\n"
 "PO-Revision-Date: 2026-01-28 10:47+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -561,6 +561,85 @@ msgstr "Dados simulados de análise paralela"
 
 msgid "Path Diagram"
 msgstr "Diagrama de caminhos"
+
+#, fuzzy
+msgid "Model Fit"
+msgstr "Ajuste do modelo"
+
+msgid ""
+"Fit statistics for each model. AIC and BIC penalize the log-likelihood for "
+"model complexity and can be used to compare models with different numbers of "
+"classes (lower is better). G² is the likelihood-ratio goodness-of-fit "
+"statistic; a non-significant p-value indicates adequate fit, though this "
+"test is sensitive to sparse cells and small samples."
+msgstr ""
+
+msgid "Classes"
+msgstr ""
+
+msgid "G²"
+msgstr ""
+
+msgid "N"
+msgstr ""
+
+msgid "%d Classes"
+msgstr ""
+
+msgid "Class Prevalences"
+msgstr ""
+
+msgid ""
+"Estimated sizes of the latent classes. Proportion is the model-estimated "
+"mixing weight (the probability that a randomly drawn observation belongs to "
+"each class), with its standard error. Modal proportion is the fraction of "
+"observations assigned to each class by their highest posterior probability; "
+"it may differ from the model proportion because modal assignment discretizes "
+"the continuous posterior."
+msgstr ""
+
+msgid "Class"
+msgstr ""
+
+#, fuzzy
+msgid "Proportion"
+msgstr "Variável proporcional"
+
+msgid "SE"
+msgstr ""
+
+msgid "Modal proportion"
+msgstr ""
+
+msgid "Class %d"
+msgstr ""
+
+msgid "Item-Response Probabilities"
+msgstr ""
+
+msgid ""
+"Estimated probability of each response category for each indicator, "
+"conditional on class membership. Each row is a latent class; each column is "
+"a response category of the indicator. Probabilities within a row sum to 1."
+msgstr ""
+
+msgid ""
+"Grouped bar chart of item-response probabilities. Each panel shows one "
+"latent class; bars within each panel show the probability of each response "
+"category for every indicator. Taller bars indicate response categories more "
+"characteristic of that class."
+msgstr ""
+
+#, fuzzy
+msgid "Probability"
+msgstr "Confiabilidade"
+
+msgid "Level"
+msgstr ""
+
+#, fuzzy
+msgid "Column '%s' already exists in the dataset."
+msgstr "O nome da coluna %s já existe no conjunto de dados"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "

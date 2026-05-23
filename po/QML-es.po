@@ -1208,3 +1208,164 @@ msgstr "Matriz de varianzas-covarianzas"
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
 msgstr "Tamaño de la muestra"
+
+msgctxt "Description|"
+msgid "Latent Class Analysis"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Indicators"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Categorical indicator variables for the latent class model. At least two "
+"indicators are required."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Maximum number of classes"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Models with 1, 2, …, K classes are fitted and compared."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Estimation Options"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Number of random starts"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Number of times the EM algorithm is run with different random starting "
+"values. The run with the highest log-likelihood is returned."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Maximum iterations"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Maximum iterations for the EM algorithm."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Missing values"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "How to handle rows with missing values on any indicator."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Include"
+msgstr ""
+
+#, fuzzy
+msgctxt "LatentClassAnalysis|"
+msgid "Listwise deletion"
+msgstr "Eliminación según lista"
+
+#, fuzzy
+msgctxt "LatentClassAnalysis|"
+msgid "Output Options"
+msgstr "Opciones de salida"
+
+#, fuzzy
+msgctxt "LatentClassAnalysis|"
+msgid "Tables"
+msgstr "Tablas"
+
+msgctxt "LatentClassAnalysis|"
+msgid "Item-response probabilities"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Show a table of item-response probabilities for each indicator and latent "
+"class."
+msgstr ""
+
+#, fuzzy
+msgctxt "LatentClassAnalysis|"
+msgid "Plots"
+msgstr "Gráficos"
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Show a grouped bar chart of item-response probabilities, with one panel per "
+"latent class."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Rotate x-axis labels 45°"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Rotate the indicator names on the x-axis by 45 degrees to prevent "
+"overlapping."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Show levels legend"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Show a legend on the right indicating the color for each response category "
+"level."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Save to Data"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Number of classes"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Which fitted model's results to save."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Class probabilities"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Saves K columns of posterior class-membership probabilities (one per class) "
+"to the dataset."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Column prefix"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Columns are named prefix_C1, prefix_C2, …"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Class classification"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Saves the modal class assignment for each observation as a new nominal "
+"column."
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid "Column name"
+msgstr ""
+
+msgctxt "LatentClassAnalysis|"
+msgid ""
+"Name of the column holding the most-likely class label for each observation."
+msgstr ""

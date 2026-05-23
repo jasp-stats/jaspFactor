@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2026-05-23 04:37\n"
-"PO-Revision-Date: 2026-05-17 06:11+0000\n"
+"PO-Revision-Date: 2026-05-24 07:11+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hant/>\n"
@@ -527,7 +527,6 @@ msgstr "平行分析的模擬資料"
 msgid "Path Diagram"
 msgstr "路徑圖"
 
-#, fuzzy
 msgid "Model Fit"
 msgstr "模型配適"
 
@@ -538,9 +537,14 @@ msgid ""
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
 msgstr ""
+"各模型的適配統計量。AIC 與 BIC 會對模型複雜度下的對數概似值（log-likelihood）"
+"進行懲罰，可用於比較不同類別數的模型（數值愈小愈佳）。G² 為概似比適配度統計量"
+"（likelihood-ratio goodness-of-fit statistic）；其 p 值若未達顯著，表示模型具"
+"有適當的適配度，但此檢定對稀疏儲存格（sparse cells）及小樣本相當敏感。"
 
+#, fuzzy
 msgid "Classes"
-msgstr ""
+msgstr "類別數"
 
 msgid "G²"
 msgstr ""
@@ -549,11 +553,13 @@ msgid "N"
 msgstr ""
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d 個類別"
 
+#, fuzzy
 msgid "Class Prevalences"
-msgstr ""
+msgstr "類別盛行率"
 
+#, fuzzy
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
 "mixing weight (the probability that a randomly drawn observation belongs to "
@@ -562,49 +568,62 @@ msgid ""
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
 msgstr ""
-
-msgid "Class"
-msgstr ""
+"潛在類別的估計大小。比例為模型估計的混合權重（即隨機抽取一個觀測值時屬於各類"
+"別的機率），並附其標準誤。模態比例則是依據後驗機率最高值所指派到各類別的觀測"
+"值比例；由於眾數指派會將連續的後驗機率離散化，因此其結果可能與模型比例不同。"
 
 #, fuzzy
+msgid "Class"
+msgstr "類別"
+
 msgid "Proportion"
-msgstr "可解釋變異量之百分比."
+msgstr "比例"
 
 msgid "SE"
-msgstr ""
+msgstr "標準誤"
 
+#, fuzzy
 msgid "Modal proportion"
-msgstr ""
+msgstr "模態比例"
 
+#, fuzzy
 msgid "Class %d"
-msgstr ""
+msgstr "第 %d 類別"
 
+#, fuzzy
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "題項反應機率"
 
+#, fuzzy
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
 msgstr ""
+"在各潛在類別條件下，每個指標之各反應類別的估計機率。每一列代表一個潛在類別；"
+"每一欄代表該指標的一個反應類別。每一列內的機率總和為 1。"
 
+#, fuzzy
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
 "latent class; bars within each panel show the probability of each response "
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
 msgstr ""
+"潛在類別之題項反應機率的分組長條圖。每個面板呈現一個潛在類別；每個面板內的長"
+"條表示各指標之不同反應類別的機率分布。較高的長條代表該反應類別在該潛在類別中"
+"較具代表性。"
 
 #, fuzzy
 msgid "Probability"
 msgstr "信度指標 (Cronbach's α 與 CR值)"
 
-msgid "Level"
-msgstr ""
-
 #, fuzzy
+msgid "Level"
+msgstr "水準"
+
 msgid "Column '%s' already exists in the dataset."
-msgstr "資料集中已存在欄位名稱 %s"
+msgstr "資料集中已存在欄位名稱 %s。"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "

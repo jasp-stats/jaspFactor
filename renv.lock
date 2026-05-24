@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.3",
+    "Version": "4.5.2",
     "Repositories": [
       {
         "Name": "RSPM",
@@ -810,7 +810,7 @@
     },
     "XML": {
       "Package": "XML",
-      "Version": "3.99-0.23",
+      "Version": "3.99-0.22",
       "Source": "Repository",
       "Authors@R": "c(person(\"CRAN Team\", role = \"ctb\", email = \"CRAN@r-project.org\", comment = \"de facto maintainer in 2013-2026\"), person(\"Duncan\", \"Temple Lang\", role = \"aut\", email = \"duncan@r-project.org\", comment = c(ORCID = \"0000-0003-0159-1546\")), person(\"Tomas\", \"Kalibera\", role = \"ctb\"), person(\"Ivan\", \"Krylov\", email = \"ikrylov@disroot.org\", role = \"cre\"))",
       "Title": "Tools for Parsing and Generating XML Within R and S-Plus",
@@ -3159,8 +3159,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "93f004588f6d56b46d23210e23bff003ae7b1ff4",
-      "Remotes": "jasp-stats/jaspGraphs"
+      "RemoteSha": "0f9bd7d846d8432301ccf7bbdcdadcb350df0704"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",

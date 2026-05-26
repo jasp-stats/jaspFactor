@@ -496,9 +496,9 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   switch(options$invarianceTesting,
          "configural" = return(""),
          "metric"     = return("loadings"),
-         "scalar"     = return(c("loadings", "intercepts")),
-         "strict"     = return(c("loadings", "intercepts", "residuals", "residual.covariances")),
-         "structural" = return(c("loadings", "intercepts", "residuals", "residual.covariances",
+         "scalar"     = return(c("loadings", "intercepts", "thresholds")),
+         "strict"     = return(c("loadings", "intercepts", "thresholds", "residuals", "residual.covariances")),
+         "structural" = return(c("loadings", "intercepts", "thresholds", "residuals", "residual.covariances",
                                  "means", "lv.variances", "lv.covariances"))
   )
 }

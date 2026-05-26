@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-05-24 05:11+0000\n"
+"PO-Revision-Date: 2026-05-26 19:11+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-qml/zh_Hant/>\n"
@@ -478,7 +478,6 @@ msgid ""
 "there are several possibilities that can be selected."
 msgstr "此方法產出之成分間互不相關。針對此方法，可選用多種不同選項。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "none"
 msgstr "無"
@@ -515,7 +514,6 @@ msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
 msgstr "應用直交轉軸，最小化負荷量平方之加權和。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique"
 msgstr "斜交"
@@ -573,7 +571,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
 msgstr "將資料分解而成為萃取成分／因素時所依據的基礎。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Correlation matrix"
 msgstr "相關矩陣"
@@ -583,7 +580,6 @@ msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
 msgstr "使用相關矩陣將資料分解為成分／因素。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
 msgstr "共變數矩陣"
@@ -614,7 +610,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
 msgstr "用於分解資料的因素萃取方法。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
 msgstr "最小殘差法"
@@ -625,7 +620,6 @@ msgid ""
 "derivative."
 msgstr "使用一階導數進行最小殘差因素分析（minres）。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
 msgstr "最大概似法"
@@ -642,7 +636,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
 msgstr "執行主因素解法（pa）。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
 msgstr "最小平方法"
@@ -653,7 +646,6 @@ msgid ""
 "empirical first derivative."
 msgstr "使用普通最小平方法最小化殘差矩陣，速度較慢但採用實證一階導數。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
 msgstr "加權最小平方法 (WLS)"
@@ -662,7 +654,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
 msgstr "執行加權最小平方法（WLS）解法。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
 msgstr "廣義最小平方法 (GLS)"
@@ -671,7 +662,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
 msgstr "執行一般化最小平方法（GLS）解法。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
 msgstr "最小卡方法"
@@ -681,10 +671,9 @@ msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr "使用成對相關最小化樣本數加權之卡方值。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
-msgstr "最小秩序法"
+msgstr "最小等級法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
@@ -709,7 +698,6 @@ msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
 msgstr "基於何種方法："
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "平行分析法"
@@ -727,17 +715,14 @@ msgstr ""
 "素，為預設選項。可依據主成分特徵值（PC）或因素特徵值（FA）進行選取。預設種子"
 "數（1234）可確保平行分析結果在主成分分析中具有可重複性"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on PC"
 msgstr "主成分"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr "因素"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues"
 msgstr "特徵值"
@@ -748,12 +733,10 @@ msgid ""
 "components are selected that have an eigenvalue above 1."
 msgstr "成分選取係基於特定特徵值門檻。預設選取特徵值大於 1 之成分。"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
 msgstr "特徵值高於"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Manual"
 msgstr "自訂"
@@ -764,7 +747,6 @@ msgid ""
 "to 1."
 msgstr "可手動指定成分個數。預設值為 1。"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of components"
 msgstr "成分個數"
@@ -773,7 +755,6 @@ msgctxt "PcaEfaNumberFactors|"
 msgid "Number of factors"
 msgstr "因素的個數"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Output Options"
 msgstr "輸出選項"
@@ -806,12 +787,10 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
 msgstr "負荷量大小"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
 msgstr "變項"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
 msgstr "表格"
@@ -820,7 +799,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
 msgstr "於輸出結果中顯示額外表格。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Structure matrix"
 msgstr "結構矩陣"
@@ -831,12 +809,10 @@ msgid ""
 "matrix times the factor intercorrelation matrix."
 msgstr "項目與因素之結構矩陣。此為負荷量（型態）矩陣乘以因子間相關矩陣之結果。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
 msgstr "成分相關性"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
 msgstr "因素相關係數"
@@ -847,7 +823,6 @@ msgid ""
 "components/factors will be displayed."
 msgstr "選取此選項時，將顯示成分／因素間之相關矩陣表格。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional fit indices"
 msgstr "其他配適指標"
@@ -861,7 +836,6 @@ msgstr ""
 "此選項顯示模型適配度檢定指標，包括均方根誤差近似值（RMSEA）及其90%信賴區間、"
 "Tucker-Lewis指數（TLI）以及貝葉斯資訊準則（BIC）。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Residual matrix"
 msgstr "殘差矩陣"
@@ -870,7 +844,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
 msgstr "顯示包含殘差變異數與相關係數之表格。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
 msgstr "平行分析法"
@@ -885,17 +858,14 @@ msgstr ""
 "勾選此選項後，將生成一個表格，顯示平行分析的詳細輸出。可基於主成分特徵值"
 "（PC）或因子特徵值（FA）。隨機種子取自上述用於決定成分／因子數量的平行分析。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on PC"
 msgstr "主成分"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr "因素"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
 msgstr "圖"
@@ -904,7 +874,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
 msgstr "顯示圖形。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Path diagram"
 msgstr "路徑圖"
@@ -915,7 +884,6 @@ msgid ""
 "strength of the relation between the variable and factor will be displayed."
 msgstr "選取此選項時，將顯示變數與因子間關係方向與強度之視覺化呈現。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Scree plot"
 msgstr "陡坡圖"
@@ -930,7 +898,6 @@ msgstr ""
 "選取此選項時，將顯示陡坡圖。陡坡圖提供各因素所解釋之資料變異量（以特徵值表"
 "示）之資訊，可用於決定應選取之因素個數。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis results"
 msgstr "平行分析結果"
@@ -944,7 +911,6 @@ msgstr ""
 "於陡坡圖中顯示平行分析之結果。平行分析將依據平行分析表格選項所定義之 PC 或 "
 "FA 進行。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
 msgstr "前提假設的檢驗"
@@ -957,7 +923,6 @@ msgstr ""
 "假設條件：納入分析之變項間具有相關；納入分析之變項間呈線性關係（Shlens, "
 "2014）"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "KMO test"
 msgstr "KMO 檢定"
@@ -972,7 +937,6 @@ msgstr ""
 "透過計算變項間共同變異之比例，評估變項是否適合進行因素分析。計算所有變項之取"
 "樣適切性量數（MSA），即變項間共同變異之比例，數值越接近 1 越理想。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Bartlett's test"
 msgstr "Bartlett's 球形檢定"
@@ -986,7 +950,6 @@ msgstr ""
 "檢定資料之相關矩陣是否為單元矩陣，即判斷變項間是否存在關聯。檢定結果達顯著，"
 "表示相關矩陣異於單元矩陣。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Mardia's test"
 msgstr "Mardia's 檢定"
@@ -1014,7 +977,6 @@ msgstr ""
 "包含在控制資料集中所有其他變項之影響後，各變項對之間的反向偏相關。反映像相關"
 "矩陣中數值較高，表示該變項可能與其他變項存在重疊或共享過多變異。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Missing Values"
 msgstr "遺漏值"
@@ -1023,7 +985,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
 msgstr "選擇缺失值之處理方式。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases pairwise"
 msgstr "成對排除法"
@@ -1038,7 +999,6 @@ msgstr ""
 "若某個變項的觀測值遺失，該案例中其他變項的觀測值仍會被用於分析。在此情況下，"
 "不需要所有變項皆有觀測值即可將該案例納入分析。此選項為預設選取。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases listwise"
 msgstr "完全排除法"
@@ -1068,7 +1028,6 @@ msgid ""
 msgstr ""
 "將估計出的成分得分/因素得分新增為資料集中的新欄位。這些分數為迴歸分數。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Prefix"
 msgstr "欄位名稱的頭文字"
@@ -1081,7 +1040,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
 msgstr "因素"
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Variables"
 msgstr "變項"
@@ -1103,17 +1061,14 @@ msgstr ""
 "指定資料為原始資料（即觀察值於列、變項於欄），或為變異數-共變數矩陣。若為後"
 "者，則需提供樣本數。"
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Raw"
 msgstr "原始"
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Variance-covariance matrix"
 msgstr "變異數-共變數矩陣"
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Sample size"
 msgstr "樣本數"
@@ -1134,7 +1089,6 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
 msgstr "將估計出的因素得分新增為資料集中的新欄位"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Prefix"
 msgstr "欄位名稱的頭文字"
@@ -1171,7 +1125,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Latent Class Analysis"
-msgstr "潛在類別模型"
+msgstr "潛在類別分析"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Indicators"
@@ -1185,72 +1139,69 @@ msgstr "潛在類別模型的類別型指標變項。至少需要兩個指標變
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum number of classes"
-msgstr ""
+msgstr "最大潛在類別數"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Models with 1, 2, …, K classes are fitted and compared."
-msgstr ""
+msgstr "配適並比較含有 1、2、…、K 個類別的模型。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Estimation Options"
-msgstr ""
+msgstr "估計選項"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of random starts"
-msgstr ""
+msgstr "隨機起始值次數"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Number of times the EM algorithm is run with different random starting "
 "values. The run with the highest log-likelihood is returned."
-msgstr ""
+msgstr "以不同隨機初始值執行 EM 演算法的次數。最終回傳對數概似值最高的結果。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations"
-msgstr ""
+msgstr "最大疊代次數"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations for the EM algorithm."
-msgstr ""
+msgstr "EM 演算法的最大疊代次數。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Missing values"
-msgstr ""
+msgstr "缺失值"
 
 msgctxt "LatentClassAnalysis|"
 msgid "How to handle rows with missing values on any indicator."
-msgstr ""
+msgstr "如何處理在任一指標上具有缺失值的觀測資料列。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Include"
-msgstr ""
+msgstr "納入"
 
 #, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Listwise deletion"
 msgstr "列刪除法(Listwise)"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Output Options"
 msgstr "輸出選項"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Tables"
 msgstr "表格"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Item-response probabilities"
-msgstr ""
+msgstr "項目-反應機率"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a table of item-response probabilities for each indicator and latent "
 "class."
-msgstr ""
+msgstr "呈現各指標與各潛在類別之項目-反應機率表。"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Plots"
 msgstr "圖"
@@ -1259,73 +1210,73 @@ msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a grouped bar chart of item-response probabilities, with one panel per "
 "latent class."
-msgstr ""
+msgstr "以分面方式呈現各潛在類別之項目-反應機率分組長條圖。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Rotate x-axis labels 45°"
-msgstr ""
+msgstr "將 x 軸標籤旋轉 45°"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Rotate the indicator names on the x-axis by 45 degrees to prevent "
 "overlapping."
-msgstr ""
+msgstr "將 x 軸上的指標名稱旋轉 45 度，以避免文字重疊。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Show levels legend"
-msgstr ""
+msgstr "顯示水準圖例"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a legend on the right indicating the color for each response category "
 "level."
-msgstr ""
+msgstr "在右側顯示圖例，以標示各反應類別水準所對應的顏色。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Save to Data"
-msgstr ""
+msgstr "儲存至資料"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of classes"
-msgstr ""
+msgstr "類別數"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Which fitted model's results to save."
-msgstr ""
+msgstr "指定欲儲存之已配適模型結果。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class probabilities"
-msgstr ""
+msgstr "類別機率"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves K columns of posterior class-membership probabilities (one per class) "
 "to the dataset."
-msgstr ""
+msgstr "將 K 個後驗類別歸屬機率欄位（每一類別一欄）儲存至資料集。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column prefix"
-msgstr ""
+msgstr "欄位前綴文字"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Columns are named prefix_C1, prefix_C2, …"
-msgstr ""
+msgstr "欄位名稱為 prefix_C1、prefix_C2，…"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class classification"
-msgstr ""
+msgstr "類別分類"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves the modal class assignment for each observation as a new nominal "
 "column."
-msgstr ""
+msgstr "將每一筆觀測值的眾數類別指派結果儲存為新的名義尺度欄位。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column name"
-msgstr ""
+msgstr "欄位名稱"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Name of the column holding the most-likely class label for each observation."
-msgstr ""
+msgstr "儲存每一筆觀測值最可能類別標籤之欄位名稱。"

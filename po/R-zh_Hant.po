@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2026-05-23 04:37\n"
-"PO-Revision-Date: 2026-05-28 17:11+0000\n"
+"PO-Revision-Date: 2026-06-06 04:41+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
+"X-Generator: Weblate 2026.6\n"
 
 msgid "Second-Order"
 msgstr "二階"
@@ -542,7 +542,6 @@ msgstr ""
 "（likelihood-ratio goodness-of-fit statistic）；其 p 值若未達顯著，表示模型具"
 "有適當的適配度，但此檢定對稀疏儲存格（sparse cells）及小樣本相當敏感。"
 
-#, fuzzy
 msgid "Classes"
 msgstr "類別數"
 
@@ -559,7 +558,6 @@ msgstr "%d 個類別"
 msgid "Class Prevalences"
 msgstr "類別盛行率"
 
-#, fuzzy
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
 "mixing weight (the probability that a randomly drawn observation belongs to "
@@ -573,7 +571,6 @@ msgstr ""
 "後驗機率指派後，各類別所分配到的觀測比例；由於眾數指派將連續的後驗機率離散化"
 "，因此其結果可能與模型比例不同。"
 
-#, fuzzy
 msgid "Class"
 msgstr "類別"
 
@@ -583,19 +580,15 @@ msgstr "比例"
 msgid "SE"
 msgstr "標準誤"
 
-#, fuzzy
 msgid "Modal proportion"
 msgstr "眾數比例"
 
-#, fuzzy
 msgid "Class %d"
 msgstr "第 %d 類別"
 
-#, fuzzy
 msgid "Item-Response Probabilities"
 msgstr "題項-反應機率"
 
-#, fuzzy
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
@@ -604,7 +597,6 @@ msgstr ""
 "在各潛在類別條件下，每個指標之各反應類別的估計機率。每一列代表一個潛在類別；"
 "每一欄代表該指標的一個反應類別。每一列內的機率總和為 1。"
 
-#, fuzzy
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
 "latent class; bars within each panel show the probability of each response "
@@ -615,9 +607,8 @@ msgstr ""
 "條表示各指標之不同反應類別的機率分布。較高的長條代表該反應類別在該潛在類別中"
 "較具代表性。"
 
-#, fuzzy
 msgid "Probability"
-msgstr "信度指標 (Cronbach's α 與 CR值)"
+msgstr "機率"
 
 msgid "Level"
 msgstr "水準"

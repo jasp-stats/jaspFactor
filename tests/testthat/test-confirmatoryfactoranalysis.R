@@ -93,6 +93,13 @@ test_that("[CFA 3-Factor] Chi-square test table results match", {
                                       "Factor model", 8.50255310602677e-09))
 })
 
+test_that("[CFA 3-Factor] Chi-square table footnote reports estimator and test info", {
+  footnote <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_cfatab"]][["footnotes"]][[1]][["text"]]
+  testthat::expect_match(footnote, "estimator")
+  testthat::expect_match(footnote, "test statistic")
+  testthat::expect_match(footnote, "standard error method")
+})
+
 test_that("Kaiser-Meyer-Olkin (KMO) test table results match", {
   table <- results[["results"]][["maincontainer"]][["collection"]][["maincontainer_kmo"]][["data"]]
   jaspTools::expect_equal_tables(table,

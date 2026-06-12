@@ -570,6 +570,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     # that happens when lavaan uses browne.residual.nt as the test, which it does not mark as "scaled" internally.
     # in that case there is no scaled test statistic but the regular test statistic is replaced with the browne residual
     # yes... kill me now.
+    fitOptions$test <- paste(fitOptions$test, collapse = ", ")
 
     footnote <- gettextf("%1$s The estimator is %2$s. The test statistic is %3$s. The standard error method is %4$s.",
                          footnote, fitOptions$estimator, fitOptions$test, fitOptions$se)

@@ -58,9 +58,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     modelContainer <- jaspResults[["modelContainer"]]
   } else {
     modelContainer <- createJaspContainer()
-    modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "factorCountMethod",
-                              "eigenvaluesAbove", "manualNumberOfFactors", "naAction", "baseDecompositionOn", "factoringMethod",
-                              "parallelAnalysisMethod", "dataType", "sampleSize"))
+    modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "variables.types",
+                              "factorCountMethod", "eigenvaluesAbove", "manualNumberOfFactors", "naAction",
+                              "baseDecompositionOn", "factoringMethod", "parallelAnalysisMethod", "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 
@@ -87,9 +87,10 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   polyCorResult <- try(psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals))
 
   if (isTryError(polyCorResult)) {
-    errTxt <- .extractErrorMessage(polyCorResult)
-    numLevels <- sapply(dataset, function(x) length(unique(na.omit(x))))
-    maxLevels <- max(numLevels)
+    errTxt    <- .extractErrorMessage(polyCorResult)
+    ordNomCols    <- c(ordinals, nominals)
+    numLevels     <- sapply(dataset[, ordNomCols, drop = FALSE], function(x) length(unique(na.omit(x))))
+    maxLevels     <- max(numLevels)
     restrictedIdx <- which(numLevels < maxLevels)
 
     if (length(restrictedIdx) == 0) {
@@ -97,7 +98,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
         "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s",
         errTxt)
     } else {
-      restrictedNames <- paste(decodeColNames(colnames(dataset)[restrictedIdx]), collapse = ", ")
+      restrictedNames <- paste(decodeColNames(ordNomCols[restrictedIdx]), collapse = ", ")
       errmsgPolyCor <- gettextf(
         "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s",
         restrictedNames, errTxt)

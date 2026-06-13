@@ -3277,7 +3277,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTools",
       "RemoteRef": "master",
-      "RemoteSha": "17576124ee4f15b710237b6d0da64a3aeb9d473c"
+      "RemoteSha": "281f17a2d6761eb5ec247d7ddcd59042f01fa409"
     },
     "jpeg": {
       "Package": "jpeg",

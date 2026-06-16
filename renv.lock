@@ -810,7 +810,7 @@
     },
     "XML": {
       "Package": "XML",
-      "Version": "3.99-0.23",
+      "Version": "3.99-0.22",
       "Source": "Repository",
       "Authors@R": "c(person(\"CRAN Team\", role = \"ctb\", email = \"CRAN@r-project.org\", comment = \"de facto maintainer in 2013-2026\"), person(\"Duncan\", \"Temple Lang\", role = \"aut\", email = \"duncan@r-project.org\", comment = c(ORCID = \"0000-0003-0159-1546\")), person(\"Tomas\", \"Kalibera\", role = \"ctb\"), person(\"Ivan\", \"Krylov\", email = \"ikrylov@disroot.org\", role = \"cre\"))",
       "Title": "Tools for Parsing and Generating XML Within R and S-Plus",
@@ -3159,7 +3159,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "0f9bd7d846d8432301ccf7bbdcdadcb350df0704"
+      "RemoteSha": "209d1787d5c9400601df960535b261029a350b12"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -3197,7 +3197,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
       "RemoteRef": "master",
-      "RemoteSha": "1eb48e7e0fe9559bbd15da25f30703c7cca246bb"
+      "RemoteSha": "cbe943517ac21078d0a502bcfaf8ae5e11756a05"
     },
     "jaspSem": {
       "Package": "jaspSem",
@@ -3277,7 +3277,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTools",
       "RemoteRef": "master",
-      "RemoteSha": "4de898283e3817fdb072733f642ba5711897a592"
+      "RemoteSha": "281f17a2d6761eb5ec247d7ddcd59042f01fa409"
     },
     "jpeg": {
       "Package": "jpeg",

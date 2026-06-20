@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspFactor 0.96.5\n"
-"POT-Creation-Date: 2026-05-30 04:41\n"
+"Project-Id-Version: jaspFactor 0.97.1\n"
+"POT-Creation-Date: 2026-06-20 04:52\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,10 +76,7 @@ msgstr ""
 msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 
-msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
-msgstr ""
-
-msgid "%1$s The standard error method is %2$s."
+msgid "%1$s The estimator is %2$s. The test statistic is %3$s. The standard error method is %4$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"

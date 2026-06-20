@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2026-05-23 04:37\n"
+"POT-Creation-Date: 2026-06-20 04:52\n"
 "PO-Revision-Date: 2026-06-17 15:01+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -105,11 +105,11 @@ msgstr "因素模型"
 msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr "%s 建議將標準誤估計法方法改為「穩健」。"
 
-msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+#, fuzzy
+msgid ""
+"%1$s The estimator is %2$s. The test statistic is %3$s. The standard error "
+"method is %4$s."
 msgstr "%1$s 估計值為 %2$s. 檢定統計量值為 %3$s."
-
-msgid "%1$s The standard error method is %2$s."
-msgstr "%1$s 標準誤之估計法為 %2$s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "KMO 檢定"
@@ -568,8 +568,8 @@ msgid ""
 msgstr ""
 "潛在類別的估計規模。Proportion（比例）為模型估計之混合權重（即隨機抽取一筆觀"
 "測值屬於各類別的機率），並附其標準誤。Modal proportion（眾數比例）則為依最大"
-"後驗機率指派後，各類別所分配到的觀測比例；由於眾數指派將連續的後驗機率離散化"
-"，因此其結果可能與模型比例不同。"
+"後驗機率指派後，各類別所分配到的觀測比例；由於眾數指派將連續的後驗機率離散"
+"化，因此其結果可能與模型比例不同。"
 
 msgid "Class"
 msgstr "類別"
@@ -670,6 +670,9 @@ msgstr "陡坡圖"
 
 msgid "Component"
 msgstr "成分"
+
+#~ msgid "%1$s The standard error method is %2$s."
+#~ msgstr "%1$s 標準誤之估計法為 %2$s."
 
 #~ msgid "Grouping variable not supported for covariance matrix input"
 #~ msgstr "以共變數矩陣當輸入資料而進行分析時，不提供群組變數功能"

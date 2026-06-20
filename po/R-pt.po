@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-05-23 04:37\n"
+"POT-Creation-Date: 2026-06-20 04:52\n"
 "PO-Revision-Date: 2026-01-28 10:47+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -122,11 +122,11 @@ msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 "%s Você pode considerar alterar o método do erro padrão para 'robusto'."
 
-msgid "%1$s The estimator is %2$s. The test statistic is %3$s."
+#, fuzzy
+msgid ""
+"%1$s The estimator is %2$s. The test statistic is %3$s. The standard error "
+"method is %4$s."
 msgstr "%1$s O estimador é %2$s. A estatística de teste é %3$s."
-
-msgid "%1$s The standard error method is %2$s."
-msgstr "%1$s O método do erro padrão é %2$s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Teste de Kaiser-Meyer-Olkin (KMO)"
@@ -703,6 +703,9 @@ msgstr "Gráfico de sedimentação"
 
 msgid "Component"
 msgstr "Componentes"
+
+#~ msgid "%1$s The standard error method is %2$s."
+#~ msgstr "%1$s O método do erro padrão é %2$s."
 
 #~ msgid "Grouping variable not supported for covariance matrix input"
 #~ msgstr ""

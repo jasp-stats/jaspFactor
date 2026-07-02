@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
 "POT-Creation-Date: 2026-06-20 04:52\n"
-"PO-Revision-Date: 2026-06-23 10:01+0000\n"
+"PO-Revision-Date: 2026-07-02 11:08+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/id/>\n"
@@ -221,7 +221,7 @@ msgid "Parameter estimates"
 msgstr "Estimasi parameter"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
-msgstr ""
+msgstr "Tidak semua sampel bootstrap berhasil: CI berdasarkan %.0f sampel."
 
 msgid "Std. estimate"
 msgstr ""
@@ -242,16 +242,16 @@ msgid "Indicator"
 msgstr ""
 
 msgid "Std. Error"
-msgstr ""
+msgstr "Galat Std."
 
 msgid "z-value"
-msgstr ""
+msgstr "nilai-z"
 
 msgid "Lower"
 msgstr "Batas Bawah"
 
 msgid "%s%% Confidence Interval"
-msgstr ""
+msgstr "%s%% Interval Kepercayaan"
 
 msgid "Upper"
 msgstr "Batas Atas"
@@ -269,7 +269,7 @@ msgid "Residual variances"
 msgstr ""
 
 msgid "Residual covariances"
-msgstr ""
+msgstr "Kovarians residu"
 
 msgid "Factor Intercepts"
 msgstr ""
@@ -332,7 +332,7 @@ msgid "Misfit plot"
 msgstr ""
 
 msgid "Model syntax"
-msgstr ""
+msgstr "Sintaksis model"
 
 msgid "Average variance extracted"
 msgstr ""
@@ -441,7 +441,7 @@ msgid "Rotated solution"
 msgstr ""
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "Nilai Eigen"
 
 msgid "Proportion var."
 msgstr ""
@@ -459,7 +459,7 @@ msgid "Additional fit indices"
 msgstr ""
 
 msgid "RMSEA"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
 msgstr ""
@@ -579,7 +579,7 @@ msgid ""
 msgstr ""
 
 msgid "Probability"
-msgstr ""
+msgstr "Probabilitas"
 
 msgid "Level"
 msgstr ""

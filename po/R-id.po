@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
 "POT-Creation-Date: 2026-06-20 04:52\n"
-"PO-Revision-Date: 2026-07-02 11:08+0000\n"
+"PO-Revision-Date: 2026-07-04 04:35+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspfactor-r/id/>\n"
@@ -11,72 +11,88 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 msgid "Second-Order"
-msgstr ""
+msgstr "Urutan-Kedua"
 
 msgid ""
 "The model could not be estimated. Ensure that factors have at least 2 "
 "observed variables."
 msgstr ""
+"Model tidak dapat diestimasi. Pastikan bahwa faktor memiliki setidaknya 2 "
+"variabel terobservasi."
 
 msgid ""
 "The model could not be estimated. A factor with less than 2 variables was "
 "added in Second-Order."
 msgstr ""
+"Model tidak dapat diestimasi. Faktor dengan kurang dari 2 variabel telah "
+"ditambahkan di Urutan-Kedua."
 
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
 msgstr ""
+"Kasus tidak lebih dari jumlah variabel. Apakah data Anda matriks varians-"
+"kovarians?"
 
 msgid "FIML missing data handling only available with ML-type estimators"
-msgstr ""
+msgstr "Penanganan data hilang FIML hanya tersedia dengan estimator jenis ML"
 
 msgid ""
 "Robust standard errors are not available with the GLS estimator. Try "
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
 msgstr ""
+"Galat standar kekuatan tidak tersedia dengan estimator GLS. Coba mengubah "
+"metode galat standar di pengaturan 'Lanjutan' untuk menyesuaikan model."
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
 " Please select another method under 'Missing data handling' within the "
 "'Advanced' options tab"
 msgstr ""
+"Penanganan data hilang '%s' tidak didukung untuk data kategorikal. \n"
+" Silakan pilih metode lain di bawah 'Penanganan data hilang' dalam tab opsi "
+"'Lanjutan'"
 
 msgid ""
 "The model could not be estimated. Error message: \n"
 "\n"
 " %s"
 msgstr ""
+"Model tidak dapat diestimasi. Pesan galat: \n"
+"\n"
+"%s"
 
 msgid "The model is not admissible: %s"
-msgstr ""
+msgstr "Model tidak dapat diterima: %s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr ""
+msgstr "Model tidak dapat diestimasi karena nonkonvergensi."
 
 msgid "The model could not be estimated: No degrees of freedom left."
-msgstr ""
+msgstr "Model tidak dapat diestimasi: Tidak ada derajat kebebasan tersisa."
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
-msgstr ""
+msgstr "Bootstrap tidak tersedia untuk masukan matriks varians-kovarians."
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
 msgstr ""
+"Galat standar kekuatan tidak tersedia untuk masukan matriks varians-"
+"kovarians."
 
 msgid "# Factors"
-msgstr ""
+msgstr "# Faktor"
 
 msgid "Model fit"
-msgstr ""
+msgstr "Penyesuaian model"
 
 msgid "Chi-square test"
-msgstr ""
+msgstr "Uji chi-kuadrat"
 
 msgid "Model"
 msgstr "Model"
@@ -88,45 +104,48 @@ msgid "p"
 msgstr "p"
 
 msgid "Baseline model"
-msgstr ""
+msgstr "Model dasar"
 
 msgid "Factor model"
-msgstr ""
+msgstr "Model faktor"
 
 msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
+"%s Anda mungkin mempertimbangkan mengubah metode galat standar ke 'kekuatan'."
 
 msgid ""
 "%1$s The estimator is %2$s. The test statistic is %3$s. The standard error "
 "method is %4$s."
 msgstr ""
+"%1$s Estimator adalah %2$s. Statistik uji adalah %3$s. Metode galat standar "
+"adalah %4$s."
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr ""
+msgstr "Uji Kaiser-Meyer-Olkin (KMO)"
 
 msgid "Bartlett's test of sphericity"
-msgstr ""
+msgstr "Uji kebulatan Bertlett"
 
 msgid "R-Squared"
-msgstr ""
+msgstr "R-Kuadrat"
 
 msgid "Additional fit measures"
-msgstr ""
+msgstr "Pengukuran penyesuaian tambahan"
 
 msgid "Fit indices"
-msgstr ""
+msgstr "Paskan indeks"
 
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 msgid "Value"
 msgstr "Nilai"
 
 msgid "Information criteria"
-msgstr ""
+msgstr "Kriteria informasi"
 
 msgid "Other fit measures"
-msgstr ""
+msgstr "Pengukuran penyesuaian lain"
 
 msgid "Metric"
 msgstr "Metrik"
@@ -135,87 +154,91 @@ msgid "Log-likelihood"
 msgstr "Log-kemungkinan"
 
 msgid "Number of free parameters"
-msgstr ""
+msgstr "Jumlah parameter bebas"
 
 msgid "Akaike (AIC)"
-msgstr ""
+msgstr "Akaike (AIC)"
 
 msgid "Bayesian (BIC)"
-msgstr ""
+msgstr "Bayes (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr ""
+msgstr "Bayes disesuaikan ukuran sampel (SSABIC)"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr ""
+msgstr "Indeks Penyesuaian Komparatif (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr ""
+msgstr "Indeks Tucker-Lewis (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr ""
+msgstr "Indeks Penyesuaian Non-ternormal Bentler-Bonett N(NFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr ""
+msgstr "Indeks Penyesuaian Ternormal Bentler-Bonett (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr ""
+msgstr "Indeks Penyesuaian Ternormal Parsimony (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr ""
+msgstr "Indeks Penyesuaian Relatif Bollen (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr ""
+msgstr "Indeks Penyesuaian Inkremental Bollen (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
+msgstr "Indeks Nonkepusatan Relatif (RNI)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr ""
+msgstr "Galat kuadrat rerata akar dari perkiraan (RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr ""
+msgstr "RMSEA 90%% batas bawah CI"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr ""
+msgstr "RMSEA 90%% batas atas CI"
 
 msgid "RMSEA p-value"
-msgstr ""
+msgstr "Nilai-p RMSEA"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr ""
+msgstr "Residu kuadrat rerata akar terstandardisasi (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
-msgstr ""
+msgstr "Kritis N Hoetler (%s = .05)"
 
 msgid "Hoelter's critical N (%s = .01)"
-msgstr ""
+msgstr "Kritis N Hoetler (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr ""
+msgstr "Indeks kesesuaian (GFI)"
 
 msgid "McDonald fit index (MFI)"
-msgstr ""
+msgstr "Indeks penyesuaian McDonald (MFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr ""
+msgstr "Indeks validasi lintas terharapkan (ECVI)"
 
 msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
 msgstr ""
+"Kecuali untuk PNFI, indeks penyesuaian diskalakan karena variabel "
+"kategorikal di data."
 
 msgid ""
 "Except for the PNFI, the fit indices are scaled because a robust estimator "
 "was used."
 msgstr ""
+"Kecuali untuk PNFI, indeks penyesuaian diskalakan karena estimator kekuatan "
+"telah digunakan."
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
-msgstr ""
+msgstr "Hasil RMSEA diskalakan karena variabel kategorikal di data."
 
 msgid "The RMSEA results are scaled because a robust estimator was used."
-msgstr ""
+msgstr "Hasil RMSEA diskalakan karena estimator kekuatan telah digunakan."
 
 msgid "Parameter estimates"
 msgstr "Estimasi parameter"
@@ -224,13 +247,13 @@ msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "Tidak semua sampel bootstrap berhasil: CI berdasarkan %.0f sampel."
 
 msgid "Std. estimate"
-msgstr ""
+msgstr "Estimasi std."
 
 msgid "Estimate"
 msgstr "Estimasi"
 
 msgid "Factor loadings"
-msgstr ""
+msgstr "Pemuatan faktor"
 
 msgid "Group"
 msgstr "Kelompok"
@@ -239,7 +262,7 @@ msgid "Factor"
 msgstr "Faktor"
 
 msgid "Indicator"
-msgstr ""
+msgstr "Indikator"
 
 msgid "Std. Error"
 msgstr "Galat Std."
@@ -257,263 +280,273 @@ msgid "Upper"
 msgstr "Batas Atas"
 
 msgid "Second-order factor loadings"
-msgstr ""
+msgstr "Urutan-kedua pemuatan faktor"
 
 msgid "Factor variances"
-msgstr ""
+msgstr "Varians faktor"
 
 msgid "Factor Covariances"
-msgstr ""
+msgstr "Kovarians Faktor"
 
 msgid "Residual variances"
-msgstr ""
+msgstr "Varians residu"
 
 msgid "Residual covariances"
 msgstr "Kovarians residu"
 
 msgid "Factor Intercepts"
-msgstr ""
+msgstr "Intersep Faktor"
 
 msgid "Intercepts"
-msgstr ""
+msgstr "Intersep"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "Ambang Batas"
 
 msgid "Threshold"
-msgstr ""
+msgstr "Ambang Batas"
 
 msgid "Modification Indices"
-msgstr ""
+msgstr "Indeks Modifikasi"
 
 msgid "Cross-loadings"
-msgstr ""
+msgstr "Lintas-pemuatan"
 
 msgid "Mod. Ind."
-msgstr ""
+msgstr "Ind. Mod."
 
 msgid "EPC"
-msgstr ""
+msgstr "EPC"
 
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "Urutan-kedua lintas-pemuatan"
 
 msgid "Modification indices"
-msgstr ""
+msgstr "Indeks modifikasi"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "Tidak ada indeks modifikasi di atas cutoff"
 
 msgid "Implied covariance matrices"
-msgstr ""
+msgstr "Matriks kovarians tersirat"
 
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Matriks kovarians tersirat"
 
 msgid "Residual covariance matrices"
-msgstr ""
+msgstr "Matriks kovarians residu"
 
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Matriks kovarians residu"
 
 msgid "Plots"
 msgstr "Plot"
 
 msgid "Model plots"
-msgstr ""
+msgstr "Diagram model"
 
 msgid "Model plot"
-msgstr ""
+msgstr "Diagram model"
 
 msgid "Misfit plots"
-msgstr ""
+msgstr "Diagram tidak sesuai"
 
 msgid "Misfit plot"
-msgstr ""
+msgstr "Diagram tidak sesuai"
 
 msgid "Model syntax"
 msgstr "Sintaksis model"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "Varians rata-rata tereksrak"
 
 msgid "AVE"
-msgstr ""
+msgstr "AVE"
 
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "Rasio heterotret-monotret"
 
 msgid "Reliability"
-msgstr ""
+msgstr "Keandalan"
 
 msgid "Coefficient %s"
-msgstr ""
+msgstr "Koefisien %s"
 
 msgid "Column name %s already exists in the dataset"
-msgstr ""
+msgstr "Nama kolom %s sudah ada di rangkaian data"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This is likely due to a small sample size. Internal error "
 "message: %s"
 msgstr ""
+"Sayangnya, estimasi dari matriks korelasi polikorik/tetrakorik gagal. Ini "
+"kemungkinan karena ukuran sampel kecil. Pesan galat internal: %s"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
 msgstr ""
+"Sayangnya, estimasi dari matriks korelasi polikorik/tetrakorik gagal. Ini "
+"mungkin karena variabel %1$s tidak memiliki rentang kategori tanggapan "
+"lengkap. Pesan galat internal: %2$s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr ""
+msgstr "Estimasi gagal. Pesan galat internal: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
-msgstr ""
+msgstr "Estimasi gagal. Pesan galat internal: %s"
 
 msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
+msgstr "Analisis paralel gagal. Pesan galat internal: %s"
 
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
 msgstr ""
+"Tidak ada faktor dengan nilai eigen > %1$s. Maksimum nilai eigen "
+"terobservasi sama dengan %2$s."
 
 msgid "Kaiser-Meyer-Olkin Test"
-msgstr ""
+msgstr "Uji Kaiser-Meyer-Olkin"
 
 msgid "Overall MSA"
-msgstr ""
+msgstr "Keseluruhan MSA"
 
 msgid "Bartlett's Test"
-msgstr ""
+msgstr "Uji Bartlett"
 
 msgid "Mardia's Test of Multivariate Normality"
-msgstr ""
+msgstr "Uji Normalitas Multivariat Mardia"
 
 msgid "Statistic"
 msgstr "Statistik"
 
 msgid "Mardia test failed. Internal error message: %s"
-msgstr ""
+msgstr "Uji Mardia gagal. Pesan galat internal: %s"
 
 msgid ""
 "The statistic for skewness is assumed to be Chi^2 distributed and the "
 "statistic for kurtosis standard normal."
 msgstr ""
+"Statistik untuk kecondongan diasumsikan sebagai Chi^2 didistribusikan dan "
+"statistik untuk normal standar kurtosis."
 
 msgid "Anti-Image Correlation Matrix"
-msgstr ""
+msgstr "Matriks Korelasi Anti-Gambar"
 
 msgid "Chi-Squared Test"
-msgstr ""
+msgstr "Uji Chi-Kuadrat"
 
 msgid "Degrees of freedom below 0, model is unidentified."
-msgstr ""
+msgstr "Derajat kebebasan di bawah 0, model tidak diidentifikasikan."
 
 msgid "<em>Warning:</em>"
-msgstr ""
+msgstr "<em>Peringatan:</em>"
 
 msgid "Factor Loadings"
-msgstr ""
+msgstr "Pemuatan Faktor"
 
 msgid "Factor %i"
-msgstr ""
+msgstr "Faktor %i"
 
 msgid "Uniqueness"
-msgstr ""
+msgstr "Keunikan"
 
 msgid "No rotation method applied."
-msgstr ""
+msgstr "Tidak ada metode rotasi diterapkan."
 
 msgid "Applied rotation method is %1$s."
-msgstr ""
+msgstr "Metode rotasi diterapkan adalah %1$s."
 
 msgid "Factor Loadings (Structure Matrix)"
-msgstr ""
+msgstr "Pemuatan Faktor (Matriks Struktur)"
 
 msgid "Factor Characteristics"
-msgstr ""
+msgstr "Karakteristik Faktor"
 
 msgid "Unrotated solution"
-msgstr ""
+msgstr "Solusi tidak berotasi"
 
 msgid "Rotated solution"
-msgstr ""
+msgstr "Solusi berotasi"
 
 msgid "Eigenvalue"
 msgstr "Nilai Eigen"
 
 msgid "Proportion var."
-msgstr ""
+msgstr "Var. proporsi"
 
 msgid "Cumulative"
-msgstr ""
+msgstr "Kumulatif"
 
 msgid "SumSq. Loadings"
-msgstr ""
+msgstr "Pemuatan SumSq."
 
 msgid "Factor Correlations"
-msgstr ""
+msgstr "Korelasi Faktor"
 
 msgid "Additional fit indices"
-msgstr ""
+msgstr "Indeks penyesuaian tambahan"
 
 msgid "RMSEA"
 msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
-msgstr ""
+msgstr "RMSEA 90%% kepercayaan"
 
 msgid "SRMR"
-msgstr ""
+msgstr "SRMR"
 
 msgid "TLI"
-msgstr ""
+msgstr "TLI"
 
 msgid "CFI"
-msgstr ""
+msgstr "CFI"
 
 msgid "BIC"
 msgstr "BIC"
 
 msgid "Residual Matrix"
-msgstr ""
+msgstr "Matriks Residu"
 
 msgid "Real data component eigenvalues"
-msgstr ""
+msgstr "Nilai eigen komponen data asli"
 
 msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr ""
+msgstr "'*' = %s harus dipertahankan. Hasil dari analisis paralel berbasis PC."
 
 msgid "Real data factor eigenvalues"
-msgstr ""
+msgstr "Nilai eigen faktor data asli"
 
 msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr ""
+msgstr "'*' = %s harus dipertahankan. Hasil dari analisis paralel berbasis FA."
 
 msgid "Parallel Analysis"
-msgstr ""
+msgstr "Analisis Paralel"
 
 msgid "Simulated data mean eigenvalues"
-msgstr ""
+msgstr "Nilai eigen rerata data tersimulasi"
 
 msgid ""
 "Screeplot not available. \n"
 "Internal error message: %s"
 msgstr ""
+"Diagram Scree tidak tersedia. \n"
+"Pesan galat internal: %s"
 
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 msgid "Simulated data from parallel analysis"
-msgstr ""
+msgstr "Data tersimulasi dari analisis paralel"
 
 msgid "Path Diagram"
 msgstr "Diagram Jalur"
 
-#, fuzzy
 msgid "Model Fit"
-msgstr "Model"
+msgstr "Penyesuaian Model"
 
 msgid ""
 "Fit statistics for each model. AIC and BIC penalize the log-likelihood for "
@@ -522,21 +555,27 @@ msgid ""
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
 msgstr ""
+"Statistik penyesuaian untuk setiap model. AIC dan BIC mensansksikan "
+"kemungkinan-log untuk kompleksitas model dan dapat digunakan untuk "
+"membandingkan model dengan jumlah kelas berbeda (lebih rendah lebih baik). G"
+"² adalah statistik kesesuaian rasio-kemungkinan; nilai-p non-signifikan "
+"mengindikasikan penyesuaian memadai, meskipun uji ini sensitif ke sel jarang "
+"dan sampel kecil."
 
 msgid "Classes"
-msgstr ""
+msgstr "Kelas"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d Kelas"
 
 msgid "Class Prevalences"
-msgstr ""
+msgstr "Pravalans Kelas"
 
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
@@ -546,30 +585,40 @@ msgid ""
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
 msgstr ""
+"Ukuran terestimasi dari kelas laten. Proporsi adalah berat campuran "
+"berestimasi model (probabilitas yang secara acak menggambarkan observasi "
+"milik setiap kelas), dengan galat standarnya. Proporsi modal adalah pecahan "
+"dari observasi ditugaskan ke setiap kelas dengan probabilitas posterior "
+"tertinggi mereka; itu mungkin berbeda dari proporsi model karena penugasan "
+"model mendiskritasikan posterior berkelanjutan."
 
 msgid "Class"
-msgstr ""
+msgstr "Kelas"
 
 msgid "Proportion"
 msgstr "Proporsi"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Modal proportion"
-msgstr ""
+msgstr "Proporsi modal"
 
 msgid "Class %d"
-msgstr ""
+msgstr "Kelas %d"
 
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "Probabilitas Tanggapan-Item"
 
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
 msgstr ""
+"Probabilitas terestimasi dari setiap kategori tanggapan untuk setiap "
+"indikator, kondisional pada keanggotaan kelas. Setiap baris adalah kelas "
+"laten; setiap kolom adalah kategori tanggapan dari indikator. Probabilitas "
+"dalam baris dijumlahkan ke 1."
 
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
@@ -577,66 +626,77 @@ msgid ""
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
 msgstr ""
+"Bagan batang bergrup dari probabilitas tanggapan-item. Setiap panel "
+"menampilkan satu kelas laten; batang dalam setiap panel menampilkan "
+"probabilitas dari setiap kategori tanggapan untuk setiap indikator. Batang "
+"lebih tinggi mengindikasikan kategori tanggapan lebih karakteristik dari "
+"kelas itu."
 
 msgid "Probability"
 msgstr "Probabilitas"
 
 msgid "Level"
-msgstr ""
+msgstr "Tingkat"
 
 msgid "Column '%s' already exists in the dataset."
-msgstr ""
+msgstr "Kolom '%s' sudah ada di rangkaian data."
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
 msgstr ""
+"Data masukan terlihatnya tidak matriks kuadrat! Silakan periksa format dari "
+"data masukan."
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
 "of the input data and possibly the order of the variables."
 msgstr ""
+"Data masukan terlihatnya tidak matriks simetris! Silakan periksa format dari "
+"data masukan dan secara memungkinkan urutan dari variabel."
 
 msgid "All cells must be numeric."
-msgstr ""
+msgstr "Semua sel harus numerik."
 
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
-msgstr ""
+msgstr "Terlalu banyak %1$s diminta (%2$i) untuk jumlah variabel disertakan"
 
 msgid "Not enough valid cases (%i) to run this analysis"
-msgstr ""
+msgstr "Tidak cukup kasus valid (%i) untuk menjalankan analisis ini"
 
 msgid "Data not valid: variance is zero in each row"
-msgstr ""
+msgstr "Data tidak valid: varians adalah nol di setiap baris"
 
 msgid "Data not valid: there are more variables than observations"
-msgstr ""
+msgstr "Data tidak valid: ada lebih banyak variabel dari observasi"
 
 msgid "Data not valid: too many missing values in variable(s) %s."
-msgstr ""
+msgstr "Data tidak valid: terlalu banyak nilai hilang di variabel %s."
 
 msgid "Data not valid: all variables are collinear"
-msgstr ""
+msgstr "Data tidak valid: semua variabel adalah kolinear"
 
 msgid ""
 "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
 msgstr ""
+"Tidak ada komponen dengan nilai eigen > %1$s. Maksimum nilai eigen "
+"terobservasi sama dengan %2$s."
 
 msgid "Component Loadings"
-msgstr ""
+msgstr "Pemuatan Komponen"
 
 msgid "Applied rotation method is %s."
-msgstr ""
+msgstr "Metode rotasi diterapkan adalah %s."
 
 msgid "Component Characteristics"
-msgstr ""
+msgstr "Karakteristik Komponen"
 
 msgid "Component Correlations"
-msgstr ""
+msgstr "Korelasi Komponen"
 
 msgid "Scree plot"
-msgstr ""
+msgstr "Diagram Scree"
 
 msgid "Component"
-msgstr ""
+msgstr "Komponen"

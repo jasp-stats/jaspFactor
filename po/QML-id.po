@@ -6,6 +6,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-07-05 08:01+0000\n"
+"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jaspfactor-qml/id/>\n"
+"Language: id\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 msgctxt "Description|"
 msgid "Factor"
@@ -91,10 +97,9 @@ msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Modification indices"
 msgstr "Indeks modifikasi"
 
-#, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Cutoff"
-msgstr "Batas waktu"
+msgstr "Batas"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show lavaan syntax"
@@ -461,8 +466,9 @@ msgid ""
 "Here, the rotation method to apply to the components can be specified. "
 "Rotation ensures a simpler understanding of the data structure."
 msgstr ""
+"Di sini, metode rotasi diterapkan ke komponen dapat ditentukan. Rotasi "
+"memastikan pemahaman lebih sederhana dair struktur data."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Orthogonal"
 msgstr "Ortogonal"
@@ -472,44 +478,54 @@ msgid ""
 "This method produces components that are uncorrelated. For this method, "
 "there are several possibilities that can be selected."
 msgstr ""
+"Metode ini memproduksi komponen yang tidak terkorelasi. Untuk metode ini, "
+"ada beberapa kemungkinan yang dapat dipilih."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "none"
-msgstr ""
+msgstr "tidak ada"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "No rotation method is selected."
-msgstr ""
+msgstr "Tidak ada metode rotasi dipilih."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Maximizes the variance of squared loadings for each factor, simplifying "
 "interpretations."
 msgstr ""
+"Memaksimalkan varians dari pemuatan berkuadrat untuk setiap faktor, "
+"menyederhanakan interpretasi."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimizes the number of factors needed to explain each variable, simplifying "
 "structure."
 msgstr ""
+"Meminimalkan jumlah faktor diperlukan untuk menjelaskan setiap variabel, "
+"menyederhanakan struktur."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Orthogonal rotation method by Bentler, used for simplifying factor loadings."
 msgstr ""
+"Metode rotasi ortogonal oleh Bentler, digunakan untuk menyederhanakan "
+"pemuatan faktor."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Combines Varimax and Quartimax to balance factor simplicity and variable "
 "explanations."
 msgstr ""
+"Mengombinasikan Varimaks dan Kuartimaks untuk menyeimbangkan kesederhanaan "
+"faktor dan penjelasan variabel."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
 msgstr ""
+"Menerapkan rotasi ortogonal meminimalkan jumlah pemuatan berkuadrat terberat."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique"
 msgstr "Miring"
@@ -520,53 +536,66 @@ msgid ""
 "components. This method is selected by default. Several possibilities are "
 "available. The default is promax."
 msgstr ""
+"Metode ini memproduksikan komponen yang mengizinkan untuk korelasi antara "
+"komponen. Metode ini dipilih secara bawaan. Beberapa kemungkinan tersedia. "
+"Bawaannya adalah promaks."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
 msgstr ""
+"Memulai dengan Varimaks dan menerapkan transformasi daya untuk mengizinkan "
+"faktor terkorelasi."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
 msgstr ""
+"Rotasi miring yang meminimalkan korelasi antara faktor ketika mengizinkan "
+"fleksibilitas."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
 msgstr ""
+"Bertujuan untuk menyederhanakan pemuatan faktor dengan meminimalkan entri "
+"nonnol."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
-msgstr ""
+msgstr "Rotasi miring oleh Bentler, menyederhanakan korelasi faktor."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
 msgstr ""
+"Rotasi miring menyeimbangkan antara pemuatan faktor sederhana dan dapat "
+"diinterpretasi."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
 msgstr ""
+"Menargetkan rotasi klaster untuk analisis faktor, menekankan pemisahan grup."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
 msgstr ""
+"Versi miring dari Geomin, mengizinkan korelasi faktor dan mengurangi "
+"pemuatan kompleks."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "Dekomposisi Dasar pada"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "Apa dasar dekomposisi dari data menjadi komponen/faktor."
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Correlation matrix"
 msgstr "Matriks korelasi"
@@ -576,7 +605,6 @@ msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
 msgstr "Matriks kovarians"
@@ -586,10 +614,9 @@ msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Polychoric/tetrachoric correlation matrix"
-msgstr "Matriks korelasi polikorelasi/tetrakorelasi"
+msgstr "Matriks korelasi polikorik/tetrakorik"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
@@ -606,10 +633,9 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
-msgstr "Sisa minimum"
+msgstr "Residu minimum"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
@@ -617,7 +643,6 @@ msgid ""
 "derivative."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
 msgstr "Kemungkinan maksimum"
@@ -634,7 +659,6 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
 msgstr "Kuadrat terkecil biasa"
@@ -645,35 +669,31 @@ msgid ""
 "empirical first derivative."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
-msgstr "Kuadrat terkecil tertimbang"
+msgstr "Kuadrat terkecil terberat"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
-msgstr "Kuadrat terkecil umum"
+msgstr "Kuadrat terkecil tergeneralisasi"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
-msgstr "Chi-square minimum"
+msgstr "Chi-kuadrat minimum"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
 msgstr "Peringkat minimum"
@@ -700,7 +720,6 @@ msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "Analisis paralel"
@@ -715,17 +734,14 @@ msgid ""
 "analysis are equal across the PCA"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on PC"
 msgstr "Berdasarkan PC"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr "Berdasarkan FA"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues"
 msgstr "Nilai Eigen"
@@ -736,12 +752,10 @@ msgid ""
 "components are selected that have an eigenvalue above 1."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
 msgstr "Nilai Eigen di atas"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Manual"
 msgstr "Manual"
@@ -752,29 +766,25 @@ msgid ""
 "to 1."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of components"
 msgstr "Jumlah komponen"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of factors"
 msgstr "Jumlah faktor"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Output Options"
-msgstr "Opsi Keluaran"
+msgstr "Opsi Luaran"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
-msgstr "Menampilkan pemuatan di atas"
+msgstr "Tampilkan pemuatan di atas"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
@@ -798,7 +808,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
 msgstr "Tabel"
@@ -807,7 +816,6 @@ msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Structure matrix"
 msgstr "Matriks struktur"
@@ -818,12 +826,10 @@ msgid ""
 "matrix times the factor intercorrelation matrix."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
 msgstr "Korelasi komponen"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
 msgstr "Korelasi faktor"
@@ -834,7 +840,6 @@ msgid ""
 "components/factors will be displayed."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional fit indices"
 msgstr "Indeks kesesuaian tambahan"
@@ -846,16 +851,14 @@ msgid ""
 "Information Criterion (BIC) to test the fit of the model."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Residual matrix"
-msgstr "Matriks sisa"
+msgstr "Matriks residu"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
 msgstr "Analisis paralel"
@@ -868,26 +871,22 @@ msgid ""
 "parallel analysis for determining the number of components/factors above."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on PC"
 msgstr "Berdasarkan PC"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr "Berdasarkan FA"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
-msgstr "Plot"
+msgstr "Diagram"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Path diagram"
 msgstr "Diagram jalur"
@@ -898,10 +897,9 @@ msgid ""
 "strength of the relation between the variable and factor will be displayed."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Scree plot"
-msgstr "Plot Scree"
+msgstr "Diagram Scree"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -911,7 +909,6 @@ msgid ""
 "how many factors should be selected."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis results"
 msgstr "Hasil analisis paralel"
@@ -923,7 +920,6 @@ msgid ""
 "analysis table."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
 msgstr "Pemeriksaan asumsi"
@@ -957,10 +953,9 @@ msgid ""
 "correlation matrix is unlike the identity matrix."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Mardia's test"
-msgstr "Tes Mardia"
+msgstr "Uji Mardia"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -981,19 +976,17 @@ msgid ""
 "be redundant or have too much shared variance with other variables."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Missing Values"
-msgstr "Nilai yang Hilang"
+msgstr "Nilai Hilang"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases pairwise"
-msgstr "Mengecualikan kasus berpasangan"
+msgstr "Kecualikan kasus berpasangan"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -1003,10 +996,9 @@ msgid ""
 "to include the case in the analysis. This option is selected by default."
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases listwise"
-msgstr "Mengecualikan kasus menurut daftar"
+msgstr "Kecualikan kasus berdaftar"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -1016,10 +1008,9 @@ msgid ""
 "case in the analysis. "
 msgstr ""
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
-msgstr "Menambahkan skor PC ke data"
+msgstr "Tambahkan skor PC ke data"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add FA scores to data"
@@ -1176,17 +1167,14 @@ msgctxt "LatentClassAnalysis|"
 msgid "Include"
 msgstr ""
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Listwise deletion"
-msgstr "Penghapusan menurut daftar"
+msgstr "Penghapusan berdaftar"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Output Options"
-msgstr "Opsi Keluaran"
+msgstr "Opsi Luaran"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Tables"
 msgstr "Tabel"
@@ -1201,10 +1189,9 @@ msgid ""
 "class."
 msgstr ""
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Plots"
-msgstr "Plot"
+msgstr "Diagram"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
@@ -1234,49 +1221,54 @@ msgstr ""
 
 msgctxt "LatentClassAnalysis|"
 msgid "Save to Data"
-msgstr ""
+msgstr "Simpan ke Data"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of classes"
-msgstr ""
+msgstr "Jumlah kelas"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Which fitted model's results to save."
-msgstr ""
+msgstr "Mana hasil model disesuaikan untuk menyimpan."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class probabilities"
-msgstr ""
+msgstr "Probabilitas kelas"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves K columns of posterior class-membership probabilities (one per class) "
 "to the dataset."
 msgstr ""
+"Menyimpan kolom K dari probabilitas keanggotaan kelas posterior (satu per "
+"kelas) ke rangkaian data."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column prefix"
-msgstr ""
+msgstr "Awalan kolom"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Columns are named prefix_C1, prefix_C2, …"
-msgstr ""
+msgstr "Kolom dinamakan prefix_C1, prefix_C2, …"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class classification"
-msgstr ""
+msgstr "Klasifikasi kelas"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves the modal class assignment for each observation as a new nominal "
 "column."
 msgstr ""
+"Menyimpan penugasan kelas modal untuk setiap observasi sebagai kolom nominal "
+"baru."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column name"
-msgstr ""
+msgstr "Nama kolom"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Name of the column holding the most-likely class label for each observation."
 msgstr ""
+"Nama kolom menahan label kelas paling kemungkinan untuk setiap observasi."

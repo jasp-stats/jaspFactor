@@ -3,13 +3,10 @@ context("Exploratory Factor Analysis")
 # does not test
 # - error handling
 # - orthogonal rotation
-# - Eigen values above / manual
-# - contents of screeplot (set.seed does not work)
 
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenvaluesAbove = 1,
   manualNumberOfFactors = 1,
   factoringMethod = "minimumResidual",
   orthogonalSelector = "none",
@@ -19,38 +16,28 @@ defaultOptions <- list(
   factorCorrelations = FALSE,
   fitIndices = FALSE,
   residualMatrix = FALSE,
-  parallelAnalysisTable = FALSE,
   pathDiagram = FALSE,
-  screePlot = FALSE,
   antiImageCorrelationMatrix = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
   addScoresToData = FALSE,
   addScoresToDataPrefix = "",
   dataType = "raw",
-  factorCountMethod = "parallelAnalysis",
-  parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
   orderLoadingsBy = "variables",
-  parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
-  plotHeight = 320,
-  setSeed = FALSE,
-  seed = 1
+  plotHeight = 320
 )
 
 options <- defaultOptions
-options$factorCountMethod <- "manual"
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
 options$factorCorrelations <- TRUE
 options$fitIndices <- TRUE
 options$pathDiagram <- TRUE
-options$screePlot <- TRUE
 options$factorStructure <- TRUE
 options$residualMatrix <- TRUE
 options$manualNumberOfFactors <- 2
@@ -126,13 +113,6 @@ test_that("Path Diagram plot matches", {
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "path-diagram")
-})
-
-test_that("Scree plot matches", {
-  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
-  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
-  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scree-plot")
 })
 
 test_that("Factor Loadings (Structure Matrix) table results match", {
@@ -225,13 +205,12 @@ test_that("Estimation options do not crash", {
 })
 
 
+# 3 factors as previously suggested by PC-based parallel analysis
 options <- defaultOptions
-options$factorCountMethod <- "parallelAnalysis"
-options$parallelAnalysisMethod <- "principalComponentBased"
+options$manualNumberOfFactors <- 3
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.1
 options$factorCorrelations <- TRUE
-options$screePlot <- TRUE
 options$orthogonalSelector <- "none"
 options$rotationMethod <- "orthogonal"
 options$variables <- paste0("x", 1:9)
@@ -247,14 +226,14 @@ test_that("Factor Characteristics table results match", {
                                  ))
 })
 
-test_that("Chi-squared Test table results match with parallel analysis based on PCs", {
+test_that("Chi-squared Test table results match with 3 factors", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(22.5550491736693, 12, "Model", 0.0317499059313278))
 })
 
-test_that("Factor Loadings table results match with parallel analysis based on PCs", {
+test_that("Factor Loadings table results match with 3 factors", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -271,23 +250,14 @@ test_that("Factor Loadings table results match with parallel analysis based on P
                                       0.453220919172841, "", 0.539538616482753, "x9"))
 })
 
-test_that("Scree plot matches", {
-  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
-  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
-  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scree-plot")
-})
-
-
+# 2 factors as previously suggested by PC-based parallel analysis
 options <- defaultOptions
-options$factorCountMethod <- "parallelAnalysis"
-options$parallelAnalysisMethod <- "principalComponentBased"
+options$manualNumberOfFactors <- 2
 options$loadingsDisplayLimit <- 0.1
 options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
 options$mardiaTest <- TRUE
 options$kaiserMeyerOlkinTest <- TRUE
 options$antiImageCorrelationMatrix <- TRUE
-options$parallelAnalysisTable <- TRUE
 options$rotationMethod <- "oblique"
 options$factoringMethod <- "minimumResidual"
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
@@ -315,16 +285,6 @@ test_that("Mardia's Test of Multivariate Normality table results match with poly
                                  ))
 })
 
-test_that("Parallel Analysis table results match with poly cor", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                                 list("Factor 1*", 1.78311572348898, 1.34293486623467, "Factor 2*",
-                                      1.28924116893078, 1.18287911279811, "Factor 3*", 1.08833059622023,
-                                      1.05066617046688, "Factor 4", 0.845932695389084, 0.925279735884113,
-                                      "Factor 5", 0.688011322780564, 0.809825771393728, "Factor 6",
-                                      0.305368493190363, 0.688414343222493))
-})
-
 # might have to change this once psych is updated on CRAN so the diagonals are replced with MSA values
 test_that("Anti-Image Correlation Matrix table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_antiMatrix"]][["data"]]
@@ -348,28 +308,6 @@ test_that("Kaiser-Meyer-Olkin Test table results match", {
 })
 
 
-options <- defaultOptions
-options$factorCountMethod <- "parallelAnalysis"
-options$parallelAnalysisMethod <- "principalComponentBased"
-options$parallelAnalysisTable <- TRUE
-options$rotationMethod <- "oblique"
-options$variables <- c("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
-
-options("mc.cores" = 1L)
-set.seed(1)
-results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
-
-test_that("Parallel Analysis table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                                 list("Factor 1*", 1.7795916550878, 1.33053625507377, "Factor 2*", 1.28644706023115,
-                                      1.17402737320915, "Factor 3*", 1.08333785331839, 1.0367445878489,
-                                      "Factor 4", 0.848949206589453, 0.923477592629848, "Factor 5",
-                                      0.696170865182367, 0.837720518530386, "Factor 6", 0.305503359590833,
-                                      0.697493672707948))
-})
-
-
 # variance covariance matrix input
 # this test fails because the columnIndexInData function does not play well with jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
@@ -380,9 +318,7 @@ options <- list(
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   dataType = "varianceCovariance",
-  eigenvaluesAbove = 1,
   factorCorrelations = FALSE,
-  factorCountMethod = "manual",
   orderLoadingsBy = "variables",
   factorStructure = FALSE,
   factoringMethod = "minimumResidual",
@@ -394,19 +330,13 @@ options <- list(
   naAction = "pairwise",
   obliqueSelector = "promax",
   orthogonalSelector = "none",
-  parallelAnalysisMethod = "principalComponentBased",
-  parallelAnalysisSeed = 1234,
-  parallelAnalysisTable = FALSE,
-  parallelAnalysisTableMethod = "principalComponentBased",
   pathDiagram = FALSE,
   plotHeight = 320,
   plotWidth = 480,
   residualMatrix = FALSE,
   rotationMethod = "orthogonal",
   sampleSize = 200,
-  screePlot = FALSE,
   antiImageCorrelationMatrix = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
   variables = c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")
 )
 

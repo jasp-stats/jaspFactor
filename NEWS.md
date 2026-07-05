@@ -17,6 +17,13 @@
 
 ## Added
 * Latent Class Analysis ([PR #346](https://github.com/jasp-stats/jaspFactor/pull/346)).
+* New **Number of Factors/Components** analysis that consolidates all factor/component retention methods (parallel analysis, eigenvalue criterion, scree plot) into a dedicated analysis, usable for both EFA and PCA decisions.
+
+## Changed
+* EFA, PCA: eigenvalue- and parallel-analysis-based factor count options removed from both analyses; the number of factors/components is now set manually, with guidance to use the new Number of Factors/Components analysis.
+
+## Fixed
+* Number of Factors: eigenvalue criterion now uses principal component eigenvalues when PC-based parallel analysis is selected, and factor eigenvalues when FA-based parallel analysis is selected. Previously PC eigenvalues were always used, causing factors with factor eigenvalues below the threshold to be incorrectly retained in EFA ([jasp-issues#3970](https://github.com/jasp-stats/jasp-issues/issues/3970)).
 
 ## Fixed
 * EFA: polychoric/tetrachoric correlation matrix errors are now caught and shown as a user-friendly message, including which variables have missing response categories.

@@ -101,7 +101,11 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   parallelResult <- .nofComputeParallel(container, dataset, options)
   if (is.null(parallelResult)) return()
 
-  if (options[["parallelAnalysisMethod"]] == "principalComponentBased") {
+  pcBased     <- options[["parallelAnalysisMethod"]] == "principalComponentBased"
+  eigenValues <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
+  eigType     <- if (pcBased) gettext("principal component") else gettext("factor")
+
+  if (pcBased) {
     paLabel <- gettext("Parallel analysis (PC-based)")
     paCount <- max(1, parallelResult$ncomp)
   } else {
@@ -110,7 +114,8 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   }
 
   summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalues above %s", options[["eigenvaluesAbove"]]))
-  summaryTable[["n"]]      <- c(paCount, sum(parallelResult$pc.values > options[["eigenvaluesAbove"]]))
+  summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvaluesAbove"]]))
+  summaryTable$addFootnote(gettextf("Eigenvalue criterion based on %s eigenvalues.", eigType))
 }
 
 

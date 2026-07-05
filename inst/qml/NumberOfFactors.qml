@@ -90,7 +90,7 @@ Form
 			label:			qsTr("Eigenvalues above")
 			defaultValue:	1
 			decimals:		1
-			info: qsTr("Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion.")
+			info: qsTr("Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion. The eigenvalue type (principal component or factor eigenvalues) follows the parallel analysis method selected above.")
 		}
 	}
 

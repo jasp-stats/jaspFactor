@@ -146,6 +146,7 @@ options$orderLoadingsBy <- "variables"
 test_that("orderLoadingsBy sort the factor loadings table", {
 
   options <- defaultOptions
+  options$manualNumberOfFactors <- 3 # as previously suggested by parallel analysis
   options$orthogonalSelector <- "varimax"
   options$loadingsDisplayLimit <- 0.2
   options$variables <- paste0("x", 1:9)

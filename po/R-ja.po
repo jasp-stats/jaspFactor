@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2026-06-20 04:52\n"
-"PO-Revision-Date: 2026-05-21 04:11+0000\n"
-"Last-Translator: Akira Harada <momoldo@gmail.com>\n"
+"PO-Revision-Date: 2026-07-28 05:01+0000\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
 "r/ja/>\n"
 "Language: ja\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 msgid "Second-Order"
 msgstr "二次"
@@ -80,10 +80,10 @@ msgstr "ブートストラップ法は分散共分散行列に対して適用で
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
-msgstr ""
+msgstr "分散共分散行列を入力とする場合、ロバスト標準誤差は利用できません。"
 
 msgid "# Factors"
-msgstr "# 因子"
+msgstr "因子数"
 
 msgid "Model fit"
 msgstr "モデルフィット"
@@ -106,16 +106,13 @@ msgstr "ベースラインモデル"
 msgid "Factor model"
 msgstr "因子モデル"
 
-#, fuzzy
 msgid "%s You may consider changing the standard error method to 'robust'."
-msgstr "標準誤差の方法を'頑健(robust)'に変えることを検討してください."
+msgstr "%s 標準誤差の方法を「頑健(robust)」に変えることを検討してください。"
 
-#, fuzzy
 msgid ""
 "%1$s The estimator is %2$s. The test statistic is %3$s. The standard error "
 "method is %4$s."
-msgstr ""
-"データにカテゴリー変数があるので、推定量は %1$s 、検定統計量は %2$s である."
+msgstr "%1$s 推定量は %2$s、検定統計量は %3$s、標準誤差の方法は %4$s です。"
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin検定"
@@ -145,7 +142,7 @@ msgid "Other fit measures"
 msgstr "その他の適合度指標"
 
 msgid "Metric"
-msgstr "計量的"
+msgstr "指標"
 
 msgid "Log-likelihood"
 msgstr "対数尤度"
@@ -222,34 +219,31 @@ msgid ""
 msgstr ""
 "PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている."
 
-#, fuzzy
 msgid ""
 "Except for the PNFI, the fit indices are scaled because a robust estimator "
 "was used."
-msgstr ""
-"PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている."
+msgstr "PNFI を除き、頑健推定量を用いたため適合指標はスケーリングされています。"
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
 msgstr "データにはカテゴリー変数があるため、RMSEAは標準化されている."
 
-#, fuzzy
 msgid "The RMSEA results are scaled because a robust estimator was used."
-msgstr "データにはカテゴリー変数があるため、RMSEAは標準化されている."
+msgstr "頑健推定量を用いたため、RMSEA の結果はスケーリングされています。"
 
 msgid "Parameter estimates"
-msgstr "パラメータ推定"
+msgstr "パラメータ推定値"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
-"すべてのブートストラップサンプルが成功したわけではありません。CIは%.0fのサン"
-"プルに基づいています。"
+"一部のブートストラップ標本が失敗しました: 信頼区間は %.0f 件の標本にもとづき"
+"ます。"
 
 msgid "Std. estimate"
 msgstr "標準化推定値"
 
 msgid "Estimate"
-msgstr "推定"
+msgstr "推定値"
 
 msgid "Factor loadings"
 msgstr "因子負荷量"
@@ -258,7 +252,7 @@ msgid "Group"
 msgstr "群"
 
 msgid "Factor"
-msgstr "要因"
+msgstr "因子"
 
 msgid "Indicator"
 msgstr "指標"
@@ -285,7 +279,7 @@ msgid "Factor variances"
 msgstr "因子の分散"
 
 msgid "Factor Covariances"
-msgstr "因子間共分散"
+msgstr "因子の共分散"
 
 msgid "Residual variances"
 msgstr "残差分散"
@@ -303,7 +297,7 @@ msgid "Thresholds"
 msgstr "閾値"
 
 msgid "Threshold"
-msgstr "閾値"
+msgstr "しきい値"
 
 msgid "Modification Indices"
 msgstr "修正指数"
@@ -374,27 +368,22 @@ msgstr "係数 %s"
 msgid "Column name %s already exists in the dataset"
 msgstr "列名「%s」はデータセットの中にすでにあります"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This is likely due to a small sample size. Internal error "
 "message: %s"
 msgstr ""
-"残念ながら、ポリコリック/テトラコリック相関行列の推定に失敗しました.\n"
-"      これはサンプルサイズが小さいか、変数がすべての回答カテゴリーを含んでい"
-"ないことが原因かもしれない.\n"
-"      内部エラーメッセージ: %s"
+"ポリコリック/テトラコリック相関行列の推定に失敗しました。サンプルサイズが小さ"
+"いことが原因と考えられます。内部エラーメッセージ: %s"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
 msgstr ""
-"残念ながら、ポリコリック/テトラコリック相関行列の推定に失敗しました.\n"
-"      これはサンプルサイズが小さいか、変数がすべての回答カテゴリーを含んでい"
-"ないことが原因かもしれない.\n"
-"      内部エラーメッセージ: %s"
+"ポリコリック/テトラコリック相関行列の推定に失敗しました。変数 %1$s が回答"
+"カテゴリをすべて含んでいないことが原因かもしれません。内部エラーメッセージ: "
+"%2$s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "推定に失敗しました. 内部エラー メッセージ: %1$s. %2$s"
@@ -405,11 +394,10 @@ msgstr "推定に失敗しました. 内部エラー メッセージ: %s"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平行分析に失敗しました. 内部エラー メッセージ: %s"
 
-#, fuzzy
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "観測された最大の固有値:"
+msgstr "固有値が %1$s を超える因子はありません。観測された最大固有値は %2$s です。"
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin検定"
@@ -435,9 +423,8 @@ msgid ""
 msgstr "歪度の統計量はχ2分布、尖度の統計量は標準正規分布と仮定している."
 
 msgid "Anti-Image Correlation Matrix"
-msgstr ""
+msgstr "反イメージ相関行列"
 
-#, fuzzy
 msgid "Chi-Squared Test"
 msgstr "カイ二乗検定"
 
@@ -459,9 +446,8 @@ msgstr "独自性"
 msgid "No rotation method applied."
 msgstr "回転方法は適用されませんでした。"
 
-#, fuzzy
 msgid "Applied rotation method is %1$s."
-msgstr "適用された回転方法は %s です。"
+msgstr "適用された回転法は %1$s です。"
 
 msgid "Factor Loadings (Structure Matrix)"
 msgstr "因子負荷(構造行列)"
@@ -548,9 +534,8 @@ msgstr "平行解析によるシミュレーションデータ"
 msgid "Path Diagram"
 msgstr "パス図"
 
-#, fuzzy
 msgid "Model Fit"
-msgstr "モデルフィット"
+msgstr "モデルのあてはまり"
 
 msgid ""
 "Fit statistics for each model. AIC and BIC penalize the log-likelihood for "
@@ -559,21 +544,25 @@ msgid ""
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
 msgstr ""
+"モデルごとの適合度統計量です。AICとBICは対数尤度にモデルの複雑さの罰則を加え"
+"たもので、クラス数の異なるモデルを比べるのに使えます(小さいほどよい)。G²は尤"
+"度比適合度統計量で、p値が有意でなければ適合は十分だと考えられますが、この検定"
+"はセルが疎な場合や標本が小さい場合に敏感です。"
 
 msgid "Classes"
-msgstr ""
+msgstr "クラス数"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d クラス"
 
 msgid "Class Prevalences"
-msgstr ""
+msgstr "クラスの割合"
 
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
@@ -583,31 +572,37 @@ msgid ""
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
 msgstr ""
+"推定された潜在クラスの大きさです。割合は、モデルで推定された混合の重み(無作為"
+"に選んだ観測が各クラスに属する確率)とその標準誤差です。最頻割合は、事後確率が"
+"最も高いクラスに各観測を割り当てたときの観測の割合で、連続的な事後確率を離散"
+"化するため、モデルの割合とは異なることがあります。"
 
 msgid "Class"
-msgstr ""
+msgstr "クラス"
 
-#, fuzzy
 msgid "Proportion"
-msgstr "分散説明率"
+msgstr "母比率"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Modal proportion"
-msgstr ""
+msgstr "最頻割合"
 
 msgid "Class %d"
-msgstr ""
+msgstr "クラス %d"
 
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "項目反応確率"
 
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
 msgstr ""
+"クラス所属を条件とした、指標ごとの各反応カテゴリの推定確率です。各行が1つの潜"
+"在クラス、各列が指標の1つの反応カテゴリを表します。1行の中の確率の合計は1にな"
+"ります。"
 
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
@@ -615,15 +610,16 @@ msgid ""
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
 msgstr ""
+"項目反応確率のグループ化された棒グラフです。各パネルが1つの潜在クラスを表し、"
+"パネル内の棒は指標ごとの各反応カテゴリの確率を示します。棒が高いほど、その"
+"クラスに特徴的な反応カテゴリであることを表します。"
 
-#, fuzzy
 msgid "Probability"
-msgstr "信頼性"
+msgstr "確率"
 
 msgid "Level"
-msgstr ""
+msgstr "水準"
 
-#, fuzzy
 msgid "Column '%s' already exists in the dataset."
 msgstr "列名「%s」はデータセットの中にすでにあります"
 
@@ -644,9 +640,8 @@ msgstr ""
 msgid "All cells must be numeric."
 msgstr "すべてのセルは数値でなければなりません."
 
-#, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
-msgstr "含まれる変数の量に対して要求された因子 (%i) が多すぎます"
+msgstr "含まれる変数の数に対して、要求された %1$s (%2$i) が多すぎます"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "この分析を実行するには、有効なケース数 (%i) が十分ではありません。"
@@ -663,11 +658,10 @@ msgstr "データが無効です: 変数 %s の欠損値が多すぎます。"
 msgid "Data not valid: all variables are collinear"
 msgstr "データが無効: すべての変数が共線関係にあります"
 
-#, fuzzy
 msgid ""
 "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "観測された最大の固有値:"
+msgstr "固有値が %1$s を超える成分はありません。観測された最大固有値は %2$s です。"
 
 msgid "Component Loadings"
 msgstr "成分負荷量"

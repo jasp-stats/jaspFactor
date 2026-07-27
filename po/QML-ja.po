@@ -6,6 +6,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-07-27 11:02+0000\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
+"qml/ja/>\n"
+"Language: ja\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 msgctxt "Description|"
 msgid "Factor"
@@ -333,67 +339,67 @@ msgstr "構造"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "生データ"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "分散共分散行列"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "サンプルサイズ"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr ""
+msgstr "Mimic"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"
-msgstr ""
+msgstr "デフォルト"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
-msgstr ""
+msgstr "DLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "PML"
-msgstr ""
+msgstr "PML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLM"
-msgstr ""
+msgstr "MLM"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMV"
-msgstr ""
+msgstr "MLMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMVS"
-msgstr ""
+msgstr "MLMVS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLF"
-msgstr ""
+msgstr "MLF"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLR"
-msgstr ""
+msgstr "MLR"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSM"
-msgstr ""
+msgstr "WLSM"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSMV"
-msgstr ""
+msgstr "WLSMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSM"
-msgstr ""
+msgstr "ULSM"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSMV"
-msgstr ""
+msgstr "ULSMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"
@@ -405,63 +411,64 @@ msgstr "標準誤差"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     Bootstrap samples"
-msgstr ""
+msgstr "     ブートストラップサンプル"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     CI level"
-msgstr ""
+msgstr "     信頼水準"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "データ"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "生データ"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "分散共分散行列"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "サンプルサイズ"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "データ"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "生データ"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "分散共分散行列"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "サンプルサイズ"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Analysis Options"
-msgstr ""
+msgstr "分析オプション"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Here, options for the analysis can be specified."
-msgstr ""
+msgstr "ここで分析のオプションを指定できます。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Rotation Method"
-msgstr ""
+msgstr "回転法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Here, the rotation method to apply to the components can be specified. "
 "Rotation ensures a simpler understanding of the data structure."
 msgstr ""
+"ここで成分に適用する回転法を指定できます。回転によってデータの構造が理解しや"
+"すくなります。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Orthogonal"
 msgstr "直交"
@@ -471,45 +478,47 @@ msgid ""
 "This method produces components that are uncorrelated. For this method, "
 "there are several possibilities that can be selected."
 msgstr ""
+"この方法では、互いに無相関な成分が得られます。この方法にはいくつかの選択肢が"
+"あります。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "none"
 msgstr "なし"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "No rotation method is selected."
-msgstr ""
+msgstr "回転法を選びません。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Maximizes the variance of squared loadings for each factor, simplifying "
 "interpretations."
-msgstr ""
+msgstr "各因子について負荷量の二乗の分散を最大化し、解釈を単純にします。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimizes the number of factors needed to explain each variable, simplifying "
 "structure."
-msgstr ""
+msgstr "各変数を説明するのに必要な因子の数を最小にし、構造を単純にします。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Orthogonal rotation method by Bentler, used for simplifying factor loadings."
-msgstr ""
+msgstr "Bentlerによる直交回転法で、因子負荷量を単純にするために使います。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Combines Varimax and Quartimax to balance factor simplicity and variable "
 "explanations."
 msgstr ""
+"VarimaxとQuartimaxを組み合わせ、因子の単純さと変数の説明のバランスを取ります"
+"。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
-msgstr ""
+msgstr "負荷量の二乗の重みつき和を最小にする直交回転を適用します。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique"
 msgstr "斜交"
@@ -520,53 +529,54 @@ msgid ""
 "components. This method is selected by default. Several possibilities are "
 "available. The default is promax."
 msgstr ""
+"この方法では、成分どうしの相関を許す成分が得られます。既定で選択されています"
+"。いくつかの選択肢があり、既定はpromaxです。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
-msgstr ""
+msgstr "Varimaxから始めてべき変換を適用し、因子間の相関を許します。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
-msgstr ""
+msgstr "柔軟性を保ちながら因子間の相関を最小にする斜交回転です。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
-msgstr ""
+msgstr "0でない要素を最小にすることで因子負荷量を単純にすることを目指します。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
-msgstr ""
+msgstr "Bentlerによる斜交回転で、因子間の相関を単純にします。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
-msgstr ""
+msgstr "単純さと解釈しやすさのバランスを取る斜交回転です。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
-msgstr ""
+msgstr "因子分析のクラスタ回転を目指し、群の分離を強調します。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
-msgstr ""
+msgstr "Geominの斜交版で、因子間の相関を許し、複雑な負荷量を減らします。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "分解の基礎"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "データを成分・因子に分解する際に何を基礎にするかを指定します。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Correlation matrix"
 msgstr "相関行列"
@@ -574,9 +584,8 @@ msgstr "相関行列"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "相関行列を使ってデータを成分・因子に分解します。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
 msgstr "共分散行列"
@@ -584,9 +593,8 @@ msgstr "共分散行列"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "共分散行列を使ってデータを成分・因子に分解します。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Polychoric/tetrachoric correlation matrix"
 msgstr "ポリコリック/テトラコリック相関行列"
@@ -597,16 +605,18 @@ msgid ""
 "into components/factors. This is sometimes unstable when sample size is "
 "small and when some variables do not contain all response categories"
 msgstr ""
+"ポリコリック・テトラコリック相関行列を使ってデータを成分・因子に分解します。"
+"サンプルサイズが小さい場合や、一部の変数にすべての反応カテゴリが現れていない"
+"場合、不安定になることがあります"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "因子抽出法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "分解に用いる因子抽出法を指定します。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum residual"
 msgstr "最小残差法"
@@ -615,27 +625,24 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
-msgstr ""
+msgstr "一次微分を使って最小残差因子分析(minres)を行います。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Maximum likelihood"
 msgstr "最尤法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "最尤因子分析(ml)を行います。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Principal axis factoring"
 msgstr "主軸因子分析"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "主因子解(pa)を求めます。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Ordinary least squares"
 msgstr "通常の最小二乗法"
@@ -645,26 +652,25 @@ msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
 msgstr ""
+"OLSの手続きで残差行列を最小にします。時間はかかりますが、経験的な一次微分を使"
+"います。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Weighted least squares"
 msgstr "重み付き最小二乗法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
-msgstr ""
+msgstr "重みつき最小二乗法(WLS)による解を求めます。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Generalized least squares"
 msgstr "一般化最小二乗法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "一般化最小二乗法(GLS)による解を求めます。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum chi-square"
 msgstr "最小カイ二乗法"
@@ -673,35 +679,37 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
 msgstr ""
+"ペアワイズの相関を使って、サンプルサイズで重みづけしたカイ二乗を最小にします"
+"。"
 
-#, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Minimum rank"
 msgstr "最小ランク法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "最小ランク因子分析(minrank)を行います。"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
-msgstr ""
+msgstr "成分数"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Factors"
-msgstr ""
+msgstr "因子数"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Here, the number of components/factors that are used in the analysis is "
 "determined. Several methods to determine this number can be chosen from:"
 msgstr ""
+"ここで、分析に用いる成分数・因子数を決めます。決め方はいくつかの方法から選べ"
+"ます:"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
-msgstr ""
+msgstr "基準"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
 msgstr "平行分析"
@@ -715,18 +723,19 @@ msgid ""
 "A seed (1234) is chosen by default so that the results from the parallel "
 "analysis are equal across the PCA"
 msgstr ""
+"平行分析に基づいて成分・因子を選びます。この方法では、固有値が平行分析による"
+"無作為データの平均固有値を上回る因子が選ばれます。既定で選択されています。主"
+"成分の固有値(PC)と因子の固有値(FA)のどちらに基づくかを選べます。平行分析の結"
+"果が主成分分析との間で一致するように、既定でシード(1234)が設定されています"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on PC"
 msgstr "PCに基づく"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on FA"
 msgstr "FAに基づく"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues"
 msgstr "固有値"
@@ -735,14 +744,12 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Components are selected when they have a certain eigenvalue. By default "
 "components are selected that have an eigenvalue above 1."
-msgstr ""
+msgstr "一定の固有値を持つ成分を選びます。既定では固有値が1を超える成分が選ばれます。"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
 msgstr "以上の固有値"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Manual"
 msgstr "手動"
@@ -751,65 +758,60 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "The number of components can be specified manually. By default this is set "
 "to 1."
-msgstr ""
+msgstr "成分数を手動で指定できます。既定では1に設定されています。"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of components"
 msgstr "成分数"
 
-#, fuzzy
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of factors"
 msgstr "因子数"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Output Options"
 msgstr "出力オプション"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
-msgstr ""
+msgstr "主成分分析・探索的因子分析の追加の出力オプションです。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
-msgstr "上記の負荷量を表示する"
+msgstr "次を上回る負荷量を表示"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
-msgstr ""
+msgstr "この値を下回る負荷量は出力の表に表示されません。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Order Loadings By"
-msgstr ""
+msgstr "負荷量の並べ方"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Either order the loadings by their size from large to small, or by "
 "variables, meaning according to their occurence in the variables list."
 msgstr ""
+"負荷量を大きさの順に大きいものから小さいものへ並べるか、変数の順、すなわち変"
+"数リストに現れる順に並べるかを選びます。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
-msgstr ""
+msgstr "大きさ"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Variables"
 msgstr "変数"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
 msgstr "表"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
-msgstr ""
+msgstr "出力に追加の表を表示します。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Structure matrix"
 msgstr "構造行列"
@@ -819,13 +821,13 @@ msgid ""
 "An item by factor structure matrix. This is just the loadings (pattern) "
 "matrix times the factor intercorrelation matrix."
 msgstr ""
+"項目×因子の構造行列です。これは負荷量(パターン)行列に因子間相関行列を掛けたも"
+"のです。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
 msgstr "成分間相関"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Factor correlations"
 msgstr "因子間相関"
@@ -834,9 +836,8 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "When selecting this option, a table with the correlations between the "
 "components/factors will be displayed."
-msgstr ""
+msgstr "このオプションを選ぶと、成分・因子どうしの相関の表が表示されます。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional fit indices"
 msgstr "追加の適合指数"
@@ -847,17 +848,18 @@ msgid ""
 "with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
 "Information Criterion (BIC) to test the fit of the model."
 msgstr ""
+"このオプションでは、モデルの適合を検討するために、90%信頼区間つきのRMSEA"
+"(Root Mean Squared Error of Approximation)、TLI(Tucker Lewis Index)、BIC"
+"(ベイズ情報量規準)を表示します。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Residual matrix"
 msgstr "残差行列"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
-msgstr ""
+msgstr "残差分散と残差相関を含む表を表示します。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
 msgstr "平行分析"
@@ -869,27 +871,26 @@ msgid ""
 "eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
 "parallel analysis for determining the number of components/factors above."
 msgstr ""
+"このオプションを選ぶと、平行分析の詳しい出力を示す表が生成されます。主成分の"
+"固有値(PC)と因子の固有値(FA)のどちらに基づくかを選べます。シードは上の成分数"
+"・因子数を決める平行分析のものが使われます。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on PC"
 msgstr "PCに基づく"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Based on FA"
 msgstr "FAに基づく"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Plots"
 msgstr "プロット"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
-msgstr ""
+msgstr "プロットを表示します。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Path diagram"
 msgstr "パス図"
@@ -899,8 +900,9 @@ msgid ""
 "By selecting this option, a visual representation of the direction and "
 "strength of the relation between the variable and factor will be displayed."
 msgstr ""
+"このオプションを選ぶと、変数と因子の関係の向きと強さを視覚的に表したものが表"
+"示されます。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Scree plot"
 msgstr "スクリープロット"
@@ -912,11 +914,13 @@ msgid ""
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
 msgstr ""
+"このオプションを選ぶと、スクリープロットが表示されます。スクリープロットは、"
+"固有値で示されるデータの分散のうち、どれだけが各因子で説明されるかを示します"
+"。スクリープロットは、因子をいくつ選ぶかを判断するのに使えます。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis results"
-msgstr "平行解析結果"
+msgstr "平行分析の結果"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -924,8 +928,9 @@ msgid ""
 "analysis will be based on PC or FA as defined by the option for the parallel "
 "analysis table."
 msgstr ""
+"スクリープロットに平行分析の結果を表示します。平行分析は、平行分析の表の"
+"オプションで指定したPCまたはFAに基づきます。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
 msgstr "仮定のチェック"
@@ -935,8 +940,9 @@ msgid ""
 "Assumptions: The variables included in the analysis are correlated; the "
 "variables included in the analysis are linearly related (Shlens, 2014)"
 msgstr ""
+"仮定: 分析に含まれる変数は互いに相関している。分析に含まれる変数は線形の関係"
+"にある(Shlens, 2014)"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "KMO test"
 msgstr "KMO検定"
@@ -948,8 +954,11 @@ msgid ""
 "sampling adequacy (MSA) as the proportion of common variance among variables "
 "is computed for all variables; values closer to 1 are desired."
 msgstr ""
+"変数間の共通分散の割合を計算することで、変数が因子分析にどれだけ適しているか"
+"を判断します。すべての変数について変数間の共通分散の割合が計算され、"
+"サンプリング妥当性の指標(MSA)が得られます。値は1に近いほど望ましいとされます"
+"。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Bartlett's test"
 msgstr "Bartlettの検定"
@@ -960,8 +969,10 @@ msgid ""
 "if the variables are related or not. A significant result means the "
 "correlation matrix is unlike the identity matrix."
 msgstr ""
+"データの相関行列が単位行列であるかどうか、つまり変数どうしが関連しているかど"
+"うかを判定します。有意な結果は、相関行列が単位行列とは異なることを意味します"
+"。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Mardia's test"
 msgstr "Mardiaの検定"
@@ -972,10 +983,13 @@ msgid ""
 "included variables in terms of multivariate skewness and kurtosis. The "
 "Mardia's test will always include the listwise complete cases."
 msgstr ""
+"分析に含まれる変数が多変量正規分布からどれだけ離れているかを、多変量の歪度と"
+"尖度によって評価します。マルディアの検定では、常にリストワイズで完全なケース"
+"が用いられます。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr ""
+msgstr "反イメージ相関行列"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -984,17 +998,18 @@ msgid ""
 "values in the anti-image correlation matrix indicate that a variable might "
 "be redundant or have too much shared variance with other variables."
 msgstr ""
+"データセット内の他のすべての変数の効果を取り除いたうえでの、変数の対どうしの"
+"偏相関に負号を付けたものです。反イメージ相関行列の値が大きい場合、その変数は"
+"冗長であるか、他の変数と分散を共有しすぎている可能性があります。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Missing Values"
 msgstr "欠損値"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
-msgstr ""
+msgstr "欠測値の扱い方を選びます。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases pairwise"
 msgstr "ペアワイズでケースを除外"
@@ -1006,8 +1021,10 @@ msgid ""
 "scenario, it is not necessary to have an observation for all the variables "
 "to include the case in the analysis. This option is selected by default."
 msgstr ""
+"ある変数の観測値が欠測していても、同じケースの他の変数の観測値は分析に使われ"
+"ます。この場合、ケースを分析に含めるために、すべての変数について観測値が揃っ"
+"ている必要はありません。既定で選択されています。"
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Exclude cases listwise"
 msgstr "リストごとにケースを除外する"
@@ -1019,46 +1036,49 @@ msgid ""
 "In this scenario, observations for every variable are needed to include the "
 "case in the analysis. "
 msgstr ""
+"ある変数の観測値が欠測している場合、そのケース全体、つまり関連する他のすべて"
+"の変数の観測値も分析から除かれます。この場合、ケースを分析に含めるには、すべ"
+"ての変数について観測値が必要です。 "
 
-#, fuzzy
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add PC scores to data"
 msgstr "データに成分スコアを追加"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add FA scores to data"
-msgstr ""
+msgstr "因子得点をデータに追加"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Adds the estimated component/factor scores as new columns to the data set. "
 "The scores are regression scores."
 msgstr ""
+"推定された成分得点・因子得点を、データセットに新しい列として追加します。得点"
+"は回帰法による得点です。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Prefix"
-msgstr ""
+msgstr "接頭辞"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "PC"
-msgstr ""
+msgstr "PC"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
-msgstr ""
+msgstr "FA"
 
-#, fuzzy
 msgctxt "PcaEfaVariables|"
 msgid "Variables"
 msgstr "変数"
 
 msgctxt "PcaEfaVariables|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "このボックスで、分析の対象とする変数を選びます"
 
 msgctxt "PcaEfaVariables|"
 msgid "Data Type"
-msgstr ""
+msgstr "データの種類"
 
 msgctxt "PcaEfaVariables|"
 msgid ""
@@ -1066,46 +1086,48 @@ msgid ""
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
 msgstr ""
+"データが生データ、すなわち行が観測で列が変数の形式か、それとも分散共分散行列"
+"かを指定します。後者の場合はサンプルサイズが必要です。"
 
 msgctxt "PcaEfaVariables|"
 msgid "Raw"
-msgstr ""
+msgstr "生データ"
 
 msgctxt "PcaEfaVariables|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "分散共分散行列"
 
 msgctxt "PcaEfaVariables|"
 msgid "Sample size"
-msgstr ""
+msgstr "サンプルサイズ"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data Type"
-msgstr ""
+msgstr "データの種類"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator\t             "
-msgstr ""
+msgstr "推定法\t             "
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add factor scores to data"
-msgstr ""
+msgstr "因子得点をデータに追加"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
-msgstr ""
+msgstr "推定された因子得点を、データセットに新しい列として追加します"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Prefix"
-msgstr ""
+msgstr "接頭辞"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FS"
-msgstr ""
+msgstr "FS"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "このボックスで、分析の対象とする変数を選びます"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
@@ -1113,10 +1135,12 @@ msgid ""
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
 msgstr ""
+"データが生データ、すなわち行が観測で列が変数の形式か、それとも分散共分散行列"
+"かを指定します。後者の場合はサンプルサイズが必要です。"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "このボックスで、分析の対象とする変数を選びます"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid ""
@@ -1124,89 +1148,89 @@ msgid ""
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
 msgstr ""
+"データが生データ、すなわち行が観測で列が変数の形式か、それとも分散共分散行列"
+"かを指定します。後者の場合はサンプルサイズが必要です。"
 
 msgctxt "Description|"
 msgid "Latent Class Analysis"
-msgstr ""
+msgstr "潜在クラス分析"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Indicators"
-msgstr ""
+msgstr "指標"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Categorical indicator variables for the latent class model. At least two "
 "indicators are required."
-msgstr ""
+msgstr "潜在クラスモデルのカテゴリカルな指標変数です。指標は少なくとも2つ必要です。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum number of classes"
-msgstr ""
+msgstr "クラス数の最大値"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Models with 1, 2, …, K classes are fitted and compared."
-msgstr ""
+msgstr "クラス数が1, 2, …, K のモデルをあてはめて比較します。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Estimation Options"
-msgstr ""
+msgstr "推定オプション"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of random starts"
-msgstr ""
+msgstr "ランダムな初期値の数"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Number of times the EM algorithm is run with different random starting "
 "values. The run with the highest log-likelihood is returned."
 msgstr ""
+"異なるランダムな初期値でEMアルゴリズムを実行する回数です。対数尤度が最も高く"
+"なった実行の結果が返されます。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations"
-msgstr ""
+msgstr "最大反復回数"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations for the EM algorithm."
-msgstr ""
+msgstr "EMアルゴリズムの最大反復回数です。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Missing values"
-msgstr ""
+msgstr "欠測値"
 
 msgctxt "LatentClassAnalysis|"
 msgid "How to handle rows with missing values on any indicator."
-msgstr ""
+msgstr "いずれかの指標に欠測値がある行をどう扱うかを指定します。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Include"
-msgstr ""
+msgstr "含める"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Listwise deletion"
 msgstr "リストごとに削除"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Output Options"
 msgstr "出力オプション"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Tables"
 msgstr "表"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Item-response probabilities"
-msgstr ""
+msgstr "項目反応確率"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a table of item-response probabilities for each indicator and latent "
 "class."
-msgstr ""
+msgstr "指標と潜在クラスの組み合わせごとに、項目反応確率の表を表示します。"
 
-#, fuzzy
 msgctxt "LatentClassAnalysis|"
 msgid "Plots"
 msgstr "プロット"
@@ -1216,72 +1240,76 @@ msgid ""
 "Show a grouped bar chart of item-response probabilities, with one panel per "
 "latent class."
 msgstr ""
+"項目反応確率のグループ化された棒グラフを、潜在クラスごとに1つのパネルで表示し"
+"ます。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Rotate x-axis labels 45°"
-msgstr ""
+msgstr "x軸のラベルを45°回転"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Rotate the indicator names on the x-axis by 45 degrees to prevent "
 "overlapping."
-msgstr ""
+msgstr "x軸の指標名を45度回転させて、重なりを防ぎます。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Show levels legend"
-msgstr ""
+msgstr "水準の凡例を表示"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a legend on the right indicating the color for each response category "
 "level."
-msgstr ""
+msgstr "反応カテゴリの水準ごとの色を示す凡例を右側に表示します。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Save to Data"
-msgstr ""
+msgstr "データに保存"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of classes"
-msgstr ""
+msgstr "クラス数"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Which fitted model's results to save."
-msgstr ""
+msgstr "どのモデルの結果を保存するかを指定します。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class probabilities"
-msgstr ""
+msgstr "クラス確率"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves K columns of posterior class-membership probabilities (one per class) "
 "to the dataset."
-msgstr ""
+msgstr "事後のクラス所属確率をK列(クラスごとに1列)データセットに保存します。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column prefix"
-msgstr ""
+msgstr "列の接頭辞"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Columns are named prefix_C1, prefix_C2, …"
-msgstr ""
+msgstr "列は prefix_C1, prefix_C2, … という名前になります"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class classification"
-msgstr ""
+msgstr "クラスの分類"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves the modal class assignment for each observation as a new nominal "
 "column."
 msgstr ""
+"各観測について、最も確率の高いクラスへの割り当てを新しい名義変数の列として保"
+"存します。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column name"
-msgstr ""
+msgstr "列名"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Name of the column holding the most-likely class label for each observation."
-msgstr ""
+msgstr "各観測について、最も可能性の高いクラスのラベルを保持する列の名前です。"

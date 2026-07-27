@@ -427,6 +427,7 @@ options$naAction <- "pairwise"
 options$thresholds <- TRUE
 options$group <- "gender"
 options$fitMeasures <- TRUE
+options$htmt <- TRUE
 dt <- read.csv("cavalini_group.csv")
 dt[, c("V1", "V5", "V8")] <- lapply(dt[, c("V1", "V5", "V8")], ordered)
 
@@ -499,6 +500,14 @@ test_that("Chi-square test table results match", {
   jaspTools::expect_equal_tables(table,
                                  list(1281.53663843542, 56, "Baseline model", "", 237.430356095373,
                                       38, "Factor model", 0))
+})
+
+# htmt must use polychoric correlations for the ordinal indicators, see jasp-issues #4434
+test_that("Heterotrait-monotrait ratio table results match for ordinal data", {
+  table <- results[["results"]][["resHtmtTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(1, "", "Factor 1", "f", 0.934652527995396, 1, "Factor 2", "f",
+                                      1, "", "Factor 1", "m", 0.977492107173945, 1, "Factor 2", "m"))
 })
 
 

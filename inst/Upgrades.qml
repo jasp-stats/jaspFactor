@@ -584,28 +584,22 @@ Upgrades
 		fromVersion:  "0.97.1"
 		toVersion:    "0.98.0"
 
+		//: Shown at the top of the analysis options when a JASP file made with an older version is opened.
+		//: "Number of Factors/Components" is an analysis name in the Factor menu, translate it the same way there.
+		msg: qsTr("Parallel analysis, the eigenvalue criterion, the parallel analysis table and the scree plot have moved to the new <b>Number of Factors/Components</b> analysis in the Factor menu. The number of components is now always entered manually here, so please check that it is still correct.")
+
 		ChangeJS {
 			name:      "manualNumberOfComponents"
-			condition: function(options) { return options["componentCountMethod"] !== undefined && options["componentCountMethod"] !== "manual" }
-			msg:       qsTr("The number of components is now always specified manually. Parallel analysis and eigenvalue-based selection have moved to the separate 'Number of Factors/Components' analysis. Please set the number of components.")
+			condition: function(options) { return options["manualNumberOfComponents"] !== undefined && options["componentCountMethod"] !== undefined && options["componentCountMethod"] !== "manual" }
+			msg:       qsTr("This number used to be determined automatically; please check that it is still what you want.")
 			jsFunction: function(options) { return options["manualNumberOfComponents"]; }
 		}
 
 		ChangeRemove { name: "componentCountMethod";				condition: function(options) { return options["componentCountMethod"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisMethod";				condition: function(options) { return options["parallelAnalysisMethod"] !== undefined } }
 		ChangeRemove { name: "eigenvaluesAbove";					condition: function(options) { return options["eigenvaluesAbove"] !== undefined } }
-		ChangeRemove {
-			name:      "parallelAnalysisTable"
-			condition: function(options) { return options["parallelAnalysisTable"] === true }
-			msg:       qsTr("The parallel analysis table has moved to the 'Number of Factors/Components' analysis.")
-		}
 		ChangeRemove { name: "parallelAnalysisTable";				condition: function(options) { return options["parallelAnalysisTable"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisTableMethod";			condition: function(options) { return options["parallelAnalysisTableMethod"] !== undefined } }
-		ChangeRemove {
-			name:      "screePlot"
-			condition: function(options) { return options["screePlot"] === true }
-			msg:       qsTr("The scree plot has moved to the 'Number of Factors/Components' analysis.")
-		}
 		ChangeRemove { name: "screePlot";							condition: function(options) { return options["screePlot"] !== undefined } }
 		ChangeRemove { name: "screePlotParallelAnalysisResults";	condition: function(options) { return options["screePlotParallelAnalysisResults"] !== undefined } }
 		ChangeRemove { name: "setSeed";								condition: function(options) { return options["setSeed"] !== undefined } }
@@ -619,10 +613,14 @@ Upgrades
 		fromVersion:  "0.97.1"
 		toVersion:    "0.98.0"
 
+		//: Shown at the top of the analysis options when a JASP file made with an older version is opened.
+		//: "Number of Factors/Components" is an analysis name in the Factor menu, translate it the same way there.
+		msg: qsTr("Parallel analysis, the eigenvalue criterion, the parallel analysis table and the scree plot have moved to the new <b>Number of Factors/Components</b> analysis in the Factor menu. The number of factors is now always entered manually here, so please check that it is still correct.")
+
 		ChangeJS {
 			name:      "manualNumberOfFactors"
-			condition: function(options) { return options["factorCountMethod"] !== undefined && options["factorCountMethod"] !== "manual" }
-			msg:       qsTr("The number of factors is now always specified manually. Parallel analysis and eigenvalue-based selection have moved to the separate 'Number of Factors/Components' analysis. Please set the number of factors.")
+			condition: function(options) { return options["manualNumberOfFactors"] !== undefined && options["factorCountMethod"] !== undefined && options["factorCountMethod"] !== "manual" }
+			msg:       qsTr("This number used to be determined automatically; please check that it is still what you want.")
 			jsFunction: function(options) { return options["manualNumberOfFactors"]; }
 		}
 
@@ -630,18 +628,8 @@ Upgrades
 		ChangeRemove { name: "parallelAnalysisMethod";				condition: function(options) { return options["parallelAnalysisMethod"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisSeed";				condition: function(options) { return options["parallelAnalysisSeed"] !== undefined } }
 		ChangeRemove { name: "eigenvaluesAbove";					condition: function(options) { return options["eigenvaluesAbove"] !== undefined } }
-		ChangeRemove {
-			name:      "parallelAnalysisTable"
-			condition: function(options) { return options["parallelAnalysisTable"] === true }
-			msg:       qsTr("The parallel analysis table has moved to the 'Number of Factors/Components' analysis.")
-		}
 		ChangeRemove { name: "parallelAnalysisTable";				condition: function(options) { return options["parallelAnalysisTable"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisTableMethod";			condition: function(options) { return options["parallelAnalysisTableMethod"] !== undefined } }
-		ChangeRemove {
-			name:      "screePlot"
-			condition: function(options) { return options["screePlot"] === true }
-			msg:       qsTr("The scree plot has moved to the 'Number of Factors/Components' analysis.")
-		}
 		ChangeRemove { name: "screePlot";							condition: function(options) { return options["screePlot"] !== undefined } }
 		ChangeRemove { name: "screePlotParallelAnalysisResults";	condition: function(options) { return options["screePlotParallelAnalysisResults"] !== undefined } }
 		ChangeRemove { name: "setSeed";								condition: function(options) { return options["setSeed"] !== undefined } }

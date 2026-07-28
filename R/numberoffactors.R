@@ -177,30 +177,20 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   pcBased <- options[["parallelAnalysisMethod"]] == "principalComponentBased"
   xLabel  <- if (pcBased) gettext("Component") else gettext("Factor")
 
+  # the real data eigenvalues always come from the same source as the x-axis label,
+  # so toggling the simulated data overlay only hides that series
+  parallelResult <- .nofComputeParallel(container, dataset, options)
+  if (is.null(parallelResult)) return()
+
+  realDataEigen <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
+
   if (options[["screePlotParallelAnalysisResults"]]) {
-
-    parallelResult <- .nofComputeParallel(container, dataset, options)
-    if (is.null(parallelResult)) return()
-
-    if (pcBased) {
-      evs <- c(parallelResult$pc.values, parallelResult$pc.sim)
-    } else {
-      evs <- c(parallelResult$fa.values, parallelResult$fa.sim)
-    }
-    tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
-
+    resampledEigen <- if (pcBased) parallelResult$pc.sim else parallelResult$fa.sim
+    evs <- c(realDataEigen, resampledEigen)
+    tp  <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
   } else { # do not display parallel analysis
-
-    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-      polyTetraCor <- .efaComputePolyCorMatrix(container, dataset, options)
-      if (is.null(polyTetraCor)) return()
-      evs <- eigen(polyTetraCor, only.values = TRUE)$values
-    } else if (options[["dataType"]] == "varianceCovariance") {
-      evs <- eigen(cov2cor(as.matrix(dataset)), only.values = TRUE)$values
-    } else {
-      evs <- eigen(cor(dataset, use = "pairwise.complete.obs"), only.values = TRUE)$values
-    }
-    tp <- rep(gettext("Data"), each = n_col)
+    evs <- realDataEigen
+    tp  <- rep(gettext("Data"), each = n_col)
   }
 
   df <- data.frame(

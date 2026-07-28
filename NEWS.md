@@ -24,6 +24,7 @@
 
 ## Fixed
 * Number of Factors: eigenvalue criterion now uses principal component eigenvalues when PC-based parallel analysis is selected, and factor eigenvalues when FA-based parallel analysis is selected. Previously PC eigenvalues were always used, causing factors with factor eigenvalues below the threshold to be incorrectly retained in EFA ([jasp-issues#3970](https://github.com/jasp-stats/jasp-issues/issues/3970)).
+* Number of Factors: the scree plot now shows factor eigenvalues in FA-based mode also when the simulated parallel analysis data is hidden; previously that toggle silently switched the real data series to component eigenvalues while the axis still read "Factor".
 
 ## Fixed
 * EFA: polychoric/tetrachoric correlation matrix errors are now caught and shown as a user-friendly message, including which variables have missing response categories.

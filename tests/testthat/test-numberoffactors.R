@@ -72,6 +72,27 @@ test_that("Summary and Parallel Analysis tables use FA basis", {
   testthat::expect_true(all(grepl("^Factor", sapply(parallelData, `[[`, "col"))))
 })
 
+faEigenvalues <- sapply(results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]],
+                        `[[`, "val1")
+
+
+# FA-based, simulated data overlay hidden: real data series must stay on the factor eigenvalues
+options <- defaultOptions
+options$parallelAnalysisMethod <- "factorBased"
+options$screePlotParallelAnalysisResults <- FALSE
+options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
+
+results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
+
+test_that("Scree plot keeps factor eigenvalues when parallel analysis overlay is hidden (FA-based)", {
+  plotName <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_screePlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+
+  testthat::expect_identical(unique(as.character(testPlot[["data"]][["type"]])), "Data")
+  testthat::expect_equal(testPlot[["data"]][["ev"]], faEigenvalues, tolerance = 1e-6)
+  testthat::expect_identical(testPlot[["labels"]][["x"]], "Factor")
+})
+
 
 # PC-based parallel analysis on polychoric/tetrachoric correlations
 options <- defaultOptions

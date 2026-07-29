@@ -42,7 +42,7 @@ test_that("Parallel Analysis table results match (PC-based)", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Component 1*", 1.7795916550878, 1.36583483001393, "Component 2*",
-                                      1.28644706023115, 1.1795441336838, "Component 3*", 1.08333785331839,
+                                      1.28644706023115, 1.1795441336838, "Component 3", 1.08333785331839,
                                       1.04563430924183, "Component 4", 0.848949206589453, 0.92484523771976,
                                       "Component 5", 0.696170865182367, 0.805435846758642, "Component 6",
                                       0.305503359590833, 0.678705642582045))
@@ -106,7 +106,7 @@ test_that("Parallel Analysis table results match with poly cor", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Component 1*", 1.78311572348898, 1.33849952828362, "Component 2*",
-                                      1.28924116893078, 1.19495601423762, "Component 3*", 1.08833059622023,
+                                      1.28924116893078, 1.19495601423762, "Component 3", 1.08833059622023,
                                       1.03657350841346, "Component 4", 0.845932695389084, 0.919703170460585,
                                       "Component 5", 0.688011322780564, 0.817254742438021, "Component 6",
                                       0.305368493190363, 0.693013036166699))

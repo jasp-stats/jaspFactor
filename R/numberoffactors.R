@@ -85,6 +85,17 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 }
 
 
+# psych::fa.parallel suggests ncomp/nfact by comparing real-data eigenvalues against
+# the 95th percentile (quant = .95 default) of the simulated eigenvalues;
+# NA means all real-data eigenvalues exceed it
+.nofParallelSuggested <- function(parallelResult, pcBased) {
+  count <- if (pcBased) parallelResult$ncomp else parallelResult$nfact
+  if (is.na(count))
+    count <- length(if (pcBased) parallelResult$pc.values else parallelResult$fa.values)
+  return(max(1, count))
+}
+
+
 # Output functions ----
 .nofSummaryTable <- function(container, dataset, options, ready) {
   if (!is.null(container[["summaryTable"]])) return()
@@ -105,13 +116,8 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   eigenValues <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
   eigType     <- if (pcBased) gettext("principal component") else gettext("factor")
 
-  if (pcBased) {
-    paLabel <- gettext("Parallel analysis (PC-based)")
-    paCount <- max(1, parallelResult$ncomp)
-  } else {
-    paLabel <- gettext("Parallel analysis (FA-based)")
-    paCount <- max(1, parallelResult$nfact)
-  }
+  paLabel <- if (pcBased) gettext("Parallel analysis (PC-based)") else gettext("Parallel analysis (FA-based)")
+  paCount <- .nofParallelSuggested(parallelResult, pcBased)
 
   summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalues above %s", options[["eigenvaluesAbove"]]))
   summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvaluesAbove"]]))
@@ -142,15 +148,16 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
     rowsName       <- gettext("Component")
     realDataEigen  <- parallelResult$pc.values
     resampledEigen <- parallelResult$pc.sim
-    footnote       <- gettextf("'*' = %s should be retained. Results from PC-based parallel analysis.", rowsName)
+    footnote       <- gettextf("'*' = %s should be retained, following the parallel analysis suggestion based on the 95th percentile of the simulated eigenvalues; the table displays mean simulated eigenvalues. Results from PC-based parallel analysis.", rowsName)
   } else {
     rowsName       <- gettext("Factor")
     realDataEigen  <- parallelResult$fa.values
     resampledEigen <- parallelResult$fa.sim
-    footnote       <- gettextf("'*' = %s should be retained. Results from FA-based parallel analysis.", rowsName)
+    footnote       <- gettextf("'*' = %s should be retained, following the parallel analysis suggestion based on the 95th percentile of the simulated eigenvalues; the table displays mean simulated eigenvalues. Results from FA-based parallel analysis.", rowsName)
   }
 
-  retained <- realDataEigen - resampledEigen > 0
+  # star the fa.parallel suggestion so markers match the summary table count
+  retained <- seq_along(realDataEigen) <= .nofParallelSuggested(parallelResult, pcBased)
   firstCol <- ifelse(retained,
                      paste0(rowsName, " ", seq_along(realDataEigen), "*"),
                      paste(rowsName, seq_along(realDataEigen)))

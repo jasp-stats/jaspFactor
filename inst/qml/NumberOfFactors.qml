@@ -57,7 +57,7 @@ Form
 	Group
 	{
 		title: qsTr("Parallel Analysis")
-		info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the mean eigenvalue of the simulated data.")
+		info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the 95th percentile of the simulated eigenvalues.")
 
 		RadioButtonGroup
 		{

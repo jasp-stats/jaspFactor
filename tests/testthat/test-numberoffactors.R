@@ -94,6 +94,24 @@ test_that("Scree plot keeps factor eigenvalues when parallel analysis overlay is
 })
 
 
+# FA-based on two uncorrelated variables: fa.parallel suggests 0 factors,
+# the summary must report 0 and no row may be starred
+options <- defaultOptions
+options$parallelAnalysisMethod <- "factorBased"
+options$variables <- c("contNormal", "contGamma")
+
+results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
+
+test_that("Zero parallel-analysis suggestion is not forced to one", {
+  summaryData <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
+  testthat::expect_identical(summaryData[[1]][["method"]], "Parallel analysis (FA-based)")
+  testthat::expect_equal(summaryData[[1]][["n"]], 0)
+
+  parallelData <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
+  testthat::expect_false(any(grepl("*", sapply(parallelData, `[[`, "col"), fixed = TRUE)))
+})
+
+
 # PC-based parallel analysis on polychoric/tetrachoric correlations
 options <- defaultOptions
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")

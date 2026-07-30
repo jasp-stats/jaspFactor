@@ -26,7 +26,8 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (ready)
     .pcaCheckErrors(dataset, options, method = "numberOfFactors")
 
-  options(mc.cores = 1) # prevent the fa.parallel function using multiple cores by default
+  oldMcCores <- options(mc.cores = 1) # prevent the fa.parallel function using multiple cores by default
+  on.exit(options(oldMcCores), add = TRUE)
 
   container <- .nofContainer(jaspResults)
 
@@ -87,12 +88,12 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 
 # psych::fa.parallel suggests ncomp/nfact by comparing real-data eigenvalues against
 # the 95th percentile (quant = .95 default) of the simulated eigenvalues;
-# NA means all real-data eigenvalues exceed it
+# NA means all real-data eigenvalues exceed it; 0 is a valid suggestion
 .nofParallelSuggested <- function(parallelResult, pcBased) {
   count <- if (pcBased) parallelResult$ncomp else parallelResult$nfact
   if (is.na(count))
     count <- length(if (pcBased) parallelResult$pc.values else parallelResult$fa.values)
-  return(max(1, count))
+  return(count)
 }
 
 

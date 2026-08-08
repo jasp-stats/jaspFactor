@@ -600,8 +600,8 @@ msgid ""
 "Maximizes the variance of squared loadings for each factor, simplifying "
 "interpretations."
 msgstr ""
-"བགོད་གྲངས་རེ་རེའི་ squared loadings གི་འགྱུར་ཚད་ཆེ་ཤོས་བཟོ་བ་དང་། འགྲེལ་བརྗོད་དག་སྟབས་བདེ་བཟོ་བ"
-"།"
+"བགོད་གྲངས་རེ་རེའི་ squared loadings གི་འགྱུར་ཚད་ཆེ་ཤོས་བཟོ་བ་དང་། འགྲེལ་བརྗོད་དག་སྟབས་བདེ་བཟོ་"
+"བ།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -609,8 +609,8 @@ msgid ""
 "Minimizes the number of factors needed to explain each variable, simplifying "
 "structure."
 msgstr ""
-"འགྱུར་ཚད་རེ་རེ་འགྲེལ་བརྗོད་བྱེད་པར་དགོས་པའི་བགོད་གྲངས་ཀྱི་གྲངས་ཉུང་ཤོས་བཟོ་བ་དང་། གྲུབ་ཚུལ་སྟབས་བདེ་བཟོ"
-"་བ།"
+"འགྱུར་ཚད་རེ་རེ་འགྲེལ་བརྗོད་བྱེད་པར་དགོས་པའི་བགོད་གྲངས་ཀྱི་གྲངས་ཉུང་ཤོས་བཟོ་བ་དང་། གྲུབ་ཚུལ་སྟབས་བདེ་"
+"བཟོ་བ།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -667,24 +667,22 @@ msgstr ""
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
-msgstr ""
-"Bentler གྱི་ Oblique འཁོར་བ། བགོད་གྲངས་ཀྱི་ལྟོས་འབྲེལ་དག་སྟབས་བདེ་བཟོ་བ།"
+msgstr "Bentler གྱི་ Oblique འཁོར་བ། བགོད་གྲངས་ཀྱི་ལྟོས་འབྲེལ་དག་སྟབས་བདེ་བཟོ་བ།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
-msgstr ""
-"སྟབས་བདེ་དང་འགྲེལ་བརྗོད་རུང་བའི་བགོད་གྲངས་ཀྱི་ loadings བར་གྱི་ oblique འཁོར་བ་ཞིག"
+msgstr "སྟབས་བདེ་དང་འགྲེལ་བརྗོད་རུང་བའི་བགོད་གྲངས་ཀྱི་ loadings བར་གྱི་ oblique འཁོར་བ་ཞིག"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
 msgstr ""
-"བགོད་གྲངས་དབྱེ་ཞིབ་ཀྱི་ཆེད་དུ་ cluster འཁོར་བ་ཞིག་ལ་དམིགས་པ་དང་། ཚོགས་པའི་དབྱེ་འབྱེད་ལ་ནན་ཏན་བྱེད"
-"་པ།"
+"བགོད་གྲངས་དབྱེ་ཞིབ་ཀྱི་ཆེད་དུ་ cluster འཁོར་བ་ཞིག་ལ་དམིགས་པ་དང་། ཚོགས་པའི་དབྱེ་འབྱེད་ལ་ནན་ཏན་"
+"བྱེད་པ།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -714,8 +712,7 @@ msgstr "ལྟོས་འབྲེལ་གྱི་ matrix"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
-msgstr ""
-"ལྟོས་འབྲེལ་གྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པར་བེད་སྤྱོད་བྱེད།"
+msgstr "ལྟོས་འབྲེལ་གྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པར་བེད་སྤྱོད་བྱེད།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -726,8 +723,7 @@ msgstr "མཉམ་འགྱུར་ཚད་ཀྱི་ matrix"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
-msgstr ""
-"མཉམ་འགྱུར་ཚད་ཀྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པར་བེད་སྤྱོད་བྱེད།"
+msgstr "མཉམ་འགྱུར་ཚད་ཀྱི་ matrix དེ་གཞི་གྲངས་དེ་ཆ་ཤས་/བགོད་གྲངས་སུ་དབྱེ་འབྱེད་བྱེད་པར་བེད་སྤྱོད་བྱེད།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -765,8 +761,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
-msgstr ""
-"derivative དང་པོ་བེད་སྤྱད་ནས་ལྷག་མ་ཆུང་ཤོས་ཀྱི་བགོད་གྲངས་དབྱེ་ཞིབ་ (minres) བྱེད་པ།"
+msgstr "derivative དང་པོ་བེད་སྤྱད་ནས་ལྷག་མ་ཆུང་ཤོས་ཀྱི་བགོད་གྲངས་དབྱེ་ཞིབ་ (minres) བྱེད་པ།"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"

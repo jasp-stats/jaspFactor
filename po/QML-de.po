@@ -344,46 +344,46 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
-msgstr ""
+msgstr "Beginnt mit Varimax und wendet eine Potenztransformation an, um korrelierte Faktoren zu ermöglichen."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
-msgstr ""
+msgstr "Eine oblique Rotation, die die Korrelation zwischen den Faktoren minimiert und dabei Flexibilität zulässt."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
-msgstr ""
+msgstr "Zielt darauf ab, Faktorladungen zu vereinfachen, indem Nichtnull-Einträge minimiert werden."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
-msgstr ""
+msgstr "Oblique Rotation nach Bentler, die Faktorkorrelationen vereinfacht."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
-msgstr ""
+msgstr "Eine oblique Rotation, die zwischen einfachen und interpretierbaren Faktorladungen abwägt."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
-msgstr ""
+msgstr "Zielt auf eine Cluster-Rotation für die Faktoranalyse ab und betont die Trennung der Gruppen."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
-msgstr ""
+msgstr "Eine oblique Version von Geomin, die Faktorkorrelationen zulässt und komplexe Ladungen reduziert."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "Zerlegung basieren auf"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "Worauf die Zerlegung der Daten in Komponenten/Faktoren basieren soll."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -393,7 +393,7 @@ msgstr "Korrelationsmatrix"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "Die Korrelationsmatrix wird verwendet, um die Daten in Komponenten/Faktoren zu zerlegen."
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Covariance matrix"
@@ -422,11 +422,11 @@ msgstr ""
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "Faktorisierungsmethode"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "Welche Faktorisierungsmethode für die Zerlegung verwendet werden soll."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -437,7 +437,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
-msgstr ""
+msgstr "Führen Sie eine Faktoranalyse mit minimalem Residuum (minres) unter Verwendung der ersten Ableitung durch."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -446,7 +446,7 @@ msgstr "Maximum-Likelihood"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "Führen Sie eine Maximum-Likelihood-Faktoranalyse (ml) durch."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -455,7 +455,7 @@ msgstr "Hauptachsenmethode"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "Führen Sie eine Hauptachsen-Faktorlösung (pa) durch."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -466,7 +466,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
-msgstr ""
+msgstr "Minimieren Sie die Residuenmatrix mit einem OLS-Verfahren, langsamer, verwendet aber die empirische erste Ableitung."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -475,7 +475,7 @@ msgstr "Gewichtete kleinste Quadrate"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
-msgstr ""
+msgstr "Führen Sie eine Lösung mit gewichteten kleinsten Quadraten (WLS) durch."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -484,7 +484,7 @@ msgstr "Generalisierte kleinste Quadrate"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "Führen Sie eine Lösung mit generalisierten kleinsten Quadraten (GLS) durch."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -494,7 +494,7 @@ msgstr "Minimum Chi-Quadrat"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
-msgstr ""
+msgstr "Minimieren Sie das stichprobenumfangsgewichtete Chi-Quadrat mithilfe paarweiser Korrelationen."
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -503,7 +503,7 @@ msgstr "Minimum Rang"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "Führen Sie eine Faktoranalyse mit minimalem Rang (minrank) durch."
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -519,15 +519,15 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Here, the number of components/factors that are used in the analysis is "
 "determined. Several methods to determine this number can be chosen from:"
-msgstr ""
+msgstr "Hier wird die Anzahl der in der Analyse verwendeten Komponenten/Faktoren festgelegt. Mehrere Methoden zur Bestimmung dieser Anzahl stehen zur Auswahl:"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
-msgstr ""
+msgstr "Basieren auf"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Parallel analysis"
-msgstr ""
+msgstr "Parallelanalyse"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid ""
@@ -537,7 +537,7 @@ msgid ""
 "be based on principal component eigenvalues (PC) or factor eigenvalues (FA). "
 "A seed (1234) is chosen by default so that the results from the parallel "
 "analysis are equal across the PCA"
-msgstr ""
+msgstr "Komponenten/Faktoren werden auf der Grundlage der Parallelanalyse ausgewählt. Bei dieser Methode werden Faktoren ausgewählt, wenn ihr Eigenwert größer ist als der durchschnittliche parallele Zufallseigenwert. Diese Methode ist standardmäßig ausgewählt. Sie kann auf Hauptkomponenten-Eigenwerten (PC) oder Faktor-Eigenwerten (FA) basieren. Standardmäßig wird ein Seed (1234) gewählt, sodass die Ergebnisse der Parallelanalyse über die PCA hinweg gleich sind"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -558,11 +558,11 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Components are selected when they have a certain eigenvalue. By default "
 "components are selected that have an eigenvalue above 1."
-msgstr ""
+msgstr "Komponenten werden ausgewählt, wenn sie einen bestimmten Eigenwert haben. Standardmäßig werden Komponenten ausgewählt, deren Eigenwert über 1 liegt."
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "Eigenwerte über"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -573,7 +573,7 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "The number of components can be specified manually. By default this is set "
 "to 1."
-msgstr ""
+msgstr "Die Anzahl der Komponenten kann manuell angegeben werden. Standardmäßig ist sie auf 1 gesetzt."
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -592,29 +592,29 @@ msgstr "Ausgabeoptionen"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
-msgstr ""
+msgstr "Zusätzliche Ausgabeoptionen für die PCA/EFA-Analyse."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display loadings above"
-msgstr ""
+msgstr "Ladungen über anzeigen"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
-msgstr ""
+msgstr "Ladungen unterhalb dieses Werts werden nicht in der Ausgabetabelle angezeigt."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Order Loadings By"
-msgstr ""
+msgstr "Ladungen sortieren nach"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Either order the loadings by their size from large to small, or by "
 "variables, meaning according to their occurence in the variables list."
-msgstr ""
+msgstr "Entweder werden die Ladungen nach ihrer Größe von groß nach klein sortiert, oder nach Variablen, d. h. entsprechend ihres Vorkommens in der Variablenliste."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -628,7 +628,7 @@ msgstr "Tabellen"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
-msgstr ""
+msgstr "Zusätzliche Tabellen in der Ausgabe anzeigen."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -639,11 +639,11 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "An item by factor structure matrix. This is just the loadings (pattern) "
 "matrix times the factor intercorrelation matrix."
-msgstr ""
+msgstr "Eine Item-x-Faktor-Strukturmatrix. Dies ist einfach die Ladungs- (Muster-)Matrix multipliziert mit der Faktor-Interkorrelationsmatrix."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Component correlations"
-msgstr ""
+msgstr "Komponentenkorrelationen"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -654,7 +654,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "When selecting this option, a table with the correlations between the "
 "components/factors will be displayed."
-msgstr ""
+msgstr "Wenn diese Option ausgewählt wird, wird eine Tabelle mit den Korrelationen zwischen den Komponenten/Faktoren angezeigt."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -666,19 +666,19 @@ msgid ""
 "This option displays the Root Mean Squared Error of Approximation (RMSEA) "
 "with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
 "Information Criterion (BIC) to test the fit of the model."
-msgstr ""
+msgstr "Diese Option zeigt den Root Mean Squared Error of Approximation (RMSEA) mit 90 %-Konfidenzintervall, den Tucker-Lewis-Index (TLI) und das Bayesianische Informationskriterium (BIC) zur Prüfung der Modellanpassung an."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Residual matrix"
-msgstr ""
+msgstr "Residuenmatrix"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
-msgstr ""
+msgstr "Zeigt eine Tabelle mit den Residuenvarianzen und -korrelationen an."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis"
-msgstr ""
+msgstr "Parallelanalyse"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -686,7 +686,7 @@ msgid ""
 "output of the parallel analysis. Can be based on principal component "
 "eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
 "parallel analysis for determining the number of components/factors above."
-msgstr ""
+msgstr "Wenn diese Option ausgewählt wird, wird eine Tabelle mit einer detaillierten Ausgabe der Parallelanalyse erzeugt. Sie kann auf Hauptkomponenten-Eigenwerten (PC) oder Faktor-Eigenwerten (FA) basieren. Der Seed wird aus der Parallelanalyse zur Bestimmung der oben genannten Anzahl von Komponenten/Faktoren übernommen."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -705,7 +705,7 @@ msgstr "Diagramme"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
-msgstr ""
+msgstr "Diagramme anzeigen."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -716,7 +716,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "By selecting this option, a visual representation of the direction and "
 "strength of the relation between the variable and factor will be displayed."
-msgstr ""
+msgstr "Wenn diese Option ausgewählt wird, wird eine visuelle Darstellung der Richtung und Stärke der Beziehung zwischen der Variable und dem Faktor angezeigt."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -729,18 +729,18 @@ msgid ""
 "provides information on how much variance in the data, indicated by the "
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
-msgstr ""
+msgstr "Wenn diese Option ausgewählt wird, wird ein Screeplot angezeigt. Der Screeplot liefert Informationen darüber, wie viel Varianz in den Daten, angegeben durch den Eigenwert, von jedem Faktor erklärt wird. Ein Screeplot kann verwendet werden, um zu entscheiden, wie viele Faktoren ausgewählt werden sollten."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Parallel analysis results"
-msgstr ""
+msgstr "Ergebnisse der Parallelanalyse"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Display the results of the parallel analysis in the scree plot. The parallel "
 "analysis will be based on PC or FA as defined by the option for the parallel "
 "analysis table."
-msgstr ""
+msgstr "Zeigt die Ergebnisse der Parallelanalyse im Screeplot an. Die Parallelanalyse basiert auf PC oder FA, wie durch die Option für die Parallelanalyse-Tabelle festgelegt."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -751,7 +751,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Assumptions: The variables included in the analysis are correlated; the "
 "variables included in the analysis are linearly related (Shlens, 2014)"
-msgstr ""
+msgstr "Annahmen: Die in die Analyse aufgenommenen Variablen sind korreliert; die in die Analyse aufgenommenen Variablen sind linear miteinander verbunden (Shlens, 2014)"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -764,7 +764,7 @@ msgid ""
 "the proportion of common variance between variables. Produces a measure of "
 "sampling adequacy (MSA) as the proportion of common variance among variables "
 "is computed for all variables; values closer to 1 are desired."
-msgstr ""
+msgstr "Bestimmt, wie gut Variablen für die Faktoranalyse geeignet sind, indem der Anteil der gemeinsamen Varianz zwischen den Variablen berechnet wird. Erzeugt ein Maß der Stichprobeneignung (MSA), da der Anteil der gemeinsamen Varianz für alle Variablen berechnet wird; Werte nahe 1 sind erwünscht."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -776,7 +776,7 @@ msgid ""
 "Determines if the data correlation matrix is the identity matrix, meaning, "
 "if the variables are related or not. A significant result means the "
 "correlation matrix is unlike the identity matrix."
-msgstr ""
+msgstr "Bestimmt, ob die Korrelationsmatrix der Daten die Identitätsmatrix ist, d. h., ob die Variablen miteinander in Beziehung stehen oder nicht. Ein signifikantes Ergebnis bedeutet, dass sich die Korrelationsmatrix von der Identitätsmatrix unterscheidet."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -788,11 +788,11 @@ msgid ""
 "Assesses the degree of the departure from multivariate normality of the "
 "included variables in terms of multivariate skewness and kurtosis. The "
 "Mardia's test will always include the listwise complete cases."
-msgstr ""
+msgstr "Bewertet das Ausmaß der Abweichung von der multivariaten Normalität der aufgenommenen Variablen hinsichtlich multivariater Schiefe und Kurtosis. Der Mardia-Test wird immer die listenweise vollständigen Fälle einbeziehen."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr ""
+msgstr "Anti-Image-Korrelationsmatrix"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -800,7 +800,7 @@ msgid ""
 "accounting for the effects of all other variables in the dataset. High "
 "values in the anti-image correlation matrix indicate that a variable might "
 "be redundant or have too much shared variance with other variables."
-msgstr ""
+msgstr "Enthält die negativen partiellen Korrelationen zwischen Variablenpaaren nach Berücksichtigung der Effekte aller anderen Variablen im Datensatz. Hohe Werte in der Anti-Image-Korrelationsmatrix weisen darauf hin, dass eine Variable redundant sein könnte oder zu viel gemeinsame Varianz mit anderen Variablen hat."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -809,7 +809,7 @@ msgstr "Fehlende Werte"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
-msgstr ""
+msgstr "Wählen Sie aus, wie mit fehlenden Werten verfahren werden soll."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -822,7 +822,7 @@ msgid ""
 "observations from the same case will still be used for the analysis. In this "
 "scenario, it is not necessary to have an observation for all the variables "
 "to include the case in the analysis. This option is selected by default."
-msgstr ""
+msgstr "Wenn eine Beobachtung einer Variable fehlt, werden alle anderen Variablenbeobachtungen desselben Falls weiterhin für die Analyse verwendet. In diesem Szenario ist es nicht notwendig, für alle Variablen eine Beobachtung zu haben, um den Fall in die Analyse aufzunehmen. Diese Option ist standardmäßig ausgewählt."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -835,7 +835,7 @@ msgid ""
 "other connected variable observations, will be dismissed from the analysis. "
 "In this scenario, observations for every variable are needed to include the "
 "case in the analysis. "
-msgstr ""
+msgstr "Wenn eine Beobachtung einer Variable fehlt, wird der gesamte Fall, also alle anderen verbundenen Variablenbeobachtungen, aus der Analyse ausgeschlossen. In diesem Szenario sind Beobachtungen für jede Variable erforderlich, um den Fall in die Analyse aufzunehmen."
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -844,25 +844,25 @@ msgstr "PC-Scores zu Daten hinzufügen"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Add FA scores to data"
-msgstr ""
+msgstr "FA-Scores zu Daten hinzufügen"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Adds the estimated component/factor scores as new columns to the data set. "
 "The scores are regression scores."
-msgstr ""
+msgstr "Fügt die geschätzten Komponenten-/Faktor-Scores als neue Spalten zum Datensatz hinzu. Die Scores sind Regressionsscores."
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Prefix"
-msgstr ""
+msgstr "Präfix"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "PC"
-msgstr ""
+msgstr "PC"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
-msgstr ""
+msgstr "FA"
 
 #, fuzzy
 msgctxt "PcaEfaVariables|"
@@ -871,332 +871,332 @@ msgstr "Variablen"
 
 msgctxt "PcaEfaVariables|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "In diesem Feld werden die Variablen ausgewählt, mit denen die Analyse durchgeführt werden soll."
 
 msgctxt "PcaEfaVariables|"
 msgid "Data Type"
-msgstr ""
+msgstr "Datentyp"
 
 msgctxt "PcaEfaVariables|"
 msgid ""
 "Specifies whether the data is raw, meaning observations in rows and "
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
-msgstr ""
+msgstr "Gibt an, ob die Daten rohe Daten sind, d. h. Beobachtungen in Zeilen und Variablen in Spalten, oder ob die Daten eine Varianz-Kovarianz-Matrix sind. Für Letzteres ist der Stichprobenumfang erforderlich."
 
 msgctxt "PcaEfaVariables|"
 msgid "Raw"
-msgstr ""
+msgstr "Rohe Daten"
 
 msgctxt "PcaEfaVariables|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "Varianz-Kovarianz-Matrix"
 
 msgctxt "PcaEfaVariables|"
 msgid "Sample size"
-msgstr ""
+msgstr "Stichprobenumfang"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data Type"
-msgstr ""
+msgstr "Datentyp"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "Rohe Daten"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "Varianz-Kovarianz-Matrix"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "Stichprobenumfang"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Fix mean of manifest intercepts to zero"
-msgstr ""
+msgstr "Mittelwert der manifesten Achsenabschnitte auf null fixieren"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Model identification"
-msgstr ""
+msgstr "Modellidentifikation"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Structural"
-msgstr ""
+msgstr "Strukturell"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Kaiser-Meyer-Olkin (KMO) test"
-msgstr ""
+msgstr "Kaiser-Meyer-Olkin-Test (KMO)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bartlett's test of sphericity"
-msgstr ""
+msgstr "Bartlett-Test auf Sphärizität"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Average variance extracted (AVE)"
-msgstr ""
+msgstr "Durchschnittlich extrahierte Varianz (AVE)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Heterotrait-monotrait ratio (HTMT)"
-msgstr ""
+msgstr "Heterotrait-Monotrait-Verhältnis (HTMT)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Reliability"
-msgstr ""
+msgstr "Reliabilität"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show parameter estimates"
-msgstr ""
+msgstr "Parameterschätzungen anzeigen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Font size"
-msgstr ""
+msgstr "Schriftgröße"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Show variances"
-msgstr ""
+msgstr "Varianzen anzeigen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Rotate plot"
-msgstr ""
+msgstr "Diagramm drehen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr ""
+msgstr "Nachbilden"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Lavaan"
-msgstr ""
+msgstr "Lavaan"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator\t             "
-msgstr ""
+msgstr "Schätzer\t             "
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
-msgstr ""
+msgstr "DLS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "PML"
-msgstr ""
+msgstr "PML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLM"
-msgstr ""
+msgstr "MLM"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMV"
-msgstr ""
+msgstr "MLMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMVS"
-msgstr ""
+msgstr "MLMVS"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLF"
-msgstr ""
+msgstr "MLF"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLR"
-msgstr ""
+msgstr "MLR"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSM"
-msgstr ""
+msgstr "WLSM"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSMV"
-msgstr ""
+msgstr "WLSMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSM"
-msgstr ""
+msgstr "ULSM"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSMV"
-msgstr ""
+msgstr "ULSMV"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"
-msgstr ""
+msgstr "Für weitere Informationen klicken"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard errors"
-msgstr ""
+msgstr "Standardfehler"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     Bootstrap samples"
-msgstr ""
+msgstr "     Bootstrap-Stichproben"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     CI level"
-msgstr ""
+msgstr "     KI-Niveau"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Missing data handling"
-msgstr ""
+msgstr "Behandlung fehlender Daten"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Listwise deletion"
-msgstr ""
+msgstr "Listenweise Löschung"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Pairwise"
-msgstr ""
+msgstr "Paarweise"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FIML"
-msgstr ""
+msgstr "FIML"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Two-stage"
-msgstr ""
+msgstr "Zweistufig"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Robust two-stage"
-msgstr ""
+msgstr "Robust zweistufig"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "No Exogenous Covariates"
-msgstr ""
+msgstr "Keine exogenen Kovariaten"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add factor scores to data"
-msgstr ""
+msgstr "Faktor-Scores zu Daten hinzufügen"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
-msgstr ""
+msgstr "Fügt die geschätzten Faktor-Scores als neue Spalten zum Datensatz hinzu"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Prefix"
-msgstr ""
+msgstr "Präfix"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FS"
-msgstr ""
+msgstr "FS"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "In diesem Feld werden die Variablen ausgewählt, mit denen die Analyse durchgeführt werden soll."
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "Daten"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
 "Specifies whether the data is raw, meaning observations in rows and "
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
-msgstr ""
+msgstr "Gibt an, ob die Daten rohe Daten sind, d. h. Beobachtungen in Zeilen und Variablen in Spalten, oder ob die Daten eine Varianz-Kovarianz-Matrix sind. Für Letzteres ist der Stichprobenumfang erforderlich."
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "Rohe Daten"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "Varianz-Kovarianz-Matrix"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "Stichprobenumfang"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "In diesem Feld werden die Variablen ausgewählt, mit denen die Analyse durchgeführt werden soll."
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "Daten"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid ""
 "Specifies whether the data is raw, meaning observations in rows and "
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
-msgstr ""
+msgstr "Gibt an, ob die Daten rohe Daten sind, d. h. Beobachtungen in Zeilen und Variablen in Spalten, oder ob die Daten eine Varianz-Kovarianz-Matrix sind. Für Letzteres ist der Stichprobenumfang erforderlich."
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "Rohe Daten"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "Varianz-Kovarianz-Matrix"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "Stichprobenumfang"
 
 msgctxt "Description|"
 msgid "Latent Class Analysis"
-msgstr ""
+msgstr "Latente Klassenanalyse"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Indicators"
-msgstr ""
+msgstr "Indikatoren"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Categorical indicator variables for the latent class model. At least two "
 "indicators are required."
-msgstr ""
+msgstr "Kategoriale Indikatorvariablen für das Modell der latenten Klassen. Mindestens zwei Indikatoren sind erforderlich."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum number of classes"
-msgstr ""
+msgstr "Maximale Anzahl von Klassen"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Models with 1, 2, …, K classes are fitted and compared."
-msgstr ""
+msgstr "Modelle mit 1, 2, …, K Klassen werden angepasst und verglichen."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Estimation Options"
-msgstr ""
+msgstr "Schätzoptionen"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of random starts"
-msgstr ""
+msgstr "Anzahl zufälliger Starts"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Number of times the EM algorithm is run with different random starting "
 "values. The run with the highest log-likelihood is returned."
-msgstr ""
+msgstr "Wie oft der EM-Algorithmus mit verschiedenen zufälligen Startwerten ausgeführt wird. Der Lauf mit der höchsten Log-Likelihood wird zurückgegeben."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations"
-msgstr ""
+msgstr "Maximale Iterationen"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations for the EM algorithm."
-msgstr ""
+msgstr "Maximale Iterationen für den EM-Algorithmus."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Missing values"
-msgstr ""
+msgstr "Fehlende Werte"
 
 msgctxt "LatentClassAnalysis|"
 msgid "How to handle rows with missing values on any indicator."
-msgstr ""
+msgstr "Wie mit Zeilen mit fehlenden Werten bei einem Indikator umgegangen werden soll."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Include"
-msgstr ""
+msgstr "Einbeziehen"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Listwise deletion"
-msgstr ""
+msgstr "Listenweise Löschung"
 
 #, fuzzy
 msgctxt "LatentClassAnalysis|"
@@ -1210,13 +1210,13 @@ msgstr "Tabellen"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Item-response probabilities"
-msgstr ""
+msgstr "Item-Response-Wahrscheinlichkeiten"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a table of item-response probabilities for each indicator and latent "
 "class."
-msgstr ""
+msgstr "Zeigt eine Tabelle der Item-Response-Wahrscheinlichkeiten für jeden Indikator und jede latente Klasse an."
 
 #, fuzzy
 msgctxt "LatentClassAnalysis|"
@@ -1227,73 +1227,73 @@ msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a grouped bar chart of item-response probabilities, with one panel per "
 "latent class."
-msgstr ""
+msgstr "Zeigt ein gruppiertes Balkendiagramm der Item-Response-Wahrscheinlichkeiten mit einem Feld pro latenter Klasse an."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Rotate x-axis labels 45°"
-msgstr ""
+msgstr "X-Achsen-Beschriftungen um 45° drehen"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Rotate the indicator names on the x-axis by 45 degrees to prevent "
 "overlapping."
-msgstr ""
+msgstr "Dreht die Indikatornamen auf der X-Achse um 45 Grad, um Überlappungen zu vermeiden."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Show levels legend"
-msgstr ""
+msgstr "Legende für Stufen anzeigen"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a legend on the right indicating the color for each response category "
 "level."
-msgstr ""
+msgstr "Zeigt rechts eine Legende an, die die Farbe für jede Stufe der Antwortkategorien angibt."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Save to Data"
-msgstr ""
+msgstr "In Daten speichern"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of classes"
-msgstr ""
+msgstr "Anzahl der Klassen"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Which fitted model's results to save."
-msgstr ""
+msgstr "Deren Ergebnisse des angepassten Modells gespeichert werden sollen."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class probabilities"
-msgstr ""
+msgstr "Klassenwahrscheinlichkeiten"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves K columns of posterior class-membership probabilities (one per class) "
 "to the dataset."
-msgstr ""
+msgstr "Speichert K Spalten der posterioren Klassenmitgliedschafts-Wahrscheinlichkeiten (eine pro Klasse) im Datensatz."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column prefix"
-msgstr ""
+msgstr "Spaltenpräfix"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Columns are named prefix_C1, prefix_C2, …"
-msgstr ""
+msgstr "Spalten sind mit prefix_C1, prefix_C2, … benannt."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class classification"
-msgstr ""
+msgstr "Klassenklassifikation"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves the modal class assignment for each observation as a new nominal "
 "column."
-msgstr ""
+msgstr "Speichert die Modus-Klassen-Zuordnung für jede Beobachtung als neue nominale Spalte."
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column name"
-msgstr ""
+msgstr "Spaltenname"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Name of the column holding the most-likely class label for each observation."
-msgstr ""
+msgstr "Name der Spalte, die die wahrscheinlichste Klassenbezeichnung für jede Beobachtung enthält."

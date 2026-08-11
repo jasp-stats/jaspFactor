@@ -568,22 +568,22 @@ msgid ""
 "classes (lower is better). G² is the likelihood-ratio goodness-of-fit "
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
-msgstr ""
+msgstr "Anpassungsstatistiken für jedes Modell. AIC und BIC bestrafen die Log-Likelihood für die Modellkomplexität und können verwendet werden, um Modelle mit unterschiedlicher Klassenanzahl zu vergleichen (niedriger ist besser). G² ist die Likelihood-Quotienten-Anpassungsstatistik; ein nicht-signifikanter p-Wert weist auf eine angemessene Anpassung hin, obwohl dieser Test empfindlich auf spärlich besetzte Zellen und kleine Stichproben reagiert."
 
 msgid "Classes"
-msgstr ""
+msgstr "Klassen"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d Klassen"
 
 msgid "Class Prevalences"
-msgstr ""
+msgstr "Klassen-Prävalenzen"
 
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
@@ -592,45 +592,45 @@ msgid ""
 "observations assigned to each class by their highest posterior probability; "
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
-msgstr ""
+msgstr "Geschätzte Größen der latenten Klassen. Der Anteil ist das modellgeschätzte Mischungsgewicht (die Wahrscheinlichkeit, dass eine zufällig gezogene Beobachtung zu jeder Klasse gehört) mit seinem Standardfehler. Der Modusanteil ist der Anteil der Beobachtungen, die jeder Klasse durch ihre höchste Posterioren-Wahrscheinlichkeit zugeordnet werden; er kann vom Modellantteil abweichen, weil die Modus-Zuordnung das kontinuierliche Posterior diskretisiert."
 
 msgid "Class"
-msgstr ""
+msgstr "Klasse"
 
 #, fuzzy
 msgid "Proportion"
 msgstr "Anteilsvariable"
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Modal proportion"
-msgstr ""
+msgstr "Modusanteil"
 
 msgid "Class %d"
-msgstr ""
+msgstr "Klasse %d"
 
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "Item-Response-Wahrscheinlichkeiten"
 
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
-msgstr ""
+msgstr "Geschätzte Wahrscheinlichkeit jeder Antwortkategorie für jeden Indikator, konditional auf die Klassenzugehörigkeit. Jede Zeile ist eine latente Klasse; jede Spalte ist eine Antwortkategorie des Indikators. Die Wahrscheinlichkeiten innerhalb einer Zeile summieren sich zu 1."
 
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
 "latent class; bars within each panel show the probability of each response "
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
-msgstr ""
+msgstr "Gruppiertes Balkendiagramm der Item-Response-Wahrscheinlichkeiten. Jedes Feld zeigt eine latente Klasse; Balken innerhalb jedes Felds zeigen die Wahrscheinlichkeit jeder Antwortkategorie für jeden Indikator. Höhere Balken weisen auf Antwortkategorien hin, die für diese Klasse charakteristischer sind."
 
 msgid "Probability"
 msgstr "Wahrscheinlichkeit"
 
 msgid "Level"
-msgstr ""
+msgstr "Stufe"
 
 #, fuzzy
 msgid "Column '%s' already exists in the dataset."

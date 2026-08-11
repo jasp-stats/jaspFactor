@@ -1089,7 +1089,7 @@ msgstr "欄位名稱的頭文字"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FS"
-msgstr ""
+msgstr "FS"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"

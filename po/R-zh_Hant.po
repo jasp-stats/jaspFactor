@@ -545,10 +545,10 @@ msgid "Classes"
 msgstr "類別數"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
 msgstr "%d 個類別"

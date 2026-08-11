@@ -29,7 +29,7 @@ msgstr "模型无法估计。在二阶中添加了少于 2 个变量的因子。
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
+msgstr "个案数不超过变量数。您的数据是方差-协方差矩阵吗？"
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr "FIML 缺失数据处理仅适用于 ML 类型的估计器"
@@ -38,7 +38,7 @@ msgid ""
 "Robust standard errors are not available with the GLS estimator. Try "
 "changing the standard error method in the 'Advanced' settings to fit the "
 "model."
-msgstr ""
+msgstr "GLS 估计器不支持稳健标准误。请尝试更改“高级”设置中的标准误方法以拟合模型。"
 
 msgid ""
 "Missing data handling '%s' is not supported for categorical data. \n"
@@ -67,12 +67,12 @@ msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "无法估计模型：没有剩余的自由度。"
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
-msgstr ""
+msgstr "自助法不适用于方差-协方差矩阵输入。"
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
-msgstr ""
+msgstr "方差-协方差矩阵输入不支持稳健标准误。"
 
 #, fuzzy
 msgid "# Factors"
@@ -100,12 +100,12 @@ msgid "Factor model"
 msgstr "因子模型"
 
 msgid "%s You may consider changing the standard error method to 'robust'."
-msgstr ""
+msgstr "%s 您可以考虑将标准误方法更改为 'robust'。"
 
 msgid ""
 "%1$s The estimator is %2$s. The test statistic is %3$s. The standard error "
 "method is %4$s."
-msgstr ""
+msgstr "%1$s 估计器为 %2$s。检验统计量为 %3$s。标准误方法为 %4$s。"
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin (KMO) 检验"
@@ -210,19 +210,19 @@ msgstr "期望复核指数 (ECVI)"
 msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
-msgstr ""
+msgstr "除 PNFI 外，由于数据中的分类变量，拟合指数已被缩放。"
 
 msgid ""
 "Except for the PNFI, the fit indices are scaled because a robust estimator "
 "was used."
-msgstr ""
+msgstr "除 PNFI 外，由于使用了稳健估计器，拟合指数已被缩放。"
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
-msgstr ""
+msgstr "由于数据中的分类变量，RMSEA 结果已被缩放。"
 
 msgid "The RMSEA results are scaled because a robust estimator was used."
-msgstr ""
+msgstr "由于使用了稳健估计器，RMSEA 结果已被缩放。"
 
 msgid "Parameter estimates"
 msgstr "参数估计"
@@ -240,7 +240,7 @@ msgid "Factor loadings"
 msgstr "因子载荷"
 
 msgid "Group"
-msgstr ""
+msgstr "组"
 
 msgid "Factor"
 msgstr "因子"
@@ -285,10 +285,10 @@ msgid "Intercepts"
 msgstr "截距"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "阈值"
 
 msgid "Threshold"
-msgstr ""
+msgstr "阈值"
 
 msgid "Modification Indices"
 msgstr "修正指数"
@@ -310,7 +310,7 @@ msgid "Modification indices"
 msgstr "修正指数"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "没有超过临界值的修正指数"
 
 msgid "Implied covariance matrices"
 msgstr "隐含协方差矩阵"
@@ -343,22 +343,22 @@ msgid "Model syntax"
 msgstr "模型语法"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "平均方差提取"
 
 msgid "AVE"
-msgstr ""
+msgstr "平均方差提取量"
 
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "异质-单质比率 (HTMT)"
 
 msgid "Reliability"
-msgstr ""
+msgstr "信度"
 
 msgid "Coefficient %s"
-msgstr ""
+msgstr "系数 %s"
 
 msgid "Column name %s already exists in the dataset"
-msgstr ""
+msgstr "列名 %s 已存在于数据集中"
 
 #, fuzzy
 msgid ""
@@ -426,7 +426,7 @@ msgid ""
 msgstr "偏度的统计量假定为 Chi^2 分布，峰度标准正态的统计量。"
 
 msgid "Anti-Image Correlation Matrix"
-msgstr ""
+msgstr "反像相关矩阵"
 
 #, fuzzy
 msgid "Chi-Squared Test"
@@ -550,21 +550,22 @@ msgid ""
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
 msgstr ""
+"每个模型的拟合统计量。AIC 和 BIC 会对模型复杂度惩罚对数似然，可用于比较具有不同类别数量的模型（越低越好）。G² 是似然比拟合优度统计量；非显著的 p 值表明拟合良好，但该检验对稀疏单元格和小样本较为敏感。"
 
 msgid "Classes"
-msgstr ""
+msgstr "类别"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d 个类别"
 
 msgid "Class Prevalences"
-msgstr ""
+msgstr "类别流行率"
 
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
@@ -574,9 +575,10 @@ msgid ""
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
 msgstr ""
+"潜在类别的估计规模。比例是模型估计的混合权重（随机抽取的观测属于每个类别的概率），并带有其标准误。众数比例是通过最高后验概率分配到每个类别的观测比例；由于众数分配离散化了连续后验，它可能与模型比例不同。"
 
 msgid "Class"
-msgstr ""
+msgstr "类别"
 
 #, fuzzy
 msgid "Proportion"
@@ -586,19 +588,20 @@ msgid "SE"
 msgstr "标准误"
 
 msgid "Modal proportion"
-msgstr ""
+msgstr "众数比例"
 
 msgid "Class %d"
-msgstr ""
+msgstr "类别 %d"
 
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "项目-反应概率"
 
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
 msgstr ""
+"在给定类别归属条件下，每个指标各反应类别的估计概率。每行为一个潜在类别；每列为指标的一个反应类别。每行内概率之和为 1。"
 
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
@@ -606,28 +609,29 @@ msgid ""
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
 msgstr ""
+"项目-反应概率的分组条形图。每个面板显示一个潜在类别；每块面板中的条形显示每个指标各反应类别的概率。较高的条形表示该类别更具特征性的反应类别。"
 
 msgid "Probability"
-msgstr ""
+msgstr "概率"
 
 msgid "Level"
-msgstr ""
+msgstr "水平"
 
 msgid "Column '%s' already exists in the dataset."
-msgstr ""
+msgstr "列“%s”已存在于数据集中。"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
-msgstr ""
+msgstr "输入数据似乎不是方阵！请检查输入数据的格式。"
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
 "of the input data and possibly the order of the variables."
-msgstr ""
+msgstr "输入数据似乎不是对称矩阵！请检查输入数据的格式以及变量的可能顺序。"
 
 msgid "All cells must be numeric."
-msgstr ""
+msgstr "所有单元格必须为数值。"
 
 #, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"

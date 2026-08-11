@@ -333,133 +333,133 @@ msgstr "结构"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "原始数据"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "方差-协方差矩阵"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本量"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Mimic"
-msgstr ""
+msgstr "模仿"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "DLS"
-msgstr ""
+msgstr "对角最小二乘法 (DLS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "PML"
-msgstr ""
+msgstr "成对极大似然法 (PML)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLM"
-msgstr ""
+msgstr "均值结构最大似然 (MLM)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMV"
-msgstr ""
+msgstr "均值结构最大似然方差 (MLMV)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLMVS"
-msgstr ""
+msgstr "均值结构最大似然方差显著 (MLMVS)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLF"
-msgstr ""
+msgstr "对数似然全贝叶斯 (MLF)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "MLR"
-msgstr ""
+msgstr "稳健最大似然 (MLR)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSM"
-msgstr ""
+msgstr "均值结构加权最小二乘 (WLSM)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "WLSMV"
-msgstr ""
+msgstr "均值结构方差加权最小二乘 (WLSMV)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSM"
-msgstr ""
+msgstr "均值结构无加权最小二乘 (ULSM)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "ULSMV"
-msgstr ""
+msgstr "均值结构方差无加权最小二乘 (ULSMV)"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Click for more information"
-msgstr ""
+msgstr "单击以了解更多信息"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Standard errors"
-msgstr ""
+msgstr "标准误"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     Bootstrap samples"
-msgstr ""
+msgstr "     自助法样本"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "     CI level"
-msgstr ""
+msgstr "     置信水平"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "数据"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "原始数据"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "方差-协方差矩阵"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本量"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Data"
-msgstr ""
+msgstr "数据"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Raw"
-msgstr ""
+msgstr "原始数据"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "方差-协方差矩阵"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本量"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Analysis Options"
-msgstr ""
+msgstr "分析选项"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Here, options for the analysis can be specified."
-msgstr ""
+msgstr "在此处可指定分析的选项。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Rotation Method"
-msgstr ""
+msgstr "旋转方法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Here, the rotation method to apply to the components can be specified. "
 "Rotation ensures a simpler understanding of the data structure."
-msgstr ""
+msgstr "在此处可指定应用于成分的旋转方法。旋转确保对数据结构有更简单的理解。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -470,7 +470,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "This method produces components that are uncorrelated. For this method, "
 "there are several possibilities that can be selected."
-msgstr ""
+msgstr "此方法产生不相关的成分。此方法有若干可选的可能性。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -479,35 +479,35 @@ msgstr "无"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "No rotation method is selected."
-msgstr ""
+msgstr "未选择旋转方法。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Maximizes the variance of squared loadings for each factor, simplifying "
 "interpretations."
-msgstr ""
+msgstr "最大化每个因子平方载荷的方差，简化解释。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimizes the number of factors needed to explain each variable, simplifying "
 "structure."
-msgstr ""
+msgstr "最小化解释每个变量所需的因子数量，简化结构。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Orthogonal rotation method by Bentler, used for simplifying factor loadings."
-msgstr ""
+msgstr "Bentler 提出的正交旋转方法，用于简化因子载荷。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Combines Varimax and Quartimax to balance factor simplicity and variable "
 "explanations."
-msgstr ""
+msgstr "结合 Varimax 和 Quartimax，在因子简单性与变量解释之间取得平衡。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Applies an orthogonal rotation minimizing a weighted sum of squared loadings."
-msgstr ""
+msgstr "应用最小化平方载荷加权和的正交旋转。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -519,52 +519,52 @@ msgid ""
 "This method produces components that allow for correlation between the "
 "components. This method is selected by default. Several possibilities are "
 "available. The default is promax."
-msgstr ""
+msgstr "此方法产生允许成分之间相关的成分。此方法为默认选择。有若干可能性可用。默认为 promax。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Starts with Varimax and applies a power transformation to allow correlated "
 "factors."
-msgstr ""
+msgstr "从 Varimax 出发并应用幂变换，以允许因子相关。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation that minimizes the correlation among factors while "
 "allowing flexibility."
-msgstr ""
+msgstr "一种在允许灵活性的同时最小化因子间相关的斜交旋转。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Aims to simplify factor loadings by minimizing nonzero entries."
-msgstr ""
+msgstr "旨在通过最小化非零条目来简化因子载荷。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Oblique rotation by Bentler, simplifying factor correlations."
-msgstr ""
+msgstr "Bentler 提出的斜交旋转，简化因子相关。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique rotation balancing between simple and interpretable factor "
 "loadings."
-msgstr ""
+msgstr "一种在简单且可解释的因子载荷之间取得平衡的斜交旋转。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Targets a cluster rotation for factor analysis, emphasizing group separation."
-msgstr ""
+msgstr "针对因子分析进行聚类旋转，强调组间分离。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "An oblique version of Geomin, allowing factor correlations and reducing "
 "complex loadings."
-msgstr ""
+msgstr "Geomin 的斜交版本，允许因子相关并减少复杂载荷。"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Base Decomposition on"
-msgstr ""
+msgstr "分解依据"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "What to base the decomposition of the data into components/factors on."
-msgstr ""
+msgstr "将数据分解为成分/因子所依据的内容。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -574,7 +574,7 @@ msgstr "相关矩阵"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The correlation matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "使用相关矩阵将数据分解为成分/因子。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -584,7 +584,7 @@ msgstr "协方差矩阵"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "The covariance matrix is used to decompose the data into components/factors."
-msgstr ""
+msgstr "使用协方差矩阵将数据分解为成分/因子。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -597,14 +597,15 @@ msgid ""
 "into components/factors. This is sometimes unstable when sample size is "
 "small and when some variables do not contain all response categories"
 msgstr ""
+"使用多分格/四格相关矩阵将数据分解为成分/因子。当样本量较小以及某些变量未包含所有反应类别时，该方法有时不稳定"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Factoring Method"
-msgstr ""
+msgstr "因子分解方法"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Which factoring method to use for the decomposition."
-msgstr ""
+msgstr "分解所使用的因子分解方法。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -615,7 +616,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Perform a minimum residual factor analysis (minres) using the first "
 "derivative."
-msgstr ""
+msgstr "使用一阶导数的执行最小残差因子分析 (minres)。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -624,7 +625,7 @@ msgstr "最大似然(ML)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a maximum likelihood factor analysis (ml)."
-msgstr ""
+msgstr "执行最大似然因子分析 (ml)。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -633,7 +634,7 @@ msgstr "主轴因子法(PA)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a principal factor solution (pa)."
-msgstr ""
+msgstr "执行主轴因子解 (pa)。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -644,7 +645,7 @@ msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the residual matrix using an OLS procedure, slower but uses the "
 "empirical first derivative."
-msgstr ""
+msgstr "使用 OLS 程序最小化残差矩阵，较慢但使用经验一阶导数。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -653,7 +654,7 @@ msgstr "加权最小二乘(wls)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a weighted least squares (WLS) solution."
-msgstr ""
+msgstr "执行加权最小二乘 (WLS) 解。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -662,7 +663,7 @@ msgstr "广义最小二(gls)"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a generalized least squares (GLS) solution."
-msgstr ""
+msgstr "执行广义最小二乘 (GLS) 解。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -672,7 +673,7 @@ msgstr "最小卡方"
 msgctxt "PcaEfaAnalysisOptions|"
 msgid ""
 "Minimize the sample size-weighted chi-square using pairwise correlations."
-msgstr ""
+msgstr "使用成对相关最小化样本量加权的卡方值。"
 
 #, fuzzy
 msgctxt "PcaEfaAnalysisOptions|"
@@ -681,25 +682,25 @@ msgstr "最小rank"
 
 msgctxt "PcaEfaAnalysisOptions|"
 msgid "Perform a minimum rank factor analysis (minrank)."
-msgstr ""
+msgstr "执行最小秩因子分析 (minrank)。"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Components"
-msgstr ""
+msgstr "成分数量"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Number of Factors"
-msgstr ""
+msgstr "因子数量"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Here, the number of components/factors that are used in the analysis is "
 "determined. Several methods to determine this number can be chosen from:"
-msgstr ""
+msgstr "在此处确定分析中使用的成分/因子数量。可选择若干方法来确定此数量："
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Based on"
-msgstr ""
+msgstr "基于"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -715,6 +716,7 @@ msgid ""
 "A seed (1234) is chosen by default so that the results from the parallel "
 "analysis are equal across the PCA"
 msgstr ""
+"基于平行分析选择成分/因子。使用此方法时，当因子的特征值大于平行平均随机特征值时即被选择。此方法为默认选择。可基于主成分特征值 (PC) 或因子特征值 (FA)。默认选择种子 (1234)，使各 PCA 的平行分析结果一致"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -735,11 +737,11 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "Components are selected when they have a certain eigenvalue. By default "
 "components are selected that have an eigenvalue above 1."
-msgstr ""
+msgstr "当成分具有某一特征值时被选择。默认选择特征值高于 1 的成分。"
 
 msgctxt "PcaEfaNumberFactors|"
 msgid "Eigenvalues above"
-msgstr ""
+msgstr "特征值高于"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -750,7 +752,7 @@ msgctxt "PcaEfaNumberFactors|"
 msgid ""
 "The number of components can be specified manually. By default this is set "
 "to 1."
-msgstr ""
+msgstr "可以手动指定成分数量。默认设置为 1。"
 
 #, fuzzy
 msgctxt "PcaEfaNumberFactors|"
@@ -769,7 +771,7 @@ msgstr "输出选项"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Additional output options for the PCA/EFA analysis."
-msgstr ""
+msgstr "PCA/EFA 分析的附加输出选项。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -778,21 +780,21 @@ msgstr "显示载荷高于："
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Loadings below this value will not be displayed in the output table."
-msgstr ""
+msgstr "低于此值的载荷将不会显示在输出表中。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Order Loadings By"
-msgstr ""
+msgstr "载荷排序方式"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Either order the loadings by their size from large to small, or by "
 "variables, meaning according to their occurence in the variables list."
-msgstr ""
+msgstr "可按大小从大到小排序载荷，或按变量排序，即按照它们在变量列表中的出现顺序。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Size"
-msgstr ""
+msgstr "大小"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -801,11 +803,11 @@ msgstr "变量"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Tables"
-msgstr ""
+msgstr "表格"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display addition tables in the output."
-msgstr ""
+msgstr "在输出中显示附加表格。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -816,7 +818,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "An item by factor structure matrix. This is just the loadings (pattern) "
 "matrix times the factor intercorrelation matrix."
-msgstr ""
+msgstr "条目乘因子结构矩阵。这仅由载荷（模式）矩阵乘以因子相互相关矩阵得到。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -832,7 +834,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "When selecting this option, a table with the correlations between the "
 "components/factors will be displayed."
-msgstr ""
+msgstr "选择此选项后，将显示一个包含成分/因子之间相关的表格。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -844,7 +846,7 @@ msgid ""
 "This option displays the Root Mean Squared Error of Approximation (RMSEA) "
 "with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian "
 "Information Criterion (BIC) to test the fit of the model."
-msgstr ""
+msgstr "此选项显示近似误差均方根 (RMSEA) 及其 90% 置信区间、Tucker Lewis 指数 (TLI) 和贝叶斯信息准则 (BIC)，以检验模型的拟合。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -853,7 +855,7 @@ msgstr "残差矩阵"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Displays a table containing the residual variances and correlations."
-msgstr ""
+msgstr "显示一个包含残差方差和残差相关的表格。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -866,7 +868,7 @@ msgid ""
 "output of the parallel analysis. Can be based on principal component "
 "eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the "
 "parallel analysis for determining the number of components/factors above."
-msgstr ""
+msgstr "如果选择此选项，将生成一个表格，展示平行分析的详细输出。可基于主成分特征值 (PC) 或因子特征值 (FA)。种子取自上述用于确定成分/因子数量的平行分析。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -885,7 +887,7 @@ msgstr "绘图"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Display plots."
-msgstr ""
+msgstr "显示图表。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -896,7 +898,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "By selecting this option, a visual representation of the direction and "
 "strength of the relation between the variable and factor will be displayed."
-msgstr ""
+msgstr "通过选择此选项，将显示变量与因子之间关系的方向和强度的可视化表示。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -909,7 +911,7 @@ msgid ""
 "provides information on how much variance in the data, indicated by the "
 "eigenvalue, is explained by each factor. A scree plot can be used to decide "
 "how many factors should be selected."
-msgstr ""
+msgstr "选择此选项后，将显示碎石图。碎石图提供每个因子解释数据方差（以特征值表示）程度的信息。碎石图可用于决定应选择多少因子。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -921,17 +923,17 @@ msgid ""
 "Display the results of the parallel analysis in the scree plot. The parallel "
 "analysis will be based on PC or FA as defined by the option for the parallel "
 "analysis table."
-msgstr ""
+msgstr "在碎石图中显示平行分析的结果。平行分析将基于平行分析表格选项所定义的 PC 或 FA。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Assumption checks"
-msgstr ""
+msgstr "假设检验"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Assumptions: The variables included in the analysis are correlated; the "
 "variables included in the analysis are linearly related (Shlens, 2014)"
-msgstr ""
+msgstr "假设：分析中包含的变量是相关的；分析中包含的变量是线性相关的 (Shlens, 2014)"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -944,7 +946,7 @@ msgid ""
 "the proportion of common variance between variables. Produces a measure of "
 "sampling adequacy (MSA) as the proportion of common variance among variables "
 "is computed for all variables; values closer to 1 are desired."
-msgstr ""
+msgstr "通过计算变量间的共同方差比例，确定变量对因子分析的适用程度。对所有变量计算变量间共同方差比例，从而得出取样充分性测量 (MSA)；数值越接近 1 越好。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -956,7 +958,7 @@ msgid ""
 "Determines if the data correlation matrix is the identity matrix, meaning, "
 "if the variables are related or not. A significant result means the "
 "correlation matrix is unlike the identity matrix."
-msgstr ""
+msgstr "确定数据相关矩阵是否为单位矩阵，即变量之间是否相关。显著的结果意味着相关矩阵不同于单位矩阵。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -968,11 +970,11 @@ msgid ""
 "Assesses the degree of the departure from multivariate normality of the "
 "included variables in terms of multivariate skewness and kurtosis. The "
 "Mardia's test will always include the listwise complete cases."
-msgstr ""
+msgstr "从多元偏度和峰度的角度评估所包含变量的多元正态性的偏离程度。Mardia 检验始终包含按列表完全删除后的完整个案。"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Anti-image correlation matrix"
-msgstr ""
+msgstr "反像相关矩阵"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid ""
@@ -980,7 +982,7 @@ msgid ""
 "accounting for the effects of all other variables in the dataset. High "
 "values in the anti-image correlation matrix indicate that a variable might "
 "be redundant or have too much shared variance with other variables."
-msgstr ""
+msgstr "在考虑数据集中所有其他变量的效应后，包含变量对之间的负偏相关。反像相关矩阵中的高值表明某变量可能是多余的，或与其他变量共享了过多方差。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -989,7 +991,7 @@ msgstr "缺失值处理方式"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "Select how to handle missing values."
-msgstr ""
+msgstr "选择如何处理缺失值。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1002,7 +1004,7 @@ msgid ""
 "observations from the same case will still be used for the analysis. In this "
 "scenario, it is not necessary to have an observation for all the variables "
 "to include the case in the analysis. This option is selected by default."
-msgstr ""
+msgstr "如果某个变量的一个观测缺失，同一案例中所有其他变量的观测仍将用于分析。在此情况下，不必所有变量都有观测即可将案例纳入分析。此选项为默认选择。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1015,7 +1017,7 @@ msgid ""
 "other connected variable observations, will be dismissed from the analysis. "
 "In this scenario, observations for every variable are needed to include the "
 "case in the analysis. "
-msgstr ""
+msgstr "如果某个变量的一个观测缺失，则整个案例（即所有其他相关的变量观测）将从分析中排除。在此情况下，需要每个变量都有观测才能将案例纳入分析。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1031,7 +1033,7 @@ msgctxt "PcaEfaOutputOptions|"
 msgid ""
 "Adds the estimated component/factor scores as new columns to the data set. "
 "The scores are regression scores."
-msgstr ""
+msgstr "将估计的成分/因子得分作为新列添加到数据集中。这些得分是回归得分。"
 
 #, fuzzy
 msgctxt "PcaEfaOutputOptions|"
@@ -1040,11 +1042,11 @@ msgstr "变量前缀"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "PC"
-msgstr ""
+msgstr "PC"
 
 msgctxt "PcaEfaOutputOptions|"
 msgid "FA"
-msgstr ""
+msgstr "FA"
 
 #, fuzzy
 msgctxt "PcaEfaVariables|"
@@ -1053,46 +1055,46 @@ msgstr "变量"
 
 msgctxt "PcaEfaVariables|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "在此框中，选择要进行分析的变量"
 
 msgctxt "PcaEfaVariables|"
 msgid "Data Type"
-msgstr ""
+msgstr "数据类型"
 
 msgctxt "PcaEfaVariables|"
 msgid ""
 "Specifies whether the data is raw, meaning observations in rows and "
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
-msgstr ""
+msgstr "指定数据是原始数据（观察值在行中、变量在列中），还是方差-协方差矩阵。对于后者，需要提供样本量。"
 
 msgctxt "PcaEfaVariables|"
 msgid "Raw"
-msgstr ""
+msgstr "原始数据"
 
 msgctxt "PcaEfaVariables|"
 msgid "Variance-covariance matrix"
-msgstr ""
+msgstr "方差-协方差矩阵"
 
 msgctxt "PcaEfaVariables|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本量"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Data Type"
-msgstr ""
+msgstr "数据类型"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Estimator\t             "
-msgstr ""
+msgstr "估计量\t             "
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Add factor scores to data"
-msgstr ""
+msgstr "将因子得分添加到数据中"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "Adds the estimated factor scores as new columns to the data set"
-msgstr ""
+msgstr "将估计的因子得分作为新列添加到数据集中"
 
 #, fuzzy
 msgctxt "ConfirmatoryFactorAnalysis|"
@@ -1101,85 +1103,85 @@ msgstr "变量前缀"
 
 msgctxt "ConfirmatoryFactorAnalysis|"
 msgid "FS"
-msgstr ""
+msgstr "FS"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "在此框中，选择要进行分析的变量"
 
 msgctxt "ExploratoryFactorAnalysis|"
 msgid ""
 "Specifies whether the data is raw, meaning observations in rows and "
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
-msgstr ""
+msgstr "指定数据是原始数据（观察值在行中、变量在列中），还是方差-协方差矩阵。对于后者，需要提供样本量。"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid "In this box, the variables to perform the analysis on are selected"
-msgstr ""
+msgstr "在此框中，选择要进行分析的变量"
 
 msgctxt "PrincipalComponentAnalysis|"
 msgid ""
 "Specifies whether the data is raw, meaning observations in rows and "
 "variables in columns, or whether the data is a variance-covariance matrix. "
 "For the latter, the sample size is required."
-msgstr ""
+msgstr "指定数据是原始数据（观察值在行中、变量在列中），还是方差-协方差矩阵。对于后者，需要提供样本量。"
 
 msgctxt "Description|"
 msgid "Latent Class Analysis"
-msgstr ""
+msgstr "潜在类别分析"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Indicators"
-msgstr ""
+msgstr "指标变量"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Categorical indicator variables for the latent class model. At least two "
 "indicators are required."
-msgstr ""
+msgstr "潜在类别模型的分类指标变量。至少需要两个指标。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum number of classes"
-msgstr ""
+msgstr "最大类别数"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Models with 1, 2, …, K classes are fitted and compared."
-msgstr ""
+msgstr "将拟合并比较具有 1、2、…、K 个类别的模型。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Estimation Options"
-msgstr ""
+msgstr "估计选项"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of random starts"
-msgstr ""
+msgstr "随机起始次数"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Number of times the EM algorithm is run with different random starting "
 "values. The run with the highest log-likelihood is returned."
-msgstr ""
+msgstr "使用不同的随机起始值运行 EM 算法的次数。返回对数似然最高的那次运行。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations"
-msgstr ""
+msgstr "最大迭代次数"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Maximum iterations for the EM algorithm."
-msgstr ""
+msgstr "EM 算法的最大迭代次数。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Missing values"
-msgstr ""
+msgstr "缺失值"
 
 msgctxt "LatentClassAnalysis|"
 msgid "How to handle rows with missing values on any indicator."
-msgstr ""
+msgstr "如何处理任何指标上存在缺失值的行。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Include"
-msgstr ""
+msgstr "包含"
 
 #, fuzzy
 msgctxt "LatentClassAnalysis|"
@@ -1193,17 +1195,17 @@ msgstr "输出选项"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Tables"
-msgstr ""
+msgstr "表格"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Item-response probabilities"
-msgstr ""
+msgstr "项目-反应概率"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a table of item-response probabilities for each indicator and latent "
 "class."
-msgstr ""
+msgstr "显示每个指标和潜在类别的项目-反应概率表。"
 
 #, fuzzy
 msgctxt "LatentClassAnalysis|"
@@ -1214,73 +1216,73 @@ msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a grouped bar chart of item-response probabilities, with one panel per "
 "latent class."
-msgstr ""
+msgstr "显示项目-反应概率的分组条形图，每个潜在类别一个面板。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Rotate x-axis labels 45°"
-msgstr ""
+msgstr "将 x 轴标签旋转 45°"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Rotate the indicator names on the x-axis by 45 degrees to prevent "
 "overlapping."
-msgstr ""
+msgstr "将 x 轴上的指标名称旋转 45 度以防止重叠。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Show levels legend"
-msgstr ""
+msgstr "显示水平图例"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Show a legend on the right indicating the color for each response category "
 "level."
-msgstr ""
+msgstr "在右侧显示一个图例，标明每个反应类别水平对应的颜色。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Save to Data"
-msgstr ""
+msgstr "保存到数据"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Number of classes"
-msgstr ""
+msgstr "类别数量"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Which fitted model's results to save."
-msgstr ""
+msgstr "要保存哪个拟合模型的结果。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class probabilities"
-msgstr ""
+msgstr "类别概率"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves K columns of posterior class-membership probabilities (one per class) "
 "to the dataset."
-msgstr ""
+msgstr "将 K 列后验类别归属概率（每个类别一列）保存到数据集中。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column prefix"
-msgstr ""
+msgstr "列前缀"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Columns are named prefix_C1, prefix_C2, …"
-msgstr ""
+msgstr "列命名为 prefix_C1、prefix_C2、…"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Class classification"
-msgstr ""
+msgstr "类别分类"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Saves the modal class assignment for each observation as a new nominal "
 "column."
-msgstr ""
+msgstr "将每个观测的众数类别分配作为新的命名列保存。"
 
 msgctxt "LatentClassAnalysis|"
 msgid "Column name"
-msgstr ""
+msgstr "列名"
 
 msgctxt "LatentClassAnalysis|"
 msgid ""
 "Name of the column holding the most-likely class label for each observation."
-msgstr ""
+msgstr "保存每个观测最可能类别标签的列名。"

@@ -33,7 +33,7 @@ msgstr ""
 msgid ""
 "Not more cases than number of variables. Is your data a variance-covariance "
 "matrix?"
-msgstr ""
+msgstr "Pas plus de cas que de nombre de variables. Vos données constituent-elles une matrice de variance-covariance ?"
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
@@ -71,18 +71,18 @@ msgid "The model is not admissible: %s"
 msgstr "Le modèle n'est pas admissible : %s"
 
 msgid "The model could not be estimated due to nonconvergence."
-msgstr ""
+msgstr "Le modèle n'a pas pu être estimé en raison d'une non-convergence."
 
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "Le modèle n'a pas pu être estimé : plus de degré de liberté."
 
 msgid "Bootstrapping is not available for variance-covariance matrix input."
-msgstr ""
+msgstr "Le bootstrap n'est pas disponible pour les entrées de matrice de variance-covariance."
 
 msgid ""
 "Robust standard errors are not available for variance-covariance matrix "
 "input."
-msgstr ""
+msgstr "Les erreurs types robustes ne sont pas disponibles pour les entrées de matrice de variance-covariance."
 
 #, fuzzy
 msgid "# Factors"
@@ -104,10 +104,10 @@ msgid "p"
 msgstr "p"
 
 msgid "Baseline model"
-msgstr ""
+msgstr "Modèle de référence"
 
 msgid "Factor model"
-msgstr ""
+msgstr "Modèle factoriel"
 
 #, fuzzy
 msgid "%s You may consider changing the standard error method to 'robust'."
@@ -134,7 +134,7 @@ msgid "Additional fit measures"
 msgstr "Mesures d'ajustement supplémentaires"
 
 msgid "Fit indices"
-msgstr ""
+msgstr "Indices d'ajustement"
 
 msgid "Index"
 msgstr "Indice"
@@ -143,10 +143,10 @@ msgid "Value"
 msgstr "Valeur"
 
 msgid "Information criteria"
-msgstr ""
+msgstr "Critères d'information"
 
 msgid "Other fit measures"
-msgstr ""
+msgstr "Autres mesures d'ajustement"
 
 msgid "Metric"
 msgstr "Métrique"
@@ -158,91 +158,91 @@ msgid "Number of free parameters"
 msgstr "Nombre de paramètres libres"
 
 msgid "Akaike (AIC)"
-msgstr ""
+msgstr "Akaike (AIC)"
 
 msgid "Bayesian (BIC)"
 msgstr "Bayésienne (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr ""
+msgstr "Bayésien ajusté à la taille d'échantillon (SSABIC)"
 
 msgid "Comparative Fit Index (CFI)"
-msgstr ""
+msgstr "Indice d'ajustement comparatif (CFI)"
 
 msgid "Tucker-Lewis Index (TLI)"
-msgstr ""
+msgstr "Indice de Tucker-Lewis (TLI)"
 
 msgid "Bentler-Bonett Non-normed Fit Index (NNFI)"
-msgstr ""
+msgstr "Indice d'ajustement non normé de Bentler-Bonett (NNFI)"
 
 msgid "Bentler-Bonett Normed Fit Index (NFI)"
-msgstr ""
+msgstr "Indice d'ajustement normé de Bentler-Bonett (NFI)"
 
 msgid "Parsimony Normed Fit Index (PNFI)"
-msgstr ""
+msgstr "Indice d'ajustement normé de parcimonie (PNFI)"
 
 msgid "Bollen's Relative Fit Index (RFI)"
-msgstr ""
+msgstr "Indice d'ajustement relatif de Bollen (RFI)"
 
 msgid "Bollen's Incremental Fit Index (IFI)"
-msgstr ""
+msgstr "Indice d'ajustement incrémental de Bollen (IFI)"
 
 msgid "Relative Noncentrality Index (RNI)"
-msgstr ""
+msgstr "Indice relatif de non-centralité (RNI)"
 
 msgid "Root mean square error of approximation (RMSEA)"
-msgstr ""
+msgstr "Erreur quadratique moyenne d'approximation (RMSEA)"
 
 msgid "RMSEA 90%% CI lower bound"
-msgstr ""
+msgstr "Borne inférieure de l'IC 90%% de la RMSEA"
 
 msgid "RMSEA 90%% CI upper bound"
-msgstr ""
+msgstr "Borne supérieure de l'IC 90%% de la RMSEA"
 
 msgid "RMSEA p-value"
-msgstr ""
+msgstr "Valeur p de la RMSEA"
 
 msgid "Standardized root mean square residual (SRMR)"
-msgstr ""
+msgstr "Résidu quadratique moyen standardisé (SRMR)"
 
 msgid "Hoelter's critical N (%s = .05)"
-msgstr ""
+msgstr "N critique de Hoelter (%s = .05)"
 
 msgid "Hoelter's critical N (%s = .01)"
-msgstr ""
+msgstr "N critique de Hoelter (%s = .01)"
 
 msgid "Goodness of fit index (GFI)"
-msgstr ""
+msgstr "Indice d'ajustement (GFI)"
 
 msgid "McDonald fit index (MFI)"
-msgstr ""
+msgstr "Indice d'ajustement de McDonald (MFI)"
 
 msgid "Expected cross validation index (ECVI)"
-msgstr ""
+msgstr "Indice attendu de validation croisée (ECVI)"
 
 msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
-msgstr ""
+msgstr "À l'exception du PNFI, les indices d'ajustement sont mis à l'échelle en raison de variables catégorielles dans les données."
 
 msgid ""
 "Except for the PNFI, the fit indices are scaled because a robust estimator "
 "was used."
-msgstr ""
+msgstr "À l'exception du PNFI, les indices d'ajustement sont mis à l'échelle car un estimateur robuste a été utilisé."
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
-msgstr ""
+msgstr "Les résultats de la RMSEA sont mis à l'échelle en raison de variables catégorielles dans les données."
 
 msgid "The RMSEA results are scaled because a robust estimator was used."
-msgstr ""
+msgstr "Les résultats de la RMSEA sont mis à l'échelle car un estimateur robuste a été utilisé."
 
 #, fuzzy
 msgid "Parameter estimates"
 msgstr "Estimation des paramètres"
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
-msgstr ""
+msgstr "Tous les échantillons bootstrap n'ont pas abouti : IC basé sur %.0f échantillons."
 
 #, fuzzy
 msgid "Std. estimate"
@@ -252,10 +252,10 @@ msgid "Estimate"
 msgstr "Estimation"
 
 msgid "Factor loadings"
-msgstr ""
+msgstr "Saturations factorielles"
 
 msgid "Group"
-msgstr ""
+msgstr "Groupe"
 
 msgid "Factor"
 msgstr "Facteur"
@@ -279,7 +279,7 @@ msgid "Upper"
 msgstr "Supérieur"
 
 msgid "Second-order factor loadings"
-msgstr ""
+msgstr "Saturations factorielles de second ordre"
 
 msgid "Factor variances"
 msgstr "Variances des facteurs"
@@ -294,49 +294,49 @@ msgid "Residual covariances"
 msgstr "Covariances résiduelles"
 
 msgid "Factor Intercepts"
-msgstr ""
+msgstr "Constantes factorielles"
 
 msgid "Intercepts"
-msgstr ""
+msgstr "Constantes"
 
 msgid "Thresholds"
-msgstr ""
+msgstr "Seuils"
 
 msgid "Threshold"
-msgstr ""
+msgstr "Seuil"
 
 msgid "Modification Indices"
-msgstr ""
+msgstr "Indices de modification"
 
 msgid "Cross-loadings"
-msgstr ""
+msgstr "Saturations croisées"
 
 msgid "Mod. Ind."
-msgstr ""
+msgstr "Ind. de mod."
 
 msgid "EPC"
-msgstr ""
+msgstr "EPC"
 
 msgid "Second-order cross-loadings"
-msgstr ""
+msgstr "Saturations croisées de second ordre"
 
 msgid "Modification indices"
-msgstr ""
+msgstr "Indices de modification"
 
 msgid "No modification index was above the cutoff"
-msgstr ""
+msgstr "Aucun indice de modification n'était au-dessus du seuil"
 
 msgid "Implied covariance matrices"
-msgstr ""
+msgstr "Matrices de covariance implicites"
 
 msgid "Implied covariance matrix"
-msgstr ""
+msgstr "Matrice de covariance implicite"
 
 msgid "Residual covariance matrices"
-msgstr ""
+msgstr "Matrices de covariance résiduelles"
 
 msgid "Residual covariance matrix"
-msgstr ""
+msgstr "Matrice de covariance résiduelle"
 
 msgid "Plots"
 msgstr "Diagrammes"
@@ -350,43 +350,43 @@ msgid "Model plot"
 msgstr "Diagramme du modèle"
 
 msgid "Misfit plots"
-msgstr ""
+msgstr "Graphiques d'inadéquation"
 
 msgid "Misfit plot"
-msgstr ""
+msgstr "Graphique d'inadéquation"
 
 msgid "Model syntax"
 msgstr "Syntaxe du modèle"
 
 msgid "Average variance extracted"
-msgstr ""
+msgstr "Variance moyenne extraite"
 
 msgid "AVE"
-msgstr ""
+msgstr "VME"
 
 msgid "Heterotrait-monotrait ratio"
-msgstr ""
+msgstr "Rapport hétérotrait-monotrait"
 
 msgid "Reliability"
-msgstr ""
+msgstr "Fiabilité"
 
 msgid "Coefficient %s"
-msgstr ""
+msgstr "Coefficient %s"
 
 msgid "Column name %s already exists in the dataset"
-msgstr ""
+msgstr "Le nom de colonne %s existe déjà dans le jeu de données"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This is likely due to a small sample size. Internal error "
 "message: %s"
-msgstr ""
+msgstr "Malheureusement, l'estimation de la matrice de corrélation polychorique/tétrachorique a échoué. Cela est probablement dû à une petite taille d'échantillon. Message d'erreur interne : %s"
 
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
-msgstr ""
+msgstr "Malheureusement, l'estimation de la matrice de corrélation polychorique/tétrachorique a échoué. Cela peut être dû au fait que la ou les variables %1$s ne présentent pas l'ensemble complet des catégories de réponse. Message d'erreur interne : %2$s"
 
 #, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
@@ -396,19 +396,19 @@ msgid "Estimation failed. Internal error message: %s"
 msgstr "Échec d'estimation. Message d'erreur interne : %s"
 
 msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
+msgstr "L'analyse parallèle a échoué. Message d'erreur interne : %s"
 
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr ""
+msgstr "Aucun facteur avec une valeur propre > %1$s. La valeur propre maximale observée est égale à %2$s."
 
 #, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Test Kaiser-Meyer-Olkin"
 
 msgid "Overall MSA"
-msgstr ""
+msgstr "MSA global"
 
 #, fuzzy
 msgid "Bartlett's Test"
@@ -432,7 +432,7 @@ msgstr ""
 "Chi^2 et celle de l'aplatissement selon la loi normale."
 
 msgid "Anti-Image Correlation Matrix"
-msgstr ""
+msgstr "Matrice de corrélation anti-image"
 
 #, fuzzy
 msgid "Chi-Squared Test"
@@ -445,7 +445,7 @@ msgid "<em>Warning:</em>"
 msgstr "<em>Avertissement :</em>"
 
 msgid "Factor Loadings"
-msgstr ""
+msgstr "Saturations factorielles"
 
 msgid "Factor %i"
 msgstr "Facteur %i"
@@ -462,7 +462,7 @@ msgid "Applied rotation method is %1$s."
 msgstr "La méthode de rotation appliquée est %s."
 
 msgid "Factor Loadings (Structure Matrix)"
-msgstr ""
+msgstr "Saturations factorielles (matrice de structure)"
 
 msgid "Factor Characteristics"
 msgstr "Caractéristiques du facteur"
@@ -483,28 +483,28 @@ msgid "Cumulative"
 msgstr "Cumulatif"
 
 msgid "SumSq. Loadings"
-msgstr ""
+msgstr "SomCarr. saturations"
 
 msgid "Factor Correlations"
-msgstr ""
+msgstr "Corrélations factorielles"
 
 msgid "Additional fit indices"
-msgstr ""
+msgstr "Indices d'ajustement supplémentaires"
 
 msgid "RMSEA"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "RMSEA 90%% confidence"
-msgstr ""
+msgstr "Confiance 90%% RMSEA"
 
 msgid "SRMR"
-msgstr ""
+msgstr "SRMR"
 
 msgid "TLI"
-msgstr ""
+msgstr "TLI"
 
 msgid "CFI"
-msgstr ""
+msgstr "CFI"
 
 msgid "BIC"
 msgstr "BIC"
@@ -513,37 +513,37 @@ msgid "Residual Matrix"
 msgstr "Matrice résiduelle"
 
 msgid "Real data component eigenvalues"
-msgstr ""
+msgstr "Valeurs propres des composantes des données réelles"
 
 msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr ""
+msgstr "'*' = %s doit être retenu. Résultats de l'analyse parallèle basée sur les CP."
 
 msgid "Real data factor eigenvalues"
-msgstr ""
+msgstr "Valeurs propres des facteurs des données réelles"
 
 msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr ""
+msgstr "'*' = %s doit être retenu. Résultats de l'analyse parallèle basée sur les FA."
 
 #, fuzzy
 msgid "Parallel Analysis"
 msgstr "Analyse parallèle"
 
 msgid "Simulated data mean eigenvalues"
-msgstr ""
+msgstr "Valeurs propres moyennes des données simulées"
 
 msgid ""
 "Screeplot not available. \n"
 "Internal error message: %s"
-msgstr ""
+msgstr "Graphique d'éboulis non disponible. \nMessage d'erreur interne : %s"
 
 msgid "Data"
 msgstr "Données"
 
 msgid "Simulated data from parallel analysis"
-msgstr ""
+msgstr "Données simulées à partir de l'analyse parallèle"
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "Diagramme de chemin"
 
 #, fuzzy
 msgid "Model Fit"
@@ -555,22 +555,22 @@ msgid ""
 "classes (lower is better). G² is the likelihood-ratio goodness-of-fit "
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
-msgstr ""
+msgstr "Statistiques d'ajustement pour chaque modèle. L'AIC et le BIC pénalisent la log-vraisemblance pour la complexité du modèle et peuvent être utilisés pour comparer des modèles avec différents nombres de classes (plus bas est mieux). G² est la statistique d'adéquation du rapport de vraisemblance ; une valeur p non significative indique un ajustement adéquat, bien que ce test soit sensible aux cellules clairsemées et aux petits échantillons."
 
 msgid "Classes"
-msgstr ""
+msgstr "Classes"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d classes"
 
 msgid "Class Prevalences"
-msgstr ""
+msgstr "Prévalences des classes"
 
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
@@ -579,61 +579,61 @@ msgid ""
 "observations assigned to each class by their highest posterior probability; "
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
-msgstr ""
+msgstr "Tailles estimées des classes latentes. La proportion est le poids de mélange estimé par le modèle (la probabilité qu'une observation tirée au hasard appartienne à chaque classe), avec son erreur type. La proportion modale est la fraction des observations assignées à chaque classe selon leur probabilité a posteriori la plus élevée ; elle peut différer de la proportion du modèle car l'assignation modale discrétise le postérieur continu."
 
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 #, fuzzy
 msgid "Proportion"
 msgstr "Proportion var."
 
 msgid "SE"
-msgstr ""
+msgstr "ES"
 
 msgid "Modal proportion"
-msgstr ""
+msgstr "Proportion modale"
 
 msgid "Class %d"
-msgstr ""
+msgstr "Classe %d"
 
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "Probabilités de réponse aux items"
 
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
-msgstr ""
+msgstr "Probabilité estimée de chaque catégorie de réponse pour chaque indicateur, conditionnellement à l'appartenance à une classe. Chaque ligne est une classe latente ; chaque colonne est une catégorie de réponse de l'indicateur. Les probabilités d'une ligne totalisent 1."
 
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
 "latent class; bars within each panel show the probability of each response "
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
-msgstr ""
+msgstr "Graphique en barres groupées des probabilités de réponse aux items. Chaque panneau montre une classe latente ; les barres de chaque panneau montrent la probabilité de chaque catégorie de réponse pour chaque indicateur. Des barres plus hautes indiquent des catégories de réponse plus caractéristiques de cette classe."
 
 msgid "Probability"
-msgstr ""
+msgstr "Probabilité"
 
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
 msgid "Column '%s' already exists in the dataset."
-msgstr ""
+msgstr "La colonne '%s' existe déjà dans le jeu de données."
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
-msgstr ""
+msgstr "Les données d'entrée ne semblent pas être une matrice carrée ! Veuillez vérifier le format des données d'entrée."
 
 msgid ""
 "Input data does not seem to be a symmetric matrix! Please check the format "
 "of the input data and possibly the order of the variables."
-msgstr ""
+msgstr "Les données d'entrée ne semblent pas être une matrice symétrique ! Veuillez vérifier le format des données d'entrée et éventuellement l'ordre des variables."
 
 msgid "All cells must be numeric."
-msgstr ""
+msgstr "Toutes les cellules doivent être numériques."
 
 #, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
@@ -660,10 +660,10 @@ msgstr "Données pas valides : toutes les variables sont collinéaires"
 msgid ""
 "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr ""
+msgstr "Aucune composante avec une valeur propre > %1$s. La valeur propre maximale observée est égale à %2$s."
 
 msgid "Component Loadings"
-msgstr ""
+msgstr "Saturations des composantes"
 
 msgid "Applied rotation method is %s."
 msgstr "La méthode de rotation appliquée est %s."
@@ -675,7 +675,7 @@ msgid "Component Correlations"
 msgstr "Corrélation des composantes"
 
 msgid "Scree plot"
-msgstr ""
+msgstr "Graphique d'éboulis"
 
 msgid "Component"
 msgstr "Composante"

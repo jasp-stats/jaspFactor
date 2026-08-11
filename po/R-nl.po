@@ -571,22 +571,22 @@ msgid ""
 "classes (lower is better). G² is the likelihood-ratio goodness-of-fit "
 "statistic; a non-significant p-value indicates adequate fit, though this "
 "test is sensitive to sparse cells and small samples."
-msgstr ""
+msgstr "Fitstatistieken voor elk model. AIC en BIC bestraffen de log-likelihood voor modelcomplexiteit en kunnen worden gebruikt om modellen met verschillende aantallen klassen te vergelijken (lager is beter). G² is de goodness-of-fit-statistiek van de likelihood ratio; een niet-significante p-waarde duidt op een adequate fit, hoewel deze toets gevoelig is voor schaarse cellen en kleine steekproeven."
 
 msgid "Classes"
-msgstr ""
+msgstr "Klassen"
 
 msgid "G²"
-msgstr ""
+msgstr "G²"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
-msgstr ""
+msgstr "%d Klassen"
 
 msgid "Class Prevalences"
-msgstr ""
+msgstr "Klassenprevalenties"
 
 msgid ""
 "Estimated sizes of the latent classes. Proportion is the model-estimated "
@@ -595,46 +595,46 @@ msgid ""
 "observations assigned to each class by their highest posterior probability; "
 "it may differ from the model proportion because modal assignment discretizes "
 "the continuous posterior."
-msgstr ""
+msgstr "Geschatte omvang van de latente klassen. Proportie is het door het model geschatte menggewicht (de kans dat een willekeurig getrokken observatie tot elke klasse behoort), met de standaardfout. Modale proportie is de fractie observaties die aan elke klasse wordt toegewezen op basis van hun hoogste posterieure kans; deze kan afwijken van de modelproportie omdat modale toewijzing de continue posterieure verdeling discretiseert."
 
 msgid "Class"
-msgstr ""
+msgstr "Klasse"
 
 #, fuzzy
 msgid "Proportion"
 msgstr "Proportievar."
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Modal proportion"
-msgstr ""
+msgstr "Modale proportie"
 
 msgid "Class %d"
-msgstr ""
+msgstr "Klasse %d"
 
 msgid "Item-Response Probabilities"
-msgstr ""
+msgstr "Item-responskansen"
 
 msgid ""
 "Estimated probability of each response category for each indicator, "
 "conditional on class membership. Each row is a latent class; each column is "
 "a response category of the indicator. Probabilities within a row sum to 1."
-msgstr ""
+msgstr "Geschatte kans van elke responscategorie voor elke indicator, geconditioneerd op klasse-lidmaatschap. Elke rij is een latente klasse; elke kolom is een responscategorie van de indicator. Kansen binnen een rij sommeren tot 1."
 
 msgid ""
 "Grouped bar chart of item-response probabilities. Each panel shows one "
 "latent class; bars within each panel show the probability of each response "
 "category for every indicator. Taller bars indicate response categories more "
 "characteristic of that class."
-msgstr ""
+msgstr "Gegroepeerd staafdiagram van item-responskansen. Elk paneel toont één latente klasse; staven binnen elk paneel tonen de kans van elke responscategorie voor elke indicator. Hogere staven duiden op responscategorieën die kenmerkender zijn voor die klasse."
 
 #, fuzzy
 msgid "Probability"
 msgstr "Betrouwbaarheid"
 
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
 #, fuzzy
 msgid "Column '%s' already exists in the dataset."

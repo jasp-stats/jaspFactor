@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.97.1\n"
 "POT-Creation-Date: 2026-06-20 04:52\n"
-"PO-Revision-Date: 2026-09-14 02:36+0000\n"
+"PO-Revision-Date: 2026-09-15 04:05+0000\n"
 "Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/jasp/jaspfactor-"
 "r/fa/>\n"
@@ -110,7 +110,7 @@ msgid "Other fit measures"
 msgstr ""
 
 msgid "Metric"
-msgstr ""
+msgstr "معیار"
 
 msgid "Log-likelihood"
 msgstr "لگاریتم درستنمایی"
@@ -209,7 +209,7 @@ msgid "Factor loadings"
 msgstr ""
 
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 msgid "Factor"
 msgstr "عامل"
@@ -293,7 +293,7 @@ msgid "Residual covariance matrix"
 msgstr ""
 
 msgid "Plots"
-msgstr ""
+msgstr "نمودارها"
 
 msgid "Model plots"
 msgstr ""
@@ -473,7 +473,7 @@ msgid "Simulated data from parallel analysis"
 msgstr ""
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "نمودار مسیر"
 
 msgid "Model Fit"
 msgstr ""
@@ -488,7 +488,7 @@ msgid "G²"
 msgstr ""
 
 msgid "N"
-msgstr "N (تعداد)"
+msgstr "N"
 
 msgid "%d Classes"
 msgstr ""
@@ -506,7 +506,7 @@ msgid "Proportion"
 msgstr ""
 
 msgid "SE"
-msgstr "خطای استاندارد (SE)"
+msgstr "خطای معیار"
 
 msgid "Modal proportion"
 msgstr ""

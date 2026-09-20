@@ -40,12 +40,10 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .pcaEigenTable(           modelContainer, dataset, options, ready)
   .pcaCorrTable(            modelContainer, dataset, options, ready)
   .pcaResidualTable(        modelContainer, dataset, options, ready)
-  .parallelAnalysisTable(   modelContainer, dataset, options, ready, name = "Component")
   .efaKMOtest(              modelContainer, dataset, options, ready)
   .efaBartlett(             modelContainer, dataset, options, ready)
   .efaMardia(               modelContainer, dataset, options, ready)
   .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
-  .pcaScreePlot(            modelContainer, dataset, options, ready)
   .pcaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
@@ -137,10 +135,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   customChecks <- list(
     function() {
-      countMethod <- ifelse(method == "efa", options$factorCountMethod, options$componentCountMethod)
+      if (method == "numberOfFactors") return()
+
       manualCount <- ifelse(method == "efa", options$manualNumberOfFactors, options$manualNumberOfComponents)
 
-      if (length(options$variables) > 0 && countMethod == "manual" && manualCount > length(options$variables)) {
+      if (length(options$variables) > 0 && manualCount > length(options$variables)) {
         return(gettextf("Too many %1$s requested (%2$i) for the amount of included variables",
                         ifelse(method == "efa", "factors", "components"), manualCount))
       }
@@ -194,9 +193,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     modelContainer <- jaspResults[["modelContainer"]]
   } else {
     modelContainer <- createJaspContainer()
-    modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "componentCountMethod",
-                              "eigenvaluesAbove", "manualNumberOfComponents", "naAction", "baseDecompositionOn",
-                              "parallelAnalysisMethod", "dataType", "sampleSize"))
+    modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables",
+                              "manualNumberOfComponents", "naAction", "baseDecompositionOn",
+                              "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
   }
 
@@ -273,7 +272,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     pcaResult <- try(
       psych::principal(
         r        = dataset,
-        nfactors = .pcaGetNComp(dataset, options, modelContainer),
+        nfactors = options[["manualNumberOfComponents"]],
         rotate   = rotate,
         scores   = TRUE,
         covar    = options$baseDecompositionOn == "covarianceMatrix",
@@ -296,65 +295,6 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   modelContainer[["model"]] <- createJaspState(pcaResult)
   return(pcaResult)
 }
-
-.pcaGetNComp <- function(dataset, options, modelContainer) {
-
-  if (options$componentCountMethod == "manual") return(options$manualNumberOfComponents)
-
-
-
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-    varTypes <- options$variables.types
-    vars <- options$variables
-    scales <- vars[varTypes == "scale"]
-    ordinals <- vars[varTypes == "ordinal"]
-    nominals <- vars[varTypes == "nominal"]
-    polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
-
-    .setSeedJASP(options)
-
-    parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
-                                 plot = FALSE,
-                                 fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
-                                             "pc", "fa"),
-                                 n.obs = nrow(dataset)))
-  } else {
-    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
-                                             fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
-                                                         "pc", "fa")))
-  }
-
-  if (options$componentCountMethod == "parallelAnalysis") {
-
-    if (isTryError(parallelResult)) {
-      errmsg <- gettextf("Parallel analysis failed. Internal error message: %s", .extractErrorMessage(parallelResult))
-      modelContainer$setError(errmsg)
-    }
-
-    if (options$parallelAnalysisMethod == "principalComponentBased") {
-      return(max(1, parallelResult$ncomp))
-    } else { # parallel method is fa
-      return(max(1, parallelResult$nfact))
-    }
-  }
-
-  if (options$componentCountMethod == "eigenvalues") {
-    if (!isTryError(parallelResult)) {
-      ncomp <- sum(parallelResult$pc.values > options$eigenvaluesAbove)
-    } else {
-      ncomp <- 1
-    }
-    # I can use stop() because it's caught by the try and the message is put on
-    # on the modelcontainer.
-    if (ncomp == 0)
-      .quitAnalysis( gettextf("No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s.",
-                              options$eigenvaluesAbove, round(max(parallelResult$fa.values), 3)))
-    return(ncomp)
-  }
-
-
-}
-
 
 # Output functions ----
 .pcaGoodnessOfFitTable <- function(modelContainer, dataset, options, ready) {
@@ -543,102 +483,6 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
 }
 
-
-.pcaScreePlot <- function(modelContainer, dataset, options, ready) {
-  if (!options[["screePlot"]] || !is.null(modelContainer[["scree"]])) return()
-
-  scree <- createJaspPlot(title = gettext("Scree plot"), width = 480, height = 320)
-  scree$dependOn(c("screePlot", "screePlotParallelAnalysisResults", "parallelAnalysisMethod"))
-  modelContainer[["scree"]] <- scree
-
-  if (!ready || modelContainer$getError()) return()
-
-  n_col <- ncol(dataset)
-
-  if (options[["screePlotParallelAnalysisResults"]]) {
-
-
-    if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
-      varTypes <- options$variables.types
-      vars <- options$variables
-      scales <- vars[varTypes == "scale"]
-      ordinals <- vars[varTypes == "ordinal"]
-      nominals <- vars[varTypes == "nominal"]
-      polyTetraCor <- psych::mixedCor(dataset, c = scales, p = ordinals, d = nominals)
-
-      parallelResult <- try(psych::fa.parallel(polyTetraCor$rho,
-                                   plot = FALSE,
-                                   fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
-                                               "pc", "fa"),
-                                   n.obs = nrow(dataset)))
-    } else {
-      parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE,
-                                               fa = ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased",
-                                                           "pc", "fa")))
-    }
-
-    if (isTryError(parallelResult)) {
-      errmsg <- gettextf("Screeplot not available. \nInternal error message: %s", .extractErrorMessage(parallelResult))
-      scree$setError(errmsg)
-      # scree$setError(.decodeVarsInMessage(names(dataset), errmsg))
-      return()
-    }
-
-    if (options$componentCountMethod == "parallelAnalysis" && options$parallelAnalysisMethod == "factorBased") {
-      evs <- c(parallelResult$fa.values, parallelResult$fa.sim)
-    } else { # in all other cases we use the initial eigenvalues for the plot, aka the pca ones
-      evs <- c(parallelResult$pc.values, parallelResult$pc.sim)
-    }
-    tp <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
-
-  } else { # do not display parallel analysis
-    evs <- eigen(cor(dataset, use = "pairwise.complete.obs"), only.values = TRUE)$values
-    tp <- rep(gettext("Data"), each = n_col)
-  }
-
-  df <- data.frame(
-    id   = rep(seq_len(n_col), 2),
-    ev   = evs,
-    type = tp
-  )
-  # basic scree plot
-  plt <-
-    ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
-    ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
-    ggplot2::geom_hline(yintercept = options$eigenvaluesAbove)
-
-
-  # dynamic function for point size:
-  # the plot looks good with size 3 when there are 10 points (3 + log(10) - log(10) = 3)
-  # with more points, the size will become logarithmically smaller until a minimum of
-  # 3 + log(10) - log(200) = 0.004267726
-  # with fewer points, they become bigger to a maximum of 3 + log(10) - log(2) = 4.609438
-  pointsize <- 3 + log(10) - log(n_col)
-  if (pointsize > 0) {
-    plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
-  }
-
-  # add axis lines and better breaks
-  plt <- plt +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw() +
-    ggplot2::scale_x_continuous(breaks = seq(1:n_col))
-
-  # theming with special legend thingy
-  plt <- plt +
-    jaspGraphs::themeJaspRaw() +
-    ggplot2::theme(
-      legend.position      = c(0.99, 0.95),
-      legend.justification = c(1, 1),
-      legend.text          = ggplot2::element_text(size = 12.5),
-      legend.title         = ggplot2::element_blank(),
-      legend.key.size      = ggplot2::unit(18, "pt")
-    )
-
-  scree$plotObject <- plt
-  modelContainer[["scree"]] <- scree
-}
 
 .pcaPathDiagram <- function(modelContainer, dataset, options, ready){
   if (!options[["pathDiagram"]] || !is.null(modelContainer[["path"]])) return()

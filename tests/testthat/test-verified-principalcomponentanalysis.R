@@ -3,55 +3,45 @@ context("Principal Component Analysis -- Verification project")
 # does not test
 # - error handling
 # - oblique rotation
-# - Parallel analysis / manual
 # - slider
 
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenvaluesAbove = 1,
   manualNumberOfComponents = 1,
   orthogonalSelector = "none",
   obliqueSelector = "promax",
   loadingsDisplayLimit = 0,
   componentCorrelations = FALSE,
   residualMatrix = FALSE,
-  parallelAnalysisTable = FALSE,
   pathDiagram = FALSE,
-  screePlot = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
   addScoresToData = FALSE,
   addScoresToDataPrefix = "",
   dataType = "raw",
-  componentCountMethod = "parallelAnalysis",
-  parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
   orderLoadingsBy = "variables",
-  parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
-  plotHeight = 320,
-  setSeed = FALSE,
-  seed = 1
+  plotHeight = 320
 )
 options <- defaultOptions
 ## Testing Questionnaire data
 
 # https://jasp-stats.github.io/jasp-verification-project/factor.html
+# 4 components as previously suggested by PC-based parallel analysis
 options <- defaultOptions
 options$PCPrefix <- ""
 options$loadingsDisplayLimit <- 0.4
 options$orthogonalSelector <- "varimax"
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
-options$componentCountMethod <- "parallelAnalysis"
+options$manualNumberOfComponents <- 4
 options$rotationMethod <- "orthogonal"
 options$baseDecompositionOn <- "correlationMatrix"
 options$naAction <- "pairwise"
-options$screePlot <- TRUE
 
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "PCA.csv", options)

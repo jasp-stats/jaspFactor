@@ -124,6 +124,12 @@ Section
 			label: qsTr("Bartlett's test")	
 			info: qsTr("Determines if the data correlation matrix is the identity matrix, meaning, if the variables are related or not. A significant result means the correlation matrix is unlike the identity matrix.")
 		}
+		CheckBox {
+			visible: !pca
+			name: "correlationMatrixDeterminant"
+			label: qsTr("Correlation matrix determinant")
+			info: qsTr("Displays the determinant of the correlation matrix used for assessing multicollinearity before extraction.")
+		}
 		CheckBox { 
 			name: "mardiaTest";				
 			label: qsTr("Mardia's test")

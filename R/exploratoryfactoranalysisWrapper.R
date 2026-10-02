@@ -17,7 +17,7 @@
 
 # This is a generated file. Don't change it!
 
-#' exploratoryFactorAnalysis
+#' Exploratory Factor Analysis
 #'
 #' @param addScoresToData, Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
 #'    Defaults to \code{FALSE}.
@@ -33,8 +33,8 @@
 #' }
 #' @param dataType, Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.
 #' \itemize{
-#'   \item \code{"varianceCovariance"}
 #'   \item \code{"raw"}
+#'   \item \code{"varianceCovariance"}
 #' }
 #' @param factorCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed.
 #'    Defaults to \code{FALSE}.
@@ -65,8 +65,8 @@
 #' }
 #' @param orderLoadingsBy, Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
 #' \itemize{
-#'   \item \code{"variables"}
 #'   \item \code{"size"}
+#'   \item \code{"variables"}
 #' }
 #' @param parallelAnalysisTable, If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of components/factors above.
 #'    Defaults to \code{FALSE}.
@@ -76,8 +76,8 @@
 #'    Defaults to \code{FALSE}.
 #' @param rotationMethod, Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.
 #' \itemize{
-#'   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 #'   \item \code{"orthogonal"}: This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.
+#'   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 #' }
 #' @param screePlot, When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
 #'    Defaults to \code{FALSE}.
@@ -86,7 +86,7 @@
 #' @param variables, In this box, the variables to perform the analysis on are selected
 exploratoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           addScoresToData = FALSE,
           addScoresToDataPrefix = "FA",
           antiImageCorrelationMatrix = FALSE,

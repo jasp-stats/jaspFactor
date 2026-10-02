@@ -17,13 +17,13 @@
 
 # This is a generated file. Don't change it!
 
-#' confirmatoryFactorAnalysis
+#' Confirmatory Factor Analysis
 #'
 #' @param addFactorScoresToData, Adds the estimated factor scores as new columns to the data set
 #'    Defaults to \code{FALSE}.
 confirmatoryFactorAnalysis <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           addFactorScoresToData = FALSE,
           addFactorScoresToDataPrefix = "FS",
           ave = FALSE,

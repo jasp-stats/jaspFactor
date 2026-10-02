@@ -17,7 +17,7 @@
 
 # This is a generated file. Don't change it!
 
-#' principalComponentAnalysis
+#' Principal Component Analysis
 #'
 #' @param addScoresToData, Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
 #'    Defaults to \code{FALSE}.
@@ -27,8 +27,8 @@
 #'    Defaults to \code{FALSE}.
 #' @param baseDecompositionOn, What to base the decomposition of the data into components/factors on.
 #' \itemize{
-#'   \item \code{"covarianceMatrix"}: The covariance matrix is used to decompose the data into components/factors.
 #'   \item \code{"correlationMatrix"}: The correlation matrix is used to decompose the data into components/factors.
+#'   \item \code{"covarianceMatrix"}: The covariance matrix is used to decompose the data into components/factors.
 #'   \item \code{"polyTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
 #' }
 #' @param componentCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed.
@@ -60,8 +60,8 @@
 #'    Defaults to \code{FALSE}.
 #' @param naAction, Select how to handle missing values.
 #' \itemize{
-#'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 #'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
+#'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 #' }
 #' @param orderLoadingsBy, Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
 #' \itemize{
@@ -76,8 +76,8 @@
 #'    Defaults to \code{FALSE}.
 #' @param rotationMethod, Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.
 #' \itemize{
-#'   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 #'   \item \code{"orthogonal"}: This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.
+#'   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 #' }
 #' @param screePlot, When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
 #'    Defaults to \code{FALSE}.
@@ -86,7 +86,7 @@
 #' @param variables, In this box, the variables to perform the analysis on are selected
 principalComponentAnalysis <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           addScoresToData = FALSE,
           addScoresToDataPrefix = "PC",
           antiImageCorrelationMatrix = FALSE,

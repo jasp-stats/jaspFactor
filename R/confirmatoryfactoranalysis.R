@@ -1484,9 +1484,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 .cfaTableHtmt <- function(jaspResults, options, cfaResult, dataset) {
-  #### this has an ordering argument that still needs to be implemented once the categorical data stuff is done
 
   if (is.null(cfaResult) || !options[["htmt"]] || !is.null(jaspResults[["resHtmtTable"]])) return()
+
+  # the data extracted from the fitted object is numeric, so the ordered variables have to be named
+  # explicitly, otherwise htmt() falls back to Pearson instead of polychoric correlations
+  orderedVars <- lavaan::lavNames(cfaResult[["lav"]], "ov.ord")
 
   htmtTable <- createJaspTable(gettext("Heterotrait-monotrait ratio"), position = 4.2)
   htmtTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
@@ -1513,7 +1516,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       dataGroup <- as.data.frame(dataList[[gg]])
       colnames(dataGroup) <- cfaResult[["lav"]]@Data@ov.names[[ind]]
       htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataGroup,
-                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+                                    missing = cfaResult[["lav"]]@Options[["missing"]],
+                                    ordered = orderedVars)
       htmt_result[upper.tri(htmt_result)] <- NA
       tmp_dat[tmp_dat$group == gg, facNames] <- htmt_result
     }
@@ -1533,10 +1537,12 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
     if (is.null(cfaResult[["spec"]][["soIndics"]])) {
       htmt_result <- semTools::htmt(model = cfaResult[["model"]], data = dataset, sample.cov = sampCov,
-                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+                                    missing = cfaResult[["lav"]]@Options[["missing"]],
+                                    ordered = orderedVars)
     } else { # the htmt does not allow a second order factor, so we take the model syntax without the seco
       htmt_result <- semTools::htmt(model = cfaResult[["model_simple"]], data = dataset, sample.cov = sampCov,
-                                    missing = cfaResult[["lav"]]@Options[["missing"]])
+                                    missing = cfaResult[["lav"]]@Options[["missing"]],
+                                    ordered = orderedVars)
     }
 
     htmt_result[upper.tri(htmt_result)] <- NA

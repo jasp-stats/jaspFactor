@@ -601,42 +601,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     ev   = evs,
     type = tp
   )
-  # basic scree plot
-  plt <-
-    ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
-    ggplot2::geom_line(na.rm = TRUE) +
-    ggplot2::labs(x = gettext("Component"), y = gettext("Eigenvalue")) +
-    ggplot2::geom_hline(yintercept = options$eigenvaluesAbove)
-
-
-  # dynamic function for point size:
-  # the plot looks good with size 3 when there are 10 points (3 + log(10) - log(10) = 3)
-  # with more points, the size will become logarithmically smaller until a minimum of
-  # 3 + log(10) - log(200) = 0.004267726
-  # with fewer points, they become bigger to a maximum of 3 + log(10) - log(2) = 4.609438
-  pointsize <- 3 + log(10) - log(n_col)
-  if (pointsize > 0) {
-    plt <- plt + ggplot2::geom_point(na.rm = TRUE, size = max(0, 3 + log(10) - log(n_col)))
-  }
-
-  # add axis lines and better breaks
-  plt <- plt +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw() +
-    ggplot2::scale_x_continuous(breaks = seq(1:n_col))
-
-  # theming with special legend thingy
-  plt <- plt +
-    jaspGraphs::themeJaspRaw() +
-    ggplot2::theme(
-      legend.position      = c(0.99, 0.95),
-      legend.justification = c(1, 1),
-      legend.text          = ggplot2::element_text(size = 12.5),
-      legend.title         = ggplot2::element_blank(),
-      legend.key.size      = ggplot2::unit(18, "pt")
-    )
-
-  scree$plotObject <- plt
+  scree$plotObject <- jaspGraphs::createJaspPlotRecipe(
+    fun = "jaspFactor:::.factorScreePlot",
+    args = list(data = df, nVariables = n_col,
+                eigenvaluesAbove = options[["eigenvaluesAbove"]],
+                xName = gettext("Component"), extraTheme = TRUE)
+  )
   modelContainer[["scree"]] <- scree
 }
 

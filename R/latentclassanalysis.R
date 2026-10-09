@@ -274,6 +274,18 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
   allSame    <- length(allCatsByIndicator) <= 1 ||
     all(sapply(allCatsByIndicator[-1], identical, allCatsByIndicator[[1]]))
 
+  jaspGraphs::createJaspPlotRecipe(
+    fun = "jaspFactor:::.lcaDrawItemProbsPlot",
+    args = list(df = df, decodedIndicators = decodedIndicators,
+                displayNames = displayNames, allCatsByIndicator = allCatsByIndicator,
+                allLevels = allLevels, allSame = allSame, showLegend = showLegend,
+                rotatePlotLabels = options[["rotatePlotLabels"]])
+  )
+}
+
+.lcaDrawItemProbsPlot <- function(df, decodedIndicators, displayNames,
+                                  allCatsByIndicator, allLevels, allSame,
+                                  showLegend, rotatePlotLabels) {
   if (!showLegend || allSame) {
     fillAes <- ggplot2::aes(x = indicator, y = probability, fill = category)
   } else {
@@ -338,7 +350,7 @@ latentClassAnalysisInternal <- function(jaspResults, dataset, options, ...) {
     )
   }
 
-  if (options[["rotatePlotLabels"]])
+  if (rotatePlotLabels)
     p <- p + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1))
 
   p

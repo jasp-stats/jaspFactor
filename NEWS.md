@@ -22,6 +22,7 @@
 * EFA: polychoric/tetrachoric correlation matrix errors are now caught and shown as a user-friendly message, including which variables have missing response categories.
 * EFA, PCA: ordinal variables with value labels (e.g., from SPSS) were incorrectly treated as having missing values when computing polychoric correlations; fixed by improving factor/ordered-to-numeric coercion ([jasp-issues#4129](https://github.com/jasp-stats/jasp-issues/issues/4129), [jasp-issues#4224](https://github.com/jasp-stats/jasp-issues/issues/4224)) ([PR #336](https://github.com/jasp-stats/jaspFactor/pull/336)).
 * CFA: Chi-square table footnote now always reports the estimator, test statistic, and standard error method, making it clear which defaults lavaan applied (e.g., Browne.residual.nt when DWLS is used on continuous data) ([jasp-issues#4157](https://github.com/jasp-stats/jasp-issues/issues/4157), [jasp-issues#4171](https://github.com/jasp-stats/jasp-issues/issues/4171)) ([PR #336](https://github.com/jasp-stats/jaspFactor/pull/336)).
+* CFA: the heterotrait-monotrait ratio treated ordinal indicators as continuous, so it was based on Pearson instead of polychoric correlations ([jasp-issues#4434](https://github.com/jasp-stats/jasp-issues/issues/4434)).
 
 ---
 

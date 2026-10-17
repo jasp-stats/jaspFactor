@@ -64,28 +64,6 @@ Section
 			info: qsTr("This option displays the Root Mean Squared Error of Approximation (RMSEA) with 90% confidence interval, the Tucker Lewis Index (TLI), and the Bayesian Information Criterion (BIC) to test the fit of the model.")
 		}
 		CheckBox { name: "residualMatrix";	label: qsTr("Residual matrix"); info: qsTr("Displays a table containing the residual variances and correlations.")}
-		CheckBox {
-			name:	"parallelAnalysisTable";
-			label:	qsTr("Parallel analysis")
-			info: qsTr("If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of components/factors above.")
-			RadioButtonGroup
-			{
-				name:   "parallelAnalysisTableMethod"
-				title:  ""
-
-				RadioButton
-				{
-					value:      "principalComponentBased"
-					label:      qsTr("Based on PC")
-					checked:    true
-				}
-				RadioButton
-				{
-					value: "factorBased"
-					label: qsTr("Based on FA")
-				}
-			}
-		}
 	}
 	Group
 	{
@@ -95,18 +73,6 @@ Section
 			name: "pathDiagram"
 			label: qsTr("Path diagram")
 			info: qsTr("By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed.")
-		}
-		CheckBox {
-			name:  "screePlot";
-			label: qsTr("Scree plot")
-			info: qsTr("When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.")
-
-			CheckBox {
-				name:		"screePlotParallelAnalysisResults"
-				label:		qsTr("Parallel analysis results")
-				checked:	true
-				info: qsTr("Display the results of the parallel analysis in the scree plot. The parallel analysis will be based on PC or FA as defined by the option for the parallel analysis table.")
-			}
 		}
 	}
 

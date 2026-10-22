@@ -37,7 +37,7 @@ Section
 	{
 		name: "rotationMethod"
 		title: qsTr("Rotation Method")
-		info: qsTr("Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.")
+		info: qsTr("Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure. The rotation parameters cannot be changed, the default values of the R packages psych and GPArotation are used (see the individual methods). Rotation is only applied if more than one component/factor is extracted.")
 		RadioButton
 		{
 			value	: "orthogonal"
@@ -48,11 +48,11 @@ Section
 				name: "orthogonalSelector"
 				values: [
 					{ label: qsTr("none")	, value: "none"	, 		info: qsTr("No rotation method is selected.")},
-					{ label: "varimax"		, value: "varimax", 	info: qsTr("Maximizes the variance of squared loadings for each factor, simplifying interpretations.")},
+					{ label: "varimax"		, value: "varimax", 	info: qsTr("Maximizes the variance of squared loadings for each factor, simplifying interpretations. Uses Kaiser normalization.")},
 					{ label: "quartimax"	, value: "quartimax", info: qsTr("Minimizes the number of factors needed to explain each variable, simplifying structure.")	},
 					{ label: "bentlerT"		, value: "bentlerT", 	info: qsTr("Orthogonal rotation method by Bentler, used for simplifying factor loadings.")},
 					{ label: "equamax"		, value: "equamax", 	info: qsTr("Combines Varimax and Quartimax to balance factor simplicity and variable explanations.")},
-					{ label: "geominT"		, value: "geominT", 	info: qsTr("Applies an orthogonal rotation minimizing a weighted sum of squared loadings.")}
+					{ label: "geominT"		, value: "geominT", 	info: qsTr("Applies an orthogonal rotation minimizing a weighted sum of squared loadings. Uses delta = 0.01.")}
 				]
 			}
 		}
@@ -65,13 +65,13 @@ Section
 			DropDown { 
 				name: "obliqueSelector"
 				values: [ 
-					{ value: "promax", label: "promax", info: qsTr("Starts with Varimax and applies a power transformation to allow correlated factors.")},
-					{ value: "oblimin", label: "oblimin", info: qsTr("An oblique rotation that minimizes the correlation among factors while allowing flexibility.")},
-					{ value: "simplimax", label: "simplimax", info: qsTr("Aims to simplify factor loadings by minimizing nonzero entries.") },
+					{ value: "promax", label: "promax", info: pca ? qsTr("Starts with Varimax and applies a power transformation to allow correlated factors. Uses power m = 4.") : qsTr("Starts with Varimax and applies a power transformation to allow correlated factors. Uses power m = 4 and Kaiser normalization.")},
+					{ value: "oblimin", label: "oblimin", info: qsTr("An oblique rotation that minimizes the correlation among factors while allowing flexibility. Uses gamma = 0.")},
+					{ value: "simplimax", label: "simplimax", info: qsTr("Aims to simplify factor loadings by minimizing nonzero entries. The number of loadings pushed towards zero (k) equals the number of variables.") },
 					{ value: "bentlerQ", label: "bentlerQ", info: qsTr("Oblique rotation by Bentler, simplifying factor correlations.")},
 					{ value: "biquartimin", label: "biquartimin", info: qsTr("An oblique rotation balancing between simple and interpretable factor loadings.")},
 					{ value: "cluster", label: "cluster", info: qsTr("Targets a cluster rotation for factor analysis, emphasizing group separation.") },
-					{ value: "geominQ", label: "geominQ", info: qsTr("An oblique version of Geomin, allowing factor correlations and reducing complex loadings.")}
+					{ value: "geominQ", label: "geominQ", info: qsTr("An oblique version of Geomin, allowing factor correlations and reducing complex loadings. Uses delta = 0.01.")}
 				]
 			}
 		}
@@ -113,13 +113,13 @@ Section
 		DropDown
 		{
 			name: "factoringMethod"
-			info: qsTr("Which factoring method to use for the decomposition.")
+			info: qsTr("Which factoring method to use for the decomposition. The initial communalities (or start values of the optimization) are the squared multiple correlations, except for minimum rank.")
 			indexDefaultValue: 0
 			values:
 			[
 				{ label: qsTr("Minimum residual"),			value: "minimumResidual", info: qsTr("Perform a minimum residual factor analysis (minres) using the first derivative.")},
 				{ label: qsTr("Maximum likelihood"),		value: "maximumLikelihood", info: qsTr("Perform a maximum likelihood factor analysis (ml).")		},
-				{ label: qsTr("Principal axis factoring"),	value: "principalAxis", info: qsTr("Perform a principal factor solution (pa).")			},
+				{ label: qsTr("Principal axis factoring"),	value: "principalAxis", info: qsTr("Perform a principal factor solution (pa). The solution is iterated until the change in communalities is below 0.001 or 50 iterations are reached.")			},
 				{ label: qsTr("Ordinary least squares"),	value: "ordinaryLeastSquares", info: qsTr("Minimize the residual matrix using an OLS procedure, slower but uses the empirical first derivative.")	},
 				{ label: qsTr("Weighted least squares"),	value: "weightedLeastSquares", info: qsTr("Perform a weighted least squares (WLS) solution.")	},
 				{ label: qsTr("Generalized least squares"), value: "generalizedLeastSquares", info: qsTr("Perform a generalized least squares (GLS) solution.")},

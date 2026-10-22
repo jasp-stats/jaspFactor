@@ -146,7 +146,7 @@ Section
 			value: "pairwise";		
 			label: qsTr("Exclude cases pairwise"); 
 			checked: true; 
-			info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
+			info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. The sample size used for the fit statistics is the total number of cases, and component/factor scores are not available for cases with missing values.")
 		}
 		RadioButton { 
 			value: "listwise";		

@@ -30,6 +30,8 @@
 #'   \item \code{"raw"}
 #' }
 #' @param eigenvaluesAbove, Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion.
+#' @param mapTable, Displays a table with the average squared partial correlation after partialling out 0, 1, 2, ... principal components (Velicer's minimum average partial test). The number of components with the lowest value is suggested for retention and marked with an asterisk. This suggestion is always shown in the summary table. It is based on principal components, independent of the parallel analysis method.
+#'    Defaults to \code{FALSE}.
 #' @param naAction, Select how to handle missing values.
 #' \itemize{
 #'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
@@ -54,6 +56,7 @@ numberOfFactors <- function(
           baseDecompositionOn = "correlationMatrix",
           dataType = "raw",
           eigenvaluesAbove = 1,
+          mapTable = FALSE,
           naAction = "pairwise",
           parallelAnalysisIterations = 20,
           parallelAnalysisMethod = "principalComponentBased",

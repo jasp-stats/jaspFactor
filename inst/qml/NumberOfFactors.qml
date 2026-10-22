@@ -137,6 +137,12 @@ Form
 		}
 		CheckBox
 		{
+			name:		"mapTable"
+			label:		qsTr("MAP table")
+			info: qsTr("Displays a table with the average squared partial correlation after partialling out 0, 1, 2, ... principal components (Velicer's minimum average partial test). The number of components with the lowest value is suggested for retention and marked with an asterisk. This suggestion is always shown in the summary table. It is based on principal components, independent of the parallel analysis method.")
+		}
+		CheckBox
+		{
 			name:		"screePlot"
 			label:		qsTr("Scree plot")
 			checked:	true

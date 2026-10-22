@@ -16,6 +16,7 @@ defaultOptions <- list(
   eigenvaluesAbove = 1,
   baseDecompositionOn = "correlationMatrix",
   parallelAnalysisTable = TRUE,
+  mapTable = TRUE,
   screePlot = TRUE,
   screePlotParallelAnalysisResults = TRUE,
   naAction = "pairwise",
@@ -36,7 +37,15 @@ test_that("Summary table results match (PC-based)", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Parallel analysis (PC-based)", 2,
-                                      "Eigenvalues above 1", 3))
+                                      "Eigenvalues above 1", 3,
+                                      "Velicer's MAP", 0))
+})
+
+test_that("MAP table results match", {
+  table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_mapTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("0*", 0.04314047779, "1", 0.05852907536, "2", 0.11721132093,
+                                      "3", 0.2207663532, "4", 0.46692540953, "5", 1))
 })
 
 test_that("Parallel Analysis table results match (PC-based)", {
@@ -65,7 +74,7 @@ results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTe
 
 test_that("Summary and Parallel Analysis tables use FA basis", {
   summaryData <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
-  testthat::expect_length(summaryData, 2L)
+  testthat::expect_length(summaryData, 3L)
   testthat::expect_true(grepl("FA-based", summaryData[[1]][["method"]]))
 
   parallelData <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
@@ -143,7 +152,19 @@ test_that("Eigenvalue criterion respects the threshold", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Parallel analysis (PC-based)", 2,
-                                      "Eigenvalues above 0.8", 4))
+                                      "Eigenvalues above 0.8", 4,
+                                      "Velicer's MAP", 0))
+})
+
+
+# MAP values must equal psych::vss for 1 or more components; 0 components is added on top
+test_that("MAP values match psych::vss", {
+  corMatrix <- as.matrix(psych::Thurstone)
+  mapValues <- jaspFactor:::.nofMapValues(corMatrix)
+  vssMap    <- suppressWarnings(suppressMessages(psych::vss(corMatrix, n = 8, n.obs = 213, plot = FALSE)$map))
+
+  testthat::expect_equal(mapValues[-1], vssMap, tolerance = 1e-8)
+  testthat::expect_equal(jaspFactor:::.nofMapSuggested(mapValues), 3)
 })
 
 

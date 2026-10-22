@@ -34,6 +34,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   # output functions
   .nofSummaryTable(          container, dataset, options, ready)
   .nofParallelAnalysisTable( container, dataset, options, ready)
+  .nofMapTable(              container, dataset, options, ready)
   .nofScreePlot(             container, dataset, options, ready)
 }
 
@@ -99,6 +100,46 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 }
 
 
+.nofCorrelationMatrix <- function(container, dataset, options) {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix")
+    return(.efaComputePolyCorMatrix(container, dataset, options))
+
+  if (options[["dataType"]] == "varianceCovariance")
+    return(cov2cor(as.matrix(dataset)))
+
+  return(cor(dataset, use = "pairwise.complete.obs"))
+}
+
+
+# Velicer's minimum average partial (MAP) test: the average squared partial correlation
+# after partialling out the first m = 0, ..., p - 1 principal components from the correlation matrix;
+# the m with the lowest value is the suggested number of components.
+# psych::vss() returns the same values for m >= 1 but cannot suggest 0 and also fits a model for each m.
+.nofMapValues <- function(corMatrix) {
+  nVar      <- ncol(corMatrix)
+  eig       <- eigen(corMatrix, symmetric = TRUE)
+  loadings  <- eig$vectors %*% diag(sqrt(pmax(eig$values, 0)), nrow = nVar)
+  mapValues <- rep(NA_real_, nVar)
+
+  for (m in seq_len(nVar) - 1L) {
+    partialCov <- if (m == 0L) corMatrix else corMatrix - tcrossprod(loadings[, seq_len(m), drop = FALSE])
+    d          <- diag(partialCov)
+    if (any(d <= 0)) next
+
+    partialCor <- partialCov / sqrt(outer(d, d))
+    diag(partialCor) <- 0
+    mapValues[m + 1L] <- sum(partialCor^2) / (nVar * (nVar - 1))
+  }
+
+  return(mapValues)
+}
+
+# the first value belongs to 0 components
+.nofMapSuggested <- function(mapValues) {
+  return(which.min(mapValues) - 1L)
+}
+
+
 # Output functions ----
 .nofSummaryTable <- function(container, dataset, options, ready) {
   if (!is.null(container[["summaryTable"]])) return()
@@ -122,8 +163,12 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   paLabel <- if (pcBased) gettext("Parallel analysis (PC-based)") else gettext("Parallel analysis (FA-based)")
   paCount <- .nofParallelSuggested(parallelResult, pcBased)
 
-  summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalues above %s", options[["eigenvaluesAbove"]]))
-  summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvaluesAbove"]]))
+  corMatrix <- .nofCorrelationMatrix(container, dataset, options)
+  if (is.null(corMatrix)) return()
+  mapCount <- .nofMapSuggested(.nofMapValues(corMatrix))
+
+  summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalues above %s", options[["eigenvaluesAbove"]]), gettext("Velicer's MAP"))
+  summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvaluesAbove"]]), mapCount)
   summaryTable$addFootnote(gettextf("Eigenvalue criterion based on %s eigenvalues.", eigType))
 }
 
@@ -173,12 +218,38 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 }
 
 
+.nofMapTable <- function(container, dataset, options, ready) {
+  if (!options[["mapTable"]] || !is.null(container[["mapTable"]])) return()
+
+  mapTable <- createJaspTable(gettext("Velicer's Minimum Average Partial (MAP)"))
+  mapTable$dependOn("mapTable")
+  mapTable$position <- 3
+  mapTable$addColumnInfo(name = "col", title = gettext("Components partialled out"),           type = "string")
+  mapTable$addColumnInfo(name = "val", title = gettext("Average squared partial correlation"), type = "number", format = "dp:4")
+  container[["mapTable"]] <- mapTable
+
+  if (!ready || container$getError()) return()
+
+  corMatrix <- .nofCorrelationMatrix(container, dataset, options)
+  if (is.null(corMatrix)) return()
+
+  mapValues <- .nofMapValues(corMatrix)
+  suggested <- .nofMapSuggested(mapValues)
+  nPartial  <- seq_along(mapValues) - 1L
+
+  mapTable[["col"]] <- ifelse(nPartial == suggested, paste0(nPartial, "*"), nPartial)
+  mapTable[["val"]] <- mapValues
+
+  mapTable$addFootnote(gettext("'*' = number of components suggested for retention, i.e., with the lowest average squared partial correlation. MAP is always based on principal components."))
+}
+
+
 .nofScreePlot <- function(container, dataset, options, ready) {
   if (!options[["screePlot"]] || !is.null(container[["screePlot"]])) return()
 
   scree <- createJaspPlot(title = gettext("Scree plot"), width = 480, height = 320)
   scree$dependOn(c("screePlot", "screePlotParallelAnalysisResults", "eigenvaluesAbove"))
-  scree$position <- 3
+  scree$position <- 4
   container[["screePlot"]] <- scree
 
   if (!ready || container$getError()) return()

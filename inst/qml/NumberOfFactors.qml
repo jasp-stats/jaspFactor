@@ -78,6 +78,15 @@ Form
 			}
 		}
 
+		IntegerField
+		{
+			name:			"parallelAnalysisIterations"
+			label:			qsTr("Number of iterations")
+			defaultValue:	20
+			min:			2
+			info: qsTr("The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.")
+		}
+
 		SetSeed{}
 	}
 

@@ -17,7 +17,7 @@
 
 ## Added
 * Latent Class Analysis ([PR #346](https://github.com/jasp-stats/jaspFactor/pull/346)).
-* New **Number of Factors/Components** analysis that consolidates all factor/component retention methods (parallel analysis, eigenvalue criterion, scree plot) into a dedicated analysis, usable for both EFA and PCA decisions.
+* New **Number of Factors/Components** analysis that consolidates all factor/component retention methods (parallel analysis, eigenvalue criterion, scree plot) into a dedicated analysis, usable for both EFA and PCA decisions. The number of parallel analysis iterations can be set ([jasp-issues#4621](https://github.com/jasp-stats/jasp-issues/issues/4621)).
 
 ## Changed
 * EFA, PCA: eigenvalue- and parallel-analysis-based factor count options removed from both analyses; the number of factors/components is now set manually, with guidance to use the new Number of Factors/Components analysis.

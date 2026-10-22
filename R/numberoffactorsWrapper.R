@@ -35,6 +35,7 @@
 #'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
 #'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis.
 #' }
+#' @param parallelAnalysisIterations, The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.
 #' @param parallelAnalysisMethod, Whether the parallel analysis is based on principal component eigenvalues (PC) or factor eigenvalues (FA). PC-based parallel analysis is a common choice also when the goal is to determine the number of factors for a factor analysis.
 #' \itemize{
 #'   \item \code{"principalComponentBased"}
@@ -54,6 +55,7 @@ numberOfFactors <- function(
           dataType = "raw",
           eigenvaluesAbove = 1,
           naAction = "pairwise",
+          parallelAnalysisIterations = 20,
           parallelAnalysisMethod = "principalComponentBased",
           parallelAnalysisTable = TRUE,
           plotHeight = 320,

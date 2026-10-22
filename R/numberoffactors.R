@@ -44,7 +44,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   } else {
     container <- createJaspContainer()
     container$dependOn(c("variables", "variables.types", "dataType", "sampleSize", "naAction",
-                         "baseDecompositionOn", "parallelAnalysisMethod", "setSeed", "seed"))
+                         "baseDecompositionOn", "parallelAnalysisMethod", "parallelAnalysisIterations", "setSeed", "seed"))
     jaspResults[["nofContainer"]] <- container
   }
 
@@ -60,19 +60,21 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
     return(container[["parallelState"]]$object)
 
   faMethod <- ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased", "pc", "fa")
+  nIter    <- options[["parallelAnalysisIterations"]]
 
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- .efaComputePolyCorMatrix(container, dataset, options)
     if (is.null(polyTetraCor)) return(NULL)
     .setSeedJASP(options)
-    parallelResult <- try(psych::fa.parallel(polyTetraCor, plot = FALSE, fa = faMethod, n.obs = nrow(dataset)))
+    parallelResult <- try(psych::fa.parallel(polyTetraCor, plot = FALSE, fa = faMethod, n.obs = nrow(dataset),
+                                             n.iter = nIter))
   } else if (options[["dataType"]] == "varianceCovariance") {
     .setSeedJASP(options)
     parallelResult <- try(psych::fa.parallel(cov2cor(as.matrix(dataset)), plot = FALSE, fa = faMethod,
-                                             n.obs = options[["sampleSize"]]))
+                                             n.obs = options[["sampleSize"]], n.iter = nIter))
   } else {
     .setSeedJASP(options)
-    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = faMethod))
+    parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = faMethod, n.iter = nIter))
   }
 
   if (isTryError(parallelResult)) {

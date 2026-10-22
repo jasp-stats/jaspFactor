@@ -12,6 +12,7 @@ defaultOptions <- list(
   dataType = "raw",
   sampleSize = 200,
   parallelAnalysisMethod = "principalComponentBased",
+  parallelAnalysisIterations = 20,
   eigenvaluesAbove = 1,
   baseDecompositionOn = "correlationMatrix",
   parallelAnalysisTable = TRUE,

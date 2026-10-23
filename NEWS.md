@@ -23,6 +23,7 @@
 * EFA, PCA: ordinal variables with value labels (e.g., from SPSS) were incorrectly treated as having missing values when computing polychoric correlations; fixed by improving factor/ordered-to-numeric coercion ([jasp-issues#4129](https://github.com/jasp-stats/jasp-issues/issues/4129), [jasp-issues#4224](https://github.com/jasp-stats/jasp-issues/issues/4224)) ([PR #336](https://github.com/jasp-stats/jaspFactor/pull/336)).
 * CFA: Chi-square table footnote now always reports the estimator, test statistic, and standard error method, making it clear which defaults lavaan applied (e.g., Browne.residual.nt when DWLS is used on continuous data) ([jasp-issues#4157](https://github.com/jasp-stats/jasp-issues/issues/4157), [jasp-issues#4171](https://github.com/jasp-stats/jasp-issues/issues/4171)) ([PR #336](https://github.com/jasp-stats/jaspFactor/pull/336)).
 * EFA, PCA: help now states the default rotation parameters, the principal axis iteration settings, the initial communalities, and how missing values affect fit statistics and scores ([jasp-issues#4621](https://github.com/jasp-stats/jasp-issues/issues/4621)).
+* EFA: the Factor Characteristics table now has a column with the eigenvalues of the data (correlation) matrix, and the unrotated solution reports its sums of squared loadings, labelled as such, instead of the eigenvalues of the reduced matrix, which differed slightly from them ([jasp-issues#3844](https://github.com/jasp-stats/jasp-issues/issues/3844)).
 
 ---
 

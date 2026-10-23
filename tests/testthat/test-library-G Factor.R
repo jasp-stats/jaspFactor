@@ -17,8 +17,8 @@ test_that("exploratoryFactorAnalysis (analysis 2) results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list("Factor 1", 0.466283987164474, 0.466284032177272, 0.466283987164474,
-     0.466284032177272, 3.26398791015131, 3.2639882252409))
+    list("Factor 1", 0.466283987164474, 0.466283987164475, 3.551168586325465,
+     0.466283987164474, 0.466283987164475, 3.263987910151319, 3.263987910151319))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,

@@ -72,10 +72,10 @@ test_that("Factor Correlations table results match", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.211560139237578, 0.215203868463381, 0.211560139237578,
-                                      0.215203868463381, 1.48092097466305, 1.50642707924367, "Factor 2",
-                                      0.366100386048402, 0.366966592875577, 0.154540246810824, 0.151762724412196,
-                                      1.08178172767577, 1.06233907088537))
+                                 list("Factor 1", 0.211560139238448, 0.214456283799968, 1.765453969821246,
+                                      0.211560139238448, 0.214456283799968, 1.480920974669139, 1.501193986599778,
+                                      "Factor 2", 0.366100386049262, 0.366100386049289, 1.310153052198495,
+                                      0.15454024681081, 0.15164410224932, 1.081781727675693, 1.061508715745243))
 })
 
 test_that("Additional fit indices table results match", {
@@ -241,9 +241,9 @@ results <- runAnalysis("exploratoryFactorAnalysis", testthat::test_path("holzing
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.314163998816934, 0.314163998816934, 2.8274759893524,
-                                      "Factor 2", 0.449126711506193, 0.13496271268926, 1.21466441420334,
-                                      "Factor 3", 0.539738017727469, 0.090611306221276, 0.815501755991485
+                                 list("Factor 1", 0.314163647589992, 3.216344181437706, 0.314163647589992, 2.827472828309932,
+                                      "Factor 2", 0.449126418894596, 1.638713221526056, 0.134962771304604, 1.214664941741433,
+                                      "Factor 3", 0.539737894145641, 1.365159347786247, 0.090611475251045, 0.815503277259405
                                  ))
 })
 
@@ -299,10 +299,10 @@ results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTes
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.237444621938795, 0.238183139137491, 0.237444621938795,
-                                      0.238183139137491, 1.42466773163277, 1.42909883482494, "Factor 2",
-                                      0.411139518227707, 0.411182023092321, 0.173694896288912, 0.17299888395483,
-                                      1.04216937773347, 1.03799330372898))
+                                 list("Factor 1", 0.23744462193867, 0.23818022169266, 1.78311572348898,
+                                      0.23744462193867, 0.23818022169266, 1.42466773163202, 1.42908133015596,
+                                      "Factor 2", 0.411139518227585, 0.411139518227585, 1.289241168930776,
+                                      0.173694896288915, 0.172959296534925, 1.042169377733492, 1.037755779209552))
 })
 
 test_that("Mardia's Test of Multivariate Normality table results match with poly cor", {
@@ -417,7 +417,7 @@ test_that("Factor Characteristics table results match", {
   skip("Skip test because columnIndexInData does not play nice with jaspTools yet")
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
    jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.292468690109419, 0.292468690109419, 2.63221821098477
+                                 list("Factor 1", 0.292468456392298, 3.216344181437708, 0.292468456392298, 2.632216107530681
                                  ))
 })
 

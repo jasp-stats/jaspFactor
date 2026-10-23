@@ -494,14 +494,15 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (!is.null(modelContainer[["eigenTable"]])) return()
 
   eigenTable <- createJaspTable(gettext("Factor Characteristics"))
-  eigenTable$addColumnInfo(name = "comp", title = "",                         type = "string")
+  eigenTable$addColumnInfo(name = "comp",       title = "",                    type = "string")
+  eigenTable$addColumnInfo(name = "eigenvalue", title = gettext("Eigenvalue"), type = "number")
 
   # if a rotation is used, the table needs more columns
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
-    eigenTable$addColumnInfo(name = "sslU", title = gettext("Eigenvalue"),  type = "number", overtitle = overTitleA)
+    eigenTable$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "sslR", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleB)
@@ -522,20 +523,54 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   efaResults <- modelContainer[["model"]][["object"]]
 
 
-  eigv <- efaResults$values
-  eigv_init <- efaResults$e.values
+  dataEigen  <- efaResults$e.values
   Vaccounted <- efaResults[["Vaccounted"]]
-  idx <- seq_len(efaResults[["factors"]])
+  idx        <- seq_len(efaResults[["factors"]])
 
-  eigenTable[["comp"]] <- paste("Factor", idx)
-  eigenTable[["sslU"]] <- eigv[idx]
-  eigenTable[["propU"]] <- eigv[idx] / sum(eigv_init)
-  eigenTable[["cumpU"]] <- cumsum(eigv)[idx] / sum(eigv_init)
+  sslUnrotated <- try(.efaUnrotatedSsLoadings(efaResults, options))
+  if (isTryError(sslUnrotated)) {
+    eigenTable$setError(gettextf("The unrotated solution could not be computed. Internal error message: %s",
+                                 .extractErrorMessage(sslUnrotated)))
+    return()
+  }
+
+  matrixLabel <- switch(options[["baseDecompositionOn"]],
+                        "correlationMatrix"                = gettext("correlation matrix"),
+                        "covarianceMatrix"                 = gettext("covariance matrix"),
+                        "polyTetrachoricCorrelationMatrix" = gettext("polychoric/tetrachoric correlation matrix"))
+  eigenTable$addFootnote(gettextf("The eigenvalues are those of the %s.", matrixLabel))
+
+  eigenTable[["comp"]]       <- paste("Factor", idx)
+  eigenTable[["eigenvalue"]] <- dataEigen[idx]
+  eigenTable[["sslU"]]       <- sslUnrotated[idx]
+  eigenTable[["propU"]]      <- sslUnrotated[idx] / sum(dataEigen)
+  eigenTable[["cumpU"]]      <- cumsum(sslUnrotated)[idx] / sum(dataEigen)
   if (rotate != "none") {
     eigenTable[["sslR"]] <- Vaccounted["SS loadings", idx]
     eigenTable[["propR"]] <- Vaccounted["Proportion Var", idx]
     eigenTable[["cumpR"]] <- if (efaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
+}
+
+# psych::fa only returns the sums of squared loadings of the rotated solution. The extraction does not depend on
+# the rotation, so the unrotated solution is refitted from the matrix stored in the result.
+.efaUnrotatedSsLoadings <- function(efaResults, options) {
+  unrotated <- efaResults
+
+  if (efaResults[["rotation"]] != "none" && efaResults[["factors"]] > 1L) {
+    unrotated <- suppressWarnings(psych::fa(
+      r        = efaResults[["r"]],
+      nfactors = efaResults[["factors"]],
+      rotate   = "none",
+      scores   = "none",
+      covar    = options[["baseDecompositionOn"]] == "covarianceMatrix",
+      fm       = efaResults[["fm"]],
+      n.obs    = efaResults[["n.obs"]],
+      np.obs   = efaResults[["np.obs"]]
+    ))
+  }
+
+  return(colSums(unclass(unrotated[["loadings"]])^2))
 }
 
 .efaCorrTable <- function(modelContainer, dataset, options, ready) {

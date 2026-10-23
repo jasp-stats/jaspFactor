@@ -17,8 +17,7 @@
 
 ## Added
 * Latent Class Analysis ([PR #346](https://github.com/jasp-stats/jaspFactor/pull/346)).
-* New **Number of Factors/Components** analysis that consolidates all factor/component retention methods (parallel analysis, eigenvalue criterion, scree plot) into a dedicated analysis, usable for both EFA and PCA decisions. The number of parallel analysis iterations can be set ([jasp-issues#3010](https://github.com/jasp-stats/jasp-issues/issues/3010)). Velicer's minimum average partial (MAP) test is included as an additional method ([jasp-issues#1951](https://github.com/jasp-stats/jasp-issues/issues/1951), [jasp-issues#4621](https://github.com/jasp-stats/jasp-issues/issues/4621)). A help file documents the methods.
-
+* New **Number of Factors/Components** analysis that consolidates all factor/component retention methods (parallel analysis, eigenvalue criterion, scree plot) into a dedicated analysis, usable for both EFA and PCA decisions. The number of parallel analysis iterations can be set ([jasp-issues#3010](https://github.com/jasp-stats/jasp-issues/issues/3010)). Velicer's minimum average partial (MAP) test is included as an additional method ([jasp-issues#1951](https://github.com/jasp-stats/jasp-issues/issues/1951), [jasp-issues#4621](https://github.com/jasp-stats/jasp-issues/issues/4621)).
 ## Changed
 * EFA, PCA: eigenvalue- and parallel-analysis-based factor count options removed from both analyses; the number of factors/components is now set manually, with guidance to use the new Number of Factors/Components analysis.
 * EFA, PCA: retention options from older JASP files (parallel analysis, eigenvalue criterion, parallel analysis table, scree plot, seed) are removed on load, and the factor/component count falls back to the stored manual value. Upgrade messages explaining this are in place but are not currently displayed by JASP.

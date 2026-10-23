@@ -40,11 +40,11 @@
 #' }
 #' @param factorStructure, An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix.
 #'    Defaults to \code{FALSE}.
-#' @param factoringMethod, Which factoring method to use for the decomposition.
+#' @param factoringMethod, Which factoring method to use for the decomposition. The initial communalities (or start values of the optimization) are the squared multiple correlations, except for minimum rank.
 #' \itemize{
 #'   \item \code{"minimumResidual"} (default) : Perform a minimum residual factor analysis (minres) using the first derivative.
 #'   \item \code{"maximumLikelihood"}: Perform a maximum likelihood factor analysis (ml).
-#'   \item \code{"principalAxis"}: Perform a principal factor solution (pa).
+#'   \item \code{"principalAxis"}: Perform a principal factor solution (pa). The solution is iterated until the change in communalities is below 0.001 or 50 iterations are reached.
 #'   \item \code{"ordinaryLeastSquares"}: Minimize the residual matrix using an OLS procedure, slower but uses the empirical first derivative.
 #'   \item \code{"weightedLeastSquares"}: Perform a weighted least squares (WLS) solution.
 #'   \item \code{"generalizedLeastSquares"}: Perform a generalized least squares (GLS) solution.
@@ -61,7 +61,7 @@
 #' @param naAction, Select how to handle missing values.
 #' \itemize{
 #'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
-#'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
+#'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default. The sample size used for the fit statistics is the total number of cases, and component/factor scores are not available for cases with missing values.
 #' }
 #' @param orderLoadingsBy, Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
 #' \itemize{
@@ -74,7 +74,7 @@
 #'    Defaults to \code{FALSE}.
 #' @param residualMatrix, Displays a table containing the residual variances and correlations.
 #'    Defaults to \code{FALSE}.
-#' @param rotationMethod, Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.
+#' @param rotationMethod, Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure. The rotation parameters cannot be changed, the default values of the R packages psych and GPArotation are used (see the individual methods). Rotation is only applied if more than one component/factor is extracted.
 #' \itemize{
 #'   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 #'   \item \code{"orthogonal"}: This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.

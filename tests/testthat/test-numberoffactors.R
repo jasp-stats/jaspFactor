@@ -157,6 +157,26 @@ test_that("Eigenvalue criterion respects the threshold", {
 })
 
 
+# Holzinger-Swineford data (9 variables, 301 cases): MAP suggests 2 components,
+# all values equal the reference from EFA.dimensions::MAP (v0.1.9.2)
+options <- defaultOptions
+options$variables <- c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")
+
+results <- jaspTools::runAnalysis("numberOfFactors", testthat::test_path("holzingerswineford.csv"), options, makeTests = F)
+
+test_that("MAP results match EFA.dimensions (Holzinger-Swineford)", {
+  summaryData <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
+  testthat::expect_identical(summaryData[[3]][["method"]], "Velicer's MAP")
+  testthat::expect_equal(summaryData[[3]][["n"]], 2)
+
+  table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_mapTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("0", 0.10188449563, "1", 0.0802261369, "2*", 0.06341522893,
+                                      "3", 0.06822706134, "4", 0.12005229672, "5", 0.206652421,
+                                      "6", 0.34253617281, "7", 0.44266426238, "8", 1))
+})
+
+
 # MAP values must equal psych::vss for 1 or more components; 0 components is added on top
 test_that("MAP values match psych::vss", {
   corMatrix <- as.matrix(psych::Thurstone)

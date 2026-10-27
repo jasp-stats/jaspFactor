@@ -25,7 +25,6 @@ import "./common" as Common
 Form
 {
 
-	// Common.PcaEfaVariables{}
 	VariablesForm
 	{
 		// property alias variables: variables
@@ -57,9 +56,14 @@ Form
 		}
 	}
 
-	Common.PcaEfaNumberFactors{
-		pca: true
-		variablesCount: variables.count
+	IntegerField
+	{
+		name:			"manualNumberOfComponents"
+		label:			qsTr("Number of components")
+		defaultValue:	1
+		min:			1
+		max:			variables.count > 1 ? variables.count : 1
+		info:			qsTr("The number of components to extract. To determine this number, use the Number of Factors/Components analysis.")
 	}
 
 	Common.PcaEfaAnalysisOptions{

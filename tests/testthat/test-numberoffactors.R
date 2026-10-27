@@ -11,10 +11,10 @@ defaultOptions <- list(
   variables = list(),
   dataType = "raw",
   sampleSize = 200,
-  parallelAnalysisMethod = "principalComponentBased",
+  eigenvalueMethod = "principalComponentBased",
   parallelAnalysisIterations = 20,
-  eigenvaluesAbove = 1,
-  baseDecompositionOn = "correlationMatrix",
+  eigenvalueThreshold = 1,
+  correlationMatrix = "correlationMatrix",
   parallelAnalysisTable = TRUE,
   mapTable = TRUE,
   screePlot = TRUE,
@@ -37,7 +37,7 @@ test_that("Summary table results match (PC-based)", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Parallel analysis (PC-based)", 2,
-                                      "Eigenvalues above 1", 3,
+                                      "Eigenvalue criterion (above 1)", 3,
                                       "Velicer's MAP", 0))
 })
 
@@ -67,7 +67,7 @@ test_that("Scree plot matches (PC-based)", {
 
 # FA-based parallel analysis
 options <- defaultOptions
-options$parallelAnalysisMethod <- "factorBased"
+options$eigenvalueMethod <- "factorBased"
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
@@ -88,7 +88,7 @@ faEigenvalues <- sapply(results[["results"]][["nofContainer"]][["collection"]][[
 
 # FA-based, simulated data overlay hidden: real data series must stay on the factor eigenvalues
 options <- defaultOptions
-options$parallelAnalysisMethod <- "factorBased"
+options$eigenvalueMethod <- "factorBased"
 options$screePlotParallelAnalysisResults <- FALSE
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 
@@ -107,7 +107,7 @@ test_that("Scree plot keeps factor eigenvalues when parallel analysis overlay is
 # FA-based on two uncorrelated variables: fa.parallel suggests 0 factors,
 # the summary must report 0 and no row may be starred
 options <- defaultOptions
-options$parallelAnalysisMethod <- "factorBased"
+options$eigenvalueMethod <- "factorBased"
 options$variables <- c("contNormal", "contGamma")
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
@@ -126,7 +126,7 @@ test_that("Zero parallel-analysis suggestion is not forced to one", {
 options <- defaultOptions
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
-options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
+options$correlationMatrix <- "polyTetrachoricCorrelationMatrix"
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
 
@@ -144,7 +144,7 @@ test_that("Parallel Analysis table results match with poly cor", {
 # eigenvalue threshold affects only the summary table
 options <- defaultOptions
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
-options$eigenvaluesAbove <- 0.8
+options$eigenvalueThreshold <- 0.8
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
 
@@ -152,7 +152,7 @@ test_that("Eigenvalue criterion respects the threshold", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Parallel analysis (PC-based)", 2,
-                                      "Eigenvalues above 0.8", 4,
+                                      "Eigenvalue criterion (above 0.8)", 4,
                                       "Velicer's MAP", 0))
 })
 

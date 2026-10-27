@@ -45,7 +45,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   } else {
     container <- createJaspContainer()
     container$dependOn(c("variables", "variables.types", "dataType", "sampleSize", "naAction",
-                         "baseDecompositionOn", "parallelAnalysisMethod", "parallelAnalysisIterations", "setSeed", "seed"))
+                         "correlationMatrix", "eigenvalueMethod", "parallelAnalysisIterations", "setSeed", "seed"))
     jaspResults[["nofContainer"]] <- container
   }
 
@@ -60,10 +60,10 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!is.null(container[["parallelState"]]))
     return(container[["parallelState"]]$object)
 
-  faMethod <- ifelse(options[["parallelAnalysisMethod"]] == "principalComponentBased", "pc", "fa")
+  faMethod <- ifelse(options[["eigenvalueMethod"]] == "principalComponentBased", "pc", "fa")
   nIter    <- options[["parallelAnalysisIterations"]]
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["correlationMatrix"]] == "polyTetrachoricCorrelationMatrix") {
     polyTetraCor <- .efaComputePolyCorMatrix(container, dataset, options)
     if (is.null(polyTetraCor)) return(NULL)
     .setSeedJASP(options)
@@ -101,7 +101,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 
 
 .nofCorrelationMatrix <- function(container, dataset, options) {
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix")
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["correlationMatrix"]] == "polyTetrachoricCorrelationMatrix")
     return(.efaComputePolyCorMatrix(container, dataset, options))
 
   if (options[["dataType"]] == "varianceCovariance")
@@ -145,7 +145,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!is.null(container[["summaryTable"]])) return()
 
   summaryTable <- createJaspTable(gettext("Suggested Number of Factors/Components"))
-  summaryTable$dependOn("eigenvaluesAbove")
+  summaryTable$dependOn("eigenvalueThreshold")
   summaryTable$position <- 1
   summaryTable$addColumnInfo(name = "method", title = gettext("Method"),           type = "string")
   summaryTable$addColumnInfo(name = "n",      title = gettext("Suggested number"), type = "integer")
@@ -156,7 +156,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   parallelResult <- .nofComputeParallel(container, dataset, options)
   if (is.null(parallelResult)) return()
 
-  pcBased     <- options[["parallelAnalysisMethod"]] == "principalComponentBased"
+  pcBased     <- options[["eigenvalueMethod"]] == "principalComponentBased"
   eigenValues <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
   eigType     <- if (pcBased) gettext("principal component") else gettext("factor")
 
@@ -167,8 +167,8 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (is.null(corMatrix)) return()
   mapCount <- .nofMapSuggested(.nofMapValues(corMatrix))
 
-  summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalues above %s", options[["eigenvaluesAbove"]]), gettext("Velicer's MAP"))
-  summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvaluesAbove"]]), mapCount)
+  summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalue criterion (above %s)", options[["eigenvalueThreshold"]]), gettext("Velicer's MAP"))
+  summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvalueThreshold"]]), mapCount)
   summaryTable$addFootnote(gettextf("Eigenvalue criterion based on %s eigenvalues.", eigType))
 }
 
@@ -176,7 +176,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 .nofParallelAnalysisTable <- function(container, dataset, options, ready) {
   if (!options[["parallelAnalysisTable"]] || !is.null(container[["parallelTable"]])) return()
 
-  pcBased  <- options[["parallelAnalysisMethod"]] == "principalComponentBased"
+  pcBased  <- options[["eigenvalueMethod"]] == "principalComponentBased"
   eigTitle <- if (pcBased) gettext("Real data component eigenvalues") else gettext("Real data factor eigenvalues")
 
   parallelTable <- createJaspTable(gettext("Parallel Analysis"))
@@ -248,14 +248,14 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!options[["screePlot"]] || !is.null(container[["screePlot"]])) return()
 
   scree <- createJaspPlot(title = gettext("Scree plot"), width = 480, height = 320)
-  scree$dependOn(c("screePlot", "screePlotParallelAnalysisResults", "eigenvaluesAbove"))
+  scree$dependOn(c("screePlot", "screePlotParallelAnalysisResults", "eigenvalueThreshold"))
   scree$position <- 4
   container[["screePlot"]] <- scree
 
   if (!ready || container$getError()) return()
 
   n_col   <- ncol(dataset)
-  pcBased <- options[["parallelAnalysisMethod"]] == "principalComponentBased"
+  pcBased <- options[["eigenvalueMethod"]] == "principalComponentBased"
   xLabel  <- if (pcBased) gettext("Component") else gettext("Factor")
 
   # the real data eigenvalues always come from the same source as the x-axis label,
@@ -285,7 +285,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
     ggplot2::ggplot(df, ggplot2::aes(x = id, y = ev, linetype = type, shape = type)) +
     ggplot2::geom_line(na.rm = TRUE) +
     ggplot2::labs(x = xLabel, y = gettext("Eigenvalue")) +
-    ggplot2::geom_hline(yintercept = options$eigenvaluesAbove)
+    ggplot2::geom_hline(yintercept = options$eigenvalueThreshold)
 
   # dynamic function for point size:
   # the plot looks good with size 3 when there are 10 points (3 + log(10) - log(10) = 3)

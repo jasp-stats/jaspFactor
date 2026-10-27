@@ -56,14 +56,14 @@ Form
 
 	Group
 	{
-		title: qsTr("Parallel Analysis")
-		info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the 95th percentile of the simulated eigenvalues.")
+		title: qsTr("Eigenvalues")
+		info: qsTr("Settings for the eigenvalues used by the parallel analysis, the eigenvalue criterion and the scree plot.")
 
 		RadioButtonGroup
 		{
-			name: "parallelAnalysisMethod"
-			title: qsTr("Eigenvalues based on")
-			info: qsTr("Whether the parallel analysis is based on principal component eigenvalues (PC) or factor eigenvalues (FA). PC-based parallel analysis is a common choice also when the goal is to determine the number of factors for a factor analysis.")
+			name: "eigenvalueMethod"
+			title: qsTr("Method")
+			info: qsTr("Whether principal component eigenvalues (PC) or factor eigenvalues (FA) are used for the parallel analysis, the eigenvalue criterion and the scree plot. PC-based eigenvalues are a common choice also when the goal is to determine the number of factors for a factor analysis.")
 
 			RadioButton
 			{
@@ -78,6 +78,21 @@ Form
 			}
 		}
 
+		DoubleField
+		{
+			name:			"eigenvalueThreshold"
+			label:			qsTr("Threshold")
+			defaultValue:	1
+			decimals:		1
+			info: qsTr("Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion. The eigenvalue type (principal component or factor eigenvalues) follows the method selected above.")
+		}
+	}
+
+	Group
+	{
+		title: qsTr("Parallel Analysis")
+		info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the 95th percentile of the simulated eigenvalues.")
+
 		IntegerField
 		{
 			name:			"parallelAnalysisIterations"
@@ -90,28 +105,15 @@ Form
 		SetSeed{}
 	}
 
-	Group
-	{
-		title: qsTr("Eigenvalue Criterion")
-		DoubleField
-		{
-			name:			"eigenvaluesAbove"
-			label:			qsTr("Eigenvalues above")
-			defaultValue:	1
-			decimals:		1
-			info: qsTr("Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion. The eigenvalue type (principal component or factor eigenvalues) follows the parallel analysis method selected above.")
-		}
-	}
-
 	RadioButtonGroup
 	{
-		name: "baseDecompositionOn"
-		title: qsTr("Base Analysis on")
-		info: qsTr("What type of correlation matrix to base the analysis on.")
+		name: "correlationMatrix"
+		title: qsTr("Correlation Matrix")
+		info: qsTr("Which type of correlation matrix the analysis is based on.")
 		RadioButton
 		{
 			value: "correlationMatrix"
-			label: qsTr("Correlation matrix")
+			label: qsTr("Pearson")
 			info: qsTr("The Pearson correlation matrix is used.")
 			checked: !nonScale
 		}
@@ -119,15 +121,16 @@ Form
 		{
 			enabled: dataType.value == "raw" && nonScale
 			value: "polyTetrachoricCorrelationMatrix"
-			label: qsTr("Polychoric/tetrachoric correlation matrix")
+			label: qsTr("Polychoric/tetrachoric")
 			info: qsTr("The polychoric/tetrachoric correlation matrix is used. This is sometimes unstable when sample size is small and when some variables do not contain all response categories")
 			checked: nonScale
 		}
 	}
 
-	Group
+	Section
 	{
-		title: qsTr("Output")
+		title: qsTr("Output Options")
+
 		CheckBox
 		{
 			name:		"parallelAnalysisTable"
@@ -139,7 +142,7 @@ Form
 		{
 			name:		"mapTable"
 			label:		qsTr("MAP table")
-			info: qsTr("Displays a table with the average squared partial correlation after partialling out 0, 1, 2, ... principal components (Velicer's minimum average partial test). The number of components with the lowest value is suggested for retention and marked with an asterisk. This suggestion is always shown in the summary table. It is based on principal components, independent of the parallel analysis method.")
+			info: qsTr("Displays a table with the average squared partial correlation after partialling out 0, 1, 2, ... principal components (Velicer's minimum average partial test). The number of components with the lowest value is suggested for retention and marked with an asterisk. This suggestion is always shown in the summary table. It is based on principal components, independent of the method selected under Eigenvalues.")
 		}
 		CheckBox
 		{
@@ -158,23 +161,28 @@ Form
 		}
 	}
 
-	RadioButtonGroup
+	Section
 	{
-		name: "naAction"
-		title: qsTr("Missing Values")
-		info: qsTr("Select how to handle missing values.")
-		RadioButton
+		title: qsTr("Advanced Options")
+
+		RadioButtonGroup
 		{
-			value: "pairwise";
-			label: qsTr("Exclude cases pairwise");
-			checked: true;
-			info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
-		}
-		RadioButton
-		{
-			value: "listwise";
-			label: qsTr("Exclude cases listwise")
-			info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
+			name: "naAction"
+			title: qsTr("Missing Values")
+			info: qsTr("Select how to handle missing values.")
+			RadioButton
+			{
+				value: "pairwise";
+				label: qsTr("Exclude cases pairwise");
+				checked: true;
+				info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
+			}
+			RadioButton
+			{
+				value: "listwise";
+				label: qsTr("Exclude cases listwise")
+				info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
+			}
 		}
 	}
 

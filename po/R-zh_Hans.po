@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
 "POT-Creation-Date: 2026-06-20 04:52\n"
-"PO-Revision-Date: 2026-07-10 05:01+0000\n"
-"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"PO-Revision-Date: 2026-10-26 12:51+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspfactor-r/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.7.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgid "Second-Order"
 msgstr "二阶"
@@ -74,9 +74,8 @@ msgid ""
 "input."
 msgstr "方差-协方差矩阵输入不支持稳健标准误。"
 
-#, fuzzy
 msgid "# Factors"
-msgstr "因子"
+msgstr "# 因子"
 
 msgid "Model fit"
 msgstr "模型拟合"
@@ -88,7 +87,7 @@ msgid "Model"
 msgstr "模型"
 
 msgid "df"
-msgstr "自由度"
+msgstr "df"
 
 msgid "p"
 msgstr "p"
@@ -114,7 +113,7 @@ msgid "Bartlett's test of sphericity"
 msgstr "Bartlett's 球形检验"
 
 msgid "R-Squared"
-msgstr "R平方"
+msgstr "R²"
 
 msgid "Additional fit measures"
 msgstr "附加拟合测度"
@@ -122,7 +121,6 @@ msgstr "附加拟合测度"
 msgid "Fit indices"
 msgstr "拟合指数"
 
-#, fuzzy
 msgid "Index"
 msgstr "指数"
 
@@ -151,7 +149,7 @@ msgid "Bayesian (BIC)"
 msgstr "贝叶斯 (BIC)"
 
 msgid "Sample-size adjusted Bayesian (SSABIC)"
-msgstr "样本大小调整贝叶斯 (SSABIC)"
+msgstr "样本量调整贝叶斯 (SSABIC)"
 
 msgid "Comparative Fit Index (CFI)"
 msgstr "比较拟合指数 (CFI)"
@@ -255,13 +253,13 @@ msgid "z-value"
 msgstr "z 值"
 
 msgid "Lower"
-msgstr "下界"
+msgstr "下限"
 
 msgid "%s%% Confidence Interval"
 msgstr "%s%% 置信区间"
 
 msgid "Upper"
-msgstr "上界"
+msgstr "上限"
 
 msgid "Second-order factor loadings"
 msgstr "二阶因子载荷"
@@ -273,7 +271,7 @@ msgid "Factor Covariances"
 msgstr "因子协方差"
 
 msgid "Residual variances"
-msgstr "残余方差"
+msgstr "残差方差"
 
 msgid "Residual covariances"
 msgstr "残差协方差"
@@ -305,7 +303,6 @@ msgstr "EPC"
 msgid "Second-order cross-loadings"
 msgstr "二阶交叉载荷"
 
-#, fuzzy
 msgid "Modification indices"
 msgstr "修正指数"
 
@@ -325,7 +322,7 @@ msgid "Residual covariance matrix"
 msgstr "残差协方差矩阵"
 
 msgid "Plots"
-msgstr "绘制图形"
+msgstr "绘图"
 
 msgid "Model plots"
 msgstr "模型图"
@@ -360,31 +357,24 @@ msgstr "系数 %s"
 msgid "Column name %s already exists in the dataset"
 msgstr "列名 %s 已存在于数据集中"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This is likely due to a small sample size. Internal error "
 "message: %s"
 msgstr ""
-"糟糕，多色/四色相关矩阵的估计失败了。\n"
-"      这可能是由于样本量小或变量不包含所有响应类别。\n"
-"      内部错误消息：%s"
+"很遗憾，多分格/四分格相关矩阵的估计失败。这可能是由于样本量小。内部错误消息"
+"：%s"
 
-#, fuzzy
 msgid ""
 "Unfortunately, the estimation of the polychoric/tetrachoric correlation "
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
 msgstr ""
-"糟糕，多色/四色相关矩阵的估计失败了。\n"
-"      这可能是由于样本量小或变量不包含所有响应类别。\n"
-"      内部错误消息：%s"
+"很遗憾，多分格/四分格相关矩阵的估计失败。这可能是由于变量 %1$s 未包含全部响应"
+"类别。内部错误消息：%2$s"
 
-#, fuzzy
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
-msgstr ""
-"估计失败。\n"
-"内部错误消息： %s. %s"
+msgstr "估计失败。内部错误消息：%1$s。%2$s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr ""
@@ -394,22 +384,19 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平分析失败。内部错误消息：%s"
 
-#, fuzzy
 msgid ""
 "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "最大观测到的特征值等于"
+msgstr "没有特征值 > %1$s 的因子。最大观测特征值为 %2$s。"
 
-#, fuzzy
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin 检验"
 
 msgid "Overall MSA"
 msgstr "总体 MSA"
 
-#, fuzzy
 msgid "Bartlett's Test"
-msgstr "Bartlett's 检验"
+msgstr "Bartlett 检验"
 
 msgid "Mardia's Test of Multivariate Normality"
 msgstr "Mardia 多元正态性检验"
@@ -428,7 +415,6 @@ msgstr "偏度的统计量假定为 Chi^2 分布，峰度标准正态的统计�
 msgid "Anti-Image Correlation Matrix"
 msgstr "反像相关矩阵"
 
-#, fuzzy
 msgid "Chi-Squared Test"
 msgstr "卡方检验"
 
@@ -450,9 +436,8 @@ msgstr "独特性(Uniqueness)"
 msgid "No rotation method applied."
 msgstr "未应用旋转方法。"
 
-#, fuzzy
 msgid "Applied rotation method is %1$s."
-msgstr "应用的旋转方法为%s."
+msgstr "应用的旋转方法为%1$s。"
 
 msgid "Factor Loadings (Structure Matrix)"
 msgstr "因子载荷（结构矩阵）"
@@ -539,7 +524,6 @@ msgstr "来自平行分析的模拟数据"
 msgid "Path Diagram"
 msgstr "路径图"
 
-#, fuzzy
 msgid "Model Fit"
 msgstr "模型拟合"
 
@@ -580,9 +564,8 @@ msgstr ""
 msgid "Class"
 msgstr "类别"
 
-#, fuzzy
 msgid "Proportion"
-msgstr "比例变量."
+msgstr "比例"
 
 msgid "SE"
 msgstr "标准误"
@@ -633,9 +616,8 @@ msgstr "输入数据似乎不是对称矩阵！请检查输入数据的格式以
 msgid "All cells must be numeric."
 msgstr "所有单元格必须为数值。"
 
-#, fuzzy
 msgid "Too many %1$s requested (%2$i) for the amount of included variables"
-msgstr "对包含的变量数量，请求的因子过多 (%i)"
+msgstr "相对于纳入的变量数量，请求的 %1$s 过多（%2$i）"
 
 msgid "Not enough valid cases (%i) to run this analysis"
 msgstr "没有足够的有效个案 (%i) 来运行此分析"
@@ -652,11 +634,10 @@ msgstr "数据无效：变量 %s 中的缺失值太多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "数据无效：所有变量共线"
 
-#, fuzzy
 msgid ""
 "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
 "%2$s."
-msgstr "最大观测到的特征值等于"
+msgstr "没有特征值 > %1$s 的成分。最大观测特征值为 %2$s。"
 
 msgid "Component Loadings"
 msgstr "成分载荷"

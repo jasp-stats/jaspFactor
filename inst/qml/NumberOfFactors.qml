@@ -54,76 +54,102 @@ Form
 		}
 	}
 
-	Group
+	Section
 	{
-		title: qsTr("Eigenvalues")
-		info: qsTr("Settings for the eigenvalues used by the parallel analysis, the eigenvalue criterion and the scree plot.")
+		title: qsTr("Analysis Options")
+		expanded: true
+
+		Group
+		{
+			title: qsTr("Eigenvalues")
+			info: qsTr("Settings for the eigenvalues used by the parallel analysis, the eigenvalue criterion and the scree plot.")
+
+			RadioButtonGroup
+			{
+				name: "eigenvalueMethod"
+				title: qsTr("Method")
+				info: qsTr("Whether principal component eigenvalues (PC) or factor eigenvalues (FA) are used for the parallel analysis, the eigenvalue criterion and the scree plot. PC-based eigenvalues are a common choice also when the goal is to determine the number of factors for a factor analysis.")
+
+				RadioButton
+				{
+					value:		"principalComponents"
+					label:		qsTr("Principal components")
+					checked:	true
+				}
+				RadioButton
+				{
+					value:	"factors"
+					label:	qsTr("Factors")
+				}
+			}
+
+			DoubleField
+			{
+				name:			"eigenvalueThreshold"
+				label:			qsTr("Threshold")
+				defaultValue:	1
+				decimals:		1
+				info: qsTr("Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion. The eigenvalue type (principal component or factor eigenvalues) follows the method selected above.")
+			}
+		}
+
+		Group
+		{
+			title: qsTr("Parallel Analysis")
+			info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the 95th percentile of the simulated eigenvalues.")
+
+			IntegerField
+			{
+				name:			"parallelAnalysisIterations"
+				label:			qsTr("Number of iterations")
+				defaultValue:	20
+				min:			2
+				info: qsTr("The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.")
+			}
+
+			SetSeed{}
+		}
 
 		RadioButtonGroup
 		{
-			name: "eigenvalueMethod"
-			title: qsTr("Method")
-			info: qsTr("Whether principal component eigenvalues (PC) or factor eigenvalues (FA) are used for the parallel analysis, the eigenvalue criterion and the scree plot. PC-based eigenvalues are a common choice also when the goal is to determine the number of factors for a factor analysis.")
-
+			name: "correlationMatrix"
+			title: qsTr("Correlation Matrix")
+			info: qsTr("Which type of correlation matrix the analysis is based on.")
 			RadioButton
 			{
-				value:		"principalComponentBased"
-				label:		qsTr("Principal components")
-				checked:	true
+				value: "pearson"
+				label: qsTr("Pearson")
+				info: qsTr("The Pearson correlation matrix is used.")
+				checked: !nonScale
 			}
 			RadioButton
 			{
-				value:	"factorBased"
-				label:	qsTr("Factors")
+				enabled: dataType.value == "raw" && nonScale
+				value: "polychoricTetrachoric"
+				label: qsTr("Polychoric/tetrachoric")
+				info: qsTr("The polychoric/tetrachoric correlation matrix is used. This is sometimes unstable when sample size is small and when some variables do not contain all response categories")
+				checked: nonScale
 			}
 		}
 
-		DoubleField
+		RadioButtonGroup
 		{
-			name:			"eigenvalueThreshold"
-			label:			qsTr("Threshold")
-			defaultValue:	1
-			decimals:		1
-			info: qsTr("Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion. The eigenvalue type (principal component or factor eigenvalues) follows the method selected above.")
-		}
-	}
-
-	Group
-	{
-		title: qsTr("Parallel Analysis")
-		info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the 95th percentile of the simulated eigenvalues.")
-
-		IntegerField
-		{
-			name:			"parallelAnalysisIterations"
-			label:			qsTr("Number of iterations")
-			defaultValue:	20
-			min:			2
-			info: qsTr("The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.")
-		}
-
-		SetSeed{}
-	}
-
-	RadioButtonGroup
-	{
-		name: "correlationMatrix"
-		title: qsTr("Correlation Matrix")
-		info: qsTr("Which type of correlation matrix the analysis is based on.")
-		RadioButton
-		{
-			value: "correlationMatrix"
-			label: qsTr("Pearson")
-			info: qsTr("The Pearson correlation matrix is used.")
-			checked: !nonScale
-		}
-		RadioButton
-		{
-			enabled: dataType.value == "raw" && nonScale
-			value: "polyTetrachoricCorrelationMatrix"
-			label: qsTr("Polychoric/tetrachoric")
-			info: qsTr("The polychoric/tetrachoric correlation matrix is used. This is sometimes unstable when sample size is small and when some variables do not contain all response categories")
-			checked: nonScale
+			name: "naAction"
+			title: qsTr("Missing Values")
+			info: qsTr("Select how to handle missing values.")
+			RadioButton
+			{
+				value: "pairwise";
+				label: qsTr("Exclude cases pairwise");
+				checked: true;
+				info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
+			}
+			RadioButton
+			{
+				value: "listwise";
+				label: qsTr("Exclude cases listwise")
+				info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
+			}
 		}
 	}
 
@@ -153,35 +179,10 @@ Form
 
 			CheckBox
 			{
-				name:		"screePlotParallelAnalysisResults"
+				name:		"screePlotParallelAnalysis"
 				label:		qsTr("Parallel analysis results")
 				checked:	true
 				info: qsTr("Display the mean eigenvalues of the simulated data from the parallel analysis in the scree plot.")
-			}
-		}
-	}
-
-	Section
-	{
-		title: qsTr("Advanced Options")
-
-		RadioButtonGroup
-		{
-			name: "naAction"
-			title: qsTr("Missing Values")
-			info: qsTr("Select how to handle missing values.")
-			RadioButton
-			{
-				value: "pairwise";
-				label: qsTr("Exclude cases pairwise");
-				checked: true;
-				info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
-			}
-			RadioButton
-			{
-				value: "listwise";
-				label: qsTr("Exclude cases listwise")
-				info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
 			}
 		}
 	}

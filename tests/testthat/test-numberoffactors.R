@@ -11,14 +11,14 @@ defaultOptions <- list(
   variables = list(),
   dataType = "raw",
   sampleSize = 200,
-  eigenvalueMethod = "principalComponentBased",
+  eigenvalueMethod = "principalComponents",
   parallelAnalysisIterations = 20,
   eigenvalueThreshold = 1,
-  correlationMatrix = "correlationMatrix",
+  correlationMatrix = "pearson",
   parallelAnalysisTable = TRUE,
   mapTable = TRUE,
   screePlot = TRUE,
-  screePlotParallelAnalysisResults = TRUE,
+  screePlotParallelAnalysis = TRUE,
   naAction = "pairwise",
   plotWidth = 480,
   plotHeight = 320,
@@ -67,7 +67,7 @@ test_that("Scree plot matches (PC-based)", {
 
 # FA-based parallel analysis
 options <- defaultOptions
-options$eigenvalueMethod <- "factorBased"
+options$eigenvalueMethod <- "factors"
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
@@ -88,8 +88,8 @@ faEigenvalues <- sapply(results[["results"]][["nofContainer"]][["collection"]][[
 
 # FA-based, simulated data overlay hidden: real data series must stay on the factor eigenvalues
 options <- defaultOptions
-options$eigenvalueMethod <- "factorBased"
-options$screePlotParallelAnalysisResults <- FALSE
+options$eigenvalueMethod <- "factors"
+options$screePlotParallelAnalysis <- FALSE
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
@@ -107,7 +107,7 @@ test_that("Scree plot keeps factor eigenvalues when parallel analysis overlay is
 # FA-based on two uncorrelated variables: fa.parallel suggests 0 factors,
 # the summary must report 0 and no row may be starred
 options <- defaultOptions
-options$eigenvalueMethod <- "factorBased"
+options$eigenvalueMethod <- "factors"
 options$variables <- c("contNormal", "contGamma")
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
@@ -126,7 +126,7 @@ test_that("Zero parallel-analysis suggestion is not forced to one", {
 options <- defaultOptions
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
-options$correlationMatrix <- "polyTetrachoricCorrelationMatrix"
+options$correlationMatrix <- "polychoricTetrachoric"
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
 

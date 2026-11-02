@@ -21,8 +21,8 @@
 #'
 #' @param correlationMatrix, What type of correlation matrix to base the analysis on.
 #' \itemize{
-#'   \item \code{"correlationMatrix"}: The Pearson correlation matrix is used.
-#'   \item \code{"polyTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
+#'   \item \code{"pearson"}: The Pearson correlation matrix is used.
+#'   \item \code{"polychoricTetrachoric"}: The polychoric/tetrachoric correlation matrix is used. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
 #' }
 #' @param dataType, Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.
 #' \itemize{
@@ -40,32 +40,32 @@
 #' @param parallelAnalysisIterations, The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.
 #' @param eigenvalueMethod, Whether the parallel analysis is based on principal component eigenvalues (PC) or factor eigenvalues (FA). PC-based parallel analysis is a common choice also when the goal is to determine the number of factors for a factor analysis.
 #' \itemize{
-#'   \item \code{"principalComponentBased"}
-#'   \item \code{"factorBased"}
+#'   \item \code{"principalComponents"}
+#'   \item \code{"factors"}
 #' }
 #' @param parallelAnalysisTable, Displays a table with the real data eigenvalues and the mean eigenvalues of the simulated data. Factors/components suggested for retention are marked with an asterisk.
 #'    Defaults to \code{TRUE}.
 #' @param screePlot, Displays a scree plot. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor/component. The horizontal line marks the eigenvalue threshold.
 #'    Defaults to \code{TRUE}.
-#' @param screePlotParallelAnalysisResults, Display the mean eigenvalues of the simulated data from the parallel analysis in the scree plot.
+#' @param screePlotParallelAnalysis, Display the mean eigenvalues of the simulated data from the parallel analysis in the scree plot.
 #'    Defaults to \code{TRUE}.
 #' @param variables, In this box, the variables to perform the analysis on are selected
 numberOfFactors <- function(
           data = NULL,
           version = "0.95",
-          correlationMatrix = "correlationMatrix",
+          correlationMatrix = "pearson",
           dataType = "raw",
           eigenvalueThreshold = 1,
           mapTable = FALSE,
           naAction = "pairwise",
           parallelAnalysisIterations = 20,
-          eigenvalueMethod = "principalComponentBased",
+          eigenvalueMethod = "principalComponents",
           parallelAnalysisTable = TRUE,
           plotHeight = 320,
           plotWidth = 480,
           sampleSize = 200,
           screePlot = TRUE,
-          screePlotParallelAnalysisResults = TRUE,
+          screePlotParallelAnalysis = TRUE,
           seed = 1,
           setSeed = FALSE,
           variables = list(types = list(), value = list())) {

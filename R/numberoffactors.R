@@ -60,10 +60,10 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!is.null(container[["parallelState"]]))
     return(container[["parallelState"]]$object)
 
-  faMethod <- ifelse(options[["eigenvalueMethod"]] == "principalComponentBased", "pc", "fa")
+  faMethod <- ifelse(options[["eigenvalueMethod"]] == "principalComponents", "pc", "fa")
   nIter    <- options[["parallelAnalysisIterations"]]
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["correlationMatrix"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["correlationMatrix"]] == "polychoricTetrachoric") {
     polyTetraCor <- .efaComputePolyCorMatrix(container, dataset, options)
     if (is.null(polyTetraCor)) return(NULL)
     .setSeedJASP(options)
@@ -101,7 +101,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 
 
 .nofCorrelationMatrix <- function(container, dataset, options) {
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["correlationMatrix"]] == "polyTetrachoricCorrelationMatrix")
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["correlationMatrix"]] == "polychoricTetrachoric")
     return(.efaComputePolyCorMatrix(container, dataset, options))
 
   if (options[["dataType"]] == "varianceCovariance")
@@ -156,7 +156,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   parallelResult <- .nofComputeParallel(container, dataset, options)
   if (is.null(parallelResult)) return()
 
-  pcBased     <- options[["eigenvalueMethod"]] == "principalComponentBased"
+  pcBased     <- options[["eigenvalueMethod"]] == "principalComponents"
   eigenValues <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
   eigType     <- if (pcBased) gettext("principal component") else gettext("factor")
 
@@ -176,7 +176,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 .nofParallelAnalysisTable <- function(container, dataset, options, ready) {
   if (!options[["parallelAnalysisTable"]] || !is.null(container[["parallelTable"]])) return()
 
-  pcBased  <- options[["eigenvalueMethod"]] == "principalComponentBased"
+  pcBased  <- options[["eigenvalueMethod"]] == "principalComponents"
   eigTitle <- if (pcBased) gettext("Real data component eigenvalues") else gettext("Real data factor eigenvalues")
 
   parallelTable <- createJaspTable(gettext("Parallel Analysis"))
@@ -248,14 +248,14 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!options[["screePlot"]] || !is.null(container[["screePlot"]])) return()
 
   scree <- createJaspPlot(title = gettext("Scree plot"), width = 480, height = 320)
-  scree$dependOn(c("screePlot", "screePlotParallelAnalysisResults", "eigenvalueThreshold"))
+  scree$dependOn(c("screePlot", "screePlotParallelAnalysis", "eigenvalueThreshold"))
   scree$position <- 4
   container[["screePlot"]] <- scree
 
   if (!ready || container$getError()) return()
 
   n_col   <- ncol(dataset)
-  pcBased <- options[["eigenvalueMethod"]] == "principalComponentBased"
+  pcBased <- options[["eigenvalueMethod"]] == "principalComponents"
   xLabel  <- if (pcBased) gettext("Component") else gettext("Factor")
 
   # the real data eigenvalues always come from the same source as the x-axis label,
@@ -265,7 +265,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 
   realDataEigen <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
 
-  if (options[["screePlotParallelAnalysisResults"]]) {
+  if (options[["screePlotParallelAnalysis"]]) {
     resampledEigen <- if (pcBased) parallelResult$pc.sim else parallelResult$fa.sim
     evs <- c(realDataEigen, resampledEigen)
     tp  <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)

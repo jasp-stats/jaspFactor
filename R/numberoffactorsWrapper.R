@@ -19,7 +19,7 @@
 
 #' numberOfFactors
 #'
-#' @param correlationMatrix, What type of correlation matrix to base the analysis on.
+#' @param correlationMatrix, Which type of correlation matrix the analysis is based on.
 #' \itemize{
 #'   \item \code{"pearson"}: The Pearson correlation matrix is used.
 #'   \item \code{"polychoricTetrachoric"}: The polychoric/tetrachoric correlation matrix is used. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
@@ -29,8 +29,13 @@
 #'   \item \code{"varianceCovariance"}
 #'   \item \code{"raw"}
 #' }
-#' @param eigenvalueThreshold, Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion.
-#' @param mapTable, Displays a table with the average squared partial correlation after partialling out 0, 1, 2, ... principal components (Velicer's minimum average partial test). The number of components with the lowest value is suggested for retention and marked with an asterisk. This suggestion is always shown in the summary table. It is based on principal components, independent of the parallel analysis method.
+#' @param eigenvalueMethod, Whether principal component eigenvalues (PC) or factor eigenvalues (FA) are used for the parallel analysis, the eigenvalue criterion and the scree plot. PC-based eigenvalues are a common choice also when the goal is to determine the number of factors for a factor analysis.
+#' \itemize{
+#'   \item \code{"principalComponents"}
+#'   \item \code{"factors"}
+#' }
+#' @param eigenvalueThreshold, Threshold for the eigenvalue criterion: factors/components with an eigenvalue above this value are suggested for retention. The default of 1 corresponds to the Kaiser criterion. The eigenvalue type (principal component or factor eigenvalues) follows the method selected above.
+#' @param mapTable, Displays a table with the average squared partial correlation after partialling out 0, 1, 2, ... principal components (Velicer's minimum average partial test). The number of components with the lowest value is suggested for retention and marked with an asterisk. This suggestion is always shown in the summary table. It is based on principal components, independent of the method selected under Eigenvalues.
 #'    Defaults to \code{FALSE}.
 #' @param naAction, Select how to handle missing values.
 #' \itemize{
@@ -38,11 +43,6 @@
 #'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis.
 #' }
 #' @param parallelAnalysisIterations, The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.
-#' @param eigenvalueMethod, Whether the parallel analysis is based on principal component eigenvalues (PC) or factor eigenvalues (FA). PC-based parallel analysis is a common choice also when the goal is to determine the number of factors for a factor analysis.
-#' \itemize{
-#'   \item \code{"principalComponents"}
-#'   \item \code{"factors"}
-#' }
 #' @param parallelAnalysisTable, Displays a table with the real data eigenvalues and the mean eigenvalues of the simulated data. Factors/components suggested for retention are marked with an asterisk.
 #'    Defaults to \code{TRUE}.
 #' @param screePlot, Displays a scree plot. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor/component. The horizontal line marks the eigenvalue threshold.
@@ -55,11 +55,11 @@ numberOfFactors <- function(
           version = "0.95",
           correlationMatrix = "pearson",
           dataType = "raw",
+          eigenvalueMethod = "principalComponents",
           eigenvalueThreshold = 1,
           mapTable = FALSE,
           naAction = "pairwise",
           parallelAnalysisIterations = 20,
-          eigenvalueMethod = "principalComponents",
           parallelAnalysisTable = TRUE,
           plotHeight = 320,
           plotWidth = 480,

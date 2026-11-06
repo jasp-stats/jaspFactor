@@ -181,7 +181,7 @@ test_that("MAP results match EFA.dimensions (Holzinger-Swineford)", {
 test_that("MAP values match psych::vss", {
   corMatrix <- as.matrix(psych::Thurstone)
   mapValues <- jaspFactor:::.nofMapValues(corMatrix)
-  vssMap    <- suppressWarnings(suppressMessages(psych::vss(corMatrix, n = 8, n.obs = 213, plot = FALSE)$map))
+  vssMap    <- suppressMessages(psych::vss(corMatrix, n = 8, n.obs = 213, plot = FALSE)$map)
 
   testthat::expect_equal(mapValues[-1], vssMap, tolerance = 1e-8)
   testthat::expect_equal(jaspFactor:::.nofMapSuggested(mapValues), 3)

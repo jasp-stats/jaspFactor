@@ -51,11 +51,11 @@ test_that("MAP table results match", {
 test_that("Parallel Analysis table results match (PC-based)", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Component 1*", 1.7795916550878, 1.36583483001393, "Component 2*",
-                                      1.28644706023115, 1.1795441336838, "Component 3", 1.08333785331839,
-                                      1.04563430924183, "Component 4", 0.848949206589453, 0.92484523771976,
-                                      "Component 5", 0.696170865182367, 0.805435846758642, "Component 6",
-                                      0.305503359590833, 0.678705642582045))
+                                 list("Component 1*", 1.7795916550878, 1.33038825631076, "Component 2*",
+                                      1.28644706023115, 1.17764078937677, "Component 3", 1.08333785331839,
+                                      1.06059898353413, "Component 4", 0.848949206589453,
+                                      0.937630020338414, "Component 5", 0.696170865182367, 0.8104282277456,
+                                      "Component 6", 0.305503359590833, 0.683313722694323))
 })
 
 test_that("Scree plot matches (PC-based)", {

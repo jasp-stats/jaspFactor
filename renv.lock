@@ -3109,7 +3109,7 @@
     },
     "jaspBase": {
       "Package": "jaspBase",
-      "Version": "0.20.4",
+      "Version": "0.20.5",
       "Source": "GitHub",
       "Requirements": [
         "cli",
@@ -3136,7 +3136,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
-      "RemoteSha": "763cb835a7589b72da079b95bbf9491abad4fab3"
+      "RemoteSha": "5ac9db8349dfa59e57b2942dd0155e4c488c4518"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -3381,7 +3381,7 @@
     },
     "later": {
       "Package": "later",
-      "Version": "1.4.7",
+      "Version": "1.4.8",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Utilities for Scheduling Functions to Execute Later with Event Loops",

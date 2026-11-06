@@ -10,10 +10,9 @@ test_that("exploratoryFactorAnalysis (analysis 2) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[2]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", dataset, opts)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -31,12 +30,12 @@ test_that("exploratoryFactorAnalysis (analysis 2) results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(0.964744613253794, 0.0692678311977876, "jaspColumn4", 0.905697406226147,
-     0.179712208355229, "jaspColumn5", 0.850593590274152, 0.276490544184528,
-     "jaspColumn7", 0.728677939153591, 0.469028460990875, "jaspColumn6",
-     0.4314361689816, 0.81386283209448, "jaspColumn1", 0.218273887553604,
-     0.952356510012237, "jaspColumn2", 0.157182368561013, 0.97529370301355,
-     "jaspColumn3"))
+    list(0.964744613253794, 0.0692678311977876, "Residuals Classics",
+     0.905697406226147, 0.179712208355229, "Residuals French", 0.850593590274152,
+     0.276490544184528, "Residuals Mathematics", 0.728677939153591,
+     0.469028460990875, "Residuals English", 0.4314361689816, 0.81386283209448,
+     "Residuals Pitch", 0.218273887553604, 0.952356510012237, "Residuals Light",
+     0.157182368561013, 0.97529370301355, "Residuals Weight"))
 
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
@@ -51,10 +50,9 @@ test_that("principalComponentAnalysis (analysis 3) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[3]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("principalComponentAnalysis", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("principalComponentAnalysis", dataset, opts)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -67,12 +65,13 @@ test_that("principalComponentAnalysis (analysis 3) results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(0.940367460295704, 0.115709039617007, "jaspColumn4", 0.907297755977426,
-     0.176810781998327, "jaspColumn5", 0.881854666863415, 0.222332346531216,
-     "jaspColumn7", 0.805259591154695, 0.351556990853373, "jaspColumn6",
-     0.531221072557435, 0.717804172070928, "jaspColumn1", 0.292003528877688,
-     0.914733939122977, "jaspColumn2", 0.223865710905652, 0.949884143480707,
-     "jaspColumn3"))
+    list(0.940367460295704, 0.115709039617007, "Residuals Classics",
+     0.907297755977426, 0.176810781998327, "Residuals French",
+     0.881854666863415, 0.222332346531216, "Residuals Mathematics",
+     0.805259591154695, 0.351556990853373, "Residuals English",
+     0.531221072557435, 0.717804172070928, "Residuals Pitch", 0.292003528877688,
+     0.914733939122977, "Residuals Light", 0.223865710905652, 0.949884143480707,
+     "Residuals Weight"))
 
 })
 

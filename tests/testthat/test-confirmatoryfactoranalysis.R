@@ -619,6 +619,110 @@ test_that("Reliability table results match", {
 })
 
 
+# reliability of a single group second-order model
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
+options$estimator <- "default"
+options$standardized <- "none"
+options$factors <- list(
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "f3", title = "Factor 3")
+)
+options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
+options$modelIdentification <- "factorVariance"
+options$naAction <- "listwise"
+options$reliability <- TRUE
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options, makeTests = F)
+
+test_that("Reliability table results match for a single group second-order model", {
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.626117131884981, "Factor 1",
+                                      0.612005230545227, 0.882706912875796,
+                                      "Factor 2", 0.885060891550334,
+                                      0.688455022985003, "Factor 3",
+                                      0.685841504108865, 0.760488595824792,
+                                      "total", 0.859620312056731, "",
+                                      "SecondOrder", 0.56366198498232))
+})
+
+
+# reliability of ordinal items: the Holzinger-Swineford items cut into four ordered categories
+# semTools 0.5-8 cannot compute the reliability of ordinal items (fixed in 0.5-9)
+hsOrdinal <- read.csv(testthat::test_path("holzingerswineford.csv"))
+ordinalItems <- paste0("x", 1:9)
+hsOrdinal[ordinalItems] <- lapply(hsOrdinal[ordinalItems], function(x)
+  cut(x, stats::quantile(x, 0:4 / 4), include.lowest = TRUE, labels = FALSE, ordered_result = TRUE))
+
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
+options$estimator <- "default"
+options$factors <- list(
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("ordinal", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("ordinal", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("ordinal", 3)), name = "f3", title = "Factor 3")
+)
+options$modelIdentification <- "factorVariance"
+options$naAction <- "pairwise"
+options$reliability <- TRUE
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", hsOrdinal, options, makeTests = F)
+
+test_that("Reliability table results match for ordinal items", {
+  skip_if(packageVersion("semTools") == "0.5.8", "semTools 0.5-8 cannot compute the reliability of ordinal items")
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.555213848183149, "Factor 1",
+                                      0.546655438599964, 0.854297660107689,
+                                      "Factor 2", 0.858820989858464,
+                                      0.631763742246106, "Factor 3",
+                                      0.624561881994531, 0.727667130254379,
+                                      "total", 0.8253582728027))
+})
+
+options$group <- "sex"
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", hsOrdinal, options, makeTests = F)
+
+test_that("Reliability table results match for ordinal items in multiple groups", {
+  skip_if(packageVersion("semTools") == "0.5.8", "semTools 0.5-8 cannot compute the reliability of ordinal items")
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.527339710939714, "Factor 1", 1,
+                                      0.510492380714474, 0.833185374702934,
+                                      "Factor 2", 1, 0.837118410430062,
+                                      0.621128286622363, "Factor 3", 1,
+                                      0.671915673678176, 0.675261378312252,
+                                      "total", 1, 0.795137021714156,
+                                      0.574038175823865, "Factor 1", 2,
+                                      0.587419873336518, 0.874171736438173,
+                                      "Factor 2", 2, 0.884808661402054,
+                                      0.645593775088001, "Factor 3", 2,
+                                      0.668116941662998, 0.772109281229804,
+                                      "total", 2, 0.854032745752546))
+})
+
+
+# a factor with a single indicator has no reliability of its own, its item stays in the total
+# (the analysis refuses such factors, so the coefficients are computed directly)
+test_that("Reliability coefficients give NA for a single-indicator factor", {
+  dt  <- read.csv(testthat::test_path("holzingerswineford.csv"))
+  fit <- lavaan::cfa("f1 =~ x1 + x2 + x3\nf2 =~ x4 + x5 + x6\nf3 =~ x7", data = dt, std.lv = TRUE)
+  rel <- jaspFactor:::.cfaReliabilityCoefficients(fit, c("f1", "f2", "f3"))
+  expect_equal(colnames(rel[["omega"]]), c("f1", "f2", "f3", "total"))
+  expect_true(is.na(rel[["omega"]][1, "f3"]))
+  expect_true(is.na(rel[["alpha"]][1, "f3"]))
+  expect_equal(unname(rel[["omega"]][1, ]), c(0.612740419333928, 0.884740548042782, NA, 0.868649176557865),
+               tolerance = 1e-6)
+  expect_equal(unname(rel[["alpha"]][1, ]), c(0.626117131884981, 0.882706912875796, NA, 0.722946933580901),
+               tolerance = 1e-6)
+})
+
+
 # structural invariance test
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$group <- "sex"

@@ -1651,7 +1651,8 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     # semTools >= 0.5-8 refuses alpha of ordinal items on their observed scale; 0.5-7 took it from the raw data
     rawData <- lavaan::lavInspect(fit, "data", drop.list.single.group = FALSE)
     alpha   <- lapply(compIndics[alphaComps], function(items) vapply(rawData, function(x) {
-      S <- stats::cov(x[, items, drop = FALSE])
+      # the data keep their missing values under pairwise deletion
+      S <- stats::cov(x[, items, drop = FALSE], use = "pairwise.complete.obs")
       length(items) / (length(items) - 1) * (1 - sum(diag(S)) / sum(S))
     }, numeric(1)))
   } else {

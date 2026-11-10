@@ -25,6 +25,8 @@
 ## Fixed
 * Number of Factors: eigenvalue criterion now uses principal component eigenvalues when PC-based parallel analysis is selected, and factor eigenvalues when FA-based parallel analysis is selected. Previously PC eigenvalues were always used, causing factors with factor eigenvalues below the threshold to be incorrectly retained in EFA ([jasp-issues#3970](https://github.com/jasp-stats/jasp-issues/issues/3970)).
 * Number of Factors: the scree plot now shows factor eigenvalues in FA-based mode also when the simulated parallel analysis data is hidden; previously that toggle silently switched the real data series to component eigenvalues while the axis still read "Factor".
+* CFA: the Reliability table works with semTools 0.5-8 and later, which no longer computed it for multigroup second-order models ("NAs are not allowed in subscripted assignments") and changed the coefficients of second-order models. The reported coefficients are the same as before. If semTools cannot compute them, the error is shown in the Reliability table instead of stopping the analysis ([PR #381](https://github.com/jasp-stats/jaspFactor/pull/381)).
+* CFA: "Add factor scores to data" referred to options that only exist in EFA, which gave a QML error each time it was evaluated ([PR #381](https://github.com/jasp-stats/jaspFactor/pull/381)).
 
 ## Fixed
 * EFA: polychoric/tetrachoric correlation matrix errors are now caught and shown as a user-friendly message, including which variables have missing response categories.

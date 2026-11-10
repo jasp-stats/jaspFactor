@@ -3,14 +3,11 @@ context("Exploratory Factor Analysis -- Verification project")
 # does not test
 # - error handling
 # - orthogonal rotation
-# - Eigen values above / manual
-# - contents of screeplot (set.seed does not work)
 
 ## Testing Questionnaire data
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenvaluesAbove = 1,
   manualNumberOfFactors = 1,
   factoringMethod = "minimumResidual",
   orthogonalSelector = "none",
@@ -20,10 +17,7 @@ defaultOptions <- list(
   factorCorrelations = FALSE,
   fitIndices = FALSE,
   residualMatrix = FALSE,
-  parallelAnalysisTable = FALSE,
   pathDiagram = FALSE,
-  screePlot = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
   antiImageCorrelationMatrix = FALSE,
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
@@ -31,25 +25,18 @@ defaultOptions <- list(
   addScoresToData = FALSE,
   addScoresToDataPrefix = "",
   dataType = "raw",
-  factorCountMethod = "parallelAnalysis",
-  parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
   orderLoadingsBy = "variables",
-  parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
-  plotHeight = 320,
-  setSeed = FALSE,
-  seed = 1
+  plotHeight = 320
 )
 options <- defaultOptions
-options$factorCountMethod <- "manual"
 options$rotationMethod <- "orthogonal"
 options$orthogonalSelector <- "varimax"
 options$kaiserMeyerOlkinTest <- TRUE
 options$bartlettTest <- TRUE
-options$screePlot <- TRUE
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$manualNumberOfFactors <- 4
 options$factoringMethod <- "principalAxis"
@@ -150,21 +137,12 @@ test_that("Factor Characteristics table results match", {
 })
 
 
-# test_that("Scree plot matches", {
-#   skip("Scree plot check does not work because some data is simulated (non-deterministic).")
-#   # plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
-#   # testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-#   # jaspTools::expect_equal_plots(testPlot, "scree-plot")
-# })
-
 options <- defaultOptions
-options$factorCountMethod <- "manual"
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.4
 options$factorCorrelations <- TRUE
 options$fitIndices <- TRUE
 options$pathDiagram <- TRUE
-options$screePlot <- TRUE
 options$factorStructure <- TRUE
 options$manualNumberOfFactors <- 2
 options$obliqueSelector <- "geominQ"
@@ -221,13 +199,6 @@ test_that("Path Diagram plot matches", {
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "path-diagram")
-})
-
-test_that("Scree plot matches", {
-  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
-  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
-  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scree-plot")
 })
 
 test_that("Factor Loadings (Structure Matrix) table results match", {

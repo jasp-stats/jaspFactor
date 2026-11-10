@@ -10,6 +10,13 @@ Description
 
 	Analysis
 	{
+		title:	qsTr("Number of Factors/Components")
+		func:	"numberOfFactors"
+		qml:	"NumberOfFactors.qml"
+	}
+
+	Analysis
+	{
 		title:	qsTr("Principal Component Analysis")
 		func:	"principalComponentAnalysis"
 		qml:	"PrincipalComponentAnalysis.qml"

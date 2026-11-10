@@ -7,17 +7,13 @@ context("Principal Component Analysis")
 defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
-  eigenvaluesAbove = 1,
   manualNumberOfComponents = 1,
   orthogonalSelector = "none",
   obliqueSelector = "promax",
   loadingsDisplayLimit = 0,
   componentCorrelations = FALSE,
   residualMatrix = FALSE,
-  parallelAnalysisTable = FALSE,
   pathDiagram = FALSE,
-  screePlot = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
@@ -25,27 +21,21 @@ defaultOptions <- list(
   antiImageCorrelationMatrix = FALSE,
   addScoresToDataPrefix = "",
   dataType = "raw",
-  componentCountMethod = "parallelAnalysis",
-  parallelAnalysisMethod = "principalComponentBased",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
   orderLoadingsBy = "variables",
-  parallelAnalysisTableMethod = "principalComponentBased",
   naAction = "pairwise",
   plotWidth = 480,
-  plotHeight = 320,
-  setSeed = FALSE,
-  seed = 1
+  plotHeight = 320
 )
 
+# 2 components as previously suggested by eigenvalues above 0.95
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
-options$eigenvaluesAbove <- 0.95
+options$manualNumberOfComponents <- 2
 options$orthogonalSelector <- "varimax"
 options$pathDiagram <- TRUE
-options$screePlot <- TRUE
 options$residualMatrix <- TRUE
-options$componentCountMethod <- "eigenvalues"
 
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -99,21 +89,14 @@ test_that("Path Diagram plot matches", {
   jaspTools::expect_equal_plots(testPlot, "path-diagram")
 })
 
-test_that("Scree plot matches", {
-  skip("Scree plot check does not work because some data is simulated (non-deterministic).")
-  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_scree"]][["data"]]
-  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scree-plot")
-})
-
-
 rotationOptions <- list(
   "orthogonal" = c("none", "varimax", "quartimax", "bentlerT", "equamax", "geominT"),
   "oblique"    = c("promax", "oblimin", "simplimax", "bentlerQ", "biquartimin", "cluster", "geominQ")
 )
 
+# 5 components as previously suggested by eigenvalues above 1
 options <- defaultOptions
-options$componentCountMethod <- "eigenvalues"
+options$manualNumberOfComponents <- 5
 options$variables <- c("contNormal", "contGamma", "contExpon", "contWide", "contNarrow", "contOutlier", "contcor1", "contcor2", "debMiss1", "debCollin1")
 jaspTableToRTable <- function(x) do.call(rbind, lapply(x, do.call, what = cbind.data.frame))
 
@@ -290,7 +273,6 @@ test_that("rotation methods match", {
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "contcor1", "contcor2")
 options$orthogonalSelector <- "varimax"
-options$componentCountMethod <- "manual"
 options$baseDecompositionOn <- "covarianceMatrix"
 set.seed(1)
 results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -320,14 +302,12 @@ test_that("Component Loadings table results match", {
 
 
 # results for PCA based on mixed matrix (poly or tetrachoric)
+# 1 component as previously suggested by parallel analysis
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
 options$variables.types <- list("scale", "scale", "scale", "scale", "ordinal")
-options$eigenvaluesAbove <- 0.95
+options$manualNumberOfComponents <- 1
 options$orthogonalSelector <- "varimax"
-options$componentCountMethod <- "parallelAnalysis"
-options$parallelAnalysisTable <- TRUE
-options$parallelAnalysisSeed <- 1234
 options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -355,28 +335,6 @@ test_that("Component Loadings table results match for mixed based", {
 })
 
 
-options <- defaultOptions
-options$componentCountMethod <- "parallelAnalysis"
-options$parallelAnalysisMethod <- "principalComponentBased"
-options$parallelAnalysisTable <- TRUE
-options$rotationMethod <- "oblique"
-options$variables <- c("contcor1", "contcor2", "facFifty", "facFive","contNormal", "debMiss1")
-
-options("mc.cores" = 1L)
-set.seed(1)
-results <- runAnalysis("principalComponentAnalysis", "test.csv", options, makeTests = F)
-
-test_that("Parallel Analysis table results match", {
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_parallelTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                                 list("Component 1*", 1.7795916550878, 1.33053625507377, "Component 2*",
-                                      1.28644706023115, 1.17402737320915, "Component 3*", 1.08333785331839,
-                                      1.0367445878489, "Component 4", 0.848949206589453, 0.923477592629848,
-                                      "Component 5", 0.696170865182367, 0.837720518530386, "Component 6",
-                                      0.305503359590833, 0.697493672707948))
-})
-
-
 # variance covariance matrix input
 # this test fails because columnIndexInData does not play nice with jaspTools
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
@@ -387,10 +345,8 @@ options <- list(
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   componentCorrelations = FALSE,
-  componentCountMethod = "manual",
   orderLoadingsBy = "variables",
   dataType = "varianceCovariance",
-  eigenvaluesAbove = 1,
   kaiserMeyerOlkinTest = FALSE,
   loadingsDisplayLimit = 0.1,
   manualNumberOfComponents = 1,
@@ -398,19 +354,13 @@ options <- list(
   naAction = "pairwise",
   obliqueSelector = "promax",
   orthogonalSelector = "none",
-  parallelAnalysisMethod = "principalComponentBased",
-  parallelAnalysisSeed = 1234,
-  parallelAnalysisTable = FALSE,
   antiImageCorrelationMatrix = FALSE,
-  parallelAnalysisTableMethod = "principalComponentBased",
   pathDiagram = FALSE,
   plotHeight = 320,
   plotWidth = 480,
   residualMatrix = FALSE,
   rotationMethod = "orthogonal",
   sampleSize = 200,
-  screePlot = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
   variables = c("x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9")
 )
 

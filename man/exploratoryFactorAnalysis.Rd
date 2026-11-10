@@ -13,9 +13,7 @@ exploratoryFactorAnalysis(
   bartlettTest = FALSE,
   baseDecompositionOn = "correlationMatrix",
   dataType = "raw",
-  eigenvaluesAbove = 1,
   factorCorrelations = FALSE,
-  factorCountMethod = "parallelAnalysis",
   factorStructure = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
@@ -27,19 +25,12 @@ exploratoryFactorAnalysis(
   obliqueSelector = "promax",
   orderLoadingsBy = "size",
   orthogonalSelector = "none",
-  parallelAnalysisMethod = "principalComponentBased",
-  parallelAnalysisTable = FALSE,
-  parallelAnalysisTableMethod = "principalComponentBased",
   pathDiagram = FALSE,
   plotHeight = 320,
   plotWidth = 480,
   residualMatrix = FALSE,
   rotationMethod = "oblique",
   sampleSize = 200,
-  screePlot = FALSE,
-  screePlotParallelAnalysisResults = TRUE,
-  seed = 1,
-  setSeed = FALSE,
   variables = list(types = list(), value = list())
 )
 }
@@ -92,6 +83,8 @@ Defaults to \code{FALSE}.}
 
 \item{loadingsDisplayLimit, }{Loadings below this value will not be displayed in the output table.}
 
+\item{manualNumberOfFactors, }{The number of factors to extract. To determine this number, use the Number of Factors/Components analysis.}
+
 \item{mardiaTest, }{Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
 Defaults to \code{FALSE}.}
 
@@ -107,9 +100,6 @@ Defaults to \code{FALSE}.}
   \item \code{"variables"}
 }}
 
-\item{parallelAnalysisTable, }{If this option is selected, a table will be generated exhibiting a detailed output of the parallel analysis. Can be based on principal component eigenvalues (PC) or factor eigenvalues (FA). The seed is taken from the parallel analysis for determining the number of components/factors above.
-Defaults to \code{FALSE}.}
-
 \item{pathDiagram, }{By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed.
 Defaults to \code{FALSE}.}
 
@@ -121,12 +111,6 @@ Defaults to \code{FALSE}.}
   \item \code{"orthogonal"}: This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.
   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 }}
-
-\item{screePlot, }{When selecting this option, a scree plot will be displayed. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor. A scree plot can be used to decide how many factors should be selected.
-Defaults to \code{FALSE}.}
-
-\item{screePlotParallelAnalysisResults, }{Display the results of the parallel analysis in the scree plot. The parallel analysis will be based on PC or FA as defined by the option for the parallel analysis table.
-Defaults to \code{TRUE}.}
 
 \item{variables, }{In this box, the variables to perform the analysis on are selected}
 }

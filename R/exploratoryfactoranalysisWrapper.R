@@ -56,6 +56,7 @@
 #' @param kaiserMeyerOlkinTest, Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables. Produces a measure of sampling adequacy (MSA) as the proportion of common variance among variables is computed for all variables; values closer to 1 are desired.
 #'    Defaults to \code{FALSE}.
 #' @param loadingsDisplayLimit, Loadings below this value will not be displayed in the output table.
+#' @param manualNumberOfFactors, The number of factors to extract. To determine this number, use the Number of Factors/Components analysis.
 #' @param mardiaTest, Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
 #'    Defaults to \code{FALSE}.
 #' @param naAction, Select how to handle missing values.
@@ -107,12 +108,7 @@ exploratoryFactorAnalysis <- function(
           sampleSize = 200,
           variables = list(types = list(), value = list())) {
 
-   defaultArgCalls <- formals(jaspFactor::exploratoryFactorAnalysis)
-   defaultArgs <- lapply(defaultArgCalls, eval)
-   options <- as.list(match.call())[-1L]
-   options <- lapply(options, eval)
-   defaults <- setdiff(names(defaultArgs), names(options))
-   options[defaults] <- defaultArgs[defaults]
+   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
@@ -125,5 +121,7 @@ exploratoryFactorAnalysis <- function(
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
+   # Options not given in the call get their default from the form, which can depend on the other options.
+   options <- options[names(options) %in% names(match.call())[-1L]]
    return(jaspBase::runWrappedAnalysis("jaspFactor", "exploratoryFactorAnalysis", "ExploratoryFactorAnalysis.qml", options, version, TRUE))
 }

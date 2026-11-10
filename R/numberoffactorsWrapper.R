@@ -8,7 +8,7 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
@@ -17,7 +17,7 @@
 
 # This is a generated file. Don't change it!
 
-#' numberOfFactors
+#' Number of Factors/Components
 #'
 #' @param correlationMatrix, Which type of correlation matrix the analysis is based on.
 #' \itemize{
@@ -26,8 +26,8 @@
 #' }
 #' @param dataType, Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.
 #' \itemize{
-#'   \item \code{"varianceCovariance"}
 #'   \item \code{"raw"}
+#'   \item \code{"varianceCovariance"}
 #' }
 #' @param eigenvalueMethod, Whether principal component eigenvalues (PC) or factor eigenvalues (FA) are used for the parallel analysis, the eigenvalue criterion and the scree plot. PC-based eigenvalues are a common choice also when the goal is to determine the number of factors for a factor analysis.
 #' \itemize{
@@ -40,7 +40,7 @@
 #' @param naAction, Select how to handle missing values.
 #' \itemize{
 #'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
-#'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis.
+#'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 #' }
 #' @param parallelAnalysisIterations, The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.
 #' @param parallelAnalysisTable, Displays a table with the real data eigenvalues and the mean eigenvalues of the simulated data. Factors/components suggested for retention are marked with an asterisk.
@@ -52,7 +52,7 @@
 #' @param variables, In this box, the variables to perform the analysis on are selected
 numberOfFactors <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           correlationMatrix = "pearson",
           dataType = "raw",
           eigenvalueMethod = "principalComponents",
@@ -70,12 +70,7 @@ numberOfFactors <- function(
           setSeed = FALSE,
           variables = list(types = list(), value = list())) {
 
-   defaultArgCalls <- formals(jaspFactor::numberOfFactors)
-   defaultArgs <- lapply(defaultArgCalls, eval)
-   options <- as.list(match.call())[-1L]
-   options <- lapply(options, eval)
-   defaults <- setdiff(names(defaultArgs), names(options))
-   options[defaults] <- defaultArgs[defaults]
+   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
@@ -88,5 +83,7 @@ numberOfFactors <- function(
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
+   # Options not given in the call get their default from the form, which can depend on the other options.
+   options <- options[names(options) %in% names(match.call())[-1L]]
    return(jaspBase::runWrappedAnalysis("jaspFactor", "numberOfFactors", "NumberOfFactors.qml", options, version, TRUE))
 }

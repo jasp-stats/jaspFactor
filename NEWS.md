@@ -21,6 +21,8 @@
 ## Changed
 * EFA, PCA: eigenvalue- and parallel-analysis-based factor count options removed from both analyses; the number of factors/components is now set manually, with guidance to use the new Number of Factors/Components analysis.
 * EFA, PCA: retention options from older JASP files (parallel analysis, eigenvalue criterion, parallel analysis table, scree plot, seed) are removed on load, and the factor/component count falls back to the stored manual value. Upgrade messages explaining this are in place but are not currently displayed by JASP.
+* EFA, PCA: the Missing Values option moved from Output Options to Analysis Options, as it affects the analysis itself ([PR #382](https://github.com/jasp-stats/jaspFactor/pull/382)).
+* CFA: the help file was replaced by info texts on the options and on the output tables and plots ([PR #382](https://github.com/jasp-stats/jaspFactor/pull/382)).
 
 ## Fixed
 * Number of Factors: eigenvalue criterion now uses principal component eigenvalues when PC-based parallel analysis is selected, and factor eigenvalues when FA-based parallel analysis is selected. Previously PC eigenvalues were always used, causing factors with factor eigenvalues below the threshold to be incorrectly retained in EFA ([jasp-issues#3970](https://github.com/jasp-stats/jasp-issues/issues/3970)).

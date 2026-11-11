@@ -5,19 +5,19 @@ defaultOptions <- list(
   itemResponseProbabilities     = TRUE,
   itemResponseProbabilitiesPlot = FALSE,
   maxIterations                 = 1000,
-  missingValues                 = "include",
+  naAction                      = "include",
   numberOfClasses               = 2,
-  nrep                          = 1,
+  numberOfRandomStarts          = 1,
   plotHeight                    = 320,
   plotWidth                     = 480,
-  rotatePlotLabels              = FALSE,
-  saveClassProbabilities        = FALSE,
-  saveClassProbabilitiesPrefix  = "classProb",
-  saveClassification            = FALSE,
-  saveClassificationColumn      = "classAssignment",
-  saveForClasses                = 2,
+  itemResponseProbabilitiesPlotLabelRotation = FALSE,
+  classProbabilitySavedToData   = FALSE,
+  classProbabilitySavedToDataPrefix = "classProb",
+  classificationSavedToData     = FALSE,
+  classificationSavedToDataColumn = "classAssignment",
+  numberOfClassesSavedToData    = 2,
   seed                          = 1,
-  showLevelsLegend              = FALSE
+  itemResponseProbabilitiesPlotLegend = FALSE
 )
 
 options <- defaultOptions

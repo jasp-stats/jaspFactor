@@ -9,8 +9,8 @@ defaultOptions <- list(
   sampleSize = 200,
   manualNumberOfFactors = 1,
   factoringMethod = "minimumResidual",
-  orthogonalSelector = "none",
-  obliqueSelector = "promax",
+  rotationMethodOrthogonal = "none",
+  rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   factorStructure = FALSE,
   factorCorrelations = FALSE,
@@ -21,12 +21,12 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScoresToData = FALSE,
-  addScoresToDataPrefix = "",
+  scoreSavedToData = FALSE,
+  scoreSavedToDataPrefix = "",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
-  orderLoadingsBy = "variables",
+  loadingOrder = "variables",
   naAction = "pairwise",
   plotWidth = 480,
   plotHeight = 320
@@ -41,9 +41,9 @@ options$pathDiagram <- TRUE
 options$factorStructure <- TRUE
 options$residualMatrix <- TRUE
 options$manualNumberOfFactors <- 2
-options$obliqueSelector <- "geominQ"
+options$rotationMethodOblique <- "geominQ"
 options$rotationMethod <- "oblique"
-options$orderLoadingsBy <- "variables"
+options$loadingOrder <- "variables"
 options$variables <- c("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")
 set.seed(1)
@@ -141,13 +141,13 @@ test_that("Missing values works", {
 
 
 
-options$orderLoadingsBy <- "variables"
+options$loadingOrder <- "variables"
 
-test_that("orderLoadingsBy sort the factor loadings table", {
+test_that("loadingOrder sort the factor loadings table", {
 
   options <- defaultOptions
   options$manualNumberOfFactors <- 3 # as previously suggested by parallel analysis
-  options$orthogonalSelector <- "varimax"
+  options$rotationMethodOrthogonal <- "varimax"
   options$loadingsDisplayLimit <- 0.2
   options$variables <- paste0("x", 1:9)
 
@@ -174,14 +174,14 @@ test_that("orderLoadingsBy sort the factor loadings table", {
     )
   )
 
-  for (orderLoadingsBy in c("size", "variables")) {
-    options$orderLoadingsBy <- orderLoadingsBy
+  for (loadingOrder in c("size", "variables")) {
+    options$loadingOrder <- loadingOrder
 
     set.seed(123)
     results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options)
 
     table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
-    jaspTools::expect_equal_tables(table, reference[[orderLoadingsBy]], label = sprintf("orderLoadingsBy = %s", orderLoadingsBy))
+    jaspTools::expect_equal_tables(table, reference[[loadingOrder]], label = sprintf("loadingOrder = %s", loadingOrder))
   }
 
 })
@@ -212,7 +212,7 @@ options$manualNumberOfFactors <- 3
 options$factoringMethod <- "minimumResidual"
 options$loadingsDisplayLimit <- 0.1
 options$factorCorrelations <- TRUE
-options$orthogonalSelector <- "none"
+options$rotationMethodOrthogonal <- "none"
 options$rotationMethod <- "orthogonal"
 options$variables <- paste0("x", 1:9)
 set.seed(1)
@@ -255,7 +255,7 @@ test_that("Factor Loadings table results match with 3 factors", {
 options <- defaultOptions
 options$manualNumberOfFactors <- 2
 options$loadingsDisplayLimit <- 0.1
-options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
 options$mardiaTest <- TRUE
 options$kaiserMeyerOlkinTest <- TRUE
 options$antiImageCorrelationMatrix <- TRUE
@@ -314,13 +314,13 @@ test_that("Kaiser-Meyer-Olkin Test table results match", {
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
-  addScoresToData = FALSE,
-  addScoresToDataPrefix = "FA",
+  scoreSavedToData = FALSE,
+  scoreSavedToDataPrefix = "FA",
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   dataType = "varianceCovariance",
   factorCorrelations = FALSE,
-  orderLoadingsBy = "variables",
+  loadingOrder = "variables",
   factorStructure = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
@@ -329,8 +329,8 @@ options <- list(
   manualNumberOfFactors = 1,
   mardiaTest = FALSE,
   naAction = "pairwise",
-  obliqueSelector = "promax",
-  orthogonalSelector = "none",
+  rotationMethodOblique = "promax",
+  rotationMethodOrthogonal = "none",
   pathDiagram = FALSE,
   plotHeight = 320,
   plotWidth = 480,

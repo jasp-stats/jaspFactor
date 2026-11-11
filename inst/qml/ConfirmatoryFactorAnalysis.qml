@@ -113,7 +113,7 @@ Form
  				RadioButtonGroup
  				{
  					// ChildrenOnSameRow: true
- 					name: "interceptsFixedToZero"
+ 					name: "meanStructureInterceptFixedToZero"
 					info: qsTr("Which intercepts are fixed to zero to identify the model with a mean structure.")
  					RadioButton { label: qsTr("Fix latent intercepts to zero") ;	value: "latent"; checked: true; info: qsTr("Fix the latent intercepts (factor means) to zero. The manifest intercepts are estimated freely.") }
  					RadioButton { label: qsTr("Fix manifest intercepts to zero"); value: "manifest"; info: qsTr("Fix the manifest intercepts to zero. The latent intercepts (factor means) are estimated freely.") }
@@ -144,7 +144,7 @@ Form
 			{
 				id: rescov
 				preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-				AvailableVariablesList 		 {	name: "observedVarsForResidualCov";	source: factors.name}
+				AvailableVariablesList 		 {	name: "residualsCovaryingAvailable";	source: factors.name}
 				AssignedPairsVariablesList {	name: "residualsCovarying"; info: qsTr("Pairs of indicators whose residuals are allowed to covary.") }
 			}
 		}
@@ -189,8 +189,8 @@ Form
 			CheckBox { label: qsTr("Kaiser-Meyer-Olkin (KMO) test"); name: "kaiserMeyerOlkinTest"; info: qsTr("Determines how well the indicators are suited for factor analysis by computing the proportion of common variance between them. Produces a measure of sampling adequacy (MSA) for each indicator and overall; values closer to 1 are desired.") }
 			CheckBox { label: qsTr("Bartlett's test of sphericity"); name: "bartlettTest"; info: qsTr("Tests whether the correlation matrix of the indicators is the identity matrix, meaning whether the indicators are related or not. A significant result means the correlation matrix is unlike the identity matrix.") }
 			CheckBox { label: qsTr("R-Squared")                 ; name: "rSquared"; info: qsTr("Display the proportion of variance in each indicator that is explained by all predictors (the factors).") }
-			CheckBox { name: "ave";						label: qsTr("Average variance extracted (AVE)"); info: qsTr("Display the average variance extracted: the amount of variance that is captured by a construct in relation to the amount of variance due to measurement error. Used to evaluate convergent validity.") }
-			CheckBox { name: "htmt";					label: qsTr("Heterotrait-monotrait ratio (HTMT)"); info: qsTr("Display the heterotrait-monotrait ratio, a measure of the similarity between latent variables, to assess discriminant validity (Henseler et al., 2015). If the HTMT is clearly smaller than one, discriminant validity can be regarded as established.") }
+			CheckBox { name: "averageVarianceExtracted"; label: qsTr("Average variance extracted (AVE)"); info: qsTr("Display the average variance extracted: the amount of variance that is captured by a construct in relation to the amount of variance due to measurement error. Used to evaluate convergent validity.") }
+			CheckBox { name: "heterotraitMonotraitRatio"; label: qsTr("Heterotrait-monotrait ratio (HTMT)"); info: qsTr("Display the heterotrait-monotrait ratio, a measure of the similarity between latent variables, to assess discriminant validity (Henseler et al., 2015). If the HTMT is clearly smaller than one, discriminant validity can be regarded as established.") }
 			CheckBox { name: "reliability";		label: qsTr("Reliability"); info: qsTr("Display the reliability: the relative amount of test score variance that is explained by the factor(s). Contains coefficient omega (McDonald's) for each indicator group and in total and, if a second-order factor is specified, the omega of the second-order factor. Also provides coefficient alpha (Cronbach's). Note that the total test score variance in the denominator of the reliability equation is the observed test score variance, that is, the summed observed covariance matrix.") }
 		}
 		Group
@@ -354,13 +354,13 @@ Form
 		CheckBox
 		{
 			id: addScores
-			name: "addFactorScoresToData"
+			name: "factorScoreSavedToData"
 			label: qsTr("Add factor scores to data")
 			info: qsTr("Adds the estimated factor scores as new columns to the data set")
 			enabled: factors.countVariables > 1 && dataType.value == "raw"
 
 			TextField {
-				name: "addFactorScoresToDataPrefix"
+				name: "factorScoreSavedToDataPrefix"
 				label: qsTr("Prefix")
 				defaultValue: qsTr("FS")
 				fieldWidth: 80
@@ -377,7 +377,7 @@ Form
 			CheckBox { label: qsTr("Residual variances")              	; name: "residualVariances";				checked: true }
 			CheckBox { label: qsTr("Correlate exogenous latents")     	; name: "exogenousLatentsCorrelated";		checked: true }
 			CheckBox { label: qsTr("Add thresholds")                 	; 	name: "thresholds";						checked: true }
-			CheckBox { label: qsTr("Add scalings parameters")         	; name: "scalingParamaters";				checked: true }
+			CheckBox { label: qsTr("Add scalings parameters")         	; name: "scalingParameter";				checked: true }
 			CheckBox { label: qsTr("Correlate dependent variables")   	; name: "dependentVariablesCorrelated";		checked: true }
 		}
 	}

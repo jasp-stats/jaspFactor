@@ -40,7 +40,7 @@ Section
 
 	RadioButtonGroup
 	{
-		name: "orderLoadingsBy"
+		name: "loadingOrder"
 		title: qsTr("Order Loadings By")
 		info: qsTr("Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.")
 		RadioButton	{ name: "size";				label: qsTr("Size");	checked: true		}
@@ -106,13 +106,13 @@ Section
 	CheckBox
 	{
 		id: addScores
-		name: "addScoresToData"
+		name: "scoreSavedToData"
 		label: pca ? qsTr("Add PC scores to data") : qsTr("Add FA scores to data")
 		info: qsTr("Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.")
 		enabled: variablesCount > 1 & dataRaw
 
 		TextField {
-			name: "addScoresToDataPrefix"
+			name: "scoreSavedToDataPrefix"
 			label: qsTr("Prefix")
 			defaultValue: pca ? qsTr("PC") : qsTr("FA")
 			fieldWidth: 80

@@ -9,8 +9,8 @@ defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
   manualNumberOfComponents = 1,
-  orthogonalSelector = "none",
-  obliqueSelector = "promax",
+  rotationMethodOrthogonal = "none",
+  rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   componentCorrelations = FALSE,
   residualMatrix = FALSE,
@@ -18,12 +18,12 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScoresToData = FALSE,
-  addScoresToDataPrefix = "",
+  scoreSavedToData = FALSE,
+  scoreSavedToDataPrefix = "",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
-  orderLoadingsBy = "variables",
+  loadingOrder = "variables",
   naAction = "pairwise",
   plotWidth = 480,
   plotHeight = 320
@@ -36,7 +36,7 @@ options <- defaultOptions
 options <- defaultOptions
 options$PCPrefix <- ""
 options$loadingsDisplayLimit <- 0.4
-options$orthogonalSelector <- "varimax"
+options$rotationMethodOrthogonal <- "varimax"
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$manualNumberOfComponents <- 4
 options$rotationMethod <- "orthogonal"

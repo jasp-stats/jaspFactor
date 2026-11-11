@@ -45,7 +45,7 @@ Section
 			info: qsTr("This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.")
 			DropDown
 			{
-				name: "orthogonalSelector"
+				name: "rotationMethodOrthogonal"
 				values: [
 					{ label: qsTr("none")	, value: "none"	, 		info: qsTr("No rotation method is selected.")},
 					{ label: "varimax"		, value: "varimax", 	info: qsTr("Maximizes the variance of squared loadings for each factor, simplifying interpretations.")},
@@ -63,7 +63,7 @@ Section
 			info: qsTr("This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.")
 			checked	: true
 			DropDown { 
-				name: "obliqueSelector"
+				name: "rotationMethodOblique"
 				values: [ 
 					{ value: "promax", label: "promax", info: qsTr("Starts with Varimax and applies a power transformation to allow correlated factors.")},
 					{ value: "oblimin", label: "oblimin", info: qsTr("An oblique rotation that minimizes the correlation among factors while allowing flexibility.")},
@@ -98,7 +98,7 @@ Section
 		RadioButton
 		{
 			enabled: dataRaw && nonScale
-			value: "polyTetrachoricCorrelationMatrix"
+			value: "polychoricTetrachoricCorrelationMatrix"
 			label: qsTr("Polychoric/tetrachoric correlation matrix")
 			info: qsTr("The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories")
 			checked: nonScale

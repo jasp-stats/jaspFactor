@@ -54,7 +54,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     modelContainer <- jaspResults[["modelContainer"]]
   } else {
     modelContainer <- createJaspContainer()
-    modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables", "variables.types",
+    modelContainer$dependOn(c("rotationMethod", "rotationMethodOrthogonal", "rotationMethodOblique", "variables", "variables.types",
                               "manualNumberOfFactors", "naAction",
                               "baseDecompositionOn", "factoringMethod", "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
@@ -66,7 +66,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 # Results functions ----
 # Modification here: added "cor" argument to the fa function.
-# If baseDecompositionOn == polyTetrachoricCorrelationMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
+# If baseDecompositionOn == polychoricTetrachoricCorrelationMatrix, the fa will be performed computing a tetrachoric or polychoric correlation matrix,
 # depending on the number of response categories of the ordinal variables.
 .efaComputePolyCorMatrix <- function(modelContainer, dataset, options) {
   # Return cached result if available
@@ -113,7 +113,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   corMethod <- switch(options[["baseDecompositionOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
-                      "polyTetrachoricCorrelationMatrix" = "mixed")
+                      "polychoricTetrachoricCorrelationMatrix" = "mixed")
 
   factoringMethod <- switch(options[["factoringMethod"]],
                             "minimumResidual"         = "minres",
@@ -128,7 +128,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
     dtUse <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
     if (is.null(dtUse)) return(NA)
   } else {
@@ -139,7 +139,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     psych::fa(
       r        = dtUse,
       nfactors = options[["manualNumberOfFactors"]],
-      rotate   = ifelse(options$rotationMethod == "orthogonal", options$orthogonalSelector, options$obliqueSelector),
+      rotate   = ifelse(options$rotationMethod == "orthogonal", options$rotationMethodOrthogonal, options$rotationMethodOblique),
       scores   = TRUE,
       covar    = options$baseDecompositionOn == "covarianceMatrix",
       cor      = corMethod,
@@ -184,7 +184,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # If a polychoric/tetrachoric-correlation-based FA is requested, then compute the KMO values
   # based on said correlation matrix:
   # else: analysis carries on as usual
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
     polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
     if (is.null(polyTetraCor)) return()
     kmo <- psych::KMO(polyTetraCor)
@@ -213,7 +213,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (!ready) return()
 
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
     polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
     if (is.null(polyTetraCor)) return()
     bar <- psych::cortest.bartlett(polyTetraCor, n = nrow(dataset))
@@ -281,7 +281,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   if (!ready) return()
 
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
     polyTetraCor <- .efaComputePolyCorMatrix(modelContainer, dataset, options)
     if (is.null(polyTetraCor)) return()
     kmo <- psych::KMO(polyTetraCor)
@@ -338,7 +338,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     return()
 
   loadingsTable <- createJaspTable(gettext("Factor Loadings"))
-  loadingsTable$dependOn(c("loadingsDisplayLimit", "orderLoadingsBy"))
+  loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingOrder"))
   loadingsTable$position <- 2
 
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
@@ -357,13 +357,13 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   loadingsTable$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
 
-  if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
+  if (options[["rotationMethod"]] == "orthogonal" && options[["rotationMethodOrthogonal"]] == "none") {
     loadingsTable$addFootnote(message = gettext("No rotation method applied."))
   } else {
     rotationSelector <- if (options[["rotationMethod"]] == "orthogonal") {
-      "orthogonalSelector"
+      "rotationMethodOrthogonal"
     } else {
-      "obliqueSelector"
+      "rotationMethodOblique"
     }
 
     message <- gettextf("Applied rotation method is %1$s.", options[[rotationSelector]])
@@ -382,7 +382,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
   # "variables" is the default output
-  if (options[["orderLoadingsBy"]] == "size")
+  if (options[["loadingOrder"]] == "size")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)
@@ -402,13 +402,13 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   efaResults <- modelContainer[["model"]][["object"]]
 
-  if (options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none") {
+  if (options$rotationMethod == "orthogonal" && options$rotationMethodOrthogonal == "none") {
     structureTable$addFootnote(message = gettext("No rotation method applied."))
   } else {
     rotationSelector <- if (options[["rotationMethod"]] == "orthogonal") {
-      "orthogonalSelector"
+      "rotationMethodOrthogonal"
     } else {
-      "obliqueSelector"
+      "rotationMethodOblique"
     }
 
     message <- gettextf("Applied rotation method is %1$s.", options[[rotationSelector]])
@@ -438,7 +438,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   eigenTable$addColumnInfo(name = "comp", title = "",                         type = "string")
 
   # if a rotation is used, the table needs more columns
-  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
@@ -605,7 +605,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 
   # Variable names
-  xName   <- ifelse(options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none", "PC", "RC")
+  xName   <- ifelse(options$rotationMethod == "orthogonal" && options$rotationMethodOrthogonal == "none", "PC", "RC")
   factors <- paste0(xName, seq_len(ncol(LY)))
   labels  <- rownames(LY)
 

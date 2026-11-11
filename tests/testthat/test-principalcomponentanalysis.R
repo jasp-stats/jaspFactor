@@ -8,8 +8,8 @@ defaultOptions <- list(
   variables = list(),
   sampleSize = 200,
   manualNumberOfComponents = 1,
-  orthogonalSelector = "none",
-  obliqueSelector = "promax",
+  rotationMethodOrthogonal = "none",
+  rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   componentCorrelations = FALSE,
   residualMatrix = FALSE,
@@ -17,13 +17,13 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScoresToData = FALSE,
+  scoreSavedToData = FALSE,
   antiImageCorrelationMatrix = FALSE,
-  addScoresToDataPrefix = "",
+  scoreSavedToDataPrefix = "",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
-  orderLoadingsBy = "variables",
+  loadingOrder = "variables",
   naAction = "pairwise",
   plotWidth = 480,
   plotHeight = 320
@@ -33,7 +33,7 @@ defaultOptions <- list(
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFifty")
 options$manualNumberOfComponents <- 2
-options$orthogonalSelector <- "varimax"
+options$rotationMethodOrthogonal <- "varimax"
 options$pathDiagram <- TRUE
 options$residualMatrix <- TRUE
 
@@ -226,9 +226,9 @@ test_that("rotation methods match", {
     for (rotation in rotationOptions[[rotationMethod]]) {
 
       if (rotationMethod == "orthogonal") {
-        options[["orthogonalSelector"]] <- rotation
+        options[["rotationMethodOrthogonal"]] <- rotation
       } else {
-        options[["obliqueSelector"]] <- rotation
+        options[["rotationMethodOblique"]] <- rotation
       }
 
       set.seed(1)
@@ -272,7 +272,7 @@ test_that("rotation methods match", {
 # results for PCA based on covariance
 options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "contcor1", "contcor2")
-options$orthogonalSelector <- "varimax"
+options$rotationMethodOrthogonal <- "varimax"
 options$baseDecompositionOn <- "covarianceMatrix"
 set.seed(1)
 results <- runAnalysis("principalComponentAnalysis", "test.csv", options)
@@ -307,8 +307,8 @@ options <- defaultOptions
 options$variables <- c("contNormal", "contGamma", "debCollin1", "contcor1", "facFive")
 options$variables.types <- list("scale", "scale", "scale", "scale", "ordinal")
 options$manualNumberOfComponents <- 1
-options$orthogonalSelector <- "varimax"
-options$baseDecompositionOn <- "polyTetrachoricCorrelationMatrix"
+options$rotationMethodOrthogonal <- "varimax"
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
 set.seed(1)
 results <- jaspTools::runAnalysis("principalComponentAnalysis", "test.csv", options)
 
@@ -340,20 +340,20 @@ test_that("Component Loadings table results match for mixed based", {
 dt <- read.csv(testthat::test_path("holzingerswineford.csv"))
 cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
-  addScoresToData = FALSE,
-  addScoresToDataPrefix = "PC",
+  scoreSavedToData = FALSE,
+  scoreSavedToDataPrefix = "PC",
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   componentCorrelations = FALSE,
-  orderLoadingsBy = "variables",
+  loadingOrder = "variables",
   dataType = "varianceCovariance",
   kaiserMeyerOlkinTest = FALSE,
   loadingsDisplayLimit = 0.1,
   manualNumberOfComponents = 1,
   mardiaTest = FALSE,
   naAction = "pairwise",
-  obliqueSelector = "promax",
-  orthogonalSelector = "none",
+  rotationMethodOblique = "promax",
+  rotationMethodOrthogonal = "none",
   antiImageCorrelationMatrix = FALSE,
   pathDiagram = FALSE,
   plotHeight = 320,

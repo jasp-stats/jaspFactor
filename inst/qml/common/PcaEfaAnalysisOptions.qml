@@ -106,6 +106,25 @@ Section
 	}
 
 
+	RadioButtonGroup
+	{
+		name: "naAction"
+		title: qsTr("Missing Values")
+		info: qsTr("Select how to handle missing values.")
+		RadioButton { 
+			value: "pairwise";		
+			label: qsTr("Exclude cases pairwise"); 
+			checked: true; 
+			info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
+		}
+		RadioButton { 
+			value: "listwise";		
+			label: qsTr("Exclude cases listwise")
+			info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
+		}
+	}
+
+
 	Group
 	{
 		visible: !pca

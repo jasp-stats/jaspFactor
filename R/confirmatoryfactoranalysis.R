@@ -713,7 +713,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   # other fit measures
   fitms[["others"]] <- fitot <- createJaspTable(gettext("Other fit measures"))
-  fitot$info <- gettext("Other fit measures: RMSEA with its 90% confidence interval and the p-value of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. Common guidelines are RMSEA below .06 and SRMR below .08, but these should be interpreted cautiously.")
+  fitot$info <- gettextf("Other fit measures: RMSEA with its 90%% confidence interval and the p-value of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. Common guidelines are RMSEA below .06 and SRMR below .08, but these should be interpreted cautiously.")
   fitot$addColumnInfo(name = "index", title = gettext("Metric"), type = "string")
   fitot$addColumnInfo(name = "value", title = gettext("Value"),  type = "number", format = "sf:4;dp:3")
   fitot$setExpectedSize(rows = 1, cols = 2)

@@ -9,9 +9,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -126,9 +126,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -218,9 +218,9 @@ options$bootstrapSamples <- 100
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -230,22 +230,21 @@ results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_p
 test_that("Factor loadings table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fl1"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.712022271311838, 1.11279383173753, 0.899620313867488, "Factor 1",
-                                      0, "x1", 0.102394189446774, 8.78585316928678, 0.339182433474583,
-                                      0.693156723678194, 0.49794051110941, "Factor 1", 5.99807692402976e-09,
-                                      "x2", 0.0856036892888539, 5.81681134593629, 0.539990088382033,
-                                      0.805660643384033, 0.656156092628451, "Factor 1", 0, "x3", 0.070582144675273,
-                                      9.296346769388, 0.856032790026097, 1.08543684864592, 0.989693449094393,
-                                      "Factor 2", 0, "x4", 0.0611312504466256, 16.1896483691023, 0.954112872546464,
-                                      1.24054019999221, 1.10160465003145, "Factor 2", 0, "x5", 0.0613639932659263,
-                                      17.9519713662954, 0.803928010900409, 1.03630968014001, 0.916600977759372,
-                                      "Factor 2", 0, "x6", 0.0547574817438111, 16.7392828992354, 0.37576792721876,
-                                      0.741040160352204, 0.619475433557927, "Factor 3", 9.55917567324605e-11,
-                                      "x7", 0.0956901593244532, 6.47376321589656, 0.506218568773711,
-                                      0.900974372672673, 0.730948802915076, "Factor 3", 2.98294722256287e-12,
-                                      "x8", 0.10474265963836, 6.97852055159554, 0.498364732719689,
-                                      0.860170344673323, 0.669980108781259, "Factor 3", 7.04436509124662e-12,
-                                      "x9", 0.0977109750654534, 6.85675389415018))
+                                 list(0.664680537078612, 1.08602269196389, 0.899620313867488, "Factor 1", 0, "x1",
+                                      0.105577181224036, 8.52097303070146, 0.320608918815302, 0.706659410745969,
+                                      0.49794051110941, "Factor 1", 5.99807692402976e-09, "x2", 0.0907909883823308,
+                                      5.48447065046288, 0.467399198259181, 0.877475656885832, 0.656156092628451,
+                                      "Factor 1", 0, "x3", 0.0906655996475542, 7.23710089801575, 0.856927909068151,
+                                      1.10766598642062, 0.989693449094393, "Factor 2", 0, "x4", 0.0599039830242802,
+                                      16.5213296199896, 0.974220031073598, 1.19493635386904, 1.10160465003145,
+                                      "Factor 2", 0, "x5", 0.0527824491089069, 20.8706619080614, 0.798741904570701,
+                                      1.01710747462913, 0.916600977759372, "Factor 2", 0, "x6", 0.0474225661835442,
+                                      19.3283715227843, 0.381679674698477, 0.746224780097334, 0.619475433557927,
+                                      "Factor 3", 9.55917567324605e-11, "x7", 0.099266429444182, 6.24053304854952,
+                                      0.484910983539873, 0.886121366886365, 0.730948802915076, "Factor 3",
+                                      2.98294722256287e-12, "x8", 0.106015716344783, 6.89472116132193,
+                                      0.499019397467944, 0.910078416523353, 0.669980108781259, "Factor 3",
+                                      7.04436509124662e-12, "x9", 0.106712160491033, 6.27838575939577))
 })
 
 
@@ -258,9 +257,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "visual",  types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "textual", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "speed",   types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "visual"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "textual"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "speed")
 )
 options$modelIdentification <- "effectsCoding"
 options$residualsCovarying <-  list(c("x7", "x8"))
@@ -419,8 +418,8 @@ options$packageMimiced <- "lavaan"
 options$seType <- "robust"
 options$estimator <- "default"
 options$factors <- list(
-  list(indicators = list("V1", "V2", "V3", "V4"), name = "Factor1", title = "Factor 1", types = c("ordinal", rep("scale", 3))),
-  list(indicators = list("V5", "V6", "V7", "V8"), name = "Factor2", title = "Factor 2", types = c("ordinal", "scale", "scale", "ordinal"))
+  list(indicators = list(value = list("V1", "V2", "V3", "V4"), types = c("ordinal", rep("scale", 3))), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("V5", "V6", "V7", "V8"), types = c("ordinal", "scale", "scale", "ordinal")), name = "Factor2", title = "Factor 2")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "pairwise"
@@ -517,8 +516,8 @@ options$packageMimiced <- "lavaan"
 options$seType <- "robust"
 options$estimator <- "default"
 options$factors <- list(
-  list(indicators = list("V1", "V2", "V3", "V4"), name = "Factor1", title = "Factor 1", types = c("ordinal", rep("scale", 3))),
-  list(indicators = list("V5", "V6", "V7", "V8"), name = "Factor2", title = "Factor 2", types = c("ordinal", "scale", "scale", "ordinal"))
+  list(indicators = list(value = list("V1", "V2", "V3", "V4"), types = c("ordinal", rep("scale", 3))), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("V5", "V6", "V7", "V8"), types = c("ordinal", "scale", "scale", "ordinal")), name = "Factor2", title = "Factor 2")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "pairwise"
@@ -576,9 +575,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "f3", title = "Factor 3")
 )
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
 options$modelIdentification <- "factorVariance"
@@ -620,15 +619,119 @@ test_that("Reliability table results match", {
 })
 
 
+# reliability of a single group second-order model
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
+options$estimator <- "default"
+options$standardized <- "none"
+options$factors <- list(
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "f3", title = "Factor 3")
+)
+options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
+options$modelIdentification <- "factorVariance"
+options$naAction <- "listwise"
+options$reliability <- TRUE
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options, makeTests = F)
+
+test_that("Reliability table results match for a single group second-order model", {
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.626117131884981, "Factor 1",
+                                      0.612005230545227, 0.882706912875796,
+                                      "Factor 2", 0.885060891550334,
+                                      0.688455022985003, "Factor 3",
+                                      0.685841504108865, 0.760488595824792,
+                                      "total", 0.859620312056731, "",
+                                      "SecondOrder", 0.56366198498232))
+})
+
+
+# reliability of ordinal items: the Holzinger-Swineford items cut into four ordered categories
+# semTools 0.5-8 cannot compute the reliability of ordinal items (fixed in 0.5-9)
+hsOrdinal <- read.csv(testthat::test_path("holzingerswineford.csv"))
+ordinalItems <- paste0("x", 1:9)
+hsOrdinal[ordinalItems] <- lapply(hsOrdinal[ordinalItems], function(x)
+  cut(x, stats::quantile(x, 0:4 / 4), include.lowest = TRUE, labels = FALSE, ordered_result = TRUE))
+
+options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
+options$packageMimiced <- "lavaan"
+options$seType <- "standard"
+options$estimator <- "default"
+options$factors <- list(
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("ordinal", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("ordinal", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("ordinal", 3)), name = "f3", title = "Factor 3")
+)
+options$modelIdentification <- "factorVariance"
+options$naAction <- "pairwise"
+options$reliability <- TRUE
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", hsOrdinal, options, makeTests = F)
+
+test_that("Reliability table results match for ordinal items", {
+  skip_if(packageVersion("semTools") == "0.5.8", "semTools 0.5-8 cannot compute the reliability of ordinal items")
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.555213848183149, "Factor 1",
+                                      0.546655438599964, 0.854297660107689,
+                                      "Factor 2", 0.858820989858464,
+                                      0.631763742246106, "Factor 3",
+                                      0.624561881994531, 0.727667130254379,
+                                      "total", 0.8253582728027))
+})
+
+options$group <- "sex"
+set.seed(1)
+results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", hsOrdinal, options, makeTests = F)
+
+test_that("Reliability table results match for ordinal items in multiple groups", {
+  skip_if(packageVersion("semTools") == "0.5.8", "semTools 0.5-8 cannot compute the reliability of ordinal items")
+  table <- results[["results"]][["resRelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.527339710939714, "Factor 1", 1,
+                                      0.510492380714474, 0.833185374702934,
+                                      "Factor 2", 1, 0.837118410430062,
+                                      0.621128286622363, "Factor 3", 1,
+                                      0.671915673678176, 0.675261378312252,
+                                      "total", 1, 0.795137021714156,
+                                      0.574038175823865, "Factor 1", 2,
+                                      0.587419873336518, 0.874171736438173,
+                                      "Factor 2", 2, 0.884808661402054,
+                                      0.645593775088001, "Factor 3", 2,
+                                      0.668116941662998, 0.772109281229804,
+                                      "total", 2, 0.854032745752546))
+})
+
+
+# a factor with a single indicator has no reliability of its own, its item stays in the total
+# (the analysis refuses such factors, so the coefficients are computed directly)
+test_that("Reliability coefficients give NA for a single-indicator factor", {
+  dt  <- read.csv(testthat::test_path("holzingerswineford.csv"))
+  fit <- lavaan::cfa("f1 =~ x1 + x2 + x3\nf2 =~ x4 + x5 + x6\nf3 =~ x7", data = dt, std.lv = TRUE)
+  rel <- jaspFactor:::.cfaReliabilityCoefficients(fit, c("f1", "f2", "f3"))
+  expect_equal(colnames(rel[["omega"]]), c("f1", "f2", "f3", "total"))
+  expect_true(is.na(rel[["omega"]][1, "f3"]))
+  expect_true(is.na(rel[["alpha"]][1, "f3"]))
+  expect_equal(unname(rel[["omega"]][1, ]), c(0.612740419333928, 0.884740548042782, NA, 0.868649176557865),
+               tolerance = 1e-6)
+  expect_equal(unname(rel[["alpha"]][1, ]), c(0.626117131884981, 0.882706912875796, NA, 0.722946933580901),
+               tolerance = 1e-6)
+})
+
+
 # structural invariance test
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$group <- "sex"
 options$invarianceTesting <- "structural"
 
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "f3", title = "Factor 3")
 )
 options$modelIdentification <- "markerVariable"
 set.seed(1)
@@ -677,9 +780,9 @@ options$meanStructure <- TRUE
 options$interceptsFixedToZero <- "manifest"
 
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "f1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "f2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "f3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "f1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "f2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "f3", title = "Factor 3")
 )
 options$modelIdentification <- "markerVariable"
 set.seed(1)
@@ -784,9 +887,9 @@ options$seType <- "standard"
 options$estimator <- "default"
 options$standardized <- "none"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -821,9 +924,9 @@ options$bootstrapSamples <- 100
 options$estimator <- "default"
 options$standardized <- "all"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -834,34 +937,34 @@ results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_p
 test_that("Factor Covariances table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fc"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.303559889075027, 0.587606030591397, 0.45850979948829, "Factor 1",
-                                      "<unicode>", 2.8075319846721e-12, "Factor 2", 0.0656229294620072,
-                                      6.98703644057443, 0.252421930436749, 0.673386393756763, 0.47053468289697,
-                                      "Factor 1", "<unicode>", 4.98415840666233e-06, "Factor 3", 0.103064173183301,
-                                      4.56545342929321, 0.121288847658376, 0.477047659983088, 0.282985557346168,
-                                      "Factor 2", "<unicode>", 0.00256386685428089, "Factor 3", 0.0938374326512309,
-                                      3.01570012468213))
+                                 list(0.275961251949306, 0.602551967160838, 0.45850979948829, "Factor 1",
+                                      "<unicode>", 2.8075319846721e-12, "Factor 2", 0.0837953136637843,
+                                      5.47178331867089, 0.239097877428563, 0.691004714796994, 0.47053468289697,
+                                      "Factor 1", "<unicode>", 4.98415840666233e-06, "Factor 3", 0.111361715590469,
+                                      4.22528227409276, 0.0715198869052937, 0.447483820158724, 0.282985557346168,
+                                      "Factor 2", "<unicode>", 0.000746849159292129, "Factor 3",
+                                      0.0839277224760554, 3.37177691705984))
 })
 
 test_that("Factor loadings table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fl1"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.609016736694521, 0.947944173784, 0.771880719099138, "Factor 1",
-                                      0, "x1", 0.0790075814931146, 9.769704432307, 0.299796801762151,
-                                      0.562461136330549, 0.423601841658074, "Factor 1", 8.87832030116442e-11,
-                                      "x2", 0.0653211314357977, 6.48491280458637, 0.476555121784312,
-                                      0.705409627843936, 0.58113226322415, "Factor 1", 0, "x3", 0.0598304732672462,
-                                      9.71298121992773, 0.794492625635462, 0.889617457497235, 0.851582471792654,
-                                      "Factor 2", 0, "x4", 0.0253558531083859, 33.5852423561726, 0.802409345594677,
-                                      0.90040015692512, 0.855065680704751, "Factor 2", 0, "x5", 0.0225330793387188,
-                                      37.947129544584, 0.793490380780966, 0.881881451570573, 0.838010342686877,
-                                      "Factor 2", 0, "x6", 0.0219538857748356, 38.1713903079262, 0.35763220913514,
-                                      0.655842503009954, 0.569516154199535, "Factor 3", 2.04725125740879e-13,
-                                      "x7", 0.0775315033931048, 7.34560958159086, 0.522578395793627,
-                                      0.878644171701047, 0.723044461474298, "Factor 3", 2.22044604925031e-16,
-                                      "x8", 0.0884973521958924, 8.1702383577964, 0.519839886395977,
-                                      0.85813230709943, 0.665009552630709, "Factor 3", 5.48450174164827e-14,
-                                      "x9", 0.0884363928933323, 7.51963677931562))
+                                 list(0.595967491793905, 0.900594115885398, 0.771880719099138, "Factor 1", 0,
+                                      "x1", 0.0789157444118221, 9.78107378764719, 0.274640505096955,
+                                      0.547853714221603, 0.423601841658074, "Factor 1", 8.87832030116442e-11, "x2",
+                                      0.0676415237892558, 6.26245267593097, 0.418001580565356, 0.752575183341165,
+                                      0.58113226322415, "Factor 1", 0, "x3", 0.0727367332997799, 7.98952931841261,
+                                      0.793328855048222, 0.906331446634084, 0.851582471792654, "Factor 2", 0, "x4",
+                                      0.027747294644135, 30.6906486817682, 0.820218583620474, 0.887438676817449,
+                                      0.855065680704751, "Factor 2", 0, "x5", 0.0172467928294704, 49.5782427005014,
+                                      0.792995148887663, 0.883954927992625, 0.838010342686877, "Factor 2", 0, "x6",
+                                      0.021604786371181, 38.7881800027755, 0.357932725059419, 0.670971563464423,
+                                      0.569516154199535, "Factor 3", 2.04725125740879e-13, "x7",
+                                      0.0844282764474455, 6.74556177341894, 0.520484028279154, 0.835480417529587,
+                                      0.723044461474298, "Factor 3", 2.22044604925031e-16, "x8",
+                                      0.0856294035056172, 8.44388062830389, 0.50705881166846, 0.894606901040705,
+                                      0.665009552630709, "Factor 3", 5.48450174164827e-14, "x9",
+                                      0.0976283726608572, 6.81164229727385))
 })
 
 test_that("Factor variances table results match", {
@@ -874,22 +977,22 @@ test_that("Factor variances table results match", {
 test_that("Residual variances table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_rv"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.101393039850757, 0.629083214539259, 0.404200155482997, "x1",
-                                      0.00106311636135392, 0.12348520171185, 3.27326796960004, 0.68358907561605,
-                                      0.909953553900775, 0.820561479743888, "x2", 0, 0.056439655957567,
-                                      14.5387399306759, 0.502389550531345, 0.772878535132245, 0.662285292639977,
-                                      "x3", 0, 0.0709073291415945, 9.34015285383917, 0.208580150389682,
-                                      0.368768950437494, 0.274807293735513, "x4", 1.2259127046832e-10,
-                                      0.0426978719625226, 6.43608875816389, 0.189276073717449, 0.356138010656408,
-                                      0.268862681680922, "x5", 2.91988655476416e-12, 0.038510580773078,
-                                      6.98152757719193, 0.222258834237173, 0.370371227914033, 0.297738665549823,
-                                      "x6", 6.66133814775094e-16, 0.0368175679553321, 8.08686401858606,
-                                      0.569870176391053, 0.872077590620781, 0.675651350105771, "x7",
-                                      0, 0.0785495291008984, 8.60159644290018, 0.227882271960117,
-                                      0.726900296883314, 0.477206706731343, "x8", 9.89982091292863e-05,
-                                      0.122579635344303, 3.89303415196951, 0.263606923380453, 0.729486818565604,
-                                      0.557762294909905, "x9", 4.60190368745117e-06, 0.121724666355054,
-                                      4.58216326741032))
+                                 list(0.188926556872509, 0.644084974483204, 0.404200155482997, "x1",
+                                      0.000629256183319882, 0.118232804136795, 3.41868027603692,
+                                      0.699829086481015, 0.923970569188726, 0.820561479743888, "x2", 0,
+                                      0.0568263095285999, 14.4398164609108, 0.433441683867642, 0.825273899300507,
+                                      0.662285292639977, "x3", 0, 0.0855649499080474, 7.74014702692754,
+                                      0.178559222293488, 0.370626772804715, 0.274807293735513, "x4",
+                                      1.2259127046832e-10, 0.0469170733976437, 5.85729828897031,
+                                      0.212452370216918, 0.327205828631691, 0.268862681680922, "x5",
+                                      2.91988655476416e-12, 0.0294071056244042, 9.14277947360449,
+                                      0.218621625462506, 0.371131728957569, 0.297738665549823, "x6",
+                                      6.66133814775094e-16, 0.0361369888343105, 8.23916643733007,
+                                      0.549796832822727, 0.871798439892469, 0.675651350105771, "x7", 0,
+                                      0.0880515533042568, 7.67336094311816, 0.301964558529721, 0.728971444857033,
+                                      0.477206706731343, "x8", 4.04607429709269e-05, 0.116254846715246,
+                                      4.10483278946821, 0.199618220269288, 0.742836541376407, 0.557762294909905,
+                                      "x9", 4.60190368745117e-06, 0.135696464124458, 4.11036719717571))
 })
 
 test_that("Chi-square test table results match", {
@@ -911,9 +1014,9 @@ options$estimator <- "default"
 options$standardized <- "all"
 options$modelIdentification <- "markerVariable"
 options$factors <- list(
-  list(indicators = list("x1", "x2", "x3"), name = "Factor1", title = "Factor 1", types = rep("scale", 3)),
-  list(indicators = list("x4", "x5", "x6"), name = "Factor2", title = "Factor 2", types = rep("scale", 3)),
-  list(indicators = list("x7", "x8", "x9"), name = "Factor3", title = "Factor 3", types = rep("scale", 3))
+  list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "Factor1", title = "Factor 1"),
+  list(indicators = list(value = list("x4", "x5", "x6"), types = rep("scale", 3)), name = "Factor2", title = "Factor 2"),
+  list(indicators = list(value = list("x7", "x8", "x9"), types = rep("scale", 3)), name = "Factor3", title = "Factor 3")
 )
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
@@ -923,112 +1026,105 @@ results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_p
 test_that("Factor Intercepts table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_Factor Intercepts"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0, 0, 0, "Pasteur", "Factor 1", "", 0, "", 0, 0, 0, "Pasteur",
-                                      "Factor 2", "", 0, "", 0, 0, 0, "Pasteur", "Factor 3", "", 0,
-                                      "", -0.600424800916019, 0.172483272055243, -0.175535288371218,
-                                      "Grant-White", "Factor 1", 0.332831302434871, 0.181258205229083,
-                                      -0.96842671563126, 0.368728529275798, 0.871679864930804, 0.617893927834581,
-                                      "Grant-White", "Factor 2", 3.03098141918312e-07, 0.120646818763599,
-                                      5.12151032382638, -0.540348169119783, 0.0413253948002106, -0.24956546627844,
-                                      "Grant-White", "Factor 3", 0.0650242361154809, 0.135259130754748,
-                                      -1.84509145435034))
+                                 list(0, 0, 0, "Pasteur", "Factor 1", "", 0, "", 0, 0, 0, "Pasteur", "Factor 2",
+                                      "", 0, "", 0, 0, 0, "Pasteur", "Factor 3", "", 0, "", -0.569445043130582,
+                                      0.122446581161433, -0.175535288371218, "Grant-White", "Factor 1",
+                                      0.295448082410805, 0.167776518161667, -1.04624467294091, 0.410536098382448,
+                                      0.937136380565835, 0.617893927834581, "Grant-White", "Factor 2",
+                                      3.03098141918312e-07, 0.130036871851109, 4.7516824961928, -0.47364876209558,
+                                      0.0453878307647073, -0.24956546627844, "Grant-White", "Factor 3",
+                                      0.0487761628956749, 0.126648064159591, -1.97054307884215))
 })
 
 test_that("Intercepts table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_Intercepts"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(3.65022119771387, 5.13027905453576, 4.30190068090687, "Pasteur",
-                                      "x1", 0, 0.313363297223658, 13.7281574422433, 4.51213484792976,
-                                      5.57641858113713, 4.92467499942217, "Pasteur", "x2", 0, 0.277399966721329,
-                                      17.7529761723779, 1.65475923878407, 2.14145250475774, 1.88486022383063,
-                                      "Pasteur", "x3", 0, 0.114351675308078, 16.483013639744, 2.17645346601327,
-                                      2.71826792801374, 2.41343151699624, "Pasteur", "x4", 0, 0.120935216857129,
-                                      19.956399630452, 2.91536922473356, 3.50053485639102, 3.18431283764559,
-                                      "Pasteur", "x5", 0, 0.150814942054574, 21.1140407857817, 1.66606132251122,
-                                      2.18009490954565, 1.90007550339723, "Pasteur", "x6", 0, 0.130545458325189,
-                                      14.5548954959746, 3.53904916830473, 4.39807370417912, 3.8553172018654,
-                                      "Pasteur", "x7", 0, 0.203463936235147, 18.9484056644305, 5.28428050429713,
-                                      6.43438719831971, 5.77059511069387, "Pasteur", "x8", 0, 0.295088903096046,
-                                      19.5554460033885, 4.96240921194386, 6.30893973296942, 5.51562543184978,
-                                      "Pasteur", "x9", 0, 0.374884902252801, 14.7128502607191, 3.82416895442114,
-                                      4.99494592985408, 4.2859787708933, "Grant-White", "x1", 0, 0.279310435160411,
-                                      15.3448573034223, 5.00712888597332, 6.43491783003054, 5.61810087972815,
-                                      "Grant-White", "x2", 0, 0.377443024520479, 14.8846329505378,
-                                      1.96258393784137, 2.46601013644339, 2.17351742478477, "Grant-White",
-                                      "x3", 0, 0.115412587955861, 18.8325854508696, 2.25119636373155,
-                                      2.90779977569276, 2.52203984502696, "Grant-White", "x4", 0,
-                                      0.165175232206987, 15.2688742212059, 2.90965221277875, 3.88386369417219,
-                                      3.33046740971937, "Grant-White", "x5", 0, 0.232756353434163,
-                                      14.3088141766297, 1.52934256431605, 2.04296262254005, 1.76312404048121,
-                                      "Grant-White", "x6", 0, 0.113070498779137, 15.5931393203205,
-                                      3.62828552274827, 4.57062514267745, 3.99057053716559, "Grant-White",
-                                      "x7", 0, 0.213304224776891, 18.7083520794752, 4.63346894913212,
-                                      6.46856356795117, 5.42204277713541, "Grant-White", "x8", 0,
-                                      0.489404837430923, 11.0788499876663, 4.87060940044105, 6.18142023416206,
-                                      5.36856945405648, "Grant-White", "x9", 0, 0.343827159477041,
-                                      15.6141517796966))
+                                 list(3.82537263391805, 4.99215349384842, 4.30190068090687, "Pasteur", "x1", 0,
+                                      0.292710748566026, 14.696763620679, 4.46562116692485, 5.54085724695517,
+                                      4.92467499942217, "Pasteur", "x2", 0, 0.281098171211864, 17.5194131580118,
+                                      1.67775219615152, 2.1353971872555, 1.88486022383063, "Pasteur", "x3", 0,
+                                      0.109366806489958, 17.2342988181126, 2.15673889242527, 2.74369913201383,
+                                      2.41343151699624, "Pasteur", "x4", 0, 0.134313476409739, 17.9686475364079,
+                                      2.82101167888401, 3.58558279958852, 3.18431283764559, "Pasteur", "x5", 0,
+                                      0.183134983311491, 17.3877911257919, 1.69649020116505, 2.12459521452555,
+                                      1.90007550339723, "Pasteur", "x6", 0, 0.113164727030107, 16.7903511391118,
+                                      3.52851507046027, 4.24756866863165, 3.8553172018654, "Pasteur", "x7", 0,
+                                      0.189087864501598, 20.389025028271, 5.130821796706, 6.46440399786648,
+                                      5.77059511069387, "Pasteur", "x8", 0, 0.3224161143552, 17.897973624037,
+                                      4.91825076592137, 6.16325026584029, 5.51562543184978, "Pasteur", "x9", 0,
+                                      0.293588346301585, 18.7869358621746, 3.84582331077805, 4.82112368087805,
+                                      4.2859787708933, "Grant-White", "x1", 0, 0.247731452145578, 17.3009068237919,
+                                      4.88473529607322, 6.43491783003054, 5.61810087972815, "Grant-White", "x2", 0,
+                                      0.40442669124218, 13.8915185406591, 2.01208953368605, 2.47534436349833,
+                                      2.17351742478477, "Grant-White", "x3", 0, 0.110406783220537,
+                                      19.6864482542089, 2.22974116110855, 2.93626467659177, 2.52203984502696,
+                                      "Grant-White", "x4", 0, 0.172405979230527, 14.6284940712798, 2.9541178336804,
+                                      3.82380946810443, 3.33046740971937, "Grant-White", "x5", 0,
+                                      0.207201887650934, 16.0735379753398, 1.55282913787316, 2.01344973485173,
+                                      1.76312404048121, "Grant-White", "x6", 0, 0.118927059364688,
+                                      14.8252554960987, 3.58125952677721, 4.37803269845174, 3.99057053716559,
+                                      "Grant-White", "x7", 0, 0.18669446545506, 21.3748732585015, 4.54936536867853,
+                                      6.30418820847833, 5.42204277713541, "Grant-White", "x8", 0,
+                                      0.397325612554455, 13.64634598378, 4.59722235574863, 6.03992059978544,
+                                      5.36856945405648, "Grant-White", "x9", 0, 0.348122361049197, 15.4215013303836))
 })
 
 test_that("Factor Covariances table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fc"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.228183160189731, 0.660825935297529, 0.489651501809208, "Pasteur",
-                                      "Factor 1", "<unicode>", 9.09660323755723e-06, "Factor 2", 0.110341429583649,
-                                      4.43760338847165, -0.00807731853350358, 0.62870849408938, 0.351445137103768,
-                                      "Pasteur", "Factor 1", "<unicode>", 0.0226088909449578, "Factor 3",
-                                      0.154143974664116, 2.27997972589961, 0.0952853606061416, 0.544228582805629,
-                                      0.338229765920924, "Pasteur", "Factor 2", "<unicode>", 0.00179764339289545,
-                                      "Factor 3", 0.108345341486319, 3.12177488465097, 0.358139248371121,
-                                      0.743531664104939, 0.543999435723382, "Grant-White", "Factor 1",
-                                      "<unicode>", 3.19173893981173e-08, "Factor 2", 0.098362097019069,
-                                      5.53057989011682, 0.252394618569737, 0.807604894697997, 0.549563676512851,
-                                      "Grant-White", "Factor 1", "<unicode>", 4.01125085143228e-05,
-                                      "Factor 3", 0.133816980097255, 4.10683065866112, 0.0171525783585205,
-                                      0.572598744831089, 0.356206518510521, "Grant-White", "Factor 2",
-                                      "<unicode>", 0.00471442134688771, "Factor 3", 0.126049503626128,
-                                      2.82592559481278))
+                                 list(0.201350898178664, 0.662642445356552, 0.489651501809208, "Pasteur",
+                                      "Factor 1", "<unicode>", 9.09660323755723e-06, "Factor 2", 0.114114031965344,
+                                      4.29089651269103, 0.124456358120698, 0.618099580293298, 0.351445137103768,
+                                      "Pasteur", "Factor 1", "<unicode>", 0.00485621809248493, "Factor 3",
+                                      0.124784362599085, 2.81641970022247, 0.10724802666031, 0.547056547465775,
+                                      0.338229765920924, "Pasteur", "Factor 2", "<unicode>", 0.00130885340283959,
+                                      "Factor 3", 0.105235363143, 3.21403144170573, 0.276707208990267,
+                                      0.782684735147505, 0.543999435723382, "Grant-White", "Factor 1", "<unicode>",
+                                      3.19173893981173e-08, "Factor 2", 0.106664597392124, 5.10009364891251,
+                                      0.220397609392973, 0.837358370306263, 0.549563676512851, "Grant-White",
+                                      "Factor 1", "<unicode>", 0.00025563174928056, "Factor 3", 0.150295648407129,
+                                      3.65655082058107, 0.0295316690572492, 0.604734491502239, 0.356206518510521,
+                                      "Grant-White", "Factor 2", "<unicode>", 0.0117744509350264, "Factor 3",
+                                      0.141417286475203, 2.51883293329193))
 })
 
 test_that("Factor loadings table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_fl1"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.497946043151746, 0.928399346761365, 0.767504218747721, "Pasteur",
-                                      "Factor 1", 6.3504757008559e-14, "x1", 0.102324168965379, 7.50071294502673,
-                                      0.267970168041768, 0.532671928457776, 0.411240885120536, "Pasteur",
-                                      "Factor 1", 4.90285589904715e-11, "x2", 0.0625570271420693,
-                                      6.57385595045289, 0.477533480398189, 0.782692612333735, 0.591249578075409,
-                                      "Pasteur", "Factor 1", 1.55431223447522e-15, "x3", 0.0741219643415358,
-                                      7.97671221112107, 0.747908871607011, 0.88042427857654, 0.8147367537784,
-                                      "Pasteur", "Factor 2", 0, "x4", 0.0364055991447119, 22.3794353868433,
-                                      0.748735883515215, 0.900200523748822, 0.828893981424851, "Pasteur",
-                                      "Factor 2", 0, "x5", 0.0353558694674218, 23.4443104896239, 0.819929930935631,
-                                      0.911328306235974, 0.862398357717919, "Pasteur", "Factor 2",
-                                      0, "x6", 0.0266954370432013, 32.3050848098983, 0.295709313671858,
-                                      0.669807670173096, 0.516017953908184, "Pasteur", "Factor 3",
-                                      8.28118018603163e-10, "x7", 0.0840496489889816, 6.13944210493765,
-                                      0.41441662557669, 0.789023866054136, 0.657296908755646, "Pasteur",
-                                      "Factor 3", 0, "x8", 0.0763529021754888, 8.60866961212452, 0.394912547811197,
-                                      0.78277912111732, 0.578220175361584, "Pasteur", "Factor 3",
-                                      9.29146093398003e-10, "x9", 0.09446299377331, 6.1211290502732,
-                                      0.522511070107775, 0.846618448456704, 0.721069217728034, "Grant-White",
-                                      "Factor 1", 0, "x1", 0.0761942837372163, 9.46356055022322, 0.28009909049072,
-                                      0.591288754791562, 0.442399667834903, "Grant-White", "Factor 1",
-                                      6.94054780314701e-08, "x2", 0.082036714777824, 5.39270336498765,
-                                      0.4665689170855, 0.839057811516596, 0.642926562525478, "Grant-White",
-                                      "Factor 1", 6.90603130237832e-12, "x3", 0.0937267258097293,
-                                      6.85958628097877, 0.769343771364018, 0.906232144313084, 0.846861013649664,
-                                      "Grant-White", "Factor 2", 0, "x4", 0.0337718425617614, 25.0759493533981,
-                                      0.803522481668752, 0.910290086939244, 0.862315742630346, "Grant-White",
-                                      "Factor 2", 0, "x5", 0.0260308061567748, 33.1267398111648, 0.702293669144307,
-                                      0.862016225028908, 0.795972011539709, "Grant-White", "Factor 2",
-                                      0, "x6", 0.0396403013689494, 20.0798678125893, 0.409687044545161,
-                                      0.769910018211471, 0.668495625055567, "Grant-White", "Factor 3",
-                                      8.06021915877864e-14, "x7", 0.0894976070159833, 7.46942457284004,
-                                      0.510868083398289, 0.89960164853536, 0.772970300051754, "Grant-White",
-                                      "Factor 3", 0, "x8", 0.0910016012877421, 8.49402965567237, 0.535526874409041,
-                                      0.894743651691221, 0.704394462211568, "Grant-White", "Factor 3",
-                                      1.99840144432528e-15, "x9", 0.0886808144432094, 7.94303104492413
-                                 ))
+                                 list(0.594623334188899, 0.958064917114723, 0.767504218747721, "Pasteur",
+                                      "Factor 1", 6.3504757008559e-14, "x1", 0.0979128402909845, 7.83864727513568,
+                                      0.302261895924524, 0.564921159257542, 0.411240885120536, "Pasteur",
+                                      "Factor 1", 4.90285589904715e-11, "x2", 0.0681393839144913, 6.03528916018093,
+                                      0.462318952070999, 0.754527196753023, 0.591249578075409, "Pasteur",
+                                      "Factor 1", 1.55431223447522e-15, "x3", 0.0746979309059451, 7.91520689937012,
+                                      0.709448824061959, 0.871320437140065, 0.8147367537784, "Pasteur", "Factor 2",
+                                      0, "x4", 0.0403201631242525, 20.2066829756534, 0.749937379284218,
+                                      0.89546317763352, 0.828893981424851, "Pasteur", "Factor 2", 0, "x5",
+                                      0.0370883774114547, 22.3491573176466, 0.790135644756613, 0.910636116518009,
+                                      0.862398357717919, "Pasteur", "Factor 2", 0, "x6", 0.0272404139899413,
+                                      31.6587830873776, 0.281953225351639, 0.63576177629555, 0.516017953908184,
+                                      "Pasteur", "Factor 3", 8.28118018603163e-10, "x7", 0.0804737555061787,
+                                      6.41225143107139, 0.40981788350811, 0.787281425969592, 0.657296908755646,
+                                      "Pasteur", "Factor 3", 0, "x8", 0.0838242974608593, 7.84136495820395,
+                                      0.439146552257307, 0.795935689317652, 0.578220175361584, "Pasteur",
+                                      "Factor 3", 9.29146093398003e-10, "x9", 0.0918624007566514, 6.29441611147656,
+                                      0.539835464839721, 0.889220494220543, 0.721069217728034, "Grant-White",
+                                      "Factor 1", 0, "x1", 0.084048423147289, 8.57921172970028, 0.292459588381161,
+                                      0.614629480029429, 0.442399667834903, "Grant-White", "Factor 1",
+                                      6.94054780314701e-08, "x2", 0.0829516605801885, 5.33322256288335,
+                                      0.443724773628271, 0.831909780977668, 0.642926562525478, "Grant-White",
+                                      "Factor 1", 6.90603130237832e-12, "x3", 0.0902161967215157, 7.1265092731641,
+                                      0.74690532351169, 0.902358043308646, 0.846861013649664, "Grant-White",
+                                      "Factor 2", 0, "x4", 0.0397798206769641, 21.2887086778667, 0.792677775617426,
+                                      0.909285694943456, 0.862315742630346, "Grant-White", "Factor 2", 0, "x5",
+                                      0.0283597367834456, 30.4063380141703, 0.683367832181481, 0.884215530946679,
+                                      0.795972011539709, "Grant-White", "Factor 2", 0, "x6", 0.0469091182264433,
+                                      16.968385713356, 0.423332892807918, 0.763139059694378, 0.668495625055567,
+                                      "Grant-White", "Factor 3", 8.06021915877864e-14, "x7", 0.0867917995092374,
+                                      7.70229017989675, 0.52466004851799, 0.91151555407267, 0.772970300051754,
+                                      "Grant-White", "Factor 3", 0, "x8", 0.0891256899044552, 8.67281140690631,
+                                      0.536107577513686, 0.917759277980597, 0.704394462211568, "Grant-White",
+                                      "Factor 3", 1.99840144432528e-15, "x9", 0.098122240833832, 7.17874414837759))
 })
 
 test_that("Factor variances table results match", {
@@ -1044,41 +1140,40 @@ test_that("Factor variances table results match", {
 test_that("Residual variances table results match", {
   table <- results[["results"]][["estimates"]][["collection"]][["estimates_rv"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.13769385285961, 0.751963603543048, 0.410937274204451, "Pasteur",
-                                      "x1", 0.00620168713128777, 0.150145738599143, 2.73692265953392,
-                                      0.715838940853543, 0.928176318373662, 0.830880934405278, "Pasteur",
-                                      "x2", 0, 0.0508376826723241, 16.3438003215203, 0.387346843044124,
-                                      0.77194706346048, 0.650423936425651, "Pasteur", "x3", 1.28763666396026e-12,
-                                      0.0916654463512224, 7.09562831269601, 0.224838657858211, 0.440627011382283,
-                                      0.336204022042635, "Pasteur", "x4", 1.30648110108211e-08, 0.0591365525786563,
-                                      5.6852151060963, 0.189627716613645, 0.439392033305594, 0.312934767557658,
-                                      "Pasteur", "x5", 7.82892488615516e-08, 0.058263482174449, 5.37102754381703,
-                                      0.169480327190342, 0.327708010982767, 0.256269072605437, "Pasteur",
-                                      "x6", 2.6254819207594e-08, 0.0460523248504012, 5.56473692561483,
-                                      0.55072074264655, 0.912552855627813, 0.733725471244411, "Pasteur",
-                                      "x7", 0, 0.0822962705469302, 8.91565883080932, 0.377441220237523,
-                                      0.828237434236209, 0.567960773740272, "Pasteur", "x8", 3.63495855637552e-09,
-                                      0.0962644955382025, 5.90000259768542, 0.385800919788681, 0.844031974744684,
-                                      0.665661428804819, "Pasteur", "x9", 2.30584582538995e-08, 0.119137617595222,
-                                      5.58733204709908, 0.283237160581203, 0.726969266177735, 0.480059183245081,
-                                      "Grant-White", "x1", 6.16804065289855e-06, 0.106194961281641,
-                                      4.52054577214742, 0.650154588485026, 0.921542190895353, 0.804282533899567,
-                                      "Grant-White", "x2", 0, 0.0740546024298117, 10.8606691212995,
-                                      0.295953825721606, 0.782292724286878, 0.586645435199173, "Grant-White",
-                                      "x3", 1.51643337309437e-06, 0.121987602623055, 4.80905782706396,
-                                      0.178735758175973, 0.40810567705553, 0.282826423560263, "Grant-White",
-                                      "x4", 6.23251878550946e-07, 0.0567483629016234, 4.9838692977022,
-                                      0.171357013106635, 0.354346710932066, 0.256411560011874, "Grant-White",
-                                      "x5", 1.01971493471353e-08, 0.0447691471586921, 5.72741667610908,
-                                      0.256913974946414, 0.506749624900821, 0.36642855684543, "Grant-White",
-                                      "x6", 4.58797355662455e-09, 0.062514826947216, 5.86146638708321,
-                                      0.407230036006067, 0.831704529042534, 0.553113599281567, "Grant-White",
-                                      "x7", 1.05572113051622e-07, 0.104030085094825, 5.31686193255919,
-                                      0.190641593332729, 0.734397244925674, 0.402516915237902, "Grant-White",
-                                      "x8", 0.00174905496053168, 0.128606500674013, 3.12983335312253,
-                                      0.197649385554837, 0.713208259471529, 0.503828441605676, "Grant-White",
-                                      "x9", 6.55085756990914e-05, 0.126208408581336, 3.99203545365189
-                                 ))
+                                 list(0.0819719310777318, 0.646270913831504, 0.410937274204451, "Pasteur", "x1",
+                                      0.00668202835435161, 0.151509391687958, 2.71228911703901, 0.680839771371154,
+                                      0.908636381021043, 0.830880934405278, "Pasteur", "x2", 0, 0.0595231182193971,
+                                      13.9589618161925, 0.430681677224291, 0.786037542808072, 0.650423936425651,
+                                      "Pasteur", "x3", 1.28763666396026e-12, 0.0898536114426092, 7.23870666947078,
+                                      0.240800176430534, 0.49668117716577, 0.336204022042635, "Pasteur", "x4",
+                                      1.30648110108211e-08, 0.0642397709840995, 5.23358064470454,
+                                      0.198145069518018, 0.437580167313446, 0.312934767557658, "Pasteur", "x5",
+                                      7.82892488615516e-08, 0.0607724051719421, 5.14929048261753,
+                                      0.170737644557548, 0.375654347659429, 0.256269072605437, "Pasteur", "x6",
+                                      2.6254819207594e-08, 0.0465067313607554, 5.51036516880843, 0.595777376416658,
+                                      0.920277888514287, 0.733725471244411, "Pasteur", "x7", 0, 0.0757075112114316,
+                                      9.69158092114936, 0.380086832468501, 0.83198013526133, 0.567960773740272,
+                                      "Pasteur", "x8", 3.63495855637552e-09, 0.104383748343781, 5.44108429474798,
+                                      0.366385392727548, 0.80714766803638, 0.665661428804819, "Pasteur", "x9",
+                                      2.30584582538995e-08, 0.113078046484615, 5.88674326714148, 0.209286910885061,
+                                      0.708461785636365, 0.480059183245081, "Grant-White", "x1",
+                                      8.39349007848433e-05, 0.122063080371016, 3.93287783485326, 0.622208088229512,
+                                      0.914447961569039, 0.804282533899567, "Grant-White", "x2", 0,
+                                      0.0751039260575127, 10.7089279631489, 0.307911133534369, 0.803104651050219,
+                                      0.586645435199173, "Grant-White", "x3", 1.51643337309437e-06,
+                                      0.11544171187896, 5.08174580618023, 0.185749422431515, 0.442132397646543,
+                                      0.282826423560263, "Grant-White", "x4", 6.23251878550946e-07,
+                                      0.0660013947763809, 4.28515828367728, 0.173199520812613, 0.371643313845599,
+                                      0.256411560011874, "Grant-White", "x5", 1.01971493471353e-08,
+                                      0.0485602431439802, 5.28027751532501, 0.217967762077277, 0.533008400100554,
+                                      0.36642855684543, "Grant-White", "x6", 4.58797355662455e-09,
+                                      0.0741234900705781, 4.94348763794754, 0.417612722549009, 0.820445242223369,
+                                      0.553113599281567, "Grant-White", "x7", 1.05572113051622e-07,
+                                      0.105232342204075, 5.25611791676105, 0.169115634832534, 0.724730048299395,
+                                      0.402516915237902, "Grant-White", "x8", 0.00201389181570799,
+                                      0.130341314441971, 3.08817597061372, 0.157262346005157, 0.712375474276432,
+                                      0.503828441605676, "Grant-White", "x9", 0.000479548849835476,
+                                      0.144283774051894, 3.49192724487831))
 })
 
 test_that("Chi-square test table results match", {

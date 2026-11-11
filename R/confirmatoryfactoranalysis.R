@@ -1570,34 +1570,95 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   relTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                       "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "reliability", "interceptsFixedToZero"))
 
-  nfac <- length(cfaResult[["spec"]][["latents"]])
+  jaspResults[["resRelTable"]] <- relTable
 
-  rel_result_alpha <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE, tau.eq = TRUE)
-  if (is.null(cfaResult[["spec"]][["soIndics"]])) {
-    rel_result_omega <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE)
-  } else {
-    rel_result_omega <- semTools::compRelSEM(cfaResult[["lav"]], return.total = TRUE,
-                                             higher = "SecondOrder")
-    rel_result_alpha <- cbind(rel_result_alpha, NA)
+  rel <- try(.cfaReliabilityCoefficients(cfaResult[["lav"]], cfaResult[["spec"]][["latents"]]))
+  if (isTryError(rel)) {
+    relTable$setError(gettextf("The reliability coefficients could not be computed: %s", .extractErrorMessage(rel)))
+    return()
   }
+
+  nfac <- length(cfaResult[["spec"]][["latents"]])
+  ncomp <- ncol(rel[["omega"]])
+  labels <- c(vapply(options[["factors"]], function(x) x[["title"]], ""), colnames(rel[["omega"]])[-seq_len(nfac)])
 
   if (options$group != "") {
     groups <- cfaResult[["lav"]]@Data@group.label
-    rel_result_omega <- rel_result_omega[, -1, drop = FALSE]
-    rel_result_alpha <- rel_result_alpha[, -1, drop = FALSE]
-    relTable[["group"]]   <- rep(groups, each = ncol(rel_result_omega))
-    relTable[["factor"]]  <- rep(c(sapply(options[["factors"]], function(x) x[["title"]]),
-                                   colnames(rel_result_omega)[-(1:nfac)]), length(groups))
-    relTable[["rel"]]     <- c(t(rel_result_omega))
-    relTable[["alpha"]] <- c(t(rel_result_alpha))
-  } else {
-    relTable[["factor"]] <- c(sapply(options[["factors"]], function(x) x[["title"]]),
-                              names(rel_result_omega)[-(1:nfac)])
-    relTable[["rel"]] <- rel_result_omega
-    relTable[["alpha"]] <- rel_result_alpha
+    relTable[["group"]] <- rep(groups, each = ncomp)
   }
-  jaspResults[["resRelTable"]] <- relTable
+  relTable[["factor"]] <- rep(labels, nrow(rel[["omega"]]))
+  relTable[["rel"]]    <- c(t(rel[["omega"]]))
+  relTable[["alpha"]]  <- c(t(rel[["alpha"]]))
 
+}
+
+# Reliability coefficients of the first-order factors, of all items ("total", multi-factor models) and of the
+# second-order factor ("SecondOrder"), as matrices with one row per group and one column per composite.
+# Omega takes the composite's own factor(s) as true score; the "SecondOrder" omega is the share of its items'
+# composite variance due to the second-order factor. Alpha is not defined for the second-order factor (NA).
+# A factor with a single indicator gets NA, like semTools' default dropSingle.
+.cfaReliabilityCoefficients <- function(fit, latents) {
+
+  PT       <- lavaan::parTable(fit)
+  loadings <- PT[PT$op == "=~" & PT$block == 1L, ]
+  indics   <- lapply(setNames(latents, latents), function(f) loadings$rhs[loadings$lhs == f])
+  soFacs   <- loadings$rhs[loadings$lhs == "SecondOrder"]
+
+  comps    <- c(latents, if (length(latents) > 1L) "total", if (length(soFacs) > 0L) "SecondOrder")
+  ngroups  <- lavaan::lavInspect(fit, "ngroups")
+  emptyRel <- matrix(NA_real_, nrow = ngroups, ncol = length(comps), dimnames = list(NULL, comps))
+  fill     <- function(values) { # values: a named list (or vector) of per-group coefficients
+    out    <- emptyRel
+    common <- intersect(comps, names(values))
+    for (cc in common) out[, cc] <- as.numeric(values[[cc]])
+    out
+  }
+
+  multi <- latents[lengths(indics) > 1L]
+
+  if (utils::packageVersion("semTools") < "0.5.8") {
+    # dropSingle = FALSE keeps the items of single-indicator factors in "total", as semTools >= 0.5-8 does
+    asList <- function(res) {
+      res <- if (is.data.frame(res)) as.list(res[setdiff(names(res), "group")]) else as.list(res)
+      res[setdiff(names(res), setdiff(latents, multi))]
+    }
+    alpha  <- semTools::compRelSEM(fit, return.total = TRUE, tau.eq = TRUE, dropSingle = FALSE)
+    omega  <- if (length(soFacs) == 0L) semTools::compRelSEM(fit, return.total = TRUE, dropSingle = FALSE)
+              else                      semTools::compRelSEM(fit, return.total = TRUE, dropSingle = FALSE, higher = "SecondOrder")
+    return(list(omega = fill(asList(omega)), alpha = fill(asList(alpha))))
+  }
+
+  # semTools >= 0.5-8 rewrote compRelSEM: by default a higher-order factor is the only source of true-score
+  # variance (also for the first-order factors), and return.total = TRUE fails for multigroup second-order models.
+  # Explicit composites (W) and true-score factors (true) give the coefficients described above.
+  compIndics <- indics[multi]
+  true       <- setNames(as.list(multi), multi)
+  if (length(latents) > 1L) {
+    compIndics[["total"]] <- unique(unlist(indics))
+    true[["total"]]       <- latents
+  }
+  W <- function(cs) paste0(cs, " <~ ", vapply(compIndics[cs], paste, "", collapse = " + "), collapse = "\n")
+  alphaComps <- names(compIndics)
+  if (length(soFacs) > 0L) {
+    compIndics[["SecondOrder"]] <- unique(unlist(indics[soFacs]))
+    true[["SecondOrder"]]       <- "SecondOrder"
+  }
+
+  omega <- semTools::compRelSEM(fit, W = W(names(compIndics)), true = true)
+  if (length(alphaComps) == 0L) {
+    alpha <- NULL
+  } else if (lavaan::lavInspect(fit, "categorical")) {
+    # semTools >= 0.5-8 refuses alpha of ordinal items on their observed scale; 0.5-7 took it from the raw data
+    rawData <- lavaan::lavInspect(fit, "data", drop.list.single.group = FALSE)
+    alpha   <- lapply(compIndics[alphaComps], function(items) vapply(rawData, function(x) {
+      # the data keep their missing values under pairwise deletion
+      S <- stats::cov(x[, items, drop = FALSE], use = "pairwise.complete.obs")
+      length(items) / (length(items) - 1) * (1 - sum(diag(S)) / sum(S))
+    }, numeric(1)))
+  } else {
+    alpha <- semTools::compRelSEM(fit, W = W(alphaComps), tau.eq = TRUE)
+  }
+  return(list(omega = fill(omega), alpha = fill(alpha)))
 }
 
 .cfaAddScoresToData <- function(jaspResults, options, cfaResult, dataset) {

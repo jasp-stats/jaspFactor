@@ -37,6 +37,7 @@ Form
 		title: qsTr("Data Type")
 		RadioButtonGroup
 		{
+			id: dataType
 			name: "dataType"
 			columns: 2
 			RadioButton { value: "raw"; label: qsTr("Raw"); checked: true }
@@ -330,7 +331,7 @@ Form
 			name: "addFactorScoresToData"
 			label: qsTr("Add factor scores to data")
 			info: qsTr("Adds the estimated factor scores as new columns to the data set")
-			enabled: variablesCount > 1 & dataRaw
+			enabled: factors.countVariables > 1 && dataType.value == "raw"
 
 			TextField {
 				name: "addFactorScoresToDataPrefix"

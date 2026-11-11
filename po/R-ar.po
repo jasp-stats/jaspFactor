@@ -2,15 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.97.1\n"
 "POT-Creation-Date: 2026-06-20 04:52\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-11-11 19:07+0000\n"
+"Last-Translator: Fahad Mahfouz Al-Subhi "
+"<fahadalsubhi@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
+"ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 msgid "Second-Order"
 msgstr ""
@@ -61,13 +64,13 @@ msgid "Chi-square test"
 msgstr ""
 
 msgid "Model"
-msgstr ""
+msgstr "النموذج"
 
 msgid "df"
-msgstr ""
+msgstr "درجات الحرية"
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "Baseline model"
 msgstr ""
@@ -100,7 +103,7 @@ msgid "Index"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "القيمة"
 
 msgid "Information criteria"
 msgstr ""
@@ -109,10 +112,10 @@ msgid "Other fit measures"
 msgstr ""
 
 msgid "Metric"
-msgstr ""
+msgstr "المقياس"
 
 msgid "Log-likelihood"
-msgstr ""
+msgstr "لوغاريتم الإمكان"
 
 msgid "Number of free parameters"
 msgstr ""
@@ -202,16 +205,16 @@ msgid "Std. estimate"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "التقدير"
 
 msgid "Factor loadings"
 msgstr ""
 
 msgid "Group"
-msgstr ""
+msgstr "المجموعة"
 
 msgid "Factor"
-msgstr ""
+msgstr "العامل"
 
 msgid "Indicator"
 msgstr ""
@@ -223,13 +226,13 @@ msgid "z-value"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "الحد الأدنى"
 
 msgid "%s%% Confidence Interval"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "الحد الأعلى"
 
 msgid "Second-order factor loadings"
 msgstr ""
@@ -358,7 +361,7 @@ msgid "Mardia's Test of Multivariate Normality"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "الإحصاء"
 
 msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
@@ -472,7 +475,7 @@ msgid "Simulated data from parallel analysis"
 msgstr ""
 
 msgid "Path Diagram"
-msgstr ""
+msgstr "مخطط المسار"
 
 msgid "Model Fit"
 msgstr ""
@@ -487,7 +490,7 @@ msgid "G²"
 msgstr ""
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "%d Classes"
 msgstr ""
@@ -505,7 +508,7 @@ msgid "Proportion"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "الخطأ المعياري (SE)"
 
 msgid "Modal proportion"
 msgstr ""
@@ -523,10 +526,10 @@ msgid "Grouped bar chart of item-response probabilities. Each panel shows one la
 msgstr ""
 
 msgid "Probability"
-msgstr ""
+msgstr "الاحتمال"
 
 msgid "Level"
-msgstr ""
+msgstr "المستوى"
 
 msgid "Column '%s' already exists in the dataset."
 msgstr ""

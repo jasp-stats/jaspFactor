@@ -507,6 +507,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaContainerMain <- function(jaspResults, options, cfaResult) {
   # Create main container
   jaspResults[["maincontainer"]] <- createJaspContainer(gettext("Model fit"), position = 1)
+  jaspResults[["maincontainer"]]$info <- gettext("Tests and measures of how well the factor model reproduces the observed data.")
   jaspResults[["maincontainer"]]$dependOn(c(
     "factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
     "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
@@ -519,6 +520,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # prepare table
   jaspResults[["maincontainer"]][["cfatab"]] <- maintab <- createJaspTable(gettext("Chi-square test"))
   maintab$dependOn(optionsFromObject = jaspResults[["maincontainer"]])
+  maintab$info <- gettext("Chi-square test of the baseline model (the independence model) and of the factor model. A non-significant p-value for the factor model indicates that the model fits the data exactly, though this test is sensitive to sample size. The footnote reports the estimator, the test statistic and the standard error method that were used.")
 
   maintab$addColumnInfo(name = "mod",    title = gettext("Model"), type = "string")
   maintab$addColumnInfo(name = "chisq",  title = "\u03a7\u00b2",   type = "number", format = "dp:3")
@@ -587,6 +589,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["maincontainer"]][["kmo"]] <- tabkmo <- createJaspTable(gettext("Kaiser-Meyer-Olkin (KMO) test"))
   tabkmo$addColumnInfo(name = "indicator", title = "Indicator", type = "string")
   tabkmo$dependOn("kaiserMeyerOlkinTest")
+  tabkmo$info <- gettext("Kaiser-Meyer-Olkin test of sampling adequacy. The measure of sampling adequacy (MSA) is given for each indicator and overall, and for each group in a multigroup analysis. Values closer to 1 indicate that the indicators are well suited for factor analysis.")
   if (is.null(cfaResult)) return()
 
   cov_implied <- lavaan::fitted(cfaResult[["lav"]])
@@ -617,6 +620,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   jaspResults[["maincontainer"]][["bartlett"]] <- tabbartlett <- createJaspTable(gettext("Bartlett's test of sphericity"))
   tabbartlett$dependOn("bartlettTest")
+  tabbartlett$info <- gettext("Bartlett's test of sphericity tests whether the correlation matrix of the indicators is an identity matrix. A significant result means that the correlation matrix is unlike the identity matrix, so that the indicators are related.")
   if (is.null(cfaResult)) return()
 
   cov_implied <- lavaan::fitted(cfaResult[["lav"]])
@@ -657,6 +661,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   tabr2$addColumnInfo(name = "__var__", title = "", type = "string")
   tabr2$setExpectedSize(rows = 1, cols = 1)
   tabr2$dependOn("rSquared")
+  tabr2$info <- gettext("Proportion of variance in each indicator, and in each first-order factor if a second-order factor is specified, that is explained by its predictors. Values range from 0 to 1, with higher values indicating more variance explained.")
 
   if (is.null(cfaResult)) return()
 
@@ -690,21 +695,25 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!options$fitMeasures || !is.null(jaspResults[["maincontainer"]][["fits"]])) return()
   jaspResults[["maincontainer"]][["fits"]] <- fitms <- createJaspContainer(gettext("Additional fit measures"))
   fitms$dependOn("fitMeasures")
+  fitms$info <- gettext("Additional fit indices and information criteria for evaluating the overall quality of the model.")
 
   # Fit indices
   fitms[["indices"]] <- fitin <- createJaspTable(gettext("Fit indices"))
+  fitin$info <- gettext("Incremental fit indices, which compare the factor model to the baseline model. Common guidelines are CFI and TLI values above .95, but these should be interpreted cautiously.")
   fitin$addColumnInfo(name = "index", title = gettext("Index"), type = "string")
   fitin$addColumnInfo(name = "value", title = gettext("Value"), type = "number", format = "sf:4;dp:3")
   fitin$setExpectedSize(rows = 1, cols = 2)
 
   # information criteria
   fitms[["incrits"]] <- fitic <- createJaspTable(gettext("Information criteria"))
+  fitic$info <- gettext("Log-likelihood, number of free parameters and information criteria (AIC, BIC and the sample-size adjusted BIC). Lower values of the information criteria indicate a better trade-off between fit and complexity when comparing models fitted to the same data. They are only available with ML-type estimators.")
   fitic$addColumnInfo(name = "index", title = "",               type = "string")
   fitic$addColumnInfo(name = "value", title = gettext("Value"), type = "number", format = "sf:4;dp:3")
   fitic$setExpectedSize(rows = 1, cols = 2)
 
   # other fit measures
   fitms[["others"]] <- fitot <- createJaspTable(gettext("Other fit measures"))
+  fitot$info <- gettext("Other fit measures: RMSEA with its 90% confidence interval and the p-value of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. Common guidelines are RMSEA below .06 and SRMR below .08, but these should be interpreted cautiously.")
   fitot$addColumnInfo(name = "index", title = gettext("Metric"), type = "string")
   fitot$addColumnInfo(name = "value", title = gettext("Value"),  type = "number", format = "sf:4;dp:3")
   fitot$setExpectedSize(rows = 1, cols = 2)
@@ -790,6 +799,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (is.null(cfaResult) || !is.null(jaspResults[["estimates"]])) return()
 
   jaspResults[["estimates"]] <- ests <- createJaspContainer(gettext("Parameter estimates"), position = 2)
+  ests$info <- gettext("Parameter estimates of the CFA model, organized by type: factor loadings, factor variances and covariances, residual variances and covariances and, if applicable, intercepts and thresholds.")
   ests$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
                   "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
                   "group", "invarianceTesting", "standardized", "ciLevel", "interceptsFixedToZero"))
@@ -835,6 +845,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # First-order factor loadings ----
   # Set up table
   jrobject[["fl1"]] <- fl1 <- createJaspTable(title = gettext("Factor loadings"))
+  fl1$info <- gettext("Factor loadings of the indicators on their factors. Each loading reflects how strongly an indicator is related to its factor. With marker variable identification, the loading of the first indicator of each factor is fixed to 1.")
   if (!is.null(footnote)) fl1$addFootnote(footnote)
 
   if (options$group != "") {
@@ -868,6 +879,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (length(options$secondOrder) > 0) {
     # Set up table
     jrobject[["fl2"]] <- fl2 <- createJaspTable(title = gettext("Second-order factor loadings"))
+    fl2$info <- gettext("Loadings of the first-order factors on the second-order factor.")
     if (!is.null(footnote)) fl2$addFootnote(footnote)
 
     if (options$group != "") {
@@ -902,6 +914,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # Factor variances ----
   # Set up table
   jrobject[["fv"]] <- fv <- createJaspTable(gettext("Factor variances"))
+  fv$info <- gettext("Estimated variances of the factors. They are fixed to 1 when the model is identified by factor variances.")
   if (!is.null(footnote)) fv$addFootnote(footnote)
 
   if (options$group != "") {
@@ -934,6 +947,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (!options$factorsUncorrelated & hasMultipleFactorsAtTopLevel) {
     jrobject[["fc"]] <- fc <- createJaspTable(gettext("Factor Covariances"))
+    fc$info <- gettext("Estimated covariances between the factors.")
     if (!is.null(footnote)) fc$addFootnote(footnote)
 
     if (options$group != "") {
@@ -966,6 +980,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   # Residual variances ----
   # Set up table
   jrobject[["rv"]] <- rv <- createJaspTable(gettext("Residual variances"))
+  rv$info <- gettext("Residual variances of the indicators: the variance that is not explained by the factors. Negative residual variances (Heywood cases) may indicate model misspecification.")
   if (!is.null(footnote)) rv$addFootnote(footnote)
 
   if (options$group != "") {
@@ -996,6 +1011,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (length(options$residualsCovarying) > 0) {
 
     jrobject[["rc"]] <- rc <- createJaspTable(gettext("Residual covariances"))
+    rc$info <- gettext("Residual covariances between the pairs of indicators that were specified to covary, i.e., shared variance that is not accounted for by the factors.")
     if (!is.null(footnote)) rc$addFootnote(footnote)
 
     if (options$group != "") {
@@ -1030,6 +1046,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     if (options$group != "") {
 
       jrobject[["Factor Intercepts"]] <- fi <- createJaspTable(title = gettext("Factor Intercepts"))
+      fi$info <- gettext("Estimated intercepts (means) of the factors in each group.")
       if (!is.null(footnote)) fi$addFootnote(footnote)
 
       fi$addColumnInfo(name = "group",  title = gettext("Group"), type = "string", combine = TRUE)
@@ -1055,6 +1072,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
     # Manifest variable intercepts
     jrobject[["Intercepts"]] <- vi <- createJaspTable(title = gettext("Intercepts"))
+    vi$info <- gettext("Estimated intercepts (means) of the indicators.")
     if (!is.null(footnote)) vi$addFootnote(footnote)
 
     if (options$group != "") {
@@ -1093,6 +1111,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 .cfaThresholdsTable <- function(jrobject, footnote, options, pei, colSel, cfaResult) {
   # Manifest variable intercepts
   jrobject[["Thresholds"]] <- th <- createJaspTable(title = gettext("Thresholds"))
+  th$info <- gettext("Threshold parameters of the ordinal indicators. They define the cut-points on the underlying continuous distribution that separate the observed categories.")
   if (!is.null(footnote)) th$addFootnote(footnote)
 
   if (options$group != "") {
@@ -1127,6 +1146,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   mi <- try(lavaan::modindices(cfaResult[["lav"]]))
   jaspResults[["modind"]] <- mic <- createJaspContainer(gettext("Modification Indices"), position = 5)
+  mic$info <- gettext("Modification indices (MI) estimate the expected decrease of the model chi-square if a currently fixed parameter were freed. The expected parameter change (EPC) indicates the approximate value of the freed parameter. Only modification indices above the cutoff are shown.")
   mic$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                  "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting", "modificationIndices",
                  "modificationIndicesCutoff", "interceptsFixedToZero"))
@@ -1155,6 +1175,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     foc <- as.data.frame(foc)
     foc <- foc[order(foc$mi, decreasing = TRUE), ]
     jrobject[["Cross-Loadings"]] <- focro <- createJaspTable(gettext("Cross-loadings"))
+    focro$info <- gettext("Modification indices for cross-loadings, i.e., loadings of indicators on factors they are not assigned to.")
     focro$dependOn(optionsFromObject = jrobject)
 
     focro$addColumnInfo(name = "lhs", title = "",                   type = "string")
@@ -1181,6 +1202,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
       soc <- as.data.frame(soc)
       soc <- soc[order(soc$mi, decreasing = TRUE), ]
       jrobject[["Second-Order Cross-Loadings"]] <- socro <- createJaspTable(gettext("Second-order cross-loadings"))
+      socro$info <- gettext("Modification indices for second-order cross-loadings, i.e., loadings of first-order factors on second-order factors they are not assigned to.")
       socro$dependOn(optionsFromObject = jrobject)
 
       socro$addColumnInfo(name = "lhs", title  = "",                   type = "string")
@@ -1206,6 +1228,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (nrow(rec) > 0) {
     jrobject[["Residual Covariances"]] <- residualCovTable <- createJaspTable(gettext("Residual covariances"))
+    residualCovTable$info <- gettext("Modification indices for residual covariances between pairs of indicators.")
     residualCovTable$dependOn(optionsFromObject = jrobject)
 
     residualCovTable$addColumnInfo(name = "lhs", title  = "",                   type = "string")
@@ -1262,6 +1285,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     jaspResults[["impcov"]] <- icc
   }
 
+  icc$info <- gettext("Covariance matrix implied by the model, shown for each group in a multigroup analysis. Close correspondence with the observed covariance matrix indicates good model fit.")
   icc$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification",
                  "factorsUncorrelated", "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples",
                  "group", "invarianceTesting", "impliedCovarianceMatrix", "interceptsFixedToZero"))
@@ -1297,6 +1321,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
     jaspResults[["resCovTable"]] <- rcc
   }
 
+  rcc$info <- gettext("Difference between the observed and the model-implied covariance matrix, shown for each group in a multigroup analysis. A perfect model shows all 0s; small residuals indicate that the model reproduces the observed covariances well.")
   rcc$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                  "packageMimiced", "estimator", "naAction", "seType", "bootstrapSamples", "group", "invarianceTesting",
                  "residualCovarianceMatrix", "interceptsFixedToZero"))
@@ -1355,6 +1380,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   jaspResults[["plots"]][["pathplot"]]$dependOn(c("pathPlot", "pathPlotMean", "pathPlotParameter", "pathPlotStandardized", "pathPlotRotated", "pathPlotFontSize", "pathPlotVariance"))
+  jaspResults[["plots"]][["pathplot"]]$info <- gettext("Graphical representation of the estimated model, showing the factors (circles), the indicators (squares) and the paths between them. Shown for each group in a multigroup analysis.")
 }
 
 .cfaLavToPlotObj <- function(lavResult, options) {
@@ -1413,6 +1439,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 
   jaspResults[["plots"]][["misfitplot"]]$dependOn("misfitPlot")
+  jaspResults[["plots"]][["misfitplot"]]$info <- gettext("Residual correlations between the indicators, i.e., the correlations that remain unexplained by the model. Larger values indicate pairs of indicators that the model reproduces poorly. Shown for each group in a multigroup analysis.")
 }
 
 .resCorToMisFitPlot <- function(rescor) {
@@ -1453,12 +1480,14 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   jaspResults[["syntax"]] <- createJaspHtml(mod, class = "jasp-code", position = 7, title = gettext("Model syntax"))
   jaspResults[["syntax"]]$dependOn(optionsFromObject = jaspResults[["maincontainer"]][["cfatab"]])
   jaspResults[["syntax"]]$dependOn("lavaanSyntax")
+  jaspResults[["syntax"]]$info <- gettext("The lavaan model syntax that corresponds to the specified model.")
 }
 
 .cfaTableAve <- function(jaspResults, options, cfaResult) {
   if (is.null(cfaResult) || !options[["ave"]] || !is.null(jaspResults[["resAveTable"]])) return()
 
   aveTable <- createJaspTable(gettext("Average variance extracted"), position = 4.1)
+  aveTable$info <- gettext("Average variance extracted (AVE): the amount of variance that is captured by a factor relative to the amount of variance due to measurement error. Values above .5 are commonly taken to indicate adequate convergent validity.")
   if (options[["group"]] != "") {
     aveTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
   }
@@ -1492,6 +1521,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   orderedVars <- lavaan::lavNames(cfaResult[["lav"]], "ov.ord")
 
   htmtTable <- createJaspTable(gettext("Heterotrait-monotrait ratio"), position = 4.2)
+  htmtTable$info <- gettext("Heterotrait-monotrait (HTMT) ratio of correlations for assessing discriminant validity between the factors. Values clearly below 1 (more conservatively, below .85 or .90) suggest that the factors are empirically distinct.")
   htmtTable$dependOn(c("factors", "secondOrder", "residualsCovarying", "meanStructure", "modelIdentification", "factorsUncorrelated",
                        "packageMimiced", "estimator", "naAction", "group", "invarianceTesting", "htmt", "interceptsFixedToZero"))
 
@@ -1561,6 +1591,7 @@ confirmatoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (is.null(cfaResult) || !options[["reliability"]] || !is.null(jaspResults[["resRelTable"]])) return()
 
   relTable <- createJaspTable(gettext("Reliability"), position = 4.3)
+  relTable$info <- gettext("Reliability of each factor and in total. Coefficient \u03C9 (omega) allows for congeneric indicators (unequal loadings) and, with a second-order factor, is also given for the second-order factor. Coefficient \u03B1 (alpha) assumes tau-equivalence (equal loadings). The total test score variance in the denominator is the observed test score variance, i.e., the summed observed covariance matrix. Values above .7 are commonly considered acceptable.")
   if (options[["group"]] != "") {
     relTable$addColumnInfo(name = "group", title = gettext("Group"), type = "string", combine = TRUE)
   }

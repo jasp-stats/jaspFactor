@@ -359,7 +359,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     return()
   }
 
-  plotObject <- try(.efaMahalanobisQQPlot(result, options[["mahalanobisOutlierPValue"]]))
+  plotObject <- try(.efaMahalanobisQQPlot(result, options[["mahalanobisOutlierPValue"]]), silent = TRUE)
   if (isTryError(plotObject)) {
     qqPlot$setError(gettextf("The plot could not be made. Internal error message: %s", .extractErrorMessage(plotObject)))
     return()

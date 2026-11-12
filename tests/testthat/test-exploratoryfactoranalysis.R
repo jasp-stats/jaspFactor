@@ -572,6 +572,15 @@ test_that("The options of the new tables and plots are optional (for example in 
   expect_null(jaspFactor:::.efaMahalanobisPlot(modelContainer, NULL, list(), TRUE))
 })
 
+test_that("The Mahalanobis table and plot are not made for covariance matrix input", {
+  modelContainer <- jaspBase::createJaspContainer()
+  options <- list(mahalanobisOutlier = TRUE, mahalanobisOutlierPlot = TRUE, dataType = "varianceCovariance")
+  jaspFactor:::.efaMahalanobisTable(modelContainer, NULL, options, TRUE)
+  jaspFactor:::.efaMahalanobisPlot(modelContainer, NULL, options, TRUE)
+  expect_null(modelContainer[["mahalanobisTable"]])
+  expect_null(modelContainer[["mahalanobisPlot"]])
+})
+
 options <- defaultOptions
 options$variables <- paste0("x", 1:9)
 options$variables.types <- as.list(rep("scale", 9))
@@ -648,5 +657,6 @@ test_that("The Mahalanobis outlier table and plot are made", {
   expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
   expect_gt(length(container[["modelContainer_mahalanobisTable"]][["data"]]), 0)
   expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
+  expect_false(is.null(container[["modelContainer_mahalanobisPlot"]]))
   expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
 })

@@ -13,6 +13,7 @@ defaultOptions <- list(
   rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   factorStructure = FALSE,
+  schmidLeiman = FALSE,
   factorCorrelations = FALSE,
   fitIndices = FALSE,
   residualMatrix = FALSE,
@@ -324,6 +325,7 @@ options <- list(
   factorCorrelations = FALSE,
   loadingOrder = "variables",
   factorStructure = FALSE,
+  schmidLeiman = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
   kaiserMeyerOlkinTest = FALSE,
@@ -523,4 +525,49 @@ test_that("Mean imputation replaces the missing values by the mean of the variab
   expected <- zMean %*% fit[["weights"]]
   expected[rowSums(!is.na(data)) == 0, ] <- NA
   expect_equal(unname(scores), unname(expected))
+})
+
+# Schmid-Leiman transformation (jasp-issues#4621)
+test_that("The Schmid-Leiman result is based on the oblique solution and needs at least three factors", {
+  fit <- suppressWarnings(suppressMessages(psych::fa(psych::Thurstone, nfactors = 3, n.obs = 213, rotate = "oblimin")))
+  options <- list(manualNumberOfFactors = 3, rotationMethod = "oblique")
+  result   <- jaspFactor:::.efaSchmidLeimanResult(fit, options)
+  expected <- suppressMessages(psych::schmid(fit))
+
+  expect_equal(result[["solution"]], expected[["sl"]])
+  expect_equal(result[["generalLoadings"]], as.numeric(expected[["gloading"]]))
+  expect_equal(result[["nFactors"]], 3)
+  expect_equal(unname(result[["solution"]]["Sentences", "g"]), 0.709, tolerance = 0.01)
+  # general and group factor loadings account for the communalities
+  expect_equal(unname(rowSums(result[["solution"]][, c("g", "F1*", "F2*", "F3*")]^2)), unname(result[["solution"]][, "h2"]))
+
+  expect_match(jaspFactor:::.efaSchmidLeimanResult(fit, list(manualNumberOfFactors = 2, rotationMethod = "oblique")), "at least three factors")
+  fitOrthogonal <- suppressWarnings(suppressMessages(psych::fa(psych::Thurstone, nfactors = 3, n.obs = 213, rotate = "varimax")))
+  expect_match(jaspFactor:::.efaSchmidLeimanResult(fitOrthogonal, list(manualNumberOfFactors = 3, rotationMethod = "orthogonal")), "oblique rotation")
+})
+
+options <- defaultOptions
+options$variables <- paste0("x", 1:9)
+options$variables.types <- as.list(rep("scale", 9))
+options$manualNumberOfFactors <- 3
+options$rotationMethod <- "oblique"
+options$schmidLeiman <- TRUE
+
+test_that("The Schmid-Leiman tables are filled", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  container <- results[["results"]][["modelContainer"]][["collection"]]
+  expect_length(container[["modelContainer_schmidLeimanTable"]][["data"]], 9)
+  expect_length(container[["modelContainer_schmidLeimanGeneralTable"]][["data"]], 3)
+  expect_null(container[["modelContainer_schmidLeimanTable"]][["error"]])
+})
+
+test_that("The Schmid-Leiman transformation gives a clear error with fewer than three factors", {
+  options$manualNumberOfFactors <- 2
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_schmidLeimanTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "at least three factors")
 })

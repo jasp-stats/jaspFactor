@@ -38,6 +38,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
   .efaLoadingsTable(        modelContainer, dataset, options, ready)
   .efaStructureTable(       modelContainer, dataset, options, ready)
+  .efaSchmidLeimanTables(   modelContainer, dataset, options, ready)
   .efaEigenTable(           modelContainer, dataset, options, ready)
   .efaCorrTable(            modelContainer, dataset, options, ready)
   .efaAdditionalFitTable(   modelContainer, dataset, options, ready)
@@ -435,6 +436,73 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
       structureTable[[paste0("c", i)]] <- ifelse(abs(loads[, i]) < options$loadingsDisplayLimit, NA, loads[ ,i])
     }
   }
+}
+
+# Returns the Schmid-Leiman solution of an oblique factor solution (see psych::schmid), or an error message
+.efaSchmidLeimanResult <- function(efaResults, options) {
+
+  if (options[["manualNumberOfFactors"]] < 3)
+    return(gettext("The Schmid-Leiman transformation needs at least three factors."))
+
+  # without an oblique rotation there are no factor correlations (psych::schmid would then treat the loadings as data)
+  if (options[["rotationMethod"]] != "oblique" || is.null(efaResults[["Phi"]]))
+    return(gettext("The Schmid-Leiman transformation needs an oblique rotation."))
+
+  result <- try(suppressMessages(psych::schmid(efaResults, fm = efaResults[["fm"]])))
+  if (isTryError(result))
+    return(gettextf("The Schmid-Leiman transformation failed. Internal error message: %s", .extractErrorMessage(result)))
+
+  return(list(solution = result[["sl"]], generalLoadings = as.numeric(result[["gloading"]]), nFactors = ncol(efaResults[["loadings"]])))
+}
+
+.efaSchmidLeimanTables <- function(modelContainer, dataset, options, ready) {
+  if (!options[["schmidLeiman"]] || !is.null(modelContainer[["schmidLeimanTable"]])) return()
+
+  schmidTable <- createJaspTable(gettext("Schmid-Leiman Solution"))
+  schmidTable$dependOn("schmidLeiman")
+  schmidTable$position <- 2.6
+  schmidTable$info <- gettext("Loadings of the variables on the general factor and on the group factors that are orthogonal to it (residualized), with the communalities (h\u00B2), the uniquenesses (u\u00B2) and the proportion of the common variance that is due to the general factor (p\u00B2).")
+  schmidTable$addColumnInfo(name = "var", title = "", type = "string")
+  modelContainer[["schmidLeimanTable"]] <- schmidTable
+
+  generalTable <- createJaspTable(gettext("Schmid-Leiman General Factor Loadings"))
+  generalTable$dependOn("schmidLeiman")
+  generalTable$position <- 2.7
+  generalTable$info <- gettext("Loadings of the first-order factors of the oblique solution on the general factor.")
+  generalTable$addColumnInfo(name = "factor", title = "",                     type = "string")
+  generalTable$addColumnInfo(name = "g",      title = gettext("General factor"), type = "number", format = "dp:3")
+  modelContainer[["schmidLeimanGeneralTable"]] <- generalTable
+
+  if (!ready || modelContainer$getError()) return()
+
+  result <- .efaSchmidLeimanResult(modelContainer[["model"]][["object"]], options)
+  if (is.character(result)) {
+    schmidTable$setError(result)
+    generalTable$setError(result)
+    return()
+  }
+
+  solution    <- result[["solution"]]
+  groupFactor <- seq_len(result[["nFactors"]])
+
+  schmidTable$addColumnInfo(name = "g", title = gettext("General factor"), type = "number", format = "dp:3")
+  for (i in groupFactor)
+    schmidTable$addColumnInfo(name = paste0("f", i), title = gettextf("Factor %i", i), overtitle = gettext("Residualized group factors"), type = "number", format = "dp:3")
+  schmidTable$addColumnInfo(name = "h2", title = "h\u00B2", type = "number", format = "dp:3")
+  schmidTable$addColumnInfo(name = "u2", title = "u\u00B2", type = "number", format = "dp:3")
+  schmidTable$addColumnInfo(name = "p2", title = "p\u00B2", type = "number", format = "dp:3")
+
+  schmidTable[["var"]] <- rownames(solution)
+  schmidTable[["g"]]   <- solution[, "g"]
+  for (i in groupFactor)
+    schmidTable[[paste0("f", i)]] <- solution[, paste0("F", i, "*")]
+  schmidTable[["h2"]] <- solution[, "h2"]
+  schmidTable[["u2"]] <- solution[, "u2"]
+  schmidTable[["p2"]] <- solution[, "p2"]
+  schmidTable$addFootnote(gettextf("The Schmid-Leiman transformation is based on the oblique factor solution (rotation method %s).", options[["rotationMethodOblique"]]))
+
+  generalTable[["factor"]] <- gettextf("Factor %i", groupFactor)
+  generalTable[["g"]]      <- result[["generalLoadings"]]
 }
 
 .efaEigenTable <- function(modelContainer, dataset, options, ready) {

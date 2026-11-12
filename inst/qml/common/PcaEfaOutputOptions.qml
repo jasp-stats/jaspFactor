@@ -30,13 +30,18 @@ Section
 	title: qsTr("Output Options")
 	info: qsTr("Additional output options for the PCA/EFA analysis.")
 
-	Slider
+	Group
 	{
-		name: "loadingsDisplayLimit"
-		label: qsTr("Display loadings above")
-		vertical: false
-		info: qsTr("Loadings below this value will not be displayed in the output table.")
-		value: 0.4
+		title: qsTr("Display loadings above:")
+
+		Slider
+		{
+			name: "loadingsDisplayLimit"
+			infoLabel: qsTr("Display loadings above")
+			vertical: false
+			info: qsTr("Loadings below this value will not be displayed in the output table.")
+			value: 0.4
+		}
 	}
 
 	RadioButtonGroup

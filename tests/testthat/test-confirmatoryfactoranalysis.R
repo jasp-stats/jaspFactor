@@ -426,7 +426,7 @@ options$naAction <- "pairwise"
 options$thresholds <- TRUE
 options$group <- "gender"
 options$fitMeasures <- TRUE
-options$htmt <- TRUE
+options$heterotraitMonotraitRatio <- TRUE
 dt <- read.csv("cavalini_group.csv")
 dt[, c("V1", "V5", "V8")] <- lapply(dt[, c("V1", "V5", "V8")], ordered)
 
@@ -582,8 +582,8 @@ options$factors <- list(
 options$secondOrder <- list("Factor 1", "Factor 2", "Factor 3")
 options$modelIdentification <- "factorVariance"
 options$naAction <- "listwise"
-options$ave <- TRUE
-options$htmt <- TRUE
+options$averageVarianceExtracted <- TRUE
+options$heterotraitMonotraitRatio <- TRUE
 options$reliability <- TRUE
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", testthat::test_path("holzingerswineford.csv"), options, makeTests = F)
@@ -777,7 +777,7 @@ test_that("Factor variances table results match", {
 options <- jaspTools::analysisOptions("confirmatoryFactorAnalysis")
 options$group <- "sex"
 options$meanStructure <- TRUE
-options$interceptsFixedToZero <- "manifest"
+options$meanStructureInterceptFixedToZero <- "manifest"
 
 options$factors <- list(
   list(indicators = list(value = list("x1", "x2", "x3"), types = rep("scale", 3)), name = "f1", title = "Factor 1"),
@@ -818,7 +818,7 @@ test_that("Factor Intercepts table results match", {
 })
 
 
-options$interceptsFixedToZero <- "meanManifest"
+options$meanStructureInterceptFixedToZero <- "meanManifest"
 set.seed(1)
 results <- jaspTools::runAnalysis("confirmatoryFactorAnalysis", "holzingerswineford.csv", options)
 

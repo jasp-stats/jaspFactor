@@ -193,7 +193,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     modelContainer <- jaspResults[["modelContainer"]]
   } else {
     modelContainer <- createJaspContainer()
-    modelContainer$dependOn(c("rotationMethod", "orthogonalSelector", "obliqueSelector", "variables",
+    modelContainer$dependOn(c("rotationMethod", "rotationMethodOrthogonal", "rotationMethodOblique", "variables",
                               "manualNumberOfComponents", "naAction", "baseDecompositionOn",
                               "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
@@ -206,7 +206,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 # Results functions ----
 .pcaComputeResults <- function(modelContainer, dataset, options, ready) {
 
-  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
 
   # see https://github.com/jasp-stats/jasp-test-release/issues/1500
   # GPArotation::GPFoblq does
@@ -229,10 +229,10 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   corMethod <- switch(options[["baseDecompositionOn"]],
                       "correlationMatrix" = "cor",
                       "covarianceMatrix" = "cov",
-                      "polyTetrachoricCorrelationMatrix" = "mixed")
+                      "polychoricTetrachoricCorrelationMatrix" = "mixed")
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
-  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polyTetrachoricCorrelationMatrix") {
+  if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -330,7 +330,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!is.null(modelContainer[["loadingsTable"]])) return()
 
   loadingsTable <- createJaspTable(gettext("Component Loadings"))
-  loadingsTable$dependOn(c("loadingsDisplayLimit", "orderLoadingsBy"))
+  loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingOrder"))
   loadingsTable$position <- 2
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["loadingsTable"]] <- loadingsTable
@@ -346,12 +346,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
   loadingsTable$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
 
-  if (options[["rotationMethod"]] == "orthogonal" && options[["orthogonalSelector"]] == "none") {
+  if (options[["rotationMethod"]] == "orthogonal" && options[["rotationMethodOrthogonal"]] == "none") {
     loadingsTable$addFootnote(message = gettext("No rotation method applied."))
   } else {
     loadingsTable$addFootnote(
       message = gettextf("Applied rotation method is %s.",
-                         if (options[["rotationMethod"]] == "orthogonal") options[["orthogonalSelector"]] else options[["obliqueSelector"]])
+                         if (options[["rotationMethod"]] == "orthogonal") options[["rotationMethodOrthogonal"]] else options[["rotationMethodOblique"]])
     )
   }
 
@@ -367,7 +367,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
 
   # "variables" is the default output
-  if (options[["orderLoadingsBy"]] == "size")
+  if (options[["loadingOrder"]] == "size")
     df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)
@@ -384,7 +384,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   eigenTable$addColumnInfo(name = "comp", title = "",                type = "string")
 
   # check if a rotation is used
-  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "orthogonalSelector" else "obliqueSelector"]]
+  rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
   if (rotate != "none") {
     overTitleA <- gettext("Unrotated solution")
     overTitleB <- gettext("Rotated solution")
@@ -501,7 +501,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   PS <- pcaResult$r.scores
 
   # Variable names
-  xName   <- ifelse(options$rotationMethod == "orthogonal" && options$orthogonalSelector == "none", "PC", "RC")
+  xName   <- ifelse(options$rotationMethod == "orthogonal" && options$rotationMethodOrthogonal == "none", "PC", "RC")
   factors <- paste0(xName, seq_len(ncol(LY)))
   labels  <- rownames(LY)
 
@@ -630,16 +630,16 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||
       modelContainer$getError() ||
-      !options[["addScoresToData"]] ||
+      !options[["scoreSavedToData"]] ||
       options[["dataType"]] == "varianceCovariance")
   {
     return()
   }
 
-  colNamesR <- paste0(options[["addScoresToDataPrefix"]], "_", seq_len(length(options$variables)))
+  colNamesR <- paste0(options[["scoreSavedToDataPrefix"]], "_", seq_len(length(options$variables)))
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = c("addScoresToData", "addScoresToDataPrefix", "naAction"))
+  container$dependOn(optionsFromObject = modelContainer, options = c("scoreSavedToData", "scoreSavedToDataPrefix", "naAction"))
 
   scores <- modelContainer[["model"]][["object"]][["scores"]]
 

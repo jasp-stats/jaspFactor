@@ -10,8 +10,8 @@ defaultOptions <- list(
   sampleSize = 200,
   manualNumberOfFactors = 1,
   factoringMethod = "minimumResidual",
-  orthogonalSelector = "none",
-  obliqueSelector = "promax",
+  rotationMethodOrthogonal = "none",
+  rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   factorStructure = FALSE,
   factorCorrelations = FALSE,
@@ -22,26 +22,26 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
-  addScoresToData = FALSE,
-  addScoresToDataPrefix = "",
+  scoreSavedToData = FALSE,
+  scoreSavedToDataPrefix = "",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
-  orderLoadingsBy = "variables",
+  loadingOrder = "variables",
   naAction = "pairwise",
   plotWidth = 480,
   plotHeight = 320
 )
 options <- defaultOptions
 options$rotationMethod <- "orthogonal"
-options$orthogonalSelector <- "varimax"
+options$rotationMethodOrthogonal <- "varimax"
 options$kaiserMeyerOlkinTest <- TRUE
 options$bartlettTest <- TRUE
 options$variables <- c(paste("Question", 1:9, sep="_0"), paste("Question", 10:23, sep="_"))
 options$manualNumberOfFactors <- 4
 options$factoringMethod <- "principalAxis"
 options$loadingsDisplayLimit <- 0.4
-options$obliqueSelector <- "oblimin"
+options$rotationMethodOblique <- "oblimin"
 
 set.seed(1)
 results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", testthat::test_path("EFA.csv"), options, makeTests = F)
@@ -145,7 +145,7 @@ options$fitIndices <- TRUE
 options$pathDiagram <- TRUE
 options$factorStructure <- TRUE
 options$manualNumberOfFactors <- 2
-options$obliqueSelector <- "geominQ"
+options$rotationMethodOblique <- "geominQ"
 options$rotationMethod <- "oblique"
 options$variables <- list("contWide", "contcor1", "contcor2", "facFifty", "contExpon",
                           "debCollin1", "debEqual1")

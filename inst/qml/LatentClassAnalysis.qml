@@ -55,7 +55,7 @@ Form
 		{
 			IntegerField
 			{
-				name:         "nrep"
+				name:         "numberOfRandomStarts"
 				label:        qsTr("Number of random starts")
 				defaultValue: 1
 				min:          1
@@ -77,7 +77,7 @@ Form
 
 		RadioButtonGroup
 		{
-			name:  "missingValues"
+			name:  "naAction"
 			title: qsTr("Missing values")
 			info:  qsTr("How to handle rows with missing values on any indicator.")
 
@@ -114,7 +114,7 @@ Form
 
 				CheckBox
 				{
-					name:    "rotatePlotLabels"
+					name:    "itemResponseProbabilitiesPlotLabelRotation"
 					label:   qsTr("Rotate x-axis labels 45°")
 					enabled: itemResponseProbabilitiesPlot.checked
 					info:    qsTr("Rotate the indicator names on the x-axis by 45 degrees to prevent overlapping.")
@@ -122,7 +122,7 @@ Form
 
 				CheckBox
 				{
-					name:    "showLevelsLegend"
+					name:    "itemResponseProbabilitiesPlotLegend"
 					label:   qsTr("Show levels legend")
 					enabled: itemResponseProbabilitiesPlot.checked
 					info:    qsTr("Show a legend on the right indicating the color for each response category level.")
@@ -140,7 +140,7 @@ Form
 		{
 			IntegerField
 			{
-				name:         "saveForClasses"
+				name:         "numberOfClassesSavedToData"
 				label:        qsTr("Number of classes")
 				defaultValue: indicators.count > 1 ? Math.floor(indicators.count / 2) : 1
 				min:          1
@@ -151,13 +151,13 @@ Form
 			CheckBox
 			{
 				id:    saveProbs
-				name:  "saveClassProbabilities"
+				name:  "classProbabilitySavedToData"
 				label: qsTr("Class probabilities")
 				info:  qsTr("Saves K columns of posterior class-membership probabilities (one per class) to the dataset.")
 
 				TextField
 				{
-					name:         "saveClassProbabilitiesPrefix"
+					name:         "classProbabilitySavedToDataPrefix"
 					label:        qsTr("Column prefix")
 					defaultValue: "classProb"
 					fieldWidth:   120
@@ -169,13 +169,13 @@ Form
 			CheckBox
 			{
 				id:    saveClass
-				name:  "saveClassification"
+				name:  "classificationSavedToData"
 				label: qsTr("Class classification")
 				info:  qsTr("Saves the modal class assignment for each observation as a new nominal column.")
 
 				TextField
 				{
-					name:         "saveClassificationColumn"
+					name:         "classificationSavedToDataColumn"
 					label:        qsTr("Column name")
 					defaultValue: "classAssignment"
 					fieldWidth:   120

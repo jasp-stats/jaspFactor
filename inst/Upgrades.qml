@@ -595,6 +595,23 @@ Upgrades
 			jsFunction: function(options) { return options["manualNumberOfComponents"]; }
 		}
 
+		ChangeRename { from: "addScoresToData";       to: "scoreSavedToData" }
+		ChangeRename { from: "addScoresToDataPrefix"; to: "scoreSavedToDataPrefix" }
+		ChangeRename { from: "orderLoadingsBy";       to: "loadingOrder" }
+		ChangeRename { from: "orthogonalSelector";    to: "rotationMethodOrthogonal" }
+		ChangeRename { from: "obliqueSelector";       to: "rotationMethodOblique" }
+
+		ChangeJS
+		{
+			name: "baseDecompositionOn"
+			jsFunction: function(options) {
+				switch(options["baseDecompositionOn"]) {
+					case "polyTetrachoricCorrelationMatrix":	return "polychoricTetrachoricCorrelationMatrix";
+					default:									return options["baseDecompositionOn"];
+				}
+			}
+		}
+
 		ChangeRemove { name: "componentCountMethod";				condition: function(options) { return options["componentCountMethod"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisMethod";				condition: function(options) { return options["parallelAnalysisMethod"] !== undefined } }
 		ChangeRemove { name: "eigenvaluesAbove";					condition: function(options) { return options["eigenvaluesAbove"] !== undefined } }
@@ -624,6 +641,23 @@ Upgrades
 			jsFunction: function(options) { return options["manualNumberOfFactors"]; }
 		}
 
+		ChangeRename { from: "addScoresToData";       to: "scoreSavedToData" }
+		ChangeRename { from: "addScoresToDataPrefix"; to: "scoreSavedToDataPrefix" }
+		ChangeRename { from: "orderLoadingsBy";       to: "loadingOrder" }
+		ChangeRename { from: "orthogonalSelector";    to: "rotationMethodOrthogonal" }
+		ChangeRename { from: "obliqueSelector";       to: "rotationMethodOblique" }
+
+		ChangeJS
+		{
+			name: "baseDecompositionOn"
+			jsFunction: function(options) {
+				switch(options["baseDecompositionOn"]) {
+					case "polyTetrachoricCorrelationMatrix":	return "polychoricTetrachoricCorrelationMatrix";
+					default:									return options["baseDecompositionOn"];
+				}
+			}
+		}
+
 		ChangeRemove { name: "factorCountMethod";					condition: function(options) { return options["factorCountMethod"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisMethod";				condition: function(options) { return options["parallelAnalysisMethod"] !== undefined } }
 		ChangeRemove { name: "parallelAnalysisSeed";				condition: function(options) { return options["parallelAnalysisSeed"] !== undefined } }
@@ -634,6 +668,39 @@ Upgrades
 		ChangeRemove { name: "screePlotParallelAnalysisResults";	condition: function(options) { return options["screePlotParallelAnalysisResults"] !== undefined } }
 		ChangeRemove { name: "setSeed";								condition: function(options) { return options["setSeed"] !== undefined } }
 		ChangeRemove { name: "seed";								condition: function(options) { return options["seed"] !== undefined } }
+	}
+
+	// Option renames to follow the option naming guide
+	Upgrade
+	{
+		functionName: "confirmatoryFactorAnalysis"
+		fromVersion:  "0.97.1"
+		toVersion:    "0.98.0"
+
+		ChangeRename { from: "addFactorScoresToData";       to: "factorScoreSavedToData" }
+		ChangeRename { from: "addFactorScoresToDataPrefix"; to: "factorScoreSavedToDataPrefix" }
+		ChangeRename { from: "ave";                         to: "averageVarianceExtracted" }
+		ChangeRename { from: "htmt";                        to: "heterotraitMonotraitRatio" }
+		ChangeRename { from: "interceptsFixedToZero";       to: "meanStructureInterceptFixedToZero" }
+		ChangeRename { from: "scalingParamaters";           to: "scalingParameter" }
+	}
+
+	// Option renames to follow the option naming guide
+	Upgrade
+	{
+		functionName: "latentClassAnalysis"
+		fromVersion:  "0.97.1"
+		toVersion:    "0.98.0"
+
+		ChangeRename { from: "nrep";                         to: "numberOfRandomStarts" }
+		ChangeRename { from: "missingValues";                to: "naAction" }
+		ChangeRename { from: "rotatePlotLabels";             to: "itemResponseProbabilitiesPlotLabelRotation" }
+		ChangeRename { from: "showLevelsLegend";             to: "itemResponseProbabilitiesPlotLegend" }
+		ChangeRename { from: "saveForClasses";               to: "numberOfClassesSavedToData" }
+		ChangeRename { from: "saveClassProbabilities";       to: "classProbabilitySavedToData" }
+		ChangeRename { from: "saveClassProbabilitiesPrefix"; to: "classProbabilitySavedToDataPrefix" }
+		ChangeRename { from: "saveClassification";           to: "classificationSavedToData" }
+		ChangeRename { from: "saveClassificationColumn";     to: "classificationSavedToDataColumn" }
 	}
 }
 

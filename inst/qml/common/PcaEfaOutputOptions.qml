@@ -40,7 +40,7 @@ Section
 
 	RadioButtonGroup
 	{
-		name: "orderLoadingsBy"
+		name: "loadingOrder"
 		title: qsTr("Order Loadings By")
 		info: qsTr("Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.")
 		RadioButton	{ name: "size";				label: qsTr("Size");	checked: true		}
@@ -103,34 +103,16 @@ Section
 		}
 	}
 
-	RadioButtonGroup
-	{
-		name: "naAction"
-		title: qsTr("Missing Values")
-		info: qsTr("Select how to handle missing values.")
-		RadioButton { 
-			value: "pairwise";		
-			label: qsTr("Exclude cases pairwise"); 
-			checked: true; 
-			info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
-		}
-		RadioButton { 
-			value: "listwise";		
-			label: qsTr("Exclude cases listwise")
-			info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
-		}
-	}
-
 	CheckBox
 	{
 		id: addScores
-		name: "addScoresToData"
+		name: "scoreSavedToData"
 		label: pca ? qsTr("Add PC scores to data") : qsTr("Add FA scores to data")
 		info: qsTr("Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.")
 		enabled: variablesCount > 1 & dataRaw
 
 		TextField {
-			name: "addScoresToDataPrefix"
+			name: "scoreSavedToDataPrefix"
 			label: qsTr("Prefix")
 			defaultValue: pca ? qsTr("PC") : qsTr("FA")
 			fieldWidth: 80

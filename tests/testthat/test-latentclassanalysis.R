@@ -1,23 +1,23 @@
 context("Latent Class Analysis")
 
 defaultOptions <- list(
-  indicators                    = list(),
-  itemResponseProbabilities     = TRUE,
-  itemResponseProbabilitiesPlot = FALSE,
-  maxIterations                 = 1000,
-  missingValues                 = "include",
-  numberOfClasses               = 2,
-  nrep                          = 1,
-  plotHeight                    = 320,
-  plotWidth                     = 480,
-  rotatePlotLabels              = FALSE,
-  saveClassProbabilities        = FALSE,
-  saveClassProbabilitiesPrefix  = "classProb",
-  saveClassification            = FALSE,
-  saveClassificationColumn      = "classAssignment",
-  saveForClasses                = 2,
-  seed                          = 1,
-  showLevelsLegend              = FALSE
+  classificationSavedToData                  = FALSE,
+  classificationSavedToDataColumn            = "classAssignment",
+  classProbabilitySavedToData                = FALSE,
+  classProbabilitySavedToDataPrefix          = "classProb",
+  indicators                                 = list(),
+  itemResponseProbabilities                  = TRUE,
+  itemResponseProbabilitiesPlot              = FALSE,
+  itemResponseProbabilitiesPlotLabelRotation = FALSE,
+  itemResponseProbabilitiesPlotLegend        = FALSE,
+  maxIterations                              = 1000,
+  naAction                                   = "include",
+  numberOfClasses                            = 2,
+  numberOfClassesSavedToData                 = 2,
+  numberOfRandomStarts                       = 1,
+  plotHeight                                 = 320,
+  plotWidth                                  = 480,
+  seed                                       = 1
 )
 
 options <- defaultOptions

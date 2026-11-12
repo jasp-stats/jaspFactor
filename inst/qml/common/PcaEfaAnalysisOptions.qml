@@ -45,7 +45,7 @@ Section
 			info: qsTr("This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.")
 			DropDown
 			{
-				name: "orthogonalSelector"
+				name: "rotationMethodOrthogonal"
 				values: [
 					{ label: qsTr("none")	, value: "none"	, 		info: qsTr("No rotation method is selected.")},
 					{ label: "varimax"		, value: "varimax", 	info: qsTr("Maximizes the variance of squared loadings for each factor, simplifying interpretations.")},
@@ -63,7 +63,7 @@ Section
 			info: qsTr("This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.")
 			checked	: true
 			DropDown { 
-				name: "obliqueSelector"
+				name: "rotationMethodOblique"
 				values: [ 
 					{ value: "promax", label: "promax", info: qsTr("Starts with Varimax and applies a power transformation to allow correlated factors.")},
 					{ value: "oblimin", label: "oblimin", info: qsTr("An oblique rotation that minimizes the correlation among factors while allowing flexibility.")},
@@ -98,10 +98,29 @@ Section
 		RadioButton
 		{
 			enabled: dataRaw && nonScale
-			value: "polyTetrachoricCorrelationMatrix"
+			value: "polychoricTetrachoricCorrelationMatrix"
 			label: qsTr("Polychoric/tetrachoric correlation matrix")
 			info: qsTr("The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories")
 			checked: nonScale
+		}
+	}
+
+
+	RadioButtonGroup
+	{
+		name: "naAction"
+		title: qsTr("Missing Values")
+		info: qsTr("Select how to handle missing values.")
+		RadioButton { 
+			value: "pairwise";		
+			label: qsTr("Exclude cases pairwise"); 
+			checked: true; 
+			info: qsTr("If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.")
+		}
+		RadioButton { 
+			value: "listwise";		
+			label: qsTr("Exclude cases listwise")
+			info: qsTr("If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. ")
 		}
 	}
 

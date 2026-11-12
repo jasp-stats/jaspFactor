@@ -331,13 +331,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   outliers <- outliers[order(outliers[["distance"]], decreasing = TRUE), ]
   outlierTable$setData(outliers)
 
-  if (result[["nComplete"]] == result[["nTotal"]]) {
-    outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values and a chi-square distribution with %2$i degrees of freedom. Cases with a p-value below %3$s are displayed.",
-                                      result[["nComplete"]], result[["df"]], format(cutoff)))
-  } else {
-    outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values (of %2$i cases) and a chi-square distribution with %3$i degrees of freedom. Cases with a p-value below %4$s are displayed.",
-                                      result[["nComplete"]], result[["nTotal"]], result[["df"]], format(cutoff)))
-  }
+  if (result[["nComplete"]] < result[["nTotal"]])
+    outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values (of %2$i cases).",
+                                      result[["nComplete"]], result[["nTotal"]]))
   if (nrow(outliers) == 0)
     outlierTable$addFootnote(gettext("There are no multivariate outliers."))
 }
@@ -603,7 +599,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   schmidTable$addColumnInfo(name = "g", title = gettext("General factor"), type = "number", format = "dp:3")
   for (i in groupFactor)
-    schmidTable$addColumnInfo(name = paste0("f", i), title = gettextf("Factor %i", i), overtitle = gettext("Residualized group factors"), type = "number", format = "dp:3")
+    schmidTable$addColumnInfo(name = paste0("f", i), title = gettextf("Factor %i", i), overtitle = gettext("Residualized Group Factors"), type = "number", format = "dp:3")
   schmidTable$addColumnInfo(name = "h2", title = "h\u00B2", type = "number", format = "dp:3")
   schmidTable$addColumnInfo(name = "u2", title = "u\u00B2", type = "number", format = "dp:3")
   schmidTable$addColumnInfo(name = "p2", title = "p\u00B2", type = "number", format = "dp:3")

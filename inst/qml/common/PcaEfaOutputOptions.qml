@@ -34,6 +34,7 @@ Section
 	{
 		name: "loadingsDisplayLimit"
 		label: qsTr("Display loadings above")
+		vertical: false
 		info: qsTr("Loadings below this value will not be displayed in the output table.")
 		value: 0.4
 	}

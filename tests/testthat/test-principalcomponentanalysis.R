@@ -529,7 +529,7 @@ test_that("The scores of cases without missing values do not change when missing
   data <- simulateScoreData()
   expectImputationKeepsScores(suppressWarnings(psych::principal(data, nfactors = 2, rotate = "promax", scores = TRUE)),
                               data, "correlationMatrix", "correlation matrix")
-  expectImputationKeepsScores(suppressWarnings(psych::principal(data, nfactors = 2, rotate = "varimax", covar = TRUE, scores = TRUE)),
+  expectImputationKeepsScores(suppressWarnings(psych::principal(data, nfactors = 2, rotate = "varimax", covar = TRUE, cor = "cov", scores = TRUE)),
                               data, "covarianceMatrix", "covariance matrix")
 
   dataOrdinal <- simulateScoreData(ordinal = TRUE)
@@ -552,4 +552,18 @@ test_that("The Mahalanobis outlier table and plot are made", {
   expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
   expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
   expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
+})
+
+test_that("Median imputation for a PCA based on the covariance matrix centres the data and uses the median of the variable", {
+  data   <- simulateScoreData()
+  fit    <- suppressWarnings(psych::principal(data, nfactors = 2, rotate = "varimax", covar = TRUE, cor = "cov", scores = TRUE))
+  scores <- jaspFactor:::.pcaAndEfaComputeScores(fit, data, list(scoreSavedToDataImputation = "median", naAction = "pairwise",
+                                                                  baseDecompositionOn = "covarianceMatrix"))
+
+  dataMedian <- data
+  for (i in seq_along(dataMedian)) dataMedian[is.na(dataMedian[[i]]), i] <- median(data[[i]], na.rm = TRUE)
+  centred  <- sweep(as.matrix(dataMedian), 2, colMeans(data, na.rm = TRUE)) # the data are only centred, not standardized
+  expected <- centred %*% fit[["weights"]]
+  expected[rowSums(!is.na(data)) == 0, ] <- NA
+  expect_equal(unname(scores), unname(expected))
 })

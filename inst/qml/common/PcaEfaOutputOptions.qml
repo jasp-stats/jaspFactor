@@ -155,7 +155,7 @@ Section
 			name: "scoreSavedToDataImputation"
 			label: qsTr("Impute missing values by")
 			enabled: addScores.checked
-			info: qsTr("Whether the missing values are replaced by the mean or the median of the variable when computing the saved scores, like the impute option of the R package psych, so that cases with missing values also get a score. This only affects the saved scores, not the analysis. In contrast to psych the scores are not rescaled, so the scores of the cases without missing values do not change. Cases without any observed value do not get a score. It is only used if missing values are excluded pairwise, because with listwise deletion the cases with missing values are not part of the analysis.")
+			info: qsTr("Select whether missing values are replaced by the mean or the median of the variable when computing the saved scores, like the impute option of the R package psych, so that cases with missing values also get a score. This only affects the saved scores, not the analysis. In contrast to psych the scores are not rescaled, so the scores of the cases without missing values do not change. Cases without any observed value do not get a score. It is only used if missing values are excluded pairwise, because with listwise deletion the cases with missing values are not part of the analysis.")
 			values: [
 				{ label: qsTr("None"),    value: "none",   info: qsTr("Cases with a missing value do not get a score.") },
 				{ label: qsTr("Mean"),    value: "mean",   info: qsTr("Missing values are replaced by the mean of the variable.") },

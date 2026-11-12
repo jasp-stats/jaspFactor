@@ -518,19 +518,22 @@ test_that("The scores of cases without missing values do not change when missing
                               dataOrdinal, "polychoricTetrachoricCorrelationMatrix", "polychoric matrix")
 })
 
-test_that("Mean imputation replaces the missing values by the mean of the variable before the scores are computed", {
+test_that("Imputation replaces the missing values by the mean or median of the variable before the scores are computed", {
   data   <- simulateScoreData()
   fit    <- suppressWarnings(psych::fa(data, nfactors = 2, rotate = "oblimin", scores = TRUE))
-  scores <- jaspFactor:::.pcaAndEfaComputeScores(fit, data, list(scoreSavedToDataImputation = "mean", naAction = "pairwise",
-                                                                  baseDecompositionOn = "correlationMatrix"))
+  z      <- scale(as.matrix(data))
 
-  z <- scale(as.matrix(data))
-  dataMean <- data
-  for (i in seq_along(dataMean)) dataMean[is.na(dataMean[[i]]), i] <- mean(data[[i]], na.rm = TRUE)
-  zMean <- sweep(sweep(as.matrix(dataMean), 2, attr(z, "scaled:center")), 2, attr(z, "scaled:scale"), "/")
-  expected <- zMean %*% fit[["weights"]]
-  expected[rowSums(!is.na(data)) == 0, ] <- NA
-  expect_equal(unname(scores), unname(expected))
+  for (imputation in c("mean", "median")) {
+    scores <- jaspFactor:::.pcaAndEfaComputeScores(fit, data, list(scoreSavedToDataImputation = imputation, naAction = "pairwise",
+                                                                    baseDecompositionOn = "correlationMatrix"))
+    fill <- if (imputation == "mean") mean else median
+    dataImputed <- data
+    for (i in seq_along(dataImputed)) dataImputed[is.na(dataImputed[[i]]), i] <- fill(data[[i]], na.rm = TRUE)
+    zImputed <- sweep(sweep(as.matrix(dataImputed), 2, attr(z, "scaled:center")), 2, attr(z, "scaled:scale"), "/")
+    expected <- zImputed %*% fit[["weights"]]
+    expected[rowSums(!is.na(data)) == 0, ] <- NA
+    expect_equal(unname(scores), unname(expected), label = imputation)
+  }
 })
 
 # Schmid-Leiman transformation (jasp-issues#4621)

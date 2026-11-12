@@ -395,3 +395,34 @@ test_that("Component Loadings table results match", {
                                       "x9"))
 })
 
+
+# Adding scores to the data with the polychoric/tetrachoric correlation matrix (jasp-issues#3859)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
+options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
+options$manualNumberOfComponents <- 2
+options$scoreSavedToData <- TRUE
+
+test_that("Adding scores to the data works with the polychoric/tetrachoric correlation matrix", {
+  for (naAction in c("pairwise", "listwise")) {
+    options$naAction <- naAction
+    set.seed(1)
+    results <- runAnalysis("principalComponentAnalysis", "test.csv", options, makeTests = FALSE)
+    expect_identical(results[["status"]], "complete", label = paste("naAction =", naAction))
+  }
+})
+
+# Nominal variables with more than two categories cannot be used with polychoric correlations (jasp-issues#4335)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "contcor2", "facFive")
+options$variables.types <- list("scale", "scale", "nominal")
+
+test_that("Nominal variables with more than two categories give a clear error with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than two categories")
+})

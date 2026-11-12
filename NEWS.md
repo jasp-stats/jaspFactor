@@ -38,6 +38,8 @@
 * CFA: the heterotrait-monotrait ratio treated ordinal indicators as continuous, so it was based on Pearson instead of polychoric correlations ([jasp-issues#4434](https://github.com/jasp-stats/jasp-issues/issues/4434)).
 * EFA, PCA: help now states the default rotation parameters, the principal axis iteration settings, the initial communalities, and how missing values affect fit statistics and scores ([jasp-issues#4621](https://github.com/jasp-stats/jasp-issues/issues/4621)).
 * EFA: the Factor Characteristics table now has a column with the eigenvalues of the data (correlation) matrix, and the unrotated solution reports its sums of squared loadings, labelled as such, instead of the eigenvalues of the reduced matrix, which differed slightly from them ([jasp-issues#3844](https://github.com/jasp-stats/jasp-issues/issues/3844)).
+* EFA: adding factor scores to the data failed when the analysis was based on the polychoric/tetrachoric correlation matrix ("argument must be coercible to non-negative integer"). The scores are now computed from the data, as psych does for raw data ([jasp-issues#3859](https://github.com/jasp-stats/jasp-issues/issues/3859)).
+* EFA, PCA: nominal variables with more than two categories cannot be used with the polychoric/tetrachoric correlation matrix. This now gives a clear message asking to change them to ordinal; PCA used to stop with "$ operator is invalid for atomic vectors" in this case ([jasp-issues#4335](https://github.com/jasp-stats/jasp-issues/issues/4335)).
 
 ---
 

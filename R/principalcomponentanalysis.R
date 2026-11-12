@@ -47,7 +47,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .pcaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, dataset, options, ready)
 
 }
 
@@ -74,6 +74,23 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     rownames(dataset) <- colnames(dataset)
     return(dataset)
   }
+}
+
+# polychoric correlations need ordered categories, so nominal variables can only be used if they have two categories (tetrachoric)
+.pcaAndEfaNominalPolyCorMessage <- function(dataset, options) {
+
+  nominals <- unlist(options[["variables"]])[unlist(options[["variables.types"]]) == "nominal"]
+  if (length(nominals) == 0)
+    return(NULL)
+
+  nLevels <- sapply(dataset[, nominals, drop = FALSE], function(x) length(unique(na.omit(x))))
+  tooMany <- nominals[nLevels > 2]
+  if (length(tooMany) == 0)
+    return(NULL)
+
+  return(gettextf(
+    "The polychoric/tetrachoric correlation matrix cannot be computed because the nominal variable(s) %s have more than two categories. Please change the type of these variables to ordinal.",
+    paste(decodeColNames(tooMany), collapse = ", ")))
 }
 
 .pcaAndEfaCoerceToNumeric <- function(x) {
@@ -193,7 +210,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     modelContainer <- jaspResults[["modelContainer"]]
   } else {
     modelContainer <- createJaspContainer()
-    modelContainer$dependOn(c("rotationMethod", "rotationMethodOrthogonal", "rotationMethodOblique", "variables",
+    modelContainer$dependOn(c("rotationMethod", "rotationMethodOrthogonal", "rotationMethodOblique", "variables", "variables.types",
                               "manualNumberOfComponents", "naAction", "baseDecompositionOn",
                               "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
@@ -233,6 +250,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
+    nominalErrmsg <- .pcaAndEfaNominalPolyCorMessage(dataset, options)
+    if (!is.null(nominalErrmsg)) {
+      modelContainer$setError(nominalErrmsg)
+      modelContainer[["model"]] <- createJaspState(NA)
+      return(NA)
+    }
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -255,7 +278,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       if (allSameLevels) {
         errmsgPolyCor <- gettextf(
           "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s",
-          .errTxt)
+          errTxt)
       } else {
         maxLevels <- max(numLevels)
         restrictedLevels <- which(numLevels < maxLevels)
@@ -263,8 +286,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
         errmsgPolyCor <- gettextf("Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s",
                                   restricedItems, errTxt)
       }
-      modelContainer$setError(errmsgPolyCor)
+    } else {
+      errmsgPolyCor <- gettextf("Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. Internal error message: %s",
+                                errTxt)
     }
+    modelContainer$setError(errmsgPolyCor)
 
     pcaResult <- NA
 
@@ -625,7 +651,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 
-.pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
+.pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, dataset, options, ready) {
 
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||
@@ -641,7 +667,17 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   container    <- createJaspContainer()
   container$dependOn(optionsFromObject = modelContainer, options = c("scoreSavedToData", "scoreSavedToDataPrefix", "naAction"))
 
-  scores <- modelContainer[["model"]][["object"]][["scores"]]
+  model  <- modelContainer[["model"]][["object"]]
+  scores <- model[["scores"]]
+
+  if (is.null(scores)) {
+    # psych does not return scores if the model is based on a correlation matrix (as with the polychoric/tetrachoric option),
+    # so they are computed from the data, which is also what psych does when it is given the raw data
+    scores <- try(psych::factor.scores(dataset, f = model, method = "Thurstone")[["scores"]])
+    if (isTryError(scores)) {
+      .quitAnalysis(gettextf("The scores could not be computed. Internal error message: %s", .extractErrorMessage(scores)))
+    }
+  }
 
   for (ii in seq_len(ncol(scores))) {
 

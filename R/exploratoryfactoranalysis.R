@@ -45,7 +45,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, dataset, options, ready)
 }
 
 
@@ -72,6 +72,13 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # Return cached result if available
   if (!is.null(modelContainer[["polyCorState"]])) {
     return(modelContainer[["polyCorState"]][["object"]])
+  }
+
+  nominalErrmsg <- .pcaAndEfaNominalPolyCorMessage(dataset, options)
+  if (!is.null(nominalErrmsg)) {
+    modelContainer$setError(nominalErrmsg)
+    modelContainer[["polyCorState"]] <- createJaspState(NULL)
+    return(NULL)
   }
 
   varTypes <- options$variables.types

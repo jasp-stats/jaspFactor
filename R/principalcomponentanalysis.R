@@ -682,6 +682,50 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 
+# Returns the component/factor scores (cases in rows). With pairwise deletion, the cases with missing values do not get a score,
+# unless the missing values are imputed.
+.pcaAndEfaComputeScores <- function(model, dataset, options) {
+
+  imputation <- options[["scoreSavedToDataImputation"]]
+  # with listwise deletion the cases with missing values are not part of the model, so there is nothing to impute
+  impute     <- isTRUE(imputation %in% c("mean", "median")) && options[["naAction"]] == "pairwise" && anyNA(dataset)
+
+  scores <- model[["scores"]]
+  if (!is.null(scores) && !impute)
+    return(scores)
+
+  if (is.null(scores)) {
+    # psych does not return scores if the model is based on a correlation matrix (as with the polychoric/tetrachoric option),
+    # so they are computed from the data, which is also what psych does when it is given the raw data
+    scoreResult <- psych::factor.scores(dataset, f = model, method = "Thurstone")
+    if (!impute)
+      return(scoreResult[["scores"]])
+
+    weights    <- scoreResult[["weights"]]
+    centerOnly <- FALSE
+  } else {
+    # the scores of psych are the standardized data times the weights of the model
+    # (the centred data for a PCA based on the covariance matrix)
+    weights    <- model[["weights"]]
+    centerOnly <- inherits(model, "principal") && options[["baseDecompositionOn"]] == "covarianceMatrix"
+  }
+
+  # Missing values are replaced by the mean or median of the variable, as psych does with impute. The scores are then computed with
+  # the weights of the model, so that the scores of the cases without missing values do not change
+  # (psych itself rescales the scores of an EFA if it imputes).
+  z      <- scale(as.matrix(dataset), scale = !centerOnly) # mean and sd of the observed values, missing values are kept
+  center <- attr(z, "scaled:center")
+  spread <- if (centerOnly) rep(1, ncol(z)) else attr(z, "scaled:scale")
+  fill   <- if (imputation == "mean") rep(0, ncol(z)) else (apply(dataset, 2, median, na.rm = TRUE) - center) / spread
+  z[is.na(z)] <- rep(fill, each = nrow(z))[is.na(z)]
+
+  imputedScores <- z %*% weights
+  # a case without any observed value does not get a score
+  imputedScores[rowSums(!is.na(dataset)) == 0, ] <- NA
+
+  return(imputedScores)
+}
+
 .pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, dataset, options, ready) {
 
   if (!ready ||
@@ -696,18 +740,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   colNamesR <- paste0(options[["scoreSavedToDataPrefix"]], "_", seq_len(length(options$variables)))
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = c("scoreSavedToData", "scoreSavedToDataPrefix", "naAction"))
+  container$dependOn(optionsFromObject = modelContainer, options = c("scoreSavedToData", "scoreSavedToDataPrefix", "scoreSavedToDataImputation", "naAction"))
 
-  model  <- modelContainer[["model"]][["object"]]
-  scores <- model[["scores"]]
-
-  if (is.null(scores)) {
-    # psych does not return scores if the model is based on a correlation matrix (as with the polychoric/tetrachoric option),
-    # so they are computed from the data, which is also what psych does when it is given the raw data
-    scores <- try(psych::factor.scores(dataset, f = model, method = "Thurstone")[["scores"]])
-    if (isTryError(scores)) {
-      .quitAnalysis(gettextf("The scores could not be computed. Internal error message: %s", .extractErrorMessage(scores)))
-    }
+  scores <- try(.pcaAndEfaComputeScores(modelContainer[["model"]][["object"]], dataset, options))
+  if (isTryError(scores)) {
+    .quitAnalysis(gettextf("The scores could not be computed. Internal error message: %s", .extractErrorMessage(scores)))
   }
 
   for (ii in seq_len(ncol(scores))) {

@@ -23,6 +23,7 @@ defaultOptions <- list(
   mardiaTest = FALSE,
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "",
+  scoreSavedToDataImputation = "none",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
@@ -316,6 +317,7 @@ cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "FA",
+  scoreSavedToDataImputation = "none",
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   dataType = "varianceCovariance",
@@ -441,4 +443,84 @@ test_that("Ordinal variables with more than 8 categories give a clear error if t
   expect_identical(results[["status"]], "complete")
   tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
   expect_match(tableError, "more than 8 categories")
+})
+
+# Imputing missing values when computing the scores (jasp-issues#4621)
+options <- defaultOptions
+options$variables <- c("contcor1", "contcor2", "debMiss1", "contNormal", "contGamma")
+options$variables.types <- list("scale", "scale", "scale", "scale", "scale")
+options$scoreSavedToData <- TRUE
+options$naAction <- "pairwise"
+
+test_that("Imputing missing values for the scores works", {
+  for (imputation in c("none", "mean", "median")) {
+    options$scoreSavedToDataImputation <- imputation
+    set.seed(1)
+    results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+    expect_identical(results[["status"]], "complete", label = paste("imputation =", imputation))
+  }
+})
+
+# helper for the tests of the imputation of the scores: the scores of the cases without missing values must not change
+expectImputationKeepsScores <- function(model, data, baseDecompositionOn, label) {
+  scores <- function(imputation, naAction = "pairwise") {
+    jaspFactor:::.pcaAndEfaComputeScores(model, data, list(scoreSavedToDataImputation = imputation, naAction = naAction,
+                                                           baseDecompositionOn = baseDecompositionOn))
+  }
+  incomplete    <- !complete.cases(data)
+  noObservation <- rowSums(!is.na(data)) == 0
+  without       <- scores("none")
+
+  expect_true(all(is.na(without[incomplete, ])), label = paste(label, "without imputation"))
+  expect_identical(scores("mean", naAction = "listwise"), without, label = paste(label, "listwise"))
+
+  for (imputation in c("mean", "median")) {
+    imputed <- scores(imputation)
+    expect_false(anyNA(imputed[!noObservation, ]), label = paste(label, imputation, "all cases with data get a score"))
+    expect_true(all(is.na(imputed[noObservation, ])), label = paste(label, imputation, "case without data"))
+    expect_equal(unname(imputed[!incomplete, ]), unname(without[!incomplete, ]), label = paste(label, imputation, "complete cases"))
+  }
+}
+
+simulateScoreData <- function(ordinal = FALSE) {
+  set.seed(1)
+  latent   <- matrix(rnorm(200 * 2), ncol = 2)
+  loadings <- matrix(c(0.8, 0.7, 0.6, 0, 0, 0,
+                       0, 0, 0, 0.7, 0.8, 0.6), nrow = 2, byrow = TRUE)
+  data <- as.data.frame(latent %*% loadings %*% diag(c(1, 2, 3, 1, 5, 1)) + matrix(rnorm(200 * 6, sd = 0.6), ncol = 6))
+  if (ordinal)
+    data[] <- lapply(data, function(x) as.integer(cut(x, quantile(x, 0:5 / 5), include.lowest = TRUE)))
+  data[c(3, 10), 1] <- NA
+  data[c(10, 40), 4] <- NA
+  data[120, ]        <- NA # no observed value at all
+  return(data)
+}
+
+test_that("The scores of cases without missing values do not change when missing values are imputed (EFA)", {
+  data <- simulateScoreData()
+  expectImputationKeepsScores(suppressWarnings(psych::fa(data, nfactors = 2, rotate = "oblimin", scores = TRUE)),
+                              data, "correlationMatrix", "correlation matrix")
+  expectImputationKeepsScores(suppressWarnings(psych::fa(data, nfactors = 2, rotate = "varimax", covar = TRUE, scores = TRUE)),
+                              data, "covarianceMatrix", "covariance matrix")
+
+  # psych does not return scores for a model that is based on a correlation matrix, as with the polychoric option
+  dataOrdinal <- simulateScoreData(ordinal = TRUE)
+  rho <- suppressWarnings(psych::mixedCor(dataOrdinal, p = names(dataOrdinal))[["rho"]])
+  expectImputationKeepsScores(suppressWarnings(psych::fa(r = rho, nfactors = 2, rotate = "oblimin", n.obs = nrow(dataOrdinal))),
+                              dataOrdinal, "polychoricTetrachoricCorrelationMatrix", "polychoric matrix")
+})
+
+test_that("Mean imputation replaces the missing values by the mean of the variable before the scores are computed", {
+  data   <- simulateScoreData()
+  fit    <- suppressWarnings(psych::fa(data, nfactors = 2, rotate = "oblimin", scores = TRUE))
+  scores <- jaspFactor:::.pcaAndEfaComputeScores(fit, data, list(scoreSavedToDataImputation = "mean", naAction = "pairwise",
+                                                                  baseDecompositionOn = "correlationMatrix"))
+
+  z <- scale(as.matrix(data))
+  dataMean <- data
+  for (i in seq_along(dataMean)) dataMean[is.na(dataMean[[i]]), i] <- mean(data[[i]], na.rm = TRUE)
+  zMean <- sweep(sweep(as.matrix(dataMean), 2, attr(z, "scaled:center")), 2, attr(z, "scaled:scale"), "/")
+  expected <- zMean %*% fit[["weights"]]
+  expected[rowSums(!is.na(data)) == 0, ] <- NA
+  expect_equal(unname(scores), unname(expected))
 })

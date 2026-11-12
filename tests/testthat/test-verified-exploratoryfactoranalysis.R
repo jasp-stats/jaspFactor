@@ -24,6 +24,7 @@ defaultOptions <- list(
   mardiaTest = FALSE,
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "",
+  scoreSavedToDataImputation = "none",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",

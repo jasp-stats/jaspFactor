@@ -34,10 +34,13 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaKMOtest(              modelContainer, dataset, options, ready)
   .efaBartlett(             modelContainer, dataset, options, ready)
   .efaMardia(               modelContainer, dataset, options, ready)
+  .efaMahalanobisTable(     modelContainer, dataset, options, ready)
+  .efaMahalanobisPlot(      modelContainer, dataset, options, ready)
   .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
   .efaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
   .efaLoadingsTable(        modelContainer, dataset, options, ready)
   .efaStructureTable(       modelContainer, dataset, options, ready)
+  .efaSchmidLeimanTables(   modelContainer, dataset, options, ready)
   .efaEigenTable(           modelContainer, dataset, options, ready)
   .efaCorrTable(            modelContainer, dataset, options, ready)
   .efaAdditionalFitTable(   modelContainer, dataset, options, ready)
@@ -45,7 +48,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, dataset, options, ready)
 }
 
 
@@ -72,6 +75,13 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # Return cached result if available
   if (!is.null(modelContainer[["polyCorState"]])) {
     return(modelContainer[["polyCorState"]][["object"]])
+  }
+
+  polyCorErrmsg <- .pcaAndEfaPolyCorMessage(dataset, options)
+  if (!is.null(polyCorErrmsg)) {
+    modelContainer$setError(polyCorErrmsg)
+    modelContainer[["polyCorState"]] <- createJaspState(NULL)
+    return(NULL)
   }
 
   varTypes <- options$variables.types
@@ -269,6 +279,114 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
    mardiaTable$addFootnote(message = gettext("The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."))
 }
 
+# Mahalanobis distances (D^2) of the cases without missing values, and their p-values (chi-square distribution)
+# Returns an error message if they cannot be computed
+.efaMahalanobisResult <- function(dataset, options) {
+
+  if (options[["dataType"]] != "raw")
+    return(gettext("The Mahalanobis distances need raw data."))
+
+  x <- as.data.frame(dataset[stats::complete.cases(dataset), , drop = FALSE])
+  if (nrow(x) <= ncol(x))
+    return(gettext("There are not enough cases without missing values to compute the Mahalanobis distances."))
+
+  distances <- try(psych::outlier(x, plot = FALSE), silent = TRUE)
+  if (isTryError(distances))
+    return(gettextf("The Mahalanobis distances could not be computed, probably because the variables are linearly dependent. Internal error message: %s",
+                    .extractErrorMessage(distances)))
+
+  result <- data.frame(
+    case     = rownames(x),
+    distance = as.numeric(distances),
+    p        = stats::pchisq(as.numeric(distances), df = ncol(x), lower.tail = FALSE),
+    stringsAsFactors = FALSE
+  )
+
+  return(list(distances = result, nComplete = nrow(x), nTotal = nrow(dataset), df = ncol(x)))
+}
+
+.efaMahalanobisTable <- function(modelContainer, dataset, options, ready) {
+  if (!isTRUE(options[["mahalanobisOutlier"]]) || !is.null(modelContainer[["mahalanobisTable"]])) return()
+  if (options[["dataType"]] != "raw") return() # the control is disabled, the Mahalanobis distances need raw data
+
+  outlierTable <- createJaspTable(gettext("Multivariate Outliers (Mahalanobis Distance)"))
+  outlierTable$dependOn(c("mahalanobisOutlier", "mahalanobisOutlierPValue"))
+  outlierTable$position <- 0.6
+  outlierTable$info <- gettext("Cases that are multivariate outliers: the Mahalanobis distance (D\u00B2) of the case to the centre of the variables, and its p-value from a chi-square distribution with as many degrees of freedom as there are variables.")
+  outlierTable$addColumnInfo(name = "case",     title = gettext("Case"), type = "string")
+  outlierTable$addColumnInfo(name = "distance", title = "D\u00B2",       type = "number", format = "dp:3")
+  outlierTable$addColumnInfo(name = "p",        title = gettext("p"),    type = "number", format = "dp:3;p:.001")
+  modelContainer[["mahalanobisTable"]] <- outlierTable
+
+  if (!ready) return()
+
+  result <- .efaMahalanobisResult(dataset, options)
+  if (is.character(result)) {
+    outlierTable$setError(result)
+    return()
+  }
+
+  cutoff   <- options[["mahalanobisOutlierPValue"]]
+  outliers <- result[["distances"]][result[["distances"]][["p"]] < cutoff, ]
+  outliers <- outliers[order(outliers[["distance"]], decreasing = TRUE), ]
+  outlierTable$setData(outliers)
+
+  if (result[["nComplete"]] < result[["nTotal"]])
+    outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values (of %2$i cases).",
+                                      result[["nComplete"]], result[["nTotal"]]))
+  if (nrow(outliers) == 0)
+    outlierTable$addFootnote(gettext("There are no multivariate outliers."))
+}
+
+.efaMahalanobisPlot <- function(modelContainer, dataset, options, ready) {
+  if (!isTRUE(options[["mahalanobisOutlierPlot"]]) || !is.null(modelContainer[["mahalanobisPlot"]])) return()
+  if (options[["dataType"]] != "raw") return() # the control is disabled, the Mahalanobis distances need raw data
+
+  qqPlot <- createJaspPlot(title = gettext("Mahalanobis Distance Q-Q Plot"), width = 480, height = 320)
+  qqPlot$dependOn(c("mahalanobisOutlierPlot", "mahalanobisOutlierPValue"))
+  qqPlot$position <- 6
+  modelContainer[["mahalanobisPlot"]] <- qqPlot
+
+  if (!ready) return()
+
+  result <- .efaMahalanobisResult(dataset, options)
+  if (is.character(result)) {
+    qqPlot$setError(result)
+    return()
+  }
+
+  plotObject <- try(.efaMahalanobisQQPlot(result, options[["mahalanobisOutlierPValue"]]), silent = TRUE)
+  if (isTryError(plotObject)) {
+    qqPlot$setError(gettextf("The plot could not be made. Internal error message: %s", .extractErrorMessage(plotObject)))
+    return()
+  }
+  qqPlot$plotObject <- plotObject
+}
+
+.efaMahalanobisQQPlot <- function(result, cutoff) {
+
+  distances <- result[["distances"]][order(result[["distances"]][["distance"]]), ]
+  distances[["theoretical"]] <- stats::qchisq(stats::ppoints(nrow(distances)), df = result[["df"]])
+
+  # label the worst outliers
+  outliers <- distances[distances[["p"]] < cutoff, ]
+  labelled <- utils::tail(outliers, 5)
+
+  plot <- ggplot2::ggplot(distances, ggplot2::aes(x = theoretical, y = distance)) +
+    ggplot2::geom_abline(intercept = 0, slope = 1, colour = "grey") +
+    ggplot2::geom_point(size = 2) +
+    ggplot2::labs(x = gettext("Chi-square quantiles"), y = "Mahalanobis D\u00B2") +
+    ggplot2::scale_x_continuous(breaks = jaspGraphs::getPrettyAxisBreaks(distances[["theoretical"]])) +
+    ggplot2::scale_y_continuous(breaks = jaspGraphs::getPrettyAxisBreaks(c(distances[["distance"]], distances[["theoretical"]]))) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
+
+  if (nrow(labelled) > 0)
+    plot <- plot + ggplot2::geom_text(data = labelled, ggplot2::aes(label = case), hjust = 1.4, size = 3.5)
+
+  return(plot)
+}
+
 .efaAntiImageCorrelation <- function(modelContainer, dataset, options, ready) {
 
   if (!options[["antiImageCorrelationMatrix"]] || !is.null(modelContainer[["antiMatrix"]])) return()
@@ -430,19 +548,94 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   }
 }
 
+# Returns the Schmid-Leiman solution of an oblique factor solution (see psych::schmid), or an error message
+.efaSchmidLeimanResult <- function(efaResults, options) {
+
+  if (options[["manualNumberOfFactors"]] < 3)
+    return(gettext("The Schmid-Leiman transformation needs at least three factors."))
+
+  # without an oblique rotation there are no factor correlations (psych::schmid would then treat the loadings as data)
+  if (options[["rotationMethod"]] != "oblique" || is.null(efaResults[["Phi"]]))
+    return(gettext("The Schmid-Leiman transformation needs an oblique rotation."))
+
+  result <- try(suppressMessages(psych::schmid(efaResults, fm = efaResults[["fm"]])))
+  if (isTryError(result))
+    return(gettextf("The Schmid-Leiman transformation failed. Internal error message: %s", .extractErrorMessage(result)))
+
+  # the uniquenesses of psych::schmid are 1 - h2, which is only right for a correlation matrix
+  return(list(solution = result[["sl"]], generalLoadings = as.numeric(result[["gloading"]]), nFactors = ncol(efaResults[["loadings"]]),
+              uniquenesses = as.numeric(efaResults[["uniquenesses"]])))
+}
+
+.efaSchmidLeimanTables <- function(modelContainer, dataset, options, ready) {
+  if (!isTRUE(options[["schmidLeimanTransformation"]]) || !is.null(modelContainer[["schmidLeimanTable"]])) return()
+
+  schmidTable <- createJaspTable(gettext("Schmid-Leiman Solution"))
+  schmidTable$dependOn("schmidLeimanTransformation")
+  schmidTable$position <- 2.6
+  schmidTable$info <- gettext("Loadings of the variables on the general factor and on the group factors that are orthogonal to it (residualized), with the communalities (h\u00B2), the uniquenesses (u\u00B2) and the proportion of the common variance that is due to the general factor (p\u00B2).")
+  schmidTable$addColumnInfo(name = "var", title = "", type = "string")
+  modelContainer[["schmidLeimanTable"]] <- schmidTable
+
+  generalTable <- createJaspTable(gettext("Schmid-Leiman General Factor Loadings"))
+  generalTable$dependOn("schmidLeimanTransformation")
+  generalTable$position <- 2.7
+  generalTable$info <- gettext("Loadings of the first-order factors of the oblique solution on the general factor.")
+  generalTable$addColumnInfo(name = "factor", title = "",                        type = "string")
+  generalTable$addColumnInfo(name = "g",      title = gettext("General factor"), type = "number", format = "dp:3")
+  modelContainer[["schmidLeimanGeneralTable"]] <- generalTable
+
+  if (!ready || modelContainer$getError()) return()
+
+  result <- .efaSchmidLeimanResult(modelContainer[["model"]][["object"]], options)
+  if (is.character(result)) {
+    schmidTable$setError(result)
+    generalTable$setError(result)
+    return()
+  }
+
+  solution    <- result[["solution"]]
+  groupFactor <- seq_len(result[["nFactors"]])
+
+  schmidTable$addColumnInfo(name = "g", title = gettext("General factor"), type = "number", format = "dp:3")
+  for (i in groupFactor)
+    schmidTable$addColumnInfo(name = paste0("f", i), title = gettextf("Factor %i", i), overtitle = gettext("Residualized Group Factors"), type = "number", format = "dp:3")
+  schmidTable$addColumnInfo(name = "h2", title = "h\u00B2", type = "number", format = "dp:3")
+  schmidTable$addColumnInfo(name = "u2", title = "u\u00B2", type = "number", format = "dp:3")
+  schmidTable$addColumnInfo(name = "p2", title = "p\u00B2", type = "number", format = "dp:3")
+
+  schmidTable[["var"]] <- rownames(solution)
+  schmidTable[["g"]]   <- solution[, "g"]
+  for (i in groupFactor)
+    schmidTable[[paste0("f", i)]] <- solution[, paste0("F", i, "*")]
+  schmidTable[["h2"]] <- solution[, "h2"]
+  schmidTable[["u2"]] <- result[["uniquenesses"]]
+  schmidTable[["p2"]] <- solution[, "p2"]
+  schmidTable$addFootnote(gettextf("The Schmid-Leiman transformation is based on the oblique factor solution (rotation method %s).", options[["rotationMethodOblique"]]))
+  if (options[["baseDecompositionOn"]] == "covarianceMatrix")
+    schmidTable$addFootnote(gettext("The analysis is based on the covariance matrix, so the loadings are in the units of the variables, and the communalities and uniquenesses in squared units."))
+  if (isTRUE(any(abs(result[["generalLoadings"]]) >= 0.999, na.rm = TRUE)))
+    schmidTable$addFootnote(gettext("The loading of at least one factor on the general factor is (almost) 1, so that factor has (almost) no variance of its own. This can indicate a Heywood case."),
+                            symbol = gettext("<em>Warning:</em>"))
+
+  generalTable[["factor"]] <- gettextf("Factor %i", groupFactor)
+  generalTable[["g"]]      <- result[["generalLoadings"]]
+}
+
 .efaEigenTable <- function(modelContainer, dataset, options, ready) {
 
   if (!is.null(modelContainer[["eigenTable"]])) return()
 
   eigenTable <- createJaspTable(gettext("Factor Characteristics"))
-  eigenTable$addColumnInfo(name = "comp", title = "",                         type = "string")
+  eigenTable$addColumnInfo(name = "comp",       title = "",                    type = "string")
+  eigenTable$addColumnInfo(name = "eigenvalue", title = gettext("Eigenvalue"), type = "number")
 
   # if a rotation is used, the table needs more columns
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
   if (rotate != "none") {
-    overTitleA <- gettext("Unrotated solution")
-    overTitleB <- gettext("Rotated solution")
-    eigenTable$addColumnInfo(name = "sslU", title = gettext("Eigenvalue"),  type = "number", overtitle = overTitleA)
+    overTitleA <- gettext("Unrotated Solution")
+    overTitleB <- gettext("Rotated Solution")
+    eigenTable$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "sslR", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleB)
@@ -463,20 +656,54 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   efaResults <- modelContainer[["model"]][["object"]]
 
 
-  eigv <- efaResults$values
-  eigv_init <- efaResults$e.values
+  dataEigen  <- efaResults$e.values
   Vaccounted <- efaResults[["Vaccounted"]]
-  idx <- seq_len(efaResults[["factors"]])
+  idx        <- seq_len(efaResults[["factors"]])
 
-  eigenTable[["comp"]] <- paste("Factor", idx)
-  eigenTable[["sslU"]] <- eigv[idx]
-  eigenTable[["propU"]] <- eigv[idx] / sum(eigv_init)
-  eigenTable[["cumpU"]] <- cumsum(eigv)[idx] / sum(eigv_init)
+  sslUnrotated <- try(.efaUnrotatedSsLoadings(efaResults, options))
+  if (isTryError(sslUnrotated)) {
+    eigenTable$setError(gettextf("The unrotated solution could not be computed. Internal error message: %s",
+                                 .extractErrorMessage(sslUnrotated)))
+    return()
+  }
+
+  matrixLabel <- switch(options[["baseDecompositionOn"]],
+                        "correlationMatrix"                      = gettext("correlation matrix"),
+                        "covarianceMatrix"                       = gettext("covariance matrix"),
+                        "polychoricTetrachoricCorrelationMatrix" = gettext("polychoric/tetrachoric correlation matrix"))
+  eigenTable$addFootnote(gettextf("The eigenvalues are those of the %s.", matrixLabel))
+
+  eigenTable[["comp"]]       <- paste("Factor", idx)
+  eigenTable[["eigenvalue"]] <- dataEigen[idx]
+  eigenTable[["sslU"]]       <- sslUnrotated[idx]
+  eigenTable[["propU"]]      <- sslUnrotated[idx] / sum(dataEigen)
+  eigenTable[["cumpU"]]      <- cumsum(sslUnrotated)[idx] / sum(dataEigen)
   if (rotate != "none") {
     eigenTable[["sslR"]] <- Vaccounted["SS loadings", idx]
     eigenTable[["propR"]] <- Vaccounted["Proportion Var", idx]
     eigenTable[["cumpR"]] <- if (efaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
+}
+
+# psych::fa only returns the sums of squared loadings of the rotated solution. The extraction does not depend on
+# the rotation, so the unrotated solution is refitted from the matrix stored in the result.
+.efaUnrotatedSsLoadings <- function(efaResults, options) {
+  unrotated <- efaResults
+
+  if (efaResults[["rotation"]] != "none" && efaResults[["factors"]] > 1L) {
+    unrotated <- suppressWarnings(psych::fa(
+      r        = efaResults[["r"]],
+      nfactors = efaResults[["factors"]],
+      rotate   = "none",
+      scores   = "none",
+      covar    = options[["baseDecompositionOn"]] == "covarianceMatrix",
+      fm       = efaResults[["fm"]],
+      n.obs    = efaResults[["n.obs"]],
+      np.obs   = efaResults[["np.obs"]]
+    ))
+  }
+
+  return(colSums(unclass(unrotated[["loadings"]])^2))
 }
 
 .efaCorrTable <- function(modelContainer, dataset, options, ready) {

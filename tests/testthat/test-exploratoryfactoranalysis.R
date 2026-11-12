@@ -13,6 +13,7 @@ defaultOptions <- list(
   rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   factorStructure = FALSE,
+  schmidLeimanTransformation = FALSE,
   factorCorrelations = FALSE,
   fitIndices = FALSE,
   residualMatrix = FALSE,
@@ -21,8 +22,12 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "",
+  scoreSavedToDataImputation = "none",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
@@ -59,10 +64,10 @@ test_that("Factor Correlations table results match", {
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.211560139237578, 0.215203868463381, 0.211560139237578,
-                                      0.215203868463381, 1.48092097466305, 1.50642707924367, "Factor 2",
-                                      0.366100386048402, 0.366966592875577, 0.154540246810824, 0.151762724412196,
-                                      1.08178172767577, 1.06233907088537))
+                                 list("Factor 1", 0.211560139238448, 0.214456283799968, 1.765453969821246,
+                                      0.211560139238448, 0.214456283799968, 1.480920974669139, 1.501193986599778,
+                                      "Factor 2", 0.366100386049262, 0.366100386049289, 1.310153052198495,
+                                      0.15454024681081, 0.15164410224932, 1.081781727675693, 1.061508715745243))
 })
 
 test_that("Additional fit indices table results match", {
@@ -221,9 +226,9 @@ results <- runAnalysis("exploratoryFactorAnalysis", testthat::test_path("holzing
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.314163998816934, 0.314163998816934, 2.8274759893524,
-                                      "Factor 2", 0.449126711506193, 0.13496271268926, 1.21466441420334,
-                                      "Factor 3", 0.539738017727469, 0.090611306221276, 0.815501755991485
+                                 list("Factor 1", 0.314163647589992, 3.216344181437706, 0.314163647589992, 2.827472828309932,
+                                      "Factor 2", 0.449126418894596, 1.638713221526056, 0.134962771304604, 1.214664941741433,
+                                      "Factor 3", 0.539737894145641, 1.365159347786247, 0.090611475251045, 0.815503277259405
                                  ))
 })
 
@@ -270,10 +275,10 @@ results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTes
 test_that("Factor Characteristics table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.237444621938795, 0.238183139137491, 0.237444621938795,
-                                      0.238183139137491, 1.42466773163277, 1.42909883482494, "Factor 2",
-                                      0.411139518227707, 0.411182023092321, 0.173694896288912, 0.17299888395483,
-                                      1.04216937773347, 1.03799330372898))
+                                 list("Factor 1", 0.23744462193867, 0.23818022169266, 1.78311572348898,
+                                      0.23744462193867, 0.23818022169266, 1.42466773163202, 1.42908133015596,
+                                      "Factor 2", 0.411139518227585, 0.411139518227585, 1.289241168930776,
+                                      0.173694896288915, 0.172959296534925, 1.042169377733492, 1.037755779209552))
 })
 
 test_that("Mardia's Test of Multivariate Normality table results match with poly cor", {
@@ -316,18 +321,23 @@ cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "FA",
+  scoreSavedToDataImputation = "none",
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   dataType = "varianceCovariance",
   factorCorrelations = FALSE,
   loadingOrder = "variables",
   factorStructure = FALSE,
+  schmidLeimanTransformation = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
   kaiserMeyerOlkinTest = FALSE,
   loadingsDisplayLimit = 0.1,
   manualNumberOfFactors = 1,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   naAction = "pairwise",
   rotationMethodOblique = "promax",
   rotationMethodOrthogonal = "none",
@@ -348,7 +358,7 @@ test_that("Factor Characteristics table results match", {
   skip("Skip test because columnIndexInData does not play nice with jaspTools yet")
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
    jaspTools::expect_equal_tables(table,
-                                 list("Factor 1", 0.292468690109419, 0.292468690109419, 2.63221821098477
+                                 list("Factor 1", 0.292468456392298, 3.216344181437708, 0.292468456392298, 2.632216107530681
                                  ))
 })
 
@@ -371,4 +381,282 @@ test_that("Factor Loadings table results match", {
                                       "x6", 0.25910333096785, 0.932865463881365, "x7", 0.339140545375525,
                                       0.884983690482392, "x8", 0.467453266437421, 0.781487443696986,
                                       "x9"))
+})
+
+# Adding scores to the data used to fail with the polychoric/tetrachoric correlation matrix (jasp-issues#3859)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
+options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
+options$manualNumberOfFactors <- 2
+options$scoreSavedToData <- TRUE
+
+test_that("Adding scores to the data works with the polychoric/tetrachoric correlation matrix", {
+  for (naAction in c("pairwise", "listwise")) {
+    options$naAction <- naAction
+    set.seed(1)
+    results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = FALSE)
+    expect_identical(results[["status"]], "complete", label = paste("naAction =", naAction))
+  }
+})
+
+# Nominal variables with more than two categories cannot be used with polychoric correlations (jasp-issues#4335)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "contcor2", "facFive")
+options$variables.types <- list("scale", "scale", "nominal")
+
+test_that("Nominal variables with more than two categories give a clear error with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than two categories")
+})
+
+# psych::mixedCor only allows up to 8 categories if there are several ordinal variables (jasp-issues#4005)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "facFive", "facFifty")
+options$variables.types <- list("scale", "ordinal", "ordinal")
+
+test_that("Ordinal variables with more than 8 categories give a clear error with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than 8 categories")
+})
+
+# a single ordinal variable with more than 8 categories (and no nominal variables) is fine for psych::mixedCor (it uses the polyserial correlation)
+options$variables <- c("contcor1", "contcor2", "facFifty")
+options$variables.types <- list("scale", "scale", "ordinal")
+
+test_that("A single ordinal variable with more than 8 categories can be used with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  fitTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]]
+  expect_null(fitTable[["error"]])
+  expect_gt(length(fitTable[["data"]]), 0)
+})
+
+# with a nominal variable psych checks the number of categories of the ordinal variables as well
+options$variables <- c("contcor1", "facFifty", "facGender")
+options$variables.types <- list("scale", "ordinal", "nominal")
+
+test_that("Ordinal variables with more than 8 categories give a clear error if there is also a nominal variable", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than 8 categories")
+})
+
+# Imputing missing values when computing the scores (jasp-issues#4621)
+options <- defaultOptions
+options$variables <- c("contcor1", "contcor2", "debMiss1", "contNormal", "contGamma")
+options$variables.types <- list("scale", "scale", "scale", "scale", "scale")
+options$scoreSavedToData <- TRUE
+options$naAction <- "pairwise"
+
+test_that("Imputing missing values for the scores works", {
+  for (imputation in c("none", "mean", "median")) {
+    options$scoreSavedToDataImputation <- imputation
+    set.seed(1)
+    results <- runAnalysis("exploratoryFactorAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+    expect_identical(results[["status"]], "complete", label = paste("imputation =", imputation))
+  }
+})
+
+# helper for the tests of the imputation of the scores: the scores of the cases without missing values must not change
+expectImputationKeepsScores <- function(model, data, baseDecompositionOn, label) {
+  scores <- function(imputation, naAction = "pairwise") {
+    jaspFactor:::.pcaAndEfaComputeScores(model, data, list(scoreSavedToDataImputation = imputation, naAction = naAction,
+                                                           baseDecompositionOn = baseDecompositionOn))
+  }
+  incomplete    <- !complete.cases(data)
+  noObservation <- rowSums(!is.na(data)) == 0
+  without       <- scores("none")
+
+  expect_true(all(is.na(without[incomplete, ])), label = paste(label, "without imputation"))
+  expect_identical(scores("mean", naAction = "listwise"), without, label = paste(label, "listwise"))
+
+  for (imputation in c("mean", "median")) {
+    imputed <- scores(imputation)
+    expect_false(anyNA(imputed[!noObservation, ]), label = paste(label, imputation, "all cases with data get a score"))
+    expect_true(all(is.na(imputed[noObservation, ])), label = paste(label, imputation, "case without data"))
+    expect_equal(unname(imputed[!incomplete, ]), unname(without[!incomplete, ]), label = paste(label, imputation, "complete cases"))
+  }
+}
+
+simulateScoreData <- function(ordinal = FALSE) {
+  set.seed(1)
+  latent   <- matrix(rnorm(200 * 2), ncol = 2)
+  loadings <- matrix(c(0.8, 0.7, 0.6, 0, 0, 0,
+                       0, 0, 0, 0.7, 0.8, 0.6), nrow = 2, byrow = TRUE)
+  data <- as.data.frame(latent %*% loadings %*% diag(c(1, 2, 3, 1, 5, 1)) + matrix(rnorm(200 * 6, sd = 0.6), ncol = 6))
+  if (ordinal)
+    data[] <- lapply(data, function(x) as.integer(cut(x, quantile(x, 0:5 / 5), include.lowest = TRUE)))
+  data[c(3, 10), 1] <- NA
+  data[c(10, 40), 4] <- NA
+  data[120, ]        <- NA # no observed value at all
+  return(data)
+}
+
+test_that("The scores of cases without missing values do not change when missing values are imputed (EFA)", {
+  data <- simulateScoreData()
+  expectImputationKeepsScores(suppressWarnings(psych::fa(data, nfactors = 2, rotate = "oblimin", scores = TRUE)),
+                              data, "correlationMatrix", "correlation matrix")
+  expectImputationKeepsScores(suppressWarnings(psych::fa(data, nfactors = 2, rotate = "varimax", covar = TRUE, scores = TRUE)),
+                              data, "covarianceMatrix", "covariance matrix")
+
+  # psych does not return scores for a model that is based on a correlation matrix, as with the polychoric option
+  dataOrdinal <- simulateScoreData(ordinal = TRUE)
+  rho <- suppressWarnings(psych::mixedCor(dataOrdinal, p = names(dataOrdinal))[["rho"]])
+  expectImputationKeepsScores(suppressWarnings(psych::fa(r = rho, nfactors = 2, rotate = "oblimin", n.obs = nrow(dataOrdinal))),
+                              dataOrdinal, "polychoricTetrachoricCorrelationMatrix", "polychoric matrix")
+})
+
+test_that("Imputation replaces the missing values by the mean or median of the variable before the scores are computed", {
+  data   <- simulateScoreData()
+  fit    <- suppressWarnings(psych::fa(data, nfactors = 2, rotate = "oblimin", scores = TRUE))
+  z      <- scale(as.matrix(data))
+
+  for (imputation in c("mean", "median")) {
+    scores <- jaspFactor:::.pcaAndEfaComputeScores(fit, data, list(scoreSavedToDataImputation = imputation, naAction = "pairwise",
+                                                                    baseDecompositionOn = "correlationMatrix"))
+    fill <- if (imputation == "mean") mean else median
+    dataImputed <- data
+    for (i in seq_along(dataImputed)) dataImputed[is.na(dataImputed[[i]]), i] <- fill(data[[i]], na.rm = TRUE)
+    zImputed <- sweep(sweep(as.matrix(dataImputed), 2, attr(z, "scaled:center")), 2, attr(z, "scaled:scale"), "/")
+    expected <- zImputed %*% fit[["weights"]]
+    expected[rowSums(!is.na(data)) == 0, ] <- NA
+    expect_equal(unname(scores), unname(expected), label = imputation)
+  }
+})
+
+# Schmid-Leiman transformation (jasp-issues#4621)
+test_that("The Schmid-Leiman result is based on the oblique solution and needs at least three factors", {
+  fit <- suppressWarnings(suppressMessages(psych::fa(psych::Thurstone, nfactors = 3, n.obs = 213, rotate = "oblimin")))
+  options <- list(manualNumberOfFactors = 3, rotationMethod = "oblique")
+  result   <- jaspFactor:::.efaSchmidLeimanResult(fit, options)
+  expected <- suppressMessages(psych::schmid(fit))
+
+  expect_equal(result[["solution"]], expected[["sl"]])
+  expect_equal(result[["generalLoadings"]], as.numeric(expected[["gloading"]]))
+  expect_equal(result[["nFactors"]], 3)
+  expect_equal(unname(result[["solution"]]["Sentences", "g"]), 0.709, tolerance = 0.01)
+  # general and group factor loadings account for the communalities
+  expect_equal(unname(rowSums(result[["solution"]][, c("g", "F1*", "F2*", "F3*")]^2)), unname(result[["solution"]][, "h2"]))
+
+  expect_match(jaspFactor:::.efaSchmidLeimanResult(fit, list(manualNumberOfFactors = 2, rotationMethod = "oblique")), "at least three factors")
+  fitOrthogonal <- suppressWarnings(suppressMessages(psych::fa(psych::Thurstone, nfactors = 3, n.obs = 213, rotate = "varimax")))
+  expect_match(jaspFactor:::.efaSchmidLeimanResult(fitOrthogonal, list(manualNumberOfFactors = 3, rotationMethod = "orthogonal")), "oblique rotation")
+})
+
+test_that("The uniquenesses of the Schmid-Leiman solution are right for a covariance matrix", {
+  data <- read.csv(testthat::test_path("holzingerswineford.csv"))[, paste0("x", 1:9)]
+  fit  <- suppressWarnings(suppressMessages(psych::fa(data, nfactors = 3, rotate = "oblimin", covar = TRUE)))
+  result <- jaspFactor:::.efaSchmidLeimanResult(fit, list(manualNumberOfFactors = 3, rotationMethod = "oblique"))
+
+  # psych::schmid itself gives 1 - h2, which is wrong if the variables do not have a variance of 1
+  expect_equal(result[["uniquenesses"]], unname(fit[["uniquenesses"]]))
+  expect_equal(unname(result[["solution"]][, "h2"]) + result[["uniquenesses"]], unname(diag(stats::cov(data))), tolerance = 1e-6)
+})
+
+test_that("The options of the new tables and plots are optional (for example in options of old JASP files)", {
+  modelContainer <- jaspBase::createJaspContainer()
+  expect_null(jaspFactor:::.efaSchmidLeimanTables(modelContainer, NULL, list(), TRUE))
+  expect_null(jaspFactor:::.efaMahalanobisTable(modelContainer, NULL, list(), TRUE))
+  expect_null(jaspFactor:::.efaMahalanobisPlot(modelContainer, NULL, list(), TRUE))
+})
+
+test_that("The Mahalanobis table and plot are not made for covariance matrix input", {
+  modelContainer <- jaspBase::createJaspContainer()
+  options <- list(mahalanobisOutlier = TRUE, mahalanobisOutlierPlot = TRUE, dataType = "varianceCovariance")
+  jaspFactor:::.efaMahalanobisTable(modelContainer, NULL, options, TRUE)
+  jaspFactor:::.efaMahalanobisPlot(modelContainer, NULL, options, TRUE)
+  expect_null(modelContainer[["mahalanobisTable"]])
+  expect_null(modelContainer[["mahalanobisPlot"]])
+})
+
+options <- defaultOptions
+options$variables <- paste0("x", 1:9)
+options$variables.types <- as.list(rep("scale", 9))
+options$manualNumberOfFactors <- 3
+options$rotationMethod <- "oblique"
+options$schmidLeimanTransformation <- TRUE
+
+test_that("The Schmid-Leiman tables are filled", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  container <- results[["results"]][["modelContainer"]][["collection"]]
+  expect_length(container[["modelContainer_schmidLeimanTable"]][["data"]], 9)
+  expect_length(container[["modelContainer_schmidLeimanGeneralTable"]][["data"]], 3)
+  expect_null(container[["modelContainer_schmidLeimanTable"]][["error"]])
+})
+
+test_that("The Schmid-Leiman transformation gives a clear error with fewer than three factors", {
+  options$manualNumberOfFactors <- 2
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_schmidLeimanTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "at least three factors")
+})
+
+# Mahalanobis outliers (jasp-issues#4621)
+test_that("The Mahalanobis distances are those of psych and the outliers are found", {
+  set.seed(1)
+  data <- as.data.frame(matrix(rnorm(60 * 4), ncol = 4))
+  data[7, ] <- data[7, ] + 6 # an outlier
+  data[12, 2] <- NA          # a case with a missing value is not used
+  options <- list(dataType = "raw")
+  result <- jaspFactor:::.efaMahalanobisResult(data, options)
+  complete <- data[-12, ]
+
+  expect_equal(result[["nComplete"]], 59)
+  expect_equal(result[["nTotal"]], 60)
+  expect_equal(result[["df"]], 4)
+  expect_equal(result[["distances"]][["distance"]], unname(stats::mahalanobis(complete, colMeans(complete), stats::cov(complete))))
+  expect_equal(result[["distances"]][["p"]], stats::pchisq(result[["distances"]][["distance"]], df = 4, lower.tail = FALSE))
+  expect_identical(result[["distances"]][["case"]], rownames(complete))
+  expect_identical(result[["distances"]][["case"]][result[["distances"]][["p"]] < 0.001], "7")
+
+  expect_match(jaspFactor:::.efaMahalanobisResult(data, list(dataType = "varianceCovariance")), "raw data")
+  expect_match(jaspFactor:::.efaMahalanobisResult(data[1:3, ], options), "not enough cases")
+  data[["V5"]] <- data[["V1"]] * 2
+  expect_match(jaspFactor:::.efaMahalanobisResult(data, options), "linearly dependent")
+})
+
+test_that("The Mahalanobis Q-Q plot can be built", {
+  set.seed(1)
+  data <- as.data.frame(matrix(rnorm(60 * 4), ncol = 4))
+  data[7, ] <- data[7, ] + 6
+  result <- jaspFactor:::.efaMahalanobisResult(data, list(dataType = "raw"))
+  plot <- jaspFactor:::.efaMahalanobisQQPlot(result, 0.001)
+  expect_s3_class(plot, "ggplot")
+  expect_identical(nrow(plot[["data"]]), 60L)
+  expect_silent(ggplot2::ggplot_build(plot)) # all layers can be built
+})
+
+options <- defaultOptions
+options$variables <- paste0("x", 1:9)
+options$variables.types <- as.list(rep("scale", 9))
+options$mahalanobisOutlier <- TRUE
+options$mahalanobisOutlierPlot <- TRUE
+options$mahalanobisOutlierPValue <- 0.05
+
+test_that("The Mahalanobis outlier table and plot are made", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  container <- results[["results"]][["modelContainer"]][["collection"]]
+  expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
+  expect_gt(length(container[["modelContainer_mahalanobisTable"]][["data"]]), 0)
+  expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
+  expect_false(is.null(container[["modelContainer_mahalanobisPlot"]]))
+  expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
 })

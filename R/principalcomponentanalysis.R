@@ -43,11 +43,13 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .efaKMOtest(              modelContainer, dataset, options, ready)
   .efaBartlett(             modelContainer, dataset, options, ready)
   .efaMardia(               modelContainer, dataset, options, ready)
+  .efaMahalanobisTable(     modelContainer, dataset, options, ready)
+  .efaMahalanobisPlot(      modelContainer, dataset, options, ready)
   .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
   .pcaPathDiagram(          modelContainer, dataset, options, ready)
 
   # data saving
-  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, options, ready)
+  .pcaAndEfaAddScoresToData(jaspResults, modelContainer, dataset, options, ready)
 
 }
 
@@ -74,6 +76,54 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     rownames(dataset) <- colnames(dataset)
     return(dataset)
   }
+}
+
+# Returns an error message if the variable types cannot be used with the polychoric/tetrachoric correlation matrix, else NULL.
+# Polychoric correlations need ordered categories, so nominal variables can only be used if they have two categories (tetrachoric).
+# psych::mixedCor stops if the ordinal variables have more than 8 categories, where it counts the categories as max - min + 1 over all
+# ordinal variables together. It only checks this if there are at least two ordinal variables, or an ordinal and a nominal variable;
+# a single ordinal variable without nominal variables is fine.
+.pcaAndEfaPolyCorMessage <- function(dataset, options) {
+
+  vars     <- unlist(options[["variables"]])
+  varTypes <- unlist(options[["variables.types"]])
+  messages <- character(0)
+
+  nominals <- vars[varTypes == "nominal"]
+  if (length(nominals) > 0) {
+    nLevels <- sapply(dataset[, nominals, drop = FALSE], function(x) length(unique(na.omit(x))))
+    tooMany <- nominals[nLevels > 2]
+    if (length(tooMany) > 0) {
+      messages <- c(messages, gettextf(
+        "The polychoric/tetrachoric correlation matrix cannot be computed because the nominal variable(s) %s have more than two categories. Please change the type of these variables to ordinal.",
+        paste(decodeColNames(tooMany), collapse = ", ")))
+    }
+  }
+
+  ordinals      <- vars[varTypes == "ordinal"]
+  maxCategories <- 8L
+  if (length(ordinals) >= 2 || (length(ordinals) >= 1 && length(nominals) >= 1)) {
+    dataOrdinal <- dataset[, ordinals, drop = FALSE]
+    nCategories <- function(x) suppressWarnings(diff(range(x, na.rm = TRUE)) + 1)
+
+    if (nCategories(unlist(dataOrdinal, use.names = FALSE)) > maxCategories) {
+      tooMany <- ordinals[sapply(dataOrdinal, nCategories) > maxCategories]
+      if (length(tooMany) > 0) {
+        messages <- c(messages, gettextf(
+          "The polychoric/tetrachoric correlation matrix cannot be computed because the ordinal variable(s) %1$s have more than %2$i categories. Please base the analysis on the correlation matrix instead, or change the type of these variables to scale.",
+          paste(decodeColNames(tooMany), collapse = ", "), maxCategories))
+      } else { # the variables use different codes, e.g., 1-5 and 6-10
+        messages <- c(messages, gettextf(
+          "The polychoric/tetrachoric correlation matrix cannot be computed because the category codes of the ordinal variable(s) %1$s together span more than %2$i values. Please recode the variables so that they use the same codes, or base the analysis on the correlation matrix instead.",
+          paste(decodeColNames(ordinals), collapse = ", "), maxCategories))
+      }
+    }
+  }
+
+  if (length(messages) == 0)
+    return(NULL)
+
+  return(paste(messages, collapse = " "))
 }
 
 .pcaAndEfaCoerceToNumeric <- function(x) {
@@ -193,7 +243,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     modelContainer <- jaspResults[["modelContainer"]]
   } else {
     modelContainer <- createJaspContainer()
-    modelContainer$dependOn(c("rotationMethod", "rotationMethodOrthogonal", "rotationMethodOblique", "variables",
+    modelContainer$dependOn(c("rotationMethod", "rotationMethodOrthogonal", "rotationMethodOblique", "variables", "variables.types",
                               "manualNumberOfComponents", "naAction", "baseDecompositionOn",
                               "dataType", "sampleSize"))
     jaspResults[["modelContainer"]] <- modelContainer
@@ -233,6 +283,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
+    polyCorErrmsg <- .pcaAndEfaPolyCorMessage(dataset, options)
+    if (!is.null(polyCorErrmsg)) {
+      modelContainer$setError(polyCorErrmsg)
+      modelContainer[["model"]] <- createJaspState(NA)
+      return(NA)
+    }
     varTypes <- options$variables.types
     vars <- options$variables
     scales <- vars[varTypes == "scale"]
@@ -255,7 +311,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
       if (allSameLevels) {
         errmsgPolyCor <- gettextf(
           "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s",
-          .errTxt)
+          errTxt)
       } else {
         maxLevels <- max(numLevels)
         restrictedLevels <- which(numLevels < maxLevels)
@@ -263,8 +319,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
         errmsgPolyCor <- gettextf("Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s",
                                   restricedItems, errTxt)
       }
-      modelContainer$setError(errmsgPolyCor)
+    } else {
+      errmsgPolyCor <- gettextf("Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. Internal error message: %s",
+                                errTxt)
     }
+    modelContainer$setError(errmsgPolyCor)
 
     pcaResult <- NA
 
@@ -386,8 +445,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   # check if a rotation is used
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
   if (rotate != "none") {
-    overTitleA <- gettext("Unrotated solution")
-    overTitleB <- gettext("Rotated solution")
+    overTitleA <- gettext("Unrotated Solution")
+    overTitleB <- gettext("Rotated Solution")
 
     eigenTable$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
@@ -625,7 +684,51 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 }
 
 
-.pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, options, ready) {
+# Returns the component/factor scores (cases in rows). With pairwise deletion, the cases with missing values do not get a score,
+# unless the missing values are imputed.
+.pcaAndEfaComputeScores <- function(model, dataset, options) {
+
+  imputation <- options[["scoreSavedToDataImputation"]]
+  # with listwise deletion the cases with missing values are not part of the model, so there is nothing to impute
+  impute     <- isTRUE(imputation %in% c("mean", "median")) && options[["naAction"]] == "pairwise" && anyNA(dataset)
+
+  scores <- model[["scores"]]
+  if (!is.null(scores) && !impute)
+    return(scores)
+
+  if (is.null(scores)) {
+    # psych does not return scores if the model is based on a correlation matrix (as with the polychoric/tetrachoric option),
+    # so they are computed from the data, which is also what psych does when it is given the raw data
+    scoreResult <- psych::factor.scores(dataset, f = model, method = "Thurstone")
+    if (!impute)
+      return(scoreResult[["scores"]])
+
+    weights    <- scoreResult[["weights"]]
+    centerOnly <- FALSE
+  } else {
+    # the scores of psych are the standardized data times the weights of the model
+    # (the centred data for a PCA based on the covariance matrix)
+    weights    <- model[["weights"]]
+    centerOnly <- inherits(model, "principal") && options[["baseDecompositionOn"]] == "covarianceMatrix"
+  }
+
+  # Missing values are replaced by the mean or median of the variable, as psych does with impute. The scores are then computed with
+  # the weights of the model, so that the scores of the cases without missing values do not change
+  # (psych itself rescales the scores of an EFA if it imputes).
+  z      <- scale(as.matrix(dataset), scale = !centerOnly) # mean and sd of the observed values, missing values are kept
+  center <- attr(z, "scaled:center")
+  spread <- if (centerOnly) rep(1, ncol(z)) else attr(z, "scaled:scale")
+  fill   <- if (imputation == "mean") rep(0, ncol(z)) else (apply(dataset, 2, median, na.rm = TRUE) - center) / spread
+  z[is.na(z)] <- rep(fill, each = nrow(z))[is.na(z)]
+
+  imputedScores <- z %*% weights
+  # a case without any observed value does not get a score
+  imputedScores[rowSums(!is.na(dataset)) == 0, ] <- NA
+
+  return(imputedScores)
+}
+
+.pcaAndEfaAddScoresToData <- function(jaspResults, modelContainer, dataset, options, ready) {
 
   if (!ready ||
       !is.null(jaspResults[["addedScoresContainer"]]) ||
@@ -639,9 +742,12 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   colNamesR <- paste0(options[["scoreSavedToDataPrefix"]], "_", seq_len(length(options$variables)))
 
   container    <- createJaspContainer()
-  container$dependOn(optionsFromObject = modelContainer, options = c("scoreSavedToData", "scoreSavedToDataPrefix", "naAction"))
+  container$dependOn(optionsFromObject = modelContainer, options = c("scoreSavedToData", "scoreSavedToDataPrefix", "scoreSavedToDataImputation", "naAction"))
 
-  scores <- modelContainer[["model"]][["object"]][["scores"]]
+  scores <- try(.pcaAndEfaComputeScores(modelContainer[["model"]][["object"]], dataset, options))
+  if (isTryError(scores)) {
+    .quitAnalysis(gettextf("The scores could not be computed. Internal error message: %s", .extractErrorMessage(scores)))
+  }
 
   for (ii in seq_len(ncol(scores))) {
 

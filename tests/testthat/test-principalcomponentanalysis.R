@@ -17,6 +17,9 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   scoreSavedToData = FALSE,
   antiImageCorrelationMatrix = FALSE,
   scoreSavedToDataPrefix = "",
@@ -353,6 +356,9 @@ options <- list(
   loadingsDisplayLimit = 0.1,
   manualNumberOfComponents = 1,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   naAction = "pairwise",
   rotationMethodOblique = "promax",
   rotationMethodOrthogonal = "none",
@@ -529,4 +535,21 @@ test_that("The scores of cases without missing values do not change when missing
   dataOrdinal <- simulateScoreData(ordinal = TRUE)
   expectImputationKeepsScores(suppressWarnings(psych::principal(r = dataOrdinal, nfactors = 2, rotate = "promax", scores = TRUE, cor = "mixed")),
                               dataOrdinal, "polychoricTetrachoricCorrelationMatrix", "polychoric")
+})
+
+options <- defaultOptions
+options$variables <- paste0("x", 1:9)
+options$variables.types <- as.list(rep("scale", 9))
+options$mahalanobisOutlier <- TRUE
+options$mahalanobisOutlierPlot <- TRUE
+options$mahalanobisOutlierPValue <- 0.05
+
+test_that("The Mahalanobis outlier table and plot are made", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  container <- results[["results"]][["modelContainer"]][["collection"]]
+  expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
+  expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
+  expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
 })

@@ -43,6 +43,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   .efaKMOtest(              modelContainer, dataset, options, ready)
   .efaBartlett(             modelContainer, dataset, options, ready)
   .efaMardia(               modelContainer, dataset, options, ready)
+  .efaMahalanobisTable(     modelContainer, dataset, options, ready)
+  .efaMahalanobisPlot(      modelContainer, dataset, options, ready)
   .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
   .pcaPathDiagram(          modelContainer, dataset, options, ready)
 

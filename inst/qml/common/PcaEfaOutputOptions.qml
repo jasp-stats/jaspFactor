@@ -76,6 +76,13 @@ Section
 	{
 		title: qsTr("Plots")
 		info: qsTr("Display plots.")
+		CheckBox
+		{
+			name: "mahalanobisOutlierPlot"
+			label: qsTr("Mahalanobis distance Q-Q plot")
+			enabled: dataRaw
+			info: qsTr("Displays a Q-Q plot of the Mahalanobis distances (D\u00B2) against the quantiles of the chi-square distribution, as the function outlier of the R package psych does. Cases above the diagonal are further from the centre than expected; the worst cases with a p-value below the value for the multivariate outliers are labelled with their case number.")
+		}
 		CheckBox {
 			name: "pathDiagram"
 			label: qsTr("Path diagram")
@@ -102,6 +109,23 @@ Section
 			label: qsTr("Mardia's test")
 			enabled: dataType.value == "raw" 
 			info: qsTr("Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.")
+		}
+		CheckBox
+		{
+			name: "mahalanobisOutlier"
+			label: qsTr("Multivariate outliers (Mahalanobis distance)")
+			enabled: dataRaw
+			info: qsTr("Displays the cases that are multivariate outliers, based on the Mahalanobis distance (D\u00B2) to the centre of the variables, as computed by the function outlier of the R package psych. Only the cases without missing values are used. The distances are compared to a chi-square distribution with as many degrees of freedom as there are variables, and cases with a p-value below the specified value are displayed.")
+			DoubleField
+			{
+				name: "mahalanobisOutlierPValue"
+				label: qsTr("p-value below")
+				defaultValue: 0.001
+				min: 0
+				max: 1
+				decimals: 3
+				info: qsTr("Cases with a p-value of the Mahalanobis distance below this value are displayed as outliers.")
+			}
 		}
 		CheckBox { 
 			name: "antiImageCorrelationMatrix"

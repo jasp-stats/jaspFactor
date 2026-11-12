@@ -22,6 +22,9 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "",
   scoreSavedToDataImputation = "none",
@@ -332,6 +335,9 @@ options <- list(
   loadingsDisplayLimit = 0.1,
   manualNumberOfFactors = 1,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   naAction = "pairwise",
   rotationMethodOblique = "promax",
   rotationMethodOrthogonal = "none",
@@ -570,4 +576,55 @@ test_that("The Schmid-Leiman transformation gives a clear error with fewer than 
   expect_identical(results[["status"]], "complete")
   tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_schmidLeimanTable"]][["error"]][["errorMessage"]]
   expect_match(tableError, "at least three factors")
+})
+
+# Mahalanobis outliers (jasp-issues#4621)
+test_that("The Mahalanobis distances are those of psych and the outliers are found", {
+  set.seed(1)
+  data <- as.data.frame(matrix(rnorm(60 * 4), ncol = 4))
+  data[7, ] <- data[7, ] + 6 # an outlier
+  data[12, 2] <- NA          # a case with a missing value is not used
+  options <- list(dataType = "raw")
+  result <- jaspFactor:::.efaMahalanobisResult(data, options)
+  complete <- data[-12, ]
+
+  expect_equal(result[["nComplete"]], 59)
+  expect_equal(result[["nTotal"]], 60)
+  expect_equal(result[["df"]], 4)
+  expect_equal(result[["distances"]][["distance"]], unname(stats::mahalanobis(complete, colMeans(complete), stats::cov(complete))))
+  expect_equal(result[["distances"]][["p"]], stats::pchisq(result[["distances"]][["distance"]], df = 4, lower.tail = FALSE))
+  expect_identical(result[["distances"]][["case"]], rownames(complete))
+  expect_identical(result[["distances"]][["case"]][result[["distances"]][["p"]] < 0.001], "7")
+
+  expect_match(jaspFactor:::.efaMahalanobisResult(data, list(dataType = "varianceCovariance")), "raw data")
+  expect_match(jaspFactor:::.efaMahalanobisResult(data[1:3, ], options), "not enough cases")
+  data[["V5"]] <- data[["V1"]] * 2
+  expect_match(jaspFactor:::.efaMahalanobisResult(data, options), "linearly dependent")
+})
+
+test_that("The Mahalanobis Q-Q plot can be built", {
+  set.seed(1)
+  data <- as.data.frame(matrix(rnorm(60 * 4), ncol = 4))
+  data[7, ] <- data[7, ] + 6
+  result <- jaspFactor:::.efaMahalanobisResult(data, list(dataType = "raw"))
+  plot <- jaspFactor:::.efaMahalanobisQQPlot(result, 0.001)
+  expect_s3_class(plot, "ggplot")
+  expect_identical(nrow(plot[["data"]]), 60L)
+})
+
+options <- defaultOptions
+options$variables <- paste0("x", 1:9)
+options$variables.types <- as.list(rep("scale", 9))
+options$mahalanobisOutlier <- TRUE
+options$mahalanobisOutlierPlot <- TRUE
+options$mahalanobisOutlierPValue <- 0.05
+
+test_that("The Mahalanobis outlier table and plot are made", {
+  set.seed(1)
+  results <- runAnalysis("exploratoryFactorAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  container <- results[["results"]][["modelContainer"]][["collection"]]
+  expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
+  expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
+  expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
 })

@@ -34,6 +34,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   .efaKMOtest(              modelContainer, dataset, options, ready)
   .efaBartlett(             modelContainer, dataset, options, ready)
   .efaMardia(               modelContainer, dataset, options, ready)
+  .efaMahalanobisTable(     modelContainer, dataset, options, ready)
+  .efaMahalanobisPlot(      modelContainer, dataset, options, ready)
   .efaAntiImageCorrelation( modelContainer, dataset, options, ready)
   .efaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
   .efaLoadingsTable(        modelContainer, dataset, options, ready)
@@ -275,6 +277,106 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   mardiaTable[["pval"]] <- c(mar[["p.skew"]], mar[["p.small"]], mar[["p.kurt"]])
 
    mardiaTable$addFootnote(message = gettext("The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."))
+}
+
+# Mahalanobis distances (D^2) of the cases without missing values, and their p-values (chi-square distribution)
+# Returns an error message if they cannot be computed
+.efaMahalanobisResult <- function(dataset, options) {
+
+  if (options[["dataType"]] != "raw")
+    return(gettext("The Mahalanobis distances need raw data."))
+
+  x <- as.data.frame(dataset[stats::complete.cases(dataset), , drop = FALSE])
+  if (nrow(x) <= ncol(x))
+    return(gettext("There are not enough cases without missing values to compute the Mahalanobis distances."))
+
+  distances <- try(psych::outlier(x, plot = FALSE), silent = TRUE)
+  if (isTryError(distances))
+    return(gettextf("The Mahalanobis distances could not be computed, probably because the variables are linearly dependent. Internal error message: %s",
+                    .extractErrorMessage(distances)))
+
+  result <- data.frame(
+    case     = rownames(x),
+    distance = as.numeric(distances),
+    p        = stats::pchisq(as.numeric(distances), df = ncol(x), lower.tail = FALSE),
+    stringsAsFactors = FALSE
+  )
+
+  return(list(distances = result, nComplete = nrow(x), nTotal = nrow(dataset), df = ncol(x)))
+}
+
+.efaMahalanobisTable <- function(modelContainer, dataset, options, ready) {
+  if (!options[["mahalanobisOutlier"]] || !is.null(modelContainer[["mahalanobisTable"]])) return()
+
+  outlierTable <- createJaspTable(gettext("Multivariate Outliers (Mahalanobis Distance)"))
+  outlierTable$dependOn(c("mahalanobisOutlier", "mahalanobisOutlierPValue"))
+  outlierTable$position <- 0.6
+  outlierTable$info <- gettext("Cases that are multivariate outliers: the Mahalanobis distance (D\u00B2) of the case to the centre of the variables, and its p-value from a chi-square distribution with as many degrees of freedom as there are variables.")
+  outlierTable$addColumnInfo(name = "case",     title = gettext("Case"), type = "string")
+  outlierTable$addColumnInfo(name = "distance", title = "D\u00B2",       type = "number", format = "dp:3")
+  outlierTable$addColumnInfo(name = "p",        title = gettext("p"),    type = "number", format = "dp:3;p:.001")
+  modelContainer[["mahalanobisTable"]] <- outlierTable
+
+  if (!ready) return()
+
+  result <- .efaMahalanobisResult(dataset, options)
+  if (is.character(result)) {
+    outlierTable$setError(result)
+    return()
+  }
+
+  cutoff   <- options[["mahalanobisOutlierPValue"]]
+  outliers <- result[["distances"]][result[["distances"]][["p"]] < cutoff, ]
+  outliers <- outliers[order(outliers[["distance"]], decreasing = TRUE), ]
+  outlierTable$setData(outliers)
+
+  outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values (of %2$i cases) and a chi-square distribution with %3$i degrees of freedom. Cases with a p-value below %4$s are displayed.",
+                                    result[["nComplete"]], result[["nTotal"]], result[["df"]], format(cutoff)))
+  if (nrow(outliers) == 0)
+    outlierTable$addFootnote(gettext("There are no multivariate outliers."))
+}
+
+.efaMahalanobisPlot <- function(modelContainer, dataset, options, ready) {
+  if (!options[["mahalanobisOutlierPlot"]] || !is.null(modelContainer[["mahalanobisPlot"]])) return()
+
+  qqPlot <- createJaspPlot(title = gettext("Mahalanobis Distance Q-Q Plot"), width = 480, height = 320)
+  qqPlot$dependOn(c("mahalanobisOutlierPlot", "mahalanobisOutlierPValue"))
+  qqPlot$position <- 6
+  modelContainer[["mahalanobisPlot"]] <- qqPlot
+
+  if (!ready) return()
+
+  result <- .efaMahalanobisResult(dataset, options)
+  if (is.character(result)) {
+    qqPlot$setError(result)
+    return()
+  }
+
+  qqPlot$plotObject <- .efaMahalanobisQQPlot(result, options[["mahalanobisOutlierPValue"]])
+}
+
+.efaMahalanobisQQPlot <- function(result, cutoff) {
+
+  distances <- result[["distances"]][order(result[["distances"]][["distance"]]), ]
+  distances[["theoretical"]] <- stats::qchisq(stats::ppoints(nrow(distances)), df = result[["df"]])
+
+  # label the worst outliers
+  outliers <- distances[distances[["p"]] < cutoff, ]
+  labelled <- utils::tail(outliers, 5)
+
+  plot <- ggplot2::ggplot(distances, ggplot2::aes(x = theoretical, y = distance)) +
+    ggplot2::geom_abline(intercept = 0, slope = 1, colour = "grey") +
+    ggplot2::geom_point(size = 2) +
+    ggplot2::labs(x = gettext("Chi-square quantiles"), y = "Mahalanobis D\u00B2") +
+    ggplot2::scale_x_continuous(breaks = jaspGraphs::getPrettyAxisBreaks(distances[["theoretical"]])) +
+    ggplot2::scale_y_continuous(breaks = jaspGraphs::getPrettyAxisBreaks(c(distances[["distance"]], distances[["theoretical"]]))) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
+
+  if (nrow(labelled) > 0)
+    plot <- plot + ggplot2::geom_text(data = labelled, ggplot2::aes(label = case), hjust = 1.4, size = 3.5)
+
+  return(plot)
 }
 
 .efaAntiImageCorrelation <- function(modelContainer, dataset, options, ready) {

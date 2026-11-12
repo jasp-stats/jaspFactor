@@ -476,9 +476,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   }
 
   matrixLabel <- switch(options[["baseDecompositionOn"]],
-                        "correlationMatrix"                = gettext("correlation matrix"),
-                        "covarianceMatrix"                 = gettext("covariance matrix"),
-                        "polyTetrachoricCorrelationMatrix" = gettext("polychoric/tetrachoric correlation matrix"))
+                        "correlationMatrix"                      = gettext("correlation matrix"),
+                        "covarianceMatrix"                       = gettext("covariance matrix"),
+                        "polychoricTetrachoricCorrelationMatrix" = gettext("polychoric/tetrachoric correlation matrix"))
   eigenTable$addFootnote(gettextf("The eigenvalues are those of the %s.", matrixLabel))
 
   eigenTable[["comp"]]       <- paste("Factor", idx)

@@ -19,8 +19,6 @@
 
 #' Principal Component Analysis
 #'
-#' @param addScoresToData, Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
-#'    Defaults to \code{FALSE}.
 #' @param antiImageCorrelationMatrix, Contains the negative partial correlations between pairs of variables after accounting for the effects of all other variables in the dataset. High values in the anti-image correlation matrix indicate that a variable might be redundant or have too much shared variance with other variables.
 #'    Defaults to \code{FALSE}.
 #' @param bartlettTest, Determines if the data correlation matrix is the identity matrix, meaning, if the variables are related or not. A significant result means the correlation matrix is unlike the identity matrix.
@@ -29,7 +27,7 @@
 #' \itemize{
 #'   \item \code{"correlationMatrix"}: The correlation matrix is used to decompose the data into components/factors.
 #'   \item \code{"covarianceMatrix"}: The covariance matrix is used to decompose the data into components/factors.
-#'   \item \code{"polyTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
+#'   \item \code{"polychoricTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
 #' }
 #' @param componentCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed.
 #'    Defaults to \code{FALSE}.
@@ -55,6 +53,11 @@
 #'    Defaults to \code{FALSE}.
 #' @param kaiserMeyerOlkinTest, Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables. Produces a measure of sampling adequacy (MSA) as the proportion of common variance among variables is computed for all variables; values closer to 1 are desired.
 #'    Defaults to \code{FALSE}.
+#' @param loadingOrder, Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
+#' \itemize{
+#'   \item \code{"size"}
+#'   \item \code{"variables"}
+#' }
 #' @param loadingsDisplayLimit, Loadings below this value will not be displayed in the output table.
 #' @param manualNumberOfComponents, The number of components to extract. To determine this number, use the Number of Factors/Components analysis.
 #' @param mardiaTest, Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.
@@ -63,11 +66,6 @@
 #' \itemize{
 #'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
 #'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
-#' }
-#' @param orderLoadingsBy, Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
-#' \itemize{
-#'   \item \code{"size"}
-#'   \item \code{"variables"}
 #' }
 #' @param pathDiagram, By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed.
 #'    Defaults to \code{FALSE}.
@@ -78,12 +76,12 @@
 #'   \item \code{"orthogonal"}: This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.
 #'   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 #' }
+#' @param scoreSavedToData, Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
+#'    Defaults to \code{FALSE}.
 #' @param variables, In this box, the variables to perform the analysis on are selected
 principalComponentAnalysis <- function(
           data = NULL,
           version = "1",
-          addScoresToData = FALSE,
-          addScoresToDataPrefix = "PC",
           antiImageCorrelationMatrix = FALSE,
           bartlettTest = FALSE,
           baseDecompositionOn = "correlationMatrix",
@@ -93,19 +91,21 @@ principalComponentAnalysis <- function(
           factoringMethod = "minimumResidual",
           fitIndices = FALSE,
           kaiserMeyerOlkinTest = FALSE,
+          loadingOrder = "size",
           loadingsDisplayLimit = 0.4,
           manualNumberOfComponents = 1,
           mardiaTest = FALSE,
           naAction = "pairwise",
-          obliqueSelector = "promax",
-          orderLoadingsBy = "size",
-          orthogonalSelector = "none",
           pathDiagram = FALSE,
           plotHeight = 320,
           plotWidth = 480,
           residualMatrix = FALSE,
           rotationMethod = "oblique",
+          rotationMethodOblique = "promax",
+          rotationMethodOrthogonal = "none",
           sampleSize = 200,
+          scoreSavedToData = FALSE,
+          scoreSavedToDataPrefix = "PC",
           variables = list(types = list(), value = list())) {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
@@ -117,7 +117,7 @@ principalComponentAnalysis <- function(
       jaspBase::storeDataSet(data)
    }
 
-   optionsWithFormula <- c("factoringMethod", "obliqueSelector", "orthogonalSelector", "variables")
+   optionsWithFormula <- c("factoringMethod", "rotationMethodOblique", "rotationMethodOrthogonal", "variables")
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 

@@ -7,8 +7,6 @@
 principalComponentAnalysis(
   data = NULL,
   version = "1",
-  addScoresToData = FALSE,
-  addScoresToDataPrefix = "PC",
   antiImageCorrelationMatrix = FALSE,
   bartlettTest = FALSE,
   baseDecompositionOn = "correlationMatrix",
@@ -18,26 +16,25 @@ principalComponentAnalysis(
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
   kaiserMeyerOlkinTest = FALSE,
+  loadingOrder = "size",
   loadingsDisplayLimit = 0.4,
   manualNumberOfComponents = 1,
   mardiaTest = FALSE,
   naAction = "pairwise",
-  obliqueSelector = "promax",
-  orderLoadingsBy = "size",
-  orthogonalSelector = "none",
   pathDiagram = FALSE,
   plotHeight = 320,
   plotWidth = 480,
   residualMatrix = FALSE,
   rotationMethod = "oblique",
+  rotationMethodOblique = "promax",
+  rotationMethodOrthogonal = "none",
   sampleSize = 200,
+  scoreSavedToData = FALSE,
+  scoreSavedToDataPrefix = "PC",
   variables = list(types = list(), value = list())
 )
 }
 \arguments{
-\item{addScoresToData, }{Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
-Defaults to \code{FALSE}.}
-
 \item{antiImageCorrelationMatrix, }{Contains the negative partial correlations between pairs of variables after accounting for the effects of all other variables in the dataset. High values in the anti-image correlation matrix indicate that a variable might be redundant or have too much shared variance with other variables.
 Defaults to \code{FALSE}.}
 
@@ -48,7 +45,7 @@ Defaults to \code{FALSE}.}
 \itemize{
   \item \code{"correlationMatrix"}: The correlation matrix is used to decompose the data into components/factors.
   \item \code{"covarianceMatrix"}: The covariance matrix is used to decompose the data into components/factors.
-  \item \code{"polyTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
+  \item \code{"polychoricTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
 }}
 
 \item{componentCorrelations, }{When selecting this option, a table with the correlations between the components/factors will be displayed.
@@ -81,6 +78,12 @@ Defaults to \code{FALSE}.}
 \item{kaiserMeyerOlkinTest, }{Determines how well variables are suited for factor analysis by computing the proportion of common variance between variables. Produces a measure of sampling adequacy (MSA) as the proportion of common variance among variables is computed for all variables; values closer to 1 are desired.
 Defaults to \code{FALSE}.}
 
+\item{loadingOrder, }{Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
+\itemize{
+  \item \code{"size"}
+  \item \code{"variables"}
+}}
+
 \item{loadingsDisplayLimit, }{Loadings below this value will not be displayed in the output table.}
 
 \item{manualNumberOfComponents, }{The number of components to extract. To determine this number, use the Number of Factors/Components analysis.}
@@ -94,12 +97,6 @@ Defaults to \code{FALSE}.}
   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 }}
 
-\item{orderLoadingsBy, }{Either order the loadings by their size from large to small, or by variables, meaning according to their occurence in the variables list.
-\itemize{
-  \item \code{"size"}
-  \item \code{"variables"}
-}}
-
 \item{pathDiagram, }{By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed.
 Defaults to \code{FALSE}.}
 
@@ -111,6 +108,9 @@ Defaults to \code{FALSE}.}
   \item \code{"orthogonal"}: This method produces components that are uncorrelated. For this method, there are several possibilities that can be selected.
   \item \code{"oblique"}: This method produces components that allow for correlation between the components. This method is selected by default. Several possibilities are available. The default is promax.
 }}
+
+\item{scoreSavedToData, }{Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
+Defaults to \code{FALSE}.}
 
 \item{variables, }{In this box, the variables to perform the analysis on are selected}
 }

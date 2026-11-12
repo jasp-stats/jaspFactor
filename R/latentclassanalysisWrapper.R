@@ -19,51 +19,51 @@
 
 #' Latent Class Analysis
 #'
+#' @param classProbabilitySavedToData, Saves K columns of posterior class-membership probabilities (one per class) to the dataset.
+#'    Defaults to \code{FALSE}.
+#' @param classProbabilitySavedToDataPrefix, Columns are named prefix_C1, prefix_C2, …
+#' @param classificationSavedToData, Saves the modal class assignment for each observation as a new nominal column.
+#'    Defaults to \code{FALSE}.
+#' @param classificationSavedToDataColumn, Name of the column holding the most-likely class label for each observation.
 #' @param indicators, Categorical indicator variables for the latent class model. At least two indicators are required.
 #' @param itemResponseProbabilities, Show a table of item-response probabilities for each indicator and latent class.
 #'    Defaults to \code{TRUE}.
 #' @param itemResponseProbabilitiesPlot, Show a grouped bar chart of item-response probabilities, with one panel per latent class.
 #'    Defaults to \code{FALSE}.
+#' @param itemResponseProbabilitiesPlotLabelRotation, Rotate the indicator names on the x-axis by 45 degrees to prevent overlapping.
+#'    Defaults to \code{FALSE}.
+#' @param itemResponseProbabilitiesPlotLegend, Show a legend on the right indicating the color for each response category level.
+#'    Defaults to \code{FALSE}.
 #' @param maxIterations, Maximum iterations for the EM algorithm.
-#' @param missingValues, How to handle rows with missing values on any indicator.
+#' @param naAction, How to handle rows with missing values on any indicator.
 #' \itemize{
 #'   \item \code{"include"}
 #'   \item \code{"listwise"}
 #' }
-#' @param nrep, Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.
 #' @param numberOfClasses, Models with 1, 2, …, K classes are fitted and compared.
-#' @param rotatePlotLabels, Rotate the indicator names on the x-axis by 45 degrees to prevent overlapping.
-#'    Defaults to \code{FALSE}.
-#' @param saveClassProbabilities, Saves K columns of posterior class-membership probabilities (one per class) to the dataset.
-#'    Defaults to \code{FALSE}.
-#' @param saveClassProbabilitiesPrefix, Columns are named prefix_C1, prefix_C2, …
-#' @param saveClassification, Saves the modal class assignment for each observation as a new nominal column.
-#'    Defaults to \code{FALSE}.
-#' @param saveClassificationColumn, Name of the column holding the most-likely class label for each observation.
-#' @param saveForClasses, Which fitted model's results to save.
-#' @param showLevelsLegend, Show a legend on the right indicating the color for each response category level.
-#'    Defaults to \code{FALSE}.
+#' @param numberOfClassesSavedToData, Which fitted model's results to save.
+#' @param numberOfRandomStarts, Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.
 latentClassAnalysis <- function(
           data = NULL,
           version = "1",
+          classProbabilitySavedToData = FALSE,
+          classProbabilitySavedToDataPrefix = "classProb",
+          classificationSavedToData = FALSE,
+          classificationSavedToDataColumn = "classAssignment",
           indicators = list(types = list(), value = list()),
           itemResponseProbabilities = TRUE,
           itemResponseProbabilitiesPlot = FALSE,
+          itemResponseProbabilitiesPlotLabelRotation = FALSE,
+          itemResponseProbabilitiesPlotLegend = FALSE,
           maxIterations = 1000,
-          missingValues = "include",
-          nrep = 1,
+          naAction = "include",
           numberOfClasses = 1,
+          numberOfClassesSavedToData = 1,
+          numberOfRandomStarts = 1,
           plotHeight = 320,
           plotWidth = 480,
-          rotatePlotLabels = FALSE,
-          saveClassProbabilities = FALSE,
-          saveClassProbabilitiesPrefix = "classProb",
-          saveClassification = FALSE,
-          saveClassificationColumn = "classAssignment",
-          saveForClasses = 1,
           seed = 1,
-          setSeed = FALSE,
-          showLevelsLegend = FALSE) {
+          setSeed = FALSE) {
 
    options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL

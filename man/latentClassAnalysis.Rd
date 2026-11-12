@@ -7,27 +7,37 @@
 latentClassAnalysis(
   data = NULL,
   version = "1",
+  classProbabilitySavedToData = FALSE,
+  classProbabilitySavedToDataPrefix = "classProb",
+  classificationSavedToData = FALSE,
+  classificationSavedToDataColumn = "classAssignment",
   indicators = list(types = list(), value = list()),
   itemResponseProbabilities = TRUE,
   itemResponseProbabilitiesPlot = FALSE,
+  itemResponseProbabilitiesPlotLabelRotation = FALSE,
+  itemResponseProbabilitiesPlotLegend = FALSE,
   maxIterations = 1000,
-  missingValues = "include",
-  nrep = 1,
+  naAction = "include",
   numberOfClasses = 1,
+  numberOfClassesSavedToData = 1,
+  numberOfRandomStarts = 1,
   plotHeight = 320,
   plotWidth = 480,
-  rotatePlotLabels = FALSE,
-  saveClassProbabilities = FALSE,
-  saveClassProbabilitiesPrefix = "classProb",
-  saveClassification = FALSE,
-  saveClassificationColumn = "classAssignment",
-  saveForClasses = 1,
   seed = 1,
-  setSeed = FALSE,
-  showLevelsLegend = FALSE
+  setSeed = FALSE
 )
 }
 \arguments{
+\item{classProbabilitySavedToData, }{Saves K columns of posterior class-membership probabilities (one per class) to the dataset.
+Defaults to \code{FALSE}.}
+
+\item{classProbabilitySavedToDataPrefix, }{Columns are named prefix_C1, prefix_C2, …}
+
+\item{classificationSavedToData, }{Saves the modal class assignment for each observation as a new nominal column.
+Defaults to \code{FALSE}.}
+
+\item{classificationSavedToDataColumn, }{Name of the column holding the most-likely class label for each observation.}
+
 \item{indicators, }{Categorical indicator variables for the latent class model. At least two indicators are required.}
 
 \item{itemResponseProbabilities, }{Show a table of item-response probabilities for each indicator and latent class.
@@ -36,35 +46,25 @@ Defaults to \code{TRUE}.}
 \item{itemResponseProbabilitiesPlot, }{Show a grouped bar chart of item-response probabilities, with one panel per latent class.
 Defaults to \code{FALSE}.}
 
+\item{itemResponseProbabilitiesPlotLabelRotation, }{Rotate the indicator names on the x-axis by 45 degrees to prevent overlapping.
+Defaults to \code{FALSE}.}
+
+\item{itemResponseProbabilitiesPlotLegend, }{Show a legend on the right indicating the color for each response category level.
+Defaults to \code{FALSE}.}
+
 \item{maxIterations, }{Maximum iterations for the EM algorithm.}
 
-\item{missingValues, }{How to handle rows with missing values on any indicator.
+\item{naAction, }{How to handle rows with missing values on any indicator.
 \itemize{
   \item \code{"include"}
   \item \code{"listwise"}
 }}
 
-\item{nrep, }{Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.}
-
 \item{numberOfClasses, }{Models with 1, 2, …, K classes are fitted and compared.}
 
-\item{rotatePlotLabels, }{Rotate the indicator names on the x-axis by 45 degrees to prevent overlapping.
-Defaults to \code{FALSE}.}
+\item{numberOfClassesSavedToData, }{Which fitted model's results to save.}
 
-\item{saveClassProbabilities, }{Saves K columns of posterior class-membership probabilities (one per class) to the dataset.
-Defaults to \code{FALSE}.}
-
-\item{saveClassProbabilitiesPrefix, }{Columns are named prefix_C1, prefix_C2, …}
-
-\item{saveClassification, }{Saves the modal class assignment for each observation as a new nominal column.
-Defaults to \code{FALSE}.}
-
-\item{saveClassificationColumn, }{Name of the column holding the most-likely class label for each observation.}
-
-\item{saveForClasses, }{Which fitted model's results to save.}
-
-\item{showLevelsLegend, }{Show a legend on the right indicating the color for each response category level.
-Defaults to \code{FALSE}.}
+\item{numberOfRandomStarts, }{Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.}
 }
 \description{
 Latent Class Analysis

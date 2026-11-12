@@ -55,7 +55,7 @@ Section
 		CheckBox
 		{
 			visible: !pca
-			name: "schmidLeiman"
+			name: "schmidLeimanTransformation"
 			label: qsTr("Schmid-Leiman transformation")
 			info: qsTr("Transforms the oblique factor solution into a hierarchical solution with a general factor (g), which all variables load on, and group factors that are orthogonal to the general factor. The loadings of the variables on the general factor and on the residualized group factors are displayed, together with the communalities (h\u00B2), the uniquenesses (u\u00B2), and the proportion of the common variance that is due to the general factor (p\u00B2). The general factor is the first factor of a factor analysis of the factor correlations of the oblique solution. This needs an oblique rotation and at least three factors (Schmid & Leiman, 1957).")
 		}

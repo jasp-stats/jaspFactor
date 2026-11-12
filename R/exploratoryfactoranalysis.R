@@ -306,7 +306,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 }
 
 .efaMahalanobisTable <- function(modelContainer, dataset, options, ready) {
-  if (!options[["mahalanobisOutlier"]] || !is.null(modelContainer[["mahalanobisTable"]])) return()
+  if (!isTRUE(options[["mahalanobisOutlier"]]) || !is.null(modelContainer[["mahalanobisTable"]])) return()
 
   outlierTable <- createJaspTable(gettext("Multivariate Outliers (Mahalanobis Distance)"))
   outlierTable$dependOn(c("mahalanobisOutlier", "mahalanobisOutlierPValue"))
@@ -337,7 +337,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 }
 
 .efaMahalanobisPlot <- function(modelContainer, dataset, options, ready) {
-  if (!options[["mahalanobisOutlierPlot"]] || !is.null(modelContainer[["mahalanobisPlot"]])) return()
+  if (!isTRUE(options[["mahalanobisOutlierPlot"]]) || !is.null(modelContainer[["mahalanobisPlot"]])) return()
 
   qqPlot <- createJaspPlot(title = gettext("Mahalanobis Distance Q-Q Plot"), width = 480, height = 320)
   qqPlot$dependOn(c("mahalanobisOutlierPlot", "mahalanobisOutlierPValue"))
@@ -554,24 +554,26 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (isTryError(result))
     return(gettextf("The Schmid-Leiman transformation failed. Internal error message: %s", .extractErrorMessage(result)))
 
-  return(list(solution = result[["sl"]], generalLoadings = as.numeric(result[["gloading"]]), nFactors = ncol(efaResults[["loadings"]])))
+  # the uniquenesses of psych::schmid are 1 - h2, which is only right for a correlation matrix
+  return(list(solution = result[["sl"]], generalLoadings = as.numeric(result[["gloading"]]), nFactors = ncol(efaResults[["loadings"]]),
+              uniquenesses = as.numeric(efaResults[["uniquenesses"]])))
 }
 
 .efaSchmidLeimanTables <- function(modelContainer, dataset, options, ready) {
-  if (!options[["schmidLeiman"]] || !is.null(modelContainer[["schmidLeimanTable"]])) return()
+  if (!isTRUE(options[["schmidLeimanTransformation"]]) || !is.null(modelContainer[["schmidLeimanTable"]])) return()
 
   schmidTable <- createJaspTable(gettext("Schmid-Leiman Solution"))
-  schmidTable$dependOn("schmidLeiman")
+  schmidTable$dependOn("schmidLeimanTransformation")
   schmidTable$position <- 2.6
   schmidTable$info <- gettext("Loadings of the variables on the general factor and on the group factors that are orthogonal to it (residualized), with the communalities (h\u00B2), the uniquenesses (u\u00B2) and the proportion of the common variance that is due to the general factor (p\u00B2).")
   schmidTable$addColumnInfo(name = "var", title = "", type = "string")
   modelContainer[["schmidLeimanTable"]] <- schmidTable
 
   generalTable <- createJaspTable(gettext("Schmid-Leiman General Factor Loadings"))
-  generalTable$dependOn("schmidLeiman")
+  generalTable$dependOn("schmidLeimanTransformation")
   generalTable$position <- 2.7
   generalTable$info <- gettext("Loadings of the first-order factors of the oblique solution on the general factor.")
-  generalTable$addColumnInfo(name = "factor", title = "",                     type = "string")
+  generalTable$addColumnInfo(name = "factor", title = "",                        type = "string")
   generalTable$addColumnInfo(name = "g",      title = gettext("General factor"), type = "number", format = "dp:3")
   modelContainer[["schmidLeimanGeneralTable"]] <- generalTable
 
@@ -599,9 +601,14 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   for (i in groupFactor)
     schmidTable[[paste0("f", i)]] <- solution[, paste0("F", i, "*")]
   schmidTable[["h2"]] <- solution[, "h2"]
-  schmidTable[["u2"]] <- solution[, "u2"]
+  schmidTable[["u2"]] <- result[["uniquenesses"]]
   schmidTable[["p2"]] <- solution[, "p2"]
   schmidTable$addFootnote(gettextf("The Schmid-Leiman transformation is based on the oblique factor solution (rotation method %s).", options[["rotationMethodOblique"]]))
+  if (options[["baseDecompositionOn"]] == "covarianceMatrix")
+    schmidTable$addFootnote(gettext("The analysis is based on the covariance matrix, so the loadings, communalities, and uniquenesses are in the units of the variables."))
+  if (any(abs(result[["generalLoadings"]]) >= 0.999))
+    schmidTable$addFootnote(gettext("The loading of at least one factor on the general factor is (almost) 1, so that factor has (almost) no variance of its own. This can indicate a Heywood case."),
+                            symbol = gettext("<em>Warning:</em>"))
 
   generalTable[["factor"]] <- gettextf("Factor %i", groupFactor)
   generalTable[["g"]]      <- result[["generalLoadings"]]

@@ -13,7 +13,7 @@ defaultOptions <- list(
   rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   factorStructure = FALSE,
-  schmidLeiman = FALSE,
+  schmidLeimanTransformation = FALSE,
   factorCorrelations = FALSE,
   fitIndices = FALSE,
   residualMatrix = FALSE,
@@ -328,7 +328,7 @@ options <- list(
   factorCorrelations = FALSE,
   loadingOrder = "variables",
   factorStructure = FALSE,
-  schmidLeiman = FALSE,
+  schmidLeimanTransformation = FALSE,
   factoringMethod = "minimumResidual",
   fitIndices = FALSE,
   kaiserMeyerOlkinTest = FALSE,
@@ -555,12 +555,29 @@ test_that("The Schmid-Leiman result is based on the oblique solution and needs a
   expect_match(jaspFactor:::.efaSchmidLeimanResult(fitOrthogonal, list(manualNumberOfFactors = 3, rotationMethod = "orthogonal")), "oblique rotation")
 })
 
+test_that("The uniquenesses of the Schmid-Leiman solution are right for a covariance matrix", {
+  data <- read.csv(testthat::test_path("holzingerswineford.csv"))[, paste0("x", 1:9)]
+  fit  <- suppressWarnings(suppressMessages(psych::fa(data, nfactors = 3, rotate = "oblimin", covar = TRUE)))
+  result <- jaspFactor:::.efaSchmidLeimanResult(fit, list(manualNumberOfFactors = 3, rotationMethod = "oblique"))
+
+  # psych::schmid itself gives 1 - h2, which is wrong if the variables do not have a variance of 1
+  expect_equal(result[["uniquenesses"]], unname(fit[["uniquenesses"]]))
+  expect_equal(unname(result[["solution"]][, "h2"]) + result[["uniquenesses"]], unname(diag(stats::cov(data))), tolerance = 1e-6)
+})
+
+test_that("The options of the new tables and plots are optional (for example in options of old JASP files)", {
+  modelContainer <- jaspBase::createJaspContainer()
+  expect_null(jaspFactor:::.efaSchmidLeimanTables(modelContainer, NULL, list(), TRUE))
+  expect_null(jaspFactor:::.efaMahalanobisTable(modelContainer, NULL, list(), TRUE))
+  expect_null(jaspFactor:::.efaMahalanobisPlot(modelContainer, NULL, list(), TRUE))
+})
+
 options <- defaultOptions
 options$variables <- paste0("x", 1:9)
 options$variables.types <- as.list(rep("scale", 9))
 options$manualNumberOfFactors <- 3
 options$rotationMethod <- "oblique"
-options$schmidLeiman <- TRUE
+options$schmidLeimanTransformation <- TRUE
 
 test_that("The Schmid-Leiman tables are filled", {
   set.seed(1)

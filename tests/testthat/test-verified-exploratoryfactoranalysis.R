@@ -14,7 +14,7 @@ defaultOptions <- list(
   rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   factorStructure = FALSE,
-  schmidLeiman = FALSE,
+  schmidLeimanTransformation = FALSE,
   factorCorrelations = FALSE,
   fitIndices = FALSE,
   residualMatrix = FALSE,

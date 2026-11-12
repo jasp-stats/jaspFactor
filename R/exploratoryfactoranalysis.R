@@ -633,8 +633,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   # if a rotation is used, the table needs more columns
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
   if (rotate != "none") {
-    overTitleA <- gettext("Unrotated solution")
-    overTitleB <- gettext("Rotated solution")
+    overTitleA <- gettext("Unrotated Solution")
+    overTitleB <- gettext("Rotated Solution")
     eigenTable$addColumnInfo(name = "sslU", title = gettext("SumSq. Loadings"),  type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "cumpU", title = gettext("Cumulative"),      type = "number", overtitle = overTitleA)

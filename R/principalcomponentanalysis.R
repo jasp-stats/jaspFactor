@@ -445,8 +445,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   # check if a rotation is used
   rotate <- options[[if (options[["rotationMethod"]] == "orthogonal") "rotationMethodOrthogonal" else "rotationMethodOblique"]]
   if (rotate != "none") {
-    overTitleA <- gettext("Unrotated solution")
-    overTitleB <- gettext("Rotated solution")
+    overTitleA <- gettext("Unrotated Solution")
+    overTitleB <- gettext("Rotated Solution")
 
     eigenTable$addColumnInfo(name = "eigvU", title = gettext("Eigenvalue"),      type = "number", overtitle = overTitleA)
     eigenTable$addColumnInfo(name = "propU", title = gettext("Proportion var."), type = "number", overtitle = overTitleA)

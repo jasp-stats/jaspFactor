@@ -74,9 +74,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     return(modelContainer[["polyCorState"]][["object"]])
   }
 
-  nominalErrmsg <- .pcaAndEfaNominalPolyCorMessage(dataset, options)
-  if (!is.null(nominalErrmsg)) {
-    modelContainer$setError(nominalErrmsg)
+  polyCorErrmsg <- .pcaAndEfaPolyCorMessage(dataset, options)
+  if (!is.null(polyCorErrmsg)) {
+    modelContainer$setError(polyCorErrmsg)
     modelContainer[["polyCorState"]] <- createJaspState(NULL)
     return(NULL)
   }

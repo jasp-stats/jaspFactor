@@ -76,21 +76,52 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
 }
 
-# polychoric correlations need ordered categories, so nominal variables can only be used if they have two categories (tetrachoric)
-.pcaAndEfaNominalPolyCorMessage <- function(dataset, options) {
+# Returns an error message if the variable types cannot be used with the polychoric/tetrachoric correlation matrix, else NULL.
+# Polychoric correlations need ordered categories, so nominal variables can only be used if they have two categories (tetrachoric).
+# psych::mixedCor stops if the ordinal variables have more than 8 categories, where it counts the categories as max - min + 1 over all
+# ordinal variables together. It only checks this if there are at least two ordinal variables, or an ordinal and a nominal variable;
+# a single ordinal variable without nominal variables is fine.
+.pcaAndEfaPolyCorMessage <- function(dataset, options) {
 
-  nominals <- unlist(options[["variables"]])[unlist(options[["variables.types"]]) == "nominal"]
-  if (length(nominals) == 0)
+  vars     <- unlist(options[["variables"]])
+  varTypes <- unlist(options[["variables.types"]])
+  messages <- character(0)
+
+  nominals <- vars[varTypes == "nominal"]
+  if (length(nominals) > 0) {
+    nLevels <- sapply(dataset[, nominals, drop = FALSE], function(x) length(unique(na.omit(x))))
+    tooMany <- nominals[nLevels > 2]
+    if (length(tooMany) > 0) {
+      messages <- c(messages, gettextf(
+        "The polychoric/tetrachoric correlation matrix cannot be computed because the nominal variable(s) %s have more than two categories. Please change the type of these variables to ordinal.",
+        paste(decodeColNames(tooMany), collapse = ", ")))
+    }
+  }
+
+  ordinals      <- vars[varTypes == "ordinal"]
+  maxCategories <- 8L
+  if (length(ordinals) >= 2 || (length(ordinals) >= 1 && length(nominals) >= 1)) {
+    dataOrdinal <- dataset[, ordinals, drop = FALSE]
+    nCategories <- function(x) suppressWarnings(diff(range(x, na.rm = TRUE)) + 1)
+
+    if (nCategories(unlist(dataOrdinal, use.names = FALSE)) > maxCategories) {
+      tooMany <- ordinals[sapply(dataOrdinal, nCategories) > maxCategories]
+      if (length(tooMany) > 0) {
+        messages <- c(messages, gettextf(
+          "The polychoric/tetrachoric correlation matrix cannot be computed because the ordinal variable(s) %1$s have more than %2$i categories. Please base the analysis on the correlation matrix instead, or change the type of these variables to scale.",
+          paste(decodeColNames(tooMany), collapse = ", "), maxCategories))
+      } else { # the variables use different codes, e.g., 1-5 and 6-10
+        messages <- c(messages, gettextf(
+          "The polychoric/tetrachoric correlation matrix cannot be computed because the category codes of the ordinal variable(s) %1$s together span more than %2$i values. Please recode the variables so that they use the same codes, or base the analysis on the correlation matrix instead.",
+          paste(decodeColNames(ordinals), collapse = ", "), maxCategories))
+      }
+    }
+  }
+
+  if (length(messages) == 0)
     return(NULL)
 
-  nLevels <- sapply(dataset[, nominals, drop = FALSE], function(x) length(unique(na.omit(x))))
-  tooMany <- nominals[nLevels > 2]
-  if (length(tooMany) == 0)
-    return(NULL)
-
-  return(gettextf(
-    "The polychoric/tetrachoric correlation matrix cannot be computed because the nominal variable(s) %s have more than two categories. Please change the type of these variables to ordinal.",
-    paste(decodeColNames(tooMany), collapse = ", ")))
+  return(paste(messages, collapse = " "))
 }
 
 .pcaAndEfaCoerceToNumeric <- function(x) {
@@ -250,9 +281,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   # pre-compute the mixedCor matrix for non-continuous data, because if not the psych package will try to automatically determine
   # the scaling level, and that is error-prone
   if (any(options$variables.types %in% c("ordinal", "nominal")) && options[["baseDecompositionOn"]] == "polychoricTetrachoricCorrelationMatrix") {
-    nominalErrmsg <- .pcaAndEfaNominalPolyCorMessage(dataset, options)
-    if (!is.null(nominalErrmsg)) {
-      modelContainer$setError(nominalErrmsg)
+    polyCorErrmsg <- .pcaAndEfaPolyCorMessage(dataset, options)
+    if (!is.null(polyCorErrmsg)) {
+      modelContainer$setError(polyCorErrmsg)
       modelContainer[["model"]] <- createJaspState(NA)
       return(NA)
     }

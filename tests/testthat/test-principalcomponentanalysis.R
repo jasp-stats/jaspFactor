@@ -426,3 +426,42 @@ test_that("Nominal variables with more than two categories give a clear error wi
   tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
   expect_match(tableError, "more than two categories")
 })
+
+# psych::mixedCor only allows up to 8 categories if there are several ordinal variables (jasp-issues#4005)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "facFive", "facFifty")
+options$variables.types <- list("scale", "ordinal", "ordinal")
+
+test_that("Ordinal variables with more than 8 categories give a clear error with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than 8 categories")
+})
+
+# a single ordinal variable with more than 8 categories (and no nominal variables) is fine for psych::mixedCor (psych::principal treats such a variable as continuous)
+options$variables <- c("contcor1", "contcor2", "facFifty")
+options$variables.types <- list("scale", "scale", "ordinal")
+
+test_that("A single ordinal variable with more than 8 categories can be used with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  fitTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]]
+  expect_null(fitTable[["error"]])
+  expect_gt(length(fitTable[["data"]]), 0)
+})
+
+# with a nominal variable psych checks the number of categories of the ordinal variables as well
+options$variables <- c("contcor1", "facFifty", "facGender")
+options$variables.types <- list("scale", "ordinal", "nominal")
+
+test_that("Ordinal variables with more than 8 categories give a clear error if there is also a nominal variable", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than 8 categories")
+})

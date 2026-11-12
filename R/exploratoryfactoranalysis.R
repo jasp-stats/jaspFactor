@@ -307,6 +307,7 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 .efaMahalanobisTable <- function(modelContainer, dataset, options, ready) {
   if (!isTRUE(options[["mahalanobisOutlier"]]) || !is.null(modelContainer[["mahalanobisTable"]])) return()
+  if (options[["dataType"]] != "raw") return() # the control is disabled, the Mahalanobis distances need raw data
 
   outlierTable <- createJaspTable(gettext("Multivariate Outliers (Mahalanobis Distance)"))
   outlierTable$dependOn(c("mahalanobisOutlier", "mahalanobisOutlierPValue"))
@@ -330,14 +331,20 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   outliers <- outliers[order(outliers[["distance"]], decreasing = TRUE), ]
   outlierTable$setData(outliers)
 
-  outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values (of %2$i cases) and a chi-square distribution with %3$i degrees of freedom. Cases with a p-value below %4$s are displayed.",
-                                    result[["nComplete"]], result[["nTotal"]], result[["df"]], format(cutoff)))
+  if (result[["nComplete"]] == result[["nTotal"]]) {
+    outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values and a chi-square distribution with %2$i degrees of freedom. Cases with a p-value below %3$s are displayed.",
+                                      result[["nComplete"]], result[["df"]], format(cutoff)))
+  } else {
+    outlierTable$addFootnote(gettextf("The Mahalanobis distances are based on the %1$i cases without missing values (of %2$i cases) and a chi-square distribution with %3$i degrees of freedom. Cases with a p-value below %4$s are displayed.",
+                                      result[["nComplete"]], result[["nTotal"]], result[["df"]], format(cutoff)))
+  }
   if (nrow(outliers) == 0)
     outlierTable$addFootnote(gettext("There are no multivariate outliers."))
 }
 
 .efaMahalanobisPlot <- function(modelContainer, dataset, options, ready) {
   if (!isTRUE(options[["mahalanobisOutlierPlot"]]) || !is.null(modelContainer[["mahalanobisPlot"]])) return()
+  if (options[["dataType"]] != "raw") return() # the control is disabled, the Mahalanobis distances need raw data
 
   qqPlot <- createJaspPlot(title = gettext("Mahalanobis Distance Q-Q Plot"), width = 480, height = 320)
   qqPlot$dependOn(c("mahalanobisOutlierPlot", "mahalanobisOutlierPValue"))
@@ -352,7 +359,12 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     return()
   }
 
-  qqPlot$plotObject <- .efaMahalanobisQQPlot(result, options[["mahalanobisOutlierPValue"]])
+  plotObject <- try(.efaMahalanobisQQPlot(result, options[["mahalanobisOutlierPValue"]]))
+  if (isTryError(plotObject)) {
+    qqPlot$setError(gettextf("The plot could not be made. Internal error message: %s", .extractErrorMessage(plotObject)))
+    return()
+  }
+  qqPlot$plotObject <- plotObject
 }
 
 .efaMahalanobisQQPlot <- function(result, cutoff) {
@@ -605,8 +617,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   schmidTable[["p2"]] <- solution[, "p2"]
   schmidTable$addFootnote(gettextf("The Schmid-Leiman transformation is based on the oblique factor solution (rotation method %s).", options[["rotationMethodOblique"]]))
   if (options[["baseDecompositionOn"]] == "covarianceMatrix")
-    schmidTable$addFootnote(gettext("The analysis is based on the covariance matrix, so the loadings, communalities, and uniquenesses are in the units of the variables."))
-  if (any(abs(result[["generalLoadings"]]) >= 0.999))
+    schmidTable$addFootnote(gettext("The analysis is based on the covariance matrix, so the loadings are in the units of the variables, and the communalities and uniquenesses in squared units."))
+  if (isTRUE(any(abs(result[["generalLoadings"]]) >= 0.999, na.rm = TRUE)))
     schmidTable$addFootnote(gettext("The loading of at least one factor on the general factor is (almost) 1, so that factor has (almost) no variance of its own. This can indicate a Heywood case."),
                             symbol = gettext("<em>Warning:</em>"))
 

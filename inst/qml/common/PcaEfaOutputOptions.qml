@@ -81,7 +81,7 @@ Section
 			name: "mahalanobisOutlierPlot"
 			label: qsTr("Mahalanobis distance Q-Q plot")
 			enabled: dataRaw
-			info: qsTr("Displays a Q-Q plot of the Mahalanobis distances (D\u00B2) against the quantiles of the chi-square distribution, as the function outlier of the R package psych does. Cases above the diagonal are further from the centre than expected; the worst cases with a p-value below the value for the multivariate outliers are labelled with their case number.")
+			info: qsTr("Displays a Q-Q plot of the Mahalanobis distances (D\u00B2) against the quantiles of the chi-square distribution, as the function outlier of the R package psych does. Cases above the diagonal are further from the centre than expected; at most the five worst cases with a p-value below the value specified for the multivariate outliers (0.001 by default) are labelled with their case number.")
 		}
 		CheckBox {
 			name: "pathDiagram"

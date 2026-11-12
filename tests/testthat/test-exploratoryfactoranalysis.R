@@ -630,6 +630,7 @@ test_that("The Mahalanobis Q-Q plot can be built", {
   plot <- jaspFactor:::.efaMahalanobisQQPlot(result, 0.001)
   expect_s3_class(plot, "ggplot")
   expect_identical(nrow(plot[["data"]]), 60L)
+  expect_silent(ggplot2::ggplot_build(plot)) # all layers can be built
 })
 
 options <- defaultOptions
@@ -645,6 +646,7 @@ test_that("The Mahalanobis outlier table and plot are made", {
   expect_identical(results[["status"]], "complete")
   container <- results[["results"]][["modelContainer"]][["collection"]]
   expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
+  expect_gt(length(container[["modelContainer_mahalanobisTable"]][["data"]]), 0)
   expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
   expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
 })

@@ -550,6 +550,7 @@ test_that("The Mahalanobis outlier table and plot are made", {
   expect_identical(results[["status"]], "complete")
   container <- results[["results"]][["modelContainer"]][["collection"]]
   expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
+  expect_gt(length(container[["modelContainer_mahalanobisTable"]][["data"]]), 0)
   expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
   expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
 })

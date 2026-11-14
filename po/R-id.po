@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
-"POT-Creation-Date: 2026-06-20 04:52\n"
+"POT-Creation-Date: 2026-11-14 03:29\n"
 "PO-Revision-Date: 2026-07-04 04:35+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
@@ -91,8 +91,20 @@ msgstr "# Faktor"
 msgid "Model fit"
 msgstr "Penyesuaian model"
 
+msgid ""
+"Tests and measures of how well the factor model reproduces the observed data."
+msgstr ""
+
 msgid "Chi-square test"
 msgstr "Uji chi-kuadrat"
+
+msgid ""
+"Chi-square test of the baseline model (the independence model) and of the "
+"factor model. A non-significant p-value for the factor model indicates that "
+"the model fits the data exactly, though this test is sensitive to sample "
+"size. The footnote reports the estimator, the test statistic and the "
+"standard error method that were used."
+msgstr ""
 
 msgid "Model"
 msgstr "Model"
@@ -123,17 +135,49 @@ msgstr ""
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Uji Kaiser-Meyer-Olkin (KMO)"
 
+msgid ""
+"Kaiser-Meyer-Olkin test of sampling adequacy. The measure of sampling "
+"adequacy (MSA) is given for each indicator and overall, and for each group "
+"in a multigroup analysis. Values closer to 1 indicate that the indicators "
+"are well suited for factor analysis."
+msgstr ""
+
 msgid "Bartlett's test of sphericity"
 msgstr "Uji kebulatan Bertlett"
+
+msgid ""
+"Bartlett's test of sphericity tests whether the correlation matrix of the "
+"indicators is an identity matrix. A significant result means that the "
+"correlation matrix is unlike the identity matrix, so that the indicators are "
+"related."
+msgstr ""
 
 msgid "R-Squared"
 msgstr "R-Kuadrat"
 
+msgid ""
+"Proportion of variance in each indicator, and in each first-order factor if "
+"a second-order factor is specified, that is explained by its predictors. "
+"Values range from 0 to 1, with higher values indicating more variance "
+"explained."
+msgstr ""
+
 msgid "Additional fit measures"
 msgstr "Pengukuran penyesuaian tambahan"
 
+msgid ""
+"Additional fit indices and information criteria for evaluating the overall "
+"quality of the model."
+msgstr ""
+
 msgid "Fit indices"
 msgstr "Paskan indeks"
+
+msgid ""
+"Incremental fit indices, which compare the factor model to the baseline "
+"model. Common guidelines are CFI and TLI values above .95, but these should "
+"be interpreted cautiously."
+msgstr ""
 
 msgid "Index"
 msgstr "Indeks"
@@ -144,8 +188,22 @@ msgstr "Nilai"
 msgid "Information criteria"
 msgstr "Kriteria informasi"
 
+msgid ""
+"Log-likelihood, number of free parameters and information criteria (AIC, BIC "
+"and the sample-size adjusted BIC). Lower values of the information criteria "
+"indicate a better trade-off between fit and complexity when comparing models "
+"fitted to the same data. They are only available with ML-type estimators."
+msgstr ""
+
 msgid "Other fit measures"
 msgstr "Pengukuran penyesuaian lain"
+
+msgid ""
+"Other fit measures: RMSEA with its 90%% confidence interval and the p-value "
+"of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. "
+"Common guidelines are RMSEA below .06 and SRMR below .08, but these should "
+"be interpreted cautiously."
+msgstr ""
 
 msgid "Metric"
 msgstr "Metrik"
@@ -243,6 +301,12 @@ msgstr "Hasil RMSEA diskalakan karena estimator kekuatan telah digunakan."
 msgid "Parameter estimates"
 msgstr "Estimasi parameter"
 
+msgid ""
+"Parameter estimates of the CFA model, organized by type: factor loadings, "
+"factor variances and covariances, residual variances and covariances and, if "
+"applicable, intercepts and thresholds."
+msgstr ""
+
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr "Tidak semua sampel bootstrap berhasil: CI berdasarkan %.0f sampel."
 
@@ -254,6 +318,13 @@ msgstr "Estimasi"
 
 msgid "Factor loadings"
 msgstr "Pemuatan faktor"
+
+msgid ""
+"Factor loadings of the indicators on their factors. Each loading reflects "
+"how strongly an indicator is related to its factor. With marker variable "
+"identification, the loading of the first indicator of each factor is fixed "
+"to 1."
+msgstr ""
 
 msgid "Group"
 msgstr "Kelompok"
@@ -282,26 +353,60 @@ msgstr "Batas Atas"
 msgid "Second-order factor loadings"
 msgstr "Urutan-kedua pemuatan faktor"
 
+msgid "Loadings of the first-order factors on the second-order factor."
+msgstr ""
+
 msgid "Factor variances"
 msgstr "Varians faktor"
+
+msgid ""
+"Estimated variances of the factors. They are fixed to 1 when the model is "
+"identified by factor variances."
+msgstr ""
 
 msgid "Factor Covariances"
 msgstr "Kovarians Faktor"
 
+msgid "Estimated covariances between the factors."
+msgstr ""
+
 msgid "Residual variances"
 msgstr "Varians residu"
+
+msgid ""
+"Residual variances of the indicators: the variance that is not explained by "
+"the factors. Negative residual variances (Heywood cases) may indicate model "
+"misspecification."
+msgstr ""
 
 msgid "Residual covariances"
 msgstr "Kovarians residu"
 
+msgid ""
+"Residual covariances between the pairs of indicators that were specified to "
+"covary, i.e., shared variance that is not accounted for by the factors."
+msgstr ""
+
 msgid "Factor Intercepts"
 msgstr "Intersep Faktor"
+
+msgid "Estimated intercepts (means) of the factors in each group."
+msgstr ""
 
 msgid "Intercepts"
 msgstr "Intersep"
 
+msgid "Estimated intercepts (means) of the indicators."
+msgstr ""
+
 msgid "Thresholds"
 msgstr "Ambang Batas"
+
+msgid ""
+"Threshold parameters of the ordinal indicators. They define the cut-points "
+"on the underlying continuous distribution that separate the observed "
+"categories."
+msgstr ""
 
 msgid "Threshold"
 msgstr "Ambang Batas"
@@ -309,8 +414,20 @@ msgstr "Ambang Batas"
 msgid "Modification Indices"
 msgstr "Indeks Modifikasi"
 
+msgid ""
+"Modification indices (MI) estimate the expected decrease of the model chi-"
+"square if a currently fixed parameter were freed. The expected parameter "
+"change (EPC) indicates the approximate value of the freed parameter. Only "
+"modification indices above the cutoff are shown."
+msgstr ""
+
 msgid "Cross-loadings"
 msgstr "Lintas-pemuatan"
+
+msgid ""
+"Modification indices for cross-loadings, i.e., loadings of indicators on "
+"factors they are not assigned to."
+msgstr ""
 
 msgid "Mod. Ind."
 msgstr "Ind. Mod."
@@ -320,6 +437,15 @@ msgstr "EPC"
 
 msgid "Second-order cross-loadings"
 msgstr "Urutan-kedua lintas-pemuatan"
+
+msgid ""
+"Modification indices for second-order cross-loadings, i.e., loadings of "
+"first-order factors on second-order factors they are not assigned to."
+msgstr ""
+
+msgid ""
+"Modification indices for residual covariances between pairs of indicators."
+msgstr ""
 
 msgid "Modification indices"
 msgstr "Indeks modifikasi"
@@ -333,11 +459,24 @@ msgstr "Matriks kovarians tersirat"
 msgid "Implied covariance matrix"
 msgstr "Matriks kovarians tersirat"
 
+msgid ""
+"Covariance matrix implied by the model, shown for each group in a multigroup "
+"analysis. Close correspondence with the observed covariance matrix indicates "
+"good model fit."
+msgstr ""
+
 msgid "Residual covariance matrices"
 msgstr "Matriks kovarians residu"
 
 msgid "Residual covariance matrix"
 msgstr "Matriks kovarians residu"
+
+msgid ""
+"Difference between the observed and the model-implied covariance matrix, "
+"shown for each group in a multigroup analysis. A perfect model shows all 0s; "
+"small residuals indicate that the model reproduces the observed covariances "
+"well."
+msgstr ""
 
 msgid "Plots"
 msgstr "Plot"
@@ -348,17 +487,39 @@ msgstr "Diagram model"
 msgid "Model plot"
 msgstr "Diagram model"
 
+msgid ""
+"Graphical representation of the estimated model, showing the factors "
+"(circles), the indicators (squares) and the paths between them. Shown for "
+"each group in a multigroup analysis."
+msgstr ""
+
 msgid "Misfit plots"
 msgstr "Diagram tidak sesuai"
 
 msgid "Misfit plot"
 msgstr "Diagram tidak sesuai"
 
+msgid ""
+"Residual correlations between the indicators, i.e., the correlations that "
+"remain unexplained by the model. Larger values indicate pairs of indicators "
+"that the model reproduces poorly. Shown for each group in a multigroup "
+"analysis."
+msgstr ""
+
 msgid "Model syntax"
 msgstr "Sintaksis model"
 
+msgid "The lavaan model syntax that corresponds to the specified model."
+msgstr ""
+
 msgid "Average variance extracted"
 msgstr "Varians rata-rata tereksrak"
+
+msgid ""
+"Average variance extracted (AVE): the amount of variance that is captured by "
+"a factor relative to the amount of variance due to measurement error. Values "
+"above .5 are commonly taken to indicate adequate convergent validity."
+msgstr ""
 
 msgid "AVE"
 msgstr "AVE"
@@ -366,11 +527,30 @@ msgstr "AVE"
 msgid "Heterotrait-monotrait ratio"
 msgstr "Rasio heterotret-monotret"
 
+msgid ""
+"Heterotrait-monotrait (HTMT) ratio of correlations for assessing "
+"discriminant validity between the factors. Values clearly below 1 (more "
+"conservatively, below .85 or .90) suggest that the factors are empirically "
+"distinct."
+msgstr ""
+
 msgid "Reliability"
 msgstr "Keandalan"
 
+msgid ""
+"Reliability of each factor and in total. Coefficient ω (omega) allows for "
+"congeneric indicators (unequal loadings) and, with a second-order factor, is "
+"also given for the second-order factor. Coefficient α (alpha) assumes tau-"
+"equivalence (equal loadings). The total test score variance in the "
+"denominator is the observed test score variance, i.e., the summed observed "
+"covariance matrix. Values above .7 are commonly considered acceptable."
+msgstr ""
+
 msgid "Coefficient %s"
 msgstr "Koefisien %s"
+
+msgid "The reliability coefficients could not be computed: %s"
+msgstr ""
 
 msgid "Column name %s already exists in the dataset"
 msgstr "Nama kolom %s sudah ada di rangkaian data"
@@ -397,16 +577,6 @@ msgstr "Estimasi gagal. Pesan galat internal: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Estimasi gagal. Pesan galat internal: %s"
-
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr "Analisis paralel gagal. Pesan galat internal: %s"
-
-msgid ""
-"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
-"%2$s."
-msgstr ""
-"Tidak ada faktor dengan nilai eigen > %1$s. Maksimum nilai eigen "
-"terobservasi sama dengan %2$s."
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Uji Kaiser-Meyer-Olkin"
@@ -511,37 +681,6 @@ msgstr "BIC"
 msgid "Residual Matrix"
 msgstr "Matriks Residu"
 
-msgid "Real data component eigenvalues"
-msgstr "Nilai eigen komponen data asli"
-
-msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr "'*' = %s harus dipertahankan. Hasil dari analisis paralel berbasis PC."
-
-msgid "Real data factor eigenvalues"
-msgstr "Nilai eigen faktor data asli"
-
-msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr "'*' = %s harus dipertahankan. Hasil dari analisis paralel berbasis FA."
-
-msgid "Parallel Analysis"
-msgstr "Analisis Paralel"
-
-msgid "Simulated data mean eigenvalues"
-msgstr "Nilai eigen rerata data tersimulasi"
-
-msgid ""
-"Screeplot not available. \n"
-"Internal error message: %s"
-msgstr ""
-"Diagram Scree tidak tersedia. \n"
-"Pesan galat internal: %s"
-
-msgid "Data"
-msgstr "Data"
-
-msgid "Simulated data from parallel analysis"
-msgstr "Data tersimulasi dari analisis paralel"
-
 msgid "Path Diagram"
 msgstr "Diagram Jalur"
 
@@ -557,8 +696,8 @@ msgid ""
 msgstr ""
 "Statistik penyesuaian untuk setiap model. AIC dan BIC mensansksikan "
 "kemungkinan-log untuk kompleksitas model dan dapat digunakan untuk "
-"membandingkan model dengan jumlah kelas berbeda (lebih rendah lebih baik). G"
-"² adalah statistik kesesuaian rasio-kemungkinan; nilai-p non-signifikan "
+"membandingkan model dengan jumlah kelas berbeda (lebih rendah lebih baik). "
+"G² adalah statistik kesesuaian rasio-kemungkinan; nilai-p non-signifikan "
 "mengindikasikan penyesuaian memadai, meskipun uji ini sensitif ke sel jarang "
 "dan sampel kecil."
 
@@ -641,6 +780,94 @@ msgstr "Tingkat"
 msgid "Column '%s' already exists in the dataset."
 msgstr "Kolom '%s' sudah ada di rangkaian data."
 
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "Analisis paralel gagal. Pesan galat internal: %s"
+
+msgid "Suggested Number of Factors/Components"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Suggested number"
+msgstr ""
+
+msgid "principal component"
+msgstr ""
+
+#, fuzzy
+msgid "factor"
+msgstr "Faktor"
+
+#, fuzzy
+msgid "Parallel analysis (PC-based)"
+msgstr "Analisis Paralel"
+
+#, fuzzy
+msgid "Parallel analysis (FA-based)"
+msgstr "Analisis Paralel"
+
+msgid "Eigenvalue criterion (above %s)"
+msgstr ""
+
+msgid "Velicer's MAP"
+msgstr ""
+
+msgid "Eigenvalue criterion based on %s eigenvalues."
+msgstr ""
+
+msgid "Real data component eigenvalues"
+msgstr "Nilai eigen komponen data asli"
+
+msgid "Real data factor eigenvalues"
+msgstr "Nilai eigen faktor data asli"
+
+msgid "Parallel Analysis"
+msgstr "Analisis Paralel"
+
+msgid "Simulated data mean eigenvalues"
+msgstr "Nilai eigen rerata data tersimulasi"
+
+msgid "Component"
+msgstr "Komponen"
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+msgstr ""
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Velicer's Minimum Average Partial (MAP)"
+msgstr ""
+
+#, fuzzy
+msgid "Components partialled out"
+msgstr "Karakteristik Komponen"
+
+msgid "Average squared partial correlation"
+msgstr ""
+
+msgid ""
+"'*' = number of components suggested for retention, i.e., with the lowest "
+"average squared partial correlation. MAP is always based on principal "
+"components."
+msgstr ""
+
+msgid "Scree plot"
+msgstr "Diagram Scree"
+
+msgid "Data"
+msgstr "Data"
+
+msgid "Simulated data from parallel analysis"
+msgstr "Data tersimulasi dari analisis paralel"
+
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
@@ -676,13 +903,6 @@ msgstr "Data tidak valid: terlalu banyak nilai hilang di variabel %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Data tidak valid: semua variabel adalah kolinear"
 
-msgid ""
-"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
-"%2$s."
-msgstr ""
-"Tidak ada komponen dengan nilai eigen > %1$s. Maksimum nilai eigen "
-"terobservasi sama dengan %2$s."
-
 msgid "Component Loadings"
 msgstr "Pemuatan Komponen"
 
@@ -695,8 +915,33 @@ msgstr "Karakteristik Komponen"
 msgid "Component Correlations"
 msgstr "Korelasi Komponen"
 
-msgid "Scree plot"
-msgstr "Diagram Scree"
+#~ msgid ""
+#~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+#~ "%2$s."
+#~ msgstr ""
+#~ "Tidak ada faktor dengan nilai eigen > %1$s. Maksimum nilai eigen "
+#~ "terobservasi sama dengan %2$s."
 
-msgid "Component"
-msgstr "Komponen"
+#~ msgid ""
+#~ "'*' = %s should be retained. Results from PC-based parallel analysis."
+#~ msgstr ""
+#~ "'*' = %s harus dipertahankan. Hasil dari analisis paralel berbasis PC."
+
+#~ msgid ""
+#~ "'*' = %s should be retained. Results from FA-based parallel analysis."
+#~ msgstr ""
+#~ "'*' = %s harus dipertahankan. Hasil dari analisis paralel berbasis FA."
+
+#~ msgid ""
+#~ "Screeplot not available. \n"
+#~ "Internal error message: %s"
+#~ msgstr ""
+#~ "Diagram Scree tidak tersedia. \n"
+#~ "Pesan galat internal: %s"
+
+#~ msgid ""
+#~ "No components with an eigenvalue > %1$s. Maximum observed eigenvalue "
+#~ "equals %2$s."
+#~ msgstr ""
+#~ "Tidak ada komponen dengan nilai eigen > %1$s. Maksimum nilai eigen "
+#~ "terobservasi sama dengan %2$s."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-06-20 04:52\n"
+"POT-Creation-Date: 2026-11-14 03:29\n"
 "PO-Revision-Date: 2026-08-20 01:31+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -88,8 +88,20 @@ msgstr "因子数"
 msgid "Model fit"
 msgstr "モデルフィット"
 
+msgid ""
+"Tests and measures of how well the factor model reproduces the observed data."
+msgstr ""
+
 msgid "Chi-square test"
 msgstr "カイ二乗検定"
+
+msgid ""
+"Chi-square test of the baseline model (the independence model) and of the "
+"factor model. A non-significant p-value for the factor model indicates that "
+"the model fits the data exactly, though this test is sensitive to sample "
+"size. The footnote reports the estimator, the test statistic and the "
+"standard error method that were used."
+msgstr ""
 
 msgid "Model"
 msgstr "モデル"
@@ -117,17 +129,49 @@ msgstr "%1$s 推定量は %2$s、検定統計量は %3$s、標準誤差の方法
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Kaiser-Meyer-Olkin検定"
 
+msgid ""
+"Kaiser-Meyer-Olkin test of sampling adequacy. The measure of sampling "
+"adequacy (MSA) is given for each indicator and overall, and for each group "
+"in a multigroup analysis. Values closer to 1 indicate that the indicators "
+"are well suited for factor analysis."
+msgstr ""
+
 msgid "Bartlett's test of sphericity"
 msgstr "Bartlettの検定"
+
+msgid ""
+"Bartlett's test of sphericity tests whether the correlation matrix of the "
+"indicators is an identity matrix. A significant result means that the "
+"correlation matrix is unlike the identity matrix, so that the indicators are "
+"related."
+msgstr ""
 
 msgid "R-Squared"
 msgstr "R二乗"
 
+msgid ""
+"Proportion of variance in each indicator, and in each first-order factor if "
+"a second-order factor is specified, that is explained by its predictors. "
+"Values range from 0 to 1, with higher values indicating more variance "
+"explained."
+msgstr ""
+
 msgid "Additional fit measures"
 msgstr "追加の適合度指標"
 
+msgid ""
+"Additional fit indices and information criteria for evaluating the overall "
+"quality of the model."
+msgstr ""
+
 msgid "Fit indices"
 msgstr "適合度指標"
+
+msgid ""
+"Incremental fit indices, which compare the factor model to the baseline "
+"model. Common guidelines are CFI and TLI values above .95, but these should "
+"be interpreted cautiously."
+msgstr ""
 
 msgid "Index"
 msgstr "指標"
@@ -138,8 +182,22 @@ msgstr "値"
 msgid "Information criteria"
 msgstr "情報量規準"
 
+msgid ""
+"Log-likelihood, number of free parameters and information criteria (AIC, BIC "
+"and the sample-size adjusted BIC). Lower values of the information criteria "
+"indicate a better trade-off between fit and complexity when comparing models "
+"fitted to the same data. They are only available with ML-type estimators."
+msgstr ""
+
 msgid "Other fit measures"
 msgstr "その他の適合度指標"
+
+msgid ""
+"Other fit measures: RMSEA with its 90%% confidence interval and the p-value "
+"of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. "
+"Common guidelines are RMSEA below .06 and SRMR below .08, but these should "
+"be interpreted cautiously."
+msgstr ""
 
 msgid "Metric"
 msgstr "指標"
@@ -216,12 +274,14 @@ msgstr "期待される交差検証指数(ECVI)"
 msgid ""
 "Except for the PNFI, the fit indices are scaled because of categorical "
 "variables in the data."
-msgstr "PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている。"
+msgstr ""
+"PNFIを除き、データにはカテゴリー変数があるため、適合指標は標準化されている。"
 
 msgid ""
 "Except for the PNFI, the fit indices are scaled because a robust estimator "
 "was used."
-msgstr "PNFI を除き、頑健推定量を用いたため適合指標はスケーリングされています。"
+msgstr ""
+"PNFI を除き、頑健推定量を用いたため適合指標はスケーリングされています。"
 
 msgid ""
 "The RMSEA results are scaled because of categorical variables in the data."
@@ -232,6 +292,12 @@ msgstr "頑健推定量を用いたため、RMSEA の結果はスケーリング
 
 msgid "Parameter estimates"
 msgstr "パラメータ推定値"
+
+msgid ""
+"Parameter estimates of the CFA model, organized by type: factor loadings, "
+"factor variances and covariances, residual variances and covariances and, if "
+"applicable, intercepts and thresholds."
+msgstr ""
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
@@ -246,6 +312,13 @@ msgstr "推定値"
 
 msgid "Factor loadings"
 msgstr "因子負荷量"
+
+msgid ""
+"Factor loadings of the indicators on their factors. Each loading reflects "
+"how strongly an indicator is related to its factor. With marker variable "
+"identification, the loading of the first indicator of each factor is fixed "
+"to 1."
+msgstr ""
 
 msgid "Group"
 msgstr "群"
@@ -274,26 +347,60 @@ msgstr "上限"
 msgid "Second-order factor loadings"
 msgstr "2次因子負荷量"
 
+msgid "Loadings of the first-order factors on the second-order factor."
+msgstr ""
+
 msgid "Factor variances"
 msgstr "因子の分散"
+
+msgid ""
+"Estimated variances of the factors. They are fixed to 1 when the model is "
+"identified by factor variances."
+msgstr ""
 
 msgid "Factor Covariances"
 msgstr "因子の共分散"
 
+msgid "Estimated covariances between the factors."
+msgstr ""
+
 msgid "Residual variances"
 msgstr "残差分散"
+
+msgid ""
+"Residual variances of the indicators: the variance that is not explained by "
+"the factors. Negative residual variances (Heywood cases) may indicate model "
+"misspecification."
+msgstr ""
 
 msgid "Residual covariances"
 msgstr "残差共分散"
 
+msgid ""
+"Residual covariances between the pairs of indicators that were specified to "
+"covary, i.e., shared variance that is not accounted for by the factors."
+msgstr ""
+
 msgid "Factor Intercepts"
 msgstr "因子の切片"
+
+msgid "Estimated intercepts (means) of the factors in each group."
+msgstr ""
 
 msgid "Intercepts"
 msgstr "切片"
 
+msgid "Estimated intercepts (means) of the indicators."
+msgstr ""
+
 msgid "Thresholds"
 msgstr "閾値"
+
+msgid ""
+"Threshold parameters of the ordinal indicators. They define the cut-points "
+"on the underlying continuous distribution that separate the observed "
+"categories."
+msgstr ""
 
 msgid "Threshold"
 msgstr "しきい値"
@@ -301,8 +408,20 @@ msgstr "しきい値"
 msgid "Modification Indices"
 msgstr "修正指数"
 
+msgid ""
+"Modification indices (MI) estimate the expected decrease of the model chi-"
+"square if a currently fixed parameter were freed. The expected parameter "
+"change (EPC) indicates the approximate value of the freed parameter. Only "
+"modification indices above the cutoff are shown."
+msgstr ""
+
 msgid "Cross-loadings"
 msgstr "クロスした負荷量"
+
+msgid ""
+"Modification indices for cross-loadings, i.e., loadings of indicators on "
+"factors they are not assigned to."
+msgstr ""
 
 msgid "Mod. Ind."
 msgstr "修正指標"
@@ -312,6 +431,15 @@ msgstr "EPC"
 
 msgid "Second-order cross-loadings"
 msgstr "2次のクロスした負荷量"
+
+msgid ""
+"Modification indices for second-order cross-loadings, i.e., loadings of "
+"first-order factors on second-order factors they are not assigned to."
+msgstr ""
+
+msgid ""
+"Modification indices for residual covariances between pairs of indicators."
+msgstr ""
 
 msgid "Modification indices"
 msgstr "修正指数"
@@ -325,11 +453,24 @@ msgstr "モデル共分散行列"
 msgid "Implied covariance matrix"
 msgstr "モデル共分散行列"
 
+msgid ""
+"Covariance matrix implied by the model, shown for each group in a multigroup "
+"analysis. Close correspondence with the observed covariance matrix indicates "
+"good model fit."
+msgstr ""
+
 msgid "Residual covariance matrices"
 msgstr "残差共分散行列"
 
 msgid "Residual covariance matrix"
 msgstr "残差共分散行列"
+
+msgid ""
+"Difference between the observed and the model-implied covariance matrix, "
+"shown for each group in a multigroup analysis. A perfect model shows all 0s; "
+"small residuals indicate that the model reproduces the observed covariances "
+"well."
+msgstr ""
 
 msgid "Plots"
 msgstr "プロット"
@@ -340,17 +481,39 @@ msgstr "モデルプロット"
 msgid "Model plot"
 msgstr "モデルプロット"
 
+msgid ""
+"Graphical representation of the estimated model, showing the factors "
+"(circles), the indicators (squares) and the paths between them. Shown for "
+"each group in a multigroup analysis."
+msgstr ""
+
 msgid "Misfit plots"
 msgstr "不適合プロット"
 
 msgid "Misfit plot"
 msgstr "不適合プロット"
 
+msgid ""
+"Residual correlations between the indicators, i.e., the correlations that "
+"remain unexplained by the model. Larger values indicate pairs of indicators "
+"that the model reproduces poorly. Shown for each group in a multigroup "
+"analysis."
+msgstr ""
+
 msgid "Model syntax"
 msgstr "モデルのシンタックス"
 
+msgid "The lavaan model syntax that corresponds to the specified model."
+msgstr ""
+
 msgid "Average variance extracted"
 msgstr "平均分散抽出"
+
+msgid ""
+"Average variance extracted (AVE): the amount of variance that is captured by "
+"a factor relative to the amount of variance due to measurement error. Values "
+"above .5 are commonly taken to indicate adequate convergent validity."
+msgstr ""
 
 msgid "AVE"
 msgstr "AVE"
@@ -358,11 +521,30 @@ msgstr "AVE"
 msgid "Heterotrait-monotrait ratio"
 msgstr "Heterotrait-monotrait 比"
 
+msgid ""
+"Heterotrait-monotrait (HTMT) ratio of correlations for assessing "
+"discriminant validity between the factors. Values clearly below 1 (more "
+"conservatively, below .85 or .90) suggest that the factors are empirically "
+"distinct."
+msgstr ""
+
 msgid "Reliability"
 msgstr "信頼性"
 
+msgid ""
+"Reliability of each factor and in total. Coefficient ω (omega) allows for "
+"congeneric indicators (unequal loadings) and, with a second-order factor, is "
+"also given for the second-order factor. Coefficient α (alpha) assumes tau-"
+"equivalence (equal loadings). The total test score variance in the "
+"denominator is the observed test score variance, i.e., the summed observed "
+"covariance matrix. Values above .7 are commonly considered acceptable."
+msgstr ""
+
 msgid "Coefficient %s"
 msgstr "係数 %s"
+
+msgid "The reliability coefficients could not be computed: %s"
+msgstr ""
 
 msgid "Column name %s already exists in the dataset"
 msgstr "列名「%s」はデータセットの中にすでにあります"
@@ -380,23 +562,14 @@ msgid ""
 "matrix failed. This might be due to variable(s) %1$s not having the full "
 "range of response categories. Internal error message: %2$s"
 msgstr ""
-"ポリコリック/テトラコリック相関行列の推定に失敗しました。変数 %1$s が回答"
-"カテゴリをすべて含んでいないことが原因かもしれません。内部エラーメッセージ: "
-"%2$s"
+"ポリコリック/テトラコリック相関行列の推定に失敗しました。変数 %1$s が回答カテ"
+"ゴリをすべて含んでいないことが原因かもしれません。内部エラーメッセージ: %2$s"
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr "推定に失敗しました. 内部エラー メッセージ: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr "推定に失敗しました. 内部エラー メッセージ: %s"
-
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr "平行分析に失敗しました. 内部エラー メッセージ: %s"
-
-msgid ""
-"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
-"%2$s."
-msgstr "固有値が %1$s を超える因子はありません。観測された最大固有値は %2$s です。"
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Kaiser-Meyer-Olkin検定"
@@ -499,37 +672,6 @@ msgstr "BIC"
 msgid "Residual Matrix"
 msgstr "残差行列"
 
-msgid "Real data component eigenvalues"
-msgstr "実データ成分の固有値"
-
-msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr "'*' = %s を保持すべきである. PCに基づく平行分析の結果。"
-
-msgid "Real data factor eigenvalues"
-msgstr "実データ因子固有値"
-
-msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr "'*' = %s を保持すべきである. FAに基づく平行分析の結果。"
-
-msgid "Parallel Analysis"
-msgstr "平行分析"
-
-msgid "Simulated data mean eigenvalues"
-msgstr "シミュレーションデータ平均固有値"
-
-msgid ""
-"Screeplot not available. \n"
-"Internal error message: %s"
-msgstr ""
-"スクリープロットは利用できません。\n"
-"内部エラー メッセージ : %s"
-
-msgid "Data"
-msgstr "データ"
-
-msgid "Simulated data from parallel analysis"
-msgstr "平行解析によるシミュレーションデータ"
-
 msgid "Path Diagram"
 msgstr "パス図"
 
@@ -610,8 +752,8 @@ msgid ""
 "characteristic of that class."
 msgstr ""
 "項目反応確率のグループ化された棒グラフです。各パネルが1つの潜在クラスを表し、"
-"パネル内の棒は指標ごとの各反応カテゴリの確率を示します。棒が高いほど、その"
-"クラスに特徴的な反応カテゴリであることを表します。"
+"パネル内の棒は指標ごとの各反応カテゴリの確率を示します。棒が高いほど、そのク"
+"ラスに特徴的な反応カテゴリであることを表します。"
 
 msgid "Probability"
 msgstr "確率"
@@ -621,6 +763,94 @@ msgstr "水準"
 
 msgid "Column '%s' already exists in the dataset."
 msgstr "列名「%s」はデータセットの中にすでにあります"
+
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "平行分析に失敗しました. 内部エラー メッセージ: %s"
+
+msgid "Suggested Number of Factors/Components"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Suggested number"
+msgstr ""
+
+msgid "principal component"
+msgstr ""
+
+#, fuzzy
+msgid "factor"
+msgstr "因子"
+
+#, fuzzy
+msgid "Parallel analysis (PC-based)"
+msgstr "平行分析"
+
+#, fuzzy
+msgid "Parallel analysis (FA-based)"
+msgstr "平行分析"
+
+msgid "Eigenvalue criterion (above %s)"
+msgstr ""
+
+msgid "Velicer's MAP"
+msgstr ""
+
+msgid "Eigenvalue criterion based on %s eigenvalues."
+msgstr ""
+
+msgid "Real data component eigenvalues"
+msgstr "実データ成分の固有値"
+
+msgid "Real data factor eigenvalues"
+msgstr "実データ因子固有値"
+
+msgid "Parallel Analysis"
+msgstr "平行分析"
+
+msgid "Simulated data mean eigenvalues"
+msgstr "シミュレーションデータ平均固有値"
+
+msgid "Component"
+msgstr "コンポーネント"
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+msgstr ""
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Velicer's Minimum Average Partial (MAP)"
+msgstr ""
+
+#, fuzzy
+msgid "Components partialled out"
+msgstr "成分特性"
+
+msgid "Average squared partial correlation"
+msgstr ""
+
+msgid ""
+"'*' = number of components suggested for retention, i.e., with the lowest "
+"average squared partial correlation. MAP is always based on principal "
+"components."
+msgstr ""
+
+msgid "Scree plot"
+msgstr "スクリープロット"
+
+msgid "Data"
+msgstr "データ"
+
+msgid "Simulated data from parallel analysis"
+msgstr "平行解析によるシミュレーションデータ"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -657,11 +887,6 @@ msgstr "データが無効です: 変数 %s の欠損値が多すぎます。"
 msgid "Data not valid: all variables are collinear"
 msgstr "データが無効: すべての変数が共線関係にあります"
 
-msgid ""
-"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
-"%2$s."
-msgstr "固有値が %1$s を超える成分はありません。観測された最大固有値は %2$s です。"
-
 msgid "Component Loadings"
 msgstr "成分負荷量"
 
@@ -674,11 +899,32 @@ msgstr "成分特性"
 msgid "Component Correlations"
 msgstr "成分間相関"
 
-msgid "Scree plot"
-msgstr "スクリープロット"
+#~ msgid ""
+#~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+#~ "%2$s."
+#~ msgstr ""
+#~ "固有値が %1$s を超える因子はありません。観測された最大固有値は %2$s です。"
 
-msgid "Component"
-msgstr "コンポーネント"
+#~ msgid ""
+#~ "'*' = %s should be retained. Results from PC-based parallel analysis."
+#~ msgstr "'*' = %s を保持すべきである. PCに基づく平行分析の結果。"
+
+#~ msgid ""
+#~ "'*' = %s should be retained. Results from FA-based parallel analysis."
+#~ msgstr "'*' = %s を保持すべきである. FAに基づく平行分析の結果。"
+
+#~ msgid ""
+#~ "Screeplot not available. \n"
+#~ "Internal error message: %s"
+#~ msgstr ""
+#~ "スクリープロットは利用できません。\n"
+#~ "内部エラー メッセージ : %s"
+
+#~ msgid ""
+#~ "No components with an eigenvalue > %1$s. Maximum observed eigenvalue "
+#~ "equals %2$s."
+#~ msgstr ""
+#~ "固有値が %1$s を超える成分はありません。観測された最大固有値は %2$s です。"
 
 #~ msgid "Eigenvalues"
 #~ msgstr "固有値"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.97.1\n"
-"POT-Creation-Date: 2026-06-20 04:52\n"
+"POT-Creation-Date: 2026-11-14 03:29\n"
 "PO-Revision-Date: 2026-09-15 04:05+0000\n"
 "Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -16,25 +16,40 @@ msgstr ""
 msgid "Second-Order"
 msgstr ""
 
-msgid "The model could not be estimated. Ensure that factors have at least 2 observed variables."
+msgid ""
+"The model could not be estimated. Ensure that factors have at least 2 "
+"observed variables."
 msgstr ""
 
-msgid "The model could not be estimated. A factor with less than 2 variables was added in Second-Order."
+msgid ""
+"The model could not be estimated. A factor with less than 2 variables was "
+"added in Second-Order."
 msgstr ""
 
-msgid "Not more cases than number of variables. Is your data a variance-covariance matrix?"
+msgid ""
+"Not more cases than number of variables. Is your data a variance-covariance "
+"matrix?"
 msgstr ""
 
 msgid "FIML missing data handling only available with ML-type estimators"
 msgstr ""
 
-msgid "Robust standard errors are not available with the GLS estimator. Try changing the standard error method in the 'Advanced' settings to fit the model."
+msgid ""
+"Robust standard errors are not available with the GLS estimator. Try "
+"changing the standard error method in the 'Advanced' settings to fit the "
+"model."
 msgstr ""
 
-msgid "Missing data handling '%s' is not supported for categorical data. \n Please select another method under 'Missing data handling' within the 'Advanced' options tab"
+msgid ""
+"Missing data handling '%s' is not supported for categorical data. \n"
+" Please select another method under 'Missing data handling' within the "
+"'Advanced' options tab"
 msgstr ""
 
-msgid "The model could not be estimated. Error message: \n\n %s"
+msgid ""
+"The model could not be estimated. Error message: \n"
+"\n"
+" %s"
 msgstr ""
 
 msgid "The model is not admissible: %s"
@@ -49,7 +64,9 @@ msgstr ""
 msgid "Bootstrapping is not available for variance-covariance matrix input."
 msgstr ""
 
-msgid "Robust standard errors are not available for variance-covariance matrix input."
+msgid ""
+"Robust standard errors are not available for variance-covariance matrix "
+"input."
 msgstr ""
 
 msgid "# Factors"
@@ -58,7 +75,19 @@ msgstr ""
 msgid "Model fit"
 msgstr ""
 
+msgid ""
+"Tests and measures of how well the factor model reproduces the observed data."
+msgstr ""
+
 msgid "Chi-square test"
+msgstr ""
+
+msgid ""
+"Chi-square test of the baseline model (the independence model) and of the "
+"factor model. A non-significant p-value for the factor model indicates that "
+"the model fits the data exactly, though this test is sensitive to sample "
+"size. The footnote reports the estimator, the test statistic and the "
+"standard error method that were used."
 msgstr ""
 
 msgid "Model"
@@ -79,22 +108,56 @@ msgstr ""
 msgid "%s You may consider changing the standard error method to 'robust'."
 msgstr ""
 
-msgid "%1$s The estimator is %2$s. The test statistic is %3$s. The standard error method is %4$s."
+msgid ""
+"%1$s The estimator is %2$s. The test statistic is %3$s. The standard error "
+"method is %4$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr ""
 
+msgid ""
+"Kaiser-Meyer-Olkin test of sampling adequacy. The measure of sampling "
+"adequacy (MSA) is given for each indicator and overall, and for each group "
+"in a multigroup analysis. Values closer to 1 indicate that the indicators "
+"are well suited for factor analysis."
+msgstr ""
+
 msgid "Bartlett's test of sphericity"
+msgstr ""
+
+msgid ""
+"Bartlett's test of sphericity tests whether the correlation matrix of the "
+"indicators is an identity matrix. A significant result means that the "
+"correlation matrix is unlike the identity matrix, so that the indicators are "
+"related."
 msgstr ""
 
 msgid "R-Squared"
 msgstr ""
 
+msgid ""
+"Proportion of variance in each indicator, and in each first-order factor if "
+"a second-order factor is specified, that is explained by its predictors. "
+"Values range from 0 to 1, with higher values indicating more variance "
+"explained."
+msgstr ""
+
 msgid "Additional fit measures"
 msgstr ""
 
+msgid ""
+"Additional fit indices and information criteria for evaluating the overall "
+"quality of the model."
+msgstr ""
+
 msgid "Fit indices"
+msgstr ""
+
+msgid ""
+"Incremental fit indices, which compare the factor model to the baseline "
+"model. Common guidelines are CFI and TLI values above .95, but these should "
+"be interpreted cautiously."
 msgstr ""
 
 msgid "Index"
@@ -106,7 +169,21 @@ msgstr "مقدار"
 msgid "Information criteria"
 msgstr ""
 
+msgid ""
+"Log-likelihood, number of free parameters and information criteria (AIC, BIC "
+"and the sample-size adjusted BIC). Lower values of the information criteria "
+"indicate a better trade-off between fit and complexity when comparing models "
+"fitted to the same data. They are only available with ML-type estimators."
+msgstr ""
+
 msgid "Other fit measures"
+msgstr ""
+
+msgid ""
+"Other fit measures: RMSEA with its 90%% confidence interval and the p-value "
+"of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. "
+"Common guidelines are RMSEA below .06 and SRMR below .08, but these should "
+"be interpreted cautiously."
 msgstr ""
 
 msgid "Metric"
@@ -181,19 +258,30 @@ msgstr ""
 msgid "Expected cross validation index (ECVI)"
 msgstr ""
 
-msgid "Except for the PNFI, the fit indices are scaled because of categorical variables in the data."
+msgid ""
+"Except for the PNFI, the fit indices are scaled because of categorical "
+"variables in the data."
 msgstr ""
 
-msgid "Except for the PNFI, the fit indices are scaled because a robust estimator was used."
+msgid ""
+"Except for the PNFI, the fit indices are scaled because a robust estimator "
+"was used."
 msgstr ""
 
-msgid "The RMSEA results are scaled because of categorical variables in the data."
+msgid ""
+"The RMSEA results are scaled because of categorical variables in the data."
 msgstr ""
 
 msgid "The RMSEA results are scaled because a robust estimator was used."
 msgstr ""
 
 msgid "Parameter estimates"
+msgstr ""
+
+msgid ""
+"Parameter estimates of the CFA model, organized by type: factor loadings, "
+"factor variances and covariances, residual variances and covariances and, if "
+"applicable, intercepts and thresholds."
 msgstr ""
 
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
@@ -206,6 +294,13 @@ msgid "Estimate"
 msgstr "برآورد"
 
 msgid "Factor loadings"
+msgstr ""
+
+msgid ""
+"Factor loadings of the indicators on their factors. Each loading reflects "
+"how strongly an indicator is related to its factor. With marker variable "
+"identification, the loading of the first indicator of each factor is fixed "
+"to 1."
 msgstr ""
 
 msgid "Group"
@@ -235,25 +330,59 @@ msgstr "بالا"
 msgid "Second-order factor loadings"
 msgstr ""
 
+msgid "Loadings of the first-order factors on the second-order factor."
+msgstr ""
+
 msgid "Factor variances"
+msgstr ""
+
+msgid ""
+"Estimated variances of the factors. They are fixed to 1 when the model is "
+"identified by factor variances."
 msgstr ""
 
 msgid "Factor Covariances"
 msgstr ""
 
+msgid "Estimated covariances between the factors."
+msgstr ""
+
 msgid "Residual variances"
+msgstr ""
+
+msgid ""
+"Residual variances of the indicators: the variance that is not explained by "
+"the factors. Negative residual variances (Heywood cases) may indicate model "
+"misspecification."
 msgstr ""
 
 msgid "Residual covariances"
 msgstr ""
 
+msgid ""
+"Residual covariances between the pairs of indicators that were specified to "
+"covary, i.e., shared variance that is not accounted for by the factors."
+msgstr ""
+
 msgid "Factor Intercepts"
+msgstr ""
+
+msgid "Estimated intercepts (means) of the factors in each group."
 msgstr ""
 
 msgid "Intercepts"
 msgstr ""
 
+msgid "Estimated intercepts (means) of the indicators."
+msgstr ""
+
 msgid "Thresholds"
+msgstr ""
+
+msgid ""
+"Threshold parameters of the ordinal indicators. They define the cut-points "
+"on the underlying continuous distribution that separate the observed "
+"categories."
 msgstr ""
 
 msgid "Threshold"
@@ -262,7 +391,19 @@ msgstr ""
 msgid "Modification Indices"
 msgstr ""
 
+msgid ""
+"Modification indices (MI) estimate the expected decrease of the model chi-"
+"square if a currently fixed parameter were freed. The expected parameter "
+"change (EPC) indicates the approximate value of the freed parameter. Only "
+"modification indices above the cutoff are shown."
+msgstr ""
+
 msgid "Cross-loadings"
+msgstr ""
+
+msgid ""
+"Modification indices for cross-loadings, i.e., loadings of indicators on "
+"factors they are not assigned to."
 msgstr ""
 
 msgid "Mod. Ind."
@@ -272,6 +413,15 @@ msgid "EPC"
 msgstr ""
 
 msgid "Second-order cross-loadings"
+msgstr ""
+
+msgid ""
+"Modification indices for second-order cross-loadings, i.e., loadings of "
+"first-order factors on second-order factors they are not assigned to."
+msgstr ""
+
+msgid ""
+"Modification indices for residual covariances between pairs of indicators."
 msgstr ""
 
 msgid "Modification indices"
@@ -286,10 +436,23 @@ msgstr ""
 msgid "Implied covariance matrix"
 msgstr ""
 
+msgid ""
+"Covariance matrix implied by the model, shown for each group in a multigroup "
+"analysis. Close correspondence with the observed covariance matrix indicates "
+"good model fit."
+msgstr ""
+
 msgid "Residual covariance matrices"
 msgstr ""
 
 msgid "Residual covariance matrix"
+msgstr ""
+
+msgid ""
+"Difference between the observed and the model-implied covariance matrix, "
+"shown for each group in a multigroup analysis. A perfect model shows all 0s; "
+"small residuals indicate that the model reproduces the observed covariances "
+"well."
 msgstr ""
 
 msgid "Plots"
@@ -301,16 +464,38 @@ msgstr ""
 msgid "Model plot"
 msgstr ""
 
+msgid ""
+"Graphical representation of the estimated model, showing the factors "
+"(circles), the indicators (squares) and the paths between them. Shown for "
+"each group in a multigroup analysis."
+msgstr ""
+
 msgid "Misfit plots"
 msgstr ""
 
 msgid "Misfit plot"
 msgstr ""
 
+msgid ""
+"Residual correlations between the indicators, i.e., the correlations that "
+"remain unexplained by the model. Larger values indicate pairs of indicators "
+"that the model reproduces poorly. Shown for each group in a multigroup "
+"analysis."
+msgstr ""
+
 msgid "Model syntax"
 msgstr ""
 
+msgid "The lavaan model syntax that corresponds to the specified model."
+msgstr ""
+
 msgid "Average variance extracted"
+msgstr ""
+
+msgid ""
+"Average variance extracted (AVE): the amount of variance that is captured by "
+"a factor relative to the amount of variance due to measurement error. Values "
+"above .5 are commonly taken to indicate adequate convergent validity."
 msgstr ""
 
 msgid "AVE"
@@ -319,31 +504,50 @@ msgstr "میانگین واریانس استخراج‌شده"
 msgid "Heterotrait-monotrait ratio"
 msgstr ""
 
+msgid ""
+"Heterotrait-monotrait (HTMT) ratio of correlations for assessing "
+"discriminant validity between the factors. Values clearly below 1 (more "
+"conservatively, below .85 or .90) suggest that the factors are empirically "
+"distinct."
+msgstr ""
+
 msgid "Reliability"
+msgstr ""
+
+msgid ""
+"Reliability of each factor and in total. Coefficient ω (omega) allows for "
+"congeneric indicators (unequal loadings) and, with a second-order factor, is "
+"also given for the second-order factor. Coefficient α (alpha) assumes tau-"
+"equivalence (equal loadings). The total test score variance in the "
+"denominator is the observed test score variance, i.e., the summed observed "
+"covariance matrix. Values above .7 are commonly considered acceptable."
 msgstr ""
 
 msgid "Coefficient %s"
 msgstr ""
 
+msgid "The reliability coefficients could not be computed: %s"
+msgstr ""
+
 msgid "Column name %s already exists in the dataset"
 msgstr ""
 
-msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This is likely due to a small sample size. Internal error message: %s"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This is likely due to a small sample size. Internal error "
+"message: %s"
 msgstr ""
 
-msgid "Unfortunately, the estimation of the polychoric/tetrachoric correlation matrix failed. This might be due to variable(s) %1$s not having the full range of response categories. Internal error message: %2$s"
+msgid ""
+"Unfortunately, the estimation of the polychoric/tetrachoric correlation "
+"matrix failed. This might be due to variable(s) %1$s not having the full "
+"range of response categories. Internal error message: %2$s"
 msgstr ""
 
 msgid "Estimation failed. Internal error message: %1$s. %2$s"
 msgstr ""
 
 msgid "Estimation failed. Internal error message: %s"
-msgstr ""
-
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr ""
-
-msgid "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
 msgstr ""
 
 msgid "Kaiser-Meyer-Olkin Test"
@@ -364,7 +568,9 @@ msgstr "آماره"
 msgid "Mardia test failed. Internal error message: %s"
 msgstr ""
 
-msgid "The statistic for skewness is assumed to be Chi^2 distributed and the statistic for kurtosis standard normal."
+msgid ""
+"The statistic for skewness is assumed to be Chi^2 distributed and the "
+"statistic for kurtosis standard normal."
 msgstr ""
 
 msgid "Anti-Image Correlation Matrix"
@@ -445,40 +651,18 @@ msgstr ""
 msgid "Residual Matrix"
 msgstr ""
 
-msgid "Real data component eigenvalues"
-msgstr ""
-
-msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr ""
-
-msgid "Real data factor eigenvalues"
-msgstr ""
-
-msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr ""
-
-msgid "Parallel Analysis"
-msgstr ""
-
-msgid "Simulated data mean eigenvalues"
-msgstr ""
-
-msgid "Screeplot not available. \nInternal error message: %s"
-msgstr ""
-
-msgid "Data"
-msgstr ""
-
-msgid "Simulated data from parallel analysis"
-msgstr ""
-
 msgid "Path Diagram"
 msgstr "نمودار مسیر"
 
 msgid "Model Fit"
 msgstr ""
 
-msgid "Fit statistics for each model. AIC and BIC penalize the log-likelihood for model complexity and can be used to compare models with different numbers of classes (lower is better). G² is the likelihood-ratio goodness-of-fit statistic; a non-significant p-value indicates adequate fit, though this test is sensitive to sparse cells and small samples."
+msgid ""
+"Fit statistics for each model. AIC and BIC penalize the log-likelihood for "
+"model complexity and can be used to compare models with different numbers of "
+"classes (lower is better). G² is the likelihood-ratio goodness-of-fit "
+"statistic; a non-significant p-value indicates adequate fit, though this "
+"test is sensitive to sparse cells and small samples."
 msgstr ""
 
 msgid "Classes"
@@ -496,7 +680,13 @@ msgstr ""
 msgid "Class Prevalences"
 msgstr ""
 
-msgid "Estimated sizes of the latent classes. Proportion is the model-estimated mixing weight (the probability that a randomly drawn observation belongs to each class), with its standard error. Modal proportion is the fraction of observations assigned to each class by their highest posterior probability; it may differ from the model proportion because modal assignment discretizes the continuous posterior."
+msgid ""
+"Estimated sizes of the latent classes. Proportion is the model-estimated "
+"mixing weight (the probability that a randomly drawn observation belongs to "
+"each class), with its standard error. Modal proportion is the fraction of "
+"observations assigned to each class by their highest posterior probability; "
+"it may differ from the model proportion because modal assignment discretizes "
+"the continuous posterior."
 msgstr ""
 
 msgid "Class"
@@ -517,10 +707,17 @@ msgstr ""
 msgid "Item-Response Probabilities"
 msgstr ""
 
-msgid "Estimated probability of each response category for each indicator, conditional on class membership. Each row is a latent class; each column is a response category of the indicator. Probabilities within a row sum to 1."
+msgid ""
+"Estimated probability of each response category for each indicator, "
+"conditional on class membership. Each row is a latent class; each column is "
+"a response category of the indicator. Probabilities within a row sum to 1."
 msgstr ""
 
-msgid "Grouped bar chart of item-response probabilities. Each panel shows one latent class; bars within each panel show the probability of each response category for every indicator. Taller bars indicate response categories more characteristic of that class."
+msgid ""
+"Grouped bar chart of item-response probabilities. Each panel shows one "
+"latent class; bars within each panel show the probability of each response "
+"category for every indicator. Taller bars indicate response categories more "
+"characteristic of that class."
 msgstr ""
 
 msgid "Probability"
@@ -532,10 +729,99 @@ msgstr "سطح"
 msgid "Column '%s' already exists in the dataset."
 msgstr ""
 
-msgid "Input data does not seem to be a square matrix! Please check the format of the input data."
+msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
-msgid "Input data does not seem to be a symmetric matrix! Please check the format of the input data and possibly the order of the variables."
+msgid "Suggested Number of Factors/Components"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Suggested number"
+msgstr ""
+
+msgid "principal component"
+msgstr ""
+
+#, fuzzy
+msgid "factor"
+msgstr "عامل"
+
+msgid "Parallel analysis (PC-based)"
+msgstr ""
+
+msgid "Parallel analysis (FA-based)"
+msgstr ""
+
+msgid "Eigenvalue criterion (above %s)"
+msgstr ""
+
+msgid "Velicer's MAP"
+msgstr ""
+
+msgid "Eigenvalue criterion based on %s eigenvalues."
+msgstr ""
+
+msgid "Real data component eigenvalues"
+msgstr ""
+
+msgid "Real data factor eigenvalues"
+msgstr ""
+
+msgid "Parallel Analysis"
+msgstr ""
+
+msgid "Simulated data mean eigenvalues"
+msgstr ""
+
+msgid "Component"
+msgstr ""
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+msgstr ""
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Velicer's Minimum Average Partial (MAP)"
+msgstr ""
+
+msgid "Components partialled out"
+msgstr ""
+
+msgid "Average squared partial correlation"
+msgstr ""
+
+msgid ""
+"'*' = number of components suggested for retention, i.e., with the lowest "
+"average squared partial correlation. MAP is always based on principal "
+"components."
+msgstr ""
+
+msgid "Scree plot"
+msgstr ""
+
+msgid "Data"
+msgstr ""
+
+msgid "Simulated data from parallel analysis"
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a square matrix! Please check the format of "
+"the input data."
+msgstr ""
+
+msgid ""
+"Input data does not seem to be a symmetric matrix! Please check the format "
+"of the input data and possibly the order of the variables."
 msgstr ""
 
 msgid "All cells must be numeric."
@@ -559,9 +845,6 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
-msgid "No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals %2$s."
-msgstr ""
-
 msgid "Component Loadings"
 msgstr ""
 
@@ -572,10 +855,4 @@ msgid "Component Characteristics"
 msgstr ""
 
 msgid "Component Correlations"
-msgstr ""
-
-msgid "Scree plot"
-msgstr ""
-
-msgid "Component"
 msgstr ""

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-06-20 04:52\n"
+"POT-Creation-Date: 2026-11-14 03:29\n"
 "PO-Revision-Date: 2026-08-10 14:03+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -103,8 +103,20 @@ msgstr "# Factores"
 msgid "Model fit"
 msgstr "Axuste do modelo"
 
+msgid ""
+"Tests and measures of how well the factor model reproduces the observed data."
+msgstr ""
+
 msgid "Chi-square test"
 msgstr "Proba Khi-cadrado"
+
+msgid ""
+"Chi-square test of the baseline model (the independence model) and of the "
+"factor model. A non-significant p-value for the factor model indicates that "
+"the model fits the data exactly, though this test is sensitive to sample "
+"size. The footnote reports the estimator, the test statistic and the "
+"standard error method that were used."
+msgstr ""
 
 msgid "Model"
 msgstr "Modelo"
@@ -134,17 +146,49 @@ msgstr ""
 msgid "Kaiser-Meyer-Olkin (KMO) test"
 msgstr "Proba de Kaiser-Meyer-Olkin (KMO)"
 
+msgid ""
+"Kaiser-Meyer-Olkin test of sampling adequacy. The measure of sampling "
+"adequacy (MSA) is given for each indicator and overall, and for each group "
+"in a multigroup analysis. Values closer to 1 indicate that the indicators "
+"are well suited for factor analysis."
+msgstr ""
+
 msgid "Bartlett's test of sphericity"
 msgstr "Proba de esfericidade de Bartlett"
+
+msgid ""
+"Bartlett's test of sphericity tests whether the correlation matrix of the "
+"indicators is an identity matrix. A significant result means that the "
+"correlation matrix is unlike the identity matrix, so that the indicators are "
+"related."
+msgstr ""
 
 msgid "R-Squared"
 msgstr "R-cadrado"
 
+msgid ""
+"Proportion of variance in each indicator, and in each first-order factor if "
+"a second-order factor is specified, that is explained by its predictors. "
+"Values range from 0 to 1, with higher values indicating more variance "
+"explained."
+msgstr ""
+
 msgid "Additional fit measures"
 msgstr "Medidas adicionais de axuste"
 
+msgid ""
+"Additional fit indices and information criteria for evaluating the overall "
+"quality of the model."
+msgstr ""
+
 msgid "Fit indices"
 msgstr "Índices de axuste"
+
+msgid ""
+"Incremental fit indices, which compare the factor model to the baseline "
+"model. Common guidelines are CFI and TLI values above .95, but these should "
+"be interpreted cautiously."
+msgstr ""
 
 msgid "Index"
 msgstr "Índice"
@@ -155,8 +199,22 @@ msgstr "Valor"
 msgid "Information criteria"
 msgstr "Criterios de información"
 
+msgid ""
+"Log-likelihood, number of free parameters and information criteria (AIC, BIC "
+"and the sample-size adjusted BIC). Lower values of the information criteria "
+"indicate a better trade-off between fit and complexity when comparing models "
+"fitted to the same data. They are only available with ML-type estimators."
+msgstr ""
+
 msgid "Other fit measures"
 msgstr "Outras medidas de axuste"
+
+msgid ""
+"Other fit measures: RMSEA with its 90%% confidence interval and the p-value "
+"of the test of close fit, SRMR, Hoelter's critical N, GFI, MFI and ECVI. "
+"Common guidelines are RMSEA below .06 and SRMR below .08, but these should "
+"be interpreted cautiously."
+msgstr ""
 
 msgid "Metric"
 msgstr "Métrica"
@@ -258,6 +316,12 @@ msgstr ""
 msgid "Parameter estimates"
 msgstr "Estimacións dos parámetros"
 
+msgid ""
+"Parameter estimates of the CFA model, organized by type: factor loadings, "
+"factor variances and covariances, residual variances and covariances and, if "
+"applicable, intercepts and thresholds."
+msgstr ""
+
 msgid "Not all bootstrap samples were successful: CI based on %.0f samples."
 msgstr ""
 "Non todas as mostras de bootstrap foron acertadas: IC baseado en n %.0f "
@@ -271,6 +335,13 @@ msgstr "Estimar"
 
 msgid "Factor loadings"
 msgstr "Cargas dos factores"
+
+msgid ""
+"Factor loadings of the indicators on their factors. Each loading reflects "
+"how strongly an indicator is related to its factor. With marker variable "
+"identification, the loading of the first indicator of each factor is fixed "
+"to 1."
+msgstr ""
 
 msgid "Group"
 msgstr "Grupo"
@@ -299,26 +370,60 @@ msgstr "Superior"
 msgid "Second-order factor loadings"
 msgstr "Cargas dos factores de segunda orde"
 
+msgid "Loadings of the first-order factors on the second-order factor."
+msgstr ""
+
 msgid "Factor variances"
 msgstr "Varianzas dos Factores"
+
+msgid ""
+"Estimated variances of the factors. They are fixed to 1 when the model is "
+"identified by factor variances."
+msgstr ""
 
 msgid "Factor Covariances"
 msgstr "Covarianzas de factores"
 
+msgid "Estimated covariances between the factors."
+msgstr ""
+
 msgid "Residual variances"
 msgstr "Varianzas dos erros"
+
+msgid ""
+"Residual variances of the indicators: the variance that is not explained by "
+"the factors. Negative residual variances (Heywood cases) may indicate model "
+"misspecification."
+msgstr ""
 
 msgid "Residual covariances"
 msgstr "Covarianzas dos erros"
 
+msgid ""
+"Residual covariances between the pairs of indicators that were specified to "
+"covary, i.e., shared variance that is not accounted for by the factors."
+msgstr ""
+
 msgid "Factor Intercepts"
 msgstr "Constantes dos Factores"
+
+msgid "Estimated intercepts (means) of the factors in each group."
+msgstr ""
 
 msgid "Intercepts"
 msgstr "Constantes"
 
+msgid "Estimated intercepts (means) of the indicators."
+msgstr ""
+
 msgid "Thresholds"
 msgstr "Lindeiros"
+
+msgid ""
+"Threshold parameters of the ordinal indicators. They define the cut-points "
+"on the underlying continuous distribution that separate the observed "
+"categories."
+msgstr ""
 
 msgid "Threshold"
 msgstr "Lindeiro"
@@ -326,8 +431,20 @@ msgstr "Lindeiro"
 msgid "Modification Indices"
 msgstr "Índices de Modificación"
 
+msgid ""
+"Modification indices (MI) estimate the expected decrease of the model chi-"
+"square if a currently fixed parameter were freed. The expected parameter "
+"change (EPC) indicates the approximate value of the freed parameter. Only "
+"modification indices above the cutoff are shown."
+msgstr ""
+
 msgid "Cross-loadings"
 msgstr "Cargas cruzadas"
+
+msgid ""
+"Modification indices for cross-loadings, i.e., loadings of indicators on "
+"factors they are not assigned to."
+msgstr ""
 
 msgid "Mod. Ind."
 msgstr "Ind. Mod."
@@ -337,6 +454,15 @@ msgstr "CAP (EPC)"
 
 msgid "Second-order cross-loadings"
 msgstr "Cargas cruzadas de segunda orde"
+
+msgid ""
+"Modification indices for second-order cross-loadings, i.e., loadings of "
+"first-order factors on second-order factors they are not assigned to."
+msgstr ""
+
+msgid ""
+"Modification indices for residual covariances between pairs of indicators."
+msgstr ""
 
 msgid "Modification indices"
 msgstr "Índices de modificación"
@@ -350,11 +476,24 @@ msgstr "Matrices de covarianzas implícitas"
 msgid "Implied covariance matrix"
 msgstr "Matriz de covarianzas implícitas"
 
+msgid ""
+"Covariance matrix implied by the model, shown for each group in a multigroup "
+"analysis. Close correspondence with the observed covariance matrix indicates "
+"good model fit."
+msgstr ""
+
 msgid "Residual covariance matrices"
 msgstr "Matrices de covarianzas dos erros"
 
 msgid "Residual covariance matrix"
 msgstr "Matriz de covarianzas dos erros"
+
+msgid ""
+"Difference between the observed and the model-implied covariance matrix, "
+"shown for each group in a multigroup analysis. A perfect model shows all 0s; "
+"small residuals indicate that the model reproduces the observed covariances "
+"well."
+msgstr ""
 
 msgid "Plots"
 msgstr "Gráficas"
@@ -365,17 +504,39 @@ msgstr "Gráficas de modelos"
 msgid "Model plot"
 msgstr "Gráfica do modelo"
 
+msgid ""
+"Graphical representation of the estimated model, showing the factors "
+"(circles), the indicators (squares) and the paths between them. Shown for "
+"each group in a multigroup analysis."
+msgstr ""
+
 msgid "Misfit plots"
 msgstr "Gráficas desaxustadas"
 
 msgid "Misfit plot"
 msgstr "Gráfica desaxustada"
 
+msgid ""
+"Residual correlations between the indicators, i.e., the correlations that "
+"remain unexplained by the model. Larger values indicate pairs of indicators "
+"that the model reproduces poorly. Shown for each group in a multigroup "
+"analysis."
+msgstr ""
+
 msgid "Model syntax"
 msgstr "Sintaxe do modelo"
 
+msgid "The lavaan model syntax that corresponds to the specified model."
+msgstr ""
+
 msgid "Average variance extracted"
 msgstr "Varianza media extraída"
+
+msgid ""
+"Average variance extracted (AVE): the amount of variance that is captured by "
+"a factor relative to the amount of variance due to measurement error. Values "
+"above .5 are commonly taken to indicate adequate convergent validity."
+msgstr ""
 
 msgid "AVE"
 msgstr "VME (AVE)"
@@ -383,11 +544,30 @@ msgstr "VME (AVE)"
 msgid "Heterotrait-monotrait ratio"
 msgstr "Cociente Heterotrazo-Monotrazo"
 
+msgid ""
+"Heterotrait-monotrait (HTMT) ratio of correlations for assessing "
+"discriminant validity between the factors. Values clearly below 1 (more "
+"conservatively, below .85 or .90) suggest that the factors are empirically "
+"distinct."
+msgstr ""
+
 msgid "Reliability"
 msgstr "Fiabilidade"
 
+msgid ""
+"Reliability of each factor and in total. Coefficient ω (omega) allows for "
+"congeneric indicators (unequal loadings) and, with a second-order factor, is "
+"also given for the second-order factor. Coefficient α (alpha) assumes tau-"
+"equivalence (equal loadings). The total test score variance in the "
+"denominator is the observed test score variance, i.e., the summed observed "
+"covariance matrix. Values above .7 are commonly considered acceptable."
+msgstr ""
+
 msgid "Coefficient %s"
 msgstr "Coeficiente %s"
+
+msgid "The reliability coefficients could not be computed: %s"
+msgstr ""
 
 msgid "Column name %s already exists in the dataset"
 msgstr "O nome %s de columna xa existe no conxunto de datos"
@@ -415,16 +595,6 @@ msgstr "Fallou a estimación. Mensaxe de fallo interno: %1$s. %2$s"
 
 msgid "Estimation failed. Internal error message: %s"
 msgstr "Fallou a estimación. Mensaxe de fallo interno: %s"
-
-msgid "Parallel analysis failed. Internal error message: %s"
-msgstr "Fallou a análise paralela. Mensaxe de fallo interno: %s"
-
-msgid ""
-"No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
-"%2$s."
-msgstr ""
-"Non hai factores cun autovalor > %1$s. O autovalor máximo observado é igual "
-"a %2$s."
 
 msgid "Kaiser-Meyer-Olkin Test"
 msgstr "Proba de Kaiser-Meyer-Olkin"
@@ -529,39 +699,6 @@ msgstr "BIC"
 msgid "Residual Matrix"
 msgstr "Matriz dos Erros"
 
-msgid "Real data component eigenvalues"
-msgstr "Autovalores das compoñentes dos datos reais"
-
-msgid "'*' = %s should be retained. Results from PC-based parallel analysis."
-msgstr ""
-"'*' = Debera manterse %s. Resultados dunha análise paralela baseada nas CP."
-
-msgid "Real data factor eigenvalues"
-msgstr "Autovalores dos factores dos datos reais"
-
-msgid "'*' = %s should be retained. Results from FA-based parallel analysis."
-msgstr ""
-"'*' = Debera manterse %s. Resultados dunha análise paralela baseada na AF."
-
-msgid "Parallel Analysis"
-msgstr "Análise Paralela"
-
-msgid "Simulated data mean eigenvalues"
-msgstr "Autovalores medios dos datos simulados"
-
-msgid ""
-"Screeplot not available. \n"
-"Internal error message: %s"
-msgstr ""
-"Gráfica de sedimentación non dispoñible. \n"
-"Mensaxe de fallo interno: %s"
-
-msgid "Data"
-msgstr "Datos"
-
-msgid "Simulated data from parallel analysis"
-msgstr "Datos simulados de análises paralelas"
-
 msgid "Path Diagram"
 msgstr "Diagrama de ruta"
 
@@ -661,6 +798,94 @@ msgstr "Nivel"
 msgid "Column '%s' already exists in the dataset."
 msgstr "O nome '%s' de columna xa existe no conxunto de datos."
 
+msgid "Parallel analysis failed. Internal error message: %s"
+msgstr "Fallou a análise paralela. Mensaxe de fallo interno: %s"
+
+msgid "Suggested Number of Factors/Components"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Suggested number"
+msgstr ""
+
+msgid "principal component"
+msgstr ""
+
+#, fuzzy
+msgid "factor"
+msgstr "Factor"
+
+#, fuzzy
+msgid "Parallel analysis (PC-based)"
+msgstr "Análise Paralela"
+
+#, fuzzy
+msgid "Parallel analysis (FA-based)"
+msgstr "Análise Paralela"
+
+msgid "Eigenvalue criterion (above %s)"
+msgstr ""
+
+msgid "Velicer's MAP"
+msgstr ""
+
+msgid "Eigenvalue criterion based on %s eigenvalues."
+msgstr ""
+
+msgid "Real data component eigenvalues"
+msgstr "Autovalores das compoñentes dos datos reais"
+
+msgid "Real data factor eigenvalues"
+msgstr "Autovalores dos factores dos datos reais"
+
+msgid "Parallel Analysis"
+msgstr "Análise Paralela"
+
+msgid "Simulated data mean eigenvalues"
+msgstr "Autovalores medios dos datos simulados"
+
+msgid "Component"
+msgstr "Compoñente"
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+msgstr ""
+
+msgid ""
+"'*' = %s should be retained, following the parallel analysis suggestion "
+"based on the 95th percentile of the simulated eigenvalues; the table "
+"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+msgstr ""
+
+msgid "Velicer's Minimum Average Partial (MAP)"
+msgstr ""
+
+#, fuzzy
+msgid "Components partialled out"
+msgstr "Características das Compoñentes"
+
+msgid "Average squared partial correlation"
+msgstr ""
+
+msgid ""
+"'*' = number of components suggested for retention, i.e., with the lowest "
+"average squared partial correlation. MAP is always based on principal "
+"components."
+msgstr ""
+
+msgid "Scree plot"
+msgstr "Gráfica de sedimentación"
+
+msgid "Data"
+msgstr "Datos"
+
+msgid "Simulated data from parallel analysis"
+msgstr "Datos simulados de análises paralelas"
+
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
 "the input data."
@@ -697,13 +922,6 @@ msgstr "Datos incorrectos: demasiados valores ausentes na(s) variable(s) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Datos incorrectos: todas as variables son colineares"
 
-msgid ""
-"No components with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
-"%2$s."
-msgstr ""
-"Non hai compoñentes cun autovalor > %1$s. O autovalor máximo observado é "
-"igual a %2$s."
-
 msgid "Component Loadings"
 msgstr "Cargas de Compoñentes"
 
@@ -716,11 +934,37 @@ msgstr "Características das Compoñentes"
 msgid "Component Correlations"
 msgstr "Correlacións das Compoñentes"
 
-msgid "Scree plot"
-msgstr "Gráfica de sedimentación"
+#~ msgid ""
+#~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
+#~ "%2$s."
+#~ msgstr ""
+#~ "Non hai factores cun autovalor > %1$s. O autovalor máximo observado é "
+#~ "igual a %2$s."
 
-msgid "Component"
-msgstr "Compoñente"
+#~ msgid ""
+#~ "'*' = %s should be retained. Results from PC-based parallel analysis."
+#~ msgstr ""
+#~ "'*' = Debera manterse %s. Resultados dunha análise paralela baseada nas "
+#~ "CP."
+
+#~ msgid ""
+#~ "'*' = %s should be retained. Results from FA-based parallel analysis."
+#~ msgstr ""
+#~ "'*' = Debera manterse %s. Resultados dunha análise paralela baseada na AF."
+
+#~ msgid ""
+#~ "Screeplot not available. \n"
+#~ "Internal error message: %s"
+#~ msgstr ""
+#~ "Gráfica de sedimentación non dispoñible. \n"
+#~ "Mensaxe de fallo interno: %s"
+
+#~ msgid ""
+#~ "No components with an eigenvalue > %1$s. Maximum observed eigenvalue "
+#~ "equals %2$s."
+#~ msgstr ""
+#~ "Non hai compoñentes cun autovalor > %1$s. O autovalor máximo observado é "
+#~ "igual a %2$s."
 
 #~ msgid "%1$s The standard error method is %2$s."
 #~ msgstr "%1$s O método do erro padrón é %2$s."

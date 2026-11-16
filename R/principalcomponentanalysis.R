@@ -403,7 +403,8 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   for (i in seq_len(ncol(loads))) {
     loadingsTable$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "number", format = "dp:3")
   }
-  loadingsTable$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
+  loadingsTable$addColumnInfo(name = "h2",  title = gettext("Communality"), type = "number", format = "dp:3")
+  loadingsTable$addColumnInfo(name = "uni", title = gettext("Uniqueness"),  type = "number", format = "dp:3")
 
   if (options[["rotationMethod"]] == "orthogonal" && options[["rotationMethodOrthogonal"]] == "none") {
     loadingsTable$addFootnote(message = gettext("No rotation method applied."))
@@ -414,20 +415,25 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     )
   }
 
+  if (options[["baseDecompositionOn"]] == "covarianceMatrix")
+    loadingsTable$addFootnote(gettext("The analysis is based on the covariance matrix, so the loadings are in the units of the variables, and the communalities and uniquenesses in squared units."))
+
   loadings <- unclass(loads)
   loadings[abs(loads) < options[["loadingsDisplayLimit"]]] <- NA_real_
 
   df <- cbind.data.frame(
     var = rownames(loads),
     as.data.frame(loadings),
+    h2  = pcaResults[["communality"]],
     uni = pcaResults[["uniquenesses"]]
   )
   rownames(df) <- NULL
-  colnames(df)[2:(1 + ncol(loads))] <- paste0("c", seq_len(ncol(loads)))
+  loadingCols <- paste0("c", seq_len(ncol(loads)))
+  colnames(df)[2:(1 + ncol(loads))] <- loadingCols
 
   # "variables" is the default output
   if (options[["loadingOrder"]] == "size")
-    df <- df[do.call(order, c(abs(df[2:(ncol(df) - 1)]), na.last = TRUE, decreasing = TRUE)), ]
+    df <- df[do.call(order, c(abs(df[loadingCols]), na.last = TRUE, decreasing = TRUE)), ]
 
   loadingsTable$setData(df)
   modelContainer[["loadingsTable"]] <- loadingsTable

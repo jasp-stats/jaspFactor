@@ -30,12 +30,17 @@ Section
 	title: qsTr("Output Options")
 	info: qsTr("Additional output options for the PCA/EFA analysis.")
 
-	Slider
+	Group
 	{
-		name: "loadingsDisplayLimit"
-		label: qsTr("Display loadings above")
-		info: qsTr("Loadings below this value will not be displayed in the output table.")
-		value: 0.4
+		title: qsTr("Display loadings above:")
+
+		Slider
+		{
+			name: "loadingsDisplayLimit"
+			vertical: false
+			info: qsTr("Loadings below this value will not be displayed in the output table.")
+			value: 0.4
+		}
 	}
 
 	RadioButtonGroup
@@ -52,6 +57,13 @@ Section
 		title: qsTr("Tables")
 		info: qsTr("Display addition tables in the output.")
 		CheckBox { visible: !pca; name: "factorStructure";	label: qsTr("Structure matrix"); info: qsTr("An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix.")}
+		CheckBox
+		{
+			visible: !pca
+			name: "schmidLeimanTransformation"
+			label: qsTr("Schmid-Leiman transformation")
+			info: qsTr("Transforms the oblique factor solution into a hierarchical solution with a general factor (g), which all variables load on, and group factors that are orthogonal to the general factor. The loadings of the variables on the general factor and on the residualized group factors are displayed, together with the communalities (h\u00B2), the uniquenesses (u\u00B2), and the proportion of the common variance that is due to the general factor (p\u00B2). The general factor is the first factor of a factor analysis of the factor correlations of the oblique solution. This needs an oblique rotation and at least three factors (Schmid & Leiman, 1957).")
+		}
 		CheckBox { 								
 			name: 	pca ? "componentCorrelations" : "factorCorrelations";		
 			label: 	pca ? qsTr("Component correlations") : qsTr("Factor correlations")
@@ -69,6 +81,13 @@ Section
 	{
 		title: qsTr("Plots")
 		info: qsTr("Display plots.")
+		CheckBox
+		{
+			name: "mahalanobisOutlierPlot"
+			label: qsTr("Mahalanobis distance Q-Q plot")
+			enabled: dataRaw
+			info: qsTr("Displays a Q-Q plot of the Mahalanobis distances (D\u00B2) against the quantiles of the chi-square distribution, as the function outlier of the R package psych does. Cases above the diagonal are further from the centre than expected; at most the five worst cases with a p-value below the value specified for the multivariate outliers (0.001 by default) are labelled with their case number.")
+		}
 		CheckBox {
 			name: "pathDiagram"
 			label: qsTr("Path diagram")
@@ -96,6 +115,23 @@ Section
 			enabled: dataType.value == "raw" 
 			info: qsTr("Assesses the degree of the departure from multivariate normality of the included variables in terms of multivariate skewness and kurtosis. The Mardia's test will always include the listwise complete cases.")
 		}
+		CheckBox
+		{
+			name: "mahalanobisOutlier"
+			label: qsTr("Multivariate outliers (Mahalanobis distance)")
+			enabled: dataRaw
+			info: qsTr("Displays the cases that are multivariate outliers, based on the Mahalanobis distance (D\u00B2) to the centre of the variables, as computed by the function outlier of the R package psych. Only the cases without missing values are used. The distances are compared to a chi-square distribution with as many degrees of freedom as there are variables, and cases with a p-value below the specified value are displayed.")
+			DoubleField
+			{
+				name: "mahalanobisOutlierPValue"
+				label: qsTr("p-value below")
+				defaultValue: 0.001
+				min: 0
+				max: 1
+				decimals: 3
+				info: qsTr("Cases with a p-value of the Mahalanobis distance below this value are displayed as outliers.")
+			}
+		}
 		CheckBox { 
 			name: "antiImageCorrelationMatrix"
 			label: qsTr("Anti-image correlation matrix") 
@@ -117,6 +153,19 @@ Section
 			defaultValue: pca ? qsTr("PC") : qsTr("FA")
 			fieldWidth: 80
 			enabled: addScores.checked
+		}
+
+		DropDown
+		{
+			name: "scoreSavedToDataImputation"
+			label: qsTr("Impute missing values by")
+			enabled: addScores.checked
+			info: qsTr("Select whether missing values are replaced by the mean or the median of the variable when computing the saved scores, like the impute option of the R package psych, so that cases with missing values also get a score. This only affects the saved scores, not the analysis. In contrast to psych, the scores of the cases without missing values do not change. Cases without any observed value do not get a score. It is only used if missing values are excluded pairwise, because with listwise deletion the cases with missing values are not part of the analysis.")
+			values: [
+				{ label: qsTr("None"),    value: "none",   info: qsTr("Cases with a missing value do not get a score.") },
+				{ label: qsTr("Mean"),    value: "mean",   info: qsTr("Missing values are replaced by the mean of the variable.") },
+				{ label: qsTr("Median"),  value: "median", info: qsTr("Missing values are replaced by the median of the variable.") }
+			]
 		}
 	}
 

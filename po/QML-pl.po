@@ -1615,9 +1615,11 @@ msgctxt "NumberOfFactors|"
 msgid "Variables"
 msgstr "Zmienne"
 
+#, fuzzy
 msgctxt "NumberOfFactors|"
 msgid "In this box, the variables to perform the analysis on are selected"
 msgstr ""
+"W tym polu wybiera się zmienne, na których zostanie przeprowadzona analiza"
 
 #, fuzzy
 msgctxt "NumberOfFactors|"

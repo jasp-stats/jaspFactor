@@ -28,7 +28,7 @@
 <g clip-path='url(#cpNjkuMjh8NzIwLjAwfDIwLjcxfDUxMC4xNA==)'>
 <rect x='69.28' y='20.71' width='650.72' height='489.43' style='stroke-width: 10.67; stroke: none;' />
 <polyline points='98.86,42.95 217.17,191.81 335.49,253.11 453.80,323.86 572.11,369.97 690.42,487.89 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='98.86,178.54 217.17,224.65 335.49,259.98 453.80,297.09 572.11,335.49 690.42,373.85 ' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' />
+<polyline points='98.86,142.38 217.17,198.56 335.49,244.00 453.80,277.55 572.11,311.95 690.42,347.99 ' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' />
 <line x1='69.28' y1='278.27' x2='720.00' y2='278.27' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <circle cx='98.86' cy='42.95' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
 <circle cx='217.17' cy='191.81' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
@@ -36,12 +36,12 @@
 <circle cx='453.80' cy='323.86' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
 <circle cx='572.11' cy='369.97' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
 <circle cx='690.42' cy='487.89' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<polygon points='98.86,172.17 104.38,181.73 93.34,181.73 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<polygon points='217.17,218.27 222.70,227.84 211.65,227.84 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<polygon points='335.49,253.60 341.01,263.16 329.96,263.16 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<polygon points='453.80,290.72 459.32,300.28 448.28,300.28 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<polygon points='572.11,329.11 577.63,338.67 566.59,338.67 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<polygon points='690.42,367.48 695.94,377.04 684.90,377.04 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<polygon points='98.86,136.00 104.38,145.57 93.34,145.57 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<polygon points='217.17,192.18 222.70,201.74 211.65,201.74 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<polygon points='335.49,237.62 341.01,247.19 329.96,247.19 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<polygon points='453.80,271.18 459.32,280.74 448.28,280.74 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<polygon points='572.11,305.57 577.63,315.13 566.59,315.13 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<polygon points='690.42,341.61 695.94,351.18 684.90,351.18 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
 <line x1='98.54' y1='510.14' x2='690.74' y2='510.14' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <line x1='69.28' y1='429.50' x2='69.28' y2='127.03' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <rect x='69.28' y='20.71' width='650.72' height='489.43' style='stroke-width: 0.00; stroke: none;' />
@@ -69,16 +69,16 @@
 <text x='690.42' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='394.64' y='567.49' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='87.90px' lengthAdjust='spacingAndGlyphs'>Component</text>
 <text transform='translate(16.68,265.42) rotate(-90)' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='84.13px' lengthAdjust='spacingAndGlyphs'>Eigenvalue</text>
-<rect x='474.84' y='45.18' width='238.66' height='46.82' style='stroke-width: 0.75; stroke: none;' />
-<rect x='474.84' y='45.18' width='238.66' height='46.82' style='stroke-width: 10.67; stroke: none;' />
-<rect x='480.32' y='50.66' width='17.93' height='17.93' style='stroke-width: 10.67; stroke: none;' />
-<line x1='482.11' y1='59.63' x2='496.46' y2='59.63' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<circle cx='489.28' cy='59.63' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<rect x='480.32' y='68.59' width='17.93' height='17.93' style='stroke-width: 10.67; stroke: none;' />
-<line x1='482.11' y1='77.56' x2='496.46' y2='77.56' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' />
-<polygon points='489.28,71.18 494.80,80.75 483.76,80.75 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
-<text x='503.73' y='63.93' style='font-size: 12.50px; font-family: sans;' textLength='26.41px' lengthAdjust='spacingAndGlyphs'>Data</text>
-<text x='503.73' y='81.86' style='font-size: 12.50px; font-family: sans;' textLength='204.28px' lengthAdjust='spacingAndGlyphs'>Simulated data from parallel analysis</text>
+<rect x='501.93' y='45.18' width='211.57' height='46.82' style='stroke-width: 0.75; stroke: none;' />
+<rect x='501.93' y='45.18' width='211.57' height='46.82' style='stroke-width: 10.67; stroke: none;' />
+<rect x='507.41' y='50.66' width='17.93' height='17.93' style='stroke-width: 10.67; stroke: none;' />
+<line x1='509.20' y1='59.63' x2='523.55' y2='59.63' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<circle cx='516.37' cy='59.63' r='4.10' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<rect x='507.41' y='68.59' width='17.93' height='17.93' style='stroke-width: 10.67; stroke: none;' />
+<line x1='509.20' y1='77.56' x2='523.55' y2='77.56' style='stroke-width: 1.07; stroke-dasharray: 2.85,2.85; stroke-linecap: butt;' />
+<polygon points='516.37,71.18 521.89,80.75 510.85,80.75 ' style='stroke-width: 0.71; stroke: none; fill: #000000;' />
+<text x='530.82' y='63.93' style='font-size: 12.50px; font-family: sans;' textLength='26.41px' lengthAdjust='spacingAndGlyphs'>Data</text>
+<text x='530.82' y='81.86' style='font-size: 12.50px; font-family: sans;' textLength='177.19px' lengthAdjust='spacingAndGlyphs'>Simulated data (95th percentile)</text>
 <text x='394.64' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='98.28px' lengthAdjust='spacingAndGlyphs'>scree-plot-pc</text>
 </g>
 </svg>

@@ -49,6 +49,10 @@ options$variables <- c("contWide", "contcor1", "contcor2", "facFifty", "contExpo
 set.seed(1)
 results <- jaspTools::runAnalysis("exploratoryFactorAnalysis", "test.csv", options, makeTests = F)
 
+test_that("Loadings table is titled as pattern matrix with an oblique rotation", {
+  testthat::expect_identical(results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["title"]],
+                             "Factor Loadings (Pattern Matrix)")
+})
 
 test_that("Factor Correlations table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_correlationTable"]][["data"]]
@@ -249,6 +253,14 @@ test_that("Factor Loadings table results match with 3 factors", {
                                       0.481445404925434, "x7", 0.393821088746758, 0.540664836861347,
                                       -0.269738272928661, 0.479827748357475, "x8", 0.504966416074441,
                                       0.453220919172841, "", 0.539538616482753, "x9"))
+})
+
+test_that("Factor correlations are not shown with an orthogonal rotation", {
+  testthat::expect_identical(results[["status"]], "complete")
+  collection <- results[["results"]][["modelContainer"]][["collection"]]
+  testthat::expect_length(collection[["modelContainer_loadingsTable"]][["data"]], 9L)
+  testthat::expect_null(collection[["modelContainer_correlationTable"]])
+  testthat::expect_identical(collection[["modelContainer_loadingsTable"]][["title"]], "Factor Loadings")
 })
 
 # 2 factors as previously suggested by PC-based parallel analysis

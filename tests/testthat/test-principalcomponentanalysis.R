@@ -12,6 +12,7 @@ defaultOptions <- list(
   rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   componentCorrelations = FALSE,
+  componentStructure = FALSE,
   residualMatrix = FALSE,
   pathDiagram = FALSE,
   kaiserMeyerOlkinTest = FALSE,
@@ -345,6 +346,7 @@ options <- list(
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   componentCorrelations = FALSE,
+  componentStructure = FALSE,
   loadingOrder = "variables",
   dataType = "varianceCovariance",
   kaiserMeyerOlkinTest = FALSE,
@@ -395,3 +397,86 @@ test_that("Component Loadings table results match", {
                                       "x9"))
 })
 
+
+# Structure matrix: equals psych::principal()$Structure (= pattern %*% Phi) for an oblique rotation;
+# with an orthogonal rotation the structure and correlation tables are not shown (checkboxes disabled in QML)
+hsData <- read.csv(testthat::test_path("holzingerswineford.csv"))
+hsVars <- paste0("x", 1:9)
+
+options <- defaultOptions
+options$variables                <- hsVars
+options$manualNumberOfComponents <- 3
+options$rotationMethod           <- "oblique"
+options$rotationMethodOblique    <- "oblimin"
+options$componentStructure       <- TRUE
+
+set.seed(1)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", testthat::test_path("holzingerswineford.csv"), options,
+                                  makeTests = FALSE, view = FALSE)
+
+test_that("Structure matrix matches psych::principal (oblique)", {
+  structureData <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_structureTable"]][["data"]]
+  table         <- t(sapply(structureData, function(row) unlist(row[paste0("c", 1:3)])))
+
+  reference <- suppressWarnings(psych::principal(hsData[, hsVars], nfactors = 3, rotate = "oblimin"))
+  testthat::expect_equal(unname(table), unname(unclass(reference$Structure)), tolerance = 1e-6)
+  testthat::expect_identical(sapply(structureData, `[[`, "var"), hsVars)
+  testthat::expect_identical(results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["title"]],
+                             "Component Loadings (Pattern Matrix)")
+})
+
+options$rotationMethod           <- "orthogonal"
+options$rotationMethodOrthogonal <- "varimax"
+options$componentCorrelations    <- TRUE
+
+set.seed(1)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", testthat::test_path("holzingerswineford.csv"), options,
+                                  makeTests = FALSE, view = FALSE)
+
+test_that("Structure matrix and component correlations are not shown with an orthogonal rotation", {
+  testthat::expect_identical(results[["status"]], "complete")
+  collection <- results[["results"]][["modelContainer"]][["collection"]]
+  testthat::expect_length(collection[["modelContainer_loadingsTable"]][["data"]], 9L)
+  testthat::expect_null(collection[["modelContainer_structureTable"]])
+  testthat::expect_null(collection[["modelContainer_correlationTable"]])
+  testthat::expect_identical(collection[["modelContainer_loadingsTable"]][["title"]], "Component Loadings")
+})
+
+# covariance-based oblique PCA: the structure matrix holds covariances, which the footnote states
+options$rotationMethod      <- "oblique"
+options$baseDecompositionOn <- "covarianceMatrix"
+
+set.seed(1)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", testthat::test_path("holzingerswineford.csv"), options,
+                                  makeTests = FALSE, view = FALSE)
+
+test_that("Structure matrix based on the covariance matrix has a covariance footnote", {
+  testthat::expect_identical(results[["status"]], "complete")
+  structureTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_structureTable"]]
+  testthat::expect_length(structureTable[["data"]], 9L)
+  footnotes <- vapply(structureTable[["footnotes"]], `[[`, "", "text")
+  testthat::expect_true(any(grepl("covariances between the variables and the components", footnotes, fixed = TRUE)))
+})
+
+# one component with an oblique selection: psych does not rotate, so no rotation footnote
+options$baseDecompositionOn      <- "correlationMatrix"
+options$manualNumberOfComponents <- 1
+options$rotationMethodOblique    <- "promax"
+
+set.seed(1)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", testthat::test_path("holzingerswineford.csv"), options,
+                                  makeTests = FALSE, view = FALSE)
+
+test_that("One component with an oblique selection reports no rotation", {
+  testthat::expect_identical(results[["status"]], "complete")
+  collection    <- results[["results"]][["modelContainer"]][["collection"]]
+  loadingsTable <- collection[["modelContainer_loadingsTable"]]
+  testthat::expect_length(loadingsTable[["data"]], 9L)
+  structureTable <- collection[["modelContainer_structureTable"]]
+  testthat::expect_length(structureTable[["data"]], 9L)
+  for (tableFootnotes in list(loadingsTable[["footnotes"]], structureTable[["footnotes"]])) {
+    footnotes <- vapply(tableFootnotes, `[[`, "", "text")
+    testthat::expect_false(any(grepl("promax", footnotes, fixed = TRUE)))
+    testthat::expect_true(any(grepl("only one component", footnotes, fixed = TRUE)))
+  }
+})

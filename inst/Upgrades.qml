@@ -621,6 +621,8 @@ Upgrades
 		ChangeRemove { name: "screePlotParallelAnalysisResults";	condition: function(options) { return options["screePlotParallelAnalysisResults"] !== undefined } }
 		ChangeRemove { name: "setSeed";								condition: function(options) { return options["setSeed"] !== undefined } }
 		ChangeRemove { name: "seed";								condition: function(options) { return options["seed"] !== undefined } }
+		// the structure matrix checkbox was hidden (always FALSE) in PCA; it is now "componentStructure"
+		ChangeRemove { name: "factorStructure";						condition: function(options) { return options["factorStructure"] !== undefined } }
 	}
 
 	// Number-of-factors determination split into separate "Number of Factors/Components" analysis

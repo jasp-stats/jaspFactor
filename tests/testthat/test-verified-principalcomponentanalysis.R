@@ -13,6 +13,7 @@ defaultOptions <- list(
   rotationMethodOblique = "promax",
   loadingsDisplayLimit = 0,
   componentCorrelations = FALSE,
+  componentStructure = FALSE,
   residualMatrix = FALSE,
   pathDiagram = FALSE,
   kaiserMeyerOlkinTest = FALSE,

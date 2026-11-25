@@ -17,8 +17,10 @@
 
 ## Added
 * Latent Class Analysis ([PR #346](https://github.com/jasp-stats/jaspFactor/pull/346)).
+* PCA: structure matrix table (correlations between variables and components; covariances when based on the covariance matrix), as already available in EFA.
 * New **Number of Factors/Components** analysis that consolidates all factor/component retention methods (parallel analysis, eigenvalue criterion, scree plot) into a dedicated analysis, usable for both EFA and PCA decisions. The number of parallel analysis iterations can be set ([jasp-issues#3010](https://github.com/jasp-stats/jasp-issues/issues/3010)). The parallel analysis threshold can be the 95th percentile (default) or the mean of the simulated eigenvalues; the parallel analysis table and the scree plot show the chosen threshold, so the suggested number can be read off the displayed values. Velicer's minimum average partial (MAP) test is included as an additional method ([jasp-issues#1951](https://github.com/jasp-stats/jasp-issues/issues/1951), [jasp-issues#4621](https://github.com/jasp-stats/jasp-issues/issues/4621)).
 ## Changed
+* PCA, EFA: the structure matrix and component/factor correlation options are only available with an oblique rotation; with an orthogonal rotation (or none) the structure matrix equals the loadings and the components/factors are uncorrelated, so these tables are no longer shown.
 * EFA, PCA: eigenvalue- and parallel-analysis-based factor count options removed from both analyses; the number of factors/components is now set manually, with guidance to use the new Number of Factors/Components analysis.
 * EFA, PCA: retention options from older JASP files (parallel analysis, eigenvalue criterion, parallel analysis table, scree plot, seed) are removed on load, and the factor/component count falls back to the stored manual value. Upgrade messages explaining this are in place but are not currently displayed by JASP.
 * EFA, PCA: the Missing Values option moved from Output Options to Analysis Options, as it affects the analysis itself ([PR #382](https://github.com/jasp-stats/jaspFactor/pull/382)).

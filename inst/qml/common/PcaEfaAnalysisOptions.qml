@@ -26,6 +26,7 @@ Section
 	property bool pca: true
 	property bool dataRaw: true
 	property bool nonScale: false
+	property bool oblique: rotationMethod.value === "oblique"
 
 	id: analysisoptions
 	title: qsTr("Analysis Options")
@@ -35,6 +36,7 @@ Section
 
 	RadioButtonGroup
 	{
+		id: rotationMethod
 		name: "rotationMethod"
 		title: qsTr("Rotation Method")
 		info: qsTr("Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.")

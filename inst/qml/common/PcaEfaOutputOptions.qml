@@ -26,6 +26,7 @@ Section
 	property bool pca: true
 	property bool dataRaw: true
 	property int variablesCount: 1
+	property bool oblique: false
 
 	title: qsTr("Output Options")
 	info: qsTr("Additional output options for the PCA/EFA analysis.")
@@ -51,11 +52,18 @@ Section
 	{
 		title: qsTr("Tables")
 		info: qsTr("Display addition tables in the output.")
-		CheckBox { visible: !pca; name: "factorStructure";	label: qsTr("Structure matrix"); info: qsTr("An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix.")}
-		CheckBox { 								
-			name: 	pca ? "componentCorrelations" : "factorCorrelations";		
-			label: 	pca ? qsTr("Component correlations") : qsTr("Factor correlations")
-			info: 	qsTr("When selecting this option, a table with the correlations between the components/factors will be displayed.")
+		CheckBox {
+			name:		pca ? "componentStructure" : "factorStructure"
+			label:		qsTr("Structure matrix")
+			enabled:	oblique
+			info:		pca ? qsTr("An item by component structure matrix: the correlations between the variables and the components (covariances when the decomposition is based on the covariance matrix). This is the loadings (pattern) matrix times the component correlation matrix. Only available with an oblique rotation, because otherwise it equals the loadings.")
+							: qsTr("An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix. Only available with an oblique rotation, because otherwise it equals the loadings.")
+		}
+		CheckBox {
+			name:		pca ? "componentCorrelations" : "factorCorrelations"
+			label:		pca ? qsTr("Component correlations") : qsTr("Factor correlations")
+			enabled:	oblique
+			info:		qsTr("When selecting this option, a table with the correlations between the components/factors will be displayed. Only available with an oblique rotation, because otherwise the components/factors are uncorrelated.")
 		}
 		CheckBox { 
 			visible: !pca; 

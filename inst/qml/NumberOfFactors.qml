@@ -96,7 +96,28 @@ Form
 		Group
 		{
 			title: qsTr("Parallel Analysis")
-			info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the 95th percentile of the simulated eigenvalues.")
+			info: qsTr("Parallel analysis compares the eigenvalues of the data to eigenvalues of simulated random data. Factors/components are suggested for retention when their eigenvalue is greater than the threshold computed from the simulated eigenvalues.")
+
+			RadioButtonGroup
+			{
+				name: "parallelAnalysisThreshold"
+				title: qsTr("Threshold")
+				info: qsTr("Which summary of the simulated eigenvalues the real data eigenvalues are compared against. It is used for the suggested number, the parallel analysis table and the scree plot.")
+
+				RadioButton
+				{
+					value:		"percentile95"
+					label:		qsTr("95th percentile")
+					checked:	true
+					info: qsTr("The 95th percentile of the simulated eigenvalues. This is the common recommendation, as the mean tends to suggest too many factors/components.")
+				}
+				RadioButton
+				{
+					value:	"mean"
+					label:	qsTr("Mean")
+					info: qsTr("The mean of the simulated eigenvalues, as in Horn's original parallel analysis.")
+				}
+			}
 
 			IntegerField
 			{
@@ -104,7 +125,7 @@ Form
 				label:			qsTr("Number of iterations")
 				defaultValue:	20
 				min:			2
-				info: qsTr("The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.")
+				info: qsTr("The number of random datasets generated for the parallel analysis. The threshold, particularly the 95th percentile, becomes more stable with more iterations.")
 			}
 
 			SetSeed{}
@@ -162,7 +183,7 @@ Form
 			name:		"parallelAnalysisTable"
 			label:		qsTr("Parallel analysis table")
 			checked:	true
-			info: qsTr("Displays a table with the real data eigenvalues and the mean eigenvalues of the simulated data. Factors/components suggested for retention are marked with an asterisk.")
+			info: qsTr("Displays a table with the real data eigenvalues and the threshold computed from the simulated eigenvalues (95th percentile or mean). Factors/components suggested for retention are marked with an asterisk.")
 		}
 		CheckBox
 		{
@@ -182,7 +203,7 @@ Form
 				name:		"screePlotParallelAnalysis"
 				label:		qsTr("Parallel analysis results")
 				checked:	true
-				info: qsTr("Display the mean eigenvalues of the simulated data from the parallel analysis in the scree plot.")
+				info: qsTr("Display the threshold computed from the simulated eigenvalues of the parallel analysis (95th percentile or mean) in the scree plot.")
 			}
 		}
 	}

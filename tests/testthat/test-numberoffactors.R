@@ -13,6 +13,7 @@ defaultOptions <- list(
   sampleSize = 200,
   eigenvalueMethod = "principalComponents",
   parallelAnalysisIterations = 20,
+  parallelAnalysisThreshold = "percentile95",
   eigenvalueThreshold = 1,
   correlationMatrix = "pearson",
   parallelAnalysisTable = TRUE,
@@ -48,20 +49,55 @@ test_that("MAP table results match", {
                                       "3", 0.2207663532, "4", 0.46692540953, "5", 1))
 })
 
-test_that("Parallel Analysis table results match (PC-based)", {
-  table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                                 list("Component 1*", 1.7795916550878, 1.33038825631076, "Component 2*",
-                                      1.28644706023115, 1.17764078937677, "Component 3", 1.08333785331839,
-                                      1.06059898353413, "Component 4", 0.848949206589453,
-                                      0.937630020338414, "Component 5", 0.696170865182367, 0.8104282277456,
-                                      "Component 6", 0.305503359590833, 0.683313722694323))
+test_that("Parallel Analysis table stars match the summary count (PC-based, 95th percentile)", {
+  container <- results[["results"]][["nofContainer"]][["collection"]]
+  table     <- container[["nofContainer_parallelTable"]]
+  starred   <- grepl("*", sapply(table[["data"]], `[[`, "col"), fixed = TRUE)
+  realEigen <- sapply(table[["data"]], `[[`, "val1")
+  simEigen  <- sapply(table[["data"]], `[[`, "val2")
+  # the stars must follow from the displayed columns (first-failure rule)
+  expected  <- cumprod(realEigen > simEigen) == 1
+  testthat::expect_identical(starred, expected)
+  testthat::expect_equal(sum(starred), container[["nofContainer_summaryTable"]][["data"]][[1]][["n"]])
+  testthat::expect_identical(table[["schema"]][["fields"]][[3]][["title"]], "Simulated data 95th percentile eigenvalues")
 })
+
+percentile95Eigen <- sapply(results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]],
+                            `[[`, "val2")
 
 test_that("Scree plot matches (PC-based)", {
   plotName <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_screePlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "scree-plot-pc")
+})
+
+# mean threshold: the simulation does not depend on the threshold, so the simulated means
+# equal the values displayed before the threshold option existed; only the stars follow the mean rule
+options$parallelAnalysisThreshold <- "mean"
+results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
+
+test_that("Summary table results match (PC-based, mean)", {
+  table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_summaryTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Parallel analysis (PC-based)", 3,
+                                      "Eigenvalue criterion (above 1)", 3,
+                                      "Velicer's MAP", 0))
+})
+
+test_that("Parallel Analysis table results match (PC-based, mean)", {
+  table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("Component 1*", 1.7795916550878, 1.33038825631076, "Component 2*",
+                                      1.28644706023115, 1.17764078937677, "Component 3*", 1.08333785331839,
+                                      1.06059898353413, "Component 4", 0.848949206589453,
+                                      0.937630020338414, "Component 5", 0.696170865182367, 0.8104282277456,
+                                      "Component 6", 0.305503359590833, 0.683313722694323))
+})
+
+test_that("Default threshold displays the 95th percentile, not the mean", {
+  meanEigen <- sapply(results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]],
+                      `[[`, "val2")
+  testthat::expect_false(isTRUE(all.equal(percentile95Eigen, meanEigen)))
 })
 
 
@@ -127,14 +163,15 @@ options <- defaultOptions
 options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
 options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
 options$correlationMatrix <- "polychoricTetrachoric"
+options$parallelAnalysisThreshold <- "mean"
 
 results <- jaspTools::runAnalysis("numberOfFactors", "test.csv", options, makeTests = F)
 
-test_that("Parallel Analysis table results match with poly cor", {
+test_that("Parallel Analysis table results match with poly cor (mean)", {
   table <- results[["results"]][["nofContainer"]][["collection"]][["nofContainer_parallelTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("Component 1*", 1.78311572348898, 1.33849952828362, "Component 2*",
-                                      1.28924116893078, 1.19495601423762, "Component 3", 1.08833059622023,
+                                      1.28924116893078, 1.19495601423762, "Component 3*", 1.08833059622023,
                                       1.03657350841346, "Component 4", 0.845932695389084, 0.919703170460585,
                                       "Component 5", 0.688011322780564, 0.817254742438021, "Component 6",
                                       0.305368493190363, 0.693013036166699))

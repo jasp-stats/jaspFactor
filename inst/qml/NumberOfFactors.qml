@@ -109,13 +109,13 @@ Form
 					value:		"percentile95"
 					label:		qsTr("95th percentile")
 					checked:	true
-					info: qsTr("The 95th percentile of the simulated eigenvalues. This is the common recommendation, as the mean tends to suggest too many factors/components.")
+					info: qsTr("The 95th percentile of the simulated eigenvalues (Glorfeld, 1995). This is the common recommendation, as the mean tends to suggest too many factors/components.")
 				}
 				RadioButton
 				{
 					value:	"mean"
 					label:	qsTr("Mean")
-					info: qsTr("The mean of the simulated eigenvalues, as in Horn's original parallel analysis.")
+					info: qsTr("The mean of the simulated eigenvalues, as in Horn's (1965) original parallel analysis. With factor eigenvalues, it can perform better when factors are correlated or a strong general factor is present (Crawford et al., 2010).")
 				}
 			}
 

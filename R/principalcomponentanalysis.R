@@ -479,6 +479,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     eigenTable[["propR"]] <- Vaccounted["Proportion Var", idx]
     eigenTable[["cumpR"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
+  # psych: with correlated components, SS loadings = diag(Phi %*% t(P) %*% P) = column sums of pattern * structure
+  if (options[["rotationMethod"]] == "oblique" && pcaResults[["factors"]] > 1L)
+    eigenTable$addFootnote(gettext("With an oblique rotation, the sums of squared loadings take the component correlations into account (sum of pattern \u00D7 structure loadings), so they add up to the total explained variance. Proportion var. is this sum divided by the total variance (the number of variables for a correlation matrix)."))
 }
 
 

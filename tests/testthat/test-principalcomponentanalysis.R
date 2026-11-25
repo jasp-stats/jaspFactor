@@ -425,6 +425,15 @@ test_that("Structure matrix matches psych::principal (oblique)", {
                              "Component Loadings (Pattern Matrix)")
 })
 
+test_that("Oblique sums of squared loadings add up to the explained variance and have a footnote", {
+  eigenTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]]
+  footnotes  <- sapply(eigenTable[["footnotes"]], `[[`, "text")
+  testthat::expect_true(any(grepl("take the component correlations into account", footnotes, fixed = TRUE)))
+
+  reference <- suppressWarnings(psych::principal(hsData[, hsVars], nfactors = 3, rotate = "oblimin"))
+  testthat::expect_equal(sum(sapply(eigenTable[["data"]], `[[`, "eigvR")), sum(reference$communality), tolerance = 1e-6)
+})
+
 options$rotationMethod           <- "orthogonal"
 options$rotationMethodOrthogonal <- "varimax"
 options$componentCorrelations    <- TRUE
@@ -440,6 +449,8 @@ test_that("Structure matrix and component correlations are not shown with an ort
   testthat::expect_null(collection[["modelContainer_structureTable"]])
   testthat::expect_null(collection[["modelContainer_correlationTable"]])
   testthat::expect_identical(collection[["modelContainer_loadingsTable"]][["title"]], "Component Loadings")
+  footnotes <- sapply(collection[["modelContainer_eigenTable"]][["footnotes"]], `[[`, "text")
+  testthat::expect_false(any(grepl("take the component correlations into account", unlist(footnotes), fixed = TRUE)))
 })
 
 # covariance-based oblique PCA: the structure matrix holds covariances, which the footnote states
@@ -479,4 +490,6 @@ test_that("One component with an oblique selection reports no rotation", {
     testthat::expect_false(any(grepl("promax", footnotes, fixed = TRUE)))
     testthat::expect_true(any(grepl("only one component", footnotes, fixed = TRUE)))
   }
+  eigenFootnotes <- unlist(lapply(collection[["modelContainer_eigenTable"]][["footnotes"]], `[[`, "text"))
+  testthat::expect_false(any(grepl("take the component correlations into account", eigenFootnotes, fixed = TRUE)))
 })

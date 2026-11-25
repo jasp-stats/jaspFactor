@@ -486,6 +486,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     eigenTable[["propR"]] <- Vaccounted["Proportion Var", idx]
     eigenTable[["cumpR"]] <- if (efaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
+  # psych: with correlated factors, SS loadings = diag(Phi %*% t(P) %*% P) = column sums of pattern * structure
+  if (options[["rotationMethod"]] == "oblique" && efaResults[["factors"]] > 1L)
+    eigenTable$addFootnote(gettext("With an oblique rotation, the sums of squared loadings take the factor correlations into account (sum of pattern \u00D7 structure loadings), so they add up to the total explained variance. Proportion var. is this sum divided by the total variance (the number of variables for a correlation matrix)."))
 }
 
 .efaCorrTable <- function(modelContainer, dataset, options, ready) {

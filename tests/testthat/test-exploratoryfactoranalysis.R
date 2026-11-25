@@ -261,6 +261,8 @@ test_that("Factor correlations are not shown with an orthogonal rotation", {
   testthat::expect_length(collection[["modelContainer_loadingsTable"]][["data"]], 9L)
   testthat::expect_null(collection[["modelContainer_correlationTable"]])
   testthat::expect_identical(collection[["modelContainer_loadingsTable"]][["title"]], "Factor Loadings")
+  footnotes <- sapply(collection[["modelContainer_eigenTable"]][["footnotes"]], `[[`, "text")
+  testthat::expect_false(any(grepl("take the factor correlations into account", unlist(footnotes), fixed = TRUE)))
 })
 
 # 2 factors as previously suggested by PC-based parallel analysis
@@ -286,6 +288,8 @@ test_that("Factor Characteristics table results match", {
                                       0.238183139137491, 1.42466773163277, 1.42909883482494, "Factor 2",
                                       0.411139518227707, 0.411182023092321, 0.173694896288912, 0.17299888395483,
                                       1.04216937773347, 1.03799330372898))
+  footnotes <- sapply(results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["footnotes"]], `[[`, "text")
+  testthat::expect_true(any(grepl("take the factor correlations into account", footnotes, fixed = TRUE)))
 })
 
 test_that("Mardia's Test of Multivariate Normality table results match with poly cor", {

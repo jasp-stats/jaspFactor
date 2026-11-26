@@ -16,8 +16,8 @@ test_that("exploratoryFactorAnalysis (analysis 2) results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list("Factor 1", 0.466283987164474, 0.466284032177272, 0.466283987164474,
-     0.466284032177272, 3.26398791015131, 3.2639882252409))
+    list("Factor 1", 0.466283987164474, 0.466283987164475, 3.551168586325465,
+     0.466283987164474, 0.466283987164475, 3.263987910151319, 3.263987910151319))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_fitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -30,12 +30,13 @@ test_that("exploratoryFactorAnalysis (analysis 2) results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(0.964744613253794, 0.0692678311977876, "Residuals Classics",
-     0.905697406226147, 0.179712208355229, "Residuals French", 0.850593590274152,
-     0.276490544184528, "Residuals Mathematics", 0.728677939153591,
-     0.469028460990875, "Residuals English", 0.4314361689816, 0.81386283209448,
-     "Residuals Pitch", 0.218273887553604, 0.952356510012237, "Residuals Light",
-     0.157182368561013, 0.97529370301355, "Residuals Weight"))
+    list(0.964744613253794, 0.930732168802212, 0.0692678311977876, "Residuals Classics",
+         0.905697406226147, 0.820287791644771, 0.179712208355229, "Residuals French",
+         0.850593590274152, 0.723509455815472, 0.276490544184528, "Residuals Mathematics",
+         0.728677939153591, 0.530971539009125, 0.469028460990875, "Residuals English",
+         0.4314361689816, 0.18613716790552, 0.81386283209448, "Residuals Pitch",
+         0.218273887553604, 0.047643489987763, 0.952356510012237, "Residuals Light",
+         0.157182368561013, 0.02470629698645, 0.97529370301355, "Residuals Weight"))
 
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_path"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
@@ -65,13 +66,13 @@ test_that("principalComponentAnalysis (analysis 3) results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(0.940367460295704, 0.115709039617007, "Residuals Classics",
-     0.907297755977426, 0.176810781998327, "Residuals French",
-     0.881854666863415, 0.222332346531216, "Residuals Mathematics",
-     0.805259591154695, 0.351556990853373, "Residuals English",
-     0.531221072557435, 0.717804172070928, "Residuals Pitch", 0.292003528877688,
-     0.914733939122977, "Residuals Light", 0.223865710905652, 0.949884143480707,
-     "Residuals Weight"))
+    list(0.940367460295704, 0.884290960382993, 0.115709039617007, "Residuals Classics",
+         0.907297755977426, 0.823189218001673, 0.176810781998327, "Residuals French",
+         0.881854666863415, 0.777667653468784, 0.222332346531216, "Residuals Mathematics",
+         0.805259591154695, 0.648443009146627, 0.351556990853373, "Residuals English",
+         0.531221072557435, 0.282195827929072, 0.717804172070928, "Residuals Pitch",
+         0.292003528877688, 0.085266060877023, 0.914733939122977, "Residuals Light",
+         0.223865710905652, 0.050115856519293, 0.949884143480707, "Residuals Weight"))
 
 })
 

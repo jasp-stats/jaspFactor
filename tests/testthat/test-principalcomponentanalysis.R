@@ -17,9 +17,13 @@ defaultOptions <- list(
   kaiserMeyerOlkinTest = FALSE,
   bartlettTest = FALSE,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   scoreSavedToData = FALSE,
   antiImageCorrelationMatrix = FALSE,
   scoreSavedToDataPrefix = "",
+  scoreSavedToDataImputation = "none",
   dataType = "raw",
   rotationMethod = "orthogonal",
   baseDecompositionOn = "correlationMatrix",
@@ -52,12 +56,15 @@ test_that("Component Loadings table results match", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(0.709068975944499, -0.055882219913321, 0.494098364850579, "contNormal",
-                           -0.198414056307147, -0.730807163622534, 0.426552751857732, "contGamma",
-                           -0.154267640888903, 0.766942636295035, 0.388000487607395, "debCollin1",
-                           0.613519408318389, 0.258607271436745, 0.556716214776696, "contcor1",
-                           -0.560112933829558, 0.0519207989938901, 0.683577731988681, "facFifty"
-                      ))
+                      list(0.709068975944499, -0.055882219913321, 0.505901635149421,
+                           0.494098364850579, "contNormal", -0.198414056307147,
+                           -0.730807163622534, 0.573447248142268, 0.426552751857732,
+                           "contGamma", -0.154267640888903, 0.766942636295035,
+                           0.611999512392605, 0.388000487607395, "debCollin1",
+                           0.613519408318389, 0.258607271436745, 0.443283785223304,
+                           0.556716214776696, "contcor1", -0.560112933829558,
+                           0.0519207989938901, 0.316422268011319, 0.683577731988681,
+                           "facFifty"))
 })
 
 test_that("Component Characteristics table results match with varimax rotation", {
@@ -294,10 +301,12 @@ test_that("Chi-squared Test table results match", {
 test_that("Component Loadings table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(-0.167424873032004, 1.09220828001551, "contNormal", 1.46947969487352,
-                                      0.188913286087952, "contGamma", -0.412348047289494, 0.853786529139055,
-                                      "contcor1", -0.302805178888101, 0.916624916670696, "contcor2"
-                                 ))
+                                 list(-0.167424873032004, 0.0280310881097827, 1.09220828001551,
+                                      "contNormal", 1.46947969487352, 2.15937057364557,
+                                      0.188913286087952, "contGamma", -0.412348047289494,
+                                      0.170030912103459, 0.853786529139055, "contcor1",
+                                      -0.302805178888101, 0.0916909763614548, 0.916624916670696,
+                                      "contcor2"))
 })
 
 
@@ -328,10 +337,13 @@ test_that("Chi-squared Test table results match for mixed based", {
 test_that("Component Loadings table results match for mixed based", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.468967752780233, 0.780069246852258, "contNormal", -0.644079133313335,
-                                      0.585162070030343, "contGamma", 0.277117722692202, 0.923205767769888,
-                                      "debCollin1", 0.624793529702314, 0.609633045242123, "contcor1",
-                                      0.551422298513999, 0.695933448701539, "facFive"))
+                                 list(0.468967752780233, 0.219930753147742, 0.780069246852258,
+                                      "contNormal", -0.644079133313335, 0.414837929969657,
+                                      0.585162070030343, "contGamma", 0.277117722692202,
+                                      0.076794232230112, 0.923205767769888, "debCollin1",
+                                      0.624793529702314, 0.390366954757877, 0.609633045242123,
+                                      "contcor1", 0.551422298513999, 0.304066551298461,
+                                      0.695933448701539, "facFive"))
 })
 
 
@@ -342,6 +354,7 @@ cdt <- as.data.frame(cov(dt[, 7:15]))
 options <- list(
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "PC",
+  scoreSavedToDataImputation = "none",
   baseDecompositionOn = "correlationMatrix",
   bartlettTest = FALSE,
   componentCorrelations = FALSE,
@@ -351,6 +364,9 @@ options <- list(
   loadingsDisplayLimit = 0.1,
   manualNumberOfComponents = 1,
   mardiaTest = FALSE,
+  mahalanobisOutlier = FALSE,
+  mahalanobisOutlierPValue = 0.001,
+  mahalanobisOutlierPlot = FALSE,
   naAction = "pairwise",
   rotationMethodOblique = "promax",
   rotationMethodOrthogonal = "none",
@@ -386,12 +402,183 @@ test_that("Component Loadings table results match", {
   skip("Skip test because columnIndexInData does not play nice with jaspTools yet")
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.658301970425138, 0.566638515734381, "x1", 0.389685299082607,
-                                      0.848145367678899, "x2", 0.477040613001908, 0.772432253546763,
-                                      "x3", 0.765811755326015, 0.413532355404489, "x4", 0.737544154070493,
-                                      0.456028620796441, "x5", 0.772162747894139, 0.403764690764573,
-                                      "x6", 0.348796474669525, 0.878341019258111, "x7", 0.454247183933516,
-                                      0.793659495888471, "x8", 0.590666149791766, 0.651113499490171,
-                                      "x9"))
+                                 list(0.658301970425138, 0.433361484265619, 0.566638515734381,
+                                      "x1", 0.389685299082607, 0.151854632321101,
+                                      0.848145367678899, "x2", 0.477040613001908,
+                                      0.227567746453237, 0.772432253546763, "x3",
+                                      0.765811755326015, 0.586467644595511, 0.413532355404489,
+                                      "x4", 0.737544154070493, 0.543971379203559,
+                                      0.456028620796441, "x5", 0.772162747894139,
+                                      0.596235309235427, 0.403764690764573, "x6",
+                                      0.348796474669525, 0.121658980741889, 0.878341019258111,
+                                      "x7", 0.454247183933516, 0.206340504111529,
+                                      0.793659495888471, "x8", 0.590666149791766,
+                                      0.348886500509829, 0.651113499490171, "x9"))
 })
 
+
+# Adding scores to the data with the polychoric/tetrachoric correlation matrix (jasp-issues#3859)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "contcor2", "facFifty", "facFive", "contNormal", "debMiss1")
+options$variables.types <- list("scale", "scale", "scale", "ordinal", "scale", "scale")
+options$manualNumberOfComponents <- 2
+options$scoreSavedToData <- TRUE
+
+test_that("Adding scores to the data works with the polychoric/tetrachoric correlation matrix", {
+  for (naAction in c("pairwise", "listwise")) {
+    options$naAction <- naAction
+    set.seed(1)
+    results <- runAnalysis("principalComponentAnalysis", "test.csv", options, makeTests = FALSE)
+    expect_identical(results[["status"]], "complete", label = paste("naAction =", naAction))
+  }
+})
+
+# Nominal variables with more than two categories cannot be used with polychoric correlations (jasp-issues#4335)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "contcor2", "facFive")
+options$variables.types <- list("scale", "scale", "nominal")
+
+test_that("Nominal variables with more than two categories give a clear error with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than two categories")
+})
+
+# psych::mixedCor only allows up to 8 categories if there are several ordinal variables (jasp-issues#4005)
+options <- defaultOptions
+options$baseDecompositionOn <- "polychoricTetrachoricCorrelationMatrix"
+options$variables <- c("contcor1", "facFive", "facFifty")
+options$variables.types <- list("scale", "ordinal", "ordinal")
+
+test_that("Ordinal variables with more than 8 categories give a clear error with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than 8 categories")
+})
+
+# a single ordinal variable with more than 8 categories (and no nominal variables) is fine for psych::mixedCor (psych::principal treats such a variable as continuous)
+options$variables <- c("contcor1", "contcor2", "facFifty")
+options$variables.types <- list("scale", "scale", "ordinal")
+
+test_that("A single ordinal variable with more than 8 categories can be used with the polychoric/tetrachoric correlation matrix", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  fitTable <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]]
+  expect_null(fitTable[["error"]])
+  expect_gt(length(fitTable[["data"]]), 0)
+})
+
+# with a nominal variable psych checks the number of categories of the ordinal variables as well
+options$variables <- c("contcor1", "facFifty", "facGender")
+options$variables.types <- list("scale", "ordinal", "nominal")
+
+test_that("Ordinal variables with more than 8 categories give a clear error if there is also a nominal variable", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  tableError <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_goodnessOfFitTable"]][["error"]][["errorMessage"]]
+  expect_match(tableError, "more than 8 categories")
+})
+
+# Imputing missing values when computing the scores (jasp-issues#4621)
+options <- defaultOptions
+options$variables <- c("contcor1", "contcor2", "debMiss1", "contNormal", "contGamma")
+options$variables.types <- list("scale", "scale", "scale", "scale", "scale")
+options$scoreSavedToData <- TRUE
+options$naAction <- "pairwise"
+
+test_that("Imputing missing values for the scores works", {
+  for (imputation in c("none", "mean", "median")) {
+    options$scoreSavedToDataImputation <- imputation
+    set.seed(1)
+    results <- runAnalysis("principalComponentAnalysis", "test.csv", options, view = FALSE, makeTests = FALSE)
+    expect_identical(results[["status"]], "complete", label = paste("imputation =", imputation))
+  }
+})
+
+# helper for the tests of the imputation of the scores: the scores of the cases without missing values must not change
+expectImputationKeepsScores <- function(model, data, baseDecompositionOn, label) {
+  scores <- function(imputation, naAction = "pairwise") {
+    jaspFactor:::.pcaAndEfaComputeScores(model, data, list(scoreSavedToDataImputation = imputation, naAction = naAction,
+                                                           baseDecompositionOn = baseDecompositionOn))
+  }
+  incomplete    <- !complete.cases(data)
+  noObservation <- rowSums(!is.na(data)) == 0
+  without       <- scores("none")
+
+  expect_true(all(is.na(without[incomplete, ])), label = paste(label, "without imputation"))
+  expect_identical(scores("mean", naAction = "listwise"), without, label = paste(label, "listwise"))
+
+  for (imputation in c("mean", "median")) {
+    imputed <- scores(imputation)
+    expect_false(anyNA(imputed[!noObservation, ]), label = paste(label, imputation, "all cases with data get a score"))
+    expect_true(all(is.na(imputed[noObservation, ])), label = paste(label, imputation, "case without data"))
+    expect_equal(unname(imputed[!incomplete, ]), unname(without[!incomplete, ]), label = paste(label, imputation, "complete cases"))
+  }
+}
+
+simulateScoreData <- function(ordinal = FALSE) {
+  set.seed(1)
+  latent   <- matrix(rnorm(200 * 2), ncol = 2)
+  loadings <- matrix(c(0.8, 0.7, 0.6, 0, 0, 0,
+                       0, 0, 0, 0.7, 0.8, 0.6), nrow = 2, byrow = TRUE)
+  data <- as.data.frame(latent %*% loadings %*% diag(c(1, 2, 3, 1, 5, 1)) + matrix(rnorm(200 * 6, sd = 0.6), ncol = 6))
+  if (ordinal)
+    data[] <- lapply(data, function(x) as.integer(cut(x, quantile(x, 0:5 / 5), include.lowest = TRUE)))
+  data[c(3, 10), 1] <- NA
+  data[c(10, 40), 4] <- NA
+  data[120, ]        <- NA # no observed value at all
+  return(data)
+}
+
+test_that("The scores of cases without missing values do not change when missing values are imputed (PCA)", {
+  data <- simulateScoreData()
+  expectImputationKeepsScores(suppressWarnings(psych::principal(data, nfactors = 2, rotate = "promax", scores = TRUE)),
+                              data, "correlationMatrix", "correlation matrix")
+  expectImputationKeepsScores(suppressWarnings(psych::principal(data, nfactors = 2, rotate = "varimax", covar = TRUE, cor = "cov", scores = TRUE)),
+                              data, "covarianceMatrix", "covariance matrix")
+
+  dataOrdinal <- simulateScoreData(ordinal = TRUE)
+  expectImputationKeepsScores(suppressWarnings(psych::principal(r = dataOrdinal, nfactors = 2, rotate = "promax", scores = TRUE, cor = "mixed")),
+                              dataOrdinal, "polychoricTetrachoricCorrelationMatrix", "polychoric")
+})
+
+options <- defaultOptions
+options$variables <- paste0("x", 1:9)
+options$variables.types <- as.list(rep("scale", 9))
+options$mahalanobisOutlier <- TRUE
+options$mahalanobisOutlierPlot <- TRUE
+options$mahalanobisOutlierPValue <- 0.05
+
+test_that("The Mahalanobis outlier table and plot are made", {
+  set.seed(1)
+  results <- runAnalysis("principalComponentAnalysis", "holzingerswineford.csv", options, view = FALSE, makeTests = FALSE)
+  expect_identical(results[["status"]], "complete")
+  container <- results[["results"]][["modelContainer"]][["collection"]]
+  expect_null(container[["modelContainer_mahalanobisTable"]][["error"]])
+  expect_gt(length(container[["modelContainer_mahalanobisTable"]][["data"]]), 0)
+  expect_true(all(vapply(container[["modelContainer_mahalanobisTable"]][["data"]], function(row) row[["p"]] < 0.05, logical(1))))
+  expect_false(is.null(container[["modelContainer_mahalanobisPlot"]]))
+  expect_null(container[["modelContainer_mahalanobisPlot"]][["error"]])
+})
+
+test_that("Median imputation for a PCA based on the covariance matrix centres the data and uses the median of the variable", {
+  data   <- simulateScoreData()
+  fit    <- suppressWarnings(psych::principal(data, nfactors = 2, rotate = "varimax", covar = TRUE, cor = "cov", scores = TRUE))
+  scores <- jaspFactor:::.pcaAndEfaComputeScores(fit, data, list(scoreSavedToDataImputation = "median", naAction = "pairwise",
+                                                                  baseDecompositionOn = "covarianceMatrix"))
+
+  dataMedian <- data
+  for (i in seq_along(dataMedian)) dataMedian[is.na(dataMedian[[i]]), i] <- median(data[[i]], na.rm = TRUE)
+  centred  <- sweep(as.matrix(dataMedian), 2, colMeans(data, na.rm = TRUE)) # the data are only centred, not standardized
+  expected <- centred %*% fit[["weights"]]
+  expected[rowSums(!is.na(data)) == 0, ] <- NA
+  expect_equal(unname(scores), unname(expected))
+})

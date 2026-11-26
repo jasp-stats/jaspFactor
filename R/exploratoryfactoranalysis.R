@@ -337,7 +337,9 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
   if (!is.null(modelContainer[["loadingsTable"]]))
     return()
 
-  loadingsTable <- createJaspTable(gettext("Factor Loadings"))
+  # with an oblique rotation the loadings are the pattern matrix (see the structure matrix table)
+  loadingsTitle <- if (options[["rotationMethod"]] == "oblique") gettext("Factor Loadings (Pattern Matrix)") else gettext("Factor Loadings")
+  loadingsTable <- createJaspTable(loadingsTitle)
   loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingOrder"))
   loadingsTable$position <- 2
 
@@ -357,8 +359,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   loadingsTable$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
 
+  # psych does not rotate a single factor
   if (options[["rotationMethod"]] == "orthogonal" && options[["rotationMethodOrthogonal"]] == "none") {
     loadingsTable$addFootnote(message = gettext("No rotation method applied."))
+  } else if (ncol(loads) == 1) {
+    loadingsTable$addFootnote(message = gettext("No rotation applied, because there is only one factor."))
   } else {
     rotationSelector <- if (options[["rotationMethod"]] == "orthogonal") {
       "rotationMethodOrthogonal"
@@ -391,7 +396,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 }
 
 .efaStructureTable <- function(modelContainer, dataset, options, ready) {
-  if (!options[["factorStructure"]] || !is.null(modelContainer[["structureTable"]])) return()
+  # only for oblique rotations (the checkbox is disabled otherwise, but may still be TRUE)
+  if (!options[["factorStructure"]] || options[["rotationMethod"]] != "oblique" || !is.null(modelContainer[["structureTable"]])) return()
   structureTable <- createJaspTable(gettext("Factor Loadings (Structure Matrix)"))
   structureTable$dependOn(c("loadingsDisplayLimit", "factorStructure"))
   structureTable$position <- 2.5
@@ -402,8 +408,11 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
   efaResults <- modelContainer[["model"]][["object"]]
 
+  # psych does not rotate a single factor
   if (options$rotationMethod == "orthogonal" && options$rotationMethodOrthogonal == "none") {
     structureTable$addFootnote(message = gettext("No rotation method applied."))
+  } else if (efaResults$factors == 1) {
+    structureTable$addFootnote(message = gettext("No rotation applied, because there is only one factor."))
   } else {
     rotationSelector <- if (options[["rotationMethod"]] == "orthogonal") {
       "rotationMethodOrthogonal"
@@ -477,11 +486,15 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
     eigenTable[["propR"]] <- Vaccounted["Proportion Var", idx]
     eigenTable[["cumpR"]] <- if (efaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
+  # psych: with correlated factors, SS loadings = diag(Phi %*% t(P) %*% P) = column sums of pattern * structure
+  if (options[["rotationMethod"]] == "oblique" && efaResults[["factors"]] > 1L)
+    eigenTable$addFootnote(gettext("With an oblique rotation, the sums of squared loadings take the factor correlations into account (sum of pattern \u00D7 structure loadings), so they add up to the total explained variance. Proportion var. is this sum divided by the total variance (the number of variables for a correlation matrix)."))
 }
 
 .efaCorrTable <- function(modelContainer, dataset, options, ready) {
 
-  if (!options[["factorCorrelations"]] || !is.null(modelContainer[["correlationTable"]])) return()
+  # only for oblique rotations (the checkbox is disabled otherwise, but may still be TRUE)
+  if (!options[["factorCorrelations"]] || options[["rotationMethod"]] != "oblique" || !is.null(modelContainer[["correlationTable"]])) return()
   correlationTable <- createJaspTable(gettext("Factor Correlations"))
   correlationTable$dependOn("factorCorrelations")
   correlationTable$addColumnInfo(name = "col", title = "", type = "string")

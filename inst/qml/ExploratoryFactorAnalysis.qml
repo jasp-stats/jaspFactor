@@ -67,6 +67,7 @@ Form
 	}
 
 	Common.PcaEfaAnalysisOptions{
+		id: analysisOptionsSection
 		pca: false
 		dataRaw: dataType.value == "raw"
 		nonScale: variables.count > 0 && (variables.columnsTypes.includes("ordinal") || variables.columnsTypes.includes("nominal"))
@@ -75,6 +76,7 @@ Form
 	Common.PcaEfaOutputOptions{
 		pca: false
 		dataRaw: dataType.value == "raw"
+		oblique: analysisOptionsSection.oblique
 		variablesCount: variables.count
 
 	}

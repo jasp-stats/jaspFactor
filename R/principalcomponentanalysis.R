@@ -37,6 +37,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   # output functions
   .pcaGoodnessOfFitTable(   modelContainer, dataset, options, ready)
   .pcaLoadingsTable(        modelContainer, dataset, options, ready)
+  .pcaStructureTable(       modelContainer, dataset, options, ready)
   .pcaEigenTable(           modelContainer, dataset, options, ready)
   .pcaCorrTable(            modelContainer, dataset, options, ready)
   .pcaResidualTable(        modelContainer, dataset, options, ready)
@@ -329,7 +330,9 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
 
   if (!is.null(modelContainer[["loadingsTable"]])) return()
 
-  loadingsTable <- createJaspTable(gettext("Component Loadings"))
+  # with an oblique rotation the loadings are the pattern matrix (see the structure matrix table)
+  loadingsTitle <- if (options[["rotationMethod"]] == "oblique") gettext("Component Loadings (Pattern Matrix)") else gettext("Component Loadings")
+  loadingsTable <- createJaspTable(loadingsTitle)
   loadingsTable$dependOn(c("loadingsDisplayLimit", "loadingOrder"))
   loadingsTable$position <- 2
   loadingsTable$addColumnInfo(name = "var", title = "", type = "string")
@@ -346,8 +349,11 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   }
   loadingsTable$addColumnInfo(name = "uni", title = gettext("Uniqueness"), type = "number", format = "dp:3")
 
+  # psych does not rotate a single component
   if (options[["rotationMethod"]] == "orthogonal" && options[["rotationMethodOrthogonal"]] == "none") {
     loadingsTable$addFootnote(message = gettext("No rotation method applied."))
+  } else if (ncol(loads) == 1) {
+    loadingsTable$addFootnote(message = gettext("No rotation applied, because there is only one component."))
   } else {
     loadingsTable$addFootnote(
       message = gettextf("Applied rotation method is %s.",
@@ -373,6 +379,56 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   loadingsTable$setData(df)
   modelContainer[["loadingsTable"]] <- loadingsTable
 
+}
+
+
+# structure matrix = correlations between the variables and the components = pattern %*% Phi;
+# rows in the same order as the loadings table. Only for oblique rotations (the checkbox is disabled
+# otherwise, but may still be TRUE): with an orthogonal rotation it equals the loadings.
+.pcaStructureTable <- function(modelContainer, dataset, options, ready) {
+  if (!options[["componentStructure"]] || options[["rotationMethod"]] != "oblique" || !is.null(modelContainer[["structureTable"]])) return()
+
+  structureTable <- createJaspTable(gettext("Component Loadings (Structure Matrix)"))
+  structureTable$dependOn(c("loadingsDisplayLimit", "loadingOrder", "componentStructure"))
+  structureTable$position <- 2.5
+  structureTable$addColumnInfo(name = "var", title = "", type = "string")
+  modelContainer[["structureTable"]] <- structureTable
+
+  if (!ready || modelContainer$getError()) return()
+
+  pcaResults <- modelContainer[["model"]][["object"]]
+  pattern    <- unclass(loadings(pcaResults))
+  correlated <- ncol(pattern) > 1 && !is.null(pcaResults[["Phi"]])
+  structure  <- if (correlated) pattern %*% pcaResults[["Phi"]] else pattern
+
+  for (i in seq_len(ncol(structure)))
+    structureTable$addColumnInfo(name = paste0("c", i), title = paste0("RC", i), type = "number", format = "dp:3")
+
+  # psych does not rotate a single component
+  if (correlated)
+    structureTable$addFootnote(message = gettextf("Applied rotation method is %s.", options[["rotationMethodOblique"]]))
+  else
+    structureTable$addFootnote(message = gettext("No rotation applied, because there is only one component; the structure matrix equals the component loadings."))
+  # loadings, and thus the structure matrix, are on the covariance scale then
+  if (options[["baseDecompositionOn"]] == "covarianceMatrix")
+    structureTable$addFootnote(message = gettext("Based on the covariance matrix: the values are covariances between the variables and the components, not correlations."))
+
+  limit <- options[["loadingsDisplayLimit"]]
+  structureShown <- structure
+  structureShown[abs(structure) < limit] <- NA_real_
+
+  df <- cbind.data.frame(var = rownames(structure), as.data.frame(structureShown))
+  rownames(df) <- NULL
+  colnames(df)[-1] <- paste0("c", seq_len(ncol(structure)))
+
+  # same row order as the loadings table, which orders by the displayed pattern loadings
+  if (options[["loadingOrder"]] == "size") {
+    patternShown <- pattern
+    patternShown[abs(pattern) < limit] <- NA_real_
+    df <- df[do.call(order, c(abs(as.data.frame(patternShown)), na.last = TRUE, decreasing = TRUE)), ]
+  }
+
+  structureTable$setData(df)
 }
 
 
@@ -423,12 +479,16 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
     eigenTable[["propR"]] <- Vaccounted["Proportion Var", idx]
     eigenTable[["cumpR"]] <- if (pcaResults[["factors"]] == 1L) Vaccounted["Proportion Var", idx] else Vaccounted["Cumulative Var", idx]
   }
+  # psych: with correlated components, SS loadings = diag(Phi %*% t(P) %*% P) = column sums of pattern * structure
+  if (options[["rotationMethod"]] == "oblique" && pcaResults[["factors"]] > 1L)
+    eigenTable$addFootnote(gettext("With an oblique rotation, the sums of squared loadings take the component correlations into account (sum of pattern \u00D7 structure loadings), so they add up to the total explained variance. Proportion var. is this sum divided by the total variance (the number of variables for a correlation matrix)."))
 }
 
 
 .pcaCorrTable <- function(modelContainer, dataset, options, ready) {
 
-  if (!options[["componentCorrelations"]] || !is.null(modelContainer[["correlationTable"]])) return()
+  # only for oblique rotations (the checkbox is disabled otherwise, but may still be TRUE)
+  if (!options[["componentCorrelations"]] || options[["rotationMethod"]] != "oblique" || !is.null(modelContainer[["correlationTable"]])) return()
   correlationTable <- createJaspTable(gettext("Component Correlations"))
   correlationTable$dependOn("componentCorrelations")
   correlationTable$addColumnInfo(name = "col", title = "", type = "string")

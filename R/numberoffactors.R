@@ -17,6 +17,8 @@
 
 numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   jaspResults$addCitation("Revelle, W. (2018) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, https://CRAN.R-project.org/package=psych Version = 1.8.12.")
+  jaspResults$addCitation("Horn, J. L. (1965). A rationale and test for the number of factors in factor analysis. Psychometrika, 30(2), 179-185.")
+  jaspResults$addCitation("Glorfeld, L. W. (1995). An improvement on Horn's parallel analysis methodology for selecting the correct number of factors to retain. Educational and Psychological Measurement, 55(3), 377-393.")
 
   ready   <- length(options$variables) > 1
   # Handle dataset
@@ -78,6 +80,9 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
     parallelResult <- try(psych::fa.parallel(dataset, plot = FALSE, fa = faMethod, n.iter = nIter))
   }
 
+  if (!isTryError(parallelResult))
+    parallelResult <- try(.nofAddParallelThresholds(parallelResult, pcBased = faMethod == "pc"))
+
   if (isTryError(parallelResult)) {
     errmsg <- gettextf("Parallel analysis failed. Internal error message: %s", .extractErrorMessage(parallelResult))
     container$setError(errmsg)
@@ -89,14 +94,43 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 }
 
 
-# psych::fa.parallel suggests ncomp/nfact by comparing real-data eigenvalues against
-# the 95th percentile (quant = .95 default) of the simulated eigenvalues;
-# NA means all real-data eigenvalues exceed it; 0 is a valid suggestion
-.nofParallelSuggested <- function(parallelResult, pcBased) {
-  count <- if (pcBased) parallelResult$ncomp else parallelResult$nfact
+# fa.parallel()$values holds the eigenvalues of every iteration (rows) for every source;
+# with sim = TRUE (always the case here) the last nVar columns are the simulated-data eigenvalues
+# of the requested type (PC or FA). Both thresholds come from these, so the state does not
+# depend on the chosen threshold. The colMeans check guards against a change in the psych layout.
+.nofAddParallelThresholds <- function(parallelResult, pcBased) {
+  realEigen <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
+  simMean   <- if (pcBased) parallelResult$pc.sim    else parallelResult$fa.sim
+  nVar      <- length(realEigen)
+  values    <- parallelResult$values
+  simEigen  <- values[, ncol(values) - nVar + seq_len(nVar), drop = FALSE]
+
+  if (!isTRUE(all.equal(unname(colMeans(simEigen, na.rm = TRUE)), unname(simMean))))
+    stop(gettext("Unexpected layout of the simulated eigenvalues returned by psych::fa.parallel."), call. = FALSE)
+
+  parallelResult$thresholds <- list(
+    mean         = unname(colMeans(simEigen, na.rm = TRUE)),
+    percentile95 = unname(apply(simEigen, 2, stats::quantile, probs = .95, na.rm = TRUE))
+  )
+  return(parallelResult)
+}
+
+.nofParallelThreshold <- function(parallelResult, threshold) {
+  return(parallelResult$thresholds[[threshold]])
+}
+
+# same rule as psych::fa.parallel: count the leading real-data eigenvalues that exceed the threshold,
+# stopping at the first that does not; all exceed -> all retained; 0 is a valid suggestion
+.nofParallelSuggested <- function(parallelResult, pcBased, threshold) {
+  realEigen <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
+  count     <- which(!(realEigen > .nofParallelThreshold(parallelResult, threshold)))[1] - 1L
   if (is.na(count))
-    count <- length(if (pcBased) parallelResult$pc.values else parallelResult$fa.values)
+    count <- length(realEigen)
   return(count)
+}
+
+.nofParallelThresholdText <- function(threshold) {
+  return(if (threshold == "mean") gettext("mean") else gettext("95th percentile"))
 }
 
 
@@ -145,7 +179,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!is.null(container[["summaryTable"]])) return()
 
   summaryTable <- createJaspTable(gettext("Suggested Number of Factors/Components"))
-  summaryTable$dependOn("eigenvalueThreshold")
+  summaryTable$dependOn(c("eigenvalueThreshold", "parallelAnalysisThreshold"))
   summaryTable$position <- 1
   summaryTable$addColumnInfo(name = "method", title = gettext("Method"),           type = "string")
   summaryTable$addColumnInfo(name = "n",      title = gettext("Suggested number"), type = "integer")
@@ -161,7 +195,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   eigType     <- if (pcBased) gettext("principal component") else gettext("factor")
 
   paLabel <- if (pcBased) gettext("Parallel analysis (PC-based)") else gettext("Parallel analysis (FA-based)")
-  paCount <- .nofParallelSuggested(parallelResult, pcBased)
+  paCount <- .nofParallelSuggested(parallelResult, pcBased, options[["parallelAnalysisThreshold"]])
 
   corMatrix <- .nofCorrelationMatrix(container, dataset, options)
   if (is.null(corMatrix)) return()
@@ -169,6 +203,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 
   summaryTable[["method"]] <- c(paLabel, gettextf("Eigenvalue criterion (above %s)", options[["eigenvalueThreshold"]]), gettext("Velicer's MAP"))
   summaryTable[["n"]]      <- c(paCount, sum(eigenValues > options[["eigenvalueThreshold"]]), mapCount)
+  summaryTable$addFootnote(gettextf("Parallel analysis compares against the %s of the simulated eigenvalues.", .nofParallelThresholdText(options[["parallelAnalysisThreshold"]])))
   summaryTable$addFootnote(gettextf("Eigenvalue criterion based on %s eigenvalues.", eigType))
 }
 
@@ -176,15 +211,17 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
 .nofParallelAnalysisTable <- function(container, dataset, options, ready) {
   if (!options[["parallelAnalysisTable"]] || !is.null(container[["parallelTable"]])) return()
 
-  pcBased  <- options[["eigenvalueMethod"]] == "principalComponents"
-  eigTitle <- if (pcBased) gettext("Real data component eigenvalues") else gettext("Real data factor eigenvalues")
+  pcBased   <- options[["eigenvalueMethod"]] == "principalComponents"
+  threshold <- options[["parallelAnalysisThreshold"]]
+  eigTitle  <- if (pcBased) gettext("Real data component eigenvalues") else gettext("Real data factor eigenvalues")
+  simTitle  <- if (threshold == "mean") gettext("Simulated data mean eigenvalues") else gettext("Simulated data 95th percentile eigenvalues")
 
   parallelTable <- createJaspTable(gettext("Parallel Analysis"))
-  parallelTable$dependOn("parallelAnalysisTable")
+  parallelTable$dependOn(c("parallelAnalysisTable", "parallelAnalysisThreshold"))
   parallelTable$position <- 2
-  parallelTable$addColumnInfo(name = "col",  title = "",                                          type = "string")
-  parallelTable$addColumnInfo(name = "val1", title = eigTitle,                                    type = "number", format = "dp:3")
-  parallelTable$addColumnInfo(name = "val2", title = gettext("Simulated data mean eigenvalues"),  type = "number", format = "dp:3")
+  parallelTable$addColumnInfo(name = "col",  title = "",       type = "string")
+  parallelTable$addColumnInfo(name = "val1", title = eigTitle, type = "number", format = "dp:3")
+  parallelTable$addColumnInfo(name = "val2", title = simTitle, type = "number", format = "dp:3")
   container[["parallelTable"]] <- parallelTable
 
   if (!ready || container$getError()) return()
@@ -192,27 +229,26 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   parallelResult <- .nofComputeParallel(container, dataset, options)
   if (is.null(parallelResult)) return()
 
+  thresholdText <- .nofParallelThresholdText(threshold)
   if (pcBased) {
-    rowsName       <- gettext("Component")
-    realDataEigen  <- parallelResult$pc.values
-    resampledEigen <- parallelResult$pc.sim
-    footnote       <- gettextf("'*' = %s should be retained, following the parallel analysis suggestion based on the 95th percentile of the simulated eigenvalues; the table displays mean simulated eigenvalues. Results from PC-based parallel analysis.", rowsName)
+    rowsName      <- gettext("Component")
+    realDataEigen <- parallelResult$pc.values
+    footnote      <- gettextf("'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the simulated eigenvalues; counting stops at the first eigenvalue that does not. Results from PC-based parallel analysis.", rowsName, thresholdText)
   } else {
-    rowsName       <- gettext("Factor")
-    realDataEigen  <- parallelResult$fa.values
-    resampledEigen <- parallelResult$fa.sim
-    footnote       <- gettextf("'*' = %s should be retained, following the parallel analysis suggestion based on the 95th percentile of the simulated eigenvalues; the table displays mean simulated eigenvalues. Results from FA-based parallel analysis.", rowsName)
+    rowsName      <- gettext("Factor")
+    realDataEigen <- parallelResult$fa.values
+    footnote      <- gettextf("'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the simulated eigenvalues; counting stops at the first eigenvalue that does not. Results from FA-based parallel analysis.", rowsName, thresholdText)
   }
 
-  # star the fa.parallel suggestion so markers match the summary table count
-  retained <- seq_along(realDataEigen) <= .nofParallelSuggested(parallelResult, pcBased)
+  # same count as the summary table
+  retained <- seq_along(realDataEigen) <= .nofParallelSuggested(parallelResult, pcBased, threshold)
   firstCol <- ifelse(retained,
                      paste0(rowsName, " ", seq_along(realDataEigen), "*"),
                      paste(rowsName, seq_along(realDataEigen)))
 
   parallelTable[["col"]]  <- firstCol
   parallelTable[["val1"]] <- realDataEigen
-  parallelTable[["val2"]] <- resampledEigen
+  parallelTable[["val2"]] <- .nofParallelThreshold(parallelResult, threshold)
 
   parallelTable$addFootnote(message = footnote)
 }
@@ -248,7 +284,7 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   if (!options[["screePlot"]] || !is.null(container[["screePlot"]])) return()
 
   scree <- createJaspPlot(title = gettext("Scree plot"), width = 480, height = 320)
-  scree$dependOn(c("screePlot", "screePlotParallelAnalysis", "eigenvalueThreshold"))
+  scree$dependOn(c("screePlot", "screePlotParallelAnalysis", "eigenvalueThreshold", "parallelAnalysisThreshold"))
   scree$position <- 4
   container[["screePlot"]] <- scree
 
@@ -266,9 +302,9 @@ numberOfFactorsInternal <- function(jaspResults, dataset, options, ...) {
   realDataEigen <- if (pcBased) parallelResult$pc.values else parallelResult$fa.values
 
   if (options[["screePlotParallelAnalysis"]]) {
-    resampledEigen <- if (pcBased) parallelResult$pc.sim else parallelResult$fa.sim
-    evs <- c(realDataEigen, resampledEigen)
-    tp  <- rep(c(gettext("Data"), gettext("Simulated data from parallel analysis")), each = n_col)
+    simLabel <- if (options[["parallelAnalysisThreshold"]] == "mean") gettext("Simulated data (mean)") else gettext("Simulated data (95th percentile)")
+    evs <- c(realDataEigen, .nofParallelThreshold(parallelResult, options[["parallelAnalysisThreshold"]]))
+    tp  <- rep(c(gettext("Data"), simLabel), each = n_col)
   } else { # do not display parallel analysis
     evs <- realDataEigen
     tp  <- rep(gettext("Data"), each = n_col)

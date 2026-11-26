@@ -39,7 +39,8 @@ Section
 		id: rotationMethod
 		name: "rotationMethod"
 		title: qsTr("Rotation Method")
-		info: qsTr("Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.")
+		info: pca ? qsTr("Here, the rotation method to apply to the components can be specified. Rotation ensures a simpler understanding of the data structure.")
+				  : qsTr("Here, the rotation method to apply to the factors can be specified. Rotation ensures a simpler understanding of the data structure.")
 		RadioButton
 		{
 			value	: "orthogonal"

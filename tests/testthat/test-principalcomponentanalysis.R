@@ -61,6 +61,11 @@ test_that("Component Loadings table results match", {
                       ))
 })
 
+test_that("Rotated components are labelled RC, also with an orthogonal rotation", {
+  fields <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["schema"]][["fields"]]
+  testthat::expect_identical(vapply(fields[2:3], `[[`, "", "title"), c("RC1", "RC2"))
+})
+
 test_that("Component Characteristics table results match with varimax rotation", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_eigenTable"]][["data"]]
@@ -490,6 +495,25 @@ test_that("One component with an oblique selection reports no rotation", {
     testthat::expect_false(any(grepl("promax", footnotes, fixed = TRUE)))
     testthat::expect_true(any(grepl("only one component", footnotes, fixed = TRUE)))
   }
+  # psych does not rotate a single component, so it keeps the PC label
+  testthat::expect_identical(loadingsTable[["schema"]][["fields"]][[2]][["title"]], "PC1")
+  testthat::expect_identical(structureTable[["schema"]][["fields"]][[2]][["title"]], "PC1")
   eigenFootnotes <- unlist(lapply(collection[["modelContainer_eigenTable"]][["footnotes"]], `[[`, "text"))
   testthat::expect_false(any(grepl("take the component correlations into account", eigenFootnotes, fixed = TRUE)))
+})
+
+
+# no rotation: principal components are labelled PC
+options <- defaultOptions
+options$variables                <- hsVars
+options$manualNumberOfComponents <- 2
+
+set.seed(1)
+results <- jaspTools::runAnalysis("principalComponentAnalysis", testthat::test_path("holzingerswineford.csv"), options,
+                                  makeTests = FALSE, view = FALSE)
+
+test_that("Unrotated components are labelled PC", {
+  testthat::expect_identical(results[["status"]], "complete")
+  fields <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_loadingsTable"]][["schema"]][["fields"]]
+  testthat::expect_identical(vapply(fields[2:3], `[[`, "", "title"), c("PC1", "PC2"))
 })

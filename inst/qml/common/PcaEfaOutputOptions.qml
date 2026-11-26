@@ -80,7 +80,8 @@ Section
 		CheckBox {
 			name: "pathDiagram"
 			label: qsTr("Path diagram")
-			info: qsTr("By selecting this option, a visual representation of the direction and strength of the relation between the variable and factor will be displayed.")
+			info: pca ? qsTr("By selecting this option, a visual representation of the direction and strength of the relation between the variables and components will be displayed.")
+					: qsTr("By selecting this option, a visual representation of the direction and strength of the relation between the variables and factors will be displayed.")
 		}
 	}
 

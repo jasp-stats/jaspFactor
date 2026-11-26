@@ -29,15 +29,15 @@
 #'   \item \code{"covarianceMatrix"}: The covariance matrix is used to decompose the data into components/factors.
 #'   \item \code{"polychoricTetrachoricCorrelationMatrix"}: The polychoric/tetrachoric correlation matrix is used to decompose the data into components/factors. This is sometimes unstable when sample size is small and when some variables do not contain all response categories
 #' }
-#' @param componentCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed.
+#' @param componentCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed. Only available with an oblique rotation, because otherwise the components/factors are uncorrelated.
+#'    Defaults to \code{FALSE}.
+#' @param componentStructure, An item by component structure matrix: the correlations between the variables and the components (covariances when the decomposition is based on the covariance matrix). This is the loadings (pattern) matrix times the component correlation matrix. Only available with an oblique rotation, because otherwise it equals the loadings.
 #'    Defaults to \code{FALSE}.
 #' @param dataType, Specifies whether the data is raw, meaning observations in rows and variables in columns, or whether the data is a variance-covariance matrix. For the latter, the sample size is required.
 #' \itemize{
 #'   \item \code{"raw"}
 #'   \item \code{"varianceCovariance"}
 #' }
-#' @param factorStructure, An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix.
-#'    Defaults to \code{FALSE}.
 #' @param factoringMethod, Which factoring method to use for the decomposition.
 #' \itemize{
 #'   \item \code{"minimumResidual"} (default) : Perform a minimum residual factor analysis (minres) using the first derivative.
@@ -79,6 +79,8 @@
 #' @param scoreSavedToData, Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
 #'    Defaults to \code{FALSE}.
 #' @param variables, In this box, the variables to perform the analysis on are selected
+#' @param ... options that are not an argument of this function: the options of an older version of the
+#'   analysis, to be used together with `version`. They are upgraded to the options of this version.
 principalComponentAnalysis <- function(
           data = NULL,
           version = "1",
@@ -86,8 +88,8 @@ principalComponentAnalysis <- function(
           bartlettTest = FALSE,
           baseDecompositionOn = "correlationMatrix",
           componentCorrelations = FALSE,
+          componentStructure = FALSE,
           dataType = "raw",
-          factorStructure = FALSE,
           factoringMethod = "minimumResidual",
           fitIndices = FALSE,
           kaiserMeyerOlkinTest = FALSE,
@@ -106,9 +108,15 @@ principalComponentAnalysis <- function(
           sampleSize = 200,
           scoreSavedToData = FALSE,
           scoreSavedToDataPrefix = "PC",
-          variables = list(types = list(), value = list())) {
+          variables = list(types = list(), value = list()),
+          ...) {
 
-   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
+   options <- mget(setdiff(names(formals(sys.function())), "..."), envir = environment(), inherits = FALSE)
+   options <- c(options, list(...))
+   if (!all(nzchar(names(options))) || anyDuplicated(names(options)))
+      stop("The extra options given to principalComponentAnalysis must be named, each name once.")
+   if (...length() > 0L && missing(version))
+      stop("principalComponentAnalysis has no option ", paste(names(list(...)), collapse = ", "), ". Options of an older version need the `version` they were written for.")
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 

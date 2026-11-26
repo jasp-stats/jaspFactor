@@ -24,7 +24,8 @@ latentClassAnalysis(
   plotHeight = 320,
   plotWidth = 480,
   seed = 1,
-  setSeed = FALSE
+  setSeed = FALSE,
+  ...
 )
 }
 \arguments{
@@ -65,6 +66,9 @@ Defaults to \code{FALSE}.}
 \item{numberOfClassesSavedToData, }{Which fitted model's results to save.}
 
 \item{numberOfRandomStarts, }{Number of times the EM algorithm is run with different random starting values. The run with the highest log-likelihood is returned.}
+
+\item{...}{options that are not an argument of this function: the options of an older version of the
+analysis, to be used together with `version`. They are upgraded to the options of this version.}
 }
 \description{
 Latent Class Analysis

@@ -42,14 +42,21 @@
 #'   \item \code{"pairwise"}: If one observation from a variable is missing, all the other variable observations from the same case will still be used for the analysis. In this scenario, it is not necessary to have an observation for all the variables to include the case in the analysis. This option is selected by default.
 #'   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 #' }
-#' @param parallelAnalysisIterations, The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.
-#' @param parallelAnalysisTable, Displays a table with the real data eigenvalues and the mean eigenvalues of the simulated data. Factors/components suggested for retention are marked with an asterisk.
+#' @param parallelAnalysisIterations, The number of random datasets generated for the parallel analysis. The threshold, particularly the 95th percentile, becomes more stable with more iterations.
+#' @param parallelAnalysisTable, Displays a table with the real data eigenvalues and the threshold computed from the simulated eigenvalues (95th percentile or mean). Factors/components suggested for retention are marked with an asterisk.
 #'    Defaults to \code{TRUE}.
+#' @param parallelAnalysisThreshold, Which summary of the simulated eigenvalues the real data eigenvalues are compared against. It is used for the suggested number, the parallel analysis table and the scree plot.
+#' \itemize{
+#'   \item \code{"percentile95"}: The 95th percentile of the simulated eigenvalues (Glorfeld, 1995). This is the common recommendation, as the mean tends to suggest too many factors/components.
+#'   \item \code{"mean"}: The mean of the simulated eigenvalues, as in Horn's (1965) original parallel analysis. With factor eigenvalues, it can perform better when factors are correlated or a strong general factor is present (Crawford et al., 2010).
+#' }
 #' @param screePlot, Displays a scree plot. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor/component. The horizontal line marks the eigenvalue threshold.
 #'    Defaults to \code{TRUE}.
-#' @param screePlotParallelAnalysis, Display the mean eigenvalues of the simulated data from the parallel analysis in the scree plot.
+#' @param screePlotParallelAnalysis, Display the threshold computed from the simulated eigenvalues of the parallel analysis (95th percentile or mean) in the scree plot.
 #'    Defaults to \code{TRUE}.
 #' @param variables, In this box, the variables to perform the analysis on are selected
+#' @param ... options that are not an argument of this function: the options of an older version of the
+#'   analysis, to be used together with `version`. They are upgraded to the options of this version.
 numberOfFactors <- function(
           data = NULL,
           version = "1",
@@ -61,6 +68,7 @@ numberOfFactors <- function(
           naAction = "pairwise",
           parallelAnalysisIterations = 20,
           parallelAnalysisTable = TRUE,
+          parallelAnalysisThreshold = "percentile95",
           plotHeight = 320,
           plotWidth = 480,
           sampleSize = 200,
@@ -68,9 +76,15 @@ numberOfFactors <- function(
           screePlotParallelAnalysis = TRUE,
           seed = 1,
           setSeed = FALSE,
-          variables = list(types = list(), value = list())) {
+          variables = list(types = list(), value = list()),
+          ...) {
 
-   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
+   options <- mget(setdiff(names(formals(sys.function())), "..."), envir = environment(), inherits = FALSE)
+   options <- c(options, list(...))
+   if (!all(nzchar(names(options))) || anyDuplicated(names(options)))
+      stop("The extra options given to numberOfFactors must be named, each name once.")
+   if (...length() > 0L && missing(version))
+      stop("numberOfFactors has no option ", paste(names(list(...)), collapse = ", "), ". Options of an older version need the `version` they were written for.")
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 

@@ -31,7 +31,8 @@ exploratoryFactorAnalysis(
   sampleSize = 200,
   scoreSavedToData = FALSE,
   scoreSavedToDataPrefix = "FA",
-  variables = list(types = list(), value = list())
+  variables = list(types = list(), value = list()),
+  ...
 )
 }
 \arguments{
@@ -54,10 +55,10 @@ Defaults to \code{FALSE}.}
   \item \code{"varianceCovariance"}
 }}
 
-\item{factorCorrelations, }{When selecting this option, a table with the correlations between the components/factors will be displayed.
+\item{factorCorrelations, }{When selecting this option, a table with the correlations between the components/factors will be displayed. Only available with an oblique rotation, because otherwise the components/factors are uncorrelated.
 Defaults to \code{FALSE}.}
 
-\item{factorStructure, }{An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix.
+\item{factorStructure, }{An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix. Only available with an oblique rotation, because otherwise it equals the loadings.
 Defaults to \code{FALSE}.}
 
 \item{factoringMethod, }{Which factoring method to use for the decomposition.
@@ -113,6 +114,9 @@ Defaults to \code{FALSE}.}
 Defaults to \code{FALSE}.}
 
 \item{variables, }{In this box, the variables to perform the analysis on are selected}
+
+\item{...}{options that are not an argument of this function: the options of an older version of the
+analysis, to be used together with `version`. They are upgraded to the options of this version.}
 }
 \description{
 Exploratory Factor Analysis

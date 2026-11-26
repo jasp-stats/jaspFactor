@@ -57,7 +57,8 @@ confirmatoryFactorAnalysis(
   seType = "default",
   secondOrder = list(types = list(), value = list()),
   standardized = "none",
-  thresholds = TRUE
+  thresholds = TRUE,
+  ...
 )
 }
 \arguments{
@@ -193,6 +194,9 @@ Defaults to \code{FALSE}.}
   \item \code{"all"}: Standardize based on the variances of both the observed and the latent variables.
   \item \code{"noExogenousCovariates"}: Standardize based on the variances of the observed and the latent variables, excluding exogenous covariates.
 }}
+
+\item{...}{options that are not an argument of this function: the options of an older version of the
+analysis, to be used together with `version`. They are upgraded to the options of this version.}
 }
 \description{
 Confirmatory Factor Analysis

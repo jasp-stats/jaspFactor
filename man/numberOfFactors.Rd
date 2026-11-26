@@ -15,6 +15,7 @@ numberOfFactors(
   naAction = "pairwise",
   parallelAnalysisIterations = 20,
   parallelAnalysisTable = TRUE,
+  parallelAnalysisThreshold = "percentile95",
   plotHeight = 320,
   plotWidth = 480,
   sampleSize = 200,
@@ -22,7 +23,8 @@ numberOfFactors(
   screePlotParallelAnalysis = TRUE,
   seed = 1,
   setSeed = FALSE,
-  variables = list(types = list(), value = list())
+  variables = list(types = list(), value = list()),
+  ...
 )
 }
 \arguments{
@@ -55,18 +57,27 @@ Defaults to \code{FALSE}.}
   \item \code{"listwise"}: If one observation from a variable is missing, the whole case, so all the other connected variable observations, will be dismissed from the analysis. In this scenario, observations for every variable are needed to include the case in the analysis. 
 }}
 
-\item{parallelAnalysisIterations, }{The number of random datasets generated for the parallel analysis. The suggested number is based on the 95th percentile of the simulated eigenvalues, which becomes more stable with more iterations.}
+\item{parallelAnalysisIterations, }{The number of random datasets generated for the parallel analysis. The threshold, particularly the 95th percentile, becomes more stable with more iterations.}
 
-\item{parallelAnalysisTable, }{Displays a table with the real data eigenvalues and the mean eigenvalues of the simulated data. Factors/components suggested for retention are marked with an asterisk.
+\item{parallelAnalysisTable, }{Displays a table with the real data eigenvalues and the threshold computed from the simulated eigenvalues (95th percentile or mean). Factors/components suggested for retention are marked with an asterisk.
 Defaults to \code{TRUE}.}
+
+\item{parallelAnalysisThreshold, }{Which summary of the simulated eigenvalues the real data eigenvalues are compared against. It is used for the suggested number, the parallel analysis table and the scree plot.
+\itemize{
+  \item \code{"percentile95"}: The 95th percentile of the simulated eigenvalues (Glorfeld, 1995). This is the common recommendation, as the mean tends to suggest too many factors/components.
+  \item \code{"mean"}: The mean of the simulated eigenvalues, as in Horn's (1965) original parallel analysis. With factor eigenvalues, it can perform better when factors are correlated or a strong general factor is present (Crawford et al., 2010).
+}}
 
 \item{screePlot, }{Displays a scree plot. The scree plot provides information on how much variance in the data, indicated by the eigenvalue, is explained by each factor/component. The horizontal line marks the eigenvalue threshold.
 Defaults to \code{TRUE}.}
 
-\item{screePlotParallelAnalysis, }{Display the mean eigenvalues of the simulated data from the parallel analysis in the scree plot.
+\item{screePlotParallelAnalysis, }{Display the threshold computed from the simulated eigenvalues of the parallel analysis (95th percentile or mean) in the scree plot.
 Defaults to \code{TRUE}.}
 
 \item{variables, }{In this box, the variables to perform the analysis on are selected}
+
+\item{...}{options that are not an argument of this function: the options of an older version of the
+analysis, to be used together with `version`. They are upgraded to the options of this version.}
 }
 \description{
 Number of Factors/Components

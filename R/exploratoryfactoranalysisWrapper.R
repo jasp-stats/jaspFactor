@@ -34,9 +34,9 @@
 #'   \item \code{"raw"}
 #'   \item \code{"varianceCovariance"}
 #' }
-#' @param factorCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed.
+#' @param factorCorrelations, When selecting this option, a table with the correlations between the components/factors will be displayed. Only available with an oblique rotation, because otherwise the components/factors are uncorrelated.
 #'    Defaults to \code{FALSE}.
-#' @param factorStructure, An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix.
+#' @param factorStructure, An item by factor structure matrix. This is just the loadings (pattern) matrix times the factor intercorrelation matrix. Only available with an oblique rotation, because otherwise it equals the loadings.
 #'    Defaults to \code{FALSE}.
 #' @param factoringMethod, Which factoring method to use for the decomposition.
 #' \itemize{
@@ -79,6 +79,8 @@
 #' @param scoreSavedToData, Adds the estimated component/factor scores as new columns to the data set. The scores are regression scores.
 #'    Defaults to \code{FALSE}.
 #' @param variables, In this box, the variables to perform the analysis on are selected
+#' @param ... options that are not an argument of this function: the options of an older version of the
+#'   analysis, to be used together with `version`. They are upgraded to the options of this version.
 exploratoryFactorAnalysis <- function(
           data = NULL,
           version = "1",
@@ -106,9 +108,15 @@ exploratoryFactorAnalysis <- function(
           sampleSize = 200,
           scoreSavedToData = FALSE,
           scoreSavedToDataPrefix = "FA",
-          variables = list(types = list(), value = list())) {
+          variables = list(types = list(), value = list()),
+          ...) {
 
-   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
+   options <- mget(setdiff(names(formals(sys.function())), "..."), envir = environment(), inherits = FALSE)
+   options <- c(options, list(...))
+   if (!all(nzchar(names(options))) || anyDuplicated(names(options)))
+      stop("The extra options given to exploratoryFactorAnalysis must be named, each name once.")
+   if (...length() > 0L && missing(version))
+      stop("exploratoryFactorAnalysis has no option ", paste(names(list(...)), collapse = ", "), ". Options of an older version need the `version` they were written for.")
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 

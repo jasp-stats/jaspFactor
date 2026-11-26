@@ -297,6 +297,13 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   return(pcaResult)
 }
 
+# PC = principal (unrotated) component, RC = rotated component, for orthogonal and oblique rotations alike;
+# psych does not rotate a single component, so that stays PC. (psych itself names some oblique solutions TC, e.g. oblimin.)
+.pcaComponentPrefix <- function(options, nComponents) {
+  rotated <- nComponents > 1 && !(options[["rotationMethod"]] == "orthogonal" && options[["rotationMethodOrthogonal"]] == "none")
+  return(if (rotated) "RC" else "PC")
+}
+
 # Output functions ----
 .pcaGoodnessOfFitTable <- function(modelContainer, dataset, options, ready) {
   if (!is.null(modelContainer[["goodnessOfFitTable"]])) return()
@@ -343,7 +350,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   pcaResults <- modelContainer[["model"]][["object"]]
   loads <- loadings(pcaResults)
 
-  coltitle <- if (options[["rotationMethod"]] == "orthogonal") "PC" else "RC"
+  coltitle <- .pcaComponentPrefix(options, ncol(loads))
   for (i in seq_len(ncol(loads))) {
     loadingsTable$addColumnInfo(name = paste0("c", i), title = paste0(coltitle, i), type = "number", format = "dp:3")
   }
@@ -402,7 +409,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   structure  <- if (correlated) pattern %*% pcaResults[["Phi"]] else pattern
 
   for (i in seq_len(ncol(structure)))
-    structureTable$addColumnInfo(name = paste0("c", i), title = paste0("RC", i), type = "number", format = "dp:3")
+    structureTable$addColumnInfo(name = paste0("c", i), title = paste0(.pcaComponentPrefix(options, ncol(structure)), i), type = "number", format = "dp:3")
 
   # psych does not rotate a single component
   if (correlated)
@@ -561,8 +568,7 @@ principalComponentAnalysisInternal <- function(jaspResults, dataset, options, ..
   PS <- pcaResult$r.scores
 
   # Variable names
-  xName   <- ifelse(options$rotationMethod == "orthogonal" && options$rotationMethodOrthogonal == "none", "PC", "RC")
-  factors <- paste0(xName, seq_len(ncol(LY)))
+  factors <- paste0(.pcaComponentPrefix(options, ncol(LY)), seq_len(ncol(LY)))
   labels  <- rownames(LY)
 
   # Number of variables:

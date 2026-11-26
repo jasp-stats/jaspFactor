@@ -618,8 +618,8 @@ exploratoryFactorAnalysisInternal <- function(jaspResults, dataset, options, ...
 
 
   # Variable names
-  xName   <- ifelse(options$rotationMethod == "orthogonal" && options$rotationMethodOrthogonal == "none", "PC", "RC")
-  factors <- paste0(xName, seq_len(ncol(LY)))
+  # factors, not components: F1, F2, ... (the tables say "Factor 1", ...)
+  factors <- paste0("F", seq_len(ncol(LY)))
   labels  <- rownames(LY)
 
   # Number of variables:

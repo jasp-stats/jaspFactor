@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2026-11-28 03:29\n"
-"PO-Revision-Date: 2026-11-16 06:38+0000\n"
+"PO-Revision-Date: 2026-11-28 05:03+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
 "r/ja/>\n"
@@ -671,9 +671,8 @@ msgstr "自由度が0より小さく、モデルは識別できません。"
 msgid "<em>Warning:</em>"
 msgstr "<em>警告:</em>"
 
-#, fuzzy
 msgid "Factor Loadings (Pattern Matrix)"
-msgstr "因子負荷(構造行列)"
+msgstr "因子負荷量(パターン行列)"
 
 msgid "Factor Loadings"
 msgstr "因子負荷量"
@@ -688,7 +687,7 @@ msgid "No rotation method applied."
 msgstr "回転方法は適用されませんでした。"
 
 msgid "No rotation applied, because there is only one factor."
-msgstr ""
+msgstr "因子が1つだけのため、回転は適用していません。"
 
 msgid "Applied rotation method is %1$s."
 msgstr "適用された回転法は %1$s です。"
@@ -723,6 +722,9 @@ msgid ""
 "up to the total explained variance. Proportion var. is this sum divided by "
 "the total variance (the number of variables for a correlation matrix)."
 msgstr ""
+"斜交回転では、負荷量の平方和は因子間相関を考慮したもの(パターン負荷量 × 構造"
+"負荷量の和)であり、合計すると説明された分散の総量になります。分散説明率は、こ"
+"の和を全分散(相関行列では変数の数)で割ったものです。"
 
 msgid "Factor Correlations"
 msgstr "因子間相関"
@@ -850,12 +852,14 @@ msgid ""
 "Unexpected layout of the simulated eigenvalues returned by "
 "psych::fa.parallel."
 msgstr ""
+"psych::fa.parallel が返したシミュレーションによる固有値の形式が想定と異なりま"
+"す。"
 
 msgid "mean"
-msgstr ""
+msgstr "平均"
 
 msgid "95th percentile"
-msgstr ""
+msgstr "95パーセンタイル"
 
 msgid "Suggested Number of Factors/Components"
 msgstr "推奨される因子数/成分数"
@@ -885,7 +889,7 @@ msgid "Velicer's MAP"
 msgstr "Velicer の MAP"
 
 msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
-msgstr ""
+msgstr "平行分析では、シミュレーションによる固有値の%sと比べています。"
 
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr "%sの固有値に基づく固有値基準です。"
@@ -899,9 +903,8 @@ msgstr "実データ因子固有値"
 msgid "Simulated data mean eigenvalues"
 msgstr "シミュレーションデータ平均固有値"
 
-#, fuzzy
 msgid "Simulated data 95th percentile eigenvalues"
-msgstr "シミュレーションデータ平均固有値"
+msgstr "シミュレーションデータの固有値の95パーセンタイル"
 
 msgid "Parallel Analysis"
 msgstr "平行分析"
@@ -909,25 +912,23 @@ msgstr "平行分析"
 msgid "Component"
 msgstr "コンポーネント"
 
-#, fuzzy
 msgid ""
 "'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
 "simulated eigenvalues; counting stops at the first eigenvalue that does not. "
 "Results from PC-based parallel analysis."
 msgstr ""
-"'*' = 保持すべき%sを示します。シミュレーションによる固有値の95パーセンタイル"
-"に基づく平行分析の提案に従っています。表にはシミュレーションによる固有値の平"
-"均を示します。PCに基づく平行分析の結果です。"
+"'*' = 固有値がシミュレーションによる固有値の%2$sを上回るため、保持すべき%1$s"
+"を示します。数え上げは、上回らない最初の固有値で止めます。PCに基づく平行分析"
+"の結果です。"
 
-#, fuzzy
 msgid ""
 "'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
 "simulated eigenvalues; counting stops at the first eigenvalue that does not. "
 "Results from FA-based parallel analysis."
 msgstr ""
-"'*' = 保持すべき%sを示します。シミュレーションによる固有値の95パーセンタイル"
-"に基づく平行分析の提案に従っています。表にはシミュレーションによる固有値の平"
-"均を示します。FAに基づく平行分析の結果です。"
+"'*' = 固有値がシミュレーションによる固有値の%2$sを上回るため、保持すべき%1$s"
+"を示します。数え上げは、上回らない最初の固有値で止めます。FAに基づく平行分析"
+"の結果です。"
 
 msgid "Velicer's Minimum Average Partial (MAP)"
 msgstr "Velicer の最小平均偏相関 (MAP)"
@@ -949,13 +950,11 @@ msgstr ""
 msgid "Scree plot"
 msgstr "スクリープロット"
 
-#, fuzzy
 msgid "Simulated data (mean)"
-msgstr "シミュレーションデータ平均固有値"
+msgstr "シミュレーションデータ(平均)"
 
-#, fuzzy
 msgid "Simulated data (95th percentile)"
-msgstr "シミュレーション(95分位値)"
+msgstr "シミュレーションデータ(95パーセンタイル)"
 
 msgid "Data"
 msgstr "データ"
@@ -995,32 +994,32 @@ msgstr "データが無効です: 変数 %s の欠損値が多すぎます。"
 msgid "Data not valid: all variables are collinear"
 msgstr "データが無効: すべての変数が共線関係にあります"
 
-#, fuzzy
 msgid "Component Loadings (Pattern Matrix)"
-msgstr "成分負荷量"
+msgstr "成分負荷量(パターン行列)"
 
 msgid "Component Loadings"
 msgstr "成分負荷量"
 
 msgid "No rotation applied, because there is only one component."
-msgstr ""
+msgstr "成分が1つだけのため、回転は適用していません。"
 
 msgid "Applied rotation method is %s."
 msgstr "適用された回転方法は %s です。"
 
-#, fuzzy
 msgid "Component Loadings (Structure Matrix)"
-msgstr "因子負荷(構造行列)"
+msgstr "成分負荷量(構造行列)"
 
 msgid ""
 "No rotation applied, because there is only one component; the structure "
 "matrix equals the component loadings."
 msgstr ""
+"成分が1つだけのため、回転は適用していません。構造行列は成分負荷量と等しくなり"
+"ます。"
 
 msgid ""
 "Based on the covariance matrix: the values are covariances between the "
 "variables and the components, not correlations."
-msgstr ""
+msgstr "共分散行列に基づいています: 値は変数と成分の相関ではなく共分散です。"
 
 msgid "Component Characteristics"
 msgstr "成分特性"
@@ -1031,6 +1030,9 @@ msgid ""
 "up to the total explained variance. Proportion var. is this sum divided by "
 "the total variance (the number of variables for a correlation matrix)."
 msgstr ""
+"斜交回転では、負荷量の平方和は成分間相関を考慮したもの(パターン負荷量 × 構造"
+"負荷量の和)であり、合計すると説明された分散の総量になります。分散説明率は、こ"
+"の和を全分散(相関行列では変数の数)で割ったものです。"
 
 msgid "Component Correlations"
 msgstr "成分間相関"

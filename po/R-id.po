@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.5\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2026-07-04 04:35+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
@@ -615,6 +615,10 @@ msgstr "Derajat kebebasan di bawah 0, model tidak diidentifikasikan."
 msgid "<em>Warning:</em>"
 msgstr "<em>Peringatan:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "Pemuatan Faktor (Matriks Struktur)"
+
 msgid "Factor Loadings"
 msgstr "Pemuatan Faktor"
 
@@ -626,6 +630,9 @@ msgstr "Keunikan"
 
 msgid "No rotation method applied."
 msgstr "Tidak ada metode rotasi diterapkan."
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "Metode rotasi diterapkan adalah %1$s."
@@ -653,6 +660,13 @@ msgstr "Kumulatif"
 
 msgid "SumSq. Loadings"
 msgstr "Pemuatan SumSq."
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "Korelasi Faktor"
@@ -783,6 +797,17 @@ msgstr "Kolom '%s' sudah ada di rangkaian data."
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Analisis paralel gagal. Pesan galat internal: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -813,6 +838,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -822,25 +850,29 @@ msgstr "Nilai eigen komponen data asli"
 msgid "Real data factor eigenvalues"
 msgstr "Nilai eigen faktor data asli"
 
-msgid "Parallel Analysis"
-msgstr "Analisis Paralel"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "Nilai eigen rerata data tersimulasi"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "Nilai eigen rerata data tersimulasi"
+
+msgid "Parallel Analysis"
+msgstr "Analisis Paralel"
 
 msgid "Component"
 msgstr "Komponen"
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -862,11 +894,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "Diagram Scree"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "Nilai eigen rerata data tersimulasi"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "Nilai eigen rerata data tersimulasi"
+
 msgid "Data"
 msgstr "Data"
-
-msgid "Simulated data from parallel analysis"
-msgstr "Data tersimulasi dari analisis paralel"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -903,17 +940,48 @@ msgstr "Data tidak valid: terlalu banyak nilai hilang di variabel %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Data tidak valid: semua variabel adalah kolinear"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "Pemuatan Komponen"
+
 msgid "Component Loadings"
 msgstr "Pemuatan Komponen"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "Metode rotasi diterapkan adalah %s."
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "Pemuatan Faktor (Matriks Struktur)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "Karakteristik Komponen"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "Korelasi Komponen"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "Data tersimulasi dari analisis paralel"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "

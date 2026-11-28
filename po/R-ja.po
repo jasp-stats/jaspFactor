@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2026-11-16 06:38+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -90,7 +90,8 @@ msgstr "モデルフィット"
 
 msgid ""
 "Tests and measures of how well the factor model reproduces the observed data."
-msgstr "因子モデルが観測データをどの程度よく再現しているかを示す検定と指標です。"
+msgstr ""
+"因子モデルが観測データをどの程度よく再現しているかを示す検定と指標です。"
 
 msgid "Chi-square test"
 msgstr "カイ二乗検定"
@@ -217,9 +218,9 @@ msgid ""
 "Common guidelines are RMSEA below .06 and SRMR below .08, but these should "
 "be interpreted cautiously."
 msgstr ""
-"そのほかの適合度指標です。RMSEA とその90%%信頼区間および近似適合の検定の p 値"
-"、SRMR、Hoelter の臨界 N、GFI、MFI、ECVI を示します。RMSEA が .06 未満、SRMR "
-"が .08 未満であることがよく目安とされますが、解釈には注意が必要です。"
+"そのほかの適合度指標です。RMSEA とその90%%信頼区間および近似適合の検定の p "
+"値、SRMR、Hoelter の臨界 N、GFI、MFI、ECVI を示します。RMSEA が .06 未満、"
+"SRMR が .08 未満であることがよく目安とされますが、解釈には注意が必要です。"
 
 msgid "Metric"
 msgstr "指標"
@@ -670,6 +671,10 @@ msgstr "自由度が0より小さく、モデルは識別できません。"
 msgid "<em>Warning:</em>"
 msgstr "<em>警告:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "因子負荷(構造行列)"
+
 msgid "Factor Loadings"
 msgstr "因子負荷量"
 
@@ -681,6 +686,9 @@ msgstr "独自性"
 
 msgid "No rotation method applied."
 msgstr "回転方法は適用されませんでした。"
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "適用された回転法は %1$s です。"
@@ -708,6 +716,13 @@ msgstr "累積"
 
 msgid "SumSq. Loadings"
 msgstr "負荷量の平方和"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "因子間相関"
@@ -831,6 +846,17 @@ msgstr "列名「%s」はデータセットの中にすでにあります"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平行分析に失敗しました. 内部エラー メッセージ: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr "推奨される因子数/成分数"
 
@@ -858,6 +884,9 @@ msgstr "固有値基準 (%s を上回る)"
 msgid "Velicer's MAP"
 msgstr "Velicer の MAP"
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr "%sの固有値に基づく固有値基準です。"
 
@@ -867,28 +896,34 @@ msgstr "実データ成分の固有値"
 msgid "Real data factor eigenvalues"
 msgstr "実データ因子固有値"
 
-msgid "Parallel Analysis"
-msgstr "平行分析"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "シミュレーションデータ平均固有値"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "シミュレーションデータ平均固有値"
+
+msgid "Parallel Analysis"
+msgstr "平行分析"
 
 msgid "Component"
 msgstr "コンポーネント"
 
+#, fuzzy
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 "'*' = 保持すべき%sを示します。シミュレーションによる固有値の95パーセンタイル"
 "に基づく平行分析の提案に従っています。表にはシミュレーションによる固有値の平"
 "均を示します。PCに基づく平行分析の結果です。"
 
+#, fuzzy
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 "'*' = 保持すべき%sを示します。シミュレーションによる固有値の95パーセンタイル"
 "に基づく平行分析の提案に従っています。表にはシミュレーションによる固有値の平"
@@ -914,11 +949,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "スクリープロット"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "シミュレーションデータ平均固有値"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "シミュレーション(95分位値)"
+
 msgid "Data"
 msgstr "データ"
-
-msgid "Simulated data from parallel analysis"
-msgstr "平行解析によるシミュレーションデータ"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -955,17 +995,48 @@ msgstr "データが無効です: 変数 %s の欠損値が多すぎます。"
 msgid "Data not valid: all variables are collinear"
 msgstr "データが無効: すべての変数が共線関係にあります"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "成分負荷量"
+
 msgid "Component Loadings"
 msgstr "成分負荷量"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "適用された回転方法は %s です。"
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "因子負荷(構造行列)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "成分特性"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "成分間相関"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "平行解析によるシミュレーションデータ"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
@@ -1017,9 +1088,6 @@ msgstr "成分間相関"
 
 #~ msgid "Variance explained"
 #~ msgstr "因子寄与"
-
-#~ msgid "Simulated (95th quantile)"
-#~ msgstr "シミュレーション(95分位値)"
 
 #~ msgid "EFA Eigenvalue"
 #~ msgstr "EFA 固有値"

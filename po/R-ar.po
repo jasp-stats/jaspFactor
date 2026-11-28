@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.97.1\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2026-11-12 10:20+0000\n"
 "Last-Translator: Fahad Mahfouz Al-Subhi "
 "<fahadalsubhi@users.noreply.hosted.weblate.org>\n"
@@ -604,6 +604,10 @@ msgstr "درجات الحرية أقل من 0؛ النموذج غير قابل �
 msgid "<em>Warning:</em>"
 msgstr "<em>تحذير:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "تشبعات العوامل (مصفوفة البنية)"
+
 msgid "Factor Loadings"
 msgstr "التشبعات العاملية"
 
@@ -615,6 +619,9 @@ msgstr "التفرد"
 
 msgid "No rotation method applied."
 msgstr "لم تُطبّق طريقة تدوير."
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "طريقة التدوير المستخدمة هي %1$s."
@@ -642,6 +649,13 @@ msgstr "تراكمي"
 
 msgid "SumSq. Loadings"
 msgstr "مجموع مربعات التشبعات"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "الارتباطات بين العوامل"
@@ -765,6 +779,17 @@ msgstr "العمود '%s' موجود بالفعل في مجموعة البيان
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "فشل التحليل الموازي. رسالة الخطأ الداخلية: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -795,6 +820,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -804,25 +832,29 @@ msgstr "القيم الذاتية لمكونات البيانات الفعلية
 msgid "Real data factor eigenvalues"
 msgstr "القيم الذاتية لعوامل البيانات الفعلية"
 
-msgid "Parallel Analysis"
-msgstr "التحليل الموازي"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "متوسط القيم الذاتية للبيانات المُحاكاة"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "متوسط القيم الذاتية للبيانات المُحاكاة"
+
+msgid "Parallel Analysis"
+msgstr "التحليل الموازي"
 
 msgid "Component"
 msgstr "المكوّن"
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -844,11 +876,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "مخطط الركام"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "متوسط القيم الذاتية للبيانات المُحاكاة"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "متوسط القيم الذاتية للبيانات المُحاكاة"
+
 msgid "Data"
 msgstr "البيانات"
-
-msgid "Simulated data from parallel analysis"
-msgstr "بيانات مُحاكاة من التحليل الموازي"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -885,17 +922,48 @@ msgstr "البيانات غير صالحة: قيم مفقودة كثيرة جد�
 msgid "Data not valid: all variables are collinear"
 msgstr "البيانات غير صالحة: جميع المتغيرات مرتبطة خطيًا"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "تشبعات المكونات"
+
 msgid "Component Loadings"
 msgstr "تشبعات المكونات"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "طريقة التدوير المستخدمة هي %s."
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "تشبعات العوامل (مصفوفة البنية)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "خصائص المكونات"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "ارتباطات المكونات"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "بيانات مُحاكاة من التحليل الموازي"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "

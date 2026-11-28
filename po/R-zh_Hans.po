@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2026-11-01 08:51+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -597,6 +597,10 @@ msgstr "自由度低于 0，模型未识别。"
 msgid "<em>Warning:</em>"
 msgstr "<em>警告:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "因子载荷（结构矩阵）"
+
 msgid "Factor Loadings"
 msgstr "因子载荷"
 
@@ -608,6 +612,9 @@ msgstr "独特性(Uniqueness)"
 
 msgid "No rotation method applied."
 msgstr "未应用旋转方法。"
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "应用的旋转方法为%1$s。"
@@ -635,6 +642,13 @@ msgstr "累积"
 
 msgid "SumSq. Loadings"
 msgstr "SumSq. Loadings"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "因子相关性"
@@ -754,6 +768,17 @@ msgstr "列“%s”已存在于数据集中。"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "平分析失败。内部错误消息：%s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -784,6 +809,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -793,25 +821,29 @@ msgstr "实际数据成分特征值"
 msgid "Real data factor eigenvalues"
 msgstr "实际数据因子特征值"
 
-msgid "Parallel Analysis"
-msgstr "平行分析"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "模拟数据平均特征值"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "模拟数据平均特征值"
+
+msgid "Parallel Analysis"
+msgstr "平行分析"
 
 msgid "Component"
 msgstr "成分"
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -833,11 +865,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "碎石图"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "模拟数据平均特征值"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "模拟(第 95 个分位数)"
+
 msgid "Data"
 msgstr "数据"
-
-msgid "Simulated data from parallel analysis"
-msgstr "来自平行分析的模拟数据"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -870,17 +907,48 @@ msgstr "数据无效：变量 %s 中的缺失值太多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "数据无效：所有变量共线"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "成分载荷"
+
 msgid "Component Loadings"
 msgstr "成分载荷"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "应用的旋转方法为%s."
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "因子载荷（结构矩阵）"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "成分特征"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "成分相关性"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "来自平行分析的模拟数据"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
@@ -928,9 +996,6 @@ msgstr "成分相关性"
 
 #~ msgid "Variance explained"
 #~ msgstr "差异解释"
-
-#~ msgid "Simulated (95th quantile)"
-#~ msgstr "模拟(第 95 个分位数)"
 
 #~ msgid "EFA Eigenvalue"
 #~ msgstr "EFA 特征值"

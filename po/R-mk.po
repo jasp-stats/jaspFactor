@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.97.1\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -583,6 +583,9 @@ msgstr ""
 msgid "<em>Warning:</em>"
 msgstr ""
 
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr ""
+
 msgid "Factor Loadings"
 msgstr ""
 
@@ -593,6 +596,9 @@ msgid "Uniqueness"
 msgstr ""
 
 msgid "No rotation method applied."
+msgstr ""
+
+msgid "No rotation applied, because there is only one factor."
 msgstr ""
 
 msgid "Applied rotation method is %1$s."
@@ -620,6 +626,13 @@ msgid "Cumulative"
 msgstr ""
 
 msgid "SumSq. Loadings"
+msgstr ""
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
 msgstr ""
 
 msgid "Factor Correlations"
@@ -730,6 +743,17 @@ msgstr ""
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -757,6 +781,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -766,25 +793,28 @@ msgstr ""
 msgid "Real data factor eigenvalues"
 msgstr ""
 
-msgid "Parallel Analysis"
+msgid "Simulated data mean eigenvalues"
 msgstr ""
 
-msgid "Simulated data mean eigenvalues"
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr ""
+
+msgid "Parallel Analysis"
 msgstr ""
 
 msgid "Component"
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -805,10 +835,13 @@ msgstr ""
 msgid "Scree plot"
 msgstr ""
 
-msgid "Data"
+msgid "Simulated data (mean)"
 msgstr ""
 
-msgid "Simulated data from parallel analysis"
+msgid "Simulated data (95th percentile)"
+msgstr ""
+
+msgid "Data"
 msgstr ""
 
 msgid ""
@@ -842,13 +875,39 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr ""
 
+msgid "Component Loadings (Pattern Matrix)"
+msgstr ""
+
 msgid "Component Loadings"
+msgstr ""
+
+msgid "No rotation applied, because there is only one component."
 msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr ""
 
+msgid "Component Loadings (Structure Matrix)"
+msgstr ""
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
+msgstr ""
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
 msgstr ""
 
 msgid "Component Correlations"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2026-08-10 14:03+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -633,6 +633,10 @@ msgstr "Graos de liberdade por debaixo de 0; o modelo non está identificado."
 msgid "<em>Warning:</em>"
 msgstr "<em>Aviso:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "Cargas de Factores (Matriz de Estrutura)"
+
 msgid "Factor Loadings"
 msgstr "Cargas dos Factores"
 
@@ -644,6 +648,9 @@ msgstr "Unicidade"
 
 msgid "No rotation method applied."
 msgstr "Non se aplicou ningún método de rotación."
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "O método de rotación que se aplicou é %1$s."
@@ -671,6 +678,13 @@ msgstr "Acumulada"
 
 msgid "SumSq. Loadings"
 msgstr "Suma de Cargas Cadradas"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "Correlacións dos Factores"
@@ -801,6 +815,17 @@ msgstr "O nome '%s' de columna xa existe no conxunto de datos."
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Fallou a análise paralela. Mensaxe de fallo interno: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -831,6 +856,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -840,25 +868,29 @@ msgstr "Autovalores das compoñentes dos datos reais"
 msgid "Real data factor eigenvalues"
 msgstr "Autovalores dos factores dos datos reais"
 
-msgid "Parallel Analysis"
-msgstr "Análise Paralela"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "Autovalores medios dos datos simulados"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "Autovalores medios dos datos simulados"
+
+msgid "Parallel Analysis"
+msgstr "Análise Paralela"
 
 msgid "Component"
 msgstr "Compoñente"
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -880,11 +912,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "Gráfica de sedimentación"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "Autovalores medios dos datos simulados"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "Simulado (cuantil 95-ésimo)"
+
 msgid "Data"
 msgstr "Datos"
-
-msgid "Simulated data from parallel analysis"
-msgstr "Datos simulados de análises paralelas"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -922,17 +959,48 @@ msgstr "Datos incorrectos: demasiados valores ausentes na(s) variable(s) %s."
 msgid "Data not valid: all variables are collinear"
 msgstr "Datos incorrectos: todas as variables son colineares"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "Cargas de Compoñentes"
+
 msgid "Component Loadings"
 msgstr "Cargas de Compoñentes"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "O método de rotación que se aplicou é %s."
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "Cargas de Factores (Matriz de Estrutura)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "Características das Compoñentes"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "Correlacións das Compoñentes"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "Datos simulados de análises paralelas"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
@@ -1009,9 +1077,6 @@ msgstr "Correlacións das Compoñentes"
 
 #~ msgid "Variance explained"
 #~ msgstr "Varianza explicada"
-
-#~ msgid "Simulated (95th quantile)"
-#~ msgstr "Simulado (cuantil 95-ésimo)"
 
 #~ msgid "EFA Eigenvalue"
 #~ msgstr "Autovalor AFE"

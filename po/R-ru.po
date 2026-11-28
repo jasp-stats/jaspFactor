@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2025-04-14 14:03+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/jaspfactor-"
@@ -634,6 +634,10 @@ msgstr "Степени свободы ниже 0, модель неиденти�
 msgid "<em>Warning:</em>"
 msgstr "<em> Предупреждение: </em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "Факторные нагрузки (Структурная Матрица)"
+
 msgid "Factor Loadings"
 msgstr "Факторные нагрузки"
 
@@ -645,6 +649,9 @@ msgstr "Уникальность"
 
 msgid "No rotation method applied."
 msgstr "Метод вращения не применялся."
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 #, fuzzy
 msgid "Applied rotation method is %1$s."
@@ -675,6 +682,13 @@ msgstr "Кумулятивная доля дисп."
 
 msgid "SumSq. Loadings"
 msgstr "Сумма квадратов нагрузок"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "Корреляции факторов"
@@ -788,6 +802,17 @@ msgid "Parallel analysis failed. Internal error message: %s"
 msgstr ""
 "Не удалось выполнить параллельный анализ. Внутреннее сообщение об ошибке: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -818,6 +843,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -828,26 +856,30 @@ msgstr "Собственные значения компонент"
 msgid "Real data factor eigenvalues"
 msgstr "Собственные значения факторов"
 
-msgid "Parallel Analysis"
-msgstr "Параллельный анализ"
-
 #, fuzzy
 msgid "Simulated data mean eigenvalues"
 msgstr "Собственные значения параллельного анализа"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "Собственные значения параллельного анализа"
+
+msgid "Parallel Analysis"
+msgstr "Параллельный анализ"
 
 msgid "Component"
 msgstr "Компонент"
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -869,11 +901,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "График каменистой осыпи"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "Собственные значения параллельного анализа"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "Собственные значения параллельного анализа"
+
 msgid "Data"
 msgstr "Данные"
-
-msgid "Simulated data from parallel analysis"
-msgstr "Смоделированные данные из параллельного анализа"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -908,17 +945,48 @@ msgstr ""
 msgid "Data not valid: all variables are collinear"
 msgstr "Недопустимые данные: все переменные коллинеарны"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "Компонентные нагрузки"
+
 msgid "Component Loadings"
 msgstr "Компонентные нагрузки"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "Применяемый метод вращения равен %s."
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "Факторные нагрузки (Структурная Матрица)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "Характеристики компонентов"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "Корреляции компонентов"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "Смоделированные данные из параллельного анализа"
 
 #, fuzzy
 #~ msgid ""

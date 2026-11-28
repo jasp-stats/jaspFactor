@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.95.0\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2025-10-01 11:02+0000\n"
 "Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/jaspfactor-r/"
@@ -637,6 +637,10 @@ msgstr "Askatasun graduak 0 azpitik, eredua identifikatu gabea da."
 msgid "<em>Warning:</em>"
 msgstr "<em>Abisua:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "Faktoreen Kargak (Egitura Matrizea)"
+
 msgid "Factor Loadings"
 msgstr "Faktoreen Kargak"
 
@@ -649,6 +653,9 @@ msgstr "Bakartasuna?????"
 
 msgid "No rotation method applied."
 msgstr "Ez da errotazio metodorik aplikatu."
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "Aplikatutako errotazio metodoa %1$s da."
@@ -680,6 +687,13 @@ msgstr "Metatua  edo metagarria?"
 #, fuzzy
 msgid "SumSq. Loadings"
 msgstr "SumSq. Kargak"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "Faktoreen Korrelazioak"
@@ -793,6 +807,17 @@ msgstr "%s zutabe izena dagoeneko existitzen da datu-multzoan"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "Analisi paraleloak huts egin du. Barne-errore-mezua: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr ""
 
@@ -823,6 +848,9 @@ msgstr ""
 msgid "Velicer's MAP"
 msgstr ""
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr ""
 
@@ -832,25 +860,29 @@ msgstr "Datu errealen osagaien eigenbalioak"
 msgid "Real data factor eigenvalues"
 msgstr "Datu errealen faktoreen balio propioak"
 
-msgid "Parallel Analysis"
-msgstr "Analisi Paraleloa"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "Datu simulatuen batez besteko eigenbalioak"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "Datu simulatuen batez besteko eigenbalioak"
+
+msgid "Parallel Analysis"
+msgstr "Analisi Paraleloa"
 
 msgid "Component"
 msgstr "Osagaia"
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 
 msgid "Velicer's Minimum Average Partial (MAP)"
@@ -872,11 +904,16 @@ msgstr ""
 msgid "Scree plot"
 msgstr "Pistaren grafikoa?????"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "Datu simulatuen batez besteko eigenbalioak"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "Datu simulatuen batez besteko eigenbalioak"
+
 msgid "Data"
 msgstr "Datuak"
-
-msgid "Simulated data from parallel analysis"
-msgstr "Analisi paraleloaren datu simulatuak"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -914,17 +951,48 @@ msgstr "Datuak ez dira baliozkoak: balio falta gehiegi %s aldagai(etan)."
 msgid "Data not valid: all variables are collinear"
 msgstr "Datuak ez dira baliozkoak: aldagai guztiak kolinearrak dira"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "Osagaien Kargak"
+
 msgid "Component Loadings"
 msgstr "Osagaien Kargak"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "Aplikatutako errotazio metodoa %s da."
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "Faktoreen Kargak (Egitura Matrizea)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "Osagaien Ezaugarriak"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "Osagaien Korrelazioak"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "Analisi paraleloaren datu simulatuak"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "

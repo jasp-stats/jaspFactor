@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspFactor 0.15.0\n"
-"POT-Creation-Date: 2026-11-14 03:29\n"
+"POT-Creation-Date: 2026-11-28 03:29\n"
 "PO-Revision-Date: 2026-11-16 06:38+0000\n"
 "Last-Translator: 陳正昌 <chencc99@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -394,7 +394,8 @@ msgstr "殘差共變數"
 msgid ""
 "Residual covariances between the pairs of indicators that were specified to "
 "covary, i.e., shared variance that is not accounted for by the factors."
-msgstr "被指定為具共變關係的指標配對間之殘差共變異數，即因子未能解釋的共同變異量。"
+msgstr ""
+"被指定為具共變關係的指標配對間之殘差共變異數，即因子未能解釋的共同變異量。"
 
 msgid "Factor Intercepts"
 msgstr "因素截距"
@@ -640,6 +641,10 @@ msgstr "自由度小於零，模型無法識別。"
 msgid "<em>Warning:</em>"
 msgstr "<em>警告:</em>"
 
+#, fuzzy
+msgid "Factor Loadings (Pattern Matrix)"
+msgstr "因素負荷量(結構矩陣)"
+
 msgid "Factor Loadings"
 msgstr "因素負荷量"
 
@@ -651,6 +656,9 @@ msgstr "獨特性"
 
 msgid "No rotation method applied."
 msgstr "不進行轉軸。"
+
+msgid "No rotation applied, because there is only one factor."
+msgstr ""
 
 msgid "Applied rotation method is %1$s."
 msgstr "轉軸法為 %1$s。"
@@ -678,6 +686,13 @@ msgstr "累積"
 
 msgid "SumSq. Loadings"
 msgstr "負荷量平方和(特徵值)"
+
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the factor "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
 
 msgid "Factor Correlations"
 msgstr "因素相關"
@@ -801,6 +816,17 @@ msgstr "資料集中已存在欄位名稱 %s。"
 msgid "Parallel analysis failed. Internal error message: %s"
 msgstr "無法進行平行分析。內部錯誤訊息: %s"
 
+msgid ""
+"Unexpected layout of the simulated eigenvalues returned by "
+"psych::fa.parallel."
+msgstr ""
+
+msgid "mean"
+msgstr ""
+
+msgid "95th percentile"
+msgstr ""
+
 msgid "Suggested Number of Factors/Components"
 msgstr "建議的因子 / 成分數"
 
@@ -829,6 +855,9 @@ msgstr "特徵值準則（高於 %s）"
 msgid "Velicer's MAP"
 msgstr "Velicer 最小平均偏相關 (MAP) 檢定"
 
+msgid "Parallel analysis compares against the %s of the simulated eigenvalues."
+msgstr ""
+
 msgid "Eigenvalue criterion based on %s eigenvalues."
 msgstr "基於 %s 個特徵值的特徵值準則。"
 
@@ -838,27 +867,33 @@ msgstr "實際資料的成分特徵值"
 msgid "Real data factor eigenvalues"
 msgstr "實際資料的因素特徵值"
 
-msgid "Parallel Analysis"
-msgstr "平行分析"
-
 msgid "Simulated data mean eigenvalues"
 msgstr "模擬資料的平均特徵值"
+
+#, fuzzy
+msgid "Simulated data 95th percentile eigenvalues"
+msgstr "模擬資料的平均特徵值"
+
+msgid "Parallel Analysis"
+msgstr "平行分析"
 
 msgid "Component"
 msgstr "成分"
 
+#, fuzzy
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from PC-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from PC-based parallel analysis."
 msgstr ""
 "'*' = 依模擬特徵值第 95 百分位數的平行分析建議，應保留 %s 個成分；表中顯示的"
 "是模擬特徵值的平均數。此為以主成分為基礎的平行分析結果。"
 
+#, fuzzy
 msgid ""
-"'*' = %s should be retained, following the parallel analysis suggestion "
-"based on the 95th percentile of the simulated eigenvalues; the table "
-"displays mean simulated eigenvalues. Results from FA-based parallel analysis."
+"'*' = %1$s should be retained, as its eigenvalue exceeds the %2$s of the "
+"simulated eigenvalues; counting stops at the first eigenvalue that does not. "
+"Results from FA-based parallel analysis."
 msgstr ""
 "'*' = 依模擬特徵值第 95 百分位數的平行分析建議，應保留 %s 個因子；表中顯示的"
 "是模擬特徵值的平均數。此為以因子分析為基礎的平行分析結果。"
@@ -876,16 +911,22 @@ msgid ""
 "'*' = number of components suggested for retention, i.e., with the lowest "
 "average squared partial correlation. MAP is always based on principal "
 "components."
-msgstr "'*' = 建議保留的成分數，即平均平方偏相關最低者。MAP 一律以主成分為基礎。"
+msgstr ""
+"'*' = 建議保留的成分數，即平均平方偏相關最低者。MAP 一律以主成分為基礎。"
 
 msgid "Scree plot"
 msgstr "陡坡圖"
 
+#, fuzzy
+msgid "Simulated data (mean)"
+msgstr "模擬資料的平均特徵值"
+
+#, fuzzy
+msgid "Simulated data (95th percentile)"
+msgstr "模擬資料的平均特徵值"
+
 msgid "Data"
 msgstr "資料集"
-
-msgid "Simulated data from parallel analysis"
-msgstr "平行分析的模擬資料"
 
 msgid ""
 "Input data does not seem to be a square matrix! Please check the format of "
@@ -919,17 +960,48 @@ msgstr "資料無效: %s 變數的遺漏值過多。"
 msgid "Data not valid: all variables are collinear"
 msgstr "資料無效: 所有變數互為共線性"
 
+#, fuzzy
+msgid "Component Loadings (Pattern Matrix)"
+msgstr "成分負荷量"
+
 msgid "Component Loadings"
 msgstr "成分負荷量"
+
+msgid "No rotation applied, because there is only one component."
+msgstr ""
 
 msgid "Applied rotation method is %s."
 msgstr "轉軸法為%s。"
 
+#, fuzzy
+msgid "Component Loadings (Structure Matrix)"
+msgstr "因素負荷量(結構矩陣)"
+
+msgid ""
+"No rotation applied, because there is only one component; the structure "
+"matrix equals the component loadings."
+msgstr ""
+
+msgid ""
+"Based on the covariance matrix: the values are covariances between the "
+"variables and the components, not correlations."
+msgstr ""
+
 msgid "Component Characteristics"
 msgstr "成分特徵"
 
+msgid ""
+"With an oblique rotation, the sums of squared loadings take the component "
+"correlations into account (sum of pattern × structure loadings), so they add "
+"up to the total explained variance. Proportion var. is this sum divided by "
+"the total variance (the number of variables for a correlation matrix)."
+msgstr ""
+
 msgid "Component Correlations"
 msgstr "成分相關性"
+
+#~ msgid "Simulated data from parallel analysis"
+#~ msgstr "平行分析的模擬資料"
 
 #~ msgid ""
 #~ "No factors with an eigenvalue > %1$s. Maximum observed eigenvalue equals "
